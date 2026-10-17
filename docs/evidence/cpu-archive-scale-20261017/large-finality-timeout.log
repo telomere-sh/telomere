@@ -1,0 +1,27 @@
+Started telomere-cpu-journal-stress-7c5e63cb192c47b6.service - /opt/node-v22.23.3-linux-x64/bin/node /opt/telomere-mainnet-pilot/operator/cpu-launch/journal-stress.mjs.
+{"phase":"seed_10000_canonical_settlements"}
+{"phase":"seed_10000_canonical_settlements","settlements":500}
+{"phase":"seed_10000_canonical_settlements","settlements":1000}
+{"phase":"seed_10000_canonical_settlements","settlements":1500}
+{"phase":"seed_10000_canonical_settlements","settlements":2000}
+{"phase":"seed_10000_canonical_settlements","settlements":2500}
+{"phase":"seed_10000_canonical_settlements","settlements":3000}
+{"phase":"seed_10000_canonical_settlements","settlements":3500}
+{"phase":"seed_10000_canonical_settlements","settlements":4000}
+{"phase":"seed_10000_canonical_settlements","settlements":4500}
+{"phase":"seed_10000_canonical_settlements","settlements":5000}
+{"phase":"seed_10000_canonical_settlements","settlements":5500}
+{"phase":"seed_10000_canonical_settlements","settlements":6000}
+{"phase":"seed_10000_canonical_settlements","settlements":6500}
+{"phase":"seed_10000_canonical_settlements","settlements":7000}
+{"phase":"seed_10000_canonical_settlements","settlements":7500}
+{"phase":"seed_10000_canonical_settlements","settlements":8000}
+{"phase":"seed_10000_canonical_settlements","settlements":8500}
+{"phase":"seed_10000_canonical_settlements","settlements":9000}
+{"phase":"seed_10000_canonical_settlements","settlements":9500}
+{"phase":"seed_10000_canonical_settlements","settlements":10000}
+{"passed":false,"phase":"seed_10000_canonical_settlements","errorType":"TimeoutError","message":"The request took too long to respond.\n\nURL: http://127.0.0.1:19961/\nRequest body: {\"method\":\"anvil_mine\",\"params\":[\"0x80\",\"0x0\"]}\n\nDetails: The request timed out.\nVersion: viem@2.57.3","reportDirectory":"/opt/telomere-mainnet-pilot/data/cpu-launch-acceptance-20261017/http-load-8PBFhS"}
+telomere-cpu-journal-stress-7c5e63cb192c47b6.service: Main process exited, code=exited, status=1/FAILURE
+{"namespace": "7c5e63cb192c47b6", "serviceResult": "exit-code", "observedAtUnix": 1792270534.900526, "removedContainers": 0, "cleanupPassed": true}
+telomere-cpu-journal-stress-7c5e63cb192c47b6.service: Failed with result 'exit-code'.
+telomere-cpu-journal-stress-7c5e63cb192c47b6.service: Consumed 20min 2.112s CPU time.

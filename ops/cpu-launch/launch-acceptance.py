@@ -33,7 +33,8 @@ if __name__=='__main__':
     env={'PATH':'/opt/node-v22.23.3-linux-x64/bin:/usr/bin:/bin','CPU_IMAGE':selected['image'],'DOCKER_HOST':selected['host']}
     if args.mode in ('load','soak','resilience','journal','journal-soak','journal-stress'):
         folder=BASE/'operator/cpu-launch/bin';folder.mkdir(exist_ok=True,mode=0o755)
-        shutil.copy2(BASE/'operator/cpu-launch/docker-load.py',folder/'docker');(folder/'docker').chmod(0o755)
+        wrapper=folder/('.docker-'+uuid.uuid4().hex)
+        shutil.copy2(BASE/'operator/cpu-launch/docker-load.py',wrapper);wrapper.chmod(0o755);os.replace(wrapper,folder/'docker')
         image=subprocess.check_output(['/usr/bin/docker','--host',selected['host'],'inspect','--format','{{.Image}}','telomere-mainnet-postgres']).decode().strip()
         env.update(PATH=str(folder)+':'+env['PATH'],TELOMERE_ACCEPTANCE_NAMESPACE=namespace,ACCEPTANCE_POSTGRES_IMAGE=image,ACCEPTANCE_SOAK_SECONDS=str(args.soak_seconds))
         env.update(ACCEPTANCE_DURATION_SECONDS=str(args.duration_seconds),ACCEPTANCE_SESSION_REFRESH_SECONDS=str(args.session_refresh_seconds),ACCEPTANCE_NAMESPACE=namespace)

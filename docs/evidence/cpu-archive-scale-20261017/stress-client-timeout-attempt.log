@@ -1,0 +1,13 @@
+Started telomere-cpu-journal-stress-92b6ca7e67104eae.service - /opt/node-v22.23.3-linux-x64/bin/node /opt/telomere-mainnet-pilot/operator/cpu-launch/journal-stress.mjs.
+{"phase":"seed_10000_canonical_settlements"}
+{"phase":"large_history_fresh_start","observedAt":"2026-10-17T20:43:18.676Z"}
+{"phase":"fund_nine_owners_and_fill_64_paid_slots","observedAt":"2026-10-17T20:43:20.944Z"}
+{"phase":"finalized_rpc_failure_during_automatic_archive","observedAt":"2026-10-17T20:43:24.775Z"}
+{"phase":"receipt_rpc_failure_during_automatic_archive","observedAt":"2026-10-17T20:43:26.464Z"}
+{"phase":"recover_after_broadcast_acknowledgement_loss","observedAt":"2026-10-17T20:43:26.489Z"}
+{"phase":"full_rpc_outage_keeps_paid_reservation","observedAt":"2026-10-17T20:43:27.254Z"}
+{"passed":false,"phase":"http_load","errorType":"TimeoutError","message":"The operation was aborted due to timeout","reportDirectory":"/opt/telomere-mainnet-pilot/data/cpu-launch-acceptance-20261017/http-load-Bethi5"}
+telomere-cpu-journal-stress-92b6ca7e67104eae.service: Main process exited, code=exited, status=1/FAILURE
+{"namespace": "92b6ca7e67104eae", "serviceResult": "exit-code", "observedAtUnix": 1792269832.3460245, "removedContainers": 0, "cleanupPassed": true}
+telomere-cpu-journal-stress-92b6ca7e67104eae.service: Failed with result 'exit-code'.
+telomere-cpu-journal-stress-92b6ca7e67104eae.service: Consumed 15.787s CPU time.

@@ -1,0 +1,66 @@
+{
+  "passed": true,
+  "observedAt": "2026-10-17T21:08:11.316Z",
+  "releaseId": "a75ee7bc44ff9aaa8964023975f0b7147c92fee4",
+  "mainnetTransactions": 0,
+  "mainnetSignerLoaded": false,
+  "history": {
+    "settlements": 10000,
+    "syntheticMeteringFixtures": true,
+    "realLocalContractSettlements": true,
+    "seedElapsedSeconds": 73.976198981,
+    "archivedRows": 9744,
+    "activeRows": 256,
+    "archiveElapsedSeconds": 74.621189325,
+    "originalJournalSha256": "df927cbdcadecf7bfc178769754396c4ba9dd3b4f9e84a9c045f08e3d944d8f5",
+    "freshBootSeconds": 2.5087354469999847,
+    "freshWorkerRssKiB": 147472,
+    "freshWorkerPeakRssKiB": 147472
+  },
+  "rpcFaults": {
+    "passed": true,
+    "finalizedFailures": 1,
+    "receiptFailures": 1,
+    "unchangedOriginalCpuResult": true,
+    "unchangedHistoryOnFailedArchive": true,
+    "acknowledgementLossRecovered": true,
+    "oneNewNonce": true,
+    "rpcOutageAdmissionStatus": 503
+  },
+  "queue": {
+    "passed": true,
+    "owners": 9,
+    "capacity": 64,
+    "canonicalCpuReceipts": 65,
+    "maxRunning": 1,
+    "delayedRpcMs": 10,
+    "healthyReads": 398,
+    "readP95Ms": 5.956821000087075,
+    "elapsedSeconds": 403.64592159399996,
+    "archive": {
+      "retainedRows": 10065,
+      "archivedRows": 9944,
+      "activeRows": 121,
+      "batches": 64
+    },
+    "chargedAtomicTestTokens": "16500",
+    "exactSettlementNonce": 10065
+  },
+  "restore": {
+    "passed": true,
+    "tables": 47,
+    "rows": 20303,
+    "allFingerprintsMatch": true,
+    "elapsedSeconds": 5.4569259509999535,
+    "freshBootSeconds": 2.4292813780000433,
+    "originalJournalBytesRetained": true,
+    "noNewNonce": true
+  },
+  "rpcCounters": {
+    "refused": 5,
+    "finalityFailures": 1,
+    "receiptFailures": 1,
+    "forwardedBroadcasts": 65,
+    "droppedAcknowledgements": 1
+  }
+}

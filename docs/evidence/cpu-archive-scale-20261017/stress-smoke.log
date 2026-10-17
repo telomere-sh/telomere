@@ -1,0 +1,14 @@
+Started telomere-cpu-journal-stress-aa831a2e32b440c9.service - /opt/node-v22.23.3-linux-x64/bin/node /opt/telomere-mainnet-pilot/operator/cpu-launch/journal-stress.mjs.
+{"phase":"seed_10000_canonical_settlements"}
+{"phase":"large_history_fresh_start","observedAt":"2026-10-17T20:45:03.749Z"}
+{"phase":"fund_nine_owners_and_fill_64_paid_slots","observedAt":"2026-10-17T20:45:05.781Z"}
+{"phase":"finalized_rpc_failure_during_automatic_archive","observedAt":"2026-10-17T20:45:09.760Z"}
+{"phase":"receipt_rpc_failure_during_automatic_archive","observedAt":"2026-10-17T20:45:11.417Z"}
+{"phase":"recover_after_broadcast_acknowledgement_loss","observedAt":"2026-10-17T20:45:11.443Z"}
+{"phase":"full_rpc_outage_keeps_paid_reservation","observedAt":"2026-10-17T20:45:12.225Z"}
+{"phase":"drain_queue_while_archiving_and_rpc_is_delayed","observedAt":"2026-10-17T20:45:27.284Z"}
+{"phase":"dump_restore_all_large_history_tables","observedAt":"2026-10-17T20:47:58.548Z"}
+{"passed":true,"observedAt":"2026-10-17T20:48:01.192Z","releaseId":"a75ee7bc44ff9aaa8964023975f0b7147c92fee4","mainnetTransactions":0,"mainnetSignerLoaded":false,"history":{"settlements":256,"syntheticMeteringFixtures":true,"realLocalContractSettlements":true,"seedElapsedSeconds":6.793453302,"archivedRows":0,"activeRows":256,"archiveElapsedSeconds":0.005909493000001021,"originalJournalSha256":"8aa41835f94769ba44cfd6185b5e343adca0102aec5b84fb5b9adfdc46bf2ae0","freshBootSeconds":1.3025075429999997,"freshWorkerRssKiB":128324},"rpcFaults":{"passed":true,"finalizedFailures":1,"receiptFailures":1,"unchangedOriginalCpuResult":true,"unchangedHistoryOnFailedArchive":true,"acknowledgementLossRecovered":true,"oneNewNonce":true,"rpcOutageAdmissionStatus":503},"queue":{"passed":true,"owners":9,"capacity":64,"canonicalCpuReceipts":65,"maxRunning":1,"delayedRpcMs":10,"healthyReads":146,"readP95Ms":130.26212999998825,"elapsedSeconds":149.69941741999997,"archive":{"retainedRows":321,"archivedRows":200,"activeRows":121,"batches":25},"chargedAtomicTestTokens":"6756"},"restore":{"passed":true,"tables":47,"rows":776,"allFingerprintsMatch":true,"elapsedSeconds":2.0425623639999833,"freshBootSeconds":1.464748025000008,"originalJournalBytesRetained":true,"noNewNonce":true},"rpcCounters":{"refused":5,"finalityFailures":1,"receiptFailures":1,"forwardedBroadcasts":65,"droppedAcknowledgements":1},"report":"/opt/telomere-mainnet-pilot/data/cpu-launch-acceptance-20261017/http-load-7yFiFi/result.json"}
+{"namespace": "aa831a2e32b440c9", "serviceResult": "success", "observedAtUnix": 1792270109.8030438, "removedContainers": 0, "cleanupPassed": true}
+telomere-cpu-journal-stress-aa831a2e32b440c9.service: Deactivated successfully.
+telomere-cpu-journal-stress-aa831a2e32b440c9.service: Consumed 1min 5.681s CPU time.

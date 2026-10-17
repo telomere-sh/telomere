@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 1,
+  "scope": "Final operator reproducer for the successful batched 10000-history acceptance, separate archive-aware 12-hour soak, and dual monitor/hosted observers. The unchanged application release a75ee7bc44ff9aaa8964023975f0b7147c92fee4 has 758 verified runtime pins. Prior source objects are retained. The initial unbatched large attempt failed its fixture finality deadline; initial-large-entry.mjs records its original entry. Long-running soak modules were loaded before later stress-only controls/batching and launcher atomic replacement; their workload remains unchanged.",
+  "files": [
+    {
+      "originalPath": "ops/cpu-launch/archive-load-worker.mjs",
+      "path": "source/3ef502642111577a644bd8587d7977949d999a614cf82227f29cd1a9146a6ec6.bin",
+      "bytes": 2007,
+      "sha256": "3ef502642111577a644bd8587d7977949d999a614cf82227f29cd1a9146a6ec6"
+    },
+    {
+      "originalPath": "ops/cpu-launch/fixture-rpc-proxy.mjs",
+      "path": "source/95cbfb071e3b69911bb6159f1a8738365ae8331ddf959a67c53f42ab037ef8ed.bin",
+      "bytes": 1688,
+      "sha256": "95cbfb071e3b69911bb6159f1a8738365ae8331ddf959a67c53f42ab037ef8ed"
+    },
+    {
+      "originalPath": "ops/cpu-launch/journal-soak.mjs",
+      "path": "source/704880662d98ce5f707ceb9b97d84af773c527043993076bd23f1c961f985043.bin",
+      "bytes": 18714,
+      "sha256": "704880662d98ce5f707ceb9b97d84af773c527043993076bd23f1c961f985043"
+    },
+    {
+      "originalPath": "ops/cpu-launch/journal-stress.mjs",
+      "path": "source/ff479999926fe90c8b84d97b2c40de157778d53e568d322e9b8f4750b34b83d6.bin",
+      "bytes": 14107,
+      "sha256": "ff479999926fe90c8b84d97b2c40de157778d53e568d322e9b8f4750b34b83d6"
+    },
+    {
+      "originalPath": "ops/cpu-launch/journal-stress-scenarios.mjs",
+      "path": "source/9b69644519df46e82e14d93f6119fda21fe29881855cb0a8ba83c5c3acdee583.bin",
+      "bytes": 14198,
+      "sha256": "9b69644519df46e82e14d93f6119fda21fe29881855cb0a8ba83c5c3acdee583"
+    },
+    {
+      "originalPath": "ops/cpu-launch/seed-history.mjs",
+      "path": "source/50f73d220b114eb247fc0dc61b97259c8f850ec4ac97069959cd443fe6ebfe5e.bin",
+      "bytes": 4271,
+      "sha256": "50f73d220b114eb247fc0dc61b97259c8f850ec4ac97069959cd443fe6ebfe5e"
+    },
+    {
+      "originalPath": "ops/cpu-launch/test-fixture-rpc.mjs",
+      "path": "source/ce19b15ae284d1d43b0f0fd8829b15055e05e91d5336d96f114c0f3bfa627855.bin",
+      "bytes": 1982,
+      "sha256": "ce19b15ae284d1d43b0f0fd8829b15055e05e91d5336d96f114c0f3bfa627855"
+    },
+    {
+      "originalPath": "ops/cpu-launch/launch-acceptance.py",
+      "path": "source/3aa94e6cb71b6828f6b5fcb23d074d68c42a47128feab0bb979f0530577cf8a0.bin",
+      "bytes": 6002,
+      "sha256": "3aa94e6cb71b6828f6b5fcb23d074d68c42a47128feab0bb979f0530577cf8a0"
+    },
+    {
+      "originalPath": "ops/cpu-launch/mainnet-ops.py",
+      "path": "source/a97a454c1317eaf68cd61fb9e79378026a89c3ba3a46a341fb9f649c19012ada.bin",
+      "bytes": 26384,
+      "sha256": "a97a454c1317eaf68cd61fb9e79378026a89c3ba3a46a341fb9f649c19012ada"
+    },
+    {
+      "originalPath": "ops/cpu-launch/test_monitor.py",
+      "path": "source/e2e42594d64a20bd282d96eb8f4ed781eb34224271f38b54ee4d7a185363e25b.bin",
+      "bytes": 9772,
+      "sha256": "e2e42594d64a20bd282d96eb8f4ed781eb34224271f38b54ee4d7a185363e25b"
+    },
+    {
+      "originalPath": "ops/cpu-launch/README.md",
+      "path": "source/1d35fe26538ae69e304bbc3e999061c7410c05559089ce2a9c4ab740f5eebbb7.bin",
+      "bytes": 24883,
+      "sha256": "1d35fe26538ae69e304bbc3e999061c7410c05559089ce2a9c4ab740f5eebbb7"
+    },
+    {
+      "originalPath": "ops/cpu-launch/table-fingerprints.mjs",
+      "path": "source/cec50b4bf2215852dee7c4e2ecdab39ae8602dba4bb45ac5834ae742d0985432.bin",
+      "bytes": 989,
+      "sha256": "cec50b4bf2215852dee7c4e2ecdab39ae8602dba4bb45ac5834ae742d0985432"
+    },
+    {
+      "originalPath": "ops/cpu-launch/soak-cleanup.py",
+      "path": "source/e664ebc959f1a31f4e874f8dde66a2a75986ac62c5d0b6252903166af15564f1.bin",
+      "bytes": 1885,
+      "sha256": "e664ebc959f1a31f4e874f8dde66a2a75986ac62c5d0b6252903166af15564f1"
+    },
+    {
+      "originalPath": "ops/cpu-launch/docker-load.py",
+      "path": "source/6e3d716245f3fb432d8240d279799b0c9d5e6b1ad4968d54aee80956a37651dc.bin",
+      "bytes": 1064,
+      "sha256": "6e3d716245f3fb432d8240d279799b0c9d5e6b1ad4968d54aee80956a37651dc"
+    },
+    {
+      "originalPath": "ops/cpu-cloud/cloud.py",
+      "path": "source/9982497bda78fe2d0cbf854ae03981aabc16df06652e3ef24585a783a3a94877.bin",
+      "bytes": 22946,
+      "sha256": "9982497bda78fe2d0cbf854ae03981aabc16df06652e3ef24585a783a3a94877"
+    },
+    {
+      "originalPath": "ops/cpu-cloud/test_cloud_ops.py",
+      "path": "source/580de56059088407da7737f82e96f915501a2ddd3e6eed401d59167a5069dc84.bin",
+      "bytes": 12372,
+      "sha256": "580de56059088407da7737f82e96f915501a2ddd3e6eed401d59167a5069dc84"
+    },
+    {
+      "originalPath": "ops/cpu-cloud/github_store.py",
+      "path": "source/873a3ff666e85d6782991a17a081192e41bf728f5f7e0bb1ebc31856e3386fab.bin",
+      "bytes": 8191,
+      "sha256": "873a3ff666e85d6782991a17a081192e41bf728f5f7e0bb1ebc31856e3386fab"
+    },
+    {
+      "originalPath": "ops/cpu-cloud/pager.py",
+      "path": "source/7ea8e57084de173c95ed32250868d80701ff9b19715665807058dd9fbaa7b4b5.bin",
+      "bytes": 5945,
+      "sha256": "7ea8e57084de173c95ed32250868d80701ff9b19715665807058dd9fbaa7b4b5"
+    },
+    {
+      "originalPath": "ops/cpu-cloud/export.py",
+      "path": "source/3f8a9418acc3bb93a88d0946ef0f37949b1c9dc4b8c2e375d066b6c25c959426.bin",
+      "bytes": 5188,
+      "sha256": "3f8a9418acc3bb93a88d0946ef0f37949b1c9dc4b8c2e375d066b6c25c959426"
+    }
+  ],
+  "priorVersions": [
+    {
+      "originalPath": "ops/cpu-launch/journal-stress.mjs",
+      "path": "source/881ea02c2697acd87ceadcdf30d6c0eba96d61f8f494d89ef9df04117be88779.bin",
+      "bytes": 14036,
+      "sha256": "881ea02c2697acd87ceadcdf30d6c0eba96d61f8f494d89ef9df04117be88779"
+    },
+    {
+      "originalPath": "ops/cpu-launch/journal-stress-scenarios.mjs",
+      "path": "source/df866666aa63d71612d4af1d2ffcc889ad92feb45f690900cea21ef8f9446459.bin",
+      "bytes": 13857,
+      "sha256": "df866666aa63d71612d4af1d2ffcc889ad92feb45f690900cea21ef8f9446459"
+    },
+    {
+      "originalPath": "ops/cpu-launch/seed-history.mjs",
+      "path": "source/06353d4316f73073e1fec49c861c809313c540ec3ce75c7d5a8d0725e29ceb67.bin",
+      "bytes": 3776,
+      "sha256": "06353d4316f73073e1fec49c861c809313c540ec3ce75c7d5a8d0725e29ceb67"
+    },
+    {
+      "originalPath": "ops/cpu-launch/launch-acceptance.py",
+      "path": "source/3fc0391e4f8208e340ec3e112618e6051b8d5bce58b5b998f08a909557d38765.bin",
+      "bytes": 5931,
+      "sha256": "3fc0391e4f8208e340ec3e112618e6051b8d5bce58b5b998f08a909557d38765"
+    },
+    {
+      "originalPath": "ops/cpu-launch/README.md",
+      "path": "source/ee389096e0234b7deb6981d94c03be383f246a1df284cdbe43d1aefdd06592f1.bin",
+      "bytes": 24229,
+      "sha256": "ee389096e0234b7deb6981d94c03be383f246a1df284cdbe43d1aefdd06592f1"
+    }
+  ]
+}

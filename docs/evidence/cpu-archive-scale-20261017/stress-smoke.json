@@ -1,0 +1,64 @@
+{
+  "passed": true,
+  "observedAt": "2026-10-17T20:48:01.192Z",
+  "releaseId": "a75ee7bc44ff9aaa8964023975f0b7147c92fee4",
+  "mainnetTransactions": 0,
+  "mainnetSignerLoaded": false,
+  "history": {
+    "settlements": 256,
+    "syntheticMeteringFixtures": true,
+    "realLocalContractSettlements": true,
+    "seedElapsedSeconds": 6.793453302,
+    "archivedRows": 0,
+    "activeRows": 256,
+    "archiveElapsedSeconds": 0.005909493000001021,
+    "originalJournalSha256": "8aa41835f94769ba44cfd6185b5e343adca0102aec5b84fb5b9adfdc46bf2ae0",
+    "freshBootSeconds": 1.3025075429999997,
+    "freshWorkerRssKiB": 128324
+  },
+  "rpcFaults": {
+    "passed": true,
+    "finalizedFailures": 1,
+    "receiptFailures": 1,
+    "unchangedOriginalCpuResult": true,
+    "unchangedHistoryOnFailedArchive": true,
+    "acknowledgementLossRecovered": true,
+    "oneNewNonce": true,
+    "rpcOutageAdmissionStatus": 503
+  },
+  "queue": {
+    "passed": true,
+    "owners": 9,
+    "capacity": 64,
+    "canonicalCpuReceipts": 65,
+    "maxRunning": 1,
+    "delayedRpcMs": 10,
+    "healthyReads": 146,
+    "readP95Ms": 130.26212999998825,
+    "elapsedSeconds": 149.69941741999997,
+    "archive": {
+      "retainedRows": 321,
+      "archivedRows": 200,
+      "activeRows": 121,
+      "batches": 25
+    },
+    "chargedAtomicTestTokens": "6756"
+  },
+  "restore": {
+    "passed": true,
+    "tables": 47,
+    "rows": 776,
+    "allFingerprintsMatch": true,
+    "elapsedSeconds": 2.0425623639999833,
+    "freshBootSeconds": 1.464748025000008,
+    "originalJournalBytesRetained": true,
+    "noNewNonce": true
+  },
+  "rpcCounters": {
+    "refused": 5,
+    "finalityFailures": 1,
+    "receiptFailures": 1,
+    "forwardedBroadcasts": 65,
+    "droppedAcknowledgements": 1
+  }
+}

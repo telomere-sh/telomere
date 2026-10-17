@@ -1,0 +1,131 @@
+{
+  "observedAt": "2026-10-17T21:08:54.723284+00:00",
+  "units": {
+    "original": {
+      "Result": "success",
+      "NRestarts": "0",
+      "ExecMainStartTimestamp": "Sat 2026-10-17 20:44:52 CEST",
+      "ExecMainPID": "432030",
+      "MemoryCurrent": "217554944",
+      "CPUUsageNSec": "170963687000",
+      "ActiveState": "active",
+      "SubState": "running",
+      "progress": {
+        "schemaVersion": 1,
+        "state": "running",
+        "startedAt": "2026-10-17T18:44:59.179Z",
+        "observedAt": "2026-10-17T21:08:43.351Z",
+        "targetSeconds": 43200,
+        "elapsedSeconds": 8624.172648233,
+        "scope": "exact deployed runtime, isolated PostgreSQL, local chain 31337, actual gVisor CPU",
+        "users": 50,
+        "burst": {
+          "users": 50,
+          "requests": 1000,
+          "concurrency": 50,
+          "elapsedSeconds": 1.7586757340000003,
+          "requestsPerSecond": 568.6096536543216,
+          "p50Ms": 91.0080539999999,
+          "p95Ms": 172.19851199999994,
+          "p99Ms": 178.60418300000038,
+          "errors": 0
+        },
+        "requests": 86250,
+        "writes": 8620,
+        "cpuRuns": 29,
+        "chargedAtomicTestTokens": "5800",
+        "sessionRefreshes": 0,
+        "readsWhileCpuPending": 1050,
+        "readsWhileCpuRunning": 810,
+        "errors": 0,
+        "p95UpperBoundMs": 10,
+        "p99UpperBoundMs": 20,
+        "maxLatencyMs": 109.30850899964571,
+        "maxWorkerRssKiB": 159460,
+        "mainnetTransactions": 0,
+        "mainnetSignerLoaded": false,
+        "reportDirectory": "/opt/telomere-mainnet-pilot/data/cpu-launch-acceptance-20261017/http-load-UwX7KC"
+      }
+    },
+    "archive": {
+      "Result": "success",
+      "NRestarts": "0",
+      "ExecMainStartTimestamp": "Sat 2026-10-17 22:34:48 CEST",
+      "ExecMainPID": "526503",
+      "MemoryCurrent": "242569216",
+      "CPUUsageNSec": "53823551000",
+      "ActiveState": "active",
+      "SubState": "running",
+      "progress": {
+        "schemaVersion": 1,
+        "state": "running",
+        "startedAt": "2026-10-17T20:35:01.961Z",
+        "observedAt": "2026-10-17T21:08:15.973Z",
+        "targetSeconds": 43200,
+        "elapsedSeconds": 1994.0119630250001,
+        "scope": "pinned archive release; 256 genuine historical local settlements; automatic archival; gVisor CPU",
+        "releaseId": "a75ee7bc44ff9aaa8964023975f0b7147c92fee4",
+        "archive": {
+          "retainedRows": 263,
+          "archivedRows": 56,
+          "activeRows": 207,
+          "batches": 7
+        },
+        "users": 50,
+        "burst": {
+          "users": 50,
+          "requests": 1000,
+          "concurrency": 50,
+          "elapsedSeconds": 1.5876809519999988,
+          "requestsPerSecond": 629.8494661287596,
+          "p50Ms": 85.42952800000057,
+          "p95Ms": 114.10460799999964,
+          "p99Ms": 170.70823100000052,
+          "errors": 0
+        },
+        "requests": 19950,
+        "writes": 1990,
+        "cpuRuns": 7,
+        "chargedAtomicTestTokens": "1400",
+        "historicalChargeAtomicTestTokens": "256",
+        "sessionRefreshes": 0,
+        "readsWhileCpuPending": 330,
+        "readsWhileCpuRunning": 190,
+        "errors": 0,
+        "p95UpperBoundMs": 10,
+        "p99UpperBoundMs": 20,
+        "maxLatencyMs": 504.90434100001585,
+        "maxWorkerRssKiB": 152212,
+        "mainnetTransactions": 0,
+        "mainnetSignerLoaded": false,
+        "reportDirectory": "/opt/telomere-mainnet-pilot/data/cpu-launch-acceptance-20261017/http-load-hAllG5"
+      }
+    },
+    "large": {
+      "Result": "success",
+      "NRestarts": "0",
+      "ExecMainStartTimestamp": "",
+      "ExecMainPID": "0",
+      "MemoryCurrent": "[not set]",
+      "CPUUsageNSec": "[not set]",
+      "ActiveState": "inactive",
+      "SubState": "dead"
+    }
+  },
+  "cleanup": {
+    "2f27410c6c3f4c09": {
+      "namespace": "2f27410c6c3f4c09",
+      "serviceResult": "success",
+      "observedAtUnix": 1792270846.55879,
+      "removedContainers": 0,
+      "cleanupPassed": true
+    },
+    "d4886bd5744143ac": {
+      "namespace": "d4886bd5744143ac",
+      "serviceResult": "success",
+      "observedAtUnix": 1792271318.955425,
+      "removedContainers": 0,
+      "cleanupPassed": true
+    }
+  }
+}

@@ -1,0 +1,6 @@
+Started telomere-cpu-journal-soak-fb7452375a0d494c.service - /opt/node-v22.23.3-linux-x64/bin/node /opt/telomere-mainnet-pilot/operator/cpu-launch/journal-soak.mjs.
+{"passed":false,"phase":"seed_256_canonical_settlements","errorType":"TransactionReceiptNotFoundError","message":"Transaction receipt with hash \"0xabdf5cae1846afdbd4a039c241fbaecb76162259d75c43395e6378ff6b8c92f1\" could not be found. The Transaction may not be processed on a block yet.\n\nVersion: viem@2.57.3","reportDirectory":"/opt/telomere-mainnet-pilot/data/cpu-launch-acceptance-20261017/http-load-GuEFXX"}
+telomere-cpu-journal-soak-fb7452375a0d494c.service: Main process exited, code=exited, status=1/FAILURE
+{"namespace": "fb7452375a0d494c", "serviceResult": "exit-code", "observedAtUnix": 1792269051.4477057, "removedContainers": 0, "cleanupPassed": true}
+telomere-cpu-journal-soak-fb7452375a0d494c.service: Failed with result 'exit-code'.
+telomere-cpu-journal-soak-fb7452375a0d494c.service: Consumed 1.485s CPU time.

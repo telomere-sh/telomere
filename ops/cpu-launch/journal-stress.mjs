@@ -18,7 +18,7 @@ const HISTORY=Number(process.env.ACCEPTANCE_STRESS_HISTORY||10000);check([256,10
 async function listen(server){await new Promise((ok,no)=>server.listen(0,'127.0.0.1',ok).once('error',no));return server.address().port}
 async function port(){const s=createServer(),p=await listen(s);await new Promise(r=>s.close(r));return p}
 const chainPort=await port(),chainUrl='http://127.0.0.1:'+chainPort;
-const anvil=spawn(BASE+'/operator/acceptance-tools/anvil',['--host','127.0.0.1','--port',String(chainPort),'--chain-id','31337','--accounts','0','--prune-history','16','--transaction-block-keeper','32768','--silent'],{stdio:'ignore'});
+const anvil=spawn(BASE+'/operator/acceptance-tools/anvil',['--host','127.0.0.1','--port',String(chainPort),'--chain-id','31337','--accounts','0','--order','fifo','--prune-history','16','--transaction-block-keeper','32768','--silent'],{stdio:'ignore'});
 let observer,seedLeash,seedSummary,pilot,proxy,databaseContainer,databaseVolume,databaseRequested=false,volumeCreated=false,offline=false,phase='local_chain';const observations=[],checks=[];
 const docker=promisify(execFile);
 const soakSeconds=Number(process.env.ACCEPTANCE_SOAK_SECONDS||'180');check(Number.isInteger(soakSeconds)&&soakSeconds>=0&&soakSeconds<=300,'Soak duration');
@@ -27,7 +27,7 @@ try{
   for(let i=0;i<100;i++){try{if(await direct.getChainId()===31337)break}catch{}await delay(100)}
   check(await direct.getChainId()===31337&&new URL(chainUrl).hostname==='127.0.0.1','Disposable chain guard');
   const chain={id:31337,name:'Isolated acceptance',nativeCurrency:{name:'Ether',symbol:'ETH',decimals:18},rpcUrls:{default:{http:[chainUrl]}}};
-  const test=createTestClient({chain,mode:'anvil',transport:http(chainUrl)});
+  const test=createTestClient({chain,mode:'anvil',transport:http(chainUrl,{timeout:60000,retryCount:0})});
   const keys={owner:generatePrivateKey(),signer:generatePrivateKey(),treasury:generatePrivateKey()};
   const accounts=Object.fromEntries(Object.entries(keys).map(([key,value])=>[key,privateKeyToAccount(value)]));
   for(const account of Object.values(accounts))await test.setBalance({address:account.address,value:parseEther('10')});
@@ -70,10 +70,10 @@ try{
       await receipt(await wallet.writeContract({address:escrow,abi:escrowAbi,functionName:'createLeash',
         args:[seedLeash,accounts.owner.address,1000000n,10000000n,BigInt(Math.floor(Date.now()/1000)+90000)]}));
       const seedStarted=performance.now();
-      await seedHistory({APP,settings,store:seedStore,bridge,owner:wallet,signer:accounts.signer,publicClient:direct,leashId:seedLeash,count:HISTORY,
+      await seedHistory({APP,settings,store:seedStore,bridge,owner:wallet,signer:accounts.signer,publicClient:direct,leashId:seedLeash,count:HISTORY,test,
         progress:value=>process.stdout.write(JSON.stringify({phase,...value})+'\n')});
       seedSummary={settlements:HISTORY,syntheticMeteringFixtures:true,realLocalContractSettlements:true,seedElapsedSeconds:(performance.now()-seedStarted)/1000};
-      await test.mine({blocks:128});const archiving=performance.now();let archived=0;
+      for(let i=0;i<128;i++)await test.mine({blocks:1});const archiving=performance.now();let archived=0;
       while(archived<HISTORY-256){const result=await bridge.archiveJournal(seedStore.db,{force:true,batchSize:Math.min(256,HISTORY-256-archived)});check(result.archived>0,'Large archive progress');archived+=result.archived}
       await bridge.verifyJournalArchive(seedStore.db);seedSummary.archivedRows=archived;seedSummary.activeRows=256;seedSummary.archiveElapsedSeconds=(performance.now()-archiving)/1000;
       check(await direct.getTransactionCount({address:accounts.signer.address})===HISTORY,'Archiving spent signer nonce');

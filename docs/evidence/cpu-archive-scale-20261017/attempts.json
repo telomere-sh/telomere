@@ -1,0 +1,65 @@
+{
+  "scope": "Isolated chain 31337 and disposable databases; no production keys or mainnet transactions",
+  "attempts": [
+    {
+      "namespace": "fb7452375a0d494c",
+      "profile": "archive soak smoke",
+      "outcome": "fixture receipt visibility race",
+      "fix": "Bounded direct receipt polling before inserting history",
+      "log": "soak-initial-failure.log"
+    },
+    {
+      "namespace": "2217f7f49176442d",
+      "profile": "archive soak 70-second smoke",
+      "outcome": "passed; 700 reads, 70 writes, one genuine CPU, 100 session renewals, eight automatically archived originals",
+      "log": "soak-smoke.log"
+    },
+    {
+      "namespace": "4cd8f8248b5a42e9",
+      "profile": "256-history fault/queue",
+      "outcome": "fixture block-watcher polling and client/server equal 15-second timeout",
+      "fix": "Direct automined-receipt polling and 30-second intentional-outage probe",
+      "log": "stress-slow-poll-attempt.log"
+    },
+    {
+      "namespace": "92b6ca7e67104eae",
+      "profile": "256-history fault/queue",
+      "outcome": "fixture client timed out before receiving expected server 503",
+      "fix": "30-second client deadline around the server 15-second receipt deadline",
+      "log": "stress-client-timeout-attempt.log"
+    },
+    {
+      "namespace": "aa831a2e32b440c9",
+      "profile": "256-history fault/queue/restore",
+      "outcome": "passed, 65 genuine CPU receipts and 47-table restore",
+      "result": "stress-smoke.json",
+      "log": "stress-smoke.log"
+    },
+    {
+      "namespace": "7c5e63cb192c47b6",
+      "profile": "10000-history unbatched",
+      "outcome": "all 10000 settlements mined; fixture bulk anvil_mine(128) exceeded 10-second deadline before queue scenarios",
+      "fix": "Bounded FIFO seeding of separately signed transactions; individually mine finality blocks with 60-second test deadline",
+      "log": "large-finality-timeout.log"
+    },
+    {
+      "namespace": "2f27410c6c3f4c09",
+      "profile": "256-history batched fault/queue/restore",
+      "outcome": "passed, 65 genuine CPU receipts and 47-table restore",
+      "result": "stress-batched-smoke.json",
+      "log": "stress-batched-smoke.log"
+    },
+    {
+      "namespace": "d4886bd5744143ac",
+      "profile": "10000-history batched fault/queue/restore",
+      "result": "large-history.json",
+      "log": "large-history.log",
+      "outcome": "passed; 10000 distinct historical contract settlements, 65 genuine CPU receipts, all-table restore"
+    }
+  ],
+  "continuingSoaks": {
+    "original": "0edc56ed5ba346ae",
+    "archiveRelease": "ee847b083532475b",
+    "stoppedByThisWork": false
+  }
+}

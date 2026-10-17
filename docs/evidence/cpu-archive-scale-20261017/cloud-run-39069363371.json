@@ -1,0 +1,83 @@
+{
+  "run": {
+    "id": 39069363371,
+    "status": "completed",
+    "conclusion": "success",
+    "html_url": "https://github.com/telomere-sh/telomere-ops-backups/actions/runs/39069363371",
+    "head_sha": "21cc594cd087cea1688308602470e32e143f2fdd",
+    "event": "workflow_dispatch"
+  },
+  "reports": [
+    {
+      "scope": "independent cloud CPU operations",
+      "mainnetTransactions": 0,
+      "cpuSoak": {
+        "state": "running",
+        "requests": 82640,
+        "cpuRuns": 28,
+        "elapsedSeconds": 8263.162314966,
+        "targetSeconds": 43200,
+        "progressAgeSeconds": 44.1505
+      },
+      "archiveCpuSoaks": [
+        {
+          "namespace": "ee847b083532475b",
+          "state": "running",
+          "releaseId": "a75ee7bc44ff9aaa8964023975f0b7147c92fee4",
+          "requests": 16930,
+          "cpuRuns": 6,
+          "elapsedSeconds": 1692.013066676,
+          "targetSeconds": 43200,
+          "progressAgeSeconds": 12.5175,
+          "archive": {
+            "retainedRows": 262,
+            "archivedRows": 48,
+            "activeRows": 214,
+            "batches": 6
+          }
+        }
+      ],
+      "cloudRestore": {
+        "passed": true,
+        "tables": 47,
+        "rows": 28,
+        "elapsedSeconds": 19.325,
+        "network": "none",
+        "controllerStarted": false
+      },
+      "backupId": "backup-20261017T210333Z-b874c46d",
+      "backupVerified": {
+        "id": "backup-20261017T210333Z-b874c46d",
+        "verifiedFiles": 20,
+        "authenticatedAgeDecryption": true,
+        "manifestChecksumsValid": true,
+        "verifiedAt": 1792271138.528213,
+        "runtimeBundle": {
+          "id": "runtime-a75ee7bc44ff9aaa8964023975f0b7147c92fee4-e4a684e1a6b3260c",
+          "sha256": "a999a7881db8b5e25fb62ea567006b83a96cbdcc7160f9b3e6b7f085b02a9380",
+          "bytes": 344337705,
+          "runtimePinsVerified": 758,
+          "files": 22172
+        }
+      },
+      "runtimeVerified": {
+        "id": "runtime-a75ee7bc44ff9aaa8964023975f0b7147c92fee4-e4a684e1a6b3260c",
+        "verifiedFiles": 22172,
+        "authenticatedAgeDecryption": true,
+        "manifestChecksumsValid": true,
+        "verifiedAt": 1792271108.451992
+      },
+      "independentStorageReadback": true,
+      "snapshotCopyAttempts": 1,
+      "retention": {
+        "retentionApplied": true,
+        "snapshotsKept": 15,
+        "snapshotsRemoved": 0
+      },
+      "passed": true,
+      "alerts": [],
+      "syntheticSshOutage": false,
+      "observedAt": "2026-10-17T21:06:06.761398+00:00"
+    }
+  ]
+}

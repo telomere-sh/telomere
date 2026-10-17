@@ -1,0 +1,57 @@
+{
+  "observedAt": "2026-10-17T21:07:02.744331+00:00",
+  "diskFreeBytes": 167739830272,
+  "ready": true,
+  "databaseAvailable": true,
+  "states": [
+    {
+      "status": "completed",
+      "count": 2,
+      "oldest_seconds": 15809
+    }
+  ],
+  "invalidFinancialRows": 0,
+  "settlementJournalRows": 2,
+  "rpc": {
+    "available": true,
+    "operatorGasWei": "98462564567330"
+  },
+  "journalArchive": {
+    "supported": true,
+    "activeRows": "0",
+    "archivedRows": "2",
+    "latestCheckpointVerified": true,
+    "checkpoint": "0x13595d46b7d2b95342752747b4b6f66d8a38939f50aa0490e98f1bcdab901e00"
+  },
+  "cpuSoakState": "running",
+  "cpuSoakRequests": 85050,
+  "cpuSoakRuns": 29,
+  "cpuSoakElapsedSeconds": 8504.168929197998,
+  "cpuSoakTargetSeconds": 43200,
+  "cpuSoakProgressAgeSeconds": 22.06441,
+  "additionalCpuSoaks": [
+    {
+      "namespace": "ee847b083532475b",
+      "state": "running",
+      "releaseId": "a75ee7bc44ff9aaa8964023975f0b7147c92fee4",
+      "requests": 18750,
+      "cpuRuns": 7,
+      "archive": {
+        "retainedRows": 263,
+        "archivedRows": 56,
+        "activeRows": 207,
+        "batches": 7
+      },
+      "elapsedSeconds": 1874.010641568,
+      "targetSeconds": 43200,
+      "progressAgeSeconds": 49.44041
+    }
+  ],
+  "offhostSource": "github-actions",
+  "backupAgeSeconds": 188.265518,
+  "offhostAgeSeconds": 31.981197,
+  "offhostRuntimeValid": true,
+  "tlsRemainingDays": 87.91296940300475,
+  "alerts": [],
+  "status": "ok"
+}

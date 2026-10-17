@@ -15,3 +15,4 @@ docs/evidence/cpu-cloud-20261017/source/*.bin -text -diff
 docs/evidence/cpu-sustained-20261017/source/*.bin -text -diff
 docs/evidence/cpu-resilience-20261017/source/*.bin -text -diff
 docs/evidence/cpu-journal-archive-20261017/source/*.bin -text -diff
+docs/evidence/cpu-archive-scale-20261017/source/*.bin -text -diff

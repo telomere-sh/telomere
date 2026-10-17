@@ -39,7 +39,9 @@ export async function archiveScenarios(c){
   phase('large_history_fresh_start');await stop();result.history.freshBootSeconds=await start();
   const memory=(await import('node:fs/promises')).readFile;
   const rss=await memory('/proc/'+getPilot().child.pid+'/status','utf8');result.history.freshWorkerRssKiB=Number(rss.match(/VmRSS:\s+(\d+)/)[1]);
+  result.history.freshWorkerPeakRssKiB=Number(rss.match(/VmHWM:\s+(\d+)/)[1]);
   check(result.history.freshWorkerRssKiB<768*1024,'Large-history worker memory');
+  check(result.history.freshWorkerPeakRssKiB<768*1024,'Large-history startup peak memory');
   phase('fund_nine_owners_and_fill_64_paid_slots');
   const owners=clients.slice(0,9),leashes=[seedLeash];
   for(let i=1;i<owners.length;i++){
@@ -107,10 +109,12 @@ export async function archiveScenarios(c){
     check(available+BigInt(charged)===1000000n,'Owner conservation');total+=BigInt(charged);
   }
   check(await direct.readContract({address:token,abi:tokenAbi,functionName:'balanceOf',args:[accounts.treasury.address]})===total,'Treasury conservation');
+  check(await direct.getTransactionCount({address:accounts.signer.address})===HISTORY+65,'Queue created an extra settlement nonce');
   check(await journalHash()===retained,'Automatic archive changed original history');latencies.sort((a,b)=>a-b);
   check(latencies[Math.floor(latencies.length*.95)]<2000,'Queue HTTP latency');
   result.queue={passed:true,owners:9,capacity:64,canonicalCpuReceipts:65,maxRunning,delayedRpcMs:10,healthyReads:latencies.length,
-    readP95Ms:latencies[Math.floor(latencies.length*.95)],elapsedSeconds:(performance.now()-began)/1000,archive:await archiveStatus(),chargedAtomicTestTokens:String(total)};
+    readP95Ms:latencies[Math.floor(latencies.length*.95)],elapsedSeconds:(performance.now()-began)/1000,archive:await archiveStatus(),chargedAtomicTestTokens:String(total),
+    exactSettlementNonce:HISTORY+65};
   phase('dump_restore_all_large_history_tables');await stop();
   await db.query('BEGIN ISOLATION LEVEL REPEATABLE READ READ ONLY');let beforeTables;
   try{
