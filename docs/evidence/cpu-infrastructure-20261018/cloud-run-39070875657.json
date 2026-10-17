@@ -1,0 +1,83 @@
+{
+  "run": {
+    "id": 39070875657,
+    "status": "completed",
+    "conclusion": "success",
+    "html_url": "https://github.com/telomere-sh/telomere-ops-backups/actions/runs/39070875657",
+    "head_sha": "21cc594cd087cea1688308602470e32e143f2fdd",
+    "event": "workflow_dispatch"
+  },
+  "reports": [
+    {
+      "scope": "independent cloud CPU operations",
+      "mainnetTransactions": 0,
+      "cpuSoak": {
+        "state": "running",
+        "requests": 95910,
+        "cpuRuns": 32,
+        "elapsedSeconds": 9590.181817998,
+        "targetSeconds": 43200,
+        "progressAgeSeconds": 29.85411
+      },
+      "archiveCpuSoaks": [
+        {
+          "namespace": "ee847b083532475b",
+          "state": "running",
+          "releaseId": "a75ee7bc44ff9aaa8964023975f0b7147c92fee4",
+          "requests": 29600,
+          "cpuRuns": 10,
+          "elapsedSeconds": 2959.0505018540002,
+          "targetSeconds": 43200,
+          "progressAgeSeconds": 58.20211,
+          "archive": {
+            "retainedRows": 266,
+            "archivedRows": 80,
+            "activeRows": 186,
+            "batches": 10
+          }
+        }
+      ],
+      "cloudRestore": {
+        "passed": true,
+        "tables": 47,
+        "rows": 28,
+        "elapsedSeconds": 15.625,
+        "network": "none",
+        "controllerStarted": false
+      },
+      "backupId": "backup-20261017T212438Z-1804966a",
+      "backupVerified": {
+        "id": "backup-20261017T212438Z-1804966a",
+        "verifiedFiles": 20,
+        "authenticatedAgeDecryption": true,
+        "manifestChecksumsValid": true,
+        "verifiedAt": 1792272398.5579069,
+        "runtimeBundle": {
+          "id": "runtime-a75ee7bc44ff9aaa8964023975f0b7147c92fee4-fe7a52418fd925d5",
+          "sha256": "56012e0c78f7532165791b8c6b5f7ba392a4b26c42652d443bc79e3a1a1715d4",
+          "bytes": 344360919,
+          "runtimePinsVerified": 758,
+          "files": 22182
+        }
+      },
+      "runtimeVerified": {
+        "id": "runtime-a75ee7bc44ff9aaa8964023975f0b7147c92fee4-fe7a52418fd925d5",
+        "verifiedFiles": 22182,
+        "authenticatedAgeDecryption": true,
+        "manifestChecksumsValid": true,
+        "verifiedAt": 1792272376.1599424
+      },
+      "independentStorageReadback": true,
+      "snapshotCopyAttempts": 1,
+      "retention": {
+        "retentionApplied": true,
+        "snapshotsKept": 16,
+        "snapshotsRemoved": 0
+      },
+      "passed": true,
+      "alerts": [],
+      "syntheticSshOutage": false,
+      "observedAt": "2026-10-17T21:27:01.973388+00:00"
+    }
+  ]
+}

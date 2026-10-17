@@ -1,0 +1,47 @@
+# Prepare a replacement CPU server
+
+The recovery kit targets Debian 12 / x86_64 with systemd/cgroup v2, Docker 29.8.1, the retained Node 22.23.3 binary, retained gVisor and the exact deployed application. It prepares dependencies and authenticates data/runtime files. It does not switch DNS or start a mainnet controller.
+
+## Preserve recovery material
+
+Download the selected data snapshot and its exact referenced runtime bundle from the private operations repository. Keep the sanitized backup receipt containing both ciphertext SHA-256 values. The runtime bundle must match the snapshot's `runtimeBundle.id` and checksum; choosing the newest unrelated runtime is not sufficient. Obtain an age identity using the existing independent owner-recovery workflow and a fresh trusted recovery-device public recipient. Never place the plaintext identity, decrypted configuration, database or Cyst files in Git.
+
+Also retain this directory's `clean-server-recovery.py`, `restore-rehearsal.py`, `bootstrap-clean-host.sh` and this runbook. The final production backup includes them in its authenticated operator runtime tree. The backup does not contain the Debian operating system or Docker images. The install plan lists pinned CPU/PostgreSQL image references: either pull those exact digests or supply separately verified offline image exports, then check the loaded identities. Do not substitute mutable image tags.
+
+## Prepare dependencies on the new host
+
+Review and run `bootstrap-clean-host.sh` only on the replacement host. It exits before package operations if `/opt/telomere-mainnet-pilot` already exists, the architecture is not amd64 or the OS is not Debian 12. It configures Docker's signed official apt repository and pins the Engine/CLI version used on the current VPS. Debian dependencies and containerd are selected from their signed repositories; verify the resulting host inventory before proceeding. The script follows the [official Docker Debian installation procedure](https://docs.docker.com/engine/install/debian/).
+
+```sh
+bash -n bootstrap-clean-host.sh
+bash bootstrap-clean-host.sh
+python3 clean-server-recovery.py check-host --require-fresh
+```
+
+This prepares dependencies only. The install plan also requires an available UID 995 / GID 993, at least 8 GiB free working disk, appropriate CPU/RAM capacity and separate private recovery storage. Do not replace an unrelated existing account to obtain these IDs. Verify image availability, network isolation, firewall settings and gVisor compatibility on the replacement host.
+
+## Authenticate and stage the chosen snapshot
+
+Create a root-owned, non-writable-by-others staging parent. Stream the recovery identity from protected recovery tooling into stdin; do not pass it as an argument or print it. The command requires a new absolute target and writes only inside that target:
+
+```sh
+python3 clean-server-recovery.py stage \
+  --receipt /root/recovery/backup-receipt.json \
+  --data /root/recovery/selected-data.tar.age \
+  --runtime /root/recovery/exact-runtime.tar.age \
+  --target /root/recovery/verified-stage
+```
+
+Both ciphertext hashes, authenticated age decryption, bounded regular-file archive members, every manifest file, the snapshot/runtime binding and all reviewed application pins are checked. The output contains `verified-stage.json` and `install-plan.json`. Files remain private; no restored executable is run and no original filesystem destination is overwritten. Failed staging is retained privately for diagnosis and is never an activation candidate. Use a new directory for another attempt.
+
+## Execute the generated plan in order
+
+The plan binds release paths, binaries, website, operator files, private configuration, Cyst files, systemd units and image digests. Place files with their required modes and ownership. Create the exact immutable release/app alias and writable data layout. Restore the retained dedicated Docker/network configuration and inspect its units' dependency graph. Keep the controller and timers disabled while recovering.
+
+First restore `data/database.dump` into a scratch, network-disabled PostgreSQL container with no application worker. Use the existing restore verifier to compare every `snapshot.json` table fingerprint and Cyst ciphertext. Restoring onto the replacement host must also preserve the original raw transaction journal and signed archive checkpoints. The staging command verifies backup contents; it does not itself perform this PostgreSQL restore.
+
+Fence the old mainnet controller and signer before enabling a replacement. Perform the read-only asset/role/chain checks and the chain-cursor recovery audit from the main runbook. Reconcile every post-snapshot reservation and settlement, canonical receipts, nonce floor, native USDC and balances. An old backup must never cause an invented execution result or a new settlement for an already mined original transaction.
+
+Update the restricted cloud-export SSH public key, independently verify the replacement's SSH host key and update the hosted known-host pin/server address. Obtain public TLS certificates on the new host, validate nginx and authenticated HTTPS, and verify independent encrypted backups, restore and Telegram delivery. Enable exactly one reconciled controller, complete owner-approved financial acceptance, then enable operational timers and switch DNS.
+
+The existing recovery rehearsal already checks restored data/API/runtime/proxy on the original VPS. The new kit's staging has been exercised against real authenticated archives there. Provisioning a separate clean VPS, public certificate issuance and DNS cutover remain a separate rehearsal; staging timings are not a full-machine recovery-time measurement.

@@ -1,0 +1,23 @@
+{
+  "scope": "Isolated app/database/local contracts; no new mainnet transaction; external HTTP against protected scratch and modest read-only apex probe",
+  "publicHttpsFixture": "d81cd09c796e4269",
+  "acceptedFaultFixture": "467e651b2cd04c3e",
+  "attempts": [
+    {
+      "namespace": "d81cd09c796e4269",
+      "outcome": "Public HTTPS passed; lock timeout and backend termination passed; coordinator required an IPC reply after the expected PostgreSQL SIGKILL and failed before recovery verification",
+      "correction": "Allow abrupt archive-process exit only in explicit hard-crash scenario after SQL barrier; verify rollback independently after PostgreSQL restart",
+      "log": "initial-ipc-harness-failure.log"
+    },
+    {
+      "namespace": "467e651b2cd04c3e",
+      "outcome": "All four PostgreSQL faults, physical Cyst ENOSPC/retry, archive recovery and fresh startup passed; public HTTPS result explicitly retained from the separate original fixture",
+      "log": "accepted-infrastructure.log",
+      "result": "acceptance.json"
+    }
+  ],
+  "localUnitSetupCorrection": "Initial Windows path-separator mismatch in physical Linux release assertion corrected to POSIX string comparison; eight tests then passed on Windows and Linux",
+  "initialSourceSnapshotRetained": false,
+  "finalSourceSnapshotsRetained": true,
+  "originalSoaksStopped": false
+}

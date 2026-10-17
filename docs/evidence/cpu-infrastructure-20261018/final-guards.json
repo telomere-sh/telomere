@@ -1,0 +1,68 @@
+{
+  "passed": true,
+  "observedAt": "2026-10-17T21:25:46.043912+00:00",
+  "bootstrapSyntaxPassed": true,
+  "existingInstallationBlockedBeforePackageChanges": true,
+  "packageInventoryUnchanged": true,
+  "freshHostGuardExitCode": 2,
+  "hostPreflight": {
+    "os": "debian",
+    "version": "12",
+    "architecture": "x86_64",
+    "freshTelomereTarget": false,
+    "cgroupV2": true,
+    "freeDiskBytes": 165764767744,
+    "requiredTools": {
+      "age": true,
+      "docker": true,
+      "dockerd": true,
+      "nginx": true,
+      "certbot": false,
+      "iptables": true,
+      "ip": true,
+      "systemctl": true,
+      "python3": true
+    },
+    "controllerStarted": false,
+    "passed": false
+  },
+  "units": {
+    "telomere-cpu-soak-0edc56ed5ba346ae.service": {
+      "NRestarts": "0",
+      "ExecMainStartTimestamp": "Sat 2026-10-17 20:44:52 CEST",
+      "ExecMainPID": "432030",
+      "ActiveState": "active"
+    },
+    "telomere-cpu-journal-soak-ee847b083532475b.service": {
+      "NRestarts": "0",
+      "ExecMainStartTimestamp": "Sat 2026-10-17 22:34:48 CEST",
+      "ExecMainPID": "526503",
+      "ActiveState": "active"
+    },
+    "telomere-mainnet-pilot.service": {
+      "NRestarts": "0",
+      "ExecMainStartTimestamp": "Sat 2026-10-17 22:19:23 CEST",
+      "ExecMainPID": "521970",
+      "ActiveState": "active"
+    }
+  },
+  "namespaceCleanup": {
+    "d81cd09c796e4269": {
+      "namespace": "d81cd09c796e4269",
+      "serviceResult": "exit-code",
+      "observedAtUnix": 1792272114.1449862,
+      "removedContainers": 0,
+      "cleanupPassed": true
+    },
+    "467e651b2cd04c3e": {
+      "namespace": "467e651b2cd04c3e",
+      "serviceResult": "success",
+      "observedAtUnix": 1792272193.044251,
+      "removedContainers": 0,
+      "cleanupPassed": true
+    }
+  },
+  "reviewRouteRemoved": true,
+  "reviewConfigurationSha256": "82c18eb9ea7670ff4933b02c06dd06fc6b6f93a684c8214fab496c41b2cf08e1",
+  "nginxConfigValid": true
+}

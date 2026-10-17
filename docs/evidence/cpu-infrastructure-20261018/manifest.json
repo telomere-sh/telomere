@@ -1,0 +1,207 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-17T21:33:00.752301+00:00",
+  "scope": "Public HTTPS authentication/isolation/rate bounds, actual PostgreSQL and Cyst ENOSPC, database crash/lock/connection archive atomicity, clean-host recovery preparation; original soaks uninterrupted; zero mainnet transactions",
+  "report": {
+    "path": "docs/CPU-INFRASTRUCTURE-20261018.md",
+    "bytes": 9465,
+    "sha256": "2b9659abd342054c0222dc5e764b13b1f08cc4c05aa579ba717c0458fdb6eb86"
+  },
+  "files": [
+    {
+      "path": "docs/evidence/cpu-infrastructure-20261018/acceptance.json",
+      "bytes": 2828,
+      "sha256": "188e92f8193bb0d6c9f41cbce879ea4914a443c2e39a903b78fc6752beff4b84"
+    },
+    {
+      "path": "docs/evidence/cpu-infrastructure-20261018/accepted-infrastructure.log",
+      "bytes": 4324,
+      "sha256": "c3a8b1d66eade993ca4679bbb1fd27535ceff070010609f41b46a7194b248619"
+    },
+    {
+      "path": "docs/evidence/cpu-infrastructure-20261018/attempts.json",
+      "bytes": 1362,
+      "sha256": "071e4708a2c8ce80a077b89c017e07c4967264db976583a68d5ca4f6c6164fdc"
+    },
+    {
+      "path": "docs/evidence/cpu-infrastructure-20261018/authenticated-recovery-stage.json",
+      "bytes": 410,
+      "sha256": "d6f68d02d98f9b8dd3b5036162fbf43af696e483bfcd4cfb97de0f8004f64ef8"
+    },
+    {
+      "path": "docs/evidence/cpu-infrastructure-20261018/backup-2124.json",
+      "bytes": 786,
+      "sha256": "9ce3aabd2490421ccef0405c9620a71ce7f00caba224fab12a9cd6beb064c357"
+    },
+    {
+      "path": "docs/evidence/cpu-infrastructure-20261018/backup.json",
+      "bytes": 786,
+      "sha256": "ccc953659c51a3d6207dfc23ead9cb9ccf591d2a0040c855822e8ec801d295e4"
+    },
+    {
+      "path": "docs/evidence/cpu-infrastructure-20261018/clean-server-install-plan.json",
+      "bytes": 3551,
+      "sha256": "5a11dbb86376e48acf01586d508f778385423dd7d4fb3ddf14702dc96128e295"
+    },
+    {
+      "path": "docs/evidence/cpu-infrastructure-20261018/cloud-run-39070875657.json",
+      "bytes": 2550,
+      "sha256": "bb412267c735f7e910af286fee42b744646b90a8d2cc95fefaa31a5a558e4881"
+    },
+    {
+      "path": "docs/evidence/cpu-infrastructure-20261018/cloud-run-39071246037.json",
+      "bytes": 2549,
+      "sha256": "c729e0ef399bd099e37953453c4c7032c8ae4c487b0318d3100d205d4d33efe0"
+    },
+    {
+      "path": "docs/evidence/cpu-infrastructure-20261018/concurrent-progress.json",
+      "bytes": 4244,
+      "sha256": "347877f7aa5d246d7cffda22cc972b5dd59176fcec00b14b5276f9c850eb834c"
+    },
+    {
+      "path": "docs/evidence/cpu-infrastructure-20261018/final-guards.json",
+      "bytes": 1940,
+      "sha256": "1cc3b26bdbef25ad5add0adf6ceab972ba04a8ece2119dd2ed8ee744eb43de36"
+    },
+    {
+      "path": "docs/evidence/cpu-infrastructure-20261018/initial-ipc-harness-failure.log",
+      "bytes": 1565,
+      "sha256": "3b62831901fbe987f45a41b32c0619d3b4d1a268487161cda711462287e6a4c8"
+    },
+    {
+      "path": "docs/evidence/cpu-infrastructure-20261018/mainnet-audit.json",
+      "bytes": 454,
+      "sha256": "084eda1ca20a2038d52e3b6e8ee40d92efe123bf3ed8b2ad60f132c3cde5d901"
+    },
+    {
+      "path": "docs/evidence/cpu-infrastructure-20261018/monitor.json",
+      "bytes": 1474,
+      "sha256": "ed1adefb9c34eb717e741d1374ebf7e22b8a2c09be71098fb357d9061bb71528"
+    },
+    {
+      "path": "docs/evidence/cpu-infrastructure-20261018/public-apex-readonly.json",
+      "bytes": 498,
+      "sha256": "f205b20028a61afca6a7b83b2ecd3245aa15743a7429bb9968c901586fa84c30"
+    },
+    {
+      "path": "docs/evidence/cpu-infrastructure-20261018/public-https.json",
+      "bytes": 789,
+      "sha256": "01eebadf9a8cda5ab976b4e3c91c0da7d211d4c109192c4ceecbe3b795c7f425"
+    },
+    {
+      "path": "docs/evidence/cpu-infrastructure-20261018/recovery-kit-tests.log",
+      "bytes": 111,
+      "sha256": "decb609ccb72c6c0afba61dd87a35251b34c9744582a26e1cc4317436f85d13e"
+    },
+    {
+      "path": "docs/evidence/cpu-infrastructure-20261018/route-control-tests.log",
+      "bytes": 114,
+      "sha256": "7d0008518e18ad238acb85e659777349da752f714d6f5f0115048508d3ae350c"
+    },
+    {
+      "path": "docs/evidence/cpu-infrastructure-20261018/source/00cedd2555bf5a1350c1cca54f9c2fcc53d980059e7dc79dfbc84330232cf88a.bin",
+      "bytes": 5613,
+      "sha256": "00cedd2555bf5a1350c1cca54f9c2fcc53d980059e7dc79dfbc84330232cf88a"
+    },
+    {
+      "path": "docs/evidence/cpu-infrastructure-20261018/source/01ff75a831d90c668b2f1c4e2718f3730e0e913bca30f20887153c8421d6d376.bin",
+      "bytes": 3999,
+      "sha256": "01ff75a831d90c668b2f1c4e2718f3730e0e913bca30f20887153c8421d6d376"
+    },
+    {
+      "path": "docs/evidence/cpu-infrastructure-20261018/source/048b46246947af79f17d5bd3cc8f468f37773e1bded9891a861c520de88bd42e.bin",
+      "bytes": 3287,
+      "sha256": "048b46246947af79f17d5bd3cc8f468f37773e1bded9891a861c520de88bd42e"
+    },
+    {
+      "path": "docs/evidence/cpu-infrastructure-20261018/source/0dfa04ebaea4cc2e803c33023bba8a10630714f96810bb5d3b3547d3ad926f6a.bin",
+      "bytes": 7331,
+      "sha256": "0dfa04ebaea4cc2e803c33023bba8a10630714f96810bb5d3b3547d3ad926f6a"
+    },
+    {
+      "path": "docs/evidence/cpu-infrastructure-20261018/source/3027d5a2d83f1a8a83d6bcd5f48c6fb8c92f77abd5a02904c46a120672cdba23.bin",
+      "bytes": 1708,
+      "sha256": "3027d5a2d83f1a8a83d6bcd5f48c6fb8c92f77abd5a02904c46a120672cdba23"
+    },
+    {
+      "path": "docs/evidence/cpu-infrastructure-20261018/source/3ef502642111577a644bd8587d7977949d999a614cf82227f29cd1a9146a6ec6.bin",
+      "bytes": 2007,
+      "sha256": "3ef502642111577a644bd8587d7977949d999a614cf82227f29cd1a9146a6ec6"
+    },
+    {
+      "path": "docs/evidence/cpu-infrastructure-20261018/source/4c1aa846a09d8fa7fd34a961e60a8d167a1ada1dd14c18da0697855495ee73b9.bin",
+      "bytes": 11762,
+      "sha256": "4c1aa846a09d8fa7fd34a961e60a8d167a1ada1dd14c18da0697855495ee73b9"
+    },
+    {
+      "path": "docs/evidence/cpu-infrastructure-20261018/source/50f73d220b114eb247fc0dc61b97259c8f850ec4ac97069959cd443fe6ebfe5e.bin",
+      "bytes": 4271,
+      "sha256": "50f73d220b114eb247fc0dc61b97259c8f850ec4ac97069959cd443fe6ebfe5e"
+    },
+    {
+      "path": "docs/evidence/cpu-infrastructure-20261018/source/69f52fd6792ab38fca4dabf75419e586f9cd46c701a5cb983b8715a081b780a1.bin",
+      "bytes": 1357,
+      "sha256": "69f52fd6792ab38fca4dabf75419e586f9cd46c701a5cb983b8715a081b780a1"
+    },
+    {
+      "path": "docs/evidence/cpu-infrastructure-20261018/source/6e3d716245f3fb432d8240d279799b0c9d5e6b1ad4968d54aee80956a37651dc.bin",
+      "bytes": 1064,
+      "sha256": "6e3d716245f3fb432d8240d279799b0c9d5e6b1ad4968d54aee80956a37651dc"
+    },
+    {
+      "path": "docs/evidence/cpu-infrastructure-20261018/source/72224b733863933cab6bf3d8cf0b49289b35e7d09932cb995ce29dcd2ee5faa4.bin",
+      "bytes": 5718,
+      "sha256": "72224b733863933cab6bf3d8cf0b49289b35e7d09932cb995ce29dcd2ee5faa4"
+    },
+    {
+      "path": "docs/evidence/cpu-infrastructure-20261018/source/8db486c7b44cf4e1c616bfe28e76270e6bc50b80a260b782f8470b6cae34a1f5.bin",
+      "bytes": 10479,
+      "sha256": "8db486c7b44cf4e1c616bfe28e76270e6bc50b80a260b782f8470b6cae34a1f5"
+    },
+    {
+      "path": "docs/evidence/cpu-infrastructure-20261018/source/988e5fa6f8943956a25e3cf7df98cf835cb163aafb330edecb17648361b8cf46.bin",
+      "bytes": 7618,
+      "sha256": "988e5fa6f8943956a25e3cf7df98cf835cb163aafb330edecb17648361b8cf46"
+    },
+    {
+      "path": "docs/evidence/cpu-infrastructure-20261018/source/9c0a78819d0ed231db7d20efdc0ee73a2db0474fb48c8a53ac9adb3fa96e3801.bin",
+      "bytes": 1385,
+      "sha256": "9c0a78819d0ed231db7d20efdc0ee73a2db0474fb48c8a53ac9adb3fa96e3801"
+    },
+    {
+      "path": "docs/evidence/cpu-infrastructure-20261018/source/b8009c4995d9b912bc21ee43d9aeeddccc601b2dac2cb6d24d9cf10698518851.bin",
+      "bytes": 20403,
+      "sha256": "b8009c4995d9b912bc21ee43d9aeeddccc601b2dac2cb6d24d9cf10698518851"
+    },
+    {
+      "path": "docs/evidence/cpu-infrastructure-20261018/source/c47c49fa149d89a9f02871911741513370a146778dce81dda9d161c4b89afaf3.bin",
+      "bytes": 13138,
+      "sha256": "c47c49fa149d89a9f02871911741513370a146778dce81dda9d161c4b89afaf3"
+    },
+    {
+      "path": "docs/evidence/cpu-infrastructure-20261018/source/d7baaeb5ea06bf61e059888d5a3b38e99c449ba92774d745f820457ea488d2c4.bin",
+      "bytes": 4385,
+      "sha256": "d7baaeb5ea06bf61e059888d5a3b38e99c449ba92774d745f820457ea488d2c4"
+    },
+    {
+      "path": "docs/evidence/cpu-infrastructure-20261018/source/e1b510c51579469d1b0c4643e5058014c61d1f932deb01d1aaccea212b52c361.bin",
+      "bytes": 27282,
+      "sha256": "e1b510c51579469d1b0c4643e5058014c61d1f932deb01d1aaccea212b52c361"
+    },
+    {
+      "path": "docs/evidence/cpu-infrastructure-20261018/source/e664ebc959f1a31f4e874f8dde66a2a75986ac62c5d0b6252903166af15564f1.bin",
+      "bytes": 1885,
+      "sha256": "e664ebc959f1a31f4e874f8dde66a2a75986ac62c5d0b6252903166af15564f1"
+    },
+    {
+      "path": "docs/evidence/cpu-infrastructure-20261018/source/fd8d458788aa915f32fb22f0ee41cd73e2af542a37785d02d45033a830ab6029.bin",
+      "bytes": 6280,
+      "sha256": "fd8d458788aa915f32fb22f0ee41cd73e2af542a37785d02d45033a830ab6029"
+    },
+    {
+      "path": "docs/evidence/cpu-infrastructure-20261018/source-record.json",
+      "bytes": 5954,
+      "sha256": "7a483524ecea0d2f963f3d5587ceab0efff8da8d04d3c9203c6fc26c33a245ea"
+    }
+  ]
+}

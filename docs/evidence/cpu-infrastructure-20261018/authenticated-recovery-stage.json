@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "releaseId": "a75ee7bc44ff9aaa8964023975f0b7147c92fee4",
+  "verifiedRuntimePins": 758,
+  "tables": 47,
+  "rows": 28,
+  "authenticatedDecryption": true,
+  "fileHashesVerified": true,
+  "installPlanPrepared": true,
+  "restoredExecutableRun": false,
+  "controllerStarted": false,
+  "mainnetTransactions": 0,
+  "stage": "/opt/telomere-mainnet-pilot/private/clean-recovery-1b5121f676134bf1"
+}

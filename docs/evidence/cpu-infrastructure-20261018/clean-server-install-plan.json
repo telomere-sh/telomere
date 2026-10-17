@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "kind": "fresh-host-reviewed-install-plan",
+  "releaseId": "a75ee7bc44ff9aaa8964023975f0b7147c92fee4",
+  "chainId": 8453,
+  "asset": "native Base USDC",
+  "requiredHost": {
+    "os": "Debian",
+    "version": "12",
+    "architecture": "x86_64",
+    "dockerClient": "29.8.1",
+    "uid": 995,
+    "gid": 993,
+    "minimumFreeDiskBytes": 8589934592
+  },
+  "verifiedStage": "/opt/telomere-mainnet-pilot/private/clean-recovery-1b5121f676134bf1",
+  "imageReferences": [
+    "postgres@sha256:721873c34ceb9f8d8fc265984940dc982404c105f19ad51be9fdc5970a6080ea",
+    "node@sha256:0a7108bf6c7bf5de370ffb1a3ed6be93d405b43ff159f681a8d18c0e2bc2e402"
+  ],
+  "placements": [
+    {
+      "from": "runtime/release",
+      "to": "/opt/telomere-mainnet-pilot/releases/a75ee7bc44ff9aaa8964023975f0b7147c92fee4",
+      "owner": "root:root"
+    },
+    {
+      "from": "runtime/operator",
+      "to": "/opt/telomere-mainnet-pilot/operator",
+      "owner": "root:root"
+    },
+    {
+      "from": "runtime/binaries/node",
+      "to": "/opt/node-v22.23.3-linux-x64/bin/node",
+      "mode": "0755"
+    },
+    {
+      "from": "runtime/binaries/runsc",
+      "to": "/opt/telomere-host-runtime/gvisor/runsc",
+      "mode": "0755"
+    },
+    {
+      "from": "runtime/website",
+      "to": "retained nginx root from verified runtime manifest",
+      "owner": "root:root"
+    },
+    {
+      "from": "data/configuration",
+      "to": "/opt/telomere-mainnet-pilot/private",
+      "mode": "0600; directory 0700"
+    },
+    {
+      "from": "data/cysts",
+      "to": "/opt/telomere-mainnet-pilot/data/cysts",
+      "owner": "995:993",
+      "mode": "0600; directory 0700"
+    },
+    {
+      "from": "runtime/systemd",
+      "to": "/etc/systemd/system",
+      "state": "keep controller and timers disabled/masked until acceptance"
+    }
+  ],
+  "database": {
+    "dump": "data/database.dump",
+    "tables": 47,
+    "rows": 28,
+    "firstRestore": "network-none scratch PostgreSQL, compare every table fingerprint; no worker",
+    "chainCursorRetained": true
+  },
+  "orderedCutoverGates": [
+    "Fence the old worker and its signer before any replacement worker can start; record old VPS state.",
+    "Prepare host dependencies using bootstrap-clean-host.sh; verify UID/GID availability before creating the account.",
+    "Load verified offline image exports or pull both pinned references; compare loaded references and image IDs before use.",
+    "Place verified files, recreate app alias, private modes and writable data ownership; restore exact network/daemon configuration.",
+    "Install retained units disabled; inspect dependency graph and EnvironmentFile paths; prepare dedicated Docker and gVisor.",
+    "Restore database offline and compare all table fingerprints, Cyst ciphertext, original journals and archive checkpoints.",
+    "Start read-only recovery audit; reconcile chain cursor, missing reservations, roles, native USDC, balances and signer nonce.",
+    "Verify new SSH host key out of band and update restricted export authorized key, hosted known-host pin and server address.",
+    "Obtain public TLS certificate for the replacement host, validate nginx configuration and authenticated HTTPS before DNS cutover.",
+    "Verify independent backup/decryption/restore and Telegram delivery from the replacement host.",
+    "Enable exactly one controller after chain reconciliation; perform owner-approved financial acceptance; then enable timers and switch DNS."
+  ],
+  "activationExecuted": false,
+  "dnsChanged": false,
+  "mainnetTransactions": 0
+}

@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "namespace": "d81cd09c796e4269",
+  "observedAt": "2026-10-17T21:21:36.576Z",
+  "publicTls": true,
+  "origin": "https://review.telomere.sh",
+  "clientLocation": "external Windows PC; no SSH tunnel or TLS verification bypass",
+  "signedUsers": 50,
+  "workspaceWrites": 50,
+  "burst": {
+    "reads": 150,
+    "concurrency": 50,
+    "elapsedSeconds": 0.7555717000000004,
+    "p95Ms": 482.4018999999971,
+    "p99Ms": 487.2292000000016,
+    "errors": 0
+  },
+  "tenantIsolation": true,
+  "revisionConflict": true,
+  "secureSessionCookie": true,
+  "originEnforced": true,
+  "bodyLimitEnforced": true,
+  "expectedRateLimit429": true,
+  "spoofedForwardingHeadersRejected": 20,
+  "rateWindowRecovered": true,
+  "mainnetTransactions": 0,
+  "elapsedSeconds": 252.50663809999998
+}

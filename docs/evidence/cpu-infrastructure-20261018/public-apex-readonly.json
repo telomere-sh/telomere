@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "observedAt": "2026-10-17T21:27:20.330Z",
+  "target": "https://telomere.sh",
+  "endpoint": "/api/me",
+  "method": "GET",
+  "requests": 100,
+  "concurrency": 50,
+  "expectedUnauthorized": 401,
+  "unexpectedResponses": 0,
+  "p95Ms": 499.6521,
+  "p99Ms": 516.4021,
+  "elapsedSeconds": 0.8478246999999999,
+  "clientLocation": "external Windows PC; trusted public TLS; no SSH tunnel",
+  "authenticationChallengesCreated": 0,
+  "workspaceMutations": 0,
+  "mainnetTransactions": 0
+}

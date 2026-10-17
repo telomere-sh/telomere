@@ -1,0 +1,11 @@
+Started telomere-cpu-infrastructure-d81cd09c796e4269.service - /opt/node-v22.23.3-linux-x64/bin/node /opt/telomere-mainnet-pilot/operator/cpu-launch/infrastructure.mjs.
+{"phase":"seed_10000_canonical_settlements"}
+{"phase":"waiting_for_external_authenticated_https_load","observedAt":"2026-10-17T21:17:05.597Z","reportDirectory":"/opt/telomere-mainnet-pilot/data/cpu-launch-acceptance-20261017/http-load-EPoi0w"}
+{"phase":"postgres_archive_lock_timeout","observedAt":"2026-10-17T21:21:44.015Z","reportDirectory":"/opt/telomere-mainnet-pilot/data/cpu-launch-acceptance-20261017/http-load-EPoi0w"}
+{"phase":"postgres_connection_terminated_inside_archive_membership","observedAt":"2026-10-17T21:21:49.525Z","reportDirectory":"/opt/telomere-mainnet-pilot/data/cpu-launch-acceptance-20261017/http-load-EPoi0w"}
+{"phase":"postgres_sigkill_restart_inside_archive_membership","observedAt":"2026-10-17T21:21:50.370Z","reportDirectory":"/opt/telomere-mainnet-pilot/data/cpu-launch-acceptance-20261017/http-load-EPoi0w"}
+{"passed":false,"phase":"seed_10000_canonical_settlements","errorType":"Error","message":"Archive worker exited without a result","reportDirectory":"/opt/telomere-mainnet-pilot/data/cpu-launch-acceptance-20261017/http-load-EPoi0w"}
+telomere-cpu-infrastructure-d81cd09c796e4269.service: Main process exited, code=exited, status=1/FAILURE
+{"routePresent": false, "limitedDiskRemoved": true}
+telomere-cpu-infrastructure-d81cd09c796e4269.service: Failed with result 'exit-code'.
+telomere-cpu-infrastructure-d81cd09c796e4269.service: Consumed 9.526s CPU time.
