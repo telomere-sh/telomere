@@ -1,4 +1,5 @@
-import hashlib,importlib.util,io,json,os,tempfile,unittest
+import datetime,hashlib,importlib.util,io,json,os,tempfile,unittest
+from unittest.mock import patch
 from pathlib import Path
 spec=importlib.util.spec_from_file_location('mainnet_ops',Path(__file__).with_name('mainnet-ops.py'))
 ops=importlib.util.module_from_spec(spec);spec.loader.exec_module(ops)
@@ -52,6 +53,28 @@ class HealthTests(unittest.TestCase):
     def test_running_and_completed_soak_do_not_page(self):
         self.good.update(cpuSoakState='running',cpuSoakProgressAgeSeconds=60);self.assertEqual(ops.evaluate_health(self.good),[])
         self.good.update(cpuSoakState='completed',cpuSoakProgressAgeSeconds=86400);self.assertEqual(ops.evaluate_health(self.good),[])
+    def test_additional_soak_is_monitored_without_replacing_original(self):
+        self.good.update(cpuSoakState='running',cpuSoakProgressAgeSeconds=20,additionalCpuSoaks=[{'state':'running','progressAgeSeconds':20}])
+        self.assertEqual(ops.evaluate_health(self.good),[])
+        self.good['additionalCpuSoaks'][0].update(state='failed');self.assertIn('CPU_SOAK_FAILED',ops.evaluate_health(self.good))
+        self.good['additionalCpuSoaks'][0].update(state='running',progressAgeSeconds=181);self.assertIn('CPU_SOAK_STALE',ops.evaluate_health(self.good))
+        self.good['additionalCpuSoaks'][0].update(state='invalid');self.assertIn('CPU_SOAK_OBSERVATION_INVALID',ops.evaluate_health(self.good))
+class AdditionalSoakTests(unittest.TestCase):
+    def test_completed_archive_soak_requires_actual_archive_and_full_duration(self):
+        current=datetime.datetime.now(datetime.timezone.utc);watch={'namespace':'a'*16,'additionalNamespaces':['b'*16]}
+        progress={'state':'completed','mainnetTransactions':0,'mainnetSignerLoaded':False,'releaseId':'c'*40,
+            'archive':{'retainedRows':257,'archivedRows':8,'activeRows':249,'batches':1},'errors':0,'elapsedSeconds':60,'targetSeconds':60,
+            'requests':420,'cpuRuns':1,'observedAt':current.isoformat()}
+        with patch.object(ops,'read_soak_progress',return_value=progress):
+            self.assertEqual(ops.additional_soaks(watch,Path('/fixture'),current)[0]['state'],'completed')
+            progress['archive'].update(archivedRows=0,activeRows=257)
+            self.assertEqual(ops.additional_soaks(watch,Path('/fixture'),current)[0]['state'],'invalid')
+        self.assertEqual(watch['namespace'],'a'*16)
+    def test_bad_additional_progress_does_not_hide_a_healthy_primary(self):
+        with patch.object(ops,'read_soak_progress',side_effect=OSError):
+            observed=ops.additional_soaks({'additionalNamespaces':['b'*16]},Path('/fixture'),datetime.datetime.now(datetime.timezone.utc))
+        self.assertEqual(observed,[{'namespace':'b'*16,'state':'invalid'}])
+
 class ProgressDescriptorTests(unittest.TestCase):
     def setUp(self):
         self.temp=tempfile.TemporaryDirectory();self.root=Path(self.temp.name).resolve();self.namespace='a'*16;self.file=self.root/('soak-'+self.namespace+'.json');self.file.write_text('{"state":"running"}')

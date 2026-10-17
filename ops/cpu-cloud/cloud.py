@@ -28,6 +28,34 @@ def soak_observation(monitor):
     return result
 
 
+def archive_soak_observations(monitor):
+    selected=monitor.get('additionalCpuSoaks',[])
+    if not isinstance(selected,list) or len(selected)>8:raise ValueError('Invalid archive soak list')
+    results=[]
+    for value in selected:
+        if not isinstance(value,dict) or not re.fullmatch('[0-9a-f]{16}',value.get('namespace','')):raise ValueError('Invalid archive soak identity')
+        observed=soak_observation({'cpuSoakState':value.get('state')})
+        result={'namespace':value['namespace'],**observed}
+        if value.get('releaseId') is not None:
+            if not re.fullmatch('[0-9a-f]{40}',value['releaseId']):raise ValueError('Invalid archive release identity')
+            result['releaseId']=value['releaseId']
+        for name in ['requests','cpuRuns','elapsedSeconds','targetSeconds','progressAgeSeconds']:
+            if name in value:
+                number=value[name]
+                if type(number) not in (int,float) or not math.isfinite(number) or not 0<=number<=10**12:raise ValueError('Invalid archive soak counter')
+                result[name]=number
+        if 'archive' in value:
+            archive={}
+            for name in ['retainedRows','archivedRows','activeRows','batches']:
+                number=value['archive'][name]
+                if type(number) is not int or not 0<=number<=10**12:raise ValueError('Invalid archive history count')
+                archive[name]=number
+            if archive['retainedRows']!=archive['archivedRows']+archive['activeRows']:raise ValueError('Archive history count differs')
+            result['archive']=archive
+        results.append(result)
+    return results
+
+
 def validate_archive_metadata(value, runtime=False):
     if not isinstance(value, dict) or not isinstance(value.get('id'), str) or not (RUNTIME_ID if runtime else BACKUP_ID).fullmatch(value['id']):
         raise ValueError('Invalid backup identity')
@@ -320,6 +348,8 @@ def run():
             soak = soak_observation(monitor)
             if soak is not None:
                 report['cpuSoak'] = soak
+            archive_soaks=archive_soak_observations(monitor)
+            if archive_soaks:report['archiveCpuSoaks']=archive_soaks
             observed = datetime.datetime.fromisoformat(monitor['observedAt']).timestamp()
             if time.time() - observed > 300:
                 alerts.append('LOCAL_MONITOR_STALE')

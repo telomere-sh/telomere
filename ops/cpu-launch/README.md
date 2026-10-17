@@ -138,6 +138,21 @@ Progress is atomically saved once per minute under `data/cpu-launch-acceptance-2
 
 `ExecStopPost` removes only containers and the volume carrying that acceptance namespace, including after a forced process kill. It does not remove evidence directories. A root-only `private/cpu-soak-watch.json` selects the namespace for the existing two-minute monitor. Failed, invalid or stale observations generate explicit `CPU_SOAK_*` incidents through the existing VPS and independent hosted pagers. Completed and healthy running observations remain quiet. Hosted run reports retain the selected numeric counters. A VPS reboot interrupts the transient test; stale progress is an incident rather than a successful result.
 
+## Concurrent archive soak and history stress
+
+```sh
+python3 /opt/telomere-mainnet-pilot/operator/cpu-launch/launch-acceptance.py journal-soak --duration-seconds 43200
+python3 /opt/telomere-mainnet-pilot/operator/cpu-launch/launch-acceptance.py journal-stress
+```
+
+These profiles pin the physical release directory selected by the root runtime guard. An app-alias change cannot switch the release of an already running profile. They have new systemd units, generated accounts, loopback chains, PostgreSQL containers/volumes and namespace-restricted cleanup. Existing soak units are not stopped or reused.
+
+The archive soak creates 256 genuine local-chain settlements with synthetic metering history before starting its HTTP/CPU workload. Those historical fixtures are dated outside the current daily quote window. The first real CPU settlement triggers the normal automatic eight-row archive batch. The profile then retains every original record while measuring 50 isolated signed users, continuous reads/writes, CPU every five minutes, sessions renewed every four hours, latency and worker memory. The 70-second / 30-second-renewal smoke exercises the same path before a full run.
+
+The large profile creates 10,000 canonical local settlements, archives all but 256, restarts the real API/worker and fills 64 paid slots across eight owners while retaining a ninth owner's overflow reservation. Finality and receipt RPC failures must roll back the attempted archive and retain the already measured CPU result. Losing the acknowledgement after a real forwarded settlement must recover its canonical original hash with exactly one nonce. Complete controller-RPC failure must preserve the paid overflow reservation and Workspace access. Queue drain runs with additional RPC latency and automatic archival; receipts and each owner's balance plus the distinct local treasury must conserve all tokens. A final consistent dump/restore compares every table fingerprint and verifies original signed bytes, startup and replay without another nonce. Historical fixtures are not claimed CPU executions. `journal-stress --soak-seconds 0` selects the 256-history smoke of the same fault/queue path.
+
+The root watch file keeps its original `namespace` and can add up to eight `additionalNamespaces`. The VPS monitor and independent hosted pager cover failure, stale progress or invalid observations from either run. New hosted reports retain only selected numeric counters and archive totals. Healthy running/completed observations remain quiet. A completed archive soak must also show an actual archived row count above zero.
+
 ## Restore the application from an encrypted snapshot
 
 `restore-rehearsal.py` receives an age identity on stdin over the existing SSH channel. The identity is never an argument, environment variable or retained file. It requires a cloud-acknowledged data snapshot and its exact runtime bundle, authenticates both archives, checks every member and all runtime pins, and restores all production database tables in a network-isolated scratch PostgreSQL container. Executable clones stay in a separate root-owned `rehearsals/` tree; the live application UID cannot replace their directories or files. Archived programs, including version and syntax checks, run as UID 995. The root-owned recovery report stays in private/, outside application-writable data/. The TLS proxy accepts only an exact numeric loopback origin from the unprivileged progress record; progress reads use bounded, nonblocking, no-follow file descriptors.

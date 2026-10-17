@@ -10,6 +10,16 @@ ops = importlib.util.module_from_spec(spec); spec.loader.exec_module(ops)
 
 
 class ProtocolTests(unittest.TestCase):
+    def test_archive_soak_selection_excludes_private_fields(self):
+        value={'namespace':'a'*16,'state':'running','releaseId':'b'*40,'requests':100,'privateKey':'fixture',
+            'archive':{'retainedRows':257,'archivedRows':8,'activeRows':249,'batches':1,'privateKey':'fixture'}}
+        result=cloud.archive_soak_observations({'additionalCpuSoaks':[value]})
+        self.assertNotIn('privateKey',result[0]);self.assertNotIn('privateKey',result[0]['archive'])
+        self.assertEqual(result[0]['archive']['archivedRows'],8)
+    def test_archive_soak_refuses_invalid_identity_or_counts(self):
+        for value in [{'namespace':'invalid','state':'running'},{'namespace':'a'*16,'state':'running','requests':True},
+            {'namespace':'a'*16,'state':'running','archive':{'retainedRows':1,'archivedRows':2,'activeRows':0,'batches':1}}]:
+            with self.assertRaises(ValueError):cloud.archive_soak_observations({'additionalCpuSoaks':[value]})
     def test_scaled_restore_fingerprint_is_chunked_and_exact(self):
         payload=(b'{"row":"'+b'a'*8192+b'"}\n')*300
         class Bounded(io.BytesIO):

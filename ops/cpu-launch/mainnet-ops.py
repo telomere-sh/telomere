@@ -260,7 +260,28 @@ def evaluate_health(observation):
     if observation.get('cpuSoakState')=='failed':alerts.append('CPU_SOAK_FAILED')
     if observation.get('cpuSoakState')=='invalid':alerts.append('CPU_SOAK_OBSERVATION_INVALID')
     if observation.get('cpuSoakState')=='running' and observation.get('cpuSoakProgressAgeSeconds',float('inf'))>180:alerts.append('CPU_SOAK_STALE')
+    for soak in observation.get('additionalCpuSoaks',[]):
+        if soak.get('state')=='failed':alerts.append('CPU_SOAK_FAILED')
+        if soak.get('state')=='invalid':alerts.append('CPU_SOAK_OBSERVATION_INVALID')
+        if soak.get('state')=='running' and soak.get('progressAgeSeconds',float('inf'))>180:alerts.append('CPU_SOAK_STALE')
     return sorted(set(alerts))
+
+def additional_soaks(watch,folder,current):
+    namespaces=watch.get('additionalNamespaces',[])
+    assert isinstance(namespaces,list) and len(namespaces)<=8 and len(set(namespaces))==len(namespaces)
+    observations=[]
+    for namespace in namespaces:
+        try:
+            progress=read_soak_progress(folder,namespace);state=progress['state'];assert state in ('running','failed','completed')
+            assert progress['mainnetTransactions']==0 and progress['mainnetSignerLoaded'] is False
+            archive=progress['archive'];assert 0<=archive['archivedRows']<=archive['retainedRows'] and archive['activeRows']+archive['archivedRows']==archive['retainedRows']
+            assert re.fullmatch('[0-9a-f]{40}',progress['releaseId'])
+            if state=='completed':assert progress['errors']==0 and progress['elapsedSeconds']>=progress['targetSeconds'] and progress['requests']>=progress['targetSeconds']*7 and archive['archivedRows']>0
+            observations.append({'namespace':namespace,'state':state,'releaseId':progress['releaseId'],'requests':progress['requests'],'cpuRuns':progress['cpuRuns'],
+                'archive':archive,'elapsedSeconds':progress['elapsedSeconds'],'targetSeconds':progress['targetSeconds'],
+                'progressAgeSeconds':max(0,(current-datetime.datetime.fromisoformat(progress['observedAt'].replace('Z','+00:00'))).total_seconds())})
+        except Exception:observations.append({'namespace':namespace,'state':'invalid'})
+    return observations
 def monitor():
     observed={'observedAt':now(),'diskFreeBytes':shutil.disk_usage(BASE).free}
     try:
@@ -272,13 +293,14 @@ def monitor():
     watch=PRIVATE/'cpu-soak-watch.json'
     if watch.exists():
         try:
-            namespace=json.loads(watch.read_text())['namespace'];assert re.fullmatch('[0-9a-f]{16}',namespace)
+            watched=json.loads(watch.read_text());namespace=watched['namespace'];assert re.fullmatch('[0-9a-f]{16}',namespace)
             folder=BASE/'data/cpu-launch-acceptance-20261017';assert folder.resolve()==folder
             progress=read_soak_progress(folder,namespace);state=progress['state'];assert state in ('running','failed','completed')
             assert progress['mainnetTransactions']==0 and progress['mainnetSignerLoaded'] is False
             if state=='completed':assert progress['errors']==0 and progress['elapsedSeconds']>=progress['targetSeconds'] and progress['requests']>=progress['targetSeconds']*7
             observed.update(cpuSoakState=state,cpuSoakRequests=progress['requests'],cpuSoakRuns=progress['cpuRuns'],cpuSoakElapsedSeconds=progress['elapsedSeconds'],
                 cpuSoakTargetSeconds=progress['targetSeconds'],cpuSoakProgressAgeSeconds=max(0,(current-datetime.datetime.fromisoformat(progress['observedAt'].replace('Z','+00:00'))).total_seconds()))
+            observed['additionalCpuSoaks']=additional_soaks(watched,folder,current)
         except Exception:observed['cpuSoakState']='invalid'
     offhost_file='cpu-cloud-offhost-status.json' if (PRIVATE/'cpu-cloud-required.json').is_file() else 'cpu-offhost-status.json'
     observed['offhostSource']='github-actions' if offhost_file=='cpu-cloud-offhost-status.json' else 'windows-additional-copy'
