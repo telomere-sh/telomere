@@ -1,4 +1,4 @@
-import { and, eq, desc, inArray } from 'drizzle-orm';
+import { and, eq, desc, inArray, sql } from 'drizzle-orm';
 import { z } from 'zod';
 import { verifyTypedData, type Address, type Hex } from 'viem';
 import { hashJson, Problem, randomId, sameAddress, typedQuote, signatureSchema, bytes32Schema, addressSchema, moneySchema, jsonSafe, type QuoteInput } from './common.js';
@@ -63,8 +63,24 @@ export class Service {
       maxSeconds: input.maxSeconds, pricePerSecond: this.config.CPU_PRICE_PER_SECOND, inferencePrice: input.nearPrompt ? this.config.INFERENCE_FIXED_PRICE : '0', quoteExpiry };
     const ceiling = (BigInt(quote.pricePerSecond) * BigInt(quote.maxSeconds) + BigInt(quote.inferencePrice)).toString();
     const signature = await this.bridge.signQuote(typedQuote(quote));
-    const inserted = await this.db.insert(jobs).values({ id: quote.runId, owner: owner.toLowerCase(), leashId: input.leashId, agentAddress: leash.agent.toLowerCase(),
+    const inserted = await this.db.transaction(async transaction => {
+      await transaction.execute(sql`UPDATE quote_admission_lock SET id = id WHERE id = 1`);
+      const replay = (await transaction.select().from(jobs).where(and(eq(jobs.owner, owner.toLowerCase()), eq(jobs.idemKey, idemKey))).limit(1))[0];
+      if (replay) return [replay];
+      // One database row serializes quote admission across owners and concurrent requests.
+      const counts = await transaction.execute(sql`SELECT
+        (SELECT count(*)::integer FROM jobs WHERE status IN ('queued','running','near_dispatching','receipt_pending','settling','reconciliation')
+          OR status = 'prepared' AND created_at > now() - interval '5 minutes') AS active,
+        (SELECT count(*)::integer FROM jobs WHERE owner = ${owner.toLowerCase()} AND created_at > now() - interval '1 day') AS daily,
+        (SELECT count(*)::integer FROM jobs WHERE owner = ${owner.toLowerCase()} AND (status IN ('queued','running','near_dispatching','receipt_pending','settling','reconciliation')
+          OR status = 'prepared' AND created_at > now() - interval '5 minutes')) AS owned`);
+      const countsRow = (counts as {rows:{active:number;daily:number;owned:number}[]}).rows[0]!;
+      if (this.config.WALLET_ACCESS === 'public' && (countsRow.active >= 64 || countsRow.owned >= 8 || countsRow.daily >= 500)) {
+        throw new Problem(429, 'compute_capacity', 'Compute capacity or your daily run quota is reached. Try again later.');
+      }
+      return transaction.insert(jobs).values({ id: quote.runId, owner: owner.toLowerCase(), leashId: input.leashId, agentAddress: leash.agent.toLowerCase(),
       idemKey, inputHash, input, quote, signature, ceiling }).onConflictDoNothing().returning();
+    });
     const row = inserted[0] ?? (await this.db.select().from(jobs).where(and(eq(jobs.owner, owner.toLowerCase()), eq(jobs.idemKey, idemKey))).limit(1))[0];
     if (!row || row.inputHash !== inputHash) throw new Problem(409, 'idempotency_conflict', 'This idempotency key was used with different inputs.');
     return this.quoteResponse(row);
@@ -83,7 +99,19 @@ export class Service {
       throw new Problem(409, 'agent_binding_changed', 'The budget agent changed after this quote. Keep the original reservation available for its timeout refund.');
     }
     if (chainRun.workloadHash !== job.quote.workloadHash || chainRun.ceiling.toString() !== job.ceiling) throw new Problem(409, 'terms_mismatch', 'The onchain reservation does not match the quote.');
-    await this.db.update(jobs).set({ status: 'queued', txHash: hash, updatedAt: new Date() }).where(and(eq(jobs.id, id), eq(jobs.status, 'prepared')));
+    await this.db.transaction(async transaction => {
+      await transaction.execute(sql`UPDATE quote_admission_lock SET id = id WHERE id = 1`);
+      const current = (await transaction.select().from(jobs).where(and(eq(jobs.id,id),eq(jobs.owner,owner.toLowerCase()))).limit(1))[0];
+      if (!current || current.status !== 'prepared') return;
+      if (this.config.WALLET_ACCESS === 'public') {
+        const active = await transaction.select({owner:jobs.owner}).from(jobs).where(inArray(jobs.status,
+          ['queued','running','near_dispatching','receipt_pending','settling','reconciliation'])).limit(65);
+        if (active.length >= 64 || active.filter(row => row.owner === owner.toLowerCase()).length >= 8) {
+          throw new Problem(429,'compute_capacity','The queue is full. Your reservation remains on-chain. Check pending transactions to retry admission without paying again.');
+        }
+      }
+      await transaction.update(jobs).set({status:'queued',txHash:hash,updatedAt:new Date()}).where(and(eq(jobs.id,id),eq(jobs.status,'prepared')));
+    });
     return this.publicJob(await this.requireJob(owner, id));
   }
   async requireJob(owner: Address, id: string): Promise<Job> {

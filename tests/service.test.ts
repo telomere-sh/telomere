@@ -1,5 +1,5 @@
 import { beforeAll, afterAll, describe, it, expect } from 'vitest';
-import { eq } from 'drizzle-orm';
+import { eq, inArray } from 'drizzle-orm';
 import pino from 'pino';
 import { createWalletClient, http } from 'viem';
 import { startLocalChain, deployLocalContracts } from '../scripts/local-chain.js';
@@ -109,5 +109,32 @@ describe('wallet → escrow → CPU → signed receipt → settlement', () => {
     await expect(service.admit(owner, quote.quote.runId, unrelated)).rejects.toMatchObject({ status: 409, code: 'wrong_transaction' });
     expect((await service.requireJob(owner, quote.quote.runId)).status).toBe('prepared');
     expect(quoteSchema.parse(quote.quote).runId).toBe(quote.quote.runId);
+  });
+  it('serializes public quote admission and preserves idempotent replay at capacity', async () => {
+    const publicService = new Service(store.db, bridge, { ...service.config, WALLET_ACCESS: 'public' }, false);
+    const input = { leashId, task: { kind: 'sha256' as const, text: 'bounded-public-queue' }, maxSeconds: 5 };
+    const results = await Promise.allSettled(Array.from({length:12},(_,i)=>publicService.quote(deployed.accounts.owner.address,input,'public-capacity-'+i)));
+    const successful = results.flatMap((r,i)=>r.status==='fulfilled'?[{i,value:r.value}]:[]);
+    expect(successful.length).toBeGreaterThan(0); expect(successful.length).toBeLessThanOrEqual(8);
+    for(const result of results) if(result.status==='rejected') expect(result.reason).toMatchObject({code:'compute_capacity'});
+    const first=successful[0]!;
+    expect((await publicService.quote(deployed.accounts.owner.address,input,'public-capacity-'+first.i)).quote.runId).toBe(first.value.quote.runId);
+  });
+  it('retains a paid reservation when the queue is full and admits it later without another payment',async()=>{
+    const owner=deployed.accounts.owner.address;
+    const quoted=await service.quote(owner,{leashId,task:{kind:'sha256',text:'admission retry'},maxSeconds:5},'paid-capacity-retry');
+    const hash=await send(quoted.transaction);const template=await service.requireJob(owner,quoted.quote.runId);
+    const ids=Array.from({length:64},()=>randomId());
+    await store.db.insert(jobs).values(ids.map((id,i)=>({...template,id,owner:deployed.accounts.outsider.address.toLowerCase(),idemKey:'capacity-fixture-'+i,status:'queued' as const})));
+    const publicService=new Service(store.db,bridge,{...service.config,WALLET_ACCESS:'public'},false);
+    try{
+      await expect(publicService.admit(owner,quoted.quote.runId,hash)).rejects.toMatchObject({code:'compute_capacity'});
+      expect((await service.requireJob(owner,quoted.quote.runId)).status).toBe('prepared');
+      expect((await bridge.run(quoted.quote.runId)).status).toBe(1);
+    }finally{await store.db.delete(jobs).where(inArray(jobs.id,ids))}
+    expect((await publicService.admit(owner,quoted.quote.runId,hash)).status).toBe('queued');
+    expect((await publicService.admit(owner,quoted.quote.runId,hash)).status).toBe('queued');
+    await send(bridge.stopTransaction(quoted.quote.runId));await worker.drainOnce();
+    expect((await service.requireJob(owner,quoted.quote.runId)).charged).toBe('0');
   });
 });

@@ -17,7 +17,7 @@ export class Auth {
     return { nonce, message };
   }
   requireAllowed(address: Address): void {
-    if (this.config.MODE !== 'demo' && !this.config.PILOT_ALLOWED_OWNERS.split(',').map(item => item.trim().toLowerCase()).includes(address.toLowerCase())) {
+    if (this.config.MODE !== 'demo' && this.config.WALLET_ACCESS !== 'public' && !this.config.PILOT_ALLOWED_OWNERS.split(',').map(item => item.trim().toLowerCase()).includes(address.toLowerCase())) {
       throw new Problem(403, 'pilot_access', 'This wallet is not on the pilot allowlist.');
     }
   }
@@ -25,12 +25,13 @@ export class Auth {
     this.requireAllowed(address);
     const where = and(eq(nonces.nonce, nonce), eq(nonces.address, address.toLowerCase()), gt(nonces.expiresAt, new Date()));
     const row = (await this.db.select().from(nonces).where(where).limit(1))[0];
-    if (!row || !(await verifyMessage({ address, message: row.message, signature }))) throw new Problem(401, 'invalid_signature', 'Signature is invalid or the challenge expired.');
+    if (!row || !(await verifyMessage({ address, message: row.message, signature }).catch(() => false))) throw new Problem(401, 'invalid_signature', 'Signature is invalid or the challenge expired.');
     const removed = await this.db.delete(nonces).where(where).returning({ nonce: nonces.nonce });
     if (removed.length !== 1) throw new Problem(401, 'challenge_used', 'This sign-in challenge has already been used.');
     return this.session(address);
   }
   async session(address: Address): Promise<string> {
+    this.requireAllowed(address);
     const token = randomBytes(32).toString('hex');
     await this.db.insert(sessions).values({ hash: secretHash(token), address: address.toLowerCase(), expiresAt: new Date(Date.now() + 8 * 3600000) });
     return token;

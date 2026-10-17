@@ -10,6 +10,7 @@ import pino from 'pino';
 const logger = pino();
 await mkdir('dist/public', { recursive: true }); await mkdir('.local', { recursive: true });
 await build({ entryPoints: ['public/app.ts'], bundle: true, format: 'esm', outfile: 'dist/public/app.js' });
+await build({ entryPoints: ['public/workspace-client.ts'], bundle: true, format: 'esm', outfile: 'website/dist/workspace-client.js' });
 await promisify(execFile)(process.execPath, ['scripts/copy-public.mjs'], { timeout: 30000 });
 const local = await startLocalChain({ port: 8547 });
 try {

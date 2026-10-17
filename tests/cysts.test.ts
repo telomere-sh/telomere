@@ -37,6 +37,15 @@ describe('bounded encrypted application Cysts', () => {
   let directory: string, store: Awaited<ReturnType<typeof openStore>>, service: CystService, app: Hono;
   let authenticatedOwner: string;
   const encrypted = () => encryptCheckpoint(plaintext, { owner, agent, applicationSchema: 'counter.v1' });
+  it('bounds aggregate storage across wallets while keeping existing snapshots readable and replayable',async()=>{
+    const bounded=new CystService(store.db,directory,{globalBytes:plaintext.byteLength+16});
+    await bounded.initialize();const first=await encrypted();
+    await bounded.upload(owner,first.envelope,'global-cap-first');
+    const second=await encryptCheckpoint(plaintext,{owner:other,applicationSchema:'counter.v1'});
+    await expect(bounded.upload(other,second.envelope,'global-cap-second')).rejects.toMatchObject({code:'cyst_global_capacity'});
+    expect((await bounded.upload(owner,first.envelope,'global-cap-first')).replayed).toBe(true);
+    expect((await bounded.download(owner,first.envelope.id)).ciphertext).toBe(first.envelope.ciphertext);
+  });
   function mounted(cystService: CystService): Hono {
     const router = new Hono();
     router.use('/api/*', async (context, next) => {

@@ -10,8 +10,8 @@
           "path": ".env.example",
           "bytes": 4176,
           "sha256": "78879ce0f0fc77ebb714050f62f04308581b15da0293a7f910dcdeea69f35900",
-          "storage": "working-tree",
-          "storedPath": ".env.example"
+          "storage": "object",
+          "storedPath": "docs/evidence/public-source-archive/objects/78879ce0f0fc77ebb714050f62f04308581b15da0293a7f910dcdeea69f35900.bin"
         },
         {
           "path": ".gitattributes",
@@ -24,8 +24,8 @@
           "path": ".gitignore",
           "bytes": 152,
           "sha256": "b1cc790c4be3864ec93c7e4b40029d53b9ce45ee7727b421208f0b008e9269c2",
-          "storage": "working-tree",
-          "storedPath": ".gitignore"
+          "storage": "object",
+          "storedPath": "docs/evidence/public-source-archive/objects/b1cc790c4be3864ec93c7e4b40029d53b9ce45ee7727b421208f0b008e9269c2.bin"
         },
         {
           "path": ".npmrc",
@@ -38,8 +38,8 @@
           "path": "README.md",
           "bytes": 7978,
           "sha256": "ef3cc6ae60f8d2caaffc0f994c65973cf2cb58d9cd2a7b2300baa4488a320c43",
-          "storage": "working-tree",
-          "storedPath": "README.md"
+          "storage": "object",
+          "storedPath": "docs/evidence/public-source-archive/objects/ef3cc6ae60f8d2caaffc0f994c65973cf2cb58d9cd2a7b2300baa4488a320c43.bin"
         },
         {
           "path": "contracts/AgentVault.sol",
@@ -6639,15 +6639,15 @@
           "path": "package.json",
           "bytes": 3228,
           "sha256": "632c193486a5614ee2498eed76826fbb29e68d81fbe025878e48a4180de16fcc",
-          "storage": "working-tree",
-          "storedPath": "package.json"
+          "storage": "object",
+          "storedPath": "docs/evidence/public-source-archive/objects/632c193486a5614ee2498eed76826fbb29e68d81fbe025878e48a4180de16fcc.bin"
         },
         {
           "path": "public/app.ts",
           "bytes": 55650,
           "sha256": "0c7f7c378ec8a5614c95ab919f52e790d927941df3bbbba1cfe8a2273c7f94ff",
-          "storage": "working-tree",
-          "storedPath": "public/app.ts"
+          "storage": "object",
+          "storedPath": "docs/evidence/public-source-archive/objects/0c7f7c378ec8a5614c95ab919f52e790d927941df3bbbba1cfe8a2273c7f94ff.bin"
         },
         {
           "path": "public/cysts.ts",
@@ -6954,8 +6954,8 @@
           "path": "scripts/copy-public.mjs",
           "bytes": 2205,
           "sha256": "41507ae5525a70131a5f3691f6b8ab4f8cfcde5cf1f3860254f285184e33b824",
-          "storage": "working-tree",
-          "storedPath": "scripts/copy-public.mjs"
+          "storage": "object",
+          "storedPath": "docs/evidence/public-source-archive/objects/41507ae5525a70131a5f3691f6b8ab4f8cfcde5cf1f3860254f285184e33b824.bin"
         },
         {
           "path": "scripts/cpu-smoke.ts",
@@ -6982,8 +6982,8 @@
           "path": "scripts/demo.ts",
           "bytes": 1752,
           "sha256": "ad203e988a91570c328d3b7278d0409c2f079841591af8ca24be684a49958d01",
-          "storage": "working-tree",
-          "storedPath": "scripts/demo.ts"
+          "storage": "object",
+          "storedPath": "docs/evidence/public-source-archive/objects/ad203e988a91570c328d3b7278d0409c2f079841591af8ca24be684a49958d01.bin"
         },
         {
           "path": "scripts/deploy-contracts.ts",
@@ -7500,15 +7500,15 @@
           "path": "src/app.ts",
           "bytes": 26175,
           "sha256": "81d697ba0a220cc92ed9fd74fa9be4137970e2b8fae46d068f45db2b1c6aac2e",
-          "storage": "working-tree",
-          "storedPath": "src/app.ts"
+          "storage": "object",
+          "storedPath": "docs/evidence/public-source-archive/objects/81d697ba0a220cc92ed9fd74fa9be4137970e2b8fae46d068f45db2b1c6aac2e.bin"
         },
         {
           "path": "src/auth.ts",
           "bytes": 3317,
           "sha256": "1bcf61c9b4ba008376cf8179281187502aaf41849eb1ce9322c9cae8a3e1a0b6",
-          "storage": "working-tree",
-          "storedPath": "src/auth.ts"
+          "storage": "object",
+          "storedPath": "docs/evidence/public-source-archive/objects/1bcf61c9b4ba008376cf8179281187502aaf41849eb1ce9322c9cae8a3e1a0b6.bin"
         },
         {
           "path": "src/bridge.ts",
@@ -7570,8 +7570,8 @@
           "path": "src/config.ts",
           "bytes": 12033,
           "sha256": "105b4b7c573aff30d1dc666786b12523efcdce6d676bd78985234089354e746b",
-          "storage": "working-tree",
-          "storedPath": "src/config.ts"
+          "storage": "object",
+          "storedPath": "docs/evidence/public-source-archive/objects/105b4b7c573aff30d1dc666786b12523efcdce6d676bd78985234089354e746b.bin"
         },
         {
           "path": "src/cysts/chunk-aead.ts",
@@ -7584,8 +7584,8 @@
           "path": "src/cysts/configured.ts",
           "bytes": 2434,
           "sha256": "b3fac05ad55dc3d4ce8e4a31e26cf373abdc16a89b476ce622d339fc05706217",
-          "storage": "working-tree",
-          "storedPath": "src/cysts/configured.ts"
+          "storage": "object",
+          "storedPath": "docs/evidence/public-source-archive/objects/b3fac05ad55dc3d4ce8e4a31e26cf373abdc16a89b476ce622d339fc05706217.bin"
         },
         {
           "path": "src/cysts/declared-state-protocol.ts",
@@ -7759,8 +7759,8 @@
           "path": "src/cysts/service.ts",
           "bytes": 9672,
           "sha256": "6fb7db727436c81be0433e78542f9af8a7b675331ee73afbba242ebce8122c51",
-          "storage": "working-tree",
-          "storedPath": "src/cysts/service.ts"
+          "storage": "object",
+          "storedPath": "docs/evidence/public-source-archive/objects/6fb7db727436c81be0433e78542f9af8a7b675331ee73afbba242ebce8122c51.bin"
         },
         {
           "path": "src/cysts/storage.ts",
@@ -9355,15 +9355,15 @@
           "path": "src/service.ts",
           "bytes": 12705,
           "sha256": "cd7da335cc3e069716fec50e48141a99f93fd672a731a299d5f6507821a8d00c",
-          "storage": "working-tree",
-          "storedPath": "src/service.ts"
+          "storage": "object",
+          "storedPath": "docs/evidence/public-source-archive/objects/cd7da335cc3e069716fec50e48141a99f93fd672a731a299d5f6507821a8d00c.bin"
         },
         {
           "path": "src/store.ts",
           "bytes": 8288,
           "sha256": "c7843af21099de016376869a7d30373fea5bb0fba4d4beb4135f074ab2964719",
-          "storage": "working-tree",
-          "storedPath": "src/store.ts"
+          "storage": "object",
+          "storedPath": "docs/evidence/public-source-archive/objects/c7843af21099de016376869a7d30373fea5bb0fba4d4beb4135f074ab2964719.bin"
         },
         {
           "path": "src/suppliers/akash-console.ts",
@@ -9593,8 +9593,8 @@
           "path": "src/website.ts",
           "bytes": 8619,
           "sha256": "dfccecc36c530acfd65c944d38f07998bdd1f95bc8d517e1268fbd2796d3cdc1",
-          "storage": "working-tree",
-          "storedPath": "src/website.ts"
+          "storage": "object",
+          "storedPath": "docs/evidence/public-source-archive/objects/dfccecc36c530acfd65c944d38f07998bdd1f95bc8d517e1268fbd2796d3cdc1.bin"
         },
         {
           "path": "src/worker.ts",
@@ -9775,8 +9775,8 @@
           "path": "tests/cysts.test.ts",
           "bytes": 26435,
           "sha256": "ca97b412e28d70ba2e8575038831bfa012cd44c56a0a20a91fdaadab43405844",
-          "storage": "working-tree",
-          "storedPath": "tests/cysts.test.ts"
+          "storage": "object",
+          "storedPath": "docs/evidence/public-source-archive/objects/ca97b412e28d70ba2e8575038831bfa012cd44c56a0a20a91fdaadab43405844.bin"
         },
         {
           "path": "tests/deadline-jobs.test.ts",
@@ -11084,8 +11084,8 @@
           "path": "tests/service.test.ts",
           "bytes": 7992,
           "sha256": "166a79f880d2eacf431c448b000b2daac6f002ba9ba35203c7df7ee5d4828fcc",
-          "storage": "working-tree",
-          "storedPath": "tests/service.test.ts"
+          "storage": "object",
+          "storedPath": "docs/evidence/public-source-archive/objects/166a79f880d2eacf431c448b000b2daac6f002ba9ba35203c7df7ee5d4828fcc.bin"
         },
         {
           "path": "tests/session-runtime-docker.test.ts",
@@ -13373,8 +13373,8 @@
           "path": "website/dist/dashboard.js",
           "bytes": 34870,
           "sha256": "c61240d4800697dd40d6d42e0255fea5cc6f04f3fd016e6f1d86d011bc094244",
-          "storage": "working-tree",
-          "storedPath": "website/dist/dashboard.js"
+          "storage": "object",
+          "storedPath": "docs/evidence/public-source-archive/objects/c61240d4800697dd40d6d42e0255fea5cc6f04f3fd016e6f1d86d011bc094244.bin"
         },
         {
           "path": "website/dist/dashboard/index.html",

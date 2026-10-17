@@ -1,3 +1,4 @@
+import { workspaceDocuments, workspaceMigration } from './workspace/schema.js';
 import { PGlite } from '@electric-sql/pglite';
 import { drizzle as drizzlePglite } from 'drizzle-orm/pglite';
 import { drizzle as drizzlePg } from 'drizzle-orm/node-postgres';
@@ -50,7 +51,7 @@ export const leashRefs = pgTable('leash_refs', { id: text().primaryKey(), owner:
 export const controllerChainBinding = pgTable('controller_chain_binding', {
   id: integer().primaryKey(), scopeHash: text().notNull(), chainId: integer().notNull(),
 });
-export const storeSchema = { nonces, sessions, jobs, transactions, leashRefs, controllerChainBinding, cysts, cystOwners, deadlineJobs, paidCpuJobs,
+export const storeSchema = { workspaceDocuments, nonces, sessions, jobs, transactions, leashRefs, controllerChainBinding, cysts, cystOwners, deadlineJobs, paidCpuJobs,
   agents, agentIntents, agentBilling, agentRuntimeBinding, agentVaultBindings, agentBillingProvenance, agentBillingAnchors, receiptHourBatches, receiptHourEntries, receiptHourLock, ...selectionSchema, controllerHostRuns,
   ...paymentSchema, interruptibleRuns, hostPreemptionNotices, ...platformRuntimeSchema, ...platformReceiptTables, ...incomeEndpointSchema };
 const schema = storeSchema;
@@ -75,7 +76,7 @@ ALTER TABLE transaction_journal ADD COLUMN IF NOT EXISTS nonce integer;
 ALTER TABLE jobs ADD COLUMN IF NOT EXISTS agent_address text;
 CREATE TABLE IF NOT EXISTS leash_refs (id text PRIMARY KEY, owner text NOT NULL);
 CREATE TABLE IF NOT EXISTS controller_chain_binding (id integer PRIMARY KEY CHECK (id = 1), scope_hash text NOT NULL, chain_id integer NOT NULL);
-` + cystMigrationSQL + deadlineMigrationSQL + agentMigrationSQL + receiptHourMigrationSQL + selectionMigrationSQL + controllerHostMigrationSQL
+` + workspaceMigration + cystMigrationSQL + deadlineMigrationSQL + agentMigrationSQL + receiptHourMigrationSQL + selectionMigrationSQL + controllerHostMigrationSQL
   + paymentMigrationSQL + interruptibleMigrationSQL + platformRuntimeMigrationSQL + platformReceiptDdl + incomeEndpointMigrationSQL + paidCpuJobMigrationSQL;
 async function migrate(db: Database): Promise<void> {
   await db.transaction(async transaction => {

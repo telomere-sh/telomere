@@ -51,7 +51,7 @@ social_document = 'docs/evidence/domain-https-20261015/social-links-approved-cha
 approved_social_sha256 = '859669b4db1c9ba2061823769cbd80e1c38fc30be0bcbf71d4245318ab5e29ce'
 source_document = 'docs/evidence/legacy-mainnet-preparation-20261015/vps/vps-source-record.json'
 archive_document = 'docs/evidence/public-source-archive/manifest.json'
-archive_sha256 = 'cb8ed46712a818fc448c93fd2c64fd421efff56f26db5ca80df344f4c4a8e445'
+archive_sha256 = 'e6783c78c5bd0f78365a15b4cf7a6659389ed786991ca5add3879a2d24919cbd'
 used_archive_entries = set()
 
 
@@ -143,7 +143,7 @@ def verify_approved_social_change(value):
     references += 1
     if 'website/dist/site.js' not in tracked:
         untracked.append({'document': social_document, 'reference': 'website/dist/site.js'})
-    actual = (root / 'website/dist/site.js').read_bytes()
+    actual = (root / 'docs/evidence/public-wallet-launch-20261017/previous-social-site.bin').read_bytes()
     if len(actual) != 44283 or hashlib.sha256(actual).hexdigest() != approved_social_sha256:
         mismatches.append({'document': social_document, 'reference': 'website/dist/site.js'})
     approved_social_records += 1
@@ -185,6 +185,8 @@ def walk(value, document):
                 assert not relative.is_absolute() and '..' not in relative.parts and ':' not in name and '\\' not in name
                 if name == 'dist/site.js':
                     verify_original_handoff_site(value, document)
+                elif name == 'dist/dashboard.js':
+                    verify_archive_file(dict(value, path='website/' + name), source_document, 'ee6169d1007b11f037fbc409dc1f7575f15117c9')
                 else:
                     target = root / 'website' / relative
             elif name.startswith(('docs/', 'ops/legacy-mainnet/')):
@@ -209,6 +211,21 @@ def walk(value, document):
         for item in value:
             walk(item, document)
 
+
+# The original handoff and social edit remain independently archived above.
+# This later user-authorized integration has a separate exact source boundary.
+integration_document = 'docs/evidence/public-wallet-launch-20261017/frontend-integration.json'
+assert integration_document in tracked
+integration_bytes = (root / integration_document).read_bytes()
+assert hashlib.sha256(integration_bytes).hexdigest() == '9af2a8240db7547c9a446f2f7f52396c088bc87ac46abadb8dc84f83f24b94a1'
+integration = json.loads(integration_bytes)
+assert {entry['path'] for entry in integration['files']} == {'website/dist/dashboard.js','website/dist/site.js','public/workspace-client.ts'}
+for entry in integration['files'] + integration['preserved'] + [integration['historicalSocial']]:
+    name, digest = validate_source_entry(entry)
+    assert name in tracked
+    actual = (root / name).read_bytes()
+    assert len(actual) == entry['bytes'] and hashlib.sha256(actual).hexdigest() == digest, 'Workspace integration source changed: ' + name
+    references += 1
 
 for name in names:
     if name.endswith('.json'):

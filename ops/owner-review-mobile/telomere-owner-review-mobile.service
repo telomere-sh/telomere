@@ -1,0 +1,35 @@
+[Unit]
+Description=Telomere owner review mobile session gate
+After=network-online.target telomere-owner-review-https.service
+Requires=telomere-owner-review-https.service
+
+[Service]
+Type=simple
+DynamicUser=true
+User=telomere-review-mobile
+WorkingDirectory=/opt/telomere-review-mobile-20261017
+LoadCredential=auth:/etc/nginx/telomere-owner-review.htpasswd
+ExecStart=/usr/bin/python3 -B /opt/telomere-review-mobile-20261017/gateway.py --bundle /opt/telomere-review-mobile-20261017/deployment.js --bundle-sha256 6f86e846156478e70ff6afc9f040279345f4d45f4a1b72b531f407420d2a232f
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectSystem=strict
+ProtectHome=true
+ProtectProc=invisible
+ProcSubset=pid
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+LockPersonality=true
+CapabilityBoundingSet=
+RestrictAddressFamilies=AF_UNIX AF_INET
+InaccessiblePaths=/opt/telomere-mainnet-pilot -/opt/telomere-pilot -/run/telomere-mainnet-docker -/var/run/docker.sock -/run/docker.sock /etc/nginx/telomere-owner-review.htpasswd
+MemoryMax=128M
+TasksMax=64
+CPUQuota=50%
+UMask=0077
+
+# Manual operator review service only; no mainnet activation or signing.

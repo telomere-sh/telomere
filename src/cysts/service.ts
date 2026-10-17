@@ -25,7 +25,7 @@ function requestDigest(input: CystEnvelope): string {
 export class CystService {
   readonly storage: CiphertextStore;
   private readonly quotaPolicy: CystQuotaPolicy | undefined;
-  constructor(private readonly db: Database, destination: string | CiphertextStore, options: { quotaPolicy?: CystQuotaPolicy } = {}) {
+  constructor(private readonly db: Database, destination: string | CiphertextStore, private readonly options: { quotaPolicy?: CystQuotaPolicy; globalBytes?: number } = {}) {
     this.storage = typeof destination === 'string' ? new PrivateCystStorage(destination) : destination;
     this.quotaPolicy = options.quotaPolicy === undefined ? undefined : Object.freeze(cystQuotaPolicySchema.parse(options.quotaPolicy));
   }
@@ -52,6 +52,7 @@ export class CystService {
     }
     const digest = requestDigest(input);
     const claimed = await this.db.transaction(async tx => {
+      if (this.options.globalBytes !== undefined) await tx.execute(sql`UPDATE quote_admission_lock SET id = id WHERE id = 1`);
       await tx.insert(cystOwners).values({ owner }).onConflictDoNothing();
       const [usage] = await tx.select().from(cystOwners).where(eq(cystOwners.owner, owner)).for('update');
       if (!usage) throw new Problem(503, 'cyst_storage_unavailable', 'Checkpoint metadata is unavailable.');
@@ -59,6 +60,12 @@ export class CystService {
       if (previous) {
         if (previous.requestHash !== digest) throw new Problem(409, 'cyst_idempotency_conflict', 'Reuse this key only for the original encrypted checkpoint.');
         return { record: previous, replayed: true };
+      }
+      if (this.options.globalBytes !== undefined) {
+        const usage = await tx.select({bytes:sql<string>`coalesce(sum(${cystOwners.usedBytes}),0)::text`}).from(cystOwners);
+        if (Number(usage[0]?.bytes ?? '0') + bytes.byteLength > this.options.globalBytes) {
+          throw new Problem(503, 'cyst_global_capacity', 'Checkpoint storage is at capacity. Existing snapshots remain readable.');
+        }
       }
       const [duplicate] = await tx.select({ id: cysts.id }).from(cysts)
         .where(and(eq(cysts.owner, owner), eq(cysts.id, input.id))).limit(1);

@@ -15,6 +15,10 @@ The complete project implementation is maintained in the CEO's development envir
 - **Developer access:** HTTP APIs, TypeScript and Python clients, MCP tools and a working backend console.
 - **Operations:** database migrations, health checks, diagnostics, backups, restore verification and recovery tooling.
 
+## Public Workspace
+
+Open [telomere.sh/dashboard](https://telomere.sh/dashboard/) and connect your wallet. A signed login opens your private server-backed Workspace. Balances, Leashes, CPU reservations, execution records, signed receipts and encrypted snapshots connect to the backend. Deposits, withdrawals, Leash changes and reservations request wallet approval. Settlement then follows the approved quote. See [launch and paid acceptance](docs/PUBLIC-WORKSPACE-LAUNCH.md).
+
 ## Run locally
 
 Requires **Node.js 22.12+** and npm. On Windows and Linux x64, `npm ci` installs the platform-specific Anvil binary. On other platforms, install the appropriate Anvil binary.
@@ -36,6 +40,7 @@ The demo starts a disposable local EVM on chain 31337 and PostgreSQL through PGl
 For the original standalone website preview:
 
 ```sh
+npm run build
 cd website
 node serve.mjs
 ```
@@ -52,14 +57,14 @@ npm start
 
 For development, use `npm run dev` after the build. Startup loads the website assets from `dist/website`; `npm run demo` prepares those assets itself.
 
-The build compiles contracts and TypeScript, bundles the backend console and copies the original frontend bundle. All 411 files under `website/` preserve the supplied handoff bytes, including its design, animations and media. The public website is served at `/`, with the backend console at `/console` and `/console/`.
+The build compiles contracts and TypeScript, bundles the backend console and Workspace client, and copies the frontend assets. The supplied CSS, HTML, animation modules and media retain their original bytes. The owner-authorized JavaScript integration is recorded separately in `docs/evidence/public-wallet-launch-20261017/frontend-integration.json`. The public website is served at `/`, with the backend console at `/console` and `/console/`.
 
 Use `.env.example` to configure the deployment:
 
 - `MODE=testnet` selects **Base Sepolia, chain 84532**.
 - `MODE=mainnet` selects **Base mainnet, chain 8453**.
 - Configure the native Circle USDC address and reviewed proxy/implementation code pins for the selected chain.
-- Supply the deployed escrow, dedicated PostgreSQL database, digest-pinned executor and owner allowlist.
+- Supply the deployed escrow, dedicated PostgreSQL database, digest-pinned executor and wallet access policy. Use `WALLET_ACCESS=public` for public wallet sign-in, or the default `allowlist` with `PILOT_ALLOWED_OWNERS` for private access.
 - Configure private checkpoint storage, provider credentials and reviewed attestation policy for the selected services.
 
 Prepare a chain-specific deployment plan with:

@@ -10,6 +10,7 @@ const schema = z.object({
   PUBLIC_ORIGIN: z.string().url().default('http://127.0.0.1:3280'),
   DATABASE_URL: z.string().url().optional(),
   DATA_DIR: z.string().default('.local/db'),
+  CYSTS_GLOBAL_BYTES: z.coerce.number().int().min(33554432).max(107374182400).default(1073741824),
   CYSTS_ENABLED: z.enum(['true', 'false']).default('false').transform(value => value === 'true'),
   CYSTS_DIR: z.string().min(1).optional(),
   CYSTS_LARGE_DIR: z.string().min(1).optional(),
@@ -57,6 +58,8 @@ const schema = z.object({
   NEAR_VERIFIER_PYTHON: z.string().optional(), NEAR_ATTESTATION_POLICY: z.string().optional(),
   NEAR_ATTESTATION_POLICY_SHA256: bytes32Schema.optional(), NEAR_VERIFIER_PATH: z.string().optional(),
   NEAR_NVIDIA_VERIFIER_MODE: z.enum(['nras', 'local']).default('nras'), NEAR_NVAT_BINARY: z.string().optional(), NEAR_NVAT_LIBRARY: z.string().optional(),
+  WALLET_ACCESS: z.enum(['allowlist', 'public']).default('allowlist'),
+  TRUST_LOOPBACK_PROXY: z.enum(['true', 'false']).default('false').transform(value => value === 'true'),
   PILOT_ALLOWED_OWNERS: z.string().default(''),
   LOG_LEVEL: z.enum(['debug', 'info', 'warn', 'error']).default('info'),
 }).superRefine((env, context) => {
@@ -115,7 +118,7 @@ const schema = z.object({
     }
     if (!['docker', 'hostkit'].includes(env.CPU_MODE) || !/@sha256:[a-f0-9]{64}$/.test(env.CPU_IMAGE)) context.addIssue({ code: 'custom', message: 'Public Base requires a container executor with a digest-pinned CPU image' });
     if (!env.DATABASE_URL) context.addIssue({ code: 'custom', message: 'Public Base requires PostgreSQL' });
-    if (!env.PILOT_ALLOWED_OWNERS) context.addIssue({ code: 'custom', message: 'Public Base requires explicit pilot owner allowlist' });
+    if (env.WALLET_ACCESS === 'allowlist' && !env.PILOT_ALLOWED_OWNERS) context.addIssue({ code: 'custom', message: 'Public Base requires explicit pilot owner allowlist' });
     if (env.DEMO_PRIVATE_KEY) context.addIssue({ code: 'custom', message: 'Demo signing is disabled on public Base' });
   }
   if ((env.NEAR_ENDPOINT || env.NEAR_MODEL || env.NEAR_API_KEY) && !(env.NEAR_ENDPOINT && env.NEAR_MODEL && env.NEAR_API_KEY && env.NEAR_ALLOWED_MODELS)) {

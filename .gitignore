@@ -13,3 +13,5 @@ test-results/
 *.log
 __pycache__/
 *.pyc
+
+website/dist/workspace-client.js

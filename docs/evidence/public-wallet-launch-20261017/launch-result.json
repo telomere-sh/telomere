@@ -1,0 +1,15 @@
+{
+  "releaseId": "ef6436151e2d098c21a46e1512a140e6f0cbf548",
+  "sourceSnapshotSha256": "ef6436151e2d098c21a46e1512a140e6f0cbf548d1532a93ceeed580d8871880",
+  "runtimePinsVerified": 749,
+  "publicWalletAccess": true,
+  "ready": true,
+  "staticFilesVerified": 313,
+  "databaseBackupCatalogValid": true,
+  "serviceActive": true,
+  "serviceEnabledAtBoot": true,
+  "enclaveStillStopped": true,
+  "operatorTransactionsBroadcastByLaunch": 0,
+  "validation": "84 passing tests, one environment-dependent skip; TypeScript check; live signed authentication and owner isolation using two disposable wallets",
+  "mainnetPaidAcceptance": "requires wallet-holder approvals; not executed by automation"
+}

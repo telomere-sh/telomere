@@ -1,0 +1,16 @@
+{
+  "scope": "live-public-wallet-auth-and-tenant-isolation",
+  "transactions": 0,
+  "checks": [
+    "public Base mainnet configuration",
+    "anonymous workspace denied",
+    "two independently signed new wallets; secure cookies; nonce replay denied",
+    "private documents separated between wallets",
+    "stale write rejected",
+    "stale tab blocked after cookie account switch",
+    "new wallet has no foreign funds or runs",
+    "logout revokes sessions"
+  ],
+  "passed": true,
+  "observedAt": "2026-10-17T16:00:54.956Z"
+}

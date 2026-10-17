@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "authorization": "Connect the supplied Workspace to the backend, expose wallet sign-in with tenant isolation, preserve design.",
+  "changes": "API/auth/account binding and explicit wallet actions in authored controls. No CSS, HTML or motion module edits.",
+  "files": [
+    {
+      "path": "website/dist/dashboard.js",
+      "bytes": 50151,
+      "sha256": "f7025d2a7d1ca034ff8e91ddd5f010c742e9df3ff078f961c0bce9afbef0b182"
+    },
+    {
+      "path": "website/dist/site.js",
+      "bytes": 44906,
+      "sha256": "48464b0ad9eee1b4839687cb72bbf5774b8a5ff680c4590cef3849bfb7e84679"
+    },
+    {
+      "path": "public/workspace-client.ts",
+      "bytes": 11090,
+      "sha256": "cebcba9d20625f47eec217874b9e81ce5ec6abc4377d6120c646e3147795f8f7"
+    }
+  ],
+  "preserved": [
+    {
+      "path": "website/dist/dashboard.css",
+      "bytes": 18735,
+      "sha256": "dec701274db677963c49cc1ff01287f51d7335455cdbd1c2886fd16fdc91aeca"
+    },
+    {
+      "path": "website/dist/dashboard/index.html",
+      "bytes": 1553,
+      "sha256": "77a5d0ac5869c50d0c176966147fa6f937d200075f2f7a24b3374995ad2bb369"
+    },
+    {
+      "path": "website/dist/motion.js",
+      "bytes": 10537,
+      "sha256": "685747daff17d7ea001a9d0d2b977af1736e37fb8b21c85f1b1c75e5218e96aa"
+    },
+    {
+      "path": "website/dist/agent-panels.js",
+      "bytes": 5900,
+      "sha256": "4ccf437775bad45832ec887561667eef697a91f0b4464c214148c4731e4200ea"
+    },
+    {
+      "path": "website/dist/proof-chain.js",
+      "bytes": 8527,
+      "sha256": "f1009bf38c2b0b80c97cba8f01fd05b4ad637639eb28b69e08e70c99f76ad6ac"
+    }
+  ],
+  "historicalSocial": {
+    "path": "docs/evidence/public-wallet-launch-20261017/previous-social-site.bin",
+    "bytes": 44283,
+    "sha256": "859669b4db1c9ba2061823769cbd80e1c38fc30be0bcbf71d4245318ab5e29ce"
+  }
+}

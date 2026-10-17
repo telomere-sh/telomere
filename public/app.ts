@@ -101,11 +101,11 @@ function errorText(error: unknown) {
 }
 async function api(path: string, options: RequestInit = {}): Promise<unknown> {
   const version = sessionVersion;
-  const response = await fetch(path, { credentials: 'same-origin', ...options, headers: { ...(options.body ? { 'Content-Type': 'application/json' } : {}), ...options.headers } });
+  const response = await fetch(path, { credentials: 'same-origin', ...options, headers: { ...(state.address ? { 'X-Telomere-Owner': state.address } : {}), ...(options.body ? { 'Content-Type': 'application/json' } : {}), ...options.headers } });
   const payload: unknown = await response.json().catch(() => ({}));
   if (version !== sessionVersion && path !== '/api/demo/transaction') throw new Error('The signed-in account changed. Review the action again.');
   if (!response.ok) {
-    if (response.status === 401 && state.address && version === sessionVersion) { sessionVersion++; state.address = undefined; updateAuth(); stopPolling(); }
+    if ((response.status === 401 || (response.status === 409 && record(payload)?.title === 'session_owner_changed')) && state.address && version === sessionVersion) { sessionVersion++; state.address = undefined; updateAuth(); stopPolling(); }
     const problem = record(payload); const nested = record(problem?.error);
     const message = [problem?.error, problem?.detail, nested?.message, problem?.message].find(value => typeof value === 'string');
     throw new Error(typeof message === 'string' ? message : `Request failed (${response.status}). Try again.`);

@@ -1,0 +1,15 @@
+node_modules/
+dist/
+!website/dist/
+!website/dist/**
+.env
+.env.*
+!.env.example
+.local/
+data/
+artifacts/
+coverage/
+test-results/
+*.log
+__pycache__/
+*.pyc

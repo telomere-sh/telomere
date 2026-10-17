@@ -1,3 +1,4 @@
+import { createWorkspaceRoutes } from './workspace/routes.js';
 import { Hono, type MiddlewareHandler } from 'hono';
 import { bodyLimit } from 'hono/body-limit';
 import { secureHeaders } from 'hono/secure-headers';
@@ -98,7 +99,12 @@ export function createApp(service: Service, auth: Auth, logger: Logger, publicRo
   const rateLimit: MiddlewareHandler = async (context, next) => {
     // The pilot is single-instance. No client supplied forwarding headers are trusted.
     let identity = 'local-test';
-    try { identity = getConnInfo(context).remote.address ?? 'unknown'; } catch { /* In-process tests have no Node socket. */ }
+    try { identity = getConnInfo(context).remote.address ?? 'unknown';
+      if (service.config.TRUST_LOOPBACK_PROXY && ['127.0.0.1', '::1', '::ffff:127.0.0.1'].includes(identity)) {
+        const real = context.req.header('x-real-ip');
+        if (real && /^[0-9a-fA-F:.]{3,45}$/.test(real)) identity = real;
+      }
+    } catch { /* In-process tests have no Node socket. */ }
     const publicFinancial = context.req.path.startsWith('/api/platform/public/');
     const key = identity + (context.req.path.startsWith('/api/auth') ? ':auth' : publicFinancial ? ':public-financial' : ':api');
     const now = Date.now();
@@ -127,6 +133,16 @@ export function createApp(service: Service, auth: Auth, logger: Logger, publicRo
     await next();
     context.header('Cache-Control', 'no-store');
     logger.info({ method: context.req.method, path: context.req.path, status: context.res.status }, 'request');
+  });
+  app.use('/api/*', async (context, next) => {
+    const expected = context.req.header('x-telomere-owner');
+    if (expected !== undefined) {
+      const owner = await auth.owner(getCookie(context, cookie));
+      if (!sameAddress(addressSchema.parse(expected), owner)) {
+        throw new Problem(409, 'session_owner_changed', 'The active wallet session changed in another tab. Sign in again.');
+      }
+    }
+    await next();
   });
   app.onError((error, context) => {
     const known = error instanceof Problem;
@@ -176,7 +192,7 @@ export function createApp(service: Service, auth: Auth, logger: Logger, publicRo
     if (!operations) throw new Problem(503, 'operations_unavailable', 'Controller status is unavailable.');
     return context.json(await operations(owner));
   });
-  app.get('/api/config', async context => { const nearReadiness = await service.nearReadiness(); return context.json({ mode: service.config.MODE,
+  app.get('/api/config', async context => { const nearReadiness = await service.nearReadiness(); return context.json({ mode: service.config.MODE, walletAccess: service.config.WALLET_ACCESS,
     chain: { id: service.config.CHAIN_ID, name: service.bridge.chain.name,
       rpcUrl: service.config.MODE === 'demo' ? service.config.RPC_URL : chainForId(service.config.CHAIN_ID).rpcUrls.default.http[0],
       ...(service.config.MODE !== 'demo' ? { explorerUrl: chainForId(service.config.CHAIN_ID).blockExplorers?.default.url } : {}) },
@@ -206,6 +222,7 @@ export function createApp(service: Service, auth: Auth, logger: Logger, publicRo
   if (platform?.selectionDataset) app.route('/api/selection', createSelectionDatasetRoutes(platform.selectionDataset));
   if (platform?.selectionReputation) app.route('/api/selection', createSelectionReputationRoutes(platform.selectionReputation));
   app.route('/api/jobs', createSchedulingRoutes(new DeadlineService(service), context => auth.owner(getCookie(context, cookie))));
+  app.route('/api/workspace', createWorkspaceRoutes(service.db, context => auth.owner(getCookie(context, cookie))));
   app.post('/api/auth/challenge', async context => {
     const { address } = z.object({ address: addressSchema }).strict().parse(await context.req.json());
     return context.json(await auth.challenge(address));
@@ -213,6 +230,7 @@ export function createApp(service: Service, auth: Auth, logger: Logger, publicRo
   app.post('/api/auth/verify', async context => {
     const input = z.object({ address: addressSchema, nonce: z.string().regex(/^[a-f0-9]{48}$/), signature: signatureSchema }).strict().parse(await context.req.json());
     const token = await auth.verify(input.address, input.nonce, input.signature);
+    await auth.logout(getCookie(context, cookie));
     setCookie(context, cookie, token, { httpOnly: true, sameSite: 'Strict', secure: service.config.PUBLIC_ORIGIN.startsWith('https:'), path: '/', maxAge: 8 * 3600 });
     return context.json({ address: input.address, demo: false });
   });
