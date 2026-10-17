@@ -5,8 +5,8 @@
   "files": [
     {
       "path": "website/dist/dashboard.js",
-      "bytes": 50151,
-      "sha256": "f7025d2a7d1ca034ff8e91ddd5f010c742e9df3ff078f961c0bce9afbef0b182"
+      "bytes": 50183,
+      "sha256": "b884ccfa06ab404bc2143e6ee63a3af800377d2fd529d0d37a562c134b5ed9a9"
     },
     {
       "path": "website/dist/site.js",
@@ -15,8 +15,8 @@
     },
     {
       "path": "public/workspace-client.ts",
-      "bytes": 11090,
-      "sha256": "cebcba9d20625f47eec217874b9e81ce5ec6abc4377d6120c646e3147795f8f7"
+      "bytes": 11645,
+      "sha256": "11ba3ef7576323472ede798e8b93b69dce78f44005eb351c1b6468b99e899577"
     }
   ],
   "preserved": [

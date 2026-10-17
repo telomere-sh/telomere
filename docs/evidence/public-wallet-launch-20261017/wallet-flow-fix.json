@@ -1,0 +1,17 @@
+{
+  "scope": "mobile account access and wallet transaction boundary repair",
+  "previousApplicationCommit": "36ac67d",
+  "previousIntegrationManifestSha256": "9af2a8240db7547c9a446f2f7f52396c088bc87ac46abadb8dc84f83f24b94a1",
+  "tests": {
+    "passed": 16,
+    "includesRealBackendApproveDepositPackets": true,
+    "rejectsNonzeroEthValues": true,
+    "restoredWalletAfterReload": true
+  },
+  "publicFrontendRoot": "/var/www/telomere-public/wallet-flow-20261017-a2b15bea5da0",
+  "dashboardSha256": "b884ccfa06ab404bc2143e6ee63a3af800377d2fd529d0d37a562c134b5ed9a9",
+  "browserClientBundleSha256": "a2b15bea5da057371490ff3fc514b262792c42250062c9fd1dc4625b3512e236",
+  "otherStaticFilesUnchanged": 311,
+  "backendRestarted": false,
+  "signaturesOrTransactionsByAutomation": 0
+}

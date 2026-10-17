@@ -10,7 +10,7 @@ const address = z.string().refine(isAddress).transform(v => getAddress(v));
 
 const hex = z.string().regex(/^0x[0-9a-fA-F]*$/).transform(v => v as Hex);
 
-const txSchema = z.object({to:address,data:hex.optional(),value:z.string().regex(/^0$/).optional()});
+const txSchema = z.object({to:address,data:hex.optional(),value:z.enum(['0','0x0']).optional()});
 
 const configSchema = z.object({mode:z.string(),chain:z.object({id:z.number(),name:z.string(),rpcUrl:z.string(),explorerUrl:z.string().optional()}),
 
@@ -136,7 +136,13 @@ export class WorkspaceClient {
 
   async currentWallet(){
 
-    if(!this.address||!this.provider||!this.config)throw Error('Connect your wallet to approve this action.');
+    if(!this.address||!this.config)throw Error('Connect your wallet to approve this action.');
+    // A signed session survives reloads; recover the already connected injected wallet.
+    if(!this.provider && typeof window !== 'undefined') {
+      const injected=window.okxwallet??window.ethereum;
+      if(injected){this.provider=injected as EventProvider;this.provider.on?.('accountsChanged',this.accountChanged)}
+    }
+    if(!this.provider)throw Error('Connect your wallet to approve this action.');
 
     const owner=this.address,version=this.version,provider=this.provider;
 
@@ -238,3 +244,7 @@ export class WorkspaceClient {
 
 
 export { encryptCheckpoint, decryptCheckpoint, exportCystRecoveryKey, importCystRecoveryKey } from '../src/sdk/cysts.js';
+
+export function planningHourlySpend(rate:number,minutes:number,lane:string):number {
+  return rate*Math.min(Math.max(minutes,0)/60,1)*(lane==='Sealed'?1.12:1.09);
+}

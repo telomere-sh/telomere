@@ -217,7 +217,7 @@ def walk(value, document):
 integration_document = 'docs/evidence/public-wallet-launch-20261017/frontend-integration.json'
 assert integration_document in tracked
 integration_bytes = (root / integration_document).read_bytes()
-assert hashlib.sha256(integration_bytes).hexdigest() == '9af2a8240db7547c9a446f2f7f52396c088bc87ac46abadb8dc84f83f24b94a1'
+assert hashlib.sha256(integration_bytes).hexdigest() == '9aac30e5cd41c76ac3b4ce5e9c09848d9a625f3138c3c4bee501cff24a45e148'
 integration = json.loads(integration_bytes)
 assert {entry['path'] for entry in integration['files']} == {'website/dist/dashboard.js','website/dist/site.js','public/workspace-client.ts'}
 for entry in integration['files'] + integration['preserved'] + [integration['historicalSocial']]:
