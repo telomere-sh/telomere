@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "scope": "owner-approved full available-balance withdrawal from Base USDC escrow",
+  "observedAt": "2026-10-17T16:55:39.552Z",
+  "chainId": 8453,
+  "owner": "0xa67c6a174409b9b44e67d24cdd386a31d44edb1d",
+  "escrow": "0x27c1e35F563Aa4f57a68B192d88a76c25e68e0db",
+  "token": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+  "transactionHash": "0xc4c6d4d18a4b220696b801aa8067d5f12d60ac7c64fc7c5986c52d5c37889953",
+  "transactionStatus": "success",
+  "blockNumber": "52733351",
+  "blockHash": "0x78ffc328689f55ecbb6157bfb7f4e3efce48362a82f258ba723371e472617930",
+  "blockTimestamp": "2026-10-17T16:54:09.000Z",
+  "confirmations": "46",
+  "canonicalBlockVerified": true,
+  "method": "withdraw",
+  "withdrawnAtomicUsdc": "999600",
+  "withdrawalEvent": {
+    "payer": "0xA67c6a174409B9b44e67D24cdd386a31D44Edb1d",
+    "amount": "999600"
+  },
+  "tokenTransfer": {
+    "from": "0x27c1e35F563Aa4f57a68B192d88a76c25e68e0db",
+    "to": "0xA67c6a174409B9b44e67D24cdd386a31D44Edb1d",
+    "value": "999600"
+  },
+  "availableEscrowAtomicUsdc": "0",
+  "reservedEscrowAtomicUsdc": "0",
+  "totalContractTokenBalanceAtomicUsdc": "0",
+  "walletTokenBalanceAtomicUsdc": "2422567",
+  "walletTokenBalanceBeforeAtomicUsdc": "1422967",
+  "walletIncreaseMatchesWithdrawal": true,
+  "additionalTransactionsByVerification": 0
+}
