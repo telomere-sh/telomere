@@ -1,0 +1,12 @@
+{
+  "activationAbsent": true,
+  "verificationExitCode": 1,
+  "refusal": {
+    "readOnly": true,
+    "status": "preflight_refused",
+    "phase": "activation",
+    "controllerStarted": false
+  },
+  "controllerNeverStarted": true,
+  "publicTransactionsSent": 0
+}

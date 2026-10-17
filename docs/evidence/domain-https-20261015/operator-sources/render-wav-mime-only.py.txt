@@ -1,0 +1,58 @@
+"""Render one preconditioned Nginx edit. Never writes files, reloads, or starts Nginx."""
+import argparse
+import hashlib
+import json
+import pathlib
+import stat
+import sys
+
+SOURCE_SHA256 = 'c60619f3287ea933f7f5525bd41f1fa483930008a883dfa244e6c93de38995ea'
+MIME_TYPES_SHA256 = '4a1cdcc2a337e8126760f45aef1a43aca7230eb9725ea7ba226baf1b9ea40ae7'
+TARGET = '/etc/nginx/sites-available/telomere-apex-static'
+RESOURCE = 'https://telomere.sh/assets/audio/telomere-motion.wav'
+MARKER = b'    # Match backend namespaces before asset/extension rules; never return the SPA here.\n'
+SNIPPET = b'''    # Exact public WAV only; keep the standard MIME table within this location.
+    location = /assets/audio/telomere-motion.wav {
+        include /etc/nginx/mime.types;
+        types { audio/wav wav; }
+        try_files $uri =404;
+    }
+
+'''
+
+
+def render(source):
+    if hashlib.sha256(source).hexdigest() != SOURCE_SHA256:
+        raise ValueError('Owned Nginx configuration changed; review instead of overwriting')
+    if source.count(MARKER) != 1:
+        raise ValueError('Expected insertion boundary missing or duplicated')
+    return source.replace(MARKER, SNIPPET + MARKER, 1)
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--source', type=pathlib.Path, required=True)
+    parser.add_argument('--mime-types', type=pathlib.Path)
+    parser.add_argument('--render', action='store_true', help='Print candidate config bytes; still no file mutation')
+    arguments = parser.parse_args()
+    metadata = arguments.source.lstat()
+    if not stat.S_ISREG(metadata.st_mode) or arguments.source.is_symlink() or metadata.st_size > 32768:
+        raise ValueError('Source must be a bounded regular public configuration')
+    source = arguments.source.read_bytes()
+    if arguments.mime_types:
+        mime = arguments.mime_types.read_bytes()
+        if hashlib.sha256(mime).hexdigest() != MIME_TYPES_SHA256:
+            raise ValueError('Included standard MIME table changed; review required')
+    candidate = render(source)
+    if arguments.render:
+        sys.stdout.buffer.write(candidate)
+    else:
+        print(json.dumps({'target': TARGET, 'requiredSourceSha256': SOURCE_SHA256,
+                          'requiredMimeTypesSha256': MIME_TYPES_SHA256,
+                          'candidateSha256': hashlib.sha256(candidate).hexdigest(),
+                          'candidateBytes': len(candidate), 'resource': RESOURCE,
+                          'snippet': SNIPPET.decode(), 'fileWrites': 0, 'nginxReloads': 0}, indent=2))
+
+
+if __name__ == '__main__':
+    main()

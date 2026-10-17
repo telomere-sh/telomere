@@ -1,0 +1,188 @@
+{
+  "schemaVersion": 1,
+  "observedAtUtc": "2026-10-15T20:28:34.371Z",
+  "purpose": "finite exact native Phosphor module CSP sources for marketing site only",
+  "sourceModule": "website/dist/assets/app/module-GQV4DSBO.js",
+  "selectionSources": [
+    "module-D2UMRK4R.js",
+    "module-DVUKQKTI.js",
+    "module-GQV4DSBO.js",
+    "module-HCP27OE3.js",
+    "module-JA5VL7BV.js",
+    "module-KLCC7CEO.js",
+    "module-XTJKAXVP.js"
+  ],
+  "icons": [
+    {
+      "icon": "MapPin",
+      "version": "0.0.57",
+      "alias": {
+        "url": "https://framer.com/m/phosphor-icons/MapPin.js@0.0.57",
+        "status": 200,
+        "type": "text/javascript; charset=utf-8",
+        "cors": "*",
+        "bytes": 323,
+        "sha256": "e081870242bf15d454d80f57124996f71939daa1c3a53c387fdfe9518949831f"
+      },
+      "leaf": {
+        "url": "https://framerusercontent.com/modules/abiiCALz8WCxyBRQ7TCc/VAAsSLSNcZXdVY8ls4xS/MapPin.js",
+        "status": 200,
+        "type": "text/javascript; charset=utf-8",
+        "cors": "*",
+        "bytes": 3882,
+        "sha256": "ce78c866e00c2017b16e37b4b954e722526a4a7e1f681854ffcd475feeb00e45"
+      },
+      "aliasImports": [
+        "https://framerusercontent.com/modules/abiiCALz8WCxyBRQ7TCc/VAAsSLSNcZXdVY8ls4xS/MapPin.js"
+      ],
+      "leafImports": [],
+      "evalOrFunctionConstructor": false
+    },
+    {
+      "icon": "CaretRight",
+      "version": "0.0.57",
+      "alias": {
+        "url": "https://framer.com/m/phosphor-icons/CaretRight.js@0.0.57",
+        "status": 200,
+        "type": "text/javascript; charset=utf-8",
+        "cors": "*",
+        "bytes": 339,
+        "sha256": "1097ee0206e3f7b5dab291d1dc7a185c2e827e3a1e1899da975166d57b62363b"
+      },
+      "leaf": {
+        "url": "https://framerusercontent.com/modules/4DdaUvaccgEgxMd5tHRL/hWGATDnHlzpAXNQv6svp/CaretRight.js",
+        "status": 200,
+        "type": "text/javascript; charset=utf-8",
+        "cors": "*",
+        "bytes": 2302,
+        "sha256": "ff9b25b7fff30a71b2257e18bc3ba10f536e3ccbfd87280bb58295c83903c4b4"
+      },
+      "aliasImports": [
+        "https://framerusercontent.com/modules/4DdaUvaccgEgxMd5tHRL/hWGATDnHlzpAXNQv6svp/CaretRight.js"
+      ],
+      "leafImports": [],
+      "evalOrFunctionConstructor": false
+    },
+    {
+      "icon": "ArrowUpRight",
+      "version": "0.0.57",
+      "alias": {
+        "url": "https://framer.com/m/phosphor-icons/ArrowUpRight.js@0.0.57",
+        "status": 200,
+        "type": "text/javascript; charset=utf-8",
+        "cors": "*",
+        "bytes": 347,
+        "sha256": "a275aea2bcb1169c812df0863409cb732996f458799a9600bb301e406021808a"
+      },
+      "leaf": {
+        "url": "https://framerusercontent.com/modules/KXToc4n8n0VjRJoxIyl7/iepv8YZRWzIKS6xRTtLY/ArrowUpRight.js",
+        "status": 200,
+        "type": "text/javascript; charset=utf-8",
+        "cors": "*",
+        "bytes": 2405,
+        "sha256": "a1bc9e5f06c0a58f641856f012c5e58fe9a5221b4169cca463fbc7678a0f4328"
+      },
+      "aliasImports": [
+        "https://framerusercontent.com/modules/KXToc4n8n0VjRJoxIyl7/iepv8YZRWzIKS6xRTtLY/ArrowUpRight.js"
+      ],
+      "leafImports": [],
+      "evalOrFunctionConstructor": false
+    },
+    {
+      "icon": "ArrowRight",
+      "version": "0.0.57",
+      "alias": {
+        "url": "https://framer.com/m/phosphor-icons/ArrowRight.js@0.0.57",
+        "status": 200,
+        "type": "text/javascript; charset=utf-8",
+        "cors": "*",
+        "bytes": 339,
+        "sha256": "ea63554a1f1b222c352bc9dc45f593b51c8bd4260a2097e3b13490c26f093d26"
+      },
+      "leaf": {
+        "url": "https://framerusercontent.com/modules/K3PeUzM4qhL5IiaYcDem/hZzGgUtf1YrXicbBr18G/ArrowRight.js",
+        "status": 200,
+        "type": "text/javascript; charset=utf-8",
+        "cors": "*",
+        "bytes": 2454,
+        "sha256": "4dc7e90387e8f882b817b9f282995cc3d4f9bc7038f5caeedbe4dbeeb41467ff"
+      },
+      "aliasImports": [
+        "https://framerusercontent.com/modules/K3PeUzM4qhL5IiaYcDem/hZzGgUtf1YrXicbBr18G/ArrowRight.js"
+      ],
+      "leafImports": [],
+      "evalOrFunctionConstructor": false
+    },
+    {
+      "icon": "ArrowLeft",
+      "version": "0.0.57",
+      "alias": {
+        "url": "https://framer.com/m/phosphor-icons/ArrowLeft.js@0.0.57",
+        "status": 200,
+        "type": "text/javascript; charset=utf-8",
+        "cors": "*",
+        "bytes": 335,
+        "sha256": "7a123f603267897cc731aa43e3fa7c8fe2142f08edb0ca59af171bef6501075d"
+      },
+      "leaf": {
+        "url": "https://framerusercontent.com/modules/ONm9jMUgANzvfN4aCBBq/meiJHuEisL0wVC4Lu5EU/ArrowLeft.js",
+        "status": 200,
+        "type": "text/javascript; charset=utf-8",
+        "cors": "*",
+        "bytes": 2462,
+        "sha256": "d9093259d7eb4486aa89e84177aa3de7e4ebcc7ef176399b1897d182a594fa32"
+      },
+      "aliasImports": [
+        "https://framerusercontent.com/modules/ONm9jMUgANzvfN4aCBBq/meiJHuEisL0wVC4Lu5EU/ArrowLeft.js"
+      ],
+      "leafImports": [],
+      "evalOrFunctionConstructor": false
+    },
+    {
+      "icon": "House",
+      "version": "0.0.57",
+      "alias": {
+        "url": "https://framer.com/m/phosphor-icons/House.js@0.0.57",
+        "status": 200,
+        "type": "text/javascript; charset=utf-8",
+        "cors": "*",
+        "bytes": 319,
+        "sha256": "ddd8676bf3ea8175d9f68d00e2f9ebe7fb8a7f57c92625d62c316d6f6fa33725"
+      },
+      "leaf": {
+        "url": "https://framerusercontent.com/modules/Qc8yuHkQmGO0kFiSWbkX/rVmMAFttOHuuiwSg6KjZ/House.js",
+        "status": 200,
+        "type": "text/javascript; charset=utf-8",
+        "cors": "*",
+        "bytes": 3354,
+        "sha256": "ef1ab6d4cf8b6889a57e1b8386f20e54c461fd902d28751f4bb53ba33f8a7040"
+      },
+      "aliasImports": [
+        "https://framerusercontent.com/modules/Qc8yuHkQmGO0kFiSWbkX/rVmMAFttOHuuiwSg6KjZ/House.js"
+      ],
+      "leafImports": [],
+      "evalOrFunctionConstructor": false
+    }
+  ],
+  "requiredScriptSources": [
+    "https://framer.com/m/phosphor-icons/MapPin.js@0.0.57",
+    "https://framerusercontent.com/modules/abiiCALz8WCxyBRQ7TCc/VAAsSLSNcZXdVY8ls4xS/MapPin.js",
+    "https://framer.com/m/phosphor-icons/CaretRight.js@0.0.57",
+    "https://framerusercontent.com/modules/4DdaUvaccgEgxMd5tHRL/hWGATDnHlzpAXNQv6svp/CaretRight.js",
+    "https://framer.com/m/phosphor-icons/ArrowUpRight.js@0.0.57",
+    "https://framerusercontent.com/modules/KXToc4n8n0VjRJoxIyl7/iepv8YZRWzIKS6xRTtLY/ArrowUpRight.js",
+    "https://framer.com/m/phosphor-icons/ArrowRight.js@0.0.57",
+    "https://framerusercontent.com/modules/K3PeUzM4qhL5IiaYcDem/hZzGgUtf1YrXicbBr18G/ArrowRight.js",
+    "https://framer.com/m/phosphor-icons/ArrowLeft.js@0.0.57",
+    "https://framerusercontent.com/modules/ONm9jMUgANzvfN4aCBBq/meiJHuEisL0wVC4Lu5EU/ArrowLeft.js",
+    "https://framer.com/m/phosphor-icons/House.js@0.0.57",
+    "https://framerusercontent.com/modules/Qc8yuHkQmGO0kFiSWbkX/rVmMAFttOHuuiwSg6KjZ/House.js"
+  ],
+  "allClosuresTerminal": true,
+  "leafImports": 0,
+  "evalOrFunctionConstructors": 0,
+  "externalCodeExecuted": false,
+  "frontendFilesModified": 0,
+  "serverMutations": 0,
+  "walletCalls": 0
+}

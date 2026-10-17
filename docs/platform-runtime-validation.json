@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "assessedOn": "2026-10-10",
+  "scope": "Opt-in EOA full financial platform CPU path, separate platform Vault contracts and recovery",
+  "windowsCompleteRegression": {
+    "passed": 732,
+    "skippedPosixOnly": 4,
+    "total": 736,
+    "suites": 44,
+    "seconds": 806.29,
+    "exitCode": 0
+  },
+  "finalWindowsRuntimeClientMain": {
+    "passed": 50,
+    "suites": 3,
+    "seconds": 106.30,
+    "exitCode": 0
+  },
+  "finalWindowsConfigurationReadiness": {
+    "passed": 18,
+    "skippedPosixOnly": 1,
+    "total": 19,
+    "suites": 2,
+    "seconds": 45.94,
+    "exitCode": 0
+  },
+  "finalLinuxPlatformBatch": {
+    "passed": 101,
+    "skipped": 0,
+    "suites": 7,
+    "seconds": 176.31,
+    "exitCode": 0
+  },
+  "currentUniqueCases": 747,
+  "currentSuites": 46,
+  "singleComplete747CaseRunClaimed": false,
+  "strictTypecheckPassed": true,
+  "finalBuildPassed": true,
+  "productionDependencyAuditVulnerabilities": 0,
+  "pythonChanged": false,
+  "realGvisorEvidence": "platform-runtime-acceptance.json",
+  "sourceManifest": "platform-runtime-source-sha256.txt",
+  "matchingLocalAndVpsSourceFiles": 19,
+  "existingStagingReadOnlyCheck": {
+    "checkedAt": "2026-10-10T09:21:49.664Z",
+    "controller": "ready",
+    "worker": "idle",
+    "controllerLockHeld": true,
+    "completedRuns": 5,
+    "journalRows": 5,
+    "latestNonce": 6,
+    "pendingNonce": 6,
+    "pendingReceipts": 0,
+    "reconciliation": 0,
+    "nearConfigured": false
+  },
+  "publicTransactions": 0,
+  "paidProviderRequests": 0,
+  "ownerWalletRequired": false,
+  "fullSpecPercentRescored": false,
+  "remaining": [
+    "Delegated Vault runtime authentication, outer-call admission and automatic sync",
+    "Platform browser, Python and MCP adapters",
+    "Generic long-lived CPU runner and GPU isolation/probes",
+    "External supplier adapters",
+    "Admitted sealed hosts and attestation-gated checkpoint keys",
+    "Independent-region storage and production migration",
+    "Funded public Robinhood deployment and owner-wallet acceptance"
+  ]
+}

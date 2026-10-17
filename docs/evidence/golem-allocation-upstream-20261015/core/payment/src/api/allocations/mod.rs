@@ -1,0 +1,753 @@
+// External crates
+use actix_web::web::{delete, get, post, put, Data, Json, Path, Query};
+use actix_web::{web, HttpResponse, Scope};
+use bigdecimal::BigDecimal;
+use chrono::{DateTime, Utc};
+use serde::{Deserialize, Deserializer};
+use serde_json::value::RawValue;
+use serde_json::value::Value::Null;
+use std::str::FromStr;
+use std::time::Duration;
+use ya_client_model::NodeId;
+
+// Workspace uses
+use ya_agreement_utils::{ClauseOperator, ConstraintKey, Constraints};
+use ya_client_model::payment::allocation::{Deposit, DepositUpdate, PaymentPlatformEnum};
+use ya_client_model::payment::*;
+use ya_core_model::payment::local::{
+    DriverName, NetworkName, ValidateAllocation, ValidateAllocationError, BUS_ID as LOCAL_SERVICE,
+};
+use ya_core_model::payment::RpcMessageError;
+use ya_persistence::executor::DbExecutor;
+use ya_service_api_web::middleware::Identity;
+use ya_service_bus::{typed as bus, RpcEndpoint};
+
+// Local uses
+use crate::accounts::{init_account, Account};
+use crate::dao::*;
+use crate::error::Error;
+use crate::utils::response;
+
+const DEFAULT_TESTNET_NETWORK: NetworkName = NetworkName::Holesky;
+const DEFAULT_MAINNET_NETWORK: NetworkName = NetworkName::Polygon;
+const DEFAULT_PAYMENT_DRIVER: DriverName = DriverName::Erc20;
+
+mod api_error;
+mod platform_triple;
+mod token_name;
+
+use crate::alloc_release_task::AllocationReleaseTasks;
+use platform_triple::PaymentPlatformTriple;
+
+// Keep exact decimal parsing local to the REST boundary. Enabling serde_json's
+// arbitrary_precision globally changes Number's Serde representation and breaks GSB peers.
+#[derive(Debug)]
+struct JsonDecimal(BigDecimal);
+
+impl<'de> Deserialize<'de> for JsonDecimal {
+    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+    where
+        D: Deserializer<'de>,
+    {
+        let raw = Box::<RawValue>::deserialize(deserializer)?;
+        let value = if raw.get().starts_with('"') {
+            serde_json::from_str::<String>(raw.get()).map_err(serde::de::Error::custom)?
+        } else {
+            raw.get().to_string()
+        };
+
+        BigDecimal::from_str(&value)
+            .map(Self)
+            .map_err(serde::de::Error::custom)
+    }
+}
+
+#[derive(Deserialize)]
+#[serde(rename_all = "camelCase")]
+struct NewAllocationRequest {
+    address: Option<String>,
+    payment_platform: Option<PaymentPlatformEnum>,
+    total_amount: JsonDecimal,
+    timeout: Option<DateTime<Utc>>,
+    deposit: Option<Deposit>,
+    #[serde(default)]
+    make_deposit: bool,
+    extend_timeout: Option<u64>,
+}
+
+impl From<NewAllocationRequest> for NewAllocation {
+    fn from(value: NewAllocationRequest) -> Self {
+        Self {
+            address: value.address,
+            payment_platform: value.payment_platform,
+            total_amount: value.total_amount.0,
+            timeout: value.timeout,
+            deposit: value.deposit,
+            make_deposit: value.make_deposit,
+            extend_timeout: value.extend_timeout.map(Duration::from_secs),
+        }
+    }
+}
+
+#[derive(Deserialize)]
+#[serde(rename_all = "camelCase")]
+struct AllocationUpdateRequest {
+    total_amount: Option<JsonDecimal>,
+    timeout: Option<DateTime<Utc>>,
+    deposit: Option<DepositUpdate>,
+}
+
+impl From<AllocationUpdateRequest> for AllocationUpdate {
+    fn from(value: AllocationUpdateRequest) -> Self {
+        Self {
+            total_amount: value.total_amount.map(|amount| amount.0),
+            timeout: value.timeout,
+            deposit: value.deposit,
+        }
+    }
+}
+
+pub fn register_endpoints(scope: Scope) -> Scope {
+    scope
+        .route("/allocations", post().to(create_allocation))
+        .route("/allocations", get().to(get_allocations))
+        .route("/allocations/{allocation_id}", get().to(get_allocation))
+        .route("/allocations/{allocation_id}", put().to(amend_allocation))
+        .route(
+            "/allocations/{allocation_id}",
+            delete().to(release_allocation),
+        )
+        .route("/demandDecorations", get().to(get_demand_decorations))
+        .route(
+            "/allocations/{allocation_id}/orders",
+            get().to(get_pay_allocation_orders),
+        )
+        .route(
+            "/allocations/{allocation_id}/expenditures",
+            get().to(get_allocation_expenditures),
+        )
+}
+
+async fn create_allocation(
+    db: Data<DbExecutor>,
+    body: Json<NewAllocationRequest>,
+    id: Identity,
+    allocation_release_tasks: web::Data<AllocationReleaseTasks>,
+) -> HttpResponse {
+    let allocation: NewAllocation = body.into_inner().into();
+    let node_id = id.identity;
+
+    let payment_triple = match &allocation.payment_platform {
+        Some(PaymentPlatformEnum::PaymentPlatformName(name)) => {
+            let payment_platform = match PaymentPlatformTriple::from_payment_platform_str(name) {
+                Ok(p) => p,
+                Err(err) => {
+                    log::error!("Payment platform string parse failed: {err}");
+                    return api_error::bad_platform_parameter(&allocation, &err.to_string(), &name);
+                }
+            };
+            log::debug!(
+                "Successfully parsed API payment platform name: {}",
+                payment_platform
+            );
+            payment_platform
+        }
+        Some(PaymentPlatformEnum::PaymentPlatform(payment_platform)) => {
+            match PaymentPlatformTriple::from_payment_platform_input(payment_platform) {
+                Ok(platform_str) => platform_str,
+                Err(err) => {
+                    log::error!("Payment platform object parse failed: {err}");
+                    return api_error::bad_platform_parameter(
+                        &allocation,
+                        &err.to_string(),
+                        &payment_platform,
+                    );
+                }
+            }
+        }
+        None => {
+            let default_platform = PaymentPlatformTriple::default_testnet();
+            log::debug!("No paymentPlatform entry found, using {default_platform}");
+            default_platform
+        }
+    };
+
+    let address = allocation
+        .address
+        .clone()
+        .unwrap_or_else(|| node_id.to_string());
+
+    log::info!(
+        "Creating allocation for payment platform: {}",
+        payment_triple
+    );
+
+    let acc = Account {
+        driver: payment_triple.driver().to_string(),
+        address: address.clone(),
+        network: Some(payment_triple.network().to_string()),
+        token: None,
+        send: true,
+        receive: false,
+    };
+
+    if let Err(err) = init_account(acc).await {
+        return api_error::server_error(&allocation, &err.to_string());
+    }
+
+    let validate_msg = ValidateAllocation {
+        platform: payment_triple.to_string(),
+        address: address.clone(),
+        amount: allocation.total_amount.clone(),
+        timeout: allocation.timeout,
+        deposit: allocation.deposit.clone(),
+        new_allocation: true,
+    };
+
+    match async move { Ok(bus::service(LOCAL_SERVICE).send(validate_msg).await??) }.await {
+        Ok(result) => {
+            if let Some(error_response) = api_error::try_from_validation(
+                result,
+                &allocation,
+                payment_triple.to_string(),
+                address.clone(),
+            ) {
+                return error_response;
+            }
+        }
+        Err(Error::Rpc(RpcMessageError::ValidateAllocation(
+            ValidateAllocationError::AccountNotRegistered,
+        ))) => {
+            log::error!(
+                "Account {} not registered on platform {}",
+                address.clone(),
+                payment_triple
+            );
+
+            return api_error::account_not_registered(
+                &allocation,
+                payment_triple.to_string(),
+                address.clone(),
+            );
+        }
+        Err(e) => return api_error::server_error(&allocation, &e.to_string()),
+    }
+
+    let dao = db.as_dao::<AllocationDao>();
+
+    match dao
+        .create(
+            allocation.clone(),
+            node_id,
+            payment_triple.to_string(),
+            address,
+        )
+        .await
+    {
+        Ok(allocation_id) => match dao.get(allocation_id, node_id).await {
+            Ok(AllocationStatus::Active(allocation)) => {
+                let allocation_id = allocation.allocation_id.clone();
+
+                schedule_release_allocation(
+                    db.clone(),
+                    allocation_id,
+                    allocation.timeout,
+                    node_id,
+                    (*allocation_release_tasks.into_inner()).clone(),
+                );
+
+                response::created(allocation)
+            }
+            Ok(AllocationStatus::NotFound) => {
+                api_error::server_error(&allocation, &"Database Error")
+            }
+            Ok(AllocationStatus::Gone) => api_error::server_error(&allocation, &"Database Error"),
+            Err(e) => api_error::server_error(&allocation, &e.to_string()),
+        },
+        Err(e) => response::server_error(&e),
+    }
+}
+
+async fn get_allocations(
+    db: Data<DbExecutor>,
+    query: Query<params::FilterParams>,
+    id: Identity,
+) -> HttpResponse {
+    let node_id = id.identity;
+    let after_timestamp = query.after_timestamp.map(|d| d.naive_utc());
+    let max_items = query.max_items;
+    let dao: AllocationDao = db.as_dao();
+    match dao
+        .get_for_owner(node_id, after_timestamp, max_items, Some(false))
+        .await
+    {
+        Ok(allocations) => response::ok(allocations),
+        Err(e) => response::server_error(&e),
+    }
+}
+
+async fn get_allocation(
+    db: Data<DbExecutor>,
+    path: Path<params::AllocationId>,
+    id: Identity,
+) -> HttpResponse {
+    let allocation_id = path.allocation_id.clone();
+    let node_id = id.identity;
+    let dao: AllocationDao = db.as_dao();
+
+    match dao.get(allocation_id.clone(), node_id).await {
+        Ok(AllocationStatus::Active(allocation)) => response::ok(allocation),
+        Ok(AllocationStatus::Gone) => response::gone(&format!(
+            "Allocation {} has been already released",
+            allocation_id
+        )),
+        Ok(AllocationStatus::NotFound) => response::not_found(),
+        Err(e) => response::server_error(&e),
+    }
+}
+
+async fn get_allocation_expenditures(
+    db: Data<DbExecutor>,
+    path: Path<params::AllocationId>,
+    id: Identity,
+) -> HttpResponse {
+    let allocation_id = path.allocation_id.clone();
+    let node_id = id.identity;
+    let dao: AllocationDao = db.as_dao();
+
+    match dao.get_expenditures(node_id, allocation_id.clone()).await {
+        Ok(expenditures) => response::ok(expenditures),
+        Err(e) => response::server_error(&e),
+    }
+}
+
+fn amend_allocation_fields(
+    old_allocation: Allocation,
+    update: AllocationUpdate,
+) -> Result<Allocation, &'static str> {
+    let total_amount = update
+        .total_amount
+        .unwrap_or_else(|| old_allocation.total_amount.clone());
+    let remaining_amount = total_amount.clone() - &old_allocation.spent_amount;
+
+    if remaining_amount < 0 {
+        return Err("New allocation would be smaller than the already spent amount");
+    }
+    if let Some(timeout) = update.timeout {
+        if timeout < chrono::offset::Utc::now() {
+            return Err("New allocation timeout is in the past");
+        }
+    }
+
+    let deposit = match (old_allocation.deposit.clone(), update.deposit) {
+        (Some(deposit), None) => Some(deposit),
+        (Some(mut deposit), Some(deposit_update)) => {
+            deposit.validate = deposit_update.validate;
+            Some(deposit)
+        }
+        (None, None) => None,
+        (None, Some(_deposit_update)) => {
+            return Err("Cannot update deposit of an allocation created without one");
+        }
+    };
+
+    Ok(Allocation {
+        total_amount,
+        remaining_amount,
+        timeout: update.timeout.or(old_allocation.timeout),
+        deposit,
+        ..old_allocation
+    })
+}
+
+async fn amend_allocation(
+    db: Data<DbExecutor>,
+    path: Path<params::AllocationId>,
+    body: Json<AllocationUpdateRequest>,
+    id: Identity,
+    allocation_release_tasks: Data<AllocationReleaseTasks>,
+) -> HttpResponse {
+    let allocation_id = path.allocation_id.clone();
+    let node_id = id.identity;
+    let allocation_update: AllocationUpdate = body.into_inner().into();
+    let dao: AllocationDao = db.as_dao();
+
+    let current_allocation = match dao.get(allocation_id.clone(), node_id).await {
+        Ok(AllocationStatus::Active(allocation)) => allocation,
+        Ok(AllocationStatus::Gone) => {
+            return response::gone(&format!(
+                "Allocation {allocation_id} has been already released",
+            ))
+        }
+        Ok(AllocationStatus::NotFound) => return response::not_found(),
+        Err(e) => return response::server_error(&e),
+    };
+
+    let amended_allocation =
+        match amend_allocation_fields(current_allocation.clone(), allocation_update.clone()) {
+            Ok(allocation) => allocation,
+            Err(e) => return response::bad_request(&e),
+        };
+
+    let payment_triple = amended_allocation.payment_platform.clone();
+
+    // validation will take into account all existing allocation, including the one
+    // being currently modified. This means we only need to validate the increase.
+    let amount_to_validate =
+        amended_allocation.total_amount.clone() - &current_allocation.total_amount;
+
+    let validate_msg = ValidateAllocation {
+        platform: amended_allocation.payment_platform.clone(),
+        address: amended_allocation.address.clone(),
+        amount: if amount_to_validate > 0 {
+            amount_to_validate
+        } else {
+            0.into()
+        },
+        timeout: amended_allocation.timeout,
+        deposit: amended_allocation.deposit.clone(),
+        new_allocation: false,
+    };
+    match async move { Ok(bus::service(LOCAL_SERVICE).send(validate_msg).await??) }.await {
+        Ok(result) => {
+            if let Some(error_response) = api_error::try_from_validation(
+                result,
+                &allocation_update,
+                payment_triple.to_string(),
+                amended_allocation.address.clone(),
+            ) {
+                return error_response;
+            }
+        }
+        Err(Error::Rpc(RpcMessageError::ValidateAllocation(
+            ValidateAllocationError::AccountNotRegistered,
+        ))) => {
+            log::error!(
+                "Account {} not registered on platform {}",
+                amended_allocation.address,
+                payment_triple
+            );
+
+            return api_error::account_not_registered(
+                &allocation_update,
+                payment_triple.to_string(),
+                amended_allocation.address.clone(),
+            );
+        }
+        Err(e) => return api_error::server_error(&allocation_update, &e.to_string()),
+    }
+
+    // Ensure that the allocation is not released before we update it. Additionally, it will set up new allocation auto release task
+    schedule_release_allocation(
+        db.clone(),
+        amended_allocation.allocation_id.clone(),
+        amended_allocation.timeout,
+        node_id,
+        (*allocation_release_tasks.into_inner()).clone(),
+    );
+
+    match dao.replace(amended_allocation, node_id).await {
+        Ok(true) => {}
+        Ok(false) => {
+            return api_error::server_error(
+                &allocation_update,
+                &"Allocation not present despite preconditions being already ensured",
+            );
+        }
+        Err(e) => return api_error::server_error(&allocation_update, &e.to_string()),
+    }
+
+    get_allocation(db, path, id).await
+}
+
+async fn release_allocation(
+    db: Data<DbExecutor>,
+    path: Path<params::AllocationId>,
+    id: Identity,
+) -> HttpResponse {
+    let allocation_id = path.allocation_id.clone();
+    let node_id = id.identity;
+    let dao = db.as_dao::<AllocationDao>();
+
+    match dao.release(allocation_id.clone(), node_id).await {
+        Ok(AllocationReleaseStatus::Released { deposit, platform }) => response::ok(Null),
+        Ok(AllocationReleaseStatus::NotFound) => response::not_found(),
+        Ok(AllocationReleaseStatus::Gone) => response::gone(&format!(
+            "Allocation {} has been already released",
+            allocation_id
+        )),
+        Err(e) => response::server_error(&e),
+    }
+}
+
+async fn get_demand_decorations(
+    db: Data<DbExecutor>,
+    path: Query<params::AllocationIds>,
+    id: Identity,
+) -> HttpResponse {
+    let allocation_ids = path.allocation_ids.clone();
+    let node_id = id.identity;
+    let dao: AllocationDao = db.as_dao();
+    let allocations = match dao.get_many(allocation_ids, node_id).await {
+        Ok(allocations) => allocations,
+        Err(e) => return response::server_error(&e),
+    };
+    if allocations.len() != path.allocation_ids.len() {
+        return response::not_found();
+    }
+
+    // Populate payment platform properties / constraint.
+    let mut properties: Vec<MarketProperty> = allocations
+        .iter()
+        .map(|allocation| MarketProperty {
+            key: format!(
+                "golem.com.payment.platform.{}.address",
+                allocation.payment_platform
+            ),
+            value: allocation.address.clone(),
+        })
+        .collect();
+    let platform_clause = Constraints::new_clause(
+        ClauseOperator::Or,
+        properties
+            .iter()
+            .map(|property| {
+                ConstraintKey::new(property.key.as_str()).equal_to(ConstraintKey::new("*"))
+            })
+            .collect(),
+    );
+
+    // Populate payment protocol version property / constraint.
+    properties.push(MarketProperty {
+        key: "golem.com.payment.protocol.version".into(),
+        value: "3".into(),
+    });
+
+    // Validating payments from deposit contracts requires a new version
+    // of the erc20 driver, so we determine the required version based
+    // on any allocations using deposits.
+    let required_protocol_ver = if allocations
+        .iter()
+        .any(|allocation| allocation.deposit.is_some())
+    {
+        3
+    } else {
+        2
+    };
+
+    let protocol_clause = Constraints::new_single(
+        // >= constraint is not supported so we use > with decremented value
+        ConstraintKey::new("golem.com.payment.protocol.version")
+            .greater_than(ConstraintKey::new(required_protocol_ver - 1)),
+    );
+
+    let constraints = vec![platform_clause.to_string(), protocol_clause.to_string()];
+    response::ok(MarketDecoration {
+        properties,
+        constraints,
+    })
+}
+
+pub fn schedule_release_allocation(
+    db: Data<DbExecutor>,
+    allocation_id: String,
+    allocation_timeout: Option<DateTime<Utc>>,
+    node_id: NodeId,
+    allocation_release_tasks: AllocationReleaseTasks,
+) {
+    let mut task_map = allocation_release_tasks.tasks.lock();
+    //clear finished tasks from the map to prevent infinite growth
+    task_map.retain(|_, hdl| !hdl.is_finished());
+
+    // Cancel any existing task for the same allocation_id
+    if let Some(existing_hdl) = task_map.remove(&allocation_id) {
+        existing_hdl.abort();
+        log::info!(
+            "Cancelled existing release task for allocation {}",
+            allocation_id
+        );
+    }
+    if let Some(timeout) = allocation_timeout {
+        log::info!(
+            "Scheduling release of allocation {} for node {} at {}",
+            allocation_id,
+            node_id,
+            allocation_timeout
+                .map(|t| t.to_rfc3339())
+                .unwrap_or_else(|| "no timeout set".to_string())
+        );
+
+        task_map.insert(
+            allocation_id.clone(),
+            tokio::task::spawn(async move {
+                //do not sleep to long, it allows to accommodate clock drift
+                let max_sleep_time = chrono::Duration::seconds(60);
+
+                loop {
+                    let time_diff = timeout - Utc::now();
+
+                    if time_diff <= chrono::Duration::zero() {
+                        break;
+                    }
+
+                    let timeout = time_diff.min(max_sleep_time);
+                    tokio::time::sleep(timeout.to_std().expect("Value has to be ok")).await;
+                }
+
+                log::info!(
+                    "Allocation {} for node {} expired and it's being released",
+                    allocation_id,
+                    node_id
+                );
+
+                release_allocation_internal(db, allocation_id, node_id).await;
+            }),
+        );
+    } else {
+        log::warn!(
+            "No timeout set for allocation {}, skipping scheduling release.",
+            allocation_id
+        );
+    }
+}
+
+pub fn cancel_release_allocation_task(
+    allocation_id: &str,
+    allocation_release_tasks: AllocationReleaseTasks,
+) -> bool {
+    let mut task_map = allocation_release_tasks.tasks.lock();
+    // Cancel any existing task for the same allocation_id
+    if let Some(existing_hdl) = task_map.remove(allocation_id) {
+        existing_hdl.abort();
+        true
+    } else {
+        false
+    }
+}
+
+pub async fn forced_release_allocation(
+    db: Data<DbExecutor>,
+    allocation_id: String,
+    node_id: NodeId,
+    allocation_release_tasks: AllocationReleaseTasks,
+) {
+    //first, we need to cancel any existing task for the release of this allocation
+    let cancelled = cancel_release_allocation_task(&allocation_id, allocation_release_tasks);
+    if !cancelled {
+        log::warn!(
+            "No existing release task found for allocation {}, proceeding with forced release.",
+            allocation_id
+        );
+    } else {
+        log::info!(
+            "Cancelled existing release task for allocation {}. Releasing allocation now.",
+            allocation_id
+        );
+    }
+
+    release_allocation_internal(db, allocation_id.clone(), node_id).await;
+}
+
+async fn release_allocation_internal(db: Data<DbExecutor>, allocation_id: String, node_id: NodeId) {
+    match db
+        .as_dao::<AllocationDao>()
+        .release(allocation_id.clone(), node_id)
+        .await
+    {
+        Ok(AllocationReleaseStatus::Released { deposit, platform }) => {
+            log::info!("Allocation {} released.", allocation_id);
+        }
+        Err(e) => {
+            log::warn!(
+                "Releasing allocation {} failed. Db error occurred: {}",
+                allocation_id,
+                e
+            );
+        }
+        _ => (),
+    }
+}
+
+async fn get_pay_allocation_orders(
+    db: Data<DbExecutor>,
+    path: Path<String>,
+    id: Identity,
+) -> HttpResponse {
+    let node_id = id.identity;
+    let allocation_id = path.into_inner();
+    let dao: BatchDao = db.as_dao();
+    match dao
+        .get_batch_items(
+            node_id,
+            BatchItemFilter {
+                allocation_id: Some(allocation_id),
+                ..Default::default()
+            },
+        )
+        .await
+    {
+        Ok(items) => response::ok(items),
+        Err(e) => response::server_error(&e),
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn numeric_allocation_amount_keeps_decimal_precision() {
+        let request: NewAllocationRequest =
+            serde_json::from_str(r#"{"totalAmount": 0.12345678901234567890123456789}"#).unwrap();
+        let allocation: NewAllocation = request.into();
+
+        assert_eq!(
+            allocation.total_amount,
+            BigDecimal::from_str("0.12345678901234567890123456789").unwrap()
+        );
+    }
+
+    #[test]
+    fn numeric_allocation_update_keeps_decimal_precision() {
+        let request: AllocationUpdateRequest =
+            serde_json::from_str(r#"{"totalAmount": 0.12345678901234567890123456789}"#).unwrap();
+        let update: AllocationUpdate = request.into();
+
+        assert_eq!(
+            update.total_amount,
+            Some(BigDecimal::from_str("0.12345678901234567890123456789").unwrap())
+        );
+    }
+
+    #[test]
+    fn string_allocation_amount_remains_supported() {
+        let request: NewAllocationRequest =
+            serde_json::from_str(r#"{"totalAmount": "0.12345678901234567890123456789"}"#).unwrap();
+        let allocation: NewAllocation = request.into();
+
+        assert_eq!(
+            allocation.total_amount,
+            BigDecimal::from_str("0.12345678901234567890123456789").unwrap()
+        );
+    }
+
+    #[test]
+    fn bigdecimal_serializes_as_json_string() {
+        let amount = BigDecimal::from_str("0.12345678901234567890123456789").unwrap();
+
+        assert_eq!(
+            serde_json::to_value(amount).unwrap(),
+            serde_json::Value::String("0.12345678901234567890123456789".into())
+        );
+    }
+
+    #[test]
+    fn payment_does_not_enable_serde_json_arbitrary_precision() {
+        let manifest = include_str!("../../../Cargo.toml");
+
+        assert!(
+            !manifest.contains("arbitrary_precision"),
+            "serde_json/arbitrary_precision changes serde_json::Value's Serde wire format"
+        );
+    }
+}

@@ -1,0 +1,359 @@
+TAP version 13
+# Subtest: accepts the exact isolated daemon configuration with an owned explicit bridge
+ok 1 - accepts the exact isolated daemon configuration with an owned explicit bridge
+  ---
+  duration_ms: 1.2643
+  type: 'test'
+  ...
+# Subtest: refuses unsafe or shared daemon option bridge="none"
+ok 2 - refuses unsafe or shared daemon option bridge="none"
+  ---
+  duration_ms: 0.2677
+  type: 'test'
+  ...
+# Subtest: refuses unsafe or shared daemon option bridge="docker0"
+ok 3 - refuses unsafe or shared daemon option bridge="docker0"
+  ---
+  duration_ms: 0.0947
+  type: 'test'
+  ...
+# Subtest: refuses unsafe or shared daemon option fixed-cidr="172.17.0.0/16"
+ok 4 - refuses unsafe or shared daemon option fixed-cidr="172.17.0.0/16"
+  ---
+  duration_ms: 0.0814
+  type: 'test'
+  ...
+# Subtest: refuses unsafe or shared daemon option bip="172.31.254.1/24"
+ok 5 - refuses unsafe or shared daemon option bip="172.31.254.1/24"
+  ---
+  duration_ms: 0.1406
+  type: 'test'
+  ...
+# Subtest: refuses unsafe or shared daemon option default-address-pools=[{"base":"172.31.254.0/24","size":24}]
+ok 6 - refuses unsafe or shared daemon option default-address-pools=[{"base":"172.31.254.0/24","size":24}]
+  ---
+  duration_ms: 0.1139
+  type: 'test'
+  ...
+# Subtest: refuses unsafe or shared daemon option iptables=true
+ok 7 - refuses unsafe or shared daemon option iptables=true
+  ---
+  duration_ms: 0.1139
+  type: 'test'
+  ...
+# Subtest: refuses unsafe or shared daemon option ip6tables=true
+ok 8 - refuses unsafe or shared daemon option ip6tables=true
+  ---
+  duration_ms: 0.0952
+  type: 'test'
+  ...
+# Subtest: refuses unsafe or shared daemon option ip-forward=true
+ok 9 - refuses unsafe or shared daemon option ip-forward=true
+  ---
+  duration_ms: 0.2389
+  type: 'test'
+  ...
+# Subtest: refuses unsafe or shared daemon option ip-masq=true
+ok 10 - refuses unsafe or shared daemon option ip-masq=true
+  ---
+  duration_ms: 0.3901
+  type: 'test'
+  ...
+# Subtest: refuses unsafe or shared daemon option data-root="/var/lib/docker"
+ok 11 - refuses unsafe or shared daemon option data-root="/var/lib/docker"
+  ---
+  duration_ms: 0.093
+  type: 'test'
+  ...
+# Subtest: refuses unsafe or shared daemon option exec-root="/var/run/docker"
+ok 12 - refuses unsafe or shared daemon option exec-root="/var/run/docker"
+  ---
+  duration_ms: 0.0692
+  type: 'test'
+  ...
+# Subtest: refuses unsafe or shared daemon option hosts=["unix:///var/run/docker.sock"]
+ok 13 - refuses unsafe or shared daemon option hosts=["unix:///var/run/docker.sock"]
+  ---
+  duration_ms: 0.0654
+  type: 'test'
+  ...
+# Subtest: refuses unsafe or shared daemon option containerd-namespace="moby"
+ok 14 - refuses unsafe or shared daemon option containerd-namespace="moby"
+  ---
+  duration_ms: 0.063
+  type: 'test'
+  ...
+# Subtest: refuses unsafe or shared daemon option default-runtime="runc"
+ok 15 - refuses unsafe or shared daemon option default-runtime="runc"
+  ---
+  duration_ms: 0.0634
+  type: 'test'
+  ...
+# Subtest: refuses unsafe or shared daemon option runtimes={"runsc":{"path":"/tmp/runsc"}}
+ok 16 - refuses unsafe or shared daemon option runtimes={"runsc":{"path":"/tmp/runsc"}}
+  ---
+  duration_ms: 0.0651
+  type: 'test'
+  ...
+# Subtest: refuses omitted isolation option or an additional unreviewed daemon option
+ok 17 - refuses omitted isolation option or an additional unreviewed daemon option
+  ---
+  duration_ms: 0.1407
+  type: 'test'
+  ...
+# Subtest: refuses both plugin namespace JSON keys; the reviewed explicit CLI flag supplies this option
+ok 18 - refuses both plugin namespace JSON keys; the reviewed explicit CLI flag supplies this option
+  ---
+  duration_ms: 0.1308
+  type: 'test'
+  ...
+# Subtest: pins the accepted explicit plugin namespace flag and before/after network guards in the daemon unit
+ok 19 - pins the accepted explicit plugin namespace flag and before/after network guards in the daemon unit
+  ---
+  duration_ms: 0.7441
+  type: 'test'
+  ...
+# Subtest: accepts the exact reviewed bootstrap ownership record
+ok 20 - accepts the exact reviewed bootstrap ownership record
+  ---
+  duration_ms: 0.2179
+  type: 'test'
+  ...
+# Subtest: refuses altered bootstrap operation
+ok 21 - refuses altered bootstrap operation
+  ---
+  duration_ms: 0.1215
+  type: 'test'
+  ...
+# Subtest: refuses altered bootstrap id
+ok 22 - refuses altered bootstrap id
+  ---
+  duration_ms: 0.0702
+  type: 'test'
+  ...
+# Subtest: refuses altered bootstrap base
+ok 23 - refuses altered bootstrap base
+  ---
+  duration_ms: 0.074
+  type: 'test'
+  ...
+# Subtest: refuses altered bootstrap uid
+ok 24 - refuses altered bootstrap uid
+  ---
+  duration_ms: 0.0622
+  type: 'test'
+  ...
+# Subtest: refuses altered bootstrap gid
+ok 25 - refuses altered bootstrap gid
+  ---
+  duration_ms: 0.0559
+  type: 'test'
+  ...
+# Subtest: refuses altered bootstrap owner
+ok 26 - refuses altered bootstrap owner
+  ---
+  duration_ms: 0.0562
+  type: 'test'
+  ...
+# Subtest: refuses altered bootstrap controllerStarted
+ok 27 - refuses altered bootstrap controllerStarted
+  ---
+  duration_ms: 0.0564
+  type: 'test'
+  ...
+# Subtest: refuses altered bootstrap transactionsSent
+ok 28 - refuses altered bootstrap transactionsSent
+  ---
+  duration_ms: 0.0544
+  type: 'test'
+  ...
+# Subtest: refuses altered bootstrap unexpected
+ok 29 - refuses altered bootstrap unexpected
+  ---
+  duration_ms: 0.0583
+  type: 'test'
+  ...
+# Subtest: accepts the actual retained unsigned plan with independently pinned digest, creation hash, roles and predicted address
+ok 30 - accepts the actual retained unsigned plan with independently pinned digest, creation hash, roles and predicted address
+  ---
+  duration_ms: 12.7447
+  type: 'test'
+  ...
+# Subtest: refuses altered retained plan creation bytes
+ok 31 - refuses altered retained plan creation bytes
+  ---
+  duration_ms: 4.4656
+  type: 'test'
+  ...
+# Subtest: refuses altered retained plan nonce
+ok 32 - refuses altered retained plan nonce
+  ---
+  duration_ms: 2.1732
+  type: 'test'
+  ...
+# Subtest: refuses altered retained plan deployer
+ok 33 - refuses altered retained plan deployer
+  ---
+  duration_ms: 2.1475
+  type: 'test'
+  ...
+# Subtest: refuses altered retained plan quote signer
+ok 34 - refuses altered retained plan quote signer
+  ---
+  duration_ms: 2.1214
+  type: 'test'
+  ...
+# Subtest: refuses altered retained plan receipt signer
+ok 35 - refuses altered retained plan receipt signer
+  ---
+  duration_ms: 2.4883
+  type: 'test'
+  ...
+# Subtest: refuses altered retained plan treasury
+ok 36 - refuses altered retained plan treasury
+  ---
+  duration_ms: 2.5693
+  type: 'test'
+  ...
+# Subtest: refuses altered retained plan token
+ok 37 - refuses altered retained plan token
+  ---
+  duration_ms: 3.6529
+  type: 'test'
+  ...
+# Subtest: refuses altered retained plan USDC implementation
+ok 38 - refuses altered retained plan USDC implementation
+  ---
+  duration_ms: 2.1561
+  type: 'test'
+  ...
+# Subtest: refuses altered retained plan predicted address
+ok 39 - refuses altered retained plan predicted address
+  ---
+  duration_ms: 2.1618
+  type: 'test'
+  ...
+# Subtest: refuses altered retained plan review digest
+ok 40 - refuses altered retained plan review digest
+  ---
+  duration_ms: 0.1361
+  type: 'test'
+  ...
+# Subtest: accepts only the exact canonical CREATE transaction fixture
+ok 41 - accepts only the exact canonical CREATE transaction fixture
+  ---
+  duration_ms: 0.1221
+  type: 'test'
+  ...
+# Subtest: refuses substituted deployment transaction from
+ok 42 - refuses substituted deployment transaction from
+  ---
+  duration_ms: 0.1047
+  type: 'test'
+  ...
+# Subtest: refuses substituted deployment transaction to
+ok 43 - refuses substituted deployment transaction to
+  ---
+  duration_ms: 0.0603
+  type: 'test'
+  ...
+# Subtest: refuses substituted deployment transaction value
+ok 44 - refuses substituted deployment transaction value
+  ---
+  duration_ms: 0.0582
+  type: 'test'
+  ...
+# Subtest: refuses substituted deployment transaction nonce
+ok 45 - refuses substituted deployment transaction nonce
+  ---
+  duration_ms: 0.0829
+  type: 'test'
+  ...
+# Subtest: refuses substituted deployment transaction input
+ok 46 - refuses substituted deployment transaction input
+  ---
+  duration_ms: 0.0632
+  type: 'test'
+  ...
+# Subtest: refuses substituted deployment transaction hash
+ok 47 - refuses substituted deployment transaction hash
+  ---
+  duration_ms: 0.0546
+  type: 'test'
+  ...
+# Subtest: refuses substituted deployment transaction blockHash
+ok 48 - refuses substituted deployment transaction blockHash
+  ---
+  duration_ms: 0.0606
+  type: 'test'
+  ...
+# Subtest: refuses substituted deployment transaction blockNumber
+ok 49 - refuses substituted deployment transaction blockNumber
+  ---
+  duration_ms: 0.0589
+  type: 'test'
+  ...
+# Subtest: refuses substituted deployment receipt status
+ok 50 - refuses substituted deployment receipt status
+  ---
+  duration_ms: 0.1207
+  type: 'test'
+  ...
+# Subtest: refuses substituted deployment receipt to
+ok 51 - refuses substituted deployment receipt to
+  ---
+  duration_ms: 0.0653
+  type: 'test'
+  ...
+# Subtest: refuses substituted deployment receipt contractAddress
+ok 52 - refuses substituted deployment receipt contractAddress
+  ---
+  duration_ms: 0.0618
+  type: 'test'
+  ...
+# Subtest: refuses substituted deployment receipt from
+ok 53 - refuses substituted deployment receipt from
+  ---
+  duration_ms: 0.0594
+  type: 'test'
+  ...
+# Subtest: accepts a deployment covered by the canonical finalized block
+ok 54 - accepts a deployment covered by the canonical finalized block
+  ---
+  duration_ms: 0.0922
+  type: 'test'
+  ...
+# Subtest: refuses a deployment ahead of finalized head
+ok 55 - refuses a deployment ahead of finalized head
+  ---
+  duration_ms: 0.1014
+  type: 'test'
+  ...
+# Subtest: refuses noncanonical deployment or finalized block hashes
+ok 56 - refuses noncanonical deployment or finalized block hashes
+  ---
+  duration_ms: 0.1158
+  type: 'test'
+  ...
+# Error: A resource generated asynchronous activity after the test ended. This activity created the error "Error: ENOENT: no such file or directory, open 'C:\\Users\\Administrator\\Documents\\GitHub\\tt\\docs\\evidence\\base-mainnet-asset-observation-20261015\\legacy-plan-runtime-cost-review.json'" which triggered an uncaughtException event, caught by the test runner.
+# Subtest: ops\\legacy-mainnet\\preflight-fixture.test.mjs
+not ok 1 - ops\\legacy-mainnet\\preflight-fixture.test.mjs
+  ---
+  duration_ms: 920.6455
+  type: 'test'
+  location: 'C:\\Users\\Administrator\\Documents\\GitHub\\tt\\Telomere\\ops\\legacy-mainnet\\preflight-fixture.test.mjs:1:1'
+  failureType: 'testCodeFailure'
+  exitCode: 1
+  signal: ~
+  error: 'test failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+1..57
+# tests 57
+# suites 0
+# pass 56
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 929.6208

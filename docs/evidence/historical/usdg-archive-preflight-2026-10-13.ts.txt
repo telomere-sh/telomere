@@ -1,0 +1,30 @@
+import { createPublicClient, http } from 'viem';
+import { robinhoodTestnet, robinhoodTestnetUsdg } from '../src/chain/chains.js';
+import { vaultIncomeRpcFetch } from '../src/payments/vault-income-rpc.js';
+import { assertUsdArchiveHistory, usdgArchiveAnchor } from '../src/payments/usdg-archive.js';
+
+if (process.argv.length !== 2) throw new Error('No arguments are accepted');
+const rawUrl = process.env.ROBINHOOD_ARCHIVE_RPC_URL;
+let url: URL;
+try { url = new URL(rawUrl ?? ''); }
+catch { throw new Error('Set a private Robinhood testnet archive RPC URL'); }
+if (url.protocol !== 'https:' || url.username || url.password || url.hash
+  || url.hostname === 'rpc.testnet.chain.robinhood.com') throw new Error('A private HTTPS archive RPC is required');
+
+const client = createPublicClient({ chain: robinhoodTestnet, cacheTime: 0,
+  transport: http(url.href, { retryCount: 0, timeout: 10_000, fetchFn: vaultIncomeRpcFetch }) });
+try {
+  await assertUsdArchiveHistory(client, {
+    chainId: 46630, asset: robinhoodTestnetUsdg,
+    tokenCodeHash: '0x864cc9ad53b338b82da1f7cab85ab0b3d5c8861acb422b6fec63cf36234f36a6',
+    assetImplementation: { address: '0xF0863D7A29a55d0c4263c11bFac754312ff078DF',
+      codeHash: '0x72f197ff5ab8dcedf1244113dd91f245af65ae2c3354456d8bbfb6a3939ecd18' },
+    assetFacet: { address: '0x08f560a85db40a7d4ac49b4F44f1D38e5B8aB811',
+      codeHash: '0x64794b63f9ab5ce79c03d0035fbab57de6117cefcf42355137ce1168070d14a1' },
+  });
+  process.stdout.write(JSON.stringify({ ready: true, chainId: 46630, anchor: usdgArchiveAnchor.number.toString(),
+    historicalState: true, historicalLogs: true }) + '\n');
+} catch {
+  process.stderr.write(JSON.stringify({ ready: false, code: 'reviewed_usdg_archive_unavailable' }) + '\n');
+  process.exitCode = 1;
+}

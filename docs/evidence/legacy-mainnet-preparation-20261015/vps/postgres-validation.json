@@ -1,0 +1,13 @@
+{
+  "status": "dedicated PostgreSQL prepared",
+  "containerId": "2952d7294c6e82abe0952311c6ddacbb8a89dfcc82edec10dec05323510cb5fb",
+  "image": "postgres@sha256:721873c34ceb9f8d8fc265984940dc982404c105f19ad51be9fdc5970a6080ea",
+  "runtime": "runc",
+  "listenAddress": "127.0.0.1",
+  "port": 15435,
+  "database": "telomere_mainnet",
+  "applicationRoleSuperuser": false,
+  "passwordGeneratedOnVpsOnly": true,
+  "controllerStarted": false,
+  "publicTransactionsSent": 0
+}

@@ -1,0 +1,334 @@
+{
+  "schema": 1,
+  "kind": "GIT_PINNED_POSIX_FIX_OPTIONAL_PYTHON_CRYPTO_VALIDATION",
+  "gitRevision": "2298f3f99c9d0d1e22ac8928f71bff7d06ec0135",
+  "archiveSha256": "ae83a0a7747c5453a108ad3e3adff097cde2e54907ef4b71f332e3be2565f0a0",
+  "sourceFiles": 708,
+  "source": "/opt/telomere-host-runtime/python-crypto-posix-corrected-20261015-ae83a0a7747c",
+  "sourceManifestSha256": "5021ef1d55eee54896117d12a06748efc759362d1f9c713cc263e4140b15909f",
+  "startedAtUtc": "2026-10-15T13:11:40.520206+00:00",
+  "status": "passed",
+  "originalGitRevision": "d4481aec92179df44a533699897db2f523fbd0a2",
+  "originalArchiveSha256": "090932a350a522ddfe2c056775edf194176060c3cca79a06d286e5d3f1989bd6",
+  "originalSource": "/opt/telomere-host-runtime/backend-completion-final-20261015-090932a350a5",
+  "initialFailurePreserved": true,
+  "sourceDiffFromOriginal": [
+    "python/tests/test_vault_income_journal.py",
+    "tests/declared-state-restore.test.ts",
+    "tests/paid-cpu-jobs.test.ts"
+  ],
+  "productionSourceUnchanged": true,
+  "reviewedNodeFixtureRevision": "36d8a7f877038e4a15e91d03c6f5ae71283a1263",
+  "reviewedNodeFixtureGitBlobs": {
+    "tests/declared-state-restore.test.ts": "860d13663df9b7c4fbe4c45bb5457ebffeeeadea",
+    "tests/paid-cpu-jobs.test.ts": "d58f2fa0bf7dbe49b02b827b9fb09be86f7d7796"
+  },
+  "onlyReviewedTestFixturesChanged": true,
+  "existingVenvReused": "/opt/telomere-host-runtime/backend-completion-final-20261015-090932a350a5/.local/python-crypto-venv",
+  "dependencyInstalls": 0,
+  "globalPackageInstalls": false,
+  "existingTypeScriptBuildReused": "/opt/telomere-host-runtime/backend-completion-final-20261015-090932a350a5/dist",
+  "serviceMutations": false,
+  "providerCalls": 0,
+  "publicTransactions": 0,
+  "anvilOptInEnabled": false,
+  "commands": [
+    {
+      "name": "pip-check",
+      "argv": [
+        "/opt/telomere-host-runtime/backend-completion-final-20261015-090932a350a5/.local/python-crypto-venv/bin/python",
+        "-B",
+        "-m",
+        "pip",
+        "--disable-pip-version-check",
+        "check"
+      ],
+      "exitCode": 0,
+      "timedOut": false,
+      "seconds": 0.7017122209945228,
+      "stdoutSha256": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "pip-freeze",
+      "argv": [
+        "/opt/telomere-host-runtime/backend-completion-final-20261015-090932a350a5/.local/python-crypto-venv/bin/python",
+        "-B",
+        "-m",
+        "pip",
+        "--disable-pip-version-check",
+        "freeze",
+        "--all"
+      ],
+      "exitCode": 0,
+      "timedOut": false,
+      "seconds": 0.5003310260071885,
+      "stdoutSha256": "37140108d4a1ae6426f921afda46e7e73fe097d53cce37c03dd9d8bbc7f0d90b",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "crypto-probe",
+      "argv": [
+        "/opt/telomere-host-runtime/backend-completion-final-20261015-090932a350a5/.local/python-crypto-venv/bin/python",
+        "-B",
+        "-c",
+        "import sys,json,ssl,importlib.metadata,shutil;from telomere_sdk import EthAccountVerifier,PyCryptodomeCipher;v=EthAccountVerifier();c=PyCryptodomeCipher();print(json.dumps({'python':sys.version,'executable':sys.executable,'openssl':ssl.OPENSSL_VERSION,'userSiteEnabled':__import__('site').ENABLE_USER_SITE,'verifierType':type(v).__name__,'cipherType':type(c).__name__,'nodePath':shutil.which('node'),'keccakEmpty':v.keccak256(b'').hex(),'packages':{d.metadata['Name']:d.version for d in importlib.metadata.distributions()}}))"
+      ],
+      "exitCode": 0,
+      "timedOut": false,
+      "seconds": 0.600787258008495,
+      "stdoutSha256": "05d7def7333a459e9c0b4b5c3e21ad4a01bf680c8d5c91ffdfe62e73666e0d3c",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "focused-journal",
+      "argv": [
+        "/opt/telomere-host-runtime/backend-completion-final-20261015-090932a350a5/.local/python-crypto-venv/bin/python",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "python/tests",
+        "-p",
+        "test_vault_income_journal.py",
+        "-v"
+      ],
+      "exitCode": 0,
+      "timedOut": false,
+      "seconds": 1.5599258099973667,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "c5d32aa73f52198e438bdc89b6b45a8b25ac504216e99fde1be34f77b9c05548"
+    },
+    {
+      "name": "unittest",
+      "argv": [
+        "/opt/telomere-host-runtime/backend-completion-final-20261015-090932a350a5/.local/python-crypto-venv/bin/python",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "python/tests",
+        "-v"
+      ],
+      "exitCode": 0,
+      "timedOut": false,
+      "seconds": 23.9922810059943,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "e42428f08584c1fdd3bd85db2da95ec562f681afc315a362227c5c4587598823"
+    }
+  ],
+  "sourceChangedDuringRun": [],
+  "initialFailureEvidenceSha256": {
+    "report.json": "67f67e86ce6e432f8742b260dd30e29432d821cd837bff1280f53b2deed2c67b",
+    "unittest.stderr": "f094cd43efd20c3f2894267369ba683e35c99b27da3c5f01e4635030870a4e2e",
+    "unittest.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "source-before.json": "ecd764ce5aaa634358bebc2ad1aa2cd2aa1a0965f319585ed74e28e0d1371fe4",
+    "source-after.json": "ecd764ce5aaa634358bebc2ad1aa2cd2aa1a0965f319585ed74e28e0d1371fe4",
+    "pip-install-report.json": "47cd426a0fdb2c0ae62159f69c8d6f9f42a3fdca0d7101ae91f73dec24398a55",
+    "pip-check.stdout": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09",
+    "pip-freeze.stdout": "37140108d4a1ae6426f921afda46e7e73fe097d53cce37c03dd9d8bbc7f0d90b",
+    "crypto-probe.stdout": "05d7def7333a459e9c0b4b5c3e21ad4a01bf680c8d5c91ffdfe62e73666e0d3c"
+  },
+  "firstCorrectionFailureEvidenceSha256": {
+    "report.json": "7e45c0e858d4441ebc3907e7f2e29fce5d16170e42d29d2fb819f955b976dada",
+    "focused-journal.stderr": "6b5d7c2924ee4c7c6b3689f41cfedbe7397f02ecde817ca2452f746738737372",
+    "unittest.stderr": "2dfa979f937be62e1d5de4bc1be7e13fb939f957467b82b1a0fba4ca829f3746",
+    "source-before.json": "de8371dd5aa9034fa1c953d2f9560349945d3c77fdf485088446046fe71a9203",
+    "source-after.json": "de8371dd5aa9034fa1c953d2f9560349945d3c77fdf485088446046fe71a9203"
+  },
+  "requirementsSha256": "c35e6b29465518ef91a9952534251725ec3d511edecf72c5034991c5aa63847c",
+  "exactRequestedPins": {
+    "annotated-types": "0.8.0",
+    "bitarray": "3.11.0",
+    "ckzg": "2.1.8",
+    "cytoolz": "1.1.0",
+    "eth-account": "0.13.7",
+    "eth-hash": "0.8.0",
+    "eth-keyfile": "0.8.1",
+    "eth-keys": "0.8.0",
+    "eth-rlp": "3.0.0",
+    "eth-typing": "6.0.0",
+    "eth-utils": "6.0.0",
+    "eth-abi": "6.0.0",
+    "hexbytes": "2.0.0",
+    "parsimonious": "0.10.0",
+    "pycryptodome": "3.24.0",
+    "pydantic": "2.14.0",
+    "pydantic-core": "2.50.0",
+    "regex": "2026.9.29",
+    "rlp": "5.0.0",
+    "toolz": "1.2.0",
+    "typing-inspection": "0.4.4",
+    "typing-extensions": "4.16.0"
+  },
+  "runtimeAndPackages": {
+    "python": "3.11.2 (main, May 12 2026, 05:17:27) [GCC 12.2.0]",
+    "executable": "/opt/telomere-host-runtime/backend-completion-final-20261015-090932a350a5/.local/python-crypto-venv/bin/python",
+    "openssl": "OpenSSL 3.0.20 7 Apr 2026",
+    "userSiteEnabled": false,
+    "verifierType": "EthAccountVerifier",
+    "cipherType": "PyCryptodomeCipher",
+    "nodePath": "/usr/local/bin/node",
+    "keccakEmpty": "c5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470",
+    "packages": {
+      "eth_abi": "6.0.0",
+      "cytoolz": "1.1.0",
+      "typing_extensions": "4.16.0",
+      "pydantic_core": "2.50.0",
+      "toolz": "1.2.0",
+      "eth-rlp": "3.0.0",
+      "eth-typing": "6.0.0",
+      "setuptools": "66.1.1",
+      "eth-account": "0.13.7",
+      "ckzg": "2.1.8",
+      "parsimonious": "0.10.0",
+      "eth-keyfile": "0.8.1",
+      "pydantic": "2.14.0",
+      "rlp": "5.0.0",
+      "hexbytes": "2.0.0",
+      "eth-utils": "6.0.0",
+      "typing-inspection": "0.4.4",
+      "pip": "23.0.1",
+      "pycryptodome": "3.24.0",
+      "bitarray": "3.11.0",
+      "regex": "2026.9.29",
+      "eth-hash": "0.8.0",
+      "eth-keys": "0.8.0",
+      "annotated-types": "0.8.0"
+    }
+  },
+  "focusedJournal": {
+    "exitCode": 0,
+    "testsRun": 32,
+    "seconds": 1.292,
+    "skips": [
+      {
+        "case": "test_broad_directory_acl_is_rejected_without_repair (test_vault_income_journal.WindowsAclTests.test_broad_directory_acl_is_rejected_without_repair)",
+        "reason": "'Actual Windows ACL API'"
+      },
+      {
+        "case": "test_broad_state_acl_is_rejected_without_repair (test_vault_income_journal.WindowsAclTests.test_broad_state_acl_is_rejected_without_repair)",
+        "reason": "'Actual Windows ACL API'"
+      },
+      {
+        "case": "test_created_files_have_actual_private_windows_acls (test_vault_income_journal.WindowsAclTests.test_created_files_have_actual_private_windows_acls)",
+        "reason": "'Actual Windows ACL API'"
+      },
+      {
+        "case": "test_junction_ancestor_and_leaf_are_rejected (test_vault_income_journal.WindowsAclTests.test_junction_ancestor_and_leaf_are_rejected)",
+        "reason": "'Actual Windows ACL API'"
+      },
+      {
+        "case": "test_open_directory_handle_prevents_rename (test_vault_income_journal.WindowsAclTests.test_open_directory_handle_prevents_rename)",
+        "reason": "'Actual Windows ACL API'"
+      }
+    ],
+    "skippedCount": 5,
+    "cryptoDependencySkips": [],
+    "completedOk": true,
+    "actualPosixReplacementCasePassed": true,
+    "actualPosixForkCasePassed": true
+  },
+  "unittest": {
+    "exitCode": 0,
+    "testsRun": 236,
+    "seconds": 23.202,
+    "skips": [
+      {
+        "case": "test_real_native_income_subsidy_lost_ack_restart_and_reorg (test_vault_income_acceptance.NativeVaultAcceptance.test_real_native_income_subsidy_lost_ack_restart_and_reorg)",
+        "reason": "'Explicitly enable disposable Anvil acceptance with the pinned crypto environment'"
+      },
+      {
+        "case": "test_broad_directory_acl_is_rejected_without_repair (test_vault_income_journal.WindowsAclTests.test_broad_directory_acl_is_rejected_without_repair)",
+        "reason": "'Actual Windows ACL API'"
+      },
+      {
+        "case": "test_broad_state_acl_is_rejected_without_repair (test_vault_income_journal.WindowsAclTests.test_broad_state_acl_is_rejected_without_repair)",
+        "reason": "'Actual Windows ACL API'"
+      },
+      {
+        "case": "test_created_files_have_actual_private_windows_acls (test_vault_income_journal.WindowsAclTests.test_created_files_have_actual_private_windows_acls)",
+        "reason": "'Actual Windows ACL API'"
+      },
+      {
+        "case": "test_junction_ancestor_and_leaf_are_rejected (test_vault_income_journal.WindowsAclTests.test_junction_ancestor_and_leaf_are_rejected)",
+        "reason": "'Actual Windows ACL API'"
+      },
+      {
+        "case": "test_open_directory_handle_prevents_rename (test_vault_income_journal.WindowsAclTests.test_open_directory_handle_prevents_rename)",
+        "reason": "'Actual Windows ACL API'"
+      },
+      {
+        "case": "test_actual_rpc_failure_clears_client_terminal_observation_and_redacts_provider (test_vault_income_rpc.NativeRpcAcceptance.test_actual_rpc_failure_clears_client_terminal_observation_and_redacts_provider)",
+        "reason": "'Explicitly enable disposable Anvil acceptance with the pinned crypto environment'"
+      },
+      {
+        "case": "test_contradictory_markers_events_transfers_and_payer_never_return_success (test_vault_income_rpc.NativeRpcAcceptance.test_contradictory_markers_events_transfers_and_payer_never_return_success)",
+        "reason": "'Explicitly enable disposable Anvil acceptance with the pinned crypto environment'"
+      },
+      {
+        "case": "test_direct_python_reader_rechecks_exact_historical_receipt_and_all_hash_state_calls (test_vault_income_rpc.NativeRpcAcceptance.test_direct_python_reader_rechecks_exact_historical_receipt_and_all_hash_state_calls)",
+        "reason": "'Explicitly enable disposable Anvil acceptance with the pinned crypto environment'"
+      },
+      {
+        "case": "test_historical_asset_registry_implementation_and_clone_code_cannot_be_substituted (test_vault_income_rpc.NativeRpcAcceptance.test_historical_asset_registry_implementation_and_clone_code_cannot_be_substituted)",
+        "reason": "'Explicitly enable disposable Anvil acceptance with the pinned crypto environment'"
+      },
+      {
+        "case": "test_lost_confirmation_depth_and_final_canonicality_withdraw_success (test_vault_income_rpc.NativeRpcAcceptance.test_lost_confirmation_depth_and_final_canonicality_withdraw_success)",
+        "reason": "'Explicitly enable disposable Anvil acceptance with the pinned crypto environment'"
+      },
+      {
+        "case": "test_missing_candidate_with_consumed_authorization_requires_reconciliation (test_vault_income_rpc.NativeRpcAcceptance.test_missing_candidate_with_consumed_authorization_requires_reconciliation)",
+        "reason": "'Explicitly enable disposable Anvil acceptance with the pinned crypto environment'"
+      },
+      {
+        "case": "test_nonzero_related_mapping_cannot_return_unknown_or_wrong_agent_tuple (test_vault_income_rpc.NativeRpcAcceptance.test_nonzero_related_mapping_cannot_return_unknown_or_wrong_agent_tuple)",
+        "reason": "'Explicitly enable disposable Anvil acceptance with the pinned crypto environment'"
+      },
+      {
+        "case": "test_original_payer_related_vault_or_wallet_cannot_be_credited_as_income (test_vault_income_rpc.NativeRpcAcceptance.test_original_payer_related_vault_or_wallet_cannot_be_credited_as_income)",
+        "reason": "'Explicitly enable disposable Anvil acceptance with the pinned crypto environment'"
+      },
+      {
+        "case": "test_raw_transaction_hash_and_recovered_facilitator_are_independent (test_vault_income_rpc.NativeRpcAcceptance.test_raw_transaction_hash_and_recovered_facilitator_are_independent)",
+        "reason": "'Explicitly enable disposable Anvil acceptance with the pinned crypto environment'"
+      },
+      {
+        "case": "test_signed_type2_reconstruction_detects_every_altered_signed_field (test_vault_income_rpc.NativeRpcAcceptance.test_signed_type2_reconstruction_detects_every_altered_signed_field)",
+        "reason": "'Explicitly enable disposable Anvil acceptance with the pinned crypto environment'"
+      },
+      {
+        "case": "test_type2_fallback_requires_explicit_method_code_and_complete_signed_fields (test_vault_income_rpc.NativeRpcAcceptance.test_type2_fallback_requires_explicit_method_code_and_complete_signed_fields)",
+        "reason": "'Explicitly enable disposable Anvil acceptance with the pinned crypto environment'"
+      },
+      {
+        "case": "test_wrong_chain_token_domain_decimals_and_current_deployment_pins_fail_closed (test_vault_income_rpc.NativeRpcAcceptance.test_wrong_chain_token_domain_decimals_and_current_deployment_pins_fail_closed)",
+        "reason": "'Explicitly enable disposable Anvil acceptance with the pinned crypto environment'"
+      },
+      {
+        "case": "test_wrong_payer_signature_or_request_binding_is_rejected_before_rpc (test_vault_income_rpc.NativeRpcAcceptance.test_wrong_payer_signature_or_request_binding_is_rejected_before_rpc)",
+        "reason": "'Explicitly enable disposable Anvil acceptance with the pinned crypto environment'"
+      },
+      {
+        "case": "test_z_same_block_later_family_registration_preserves_original_income (test_vault_income_rpc.NativeRpcAcceptance.test_z_same_block_later_family_registration_preserves_original_income)",
+        "reason": "'Explicitly enable disposable Anvil acceptance with the pinned crypto environment'"
+      }
+    ],
+    "skippedCount": 20,
+    "cryptoDependencySkips": [],
+    "completedOk": true,
+    "actualPosixReplacementCasePassed": true,
+    "actualPosixForkCasePassed": true
+  },
+  "unchangedInventoryGroups": [
+    "source",
+    "original-source",
+    "venv",
+    "typescript-dist"
+  ],
+  "seconds": 27.990510830000858,
+  "finishedAtUtc": "2026-10-15T13:12:08.388210+00:00"
+}

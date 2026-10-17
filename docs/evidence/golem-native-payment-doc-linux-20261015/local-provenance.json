@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "gitRevision": "079bb31fa76217df9d3d3d0e309293bf4f58e89c",
+  "initialLauncher": {
+    "executable": "python",
+    "helperExecuted": false,
+    "reason": "python command not found",
+    "observedExecExitCode": 1
+  },
+  "actualLauncherExecutable": "python3",
+  "windowsTypecheckExitCode": 0,
+  "files": [
+    {
+      "path": "windows-regression-before-guard.json",
+      "bytes": 10255,
+      "sha256": "0b743ed6a5fb0353f3b0ef68a7cae9708c7d2cc7d248cf0f07b3a1df5f09839c"
+    },
+    {
+      "path": "windows-regression-after-guard.json",
+      "bytes": 8457,
+      "sha256": "427322821ae32cdfd996b304ee82473585edf45a971d77f7170db19af5ee99fd"
+    },
+    {
+      "path": "run-linux.py",
+      "bytes": 13916,
+      "sha256": "369d3a06df15f557f1cf128615ec81f5c37846d769cd017f18c1ee6fc8662e84"
+    },
+    {
+      "path": "package-upstream-fixtures.py",
+      "bytes": 3317,
+      "sha256": "a12f50a300f19a3f66764d0083f8f767eafdd438ab20c414154ee1753e80efe2"
+    }
+  ]
+}

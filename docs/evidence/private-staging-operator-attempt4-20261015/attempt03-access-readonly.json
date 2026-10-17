@@ -1,0 +1,23 @@
+{
+  "cloneRunMode": "0o700",
+  "cloneRunRootOwned": true,
+  "kind": "attempt03_exact_owned_access_readonly",
+  "nodeMissingExactOwnedHelper": true,
+  "nodeModuleNotFoundCode": true,
+  "probeReadOnly": true,
+  "probeSha256": "84271128376c6bbacef2d6d5f24e5233b8c181ac20adc6a3bea0eb778baaeb6e",
+  "profileOrKeyRead": false,
+  "rawChildLogReturned": false,
+  "schemaVersion": 1,
+  "serviceOrResourceMutation": false,
+  "serviceUserAccess": {
+    "dockerRunTraverse": false,
+    "dockerSocketWrite": false,
+    "helperRead": false,
+    "optionsRead": false,
+    "workTraverse": false
+  },
+  "workGroupMatchesService": true,
+  "workMode": "0o700",
+  "workRootOwned": true
+}

@@ -1,0 +1,38 @@
+{
+  "status": "passed",
+  "revision": "c87824f698020aa561ffb9df6d6c6874e4b644ba",
+  "archiveSha256": "18208d0650d2bc0741b33f32d9ba64a7364b817bc1a54bb783ccc8f01bd9d5eb",
+  "sourceFiles": 1349,
+  "sourceChangedDuringRun": [],
+  "dependencyFiles": 21050,
+  "dependencyChangedDuringRun": [],
+  "originalDependencyCheckoutUnchanged": true,
+  "compile": {
+    "exitCode": 0,
+    "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "focused": {
+    "exitCode": 0,
+    "stdoutSha256": "2b352a5a64a30bc6ebc14b9db91c8189ff54d7742149914ab03e3928674f228f",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "total": 90,
+    "passed": 89,
+    "failed": 0,
+    "skipped": 1
+  },
+  "benchmarkExitCode": 0,
+  "benchmarkReportSha256": "11693612131ae23241ea307bbf3ed0094f2132c5838a31a436d756bd33f63417",
+  "runtimeExecutableSha256": "fde6a4bf8d0562f7751d1a2d6cb9b417c4cfe107bbcb0aa3e9a24e125e348f48",
+  "seconds": 484.5425281524658,
+  "scope": {
+    "revision": "c87824f698020aa561ffb9df6d6c6874e4b644ba",
+    "base": "/opt/telomere-host-runtime/cyst-native-20261015-1565b1dcfd542dd7c139e790",
+    "work": "/opt/telomere-host-runtime/cyst-2g-stream-native-20261015-1565b1dcfd542dd7c139e790",
+    "archiveSha256": "18208d0650d2bc0741b33f32d9ba64a7364b817bc1a54bb783ccc8f01bd9d5eb",
+    "archiveBytes": 6756263,
+    "sourceFiles": 1349,
+    "benchmarkSha256": "4c93e8f8fc10891bb2d32c615992fbfe02dcc3802b7832077a7df430a9e11b89"
+  },
+  "ownedFilesPreserved": true
+}

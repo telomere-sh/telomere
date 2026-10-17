@@ -1,0 +1,81 @@
+{
+  "archiveSha256": "86b5dc9f36dcf841963f0ffa8161023c126f1fae473c94909f5dddae3040fdce",
+  "directory": "/opt/telomere-host-runtime/selection-composed-corrected-20261015-86b5dc9f36dc",
+  "sourceFiles": 685,
+  "gitRevision": "354fe7af62ea6701faafc3b04522abb1b4524d2d",
+  "startedAt": "2026-10-15T03:51:47.382222+00:00",
+  "serviceMutations": false,
+  "publicTransactions": 0,
+  "paidProviderRequests": 0,
+  "dockerOptIn": false,
+  "capacityOptIn": false,
+  "langgraphOptIn": false,
+  "healthBefore": {
+    "live": {
+      "statusCode": 200,
+      "body": {
+        "status": "ok"
+      }
+    },
+    "ready": {
+      "statusCode": 200,
+      "body": {
+        "status": "ready",
+        "worker": "idle"
+      }
+    }
+  },
+  "servicesBefore": {
+    "telomere-staging.service": "NRestarts=0\nActiveState=active\nSubState=running",
+    "telomere-staging-chain.service": "NRestarts=0\nActiveState=active\nSubState=running",
+    "telomere-staging-watchdog.service": "NRestarts=0\nActiveState=active\nSubState=running"
+  },
+  "nodeVersion": "v22.23.3",
+  "npm-ci": {
+    "exitCode": 0,
+    "seconds": 5.595
+  },
+  "build": {
+    "exitCode": 0,
+    "seconds": 74.525
+  },
+  "selection-composed": {
+    "exitCode": 0,
+    "seconds": 21.103
+  },
+  "nodeTests": {
+    "numTotalTests": 111,
+    "numPassedTests": 111,
+    "numFailedTests": 0,
+    "numPendingTests": 0,
+    "numTotalTestSuites": 9,
+    "success": true
+  },
+  "nodeFailures": [],
+  "sourceAfter": {
+    "unchanged": true,
+    "changed": []
+  },
+  "healthAfter": {
+    "live": {
+      "statusCode": 200,
+      "body": {
+        "status": "ok"
+      }
+    },
+    "ready": {
+      "statusCode": 200,
+      "body": {
+        "status": "ready",
+        "worker": "idle"
+      }
+    }
+  },
+  "servicesAfter": {
+    "telomere-staging.service": "NRestarts=0\nActiveState=active\nSubState=running",
+    "telomere-staging-chain.service": "NRestarts=0\nActiveState=active\nSubState=running",
+    "telomere-staging-watchdog.service": "NRestarts=0\nActiveState=active\nSubState=running"
+  },
+  "success": true,
+  "finishedAt": "2026-10-15T03:53:28.703465+00:00"
+}

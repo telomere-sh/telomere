@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "checkedAtUtc": "2026-10-13T06:29:35.956648+00:00",
+  "scope": "isolated exact committed Vault lifecycle and reputation publisher on private Linux VPS; disposable Anvil/process fixtures",
+  "commit": "62aa017d805ebf354e463bbe37bd9f911b6c674e",
+  "sourceArchiveSha256": "5d188b0aeda1be5e094e02592db0f246c730085ca8f70113ed55cabae8d1956a",
+  "trackedFilesByteMatchedAfterBuildAndTests": 640,
+  "trackedFilesMismatched": [],
+  "normalBuild": "passed",
+  "tests": {
+    "files": 12,
+    "passed": 100,
+    "failed": 0,
+    "skipped": 0,
+    "durationSeconds": 510.84877392578124
+  },
+  "preexistingServicesActiveBefore": 6,
+  "preexistingServicesActiveAfter": 6,
+  "watchdogStateKeys": [
+    "active",
+    "checkedAt",
+    "schemaVersion",
+    "sequence"
+  ],
+  "publicProviderOrChainTestCalls": 0,
+  "liveServiceMutationDuringAcceptance": false
+}

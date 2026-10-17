@@ -1,0 +1,703 @@
+{
+  "schemaVersion": 1,
+  "decision": "PARTIAL_STATIC_PROVENANCE_VERIFIED_NO_ADMISSION",
+  "checkedAt": "2026-10-08T16:44:58.804Z",
+  "approval": "UNAPPROVED",
+  "liveAdmission": false,
+  "providerNetwork": {
+    "nearReportGets": 0,
+    "inferencePosts": 0
+  },
+  "policyChanged": false,
+  "servicesChanged": false,
+  "publicTransactions": 0,
+  "imageLayerDownloads": 0,
+  "sbomDownloads": 0,
+  "downloadedExecutables": 0,
+  "httpBodyLimitBytes": 1048576,
+  "scope": "Two new immutable SGLang image identities and their immediate shared base only; ghost aggregator code, source/build publisher links and latest manager-claimed YAML",
+  "candidate": {
+    "capturedAt": "2026-10-08T14:39:01.712Z",
+    "responseSha256": "878b26db70406b14582ff6fd2b7cf6c9e74996ef145974d7635e806bfeaebd3c",
+    "managerActionIndex": 174,
+    "manifest": {
+      "file": "prod/GLM-5.3-Flash-SGL-TP2x4-W4AFP8-V7-HiCacheOff-r3.yaml",
+      "url": "https://raw.githubusercontent.com/nearai/cvm-compose-files/87b48f1fb122aeb2390b1966c5f07d45e14283ce/prod/GLM-5.3-Flash-SGL-TP2x4-W4AFP8-V7-HiCacheOff-r3.yaml",
+      "status": 200,
+      "bytes": 95539,
+      "sha256": "b13fc8be413e86715c3427d986cc161226f88ea98c79ed7c6cf776a380c8c120"
+    }
+  },
+  "images": [
+    {
+      "image": "docker.io/nearaidev/sglang@sha256:9c6ddd4319c4ab00e351d8650459e68b8830e36ffcc029d67fa5e19d0ac3ed17",
+      "role": "v6 engine and ghost aggregator",
+      "index": {
+        "sha256": "9c6ddd4319c4ab00e351d8650459e68b8830e36ffcc029d67fa5e19d0ac3ed17",
+        "exactDigestMatch": true,
+        "bytes": 857
+      },
+      "linuxManifest": "sha256:d8acc066c0dc4965c25683478ba6ef24a13fbe9e9fe6ba069d944f52ff6fcf39",
+      "config": {
+        "digest": "sha256:dc6c73494b486f04a3963473afa9b73dd1b82c5476ac4822af7f67ded2b29203",
+        "sourceRevision": "678a6b5ee3e4e7b83340f810c76530958eecc499",
+        "sourceRepository": "https://github.com/nearai/cvm-compose-files",
+        "baseDigest": "sha256:3eccc30709f5719c81084d1264f03ca5354b3059ec4cff62f0c5ff88c309680c",
+        "recipe": "docker/sglang-glm53-hicache-w4afp8/Dockerfile",
+        "sglangSourceRevision": "fc91d2403cc210a86bd5fc715c6609f58c932e5a"
+      },
+      "embeddedBuildkit": {
+        "digest": "sha256:f5f50877cdc9396fdd4e297c8b99c9c30e575aad245a200941f1b58ea69d8628",
+        "subject": [
+          {
+            "name": "pkg:docker/nearaidev/sglang@glm53-hicache-w4afp8-v6?platform=linux%2Famd64",
+            "digest": {
+              "sha256": "d8acc066c0dc4965c25683478ba6ef24a13fbe9e9fe6ba069d944f52ff6fcf39"
+            }
+          }
+        ],
+        "builderId": "",
+        "cryptographicPublisherProof": false,
+        "reproducible": false,
+        "completeMaterials": false,
+        "embeddedDockerfileMatchesImmutableSource": true
+      },
+      "githubAttestation": {
+        "apiUrl": "https://api.github.com/repos/nearai/cvm-compose-files/attestations/sha256:9c6ddd4319c4ab00e351d8650459e68b8830e36ffcc029d67fa5e19d0ac3ed17",
+        "subject": [
+          {
+            "name": "docker.io/nearaidev/sglang",
+            "digest": {
+              "sha256": "9c6ddd4319c4ab00e351d8650459e68b8830e36ffcc029d67fa5e19d0ac3ed17"
+            }
+          }
+        ],
+        "predicateType": "https://slsa.dev/provenance/v1",
+        "workflowIdentity": "https://github.com/nearai/cvm-compose-files/.github/workflows/publish-glm53-admission-reserve.yaml@refs/heads/main",
+        "sourceRevision": "678a6b5ee3e4e7b83340f810c76530958eecc499",
+        "runUrl": "https://github.com/nearai/cvm-compose-files/actions/runs/37505271073",
+        "runnerEnvironment": "self-hosted",
+        "verification": {
+          "passed": true,
+          "subjectExactMatch": true,
+          "certificateIdentityURI": "https://github.com/nearai/cvm-compose-files/.github/workflows/publish-glm53-admission-reserve.yaml@refs/heads/main",
+          "certificateIssuer": "https://token.actions.githubusercontent.com",
+          "ctLogThreshold": 1,
+          "tlogThreshold": 1,
+          "verifier": "sigstore@3.1.0 @sigstore/verify@2.1.1",
+          "checkedAt": "2026-10-08T16:35:18.402Z"
+        },
+        "apiResponseSha256": "aab6505400c4fdff268ac92515cbfdd7ce2119cd8aedc8ba5432cf0de235119a",
+        "canonicalBundleJsonSha256": "daf91ec3a274ae6be50ff7a9f6315f0935d984235857ee6bd98dc484983fe3da"
+      },
+      "sourceCheck": {
+        "files": [
+          {
+            "path": "docker/sglang-glm53-hicache-w4afp8/Dockerfile",
+            "url": "https://raw.githubusercontent.com/nearai/cvm-compose-files/678a6b5ee3e4e7b83340f810c76530958eecc499/docker/sglang-glm53-hicache-w4afp8/Dockerfile",
+            "status": 200,
+            "bytes": 5607,
+            "sha256": "7d2eb67434eb2f15641fa313bd062dd1a404fec0669ee70666e80165b5df5cdc"
+          },
+          {
+            "path": "docker/sglang-glm53-hicache-w4afp8/PROVENANCE",
+            "url": "https://raw.githubusercontent.com/nearai/cvm-compose-files/678a6b5ee3e4e7b83340f810c76530958eecc499/docker/sglang-glm53-hicache-w4afp8/PROVENANCE",
+            "status": 200,
+            "bytes": 13812,
+            "sha256": "f7a6822a34feae5aa4b2a11f10f3909c68c0a25d73490cdfbcc1a4849ec18281"
+          },
+          {
+            "path": "docker/sglang-glm53-hicache-w4afp8/SHA256SUMS",
+            "url": "https://raw.githubusercontent.com/nearai/cvm-compose-files/678a6b5ee3e4e7b83340f810c76530958eecc499/docker/sglang-glm53-hicache-w4afp8/SHA256SUMS",
+            "status": 200,
+            "bytes": 1563,
+            "sha256": "99614e8f51cdfa301c60236922285a541d5f12f4264e26b5ef76d4dfc34bb8ed"
+          },
+          {
+            "path": "docker/sglang-glm53-hicache-w4afp8/source-manifest.json",
+            "url": "https://raw.githubusercontent.com/nearai/cvm-compose-files/678a6b5ee3e4e7b83340f810c76530958eecc499/docker/sglang-glm53-hicache-w4afp8/source-manifest.json",
+            "status": 200,
+            "bytes": 3194,
+            "sha256": "9d817fb115226e8ce9ac74165733edaa16aed5710b9f849af16cd9b964f28835"
+          },
+          {
+            "path": "docker/sglang-glm53-hicache-w4afp8/ghost-prefix-cache.diff",
+            "url": "https://raw.githubusercontent.com/nearai/cvm-compose-files/678a6b5ee3e4e7b83340f810c76530958eecc499/docker/sglang-glm53-hicache-w4afp8/ghost-prefix-cache.diff",
+            "status": 200,
+            "bytes": 30803,
+            "sha256": "1423d2dbec36830d7b8cee22d838fc49425e0f787a0ffc911584d8276c7ee209"
+          },
+          {
+            "path": ".github/workflows/publish-glm53-admission-reserve.yaml",
+            "url": "https://raw.githubusercontent.com/nearai/cvm-compose-files/678a6b5ee3e4e7b83340f810c76530958eecc499/.github/workflows/publish-glm53-admission-reserve.yaml",
+            "status": 200,
+            "bytes": 23871,
+            "sha256": "e629214a408b7698fbdc0e51cb08ea828b9fd9003c672afad07bcc73c30ffd85"
+          }
+        ],
+        "embeddedDockerfile": {
+          "sha256": "7d2eb67434eb2f15641fa313bd062dd1a404fec0669ee70666e80165b5df5cdc",
+          "equalsSourceBytes": true
+        },
+        "workflowPinsRecipeFileHashes": true
+      },
+      "githubRunApiObservation": {
+        "runId": "37505271073",
+        "url": "https://api.github.com/repos/nearai/cvm-compose-files/actions/runs/37505271073",
+        "status": 200,
+        "sha256": "5ee853df84a735c22b785070effe0a9ce969cd9087be91701ccf45451f94b055",
+        "headSha": "678a6b5ee3e4e7b83340f810c76530958eecc499",
+        "conclusion": "success",
+        "runStatus": "completed",
+        "path": ".github/workflows/publish-glm53-admission-reserve.yaml",
+        "event": "workflow_dispatch",
+        "createdAt": "2026-10-06T17:39:44Z",
+        "updatedAt": "2026-10-06T18:13:30Z"
+      }
+    },
+    {
+      "image": "docker.io/nearaidev/sglang@sha256:fa730e6e62b2ae8058114ce540487ade33ab93bc42b1179ae78edc92bd563fc5",
+      "role": "v7 engine",
+      "index": {
+        "sha256": "fa730e6e62b2ae8058114ce540487ade33ab93bc42b1179ae78edc92bd563fc5",
+        "exactDigestMatch": true,
+        "bytes": 857
+      },
+      "linuxManifest": "sha256:49ea4cdfec71529827672a00452ed64ddbb0863010e0f3a8f16836c5dbb955dd",
+      "config": {
+        "digest": "sha256:2034aafc43dac503b518c04cb97ba2a8f0f9783f2710f9241fae5c5f27e433c3",
+        "sourceRevision": "29a7db96822caedff38c571dfef8942110702a23",
+        "sourceRepository": "https://github.com/nearai/cvm-compose-files",
+        "baseDigest": "sha256:3eccc30709f5719c81084d1264f03ca5354b3059ec4cff62f0c5ff88c309680c",
+        "recipe": "docker/sglang-glm53-hicache-w4afp8/Dockerfile",
+        "sglangSourceRevision": "fc91d2403cc210a86bd5fc715c6609f58c932e5a"
+      },
+      "embeddedBuildkit": {
+        "digest": "sha256:543b5279765a1b14551a39693860b302e89c941d018c278504629c611519f90a",
+        "subject": [
+          {
+            "name": "pkg:docker/nearaidev/sglang@glm53-hicache-w4afp8-v7?platform=linux%2Famd64",
+            "digest": {
+              "sha256": "49ea4cdfec71529827672a00452ed64ddbb0863010e0f3a8f16836c5dbb955dd"
+            }
+          }
+        ],
+        "builderId": "",
+        "cryptographicPublisherProof": false,
+        "reproducible": false,
+        "completeMaterials": false,
+        "embeddedDockerfileMatchesImmutableSource": true
+      },
+      "githubAttestation": {
+        "apiUrl": "https://api.github.com/repos/nearai/cvm-compose-files/attestations/sha256:fa730e6e62b2ae8058114ce540487ade33ab93bc42b1179ae78edc92bd563fc5",
+        "subject": [
+          {
+            "name": "docker.io/nearaidev/sglang",
+            "digest": {
+              "sha256": "fa730e6e62b2ae8058114ce540487ade33ab93bc42b1179ae78edc92bd563fc5"
+            }
+          }
+        ],
+        "predicateType": "https://slsa.dev/provenance/v1",
+        "workflowIdentity": "https://github.com/nearai/cvm-compose-files/.github/workflows/publish-glm53-admission-reserve.yaml@refs/heads/main",
+        "sourceRevision": "29a7db96822caedff38c571dfef8942110702a23",
+        "runUrl": "https://github.com/nearai/cvm-compose-files/actions/runs/37693106399",
+        "runnerEnvironment": "self-hosted",
+        "verification": {
+          "passed": true,
+          "subjectExactMatch": true,
+          "certificateIdentityURI": "https://github.com/nearai/cvm-compose-files/.github/workflows/publish-glm53-admission-reserve.yaml@refs/heads/main",
+          "certificateIssuer": "https://token.actions.githubusercontent.com",
+          "ctLogThreshold": 1,
+          "tlogThreshold": 1,
+          "verifier": "sigstore@3.1.0 @sigstore/verify@2.1.1",
+          "checkedAt": "2026-10-08T16:35:18.828Z"
+        },
+        "apiResponseSha256": "11fb24f84d9c12f94fe54e171611714880078419f17396da6cc65b8a00444ed1",
+        "canonicalBundleJsonSha256": "8dde37be39fae3a2a115c6a136ad3174a2022a1dd73e82491c1f5c73cca8683d"
+      },
+      "sourceCheck": {
+        "files": [
+          {
+            "path": "docker/sglang-glm53-hicache-w4afp8/Dockerfile",
+            "url": "https://raw.githubusercontent.com/nearai/cvm-compose-files/29a7db96822caedff38c571dfef8942110702a23/docker/sglang-glm53-hicache-w4afp8/Dockerfile",
+            "status": 200,
+            "bytes": 8080,
+            "sha256": "d37994a723948ede1ca33273ff69e1cce43d2b8ea58c6ec7bd3654f0a58d7626"
+          },
+          {
+            "path": "docker/sglang-glm53-hicache-w4afp8/PROVENANCE",
+            "url": "https://raw.githubusercontent.com/nearai/cvm-compose-files/29a7db96822caedff38c571dfef8942110702a23/docker/sglang-glm53-hicache-w4afp8/PROVENANCE",
+            "status": 200,
+            "bytes": 23680,
+            "sha256": "ed4fca19a3f3fe1f20387502cd23e11c2965ad504013add2202efed6c61b3ea7"
+          },
+          {
+            "path": "docker/sglang-glm53-hicache-w4afp8/SHA256SUMS",
+            "url": "https://raw.githubusercontent.com/nearai/cvm-compose-files/29a7db96822caedff38c571dfef8942110702a23/docker/sglang-glm53-hicache-w4afp8/SHA256SUMS",
+            "status": 200,
+            "bytes": 2445,
+            "sha256": "9da1e8b69704a2cbee2e6b92d24e0270436f63627a734f0d89b795200cb18018"
+          },
+          {
+            "path": "docker/sglang-glm53-hicache-w4afp8/source-manifest.json",
+            "url": "https://raw.githubusercontent.com/nearai/cvm-compose-files/29a7db96822caedff38c571dfef8942110702a23/docker/sglang-glm53-hicache-w4afp8/source-manifest.json",
+            "status": 200,
+            "bytes": 5076,
+            "sha256": "9c678c277cad67222c5bdaac22b3355b2b0a390b76e73fa5391df2b17e0524d7"
+          },
+          {
+            "path": "docker/sglang-glm53-hicache-w4afp8/ghost-prefix-cache.diff",
+            "url": "https://raw.githubusercontent.com/nearai/cvm-compose-files/29a7db96822caedff38c571dfef8942110702a23/docker/sglang-glm53-hicache-w4afp8/ghost-prefix-cache.diff",
+            "status": 200,
+            "bytes": 30803,
+            "sha256": "1423d2dbec36830d7b8cee22d838fc49425e0f787a0ffc911584d8276c7ee209"
+          },
+          {
+            "path": ".github/workflows/publish-glm53-admission-reserve.yaml",
+            "url": "https://raw.githubusercontent.com/nearai/cvm-compose-files/29a7db96822caedff38c571dfef8942110702a23/.github/workflows/publish-glm53-admission-reserve.yaml",
+            "status": 200,
+            "bytes": 23871,
+            "sha256": "192b5b62cae61b8eecc82348acdd7ecb9e8634dc8b89f0719cc1d6e8e126f6b0"
+          }
+        ],
+        "embeddedDockerfile": {
+          "sha256": "d37994a723948ede1ca33273ff69e1cce43d2b8ea58c6ec7bd3654f0a58d7626",
+          "equalsSourceBytes": true
+        },
+        "workflowPinsRecipeFileHashes": true
+      },
+      "githubRunApiObservation": {
+        "runId": "37693106399",
+        "url": "https://api.github.com/repos/nearai/cvm-compose-files/actions/runs/37693106399",
+        "status": 200,
+        "sha256": "798e3596926bc84dc8d6a842264792ade056b085c68a98f96d4f069e722058e9",
+        "headSha": "29a7db96822caedff38c571dfef8942110702a23",
+        "conclusion": "success",
+        "runStatus": "completed",
+        "path": ".github/workflows/publish-glm53-admission-reserve.yaml",
+        "event": "workflow_dispatch",
+        "createdAt": "2026-10-07T21:58:38Z",
+        "updatedAt": "2026-10-07T22:24:54Z"
+      }
+    }
+  ],
+  "verification": {
+    "trustedRootArtifacts": [
+      {
+        "file": "root.json",
+        "bytes": 5630,
+        "sha256": "73747011d0857ada15479a16c4cae0f3ed03aac698b523b97e1de314ac9d9ca8",
+        "signedVersion": 15,
+        "signedExpiry": "2026-11-20T13:58:18Z"
+      },
+      {
+        "file": "snapshot.json",
+        "bytes": 1760,
+        "sha256": "6d61405faa993ba3d07556b79d1e319627cdc06ff879a7b5700967dc25d1d224",
+        "signedVersion": 166,
+        "signedExpiry": "2036-10-04T08:51:19Z"
+      },
+      {
+        "file": "registry.npmjs.org%2Fkeys.json",
+        "bytes": 2121,
+        "sha256": "160677eb6e1c7083c89b166b20f8fe4e837fb71181506aff1991b80b89184f7d"
+      },
+      {
+        "file": "trusted_root.json",
+        "bytes": 6787,
+        "sha256": "6494e21ea73fa7ee769f85f57d5a3e6a08725eae1e38c755fc3517c9e6bc0b66"
+      },
+      {
+        "file": "targets.json",
+        "bytes": 4942,
+        "sha256": "6a697f7f8908c8ab26c11786ecb490b54acec97fa8c802e399f065f8a0cc1acd",
+        "signedVersion": 14,
+        "signedExpiry": "2036-05-09T09:00:52Z"
+      },
+      {
+        "file": "timestamp.json",
+        "bytes": 451,
+        "sha256": "8b6d6bd7231d36c370393e471db113a93080cb8bccf77837dd1966f0fc771bb1",
+        "signedVersion": 803,
+        "signedExpiry": "2026-10-15T13:34:09Z"
+      }
+    ],
+    "negativeChecks": [
+      {
+        "digest": "9c6ddd4319c4ab00e351d8650459e68b8830e36ffcc029d67fa5e19d0ac3ed17",
+        "test": "changed_statement",
+        "rejected": true,
+        "errorCode": "TLOG_BODY_ERROR",
+        "errorName": "VerificationError"
+      },
+      {
+        "digest": "9c6ddd4319c4ab00e351d8650459e68b8830e36ffcc029d67fa5e19d0ac3ed17",
+        "test": "changed_signature",
+        "rejected": true,
+        "errorCode": "TLOG_BODY_ERROR",
+        "errorName": "VerificationError"
+      },
+      {
+        "digest": "9c6ddd4319c4ab00e351d8650459e68b8830e36ffcc029d67fa5e19d0ac3ed17",
+        "test": "unapproved_workflow_identity",
+        "rejected": true,
+        "errorCode": "UNTRUSTED_SIGNER_ERROR",
+        "errorName": "PolicyError"
+      },
+      {
+        "digest": "fa730e6e62b2ae8058114ce540487ade33ab93bc42b1179ae78edc92bd563fc5",
+        "test": "changed_statement",
+        "rejected": true,
+        "errorCode": "TLOG_BODY_ERROR",
+        "errorName": "VerificationError"
+      },
+      {
+        "digest": "fa730e6e62b2ae8058114ce540487ade33ab93bc42b1179ae78edc92bd563fc5",
+        "test": "changed_signature",
+        "rejected": true,
+        "errorCode": "TLOG_BODY_ERROR",
+        "errorName": "VerificationError"
+      },
+      {
+        "digest": "fa730e6e62b2ae8058114ce540487ade33ab93bc42b1179ae78edc92bd563fc5",
+        "test": "unapproved_workflow_identity",
+        "rejected": true,
+        "errorCode": "UNTRUSTED_SIGNER_ERROR",
+        "errorName": "PolicyError"
+      }
+    ],
+    "expectedIdentitySelection": "Explicit review comparison against the immutable publishing workflow; this creates no accepted runtime policy"
+  },
+  "latestYaml": {
+    "parser": "PyYAML 6.0.3 safe_load (merge keys resolved, environment interpolation not applied)",
+    "environmentOverridesResolved": false,
+    "actualRunningContainerIdsObserved": false,
+    "services": [
+      {
+        "name": "model-sg-glm53-w4afp8-tp2-r1",
+        "image": "docker.io/nearaidev/sglang@sha256:9c6ddd4319c4ab00e351d8650459e68b8830e36ffcc029d67fa5e19d0ac3ed17",
+        "flags": {
+          "mem-fraction-static": "0.86",
+          "max-running-requests": "48",
+          "max-queued-requests": "8",
+          "prefill-decode-interval": "2",
+          "cuda-graph-max-bs-decode": "48",
+          "dsa-prefill-backend": "tilelang",
+          "dsa-decode-backend": "tilelang",
+          "kv-cache-dtype": "bfloat16",
+          "max-mamba-cache-size": "330",
+          "mamba-ssm-dtype": "bfloat16",
+          "enable-hierarchical-cache": true,
+          "disable-overlap-schedule": false
+        },
+        "environment": [
+          "SGLANG_ENABLE_HEALTH_ENDPOINT_GENERATION=0",
+          "SGLANG_CHUNKED_PREFILL_ADMISSION_RESERVE=4096",
+          "SGLANG_ADMISSION_RESERVE_MAX_FRACTION=0.75",
+          "SGLANG_ENABLE_STRICT_MEM_CHECK_DURING_IDLE=1",
+          "SGLANG_HICACHE_RAM_BUDGET=${GLM53_HICACHE_RAM_BUDGET:-325GiB}",
+          "SGLANG_HICACHE_CUDA_HOST_MEMORY=${GLM53_HICACHE_CUDA_HOST_MEMORY:-1}",
+          "SGLANG_HICACHE_POOLED_TRANSFERS=1",
+          "SGLANG_HICACHE_STAGING_PAGES=64",
+          "SGLANG_DSA_INDEXER_QSPLIT=1",
+          "SGLANG_GHOST_CACHE=1",
+          "SGLANG_GHOST_CACHE_SAMPLE=16",
+          "SGLANG_GHOST_CACHE_KEY_FILE=/ghost/key",
+          "SGLANG_GHOST_CACHE_SOCKET=/ghost/aggregator.sock",
+          "SGLANG_GHOST_CACHE_REPLICA=r1",
+          "SGLANG_KV_TIER_METRICS=1"
+        ],
+        "ghostMount": true,
+        "publishedPorts": []
+      },
+      {
+        "name": "model-sg-glm53-w4afp8-tp2-r2",
+        "image": "docker.io/nearaidev/sglang@sha256:9c6ddd4319c4ab00e351d8650459e68b8830e36ffcc029d67fa5e19d0ac3ed17",
+        "flags": {
+          "mem-fraction-static": "0.86",
+          "max-running-requests": "48",
+          "max-queued-requests": "8",
+          "prefill-decode-interval": "2",
+          "cuda-graph-max-bs-decode": "48",
+          "dsa-prefill-backend": "tilelang",
+          "dsa-decode-backend": "tilelang",
+          "kv-cache-dtype": "bfloat16",
+          "max-mamba-cache-size": "330",
+          "mamba-ssm-dtype": "bfloat16",
+          "enable-hierarchical-cache": true,
+          "disable-overlap-schedule": false
+        },
+        "environment": [
+          "SGLANG_ENABLE_HEALTH_ENDPOINT_GENERATION=0",
+          "SGLANG_CHUNKED_PREFILL_ADMISSION_RESERVE=4096",
+          "SGLANG_ADMISSION_RESERVE_MAX_FRACTION=0.75",
+          "SGLANG_ENABLE_STRICT_MEM_CHECK_DURING_IDLE=1",
+          "SGLANG_HICACHE_RAM_BUDGET=${GLM53_HICACHE_RAM_BUDGET:-325GiB}",
+          "SGLANG_HICACHE_CUDA_HOST_MEMORY=${GLM53_HICACHE_CUDA_HOST_MEMORY:-1}",
+          "SGLANG_HICACHE_POOLED_TRANSFERS=1",
+          "SGLANG_HICACHE_STAGING_PAGES=64",
+          "SGLANG_DSA_INDEXER_QSPLIT=1",
+          "SGLANG_GHOST_CACHE=1",
+          "SGLANG_GHOST_CACHE_SAMPLE=16",
+          "SGLANG_GHOST_CACHE_KEY_FILE=/ghost/key",
+          "SGLANG_GHOST_CACHE_SOCKET=/ghost/aggregator.sock",
+          "SGLANG_GHOST_CACHE_REPLICA=r2",
+          "SGLANG_KV_TIER_METRICS=1"
+        ],
+        "ghostMount": true,
+        "publishedPorts": []
+      },
+      {
+        "name": "model-sg-glm53-w4afp8-tp2-r3",
+        "image": "docker.io/nearaidev/sglang@sha256:fa730e6e62b2ae8058114ce540487ade33ab93bc42b1179ae78edc92bd563fc5",
+        "flags": {
+          "mem-fraction-static": "0.86",
+          "max-running-requests": "64",
+          "max-queued-requests": "8",
+          "prefill-decode-interval": "2",
+          "cuda-graph-max-bs-decode": "64",
+          "dsa-prefill-backend": "flashmla_kv",
+          "dsa-decode-backend": "flashmla_kv",
+          "kv-cache-dtype": "fp8_e4m3",
+          "max-mamba-cache-size": "380",
+          "mamba-ssm-dtype": "bfloat16",
+          "enable-hierarchical-cache": false,
+          "disable-overlap-schedule": true
+        },
+        "environment": [
+          "SGLANG_ENABLE_HEALTH_ENDPOINT_GENERATION=0",
+          "SGLANG_CHUNKED_PREFILL_ADMISSION_RESERVE=4096",
+          "SGLANG_ADMISSION_RESERVE_MAX_FRACTION=0.75",
+          "SGLANG_ENABLE_STRICT_MEM_CHECK_DURING_IDLE=1",
+          "SGLANG_HICACHE_RAM_BUDGET=${GLM53_HICACHE_RAM_BUDGET:-325GiB}",
+          "SGLANG_HICACHE_CUDA_HOST_MEMORY=${GLM53_HICACHE_CUDA_HOST_MEMORY:-1}",
+          "SGLANG_HICACHE_POOLED_TRANSFERS=1",
+          "SGLANG_HICACHE_STAGING_PAGES=64",
+          "SGLANG_DSA_INDEXER_QSPLIT=1",
+          "SGLANG_GHOST_CACHE=1",
+          "SGLANG_GHOST_CACHE_SAMPLE=16",
+          "SGLANG_GHOST_CACHE_KEY_FILE=/ghost/key",
+          "SGLANG_GHOST_CACHE_SOCKET=/ghost/aggregator.sock",
+          "SGLANG_GHOST_CACHE_REPLICA=r3",
+          "SGLANG_KV_TIER_METRICS=1",
+          "SGLANG_PREPROCESS_WORKERS=4",
+          "SGLANG_PREPROCESS_TIMEOUT_S=60",
+          "SGLANG_PREPROCESS_LOG_SLOW_S=5",
+          "SGLANG_TOOL_SCHEMA_MAX_DEPTH=32",
+          "SGLANG_TOOL_SCHEMA_MAX_NODES=25000",
+          "NEAR_SELF_PROFILE=1",
+          "NEAR_SELF_PROFILE_AFTER_S=900",
+          "NEAR_SELF_PROFILE_STEPS=50"
+        ],
+        "ghostMount": true,
+        "publishedPorts": []
+      },
+      {
+        "name": "model-sg-glm53-w4afp8-tp2-r4",
+        "image": "docker.io/nearaidev/sglang@sha256:fa730e6e62b2ae8058114ce540487ade33ab93bc42b1179ae78edc92bd563fc5",
+        "flags": {
+          "mem-fraction-static": "0.86",
+          "max-running-requests": "64",
+          "max-queued-requests": "8",
+          "prefill-decode-interval": "2",
+          "cuda-graph-max-bs-decode": "64",
+          "dsa-prefill-backend": "flashmla_kv",
+          "dsa-decode-backend": "flashmla_kv",
+          "kv-cache-dtype": "fp8_e4m3",
+          "max-mamba-cache-size": "380",
+          "mamba-ssm-dtype": "bfloat16",
+          "enable-hierarchical-cache": true,
+          "disable-overlap-schedule": true
+        },
+        "environment": [
+          "SGLANG_ENABLE_HEALTH_ENDPOINT_GENERATION=0",
+          "SGLANG_CHUNKED_PREFILL_ADMISSION_RESERVE=4096",
+          "SGLANG_ADMISSION_RESERVE_MAX_FRACTION=0.75",
+          "SGLANG_ENABLE_STRICT_MEM_CHECK_DURING_IDLE=1",
+          "SGLANG_HICACHE_RAM_BUDGET=${GLM53_HICACHE_RAM_BUDGET:-325GiB}",
+          "SGLANG_HICACHE_CUDA_HOST_MEMORY=${GLM53_HICACHE_CUDA_HOST_MEMORY:-1}",
+          "SGLANG_HICACHE_POOLED_TRANSFERS=1",
+          "SGLANG_HICACHE_STAGING_PAGES=64",
+          "SGLANG_DSA_INDEXER_QSPLIT=1",
+          "SGLANG_GHOST_CACHE=1",
+          "SGLANG_GHOST_CACHE_SAMPLE=16",
+          "SGLANG_GHOST_CACHE_KEY_FILE=/ghost/key",
+          "SGLANG_GHOST_CACHE_SOCKET=/ghost/aggregator.sock",
+          "SGLANG_GHOST_CACHE_REPLICA=r4",
+          "SGLANG_KV_TIER_METRICS=1",
+          "SGLANG_PREPROCESS_WORKERS=4",
+          "SGLANG_PREPROCESS_TIMEOUT_S=60",
+          "SGLANG_PREPROCESS_LOG_SLOW_S=5",
+          "SGLANG_TOOL_SCHEMA_MAX_DEPTH=32",
+          "SGLANG_TOOL_SCHEMA_MAX_NODES=25000",
+          "NEAR_SELF_PROFILE=1",
+          "NEAR_SELF_PROFILE_AFTER_S=900",
+          "NEAR_SELF_PROFILE_STEPS=50"
+        ],
+        "ghostMount": true,
+        "publishedPorts": []
+      },
+      {
+        "name": "glm53-ghost-aggregator",
+        "image": "docker.io/nearaidev/sglang@sha256:9c6ddd4319c4ab00e351d8650459e68b8830e36ffcc029d67fa5e19d0ac3ed17",
+        "flags": {},
+        "environment": [],
+        "ghostMount": true,
+        "publishedPorts": []
+      }
+    ],
+    "ghostVolume": {
+      "driver": "local",
+      "driver_opts": {
+        "type": "tmpfs",
+        "device": "tmpfs",
+        "o": "size=1m,mode=0700"
+      }
+    }
+  },
+  "ghostSourceReview": {
+    "patchSha256": "1423d2dbec36830d7b8cee22d838fc49425e0f787a0ffc911584d8276c7ee209",
+    "samePatchBytesAtV6AndV7Source": true,
+    "pageTokens": 64,
+    "digestBytes": 16,
+    "keyBytes": 32,
+    "hash": "keyed chained BLAKE2b",
+    "sample": 16,
+    "transport": "local AF_UNIX SOCK_DGRAM",
+    "rawTokenIdsSentToAggregator": false,
+    "transientPromptAndOutputTokenCopiesInBoundedEngineQueue": true,
+    "queueDefaultRequests": 256,
+    "enginePageDigestLimit": 1000000,
+    "aggregatorDefaultPageDigestLimit": 4000000,
+    "sharedKeyFileMode": "0600",
+    "volume": "tmpfs mode 0700",
+    "exposure": "Aggregate Prometheus counters; cross-replica keyed prefix equality and reuse statistics inside the CVM",
+    "functionalTestsRun": false,
+    "lastProcessedTokenCopiesRemainThreadLocalsWhileWaitingForNextRequest": true,
+    "tokenCopyClearingObserved": false
+  },
+  "remainingGaps": [
+    {
+      "code": "GATEWAY_TCB_OUT_OF_DATE",
+      "detail": "Independently appraised historical Gateway platform remains OutOfDate with four advisories; image provenance does not override it."
+    },
+    {
+      "code": "POLICY_EXPIRED_WORKLOAD_UNAPPROVED",
+      "detail": "No separately accepted bounded current workload policy or fresh live exact-profile admission exists."
+    },
+    {
+      "code": "REMAINING_IMAGE_AND_BASE_CHAIN_REVIEW",
+      "detail": "Publisher links verified for the two new image indexes and their immediate shared base. The deeper base 01f44c79 and every Gateway/model/control-plane/history image were not recursively verified."
+    },
+    {
+      "code": "HISTORICAL_MUTABLE_DCGM_IDENTITY",
+      "detail": "Action 138 used a mutable DCGM tag; today registry state cannot establish its historical resolved image digest or execution."
+    },
+    {
+      "code": "RUNTIME_SCOPE_MODEL_WEIGHTS",
+      "detail": "Measured manager action plus matched YAML does not reveal successful scoped deployment, resolved environment overrides, actual current container image IDs or exact cached model-weight bytes."
+    },
+    {
+      "code": "FUNCTIONAL_NUMERICAL_ACCEPTANCE",
+      "detail": "FP8 KV/FlashMLA, concurrency, scheduler, HiCache-off r3, process-pool/tool-schema limits and enabled self-profiler need independent functional/quality/TEE acceptance."
+    },
+    {
+      "code": "REQUEST_INSTANCE_BINDING",
+      "detail": "Shared model key and incomplete Gateway/model/response binding remain; neither image publisher evidence nor hardware appraisal proves which candidate served a completion."
+    }
+  ],
+  "rawNearEvidenceIncluded": false,
+  "immediateSharedBaseReview": {
+    "image": "docker.io/nearaidev/sglang@sha256:3eccc30709f5719c81084d1264f03ca5354b3059ec4cff62f0c5ff88c309680c",
+    "checkedAt": "2026-10-08T16:43:45.907Z",
+    "indexExactMatch": true,
+    "indexBytes": 857,
+    "linuxManifest": "sha256:89d5631938ceecb94e8237aeafeadcb4b8d484c9dd30bece06df09d0154c9c12",
+    "configDigest": "sha256:548ebdcdb0db537a0c6e3fe94e958a1388417d3dcab5fdffda15352d896d9839",
+    "sourceRevision": "0244bab81cc0ec42f0aa24d5de57b804650c9cfa",
+    "sourceRepository": "https://github.com/nearai/cvm-compose-files",
+    "recipe": "docker/sglang-glm53-hicache-admission-reserve/Dockerfile",
+    "baseDigestBeyondThisReview": "sha256:01f44c790d43b3eae136f5f3bc930599947bd37fcea081d2dbd3271ff4fc3f8a",
+    "embeddedProvenance": {
+      "digest": "sha256:b26ee14a5c66b91ef1b60bf92b14d41adf16435aa74d8b9c83d53198a6092188",
+      "subject": [
+        {
+          "name": "pkg:docker/nearaidev/sglang@glm53-hicache-admission-reserve-v10?platform=linux%2Famd64",
+          "digest": {
+            "sha256": "89d5631938ceecb94e8237aeafeadcb4b8d484c9dd30bece06df09d0154c9c12"
+          }
+        }
+      ],
+      "builderId": "",
+      "reproducible": false,
+      "completeMaterials": false
+    },
+    "githubAttestation": {
+      "url": "https://api.github.com/repos/nearai/cvm-compose-files/attestations/sha256:3eccc30709f5719c81084d1264f03ca5354b3059ec4cff62f0c5ff88c309680c?per_page=10",
+      "status": 200,
+      "bytes": 11897,
+      "apiResponseSha256": "487d87d9cc16b70be7742c78ee460d33175fd8dbbdb7fe71b7891dc6aa4fe406",
+      "bundleCount": 1,
+      "subject": [
+        {
+          "name": "docker.io/nearaidev/sglang",
+          "digest": {
+            "sha256": "3eccc30709f5719c81084d1264f03ca5354b3059ec4cff62f0c5ff88c309680c"
+          }
+        }
+      ],
+      "predicateType": "https://slsa.dev/provenance/v1",
+      "workflowIdentity": "https://github.com/nearai/cvm-compose-files/.github/workflows/publish-glm53-admission-reserve.yaml@refs/heads/main",
+      "sourceRevision": "0244bab81cc0ec42f0aa24d5de57b804650c9cfa",
+      "runUrl": "https://github.com/nearai/cvm-compose-files/actions/runs/35253564994/attempts/1",
+      "runnerEnvironment": "self-hosted",
+      "canonicalBundleJsonSha256": "8f2e32751ceae54d3b1cd4d5656661a292ae552efe81966812c5c234cdc92f50",
+      "verification": {
+        "passed": true,
+        "subjectExactMatch": true,
+        "certificateIdentityURI": "https://github.com/nearai/cvm-compose-files/.github/workflows/publish-glm53-admission-reserve.yaml@refs/heads/main",
+        "certificateIssuer": "https://token.actions.githubusercontent.com",
+        "ctLogThreshold": 1,
+        "tlogThreshold": 1,
+        "verifier": "sigstore@3.1.0 @sigstore/verify@2.1.1",
+        "trustedRootSource": "Previously TUF-verified current local cache"
+      }
+    },
+    "sourceCheck": {
+      "files": [
+        {
+          "path": "docker/sglang-glm53-hicache-admission-reserve/Dockerfile",
+          "url": "https://raw.githubusercontent.com/nearai/cvm-compose-files/0244bab81cc0ec42f0aa24d5de57b804650c9cfa/docker/sglang-glm53-hicache-admission-reserve/Dockerfile",
+          "bytes": 1891,
+          "sha256": "60ef2a36afad8582f1fb93a86aba620878bbc204c94ec41f6d56ff942368d12d"
+        },
+        {
+          "path": "docker/sglang-glm53-hicache-admission-reserve/PROVENANCE",
+          "url": "https://raw.githubusercontent.com/nearai/cvm-compose-files/0244bab81cc0ec42f0aa24d5de57b804650c9cfa/docker/sglang-glm53-hicache-admission-reserve/PROVENANCE",
+          "bytes": 931,
+          "sha256": "dc9422da220cd68306218182eaafaea04148f27acbfddd6f02eba5917ce01ffc"
+        },
+        {
+          "path": "docker/sglang-glm53-hicache-admission-reserve/SHA256SUMS",
+          "url": "https://raw.githubusercontent.com/nearai/cvm-compose-files/0244bab81cc0ec42f0aa24d5de57b804650c9cfa/docker/sglang-glm53-hicache-admission-reserve/SHA256SUMS",
+          "bytes": 418,
+          "sha256": "56f51d583d52cce64c33121b99cfb751f22bc6db35d530aed60f376948c0a487"
+        }
+      ],
+      "embeddedDockerfileMatchesImmutableSource": true
+    },
+    "negativeChecks": [
+      {
+        "test": "changed_statement",
+        "rejected": true,
+        "errorCode": "TLOG_BODY_ERROR"
+      },
+      {
+        "test": "changed_signature",
+        "rejected": true,
+        "errorCode": "TLOG_BODY_ERROR"
+      }
+    ]
+  }
+}

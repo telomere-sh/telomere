@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "image": "node@sha256:0a7108bf6c7bf5de370ffb1a3ed6be93d405b43ff159f681a8d18c0e2bc2e402",
+  "runtime": "runsc",
+  "network": "none",
+  "readOnlyRoot": true,
+  "user": "10001:10001",
+  "memoryBytes": 268435456,
+  "pidsLimit": 64,
+  "outputSha256": "4b6d72644501ebb7ebc6c974acdfebaae2c368af88e95fca564063f9e1fcb65d",
+  "publicTransactionsSent": 0,
+  "controllerStarted": false,
+  "ownedSmokeContainerRemoved": true
+}

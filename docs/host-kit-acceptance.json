@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "observedAt": "2026-10-09T15:20:14.293Z",
+  "isolation": "gvisor",
+  "runId": "0xf18c4c7ee85aea6545ae030d1a63ea576d1fc86a1a364fc15998e133ff8fdb95",
+  "image": "node@sha256:0a7108bf6c7bf5de370ffb1a3ed6be93d405b43ff159f681a8d18c0e2bc2e402",
+  "ticks": 4,
+  "acknowledgements": 4,
+  "billableSeconds": 9,
+  "outputMatched": true,
+  "privateKeysIncluded": false,
+  "publicTransactions": 0,
+  "paidProviderRequests": 0
+}

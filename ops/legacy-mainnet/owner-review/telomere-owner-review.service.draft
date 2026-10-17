@@ -1,0 +1,40 @@
+[Unit]
+Description=Telomere owner wallet review only, no controller activation
+After=network-online.target
+Wants=network-online.target
+ConditionPathIsDirectory=/opt/telomere-mainnet-pilot/operator-wallet
+
+[Service]
+Type=simple
+DynamicUser=true
+User=telomere-owner-review
+SupplementaryGroups=telomere-mainnet
+WorkingDirectory=/opt/telomere-mainnet-pilot/operator-wallet
+ExecStart=/bin/sh /opt/telomere-mainnet-pilot/operator-wallet/run-review.sh
+Restart=no
+TimeoutStartSec=60
+TimeoutStopSec=15
+KillMode=control-group
+CPUQuota=100%
+MemoryMax=512M
+TasksMax=64
+NoNewPrivileges=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectSystem=strict
+ProtectHome=true
+ProtectProc=invisible
+ProcSubset=pid
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+LockPersonality=true
+CapabilityBoundingSet=
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+InaccessiblePaths=/opt/telomere-mainnet-pilot/private /opt/telomere-mainnet-pilot/data -/opt/telomere-pilot -/run/telomere-mainnet-docker -/var/run/docker.sock -/run/docker.sock
+UMask=0077
+
+# Manual, separately reviewed installation/start only. No [Install] section.
+# No EnvironmentFile, signing key, database, Docker or controller dependency.
+# run-review.sh clears its environment and binds the helper to 127.0.0.1:3283.

@@ -1,0 +1,1050 @@
+openapi: 3.0.1
+info:
+  title: Yagna Activity API
+  version: 1.7.0
+  description: '
+      The Activity API can be perceived as controls which a Requestor-side application
+      has to steer the execution of an Activity as specified in an Agreement which
+      has been negotiated via the Market API/Protocol. This defines possible interactions
+      between the Requestor application (via Activity API) and the generic components
+      running on the Provider node, which host the Provider-side application code.
+
+      The possible interactions imply a logical “execution environment” component, which
+      is the host/container for the “payload” code. The “execution environment” is specified
+      as an ExeUnit, with a generic interface via which a Provider node’s Activity Controller
+      can operate the hosted code.
+
+      It conforms with capability level 1 of the [Activity API specification]
+      (https://golem-network.gitbook.io/golem-internal-documentation-test/golem-activity-protocol/golem-activity-api).
+  '
+
+servers:
+  - url: /activity-api/v1
+
+security:
+  - app_key: [ ]
+
+tags:
+  - name: requestor_control
+    description: Requestor Part (Control)
+  - name: requestor_state
+    description: Requestor Part (State)
+  - name: provider
+    description: Provider Part
+
+paths:
+
+  /activity:
+
+    post:
+      tags:
+        - requestor_control
+      summary: Creates new Activity based on given Agreement.
+      description: '**Note:** This call shall get routed as a provider event (see
+        ProviderEvent structure).'
+      operationId: createActivity
+      parameters:
+        - $ref: 'common.yaml#/parameters/ackTimeout'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - type: string
+                - $ref: '#/components/schemas/CreateActivityRequest'
+        required: true
+      responses:
+        201:
+          description: Success
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: string
+                  - $ref: '#/components/schemas/CreateActivityResult'
+        400:
+          $ref: 'common.yaml#/responses/BadRequest'
+        403:
+          $ref: 'common.yaml#/responses/Forbidden'
+        404:
+          $ref: 'common.yaml#/responses/NotFound'
+        500:
+          $ref: 'common.yaml#/responses/ServerError'
+
+      x-codegen-request-body-name: agreementId
+
+  /activity/{activityId}/exec:
+
+    post:
+      tags:
+        - requestor_control
+      summary: Executes an ExeScript batch within a given Activity.
+      description: '**Note:** This call shall get routed directly to ExeUnit.'
+      operationId: exec
+      parameters:
+        - name: activityId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExeScriptRequest'
+        required: true
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: string
+                example: '"batchId"'
+        400:
+          $ref: 'common.yaml#/responses/BadRequest'
+        403:
+          $ref: 'common.yaml#/responses/Forbidden'
+        404:
+          $ref: 'common.yaml#/responses/NotFound'
+        500:
+          $ref: 'common.yaml#/responses/ServerError'
+      x-codegen-request-body-name: script
+
+  /activity/{activityId}/encrypted:
+    post:
+      tags:
+        - requestor_control
+      summary: Sends encrypted command to secure exe-unit.
+      operationId: callEncrypted
+      requestBody:
+        required: true
+        content:
+          application/octet-stream:
+            schema:
+              type: string
+              format: binary
+      parameters:
+        - name: activityId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Success
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+        404:
+          $ref: 'common.yaml#/responses/NotFound'
+        500:
+          $ref: 'common.yaml#/responses/ServerError'
+
+  /activity/{activityId}/exec/{batchId}:
+    get:
+      tags:
+        - requestor_control
+      summary: Queries for ExeScript batch results.
+      description: >
+        'This call shall collect ExeScriptCommand result objects
+        received directly from ExeUnit (via the long polling pattern).
+        **Note:** two formats of response are specified (as indicated by the Accept header):
+          - application/json - standard JSON response, specified below, as code generators handle it properly.
+          - text/event-stream - an EventSource implementation (as per https://www.w3.org/TR/eventsource/).
+            This isn't explicitly specified as code generators generally are unable to handle this.
+            The streaming events adhere to following format:
+
+              event: runtime
+              data: <RuntimeEvent structure>
+
+            This streaming endpoint requires dedicated implementation. '
+      operationId: getExecBatchResults
+      parameters:
+        - name: activityId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: batchId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: commandIndex
+          description: >
+            Wait until command with the specified index finishes. Must be accompanied by a valid "pollTimeout" query parameter.
+          required: false
+          in: query
+          schema:
+            type: number
+            format: integer
+            minimum: 0
+        - $ref: 'common.yaml#/parameters/pollTimeout'
+      responses:
+        200:
+          description: Success
+          content:
+            application/json: # standard JSON response
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ExeScriptCommandResult'
+            # text/event-stream: # an EventSource implementation (as per https://www.w3.org/TR/eventsource/),
+            #                      not explicitly specified in YAML.
+        400:
+          $ref: 'common.yaml#/responses/BadRequest'
+        403:
+          $ref: 'common.yaml#/responses/Forbidden'
+        404:
+          $ref: 'common.yaml#/responses/NotFound'
+        500:
+          $ref: 'common.yaml#/responses/ServerError'
+
+  /activity/{activityId}/agreement:
+    get:
+      tags:
+        - provider
+        - requestor_state
+      summary: Returns agreement_id corresponding to the activity
+      description: >
+        'This call shall return id of the agreement that lead to the creation of this activity'
+      operationId: getActivityAgreement
+      parameters:
+        - name: activityId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Agreement.
+          content:
+            application/json:
+              schema:
+                type: string
+                description: Agreement Id
+        400:
+          $ref: 'common.yaml#/responses/BadRequest'
+        403:
+          $ref: 'common.yaml#/responses/Forbidden'
+        404:
+          $ref: 'common.yaml#/responses/NotFound'
+        500:
+          $ref: 'common.yaml#/responses/ServerError'
+
+  /activity/{activityId}:
+
+    delete:
+      tags:
+        - requestor_control
+      summary: Destroys given Activity.
+      description: '**Note:** This call shall get routed as a provider event (see
+        ProviderEvent structure).'
+      operationId: DestroyActivity
+      parameters:
+        - name: activityId
+          in: path
+          required: true
+          schema:
+            type: string
+        - $ref: 'common.yaml#/parameters/ackTimeout'
+      responses:
+        200:
+          description: Success
+          content: { }
+        403:
+          $ref: 'common.yaml#/responses/Forbidden'
+        404:
+          $ref: 'common.yaml#/responses/NotFound'
+        500:
+          $ref: 'common.yaml#/responses/ServerError'
+
+  /events:
+    get:
+      tags:
+        - provider
+      summary: Fetch Requestor command events.
+      operationId: CollectActivityEvents
+      parameters:
+        - $ref: 'common.yaml#/parameters/appSessionId'
+        - $ref: 'common.yaml#/parameters/afterTimestamp'
+        - $ref: 'common.yaml#/parameters/pollTimeout'
+        - $ref: 'common.yaml#/parameters/maxEvents'
+
+      responses:
+        200:
+          $ref: '#/components/responses/ProviderEventList'
+        403:
+          $ref: 'common.yaml#/responses/Forbidden'
+        500:
+          $ref: 'common.yaml#/responses/ServerError'
+
+  /activity/{activityId}/state:
+
+    get:
+      tags:
+        - provider
+        - requestor_state
+      summary: Get state of specified Activity.
+      operationId: GetActivityState
+      parameters:
+        - name: activityId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActivityState'
+        404:
+          $ref: 'common.yaml#/responses/NotFound'
+        500:
+          $ref: 'common.yaml#/responses/ServerError'
+
+    put:
+      tags:
+        - provider
+      summary: Set state of specified Activity.
+      operationId: SetActivityState
+      parameters:
+        - name: activityId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ActivityState'
+        required: true
+      responses:
+        200:
+          description: Success
+          content: { }
+        404:
+          $ref: 'common.yaml#/responses/NotFound'
+        500:
+          $ref: 'common.yaml#/responses/ServerError'
+
+  /activity/{activityId}/usage:
+
+    get:
+      tags:
+        - provider
+        - requestor_state
+      summary: Get usage of specified Activity.
+      operationId: GetActivityUsage
+      parameters:
+        - name: activityId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActivityUsage'
+        404:
+          $ref: 'common.yaml#/responses/NotFound'
+        500:
+          $ref: 'common.yaml#/responses/ServerError'
+
+  /activity/{activityId}/command:
+
+    get:
+      tags:
+        - requestor_state
+      summary: Get running commands for a specified Activity.
+      description: '**Note:** This call shall get routed directly to ExeUnit.'
+      operationId: GetRunningCommand
+      parameters:
+        - name: activityId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          $ref: '#/components/responses/ExeScriptCommandStateList'
+        404:
+          $ref: 'common.yaml#/responses/NotFound'
+        500:
+          $ref: 'common.yaml#/responses/ServerError'
+
+
+components:
+  securitySchemes:
+    app_key:
+      $ref: 'common.yaml#/components/securitySchemes/app_key'
+
+  responses:
+    ExeScriptCommandStateList:
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExeScriptCommandState'
+
+    ProviderEventList:
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ProviderEvent'
+
+  schemas:
+    CreateActivityRequest:
+      type: object
+      required:
+        - agreementId
+      properties:
+        agreementId:
+          type: string
+        requestorPubKey:
+          type: string
+
+    CreateActivityResult:
+      type: object
+      required:
+        - activityId
+      properties:
+        activityId:
+          type: string
+        credentials:
+          $ref: '#/components/schemas/Credentials'
+
+    Credentials:
+      type: object
+      required:
+        - sgx
+      properties:
+        sgx:
+          $ref: '#/components/schemas/SgxCredentials'
+
+    SgxCredentials:
+      type: object
+      required:
+        - enclavePubKey
+        - requestorPubKey
+        - payloadHash
+        - iasReport
+        - iasSig
+      properties:
+        enclavePubKey:
+          type: string
+          format: hex
+        requestorPubKey:
+          type: string
+          format: hex
+        payloadHash:
+          type: string
+        iasReport:
+          type: string
+        iasSig:
+          type: string
+          format: hex
+
+    ExeScriptRequest:
+      required:
+        - text
+      type: object
+      properties:
+        text:
+          type: string
+
+    # ExeScript structures
+
+
+    ExeScriptCommand:
+      description: '
+        The specification of ExeScript commands format as per Activity API specification.
+        Including TRANSFER command syntax extension described in
+        [this specification](https://github.com/golemfactory/golem-architecture/blob/master/GIPS/GIP-PR0001-multifile-transfer.md).
+
+        ## Implementation Notes
+
+        The schemas have been defined to accept a following format of JSON command collections:
+
+        ```
+        [
+        {
+            "deploy": {
+              "net": [{ "id": "id", "ip": "10.0.0.2", "mask": "255.255.0.0" }],
+              "hosts": {"master": "10.0.0.1"},
+              "nodes": {"10.0.0.1": "0xdeadbeef"},
+              "volumes": {"/": { "storage": { "size": "10g" } }},
+              "progress" : {"updateInterval": "300ms", "updateStep": null}
+            }
+        },
+        {
+            "start": {
+                "args": []
+            }
+        },
+        {
+            "transfer": {
+                "from": "http://34.244.4.185:8000/LICENSE",
+                "to": "container:/input/file_in",
+                "format": "zip",
+                "depth": 2,
+                "fileset": [{"desc":"all images", "includes": ["*.jpg"], "excludes": ["db*.*"] }],
+                "progress" : {"updateInterval": null, "updateStep": 1048576}
+            }
+        },
+        {
+            "run": {
+                "entry_point": "rust-wasi-tutorial",
+                "args": ["/input/file_in", "/output/file_cp"],
+                "capture": {
+                  "stdout": {"stream": {}},
+                  "stderr": {"stream": {}}
+                }
+            }
+        },
+        {
+            "sign": {}
+        },
+        {
+            "terminate": {}
+        },
+        ...
+        ]
+        ```
+
+        ### Rust
+
+        For Rust - this format is a default representation of Rust enum types, as serialized by `serde` library.
+        Therefore it is recommended to use this yaml specification to manually specify Rust enum types rather than depend on
+        automatically-generated code.
+
+    '
+      type: object
+
+    DeployCommand:
+      allOf:
+        - $ref: '#/components/schemas/ExeScriptCommand'
+        - type: object
+          required:
+            - deploy
+          properties:
+            deploy:
+              $ref: '#/components/schemas/DeployCommandBody'
+
+    DeployCommandBody:
+      type: object
+      properties:
+        net:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeployNetwork'
+        hosts:
+          type: object
+          additionalProperties:
+            type: string
+        nodes:
+          type: object
+          additionalProperties:
+            type: string
+        volumes:
+          type: object
+          additionalProperties:
+            type: string
+        progress:
+          $ref: '#/components/schemas/ProgressArgs'
+
+    DeployNetwork:
+      type: object
+      required:
+        - id
+        - ip
+        - mask
+      properties:
+        id:
+          type: string
+        ip:
+          type: string
+        mask:
+          type: string
+
+    ProgressArgs:
+      type: object
+      description: Configuration of progress reporting.
+        Presence of this field in ExeUnitCommand indicates, that ExeUnit should send
+        '#/components/schemas/RuntimeEventKindProgress' events. If non of properties is set
+        ExeUnit will use default values.
+        Behavior when both properties are defined is ExeUnit specific.
+      properties:
+        update-interval:
+          type: string
+          description: Interval between progress reporting events expressed as
+            described in specification https://docs.rs/humantime/latest/humantime/fn.parse_duration.html
+        update-step:
+          type: number
+          format: int64
+          minimum: 1
+          description: Number of units (for example Bytes in case of transfer) after which next
+            progress event will be sent.
+
+    StartCommand:
+      allOf:
+        - $ref: '#/components/schemas/ExeScriptCommand'
+        - type: object
+          properties:
+            start:
+              $ref: '#/components/schemas/StartCommandBody'
+
+    StartCommandBody:
+      type: object
+      properties:
+        args:
+          type: array
+          items:
+            type: string
+
+    TransferCommand:
+      allOf:
+        - $ref: '#/components/schemas/ExeScriptCommand'
+        - type: object
+          required:
+            - transfer
+          properties:
+            transfer:
+              $ref: '#/components/schemas/TransferCommandBody'
+
+    TransferCommandBody:
+      type: object
+      required:
+        - from
+        - to
+      properties:
+        from:
+          type: string
+        to:
+          type: string
+        format:
+          type: string
+        depth:
+          type: number
+        fileset:
+          type: array
+          items:
+            $ref: '#/components/schemas/FileSet'
+        progress:
+          $ref: '#/components/schemas/ProgressArgs'
+
+    FileSet:
+      properties:
+        desc:
+          type: string
+        includes:
+          type: array
+          items:
+            type: string
+        excludes:
+          type: array
+          items:
+            type: string
+
+    RunCommand:
+      allOf:
+        - $ref: '#/components/schemas/ExeScriptCommand'
+        - type: object
+          required:
+            - run
+          properties:
+            run:
+              $ref: '#/components/schemas/RunCommandBody'
+
+    RunCommandBody:
+      type: object
+      required:
+        - entry_point
+      properties:
+        entry_point:
+          type: string
+        args:
+          type: array
+          items:
+            type: string
+        capture:
+          $ref: '#/components/schemas/Capture'
+
+    Capture:
+      type: object
+      properties:
+        stdout:
+          $ref: '#/components/schemas/CaptureMode'
+        stderr:
+          $ref: '#/components/schemas/CaptureMode'
+
+    CaptureMode:
+      type: object
+      properties:
+        atEnd:
+          $ref: '#/components/schemas/CaptureAtEndBody'
+        stream:
+          $ref: '#/components/schemas/CaptureStreamBody'
+
+    CaptureAtEndBody:
+      type: object
+      properties:
+        part:
+          $ref: '#/components/schemas/CapturePart'
+        format:
+          $ref: '#/components/schemas/CaptureFormat'
+
+    CaptureStreamBody:
+      type: object
+      properties:
+        limit:
+          type: number
+        format:
+          $ref: '#/components/schemas/CaptureFormat'
+
+    CaptureFormat:
+      type: string
+      enum:
+        - string
+        - binary
+
+    CapturePart:
+      type: object
+      properties:
+        head:
+          type: number
+        tail:
+          type: number
+        headTail:
+          type: number
+
+    SignCommand:
+      allOf:
+        - $ref: '#/components/schemas/ExeScriptCommand'
+        - type: object
+          required:
+            - sign
+          properties:
+            sign:
+              $ref: '#/components/schemas/SignCommandBody'
+
+    SignCommandBody:
+      type: object
+
+    TerminateCommand:
+      allOf:
+        - $ref: '#/components/schemas/ExeScriptCommand'
+        - type: object
+          required:
+            - terminate
+          properties:
+            terminate:
+              $ref: '#/components/schemas/TerminateCommandBody'
+
+    TerminateCommandBody:
+      type: object
+
+    # End ExeScript structures
+
+    ExeScriptCommandState:
+      required:
+        - batchId
+        - command
+      type: object
+      properties:
+        batchId:
+          type: string
+        command:
+          type: string
+        progress:
+          type: string
+        params:
+          type: array
+          items:
+            type: string
+
+    ExeScriptCommandResult:
+      required:
+        - index
+        - eventDate
+        - result
+      type: object
+      properties:
+        index:
+          type: integer
+          format: int32
+          minimum: 0
+        eventDate:
+          type: string
+          format: date-time
+        result:
+          type: string
+          enum:
+            - Ok
+            - Error
+        stdout:
+          type: string
+        stderr:
+          type: string
+        message:
+          type: string
+        isBatchFinished:
+          type: boolean
+
+    # ExeScript streaming result structures
+
+    RuntimeEvent:
+      description:
+        ' Structure returned as data element of event stream.
+        '
+      type: object
+      required:
+        - batchId
+        - index
+        - timestamp
+        - kind
+      properties:
+        batchId:
+          type: string
+        index:
+          type: integer
+          format: int32
+        timestamp:
+          type: string
+        kind:
+          $ref: '#/components/schemas/RuntimeEventKind'
+
+    RuntimeEventKind:
+      type: object
+
+    RuntimeEventKindStarted:
+      allOf:
+        - $ref: '#/components/schemas/RuntimeEventKind'
+        - type: object
+          required:
+            - started
+          properties:
+            started:
+              $ref: '#/components/schemas/ExeScriptCommand'
+
+    RuntimeEventKindFinished:
+      allOf:
+        - $ref: '#/components/schemas/RuntimeEventKind'
+        - type: object
+          required:
+            - finished
+          properties:
+            finished:
+              $ref: '#/components/schemas/RuntimeEventKindFinishedBody'
+
+    RuntimeEventKindStdOut:
+      allOf:
+        - $ref: '#/components/schemas/RuntimeEventKind'
+        - type: object
+          required:
+            - stdout
+          properties:
+            stdout:
+              $ref: '#/components/schemas/CommandOutput'
+
+    RuntimeEventKindStdErr:
+      allOf:
+        - $ref: '#/components/schemas/RuntimeEventKind'
+        - type: object
+          required:
+            - stderr
+          properties:
+            stderr:
+              $ref: '#/components/schemas/CommandOutput'
+
+    RuntimeEventKindFinishedBody:
+      allOf:
+        - $ref: '#/components/schemas/RuntimeEventKind'
+        - type: object
+          required:
+            - returnCode
+          properties:
+            returnCode:
+              type: integer
+              format: int32
+            message:
+              type: string
+
+    RuntimeEventKindProgress:
+      allOf:
+        - $ref: '#/components/schemas/RuntimeEventKind'
+        - type: object
+          description: Reports progress of currently executed command. This event will be sent only,
+            if `progress` field was set in `deploy` or `transfer` command.
+          required:
+            - step
+          properties:
+            step:
+              $ref: '#/components/schemas/ProgressStep'
+            message:
+              type: string
+              description: May contain additional arbitrary information, what is happening with the task,
+                for example "retrying transfer" or "image deployed from cache".
+                Content of this field is ExeUnit specific.
+            progress:
+              $ref: '#/components/schemas/ProgressDetails'
+            unit:
+              type: string
+              description: Units in which `progress` field is expressed. This should be human readable
+                string for displaying in UI. List of possible values is ExeUnit specific.
+
+    ProgressStep:
+      description: Can be used if single ExeUnit command is executing multiple steps. Number of steps is
+        Exeunit specific.
+
+        Steps are counted starting from 0. That means that first step from 4-steps task
+        will report 0/4. Task is finished when counter reaches 4/4.
+      type: array
+      items:
+        type: integer
+        format: int64
+      minItems: 2
+      maxItems: 2
+      minimum: 0
+
+    ProgressDetails:
+      description: Granular progress of currently executed step. The first element describes current
+        progress, the second the size of the whole task, which can be unknown.
+      type: array
+      items:
+        type: integer
+        format: int64
+      minItems: 1
+      maxItems: 2
+      minimum: 0
+
+    CommandOutput:
+      type: object
+
+    CommandOutputStr:
+      allOf:
+        - $ref: '#/components/schemas/CommandOutput'
+        - type: object
+          required:
+            - str
+          properties:
+            str:
+              type: string
+
+    CommandOutputBin:
+      allOf:
+        - $ref: '#/components/schemas/CommandOutput'
+        - type: object
+          required:
+            - bin
+          properties:
+            bin:
+              type: array
+              items:
+                type: string
+                format: binary
+
+
+    # End ExeScript streaming result structures
+
+    ActivityUsage:
+      type: object
+      required:
+        - timestamp
+      properties:
+        currentUsage:
+          type: array
+          description: Current vector of usage counters consumed
+            by the Activity. The sequence of values corresponds to Usage Vector
+            property (golem.usage.vector) as indicated in the Agreement (Offer
+            part).
+          example: '[123.5, 34000]'
+          items:
+            type: number
+            format: double
+        timestamp:
+          type: integer
+          description: Usage update timestamp (UTC)
+
+    ActivityState:
+      required:
+        - state
+      type: object
+      properties:
+        state:
+          type: array
+          description: State pair tuple (CurrentState, NextState). NextState is equal to null
+            if there is no pending transition between states.
+          items:
+            type: string
+            nullable: true
+            enum:
+              - New
+              - Initialized
+              - Deployed
+              - Ready
+              - Unresponsive
+              - Terminated
+        reason:
+          type: string
+          description: Reason for Activity termination (specified when Activity in
+            Terminated state).
+        errorMessage:
+          type: string
+          description: If error caused state change - error message shall be provided.
+
+    ProviderEvent:
+      required:
+        - eventType
+        - eventDate
+        - activityId
+        - agreementId
+      type: object
+      properties:
+        eventType:
+          type: string
+        eventDate:
+          type: string
+          format: date-time
+        activityId:
+          type: string
+        agreementId:
+          type: string
+      discriminator:
+        propertyName: eventType
+
+    CreateActivity:
+      allOf:
+        - $ref: '#/components/schemas/ProviderEvent'
+        - type: object
+          properties:
+            requestorPubKey:
+              type: string
+              format: byte
+
+    DestroyActivity:
+      allOf:
+        - $ref: '#/components/schemas/ProviderEvent'
+
+
+    GetActivityState:
+      allOf:
+        - $ref: '#/components/schemas/ProviderEvent'
+
+    GetActivityUsage:
+      allOf:
+        - $ref: '#/components/schemas/ProviderEvent'

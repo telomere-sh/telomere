@@ -1,0 +1,236 @@
+{
+  "schemaVersion": 1,
+  "success": true,
+  "scope": "Isolated Linux full normal build and six-file HostKit startup/deadline/cleanup acceptance, with the two missing-fixture cases corrected by a separately pinned supplemental asset and exact targeted delta",
+  "runtimeEquivalentCommittedRevision": "a882602550a72e7456af3e8164e0b9a7a8de5d2f",
+  "snapshotAtUtc": "2026-10-12T13:46:16.710021+00:00",
+  "isolatedPath": "/opt/telomere-host-runtime/host-kit-startup-check-JP9kuh08",
+  "nodeVersion": "v22.23.3",
+  "package": {
+    "expectedSourceFiles": 317,
+    "expectedBuildAssets": 4,
+    "expectedTests": 89,
+    "expectedTestFiles": {
+      "host-kit.test.ts": 31,
+      "host-kit-command.test.ts": 17,
+      "controller-host-kit.test.ts": 8,
+      "host-kit-timing.test.ts": 16,
+      "host-kit-cleanup.test.ts": 13,
+      "host-kit-startup-docker.test.ts": 4
+    },
+    "expectedSkips": {},
+    "expectedSkippedTests": 0,
+    "expectedPassedTests": 89,
+    "snapshotAtUtc": "2026-10-12T13:46:16.710021+00:00",
+    "gitHeadAtSnapshot": "a882602550a72e7456af3e8164e0b9a7a8de5d2f",
+    "commitComparison": "Git clean-filter blob IDs match HEAD; exact executed bytes separately SHA256-pinned",
+    "excludedWip": [],
+    "reviewedFreeze": {
+      "tests/host-kit-startup-docker.test.ts": "bc15b739cf283ec679dcbccbcd5eebcf7200d078acdd2a6d21f761d9a44c2435"
+    },
+    "source": {
+      "archive": "host-kit-startup-source.tar",
+      "manifest": "host-kit-startup-source-sha256.txt",
+      "archiveSha256": "440fd278fa96e3f40c85cdc6b14871de393c722965ebe89cc60efed8ff44899d",
+      "manifestSha256": "712d7483b8f77a1acaf3cd71a92cad76fd69406e96cc27fd60a105f1153bdc00",
+      "archiveBytes": 3850240,
+      "files": 317
+    },
+    "build-assets": {
+      "archive": "host-kit-startup-build-assets.tar",
+      "manifest": "host-kit-startup-build-assets-sha256.txt",
+      "archiveSha256": "f079ccfdf3bf99a5cdd1de7bceec8a0ec356c097315959055c4ebea5ec26b138",
+      "manifestSha256": "e7bab231aad576014f733737754f06845e0917b796ce95e30931485dc405d73c",
+      "archiveBytes": 112640,
+      "files": 4
+    }
+  },
+  "committedRevisionMatchingSourceFiles": 317,
+  "committedRevisionMatchingBuildAssets": 4,
+  "committedRevisionMatchingSupplementalAcceptanceAssets": 1,
+  "committedRevisionComparison": "Original archive Git clean-filter blob IDs plus supplemental canonical Git blob match the same pinned commit; exact execution bytes separately SHA256-pinned",
+  "manifestArtifacts": [
+    "host-kit-startup-source-sha256.txt",
+    "host-kit-startup-build-assets-sha256.txt"
+  ],
+  "coverage": {
+    "initial": {
+      "total": 89,
+      "passed": 87,
+      "failed": 2,
+      "skipped": 0
+    },
+    "targetedDelta": {
+      "selected": 2,
+      "passed": 2,
+      "failed": 0,
+      "rawTotal": 39,
+      "filteredNotRepeated": 37
+    },
+    "distinctCasesPassed": 89,
+    "singleClean89CaseRunClaimed": false,
+    "testFiles": {
+      "host-kit.test.ts": 31,
+      "host-kit-command.test.ts": 17,
+      "controller-host-kit.test.ts": 8,
+      "host-kit-timing.test.ts": 16,
+      "host-kit-cleanup.test.ts": 13,
+      "host-kit-startup-docker.test.ts": 4
+    }
+  },
+  "fullBuild": {
+    "exitCode": 0,
+    "elapsedSeconds": 46.36,
+    "repeated": false
+  },
+  "initialTestsElapsedSeconds": 169.538,
+  "targetedDeltaElapsedSeconds": 12.854,
+  "supplementalAcceptanceAsset": {
+    "pinnedCommit": "a882602550a72e7456af3e8164e0b9a7a8de5d2f",
+    "targetPath": "infra/host-kit/task-runner.mjs",
+    "gitBlobId": "b1ef62acbc1e03d2acf7e58cccebdb159ca36b9b",
+    "sha256": "0bb5e5d893995c7bbd6ca9f81d5dd714223df8c4fe6c7c2f02bdaff0302d552b",
+    "bytes": 2284,
+    "origin": "Exact git show blob bytes from original pinned snapshot commit; no current working-tree capture",
+    "assetFile": "host-kit-task-runner-supplement.mjs",
+    "manifestFile": "host-kit-startup-acceptance-asset-sha256.txt",
+    "manifestSha256": "6756615cb0c3f0ad7c2d90b0da6ad4be077a8ad7d5af7c7d6c16cc6e835c3032",
+    "originalMetadataSha256": "18d4abbb3d201f9f6ab52969b6cbe9a0646ddecdf79516e401941833d6216fa7",
+    "originalSourceArchiveSha256": "440fd278fa96e3f40c85cdc6b14871de393c722965ebe89cc60efed8ff44899d",
+    "tests": {
+      "controller-host-kit.test.ts": "persists the original lease before admission and signed evidence before host acknowledgement",
+      "host-kit.test.ts": "adapts a real task to strict standard CPU observations and preserves Worker recovery compatibility"
+    },
+    "remoteAbsentBeforeInstall": true,
+    "sha256Before": "0bb5e5d893995c7bbd6ca9f81d5dd714223df8c4fe6c7c2f02bdaff0302d552b",
+    "sha256After": "0bb5e5d893995c7bbd6ca9f81d5dd714223df8c4fe6c7c2f02bdaff0302d552b",
+    "manifestText": "0bb5e5d893995c7bbd6ca9f81d5dd714223df8c4fe6c7c2f02bdaff0302d552b  infra/host-kit/task-runner.mjs\n"
+  },
+  "actualGvisorAcceptance": {
+    "passed": 4,
+    "runtime": "runsc",
+    "reviewedImage": "127.0.0.1:15002/telomere-cpu@sha256:6839949540d11906cbdbc614867ac3a825fa0e6f8cbed90c79773979517b4bbe",
+    "fallback": false,
+    "repeatedByDelta": false,
+    "evidence": [
+      "actual HostKitAgent signed HTTP lease and PGlite journal",
+      "runsc restricted namespace with live parent/child/grandchild proc evidence",
+      "deadline removes actual container before withheld handle return; mandatory late stop and zero owned inventory",
+      "different-owner successor with fsynced signed tick/ACK evidence and no predecessor overlap"
+    ]
+  },
+  "sourceMatchesBefore": 317,
+  "sourceMatchesAfterBuild": 317,
+  "sourceMatchesAfterInitialTests": 317,
+  "sourceMatchesAfterDelta": 317,
+  "buildAssetsMatchesBefore": 4,
+  "buildAssetsMatchesAfterBuild": 4,
+  "buildAssetsMatchesAfterInitialTests": 4,
+  "buildAssetsMatchesAfterDelta": 4,
+  "healthAndCleanup": {
+    "initial": {
+      "healthBefore": {
+        "status": "ready",
+        "worker": "idle"
+      },
+      "healthAfter": {
+        "status": "ready",
+        "worker": "idle"
+      },
+      "servicesBefore": {
+        "telomere-staging.service": "active",
+        "telomere-staging-chain.service": "active",
+        "enclave-api.service": "active",
+        "enclave-worker.service": "active",
+        "enclave-web.service": "active"
+      },
+      "servicesAfter": {
+        "telomere-staging.service": "active",
+        "telomere-staging-chain.service": "active",
+        "enclave-api.service": "active",
+        "enclave-worker.service": "active",
+        "enclave-web.service": "active"
+      },
+      "newFixtureDirectoriesRemaining": 0,
+      "newHostKitContainersRemaining": 0,
+      "newHostFixtureDirectoriesRemaining": 0,
+      "ownedCheckoutProcessesRemaining": 0
+    },
+    "targetedDelta": {
+      "healthBefore": {
+        "status": "ready",
+        "worker": "idle"
+      },
+      "healthAfter": {
+        "status": "ready",
+        "worker": "idle"
+      },
+      "servicesBefore": {
+        "telomere-staging.service": "active",
+        "telomere-staging-chain.service": "active",
+        "enclave-api.service": "active",
+        "enclave-worker.service": "active",
+        "enclave-web.service": "active"
+      },
+      "servicesAfter": {
+        "telomere-staging.service": "active",
+        "telomere-staging-chain.service": "active",
+        "enclave-api.service": "active",
+        "enclave-worker.service": "active",
+        "enclave-web.service": "active"
+      },
+      "newFixtureDirectoriesRemaining": 0,
+      "ownedCheckoutProcessesRemaining": 0
+    }
+  },
+  "rawReportSha256": {
+    "host-kit-startup-linux-result.json": "f1397f46aba15077bb5beadad0584f9ec82178c5f6a96bd21ca130b9ee8d2c28",
+    "host-kit-startup-vitest.json": "ef8d186033538b69f2b6abc7e274f543fc23e1a4e891289e6da259bf397d77ec",
+    "host-kit-startup-collected.json": "c6f907a2853cb3b3863343519ec1eb73beb2a8da9e872ddb1394259475938c46",
+    "host-kit-startup-owned.jsonl": "763d687cb185453617a2e0817434458c4a6ef5dc75c5c96678f20b74e36f10dd",
+    "host-kit-startup-delta-linux-result.json": "e340d6e1379d0746f7609610d9fa2e203b199a2bf77bfa1f3adef8ff47bab38a",
+    "host-kit-startup-delta-vitest.json": "879eee0192d19aaf790c139555e815c7e4b4609e7226057c28fb33b358714ba6"
+  },
+  "harnessSha256": {
+    "originalPackage": "f33bda1d3bc901f8e856c918406111b392de1ea05a024cabd63cd116b040287b",
+    "originalRunner": "29fbbb244a8f738d7a075f28f148316c009b13a0c6e77c1a14b76f4af3a77dde",
+    "originalLaunch": "8f1f648e1cc96383ffc3d3eeeb1df7c54b2e998adcb5c575facdfc869d357f05",
+    "deltaRunner": "22e4f562c6accbf27d57f6bafdccf815a0ee197529290dc92db2f16d53aeebc1",
+    "deltaLaunch": "5bfaf042831ffd639ffefa9de0f887466a1481baf5932497f2c40eb1b62276db",
+    "finalEvidenceWriter": "e3e7dadea28856ff808fc66186203ca591372a3a2b90d4434f249f5eb1b6d787"
+  },
+  "publicChainOrProviderCalls": false,
+  "serviceMutations": false,
+  "privateKeyFilesReadByHarness": false,
+  "failureHistory": [
+    {
+      "kind": "missing_packaged_acceptance_asset",
+      "originalPassed": 87,
+      "originalFailed": 2,
+      "affectedTests": {
+        "controller-host-kit.test.ts": "persists the original lease before admission and signed evidence before host acknowledgement",
+        "host-kit.test.ts": "adapts a real task to strict standard CPU observations and preserves Worker recovery compatibility"
+      },
+      "missingPath": "infra/host-kit/task-runner.mjs",
+      "proof": "Supplemental runner confirmed the original checkout target was absent before exclusive installation; both original failures were empty fixed-task output/failed status",
+      "resolution": "Installed only the existing pinned-commit canonical task runner blob and reran only the two exact failed cases",
+      "productionSourceChanged": false,
+      "testSourceChanged": false,
+      "originalArchivesChanged": false,
+      "fullBuildRepeated": false,
+      "other87TestsRepeated": false
+    }
+  ],
+  "relatedEvidence": [
+    "host-kit-acceptance.json",
+    "host-text-acceptance.json",
+    "platform-exec-validation.json"
+  ],
+  "limitations": [
+    "Evidence is an initial 87/89 result plus two successful exact-case retries, not one clean 89-case run",
+    "Focused six-file acceptance, not the entire repository suite; persistent session and payment regressions retain their separate prior evidence",
+    "Four cases use actual reviewed gVisor/Docker; duplicate-cleanup unit cases use an explicitly simulated Engine over actual Unix HTTP",
+    "An indefinitely unresolved third-party runtime start remains fenced and cannot be falsely marked cleanup-confirmed",
+    "No public paid API, public chain transaction, private environment read or existing service reconfiguration established by this acceptance"
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "sourceCommit": "710c0b466e9a504444278ec4ee5267726495fef8",
+  "recordedAt": "2026-10-15T17:55:13.767446+00:00",
+  "scope": "Read-only independent cross-provider public Base8453 asset and fee observations; no signing, broadcasts or live service changes",
+  "files": [
+    {
+      "path": "docs/evidence/base-mainnet-asset-observation-20261015/observe-public-base.mjs",
+      "size": 9454,
+      "sha256": "fcafe85eafcfddaf68ce5cd9aca619e7f1a345f2fa17345f08d828c3a5b0b057"
+    },
+    {
+      "path": "docs/evidence/base-mainnet-asset-observation-20261015/README.md",
+      "size": 6786,
+      "sha256": "c18d2cc2d0114caea1f686c89637ffe49b482791d7e7dd06b8718f9e3dff0af6"
+    },
+    {
+      "path": "docs/evidence/base-mainnet-asset-observation-20261015/rpc-observation.json",
+      "size": 704082,
+      "sha256": "4418aad5270d272d3d008c9a34614e0169ddb9afc35d490853176d09bafa8b26"
+    }
+  ],
+  "officialCircleSlotSource": {
+    "repository": "circlefin/stablecoin-evm",
+    "pathCommit": "574b947dfcfcb5fa05b46d8961ece29e06b14129",
+    "path": "contracts/upgradeability/UpgradeabilityProxy.sol",
+    "fetchedBytes": 3348,
+    "fetchedSha256": "51f3c781cbe1c6556a0c4b795046f5cd12e69b465631f6e85f239f0bf7443036",
+    "rawSourceRetained": false,
+    "slotNameAndAssertionObserved": true
+  },
+  "privateFilesRead": 0,
+  "publicTransactionsSent": 0,
+  "signaturesCreated": 0
+}

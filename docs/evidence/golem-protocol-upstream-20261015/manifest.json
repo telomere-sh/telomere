@@ -1,0 +1,176 @@
+{
+  "schema": 1,
+  "capturedAtUtc": "2026-10-15T10:37:12.532284+00:00",
+  "purpose": "Pinned primary-source protocol research; not deployment/proxy approval, live payment acceptance, finality authority or enabled configuration.",
+  "repositories": {
+    "yagna": {
+      "url": "https://github.com/golemfactory/yagna",
+      "revision": "c256fce68c50c141a51d4bd2ca18292e4b006f15"
+    },
+    "erc20_payment_lib": {
+      "url": "https://github.com/golemfactory/erc20_payment_lib",
+      "revision": "8cd601fa14fef3c62d31f9c0682a703d97d20d75"
+    }
+  },
+  "files": [
+    {
+      "path": "yagna/LICENSE",
+      "url": "https://raw.githubusercontent.com/golemfactory/yagna/c256fce68c50c141a51d4bd2ca18292e4b006f15/LICENSE",
+      "bytes": 35149,
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+    },
+    {
+      "path": "yagna/Cargo.toml",
+      "url": "https://raw.githubusercontent.com/golemfactory/yagna/c256fce68c50c141a51d4bd2ca18292e4b006f15/Cargo.toml",
+      "bytes": 11936,
+      "sha256": "8323f160aaccf787de1ade5ca6e1ae2a412adf16a4a1c7f17c02340b854c1b81"
+    },
+    {
+      "path": "yagna/core/payment-driver/erc20/config-payments.toml",
+      "url": "https://raw.githubusercontent.com/golemfactory/yagna/c256fce68c50c141a51d4bd2ca18292e4b006f15/core/payment-driver/erc20/config-payments.toml",
+      "bytes": 9617,
+      "sha256": "f9415ab0243248efaaedd93d22d908dd1bc86a2adfab496f1f7d4f07a612d51a"
+    },
+    {
+      "path": "yagna/core/payment-driver/erc20/src/driver.rs",
+      "url": "https://raw.githubusercontent.com/golemfactory/yagna/c256fce68c50c141a51d4bd2ca18292e4b006f15/core/payment-driver/erc20/src/driver.rs",
+      "bytes": 45636,
+      "sha256": "606bdee7bc4ea574a66b928bb5faec0507452d1f4bffa45b7ac8a32000f417d5"
+    },
+    {
+      "path": "yagna/core/payment/src/models/payment.rs",
+      "url": "https://raw.githubusercontent.com/golemfactory/yagna/c256fce68c50c141a51d4bd2ca18292e4b006f15/core/payment/src/models/payment.rs",
+      "bytes": 5654,
+      "sha256": "efb71b7da8b6ccb4b3e7a69a36ac85f66e0a2dbd94b99f378ebf13f0ba379fca"
+    },
+    {
+      "path": "yagna/core/payment/src/processor.rs",
+      "url": "https://raw.githubusercontent.com/golemfactory/yagna/c256fce68c50c141a51d4bd2ca18292e4b006f15/core/payment/src/processor.rs",
+      "bytes": 56191,
+      "sha256": "5cd7beb9fb275887d2d1df7d24695a4eb7333aabb19e01e688eaaeca437d9062"
+    },
+    {
+      "path": "yagna/core/payment/src/api/allocations/mod.rs",
+      "url": "https://raw.githubusercontent.com/golemfactory/yagna/c256fce68c50c141a51d4bd2ca18292e4b006f15/core/payment/src/api/allocations/mod.rs",
+      "bytes": 24875,
+      "sha256": "90c7ed0e3f0bf7a51b891d34c15d2ab4902ab85d0d6da99c235c1dcd319e5a0b"
+    },
+    {
+      "path": "yagna/core/payment/src/dao/allocation.rs",
+      "url": "https://raw.githubusercontent.com/golemfactory/yagna/c256fce68c50c141a51d4bd2ca18292e4b006f15/core/payment/src/dao/allocation.rs",
+      "bytes": 14673,
+      "sha256": "627f2974c7c798bef2611482c15821c61c52813014d0c8705dadf67ad36ec0d3"
+    },
+    {
+      "path": "yagna/core/activity/src/requestor/control.rs",
+      "url": "https://raw.githubusercontent.com/golemfactory/yagna/c256fce68c50c141a51d4bd2ca18292e4b006f15/core/activity/src/requestor/control.rs",
+      "bytes": 11665,
+      "sha256": "0adad5d97f4c1036365d5185bb212bac36b2c03b26a515d39c874fce6b3e18a9"
+    },
+    {
+      "path": "yagna/core/activity/src/provider/service.rs",
+      "url": "https://raw.githubusercontent.com/golemfactory/yagna/c256fce68c50c141a51d4bd2ca18292e4b006f15/core/activity/src/provider/service.rs",
+      "bytes": 21640,
+      "sha256": "e62fa6c9ba3ddf58609904ecf0021b552534ca4738e81b7b951fa32a8846f4b5"
+    },
+    {
+      "path": "yagna/core/market/src/rest_api/common.rs",
+      "url": "https://raw.githubusercontent.com/golemfactory/yagna/c256fce68c50c141a51d4bd2ca18292e4b006f15/core/market/src/rest_api/common.rs",
+      "bytes": 7996,
+      "sha256": "c6c724738ba97059574389b8b9b905459a332c67d6f109dee8598ffe15a0b4f2"
+    },
+    {
+      "path": "erc20_payment_lib/LICENSE",
+      "url": "https://raw.githubusercontent.com/golemfactory/erc20_payment_lib/8cd601fa14fef3c62d31f9c0682a703d97d20d75/LICENSE",
+      "bytes": 1070,
+      "sha256": "4655407f35ef6dc0cabbc63013a7902b3be716a87ff2dde557abcc7874665360"
+    },
+    {
+      "path": "erc20_payment_lib/crates/erc20_payment_lib/src/runtime.rs",
+      "url": "https://raw.githubusercontent.com/golemfactory/erc20_payment_lib/8cd601fa14fef3c62d31f9c0682a703d97d20d75/crates/erc20_payment_lib/src/runtime.rs",
+      "bytes": 58071,
+      "sha256": "0fbcf28e7a1178af20cc0909bf7a7c6d31fc9ed334a37b4b96dfc4a8c7b9e578"
+    },
+    {
+      "path": "erc20_payment_lib/crates/erc20_payment_lib/src/transaction.rs",
+      "url": "https://raw.githubusercontent.com/golemfactory/erc20_payment_lib/8cd601fa14fef3c62d31f9c0682a703d97d20d75/crates/erc20_payment_lib/src/transaction.rs",
+      "bytes": 42052,
+      "sha256": "f0a06bf57e0c13ef296d84e1d4dd1f86215d876b73cf237892a80248ec1674a5"
+    },
+    {
+      "path": "yagna/core/payment/src/api/debit_notes.rs",
+      "url": "https://raw.githubusercontent.com/golemfactory/yagna/c256fce68c50c141a51d4bd2ca18292e4b006f15/core/payment/src/api/debit_notes.rs",
+      "bytes": 17730,
+      "sha256": "8790cefb178705a799dfe0066031900f5701172bf0460c0b80088fa987cbd2e2"
+    },
+    {
+      "path": "yagna/core/payment/src/api/invoices.rs",
+      "url": "https://raw.githubusercontent.com/golemfactory/yagna/c256fce68c50c141a51d4bd2ca18292e4b006f15/core/payment/src/api/invoices.rs",
+      "bytes": 23612,
+      "sha256": "2b3173a055f93c5dc63ac12c66fae638e9387e20862cd8abf28d371e580d0783"
+    }
+  ],
+  "facts": [
+    {
+      "claim": "Yagna erc20 confirm_payments decodes0x tx hash to32rawbytes; payment API model serializes details as standard base64.",
+      "evidence": [
+        "yagna/core/payment-driver/erc20/src/driver.rs",
+        "yagna/core/payment/src/models/payment.rs"
+      ]
+    },
+    {
+      "claim": "Official pinned Polygon driver config identifies GLM0x0B220b82F3eA3B7F6d9A1D8ab58930C064A2b5Bf; the runtime divides by10^18. Config is not independently verified deployed-code or proxy-history provenance.",
+      "evidence": [
+        "yagna/core/payment-driver/erc20/config-payments.toml",
+        "yagna/core/payment-driver/erc20/src/driver.rs"
+      ]
+    },
+    {
+      "claim": "Pinned upstream payment verifier accepts a matching transfer >=claimed amount, allows outer transaction sender fallback, and does not itself enforce receipt canonical-hash equality or minimum confirmation depth. Telomere observer is deliberately stricter and observation-only.",
+      "evidence": [
+        "erc20_payment_lib/crates/erc20_payment_lib/src/runtime.rs",
+        "erc20_payment_lib/crates/erc20_payment_lib/src/transaction.rs"
+      ]
+    },
+    {
+      "claim": "Pinned API payment mapper emits allocation_id None for both share kinds; no original allocation is inferred from those omitted fields.",
+      "evidence": [
+        "yagna/core/payment/src/models/payment.rs"
+      ]
+    },
+    {
+      "claim": "Requestor destroy waits provider response; provider destroy waits reported Terminated state. This is authenticated protocol state, not independent physical process inspection.",
+      "evidence": [
+        "yagna/core/activity/src/requestor/control.rs",
+        "yagna/core/activity/src/provider/service.rs"
+      ]
+    },
+    {
+      "claim": "Allocation GET410 denotes retained released marker;404 denotes unknown. DAO release sets local released=true and is not an on-chain token-refund/finality proof.",
+      "evidence": [
+        "yagna/core/payment/src/api/allocations/mod.rs",
+        "yagna/core/payment/src/dao/allocation.rs"
+      ]
+    },
+    {
+      "claim": "Pinned market terminate implementation returns HTTP200 empty, while the separately retained client OpenAPI expects204. HTTP ack alone is not stop proof.",
+      "evidence": [
+        "yagna/core/market/src/rest_api/common.rs"
+      ]
+    },
+    {
+      "claim": "Already accepted/settled document responses can short-circuit before allocation validation; retained local intent alone does not establish original allocation attribution if another writer raced.",
+      "evidence": [
+        "yagna/core/payment/src/api/debit_notes.rs",
+        "yagna/core/payment/src/api/invoices.rs"
+      ]
+    }
+  ],
+  "boundaries": [
+    "No public-chain or provider payment request was sent.",
+    "No server/configuration/deployment/profile or installed policy was changed.",
+    "No public GLM proxy implementation/runtime-history approval established.",
+    "No independently verified original allocation attribution or physical host-stop proof established.",
+    "Current source conclusions are scoped to exact retained revisions; no unpinned latest-version equivalence claimed."
+  ]
+}

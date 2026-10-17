@@ -1,0 +1,570 @@
+{
+  "checkedAt": "2026-10-15T01:22:00.771Z",
+  "repositoryCommit": "e0004e63edc4e17de7aa978293800ac7a16892e5",
+  "builds": [
+    {
+      "runs": 200,
+      "compiler": "0.8.28+commit.7893614a.Emscripten.clang",
+      "runtimeBytes": 9981,
+      "runtimeKeccak256": "0xbbdef70174de521edd8b749d6a19fbccc6d465330a5db97079110c5bc4540e8c",
+      "immutableReferences": {
+        "4418": [
+          {
+            "length": 32,
+            "start": 6398
+          }
+        ],
+        "4420": [
+          {
+            "length": 32,
+            "start": 6433
+          }
+        ],
+        "4422": [
+          {
+            "length": 32,
+            "start": 6513
+          }
+        ],
+        "4424": [
+          {
+            "length": 32,
+            "start": 6551
+          }
+        ],
+        "4426": [
+          {
+            "length": 32,
+            "start": 6365
+          }
+        ],
+        "8193": [
+          {
+            "length": 32,
+            "start": 1011
+          },
+          {
+            "length": 32,
+            "start": 3351
+          },
+          {
+            "length": 32,
+            "start": 3919
+          }
+        ],
+        "8196": [
+          {
+            "length": 32,
+            "start": 1124
+          },
+          {
+            "length": 32,
+            "start": 3185
+          }
+        ]
+      },
+      "immutableNames": {
+        "4418": "_cachedThis",
+        "4420": "_cachedChainId",
+        "4422": "_cachedNameHash",
+        "4424": "_cachedVersionHash",
+        "4426": "_cachedDomainSeparator",
+        "5973": "__self",
+        "8193": "PUBLIC_ERC6492_VALIDATOR",
+        "8196": "MAGIC_SPEND"
+      },
+      "chains": [
+        {
+          "chainId": 8453,
+          "patchedRuntimeKeccak256": "0x17d5714cff4afe066cf931e71baba5e1cf0606fb089f0edd131e5ce7a3fa76a6",
+          "entireRuntimeMatch": false,
+          "executableBytesMatch": false,
+          "metadataEqual": false,
+          "actualMetadataLength": 51,
+          "builtMetadataLength": 51,
+          "executableByteDifferences": null,
+          "firstExecutableDifferences": [],
+          "immutableChecks": [
+            {
+              "id": "4418",
+              "name": "_cachedThis",
+              "start": 6398,
+              "length": 32,
+              "expected": "0x000000000000000000000000f85210b21cc50302f477ba56686d2019dc9b67ad",
+              "actual": "0xffffffffffff90911660048201526024016101b4565b602082015173ffffffff",
+              "matches": false
+            },
+            {
+              "id": "4420",
+              "name": "_cachedChainId",
+              "start": 6433,
+              "length": 32,
+              "expected": "0x0000000000000000000000000000000000000000000000000000000000002105",
+              "actual": "0xffffffffffffffffffffffffff16611964576040517f1fac5b74000000000000",
+              "matches": false
+            },
+            {
+              "id": "4422",
+              "name": "_cachedNameHash",
+              "start": 6513,
+              "length": 32,
+              "expected": "0x311b82c3b5f6bd8fa6ae3267eb11250937dd192896e5599773844f1246fd7389",
+              "actual": "0x165f036119a9576040517f586e5acb0000000000000000000000000000000000",
+              "matches": false
+            },
+            {
+              "id": "4424",
+              "name": "_cachedVersionHash",
+              "start": 6551,
+              "length": 32,
+              "expected": "0xc89efdaa54c0f20c7adf612882df0950f5a951637e0307cdcb4c672f298b8bc6",
+              "actual": "0x0000000000815260040160405180910390fd5b816060015173ffffffffffffff",
+              "matches": false
+            },
+            {
+              "id": "4426",
+              "name": "_cachedDomainSeparator",
+              "start": 6365,
+              "length": 32,
+              "expected": "0x3187a50f7c68cc46a370ce9830bcd5da649e5f41d60dd75ba256ced435601516",
+              "actual": "0x00000000000000000000000000000000815273ffffffffffffffffffffffffff",
+              "matches": false
+            },
+            {
+              "id": "8193",
+              "name": "PUBLIC_ERC6492_VALIDATOR",
+              "start": 1011,
+              "length": 32,
+              "expected": "0x000000000000000000000000cfce48b757601f3f351cb6f434cb0517aeee293d",
+              "actual": "0x506102636104013660046125f2565b6110b8565b348015610411575f5ffd5b50",
+              "matches": false
+            },
+            {
+              "id": "8193",
+              "name": "PUBLIC_ERC6492_VALIDATOR",
+              "start": 3351,
+              "length": 32,
+              "expected": "0x000000000000000000000000cfce48b757601f3f351cb6f434cb0517aeee293d",
+              "actual": "0x015291565b97989097965046955030945091925090565b60208301513373ffff",
+              "matches": false
+            },
+            {
+              "id": "8193",
+              "name": "PUBLIC_ERC6492_VALIDATOR",
+              "start": 3919,
+              "length": 32,
+              "expected": "0x000000000000000000000000cfce48b757601f3f351cb6f434cb0517aeee293d",
+              "actual": "0x8301516040517f9adaf01f000000000000000000000000000000000000000000",
+              "matches": false
+            },
+            {
+              "id": "8196",
+              "name": "MAGIC_SPEND",
+              "start": 1124,
+              "length": 32,
+              "expected": "0x000000000000000000000000011a61c07dbf256a68256b1cb51a5e246730ab92",
+              "actual": "0xb757601f3f351cb6f434cb0517aeee293d81565b348015610482575f5ffd5b50",
+              "matches": false
+            },
+            {
+              "id": "8196",
+              "name": "MAGIC_SPEND",
+              "start": 3185,
+              "length": 32,
+              "expected": "0x000000000000000000000000011a61c07dbf256a68256b1cb51a5e246730ab92",
+              "actual": "0x81526020819052604090205460ff1692915050565b7f0f000000000000000000",
+              "matches": false
+            }
+          ],
+          "executableLengthComparable": false
+        },
+        {
+          "chainId": 84532,
+          "patchedRuntimeKeccak256": "0x0bdd16cc172259d458b5ab74090ecd3b6eb56c1fdb8b7c607788080e0f31a728",
+          "entireRuntimeMatch": false,
+          "executableBytesMatch": false,
+          "metadataEqual": false,
+          "actualMetadataLength": 51,
+          "builtMetadataLength": 51,
+          "executableByteDifferences": null,
+          "firstExecutableDifferences": [],
+          "immutableChecks": [
+            {
+              "id": "4418",
+              "name": "_cachedThis",
+              "start": 6398,
+              "length": 32,
+              "expected": "0x000000000000000000000000f85210b21cc50302f477ba56686d2019dc9b67ad",
+              "actual": "0xffffffffffff90911660048201526024016101b4565b602082015173ffffffff",
+              "matches": false
+            },
+            {
+              "id": "4420",
+              "name": "_cachedChainId",
+              "start": 6433,
+              "length": 32,
+              "expected": "0x0000000000000000000000000000000000000000000000000000000000014a34",
+              "actual": "0xffffffffffffffffffffffffff16611964576040517f1fac5b74000000000000",
+              "matches": false
+            },
+            {
+              "id": "4422",
+              "name": "_cachedNameHash",
+              "start": 6513,
+              "length": 32,
+              "expected": "0x311b82c3b5f6bd8fa6ae3267eb11250937dd192896e5599773844f1246fd7389",
+              "actual": "0x165f036119a9576040517f586e5acb0000000000000000000000000000000000",
+              "matches": false
+            },
+            {
+              "id": "4424",
+              "name": "_cachedVersionHash",
+              "start": 6551,
+              "length": 32,
+              "expected": "0xc89efdaa54c0f20c7adf612882df0950f5a951637e0307cdcb4c672f298b8bc6",
+              "actual": "0x0000000000815260040160405180910390fd5b816060015173ffffffffffffff",
+              "matches": false
+            },
+            {
+              "id": "4426",
+              "name": "_cachedDomainSeparator",
+              "start": 6365,
+              "length": 32,
+              "expected": "0x883f123e973ff58f2ae32b4abb6c220919b25b4147bb3c39287c6323518fd11b",
+              "actual": "0x00000000000000000000000000000000815273ffffffffffffffffffffffffff",
+              "matches": false
+            },
+            {
+              "id": "8193",
+              "name": "PUBLIC_ERC6492_VALIDATOR",
+              "start": 1011,
+              "length": 32,
+              "expected": "0x000000000000000000000000cfce48b757601f3f351cb6f434cb0517aeee293d",
+              "actual": "0x506102636104013660046125f2565b6110b8565b348015610411575f5ffd5b50",
+              "matches": false
+            },
+            {
+              "id": "8193",
+              "name": "PUBLIC_ERC6492_VALIDATOR",
+              "start": 3351,
+              "length": 32,
+              "expected": "0x000000000000000000000000cfce48b757601f3f351cb6f434cb0517aeee293d",
+              "actual": "0x015291565b97989097965046955030945091925090565b60208301513373ffff",
+              "matches": false
+            },
+            {
+              "id": "8193",
+              "name": "PUBLIC_ERC6492_VALIDATOR",
+              "start": 3919,
+              "length": 32,
+              "expected": "0x000000000000000000000000cfce48b757601f3f351cb6f434cb0517aeee293d",
+              "actual": "0x8301516040517f9adaf01f000000000000000000000000000000000000000000",
+              "matches": false
+            },
+            {
+              "id": "8196",
+              "name": "MAGIC_SPEND",
+              "start": 1124,
+              "length": 32,
+              "expected": "0x000000000000000000000000011a61c07dbf256a68256b1cb51a5e246730ab92",
+              "actual": "0xb757601f3f351cb6f434cb0517aeee293d81565b348015610482575f5ffd5b50",
+              "matches": false
+            },
+            {
+              "id": "8196",
+              "name": "MAGIC_SPEND",
+              "start": 3185,
+              "length": 32,
+              "expected": "0x000000000000000000000000011a61c07dbf256a68256b1cb51a5e246730ab92",
+              "actual": "0x81526020819052604090205460ff1692915050565b7f0f000000000000000000",
+              "matches": false
+            }
+          ],
+          "executableLengthComparable": false
+        }
+      ]
+    },
+    {
+      "runs": 999999,
+      "compiler": "0.8.28+commit.7893614a.Emscripten.clang",
+      "runtimeBytes": 12610,
+      "runtimeKeccak256": "0x9e0a7103f53005e9add907f5ce360a1424f2eb8a6387aa5ae7dca33c13685ab3",
+      "immutableReferences": {
+        "4418": [
+          {
+            "length": 32,
+            "start": 8161
+          }
+        ],
+        "4420": [
+          {
+            "length": 32,
+            "start": 8196
+          }
+        ],
+        "4422": [
+          {
+            "length": 32,
+            "start": 8276
+          }
+        ],
+        "4424": [
+          {
+            "length": 32,
+            "start": 8314
+          }
+        ],
+        "4426": [
+          {
+            "length": 32,
+            "start": 8128
+          }
+        ],
+        "8193": [
+          {
+            "length": 32,
+            "start": 1109
+          },
+          {
+            "length": 32,
+            "start": 4295
+          },
+          {
+            "length": 32,
+            "start": 4966
+          }
+        ],
+        "8196": [
+          {
+            "length": 32,
+            "start": 1222
+          },
+          {
+            "length": 32,
+            "start": 4041
+          }
+        ]
+      },
+      "immutableNames": {
+        "4418": "_cachedThis",
+        "4420": "_cachedChainId",
+        "4422": "_cachedNameHash",
+        "4424": "_cachedVersionHash",
+        "4426": "_cachedDomainSeparator",
+        "5973": "__self",
+        "8193": "PUBLIC_ERC6492_VALIDATOR",
+        "8196": "MAGIC_SPEND"
+      },
+      "chains": [
+        {
+          "chainId": 8453,
+          "patchedRuntimeKeccak256": "0xc5302a213f810886e3eabb5f38d52af81edc5501121994c4deaa445782613a41",
+          "entireRuntimeMatch": false,
+          "executableBytesMatch": true,
+          "metadataEqual": false,
+          "actualMetadataLength": 51,
+          "builtMetadataLength": 51,
+          "executableByteDifferences": 0,
+          "firstExecutableDifferences": [],
+          "immutableChecks": [
+            {
+              "id": "4418",
+              "name": "_cachedThis",
+              "start": 8161,
+              "length": 32,
+              "expected": "0x000000000000000000000000f85210b21cc50302f477ba56686d2019dc9b67ad",
+              "actual": "0x000000000000000000000000f85210b21cc50302f477ba56686d2019dc9b67ad",
+              "matches": true
+            },
+            {
+              "id": "4420",
+              "name": "_cachedChainId",
+              "start": 8196,
+              "length": 32,
+              "expected": "0x0000000000000000000000000000000000000000000000000000000000002105",
+              "actual": "0x0000000000000000000000000000000000000000000000000000000000002105",
+              "matches": true
+            },
+            {
+              "id": "4422",
+              "name": "_cachedNameHash",
+              "start": 8276,
+              "length": 32,
+              "expected": "0x311b82c3b5f6bd8fa6ae3267eb11250937dd192896e5599773844f1246fd7389",
+              "actual": "0x311b82c3b5f6bd8fa6ae3267eb11250937dd192896e5599773844f1246fd7389",
+              "matches": true
+            },
+            {
+              "id": "4424",
+              "name": "_cachedVersionHash",
+              "start": 8314,
+              "length": 32,
+              "expected": "0xc89efdaa54c0f20c7adf612882df0950f5a951637e0307cdcb4c672f298b8bc6",
+              "actual": "0xc89efdaa54c0f20c7adf612882df0950f5a951637e0307cdcb4c672f298b8bc6",
+              "matches": true
+            },
+            {
+              "id": "4426",
+              "name": "_cachedDomainSeparator",
+              "start": 8128,
+              "length": 32,
+              "expected": "0x3187a50f7c68cc46a370ce9830bcd5da649e5f41d60dd75ba256ced435601516",
+              "actual": "0x3187a50f7c68cc46a370ce9830bcd5da649e5f41d60dd75ba256ced435601516",
+              "matches": true
+            },
+            {
+              "id": "8193",
+              "name": "PUBLIC_ERC6492_VALIDATOR",
+              "start": 1109,
+              "length": 32,
+              "expected": "0x000000000000000000000000cfce48b757601f3f351cb6f434cb0517aeee293d",
+              "actual": "0x000000000000000000000000cfce48b757601f3f351cb6f434cb0517aeee293d",
+              "matches": true
+            },
+            {
+              "id": "8193",
+              "name": "PUBLIC_ERC6492_VALIDATOR",
+              "start": 4295,
+              "length": 32,
+              "expected": "0x000000000000000000000000cfce48b757601f3f351cb6f434cb0517aeee293d",
+              "actual": "0x000000000000000000000000cfce48b757601f3f351cb6f434cb0517aeee293d",
+              "matches": true
+            },
+            {
+              "id": "8193",
+              "name": "PUBLIC_ERC6492_VALIDATOR",
+              "start": 4966,
+              "length": 32,
+              "expected": "0x000000000000000000000000cfce48b757601f3f351cb6f434cb0517aeee293d",
+              "actual": "0x000000000000000000000000cfce48b757601f3f351cb6f434cb0517aeee293d",
+              "matches": true
+            },
+            {
+              "id": "8196",
+              "name": "MAGIC_SPEND",
+              "start": 1222,
+              "length": 32,
+              "expected": "0x000000000000000000000000011a61c07dbf256a68256b1cb51a5e246730ab92",
+              "actual": "0x000000000000000000000000011a61c07dbf256a68256b1cb51a5e246730ab92",
+              "matches": true
+            },
+            {
+              "id": "8196",
+              "name": "MAGIC_SPEND",
+              "start": 4041,
+              "length": 32,
+              "expected": "0x000000000000000000000000011a61c07dbf256a68256b1cb51a5e246730ab92",
+              "actual": "0x000000000000000000000000011a61c07dbf256a68256b1cb51a5e246730ab92",
+              "matches": true
+            }
+          ],
+          "executableLengthComparable": true
+        },
+        {
+          "chainId": 84532,
+          "patchedRuntimeKeccak256": "0x9c24fe5717afa5541a225d8870b31a21b6f3db829e8dbc0f8e493c447daba8bc",
+          "entireRuntimeMatch": false,
+          "executableBytesMatch": true,
+          "metadataEqual": false,
+          "actualMetadataLength": 51,
+          "builtMetadataLength": 51,
+          "executableByteDifferences": 0,
+          "firstExecutableDifferences": [],
+          "immutableChecks": [
+            {
+              "id": "4418",
+              "name": "_cachedThis",
+              "start": 8161,
+              "length": 32,
+              "expected": "0x000000000000000000000000f85210b21cc50302f477ba56686d2019dc9b67ad",
+              "actual": "0x000000000000000000000000f85210b21cc50302f477ba56686d2019dc9b67ad",
+              "matches": true
+            },
+            {
+              "id": "4420",
+              "name": "_cachedChainId",
+              "start": 8196,
+              "length": 32,
+              "expected": "0x0000000000000000000000000000000000000000000000000000000000014a34",
+              "actual": "0x0000000000000000000000000000000000000000000000000000000000014a34",
+              "matches": true
+            },
+            {
+              "id": "4422",
+              "name": "_cachedNameHash",
+              "start": 8276,
+              "length": 32,
+              "expected": "0x311b82c3b5f6bd8fa6ae3267eb11250937dd192896e5599773844f1246fd7389",
+              "actual": "0x311b82c3b5f6bd8fa6ae3267eb11250937dd192896e5599773844f1246fd7389",
+              "matches": true
+            },
+            {
+              "id": "4424",
+              "name": "_cachedVersionHash",
+              "start": 8314,
+              "length": 32,
+              "expected": "0xc89efdaa54c0f20c7adf612882df0950f5a951637e0307cdcb4c672f298b8bc6",
+              "actual": "0xc89efdaa54c0f20c7adf612882df0950f5a951637e0307cdcb4c672f298b8bc6",
+              "matches": true
+            },
+            {
+              "id": "4426",
+              "name": "_cachedDomainSeparator",
+              "start": 8128,
+              "length": 32,
+              "expected": "0x883f123e973ff58f2ae32b4abb6c220919b25b4147bb3c39287c6323518fd11b",
+              "actual": "0x883f123e973ff58f2ae32b4abb6c220919b25b4147bb3c39287c6323518fd11b",
+              "matches": true
+            },
+            {
+              "id": "8193",
+              "name": "PUBLIC_ERC6492_VALIDATOR",
+              "start": 1109,
+              "length": 32,
+              "expected": "0x000000000000000000000000cfce48b757601f3f351cb6f434cb0517aeee293d",
+              "actual": "0x000000000000000000000000cfce48b757601f3f351cb6f434cb0517aeee293d",
+              "matches": true
+            },
+            {
+              "id": "8193",
+              "name": "PUBLIC_ERC6492_VALIDATOR",
+              "start": 4295,
+              "length": 32,
+              "expected": "0x000000000000000000000000cfce48b757601f3f351cb6f434cb0517aeee293d",
+              "actual": "0x000000000000000000000000cfce48b757601f3f351cb6f434cb0517aeee293d",
+              "matches": true
+            },
+            {
+              "id": "8193",
+              "name": "PUBLIC_ERC6492_VALIDATOR",
+              "start": 4966,
+              "length": 32,
+              "expected": "0x000000000000000000000000cfce48b757601f3f351cb6f434cb0517aeee293d",
+              "actual": "0x000000000000000000000000cfce48b757601f3f351cb6f434cb0517aeee293d",
+              "matches": true
+            },
+            {
+              "id": "8196",
+              "name": "MAGIC_SPEND",
+              "start": 1222,
+              "length": 32,
+              "expected": "0x000000000000000000000000011a61c07dbf256a68256b1cb51a5e246730ab92",
+              "actual": "0x000000000000000000000000011a61c07dbf256a68256b1cb51a5e246730ab92",
+              "matches": true
+            },
+            {
+              "id": "8196",
+              "name": "MAGIC_SPEND",
+              "start": 4041,
+              "length": 32,
+              "expected": "0x000000000000000000000000011a61c07dbf256a68256b1cb51a5e246730ab92",
+              "actual": "0x000000000000000000000000011a61c07dbf256a68256b1cb51a5e246730ab92",
+              "matches": true
+            }
+          ],
+          "executableLengthComparable": true
+        }
+      ]
+    }
+  ]
+}

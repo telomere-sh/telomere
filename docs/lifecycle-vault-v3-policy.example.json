@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "buckets": 64,
+  "maxRecordsPerBucket": 512,
+  "maxEncodedRecordBytes": 32768,
+  "maxJournalBytes": 1073741824
+}

@@ -1,0 +1,75 @@
+{
+  "status": "unfunded",
+  "checkedAt": "2026-10-08T15:46:02.212Z",
+  "chainId": 46630,
+  "rpc": "https://rpc.testnet.chain.robinhood.com",
+  "blockNumber": "131169243",
+  "balances": {
+    "deployer": {
+      "address": "0x2C85d8d8B177476A7c705970891ed97a4046941D",
+      "balanceWei": "0"
+    },
+    "operator": {
+      "address": "0x5d38F6db9E574337f6F7a3895B1Eb9374198bFE1",
+      "balanceWei": "0"
+    }
+  },
+  "browserInventory": {
+    "availableApps": 0,
+    "availableBrowsers": 0,
+    "attemptedSurface": "iab",
+    "result": "Browser is not available: iab"
+  },
+  "routes": [
+    {
+      "provider": "Robinhood-hosted faucet",
+      "url": "https://faucet.testnet.chain.robinhood.com/",
+      "readerHttpStatus": 403,
+      "claimSubmitted": false
+    },
+    {
+      "provider": "Quicknode",
+      "url": "https://faucet.quicknode.com/robinhood/testnet",
+      "freshAddressesAllowedByDocumentation": true,
+      "accountRequiredByDocumentation": false,
+      "mainnetBalanceRequiredByDocumentation": false,
+      "verificationStepRequiredByDocumentation": true,
+      "actualFormAttempt": {
+        "performedBy": "root task using ordinary installed Chrome",
+        "atMoscowTimeApprox": "2026-10-08 18:44 MSK",
+        "address": "0x2C85d8d8B177476A7c705970891ed97a4046941D",
+        "chainSelected": "Robinhood Testnet",
+        "action": "Continue",
+        "result": "Invalid ETH mainnet balance.",
+        "mainnetBalanceRequiredByLiveForm": true,
+        "eligibilityPassed": false,
+        "captchaShown": false,
+        "walletSignatureRequested": false
+      },
+      "fundingRequestAccepted": false,
+      "constraint": "Live form requires a small mainnet balance despite the FAQ advertising no mainnet minimum"
+    },
+    {
+      "provider": "Alchemy",
+      "url": "https://www.alchemy.com/faucets/robinhood-testnet",
+      "documentedDripEth": "0.1",
+      "documentedCooldownHours": 24,
+      "documentedEthereumMainnetMinimumEth": "0.001",
+      "documentedMainnetHistoryRequired": true,
+      "claimSubmitted": false,
+      "constraint": "Fresh generated identities have no approved mainnet funding or activity"
+    }
+  ],
+  "legitimateFormAttempts": 1,
+  "successfulFundingClaims": 0,
+  "privateKeysReadOrExported": false,
+  "mainnetTransfers": 0,
+  "captchaSolvesOrBypasses": 0,
+  "deploymentPlansModified": false,
+  "sources": [
+    "https://docs.robinhood.com/chain/connecting/",
+    "https://faucet.quicknode.com/robinhood",
+    "https://www.alchemy.com/faucets/robinhood-testnet",
+    "https://www.quicknode.com/docs/build-with-ai/x402-payments"
+  ]
+}

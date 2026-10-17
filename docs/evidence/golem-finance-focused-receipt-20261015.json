@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "completedAt": "2026-10-15T03:20:43.642245+00:00",
+  "scope": "Focused local HTTP protocol harness only; no production or public supplier execution, chain settlement, GPU, wallet or treasury authority implementation.",
+  "command": [
+    "node",
+    "node_modules/vitest/vitest.mjs",
+    "run",
+    "tests/golem-finance.test.ts",
+    "--reporter=json",
+    "--outputFile=docs/evidence/golem-finance-final-20261015.json"
+  ],
+  "exitCode": 0,
+  "durationSeconds": 12.512,
+  "node": "v22.22.2",
+  "platform": "Windows-11-10.0.26100-SP0",
+  "passed": 17,
+  "failed": 0,
+  "pending": 0,
+  "sourceFiles": 12,
+  "sourceUnchanged": true,
+  "before": "docs/evidence/golem-finance-source-before-20261015.json",
+  "after": "docs/evidence/golem-finance-source-after-20261015.json",
+  "raw": "docs/evidence/golem-finance-final-20261015.json",
+  "globalTypecheck": "Owned by parent; pending final combined source cutoff."
+}

@@ -1,0 +1,156 @@
+{
+  "prepared": "2026-10-15",
+  "usageNote": "Brand marks identify technologies and documented supply adapters only; they do not imply partnerships, endorsements, or verified availability. Photos illustrate infrastructure, not a named Telomere facility.",
+  "images": [
+    {
+      "file": "server-racks.jpg",
+      "description": "Dark server racks with network cabling",
+      "provider": "Unsplash",
+      "sourcePage": null,
+      "downloadUrl": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1800&q=88",
+      "licenseUrl": "https://unsplash.com/license",
+      "modifications": "None. Original photo downloaded at a website-appropriate resolution.",
+      "inspection": "Visually inspected in contact sheet: no people, silhouettes, visible watermarks, or identifiable brand marks.",
+      "sha256": "c709dbc3f01e1a0e7e347d5080dbcf731ff580b68e37bc0d19dd3941bdb59ca0"
+    },
+    {
+      "file": "circuit-macro.jpg",
+      "description": "Macro of a circuit board with surface-mount components",
+      "provider": "Unsplash",
+      "sourcePage": "https://unsplash.com/s/photos/circuitry",
+      "downloadUrl": "https://images.unsplash.com/photo-1555589228-135c25ae8cf5?auto=format&fit=crop&w=1800&q=88",
+      "licenseUrl": "https://unsplash.com/license",
+      "modifications": "None. Original photo downloaded at a website-appropriate resolution.",
+      "inspection": "Visually inspected in contact sheet: no people, silhouettes, visible watermarks, or identifiable brand marks.",
+      "sha256": "e229e049fafb00c8bf2db12780668aac0dc073ae7f58e0f1272667997e9940b8"
+    },
+    {
+      "file": "cooling-system.jpg",
+      "description": "Unbranded aluminum heatsink fins",
+      "provider": "Unsplash",
+      "sourcePage": "https://unsplash.com/photos/bkL2Z-76v8Y",
+      "downloadUrl": "https://images.unsplash.com/photo-1741205160863-4867e590065c?auto=format&fit=crop&w=1800&q=88",
+      "licenseUrl": "https://unsplash.com/license",
+      "modifications": "None. Original photo downloaded at a website-appropriate resolution.",
+      "inspection": "Visually inspected in contact sheet: no people, silhouettes, visible watermarks, or identifiable brand marks.",
+      "sha256": "5ff17c742c1a2647817d23c26d458ea39f083a052f10804b2f5f3ada7f4a62d2"
+    },
+    {
+      "file": "metal-hardware.jpg",
+      "description": "Monochrome macro of electronic components",
+      "provider": "Pexels",
+      "sourcePage": "https://www.pexels.com/photo/black-and-white-photo-of-a-circuit-board-6477209/",
+      "downloadUrl": "https://images.pexels.com/photos/6477209/pexels-photo-6477209.jpeg?auto=compress&cs=tinysrgb&w=1800",
+      "licenseUrl": "https://www.pexels.com/license/",
+      "modifications": "None. Original photo downloaded at a website-appropriate resolution.",
+      "inspection": "Visually inspected in contact sheet: no people, silhouettes, visible watermarks, or identifiable brand marks.",
+      "sha256": "e1225c5dacc831dd81d788c34dfdb00f342e2bc6d59ccc03a61cbd0a2135c9bf"
+    },
+    {
+      "file": "clean-infrastructure.jpg",
+      "description": "Server infrastructure in a data center",
+      "provider": "Pexels",
+      "sourcePage": "https://www.pexels.com/photo/data-center-server-racks-with-active-equipment-37730212/",
+      "downloadUrl": "https://images.pexels.com/photos/37730212/pexels-photo-37730212.jpeg?auto=compress&cs=tinysrgb&w=1800",
+      "licenseUrl": "https://www.pexels.com/license/",
+      "modifications": "None. Original photo downloaded at a website-appropriate resolution.",
+      "inspection": "Visually inspected in contact sheet: no people, silhouettes, visible watermarks, or identifiable brand marks.",
+      "sha256": "c964a0606a0f67f8357c36edb74199350010935dd256a4cb2d1969d037b13af8"
+    },
+    {
+      "file": "silicon-wafer.jpg",
+      "description": "Iridescent macro grid on a silicon wafer",
+      "provider": "Unsplash",
+      "sourcePage": "https://unsplash.com/photos/pink-green-and-blue-square-pattern-qOx9KsvpqcM",
+      "downloadUrl": "https://images.unsplash.com/photo-1587845323226-bad89242c735?auto=format&fit=crop&w=1800&q=88",
+      "licenseUrl": "https://unsplash.com/license",
+      "modifications": "None. Original photo downloaded at a website-appropriate resolution.",
+      "inspection": "Visually inspected in contact sheet: no people, silhouettes, visible watermarks, or identifiable brand marks.",
+      "sha256": "1feabd69bb35794d005e1fd7dea728043879ce163fe9a4e0f664410c0484e5fb"
+    }
+  ],
+  "logos": [
+    {
+      "file": "nvidia.svg",
+      "brand": "NVIDIA",
+      "sourcePage": "https://simpleicons.org/",
+      "downloadUrl": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/nvidia.svg",
+      "modifications": "None; authentic monochrome Simple Icons path."
+    },
+    {
+      "file": "base.svg",
+      "brand": "Base",
+      "sourcePage": "https://brand.base.org/",
+      "downloadUrl": "https://brand.base.org/base-brand.zip",
+      "archivePath": "1_Base Brand Assets/Logotype/Base_lockup_black.svg",
+      "modifications": "None; official black lockup."
+    },
+    {
+      "file": "base-mark.svg",
+      "brand": "Base",
+      "sourcePage": "https://brand.base.org/",
+      "downloadUrl": "https://brand.base.org/base-brand.zip",
+      "archivePath": "1_Base Brand Assets/The Square/Base_square_black.svg",
+      "modifications": "None; official black square."
+    },
+    {
+      "file": "usdc.svg",
+      "brand": "USDC",
+      "sourcePage": "https://github.com/spothq/cryptocurrency-icons",
+      "downloadUrl": "https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/svg/black/usdc.svg",
+      "modifications": "None; source monochrome mark."
+    },
+    {
+      "file": "akash.svg",
+      "brand": "Akash Network",
+      "sourcePage": "https://akash.network/brand/resources/",
+      "downloadUrl": "https://akash.network/brand-resources/akash-logos.zip",
+      "archivePath": "akash/akash-logo.svg",
+      "modifications": "None; official black logo.",
+      "alternate": "akash-dark.svg is the official white alternate."
+    },
+    {
+      "file": "nosana.svg",
+      "brand": "Nosana",
+      "sourcePage": "https://nosana.com/brand-assets/",
+      "downloadUrl": "https://nosana.com/_astro/logo.CMtc99Nt_1gJMog.svg",
+      "modifications": "Official path preserved; fill changed from source green to black using its published B&W palette. Source retained as nosana-original.svg."
+    },
+    {
+      "file": "golem.svg",
+      "brand": "Golem Network",
+      "sourcePage": "https://www.golem.network/brand-assets",
+      "downloadUrl": "https://cdn.prod.website-files.com/62446d07873fde065cbcb8d5/62446d07873fde3688bcb8f6_Golem_Logo_Negative_RGB.svg",
+      "modifications": "None; official white negative logo.",
+      "alternate": "golem-black.svg preserves the exact paths with black fill."
+    },
+    {
+      "file": "typescript.svg",
+      "brand": "TypeScript",
+      "sourcePage": "https://simpleicons.org/",
+      "downloadUrl": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/typescript.svg",
+      "modifications": "None; authentic monochrome Simple Icons path."
+    },
+    {
+      "file": "python.svg",
+      "brand": "Python",
+      "sourcePage": "https://simpleicons.org/",
+      "downloadUrl": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/python.svg",
+      "modifications": "None; authentic monochrome Simple Icons path."
+    }
+  ],
+  "uiIcons": {
+    "file": "icons.svg",
+    "symbols": [
+      "cell",
+      "receipt",
+      "cyst",
+      "leash",
+      "meter",
+      "settlement",
+      "host",
+      "compute"
+    ],
+    "provenance": "Original vector UI icons inspired by the supplied Telomere chromosome bands, orange terminals and technical framing. They are not replacements for the supplied logo."
+  }
+}

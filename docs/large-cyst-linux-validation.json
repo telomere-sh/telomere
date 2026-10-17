@@ -1,0 +1,48 @@
+{
+  "archiveSha256": "0c8727fdfca5a2da15d8d11de3875ae8ac9bf451b1f9963b99468c3350c14996",
+  "testsRequested": [
+    "tests/large-cyst-configured.test.ts",
+    "tests/large-cyst-s3.test.ts",
+    "tests/large-cyst-quota-shadow.test.ts",
+    "tests/large-cyst-checkpoints.test.ts"
+  ],
+  "publicChainOrProviderCalls": false,
+  "serviceMutations": false,
+  "healthBefore": {
+    "status": "ready",
+    "worker": "idle"
+  },
+  "servicesBefore": {
+    "telomere-staging.service": "active",
+    "telomere-staging-chain.service": "active",
+    "enclave-api.service": "active",
+    "enclave-worker.service": "active",
+    "enclave-web.service": "active"
+  },
+  "sourceFiles": 570,
+  "nodeVersion": "v22.23.3",
+  "buildExitCode": 0,
+  "testsExitCode": 0,
+  "tests": {
+    "numTotalTests": 48,
+    "numPassedTests": 48,
+    "numFailedTests": 0,
+    "numPendingTests": 0,
+    "success": true
+  },
+  "sourceMatchesAfter": 570,
+  "healthAfter": {
+    "status": "ready",
+    "worker": "idle"
+  },
+  "servicesAfter": {
+    "telomere-staging.service": "active",
+    "telomere-staging-chain.service": "active",
+    "enclave-api.service": "active",
+    "enclave-worker.service": "active",
+    "enclave-web.service": "active"
+  },
+  "success": true,
+  "commit": "8460723",
+  "rawVitestSha256": "337c247660c1b10a73c0ed6887a3d9dc93fbfd8ae89f33f62c8eef6af9ce000b"
+}

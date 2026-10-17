@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "scope": "source continuity only; test results are separate",
+  "baseline": {
+    "gitRevision": "b042c1bc3119754e06f6b662f2e46c108a63db36",
+    "archiveSha256": "3e901e235bb9e50ff4c8dea8312aa05da7364f4865aa3c46014cb5a806122a49",
+    "source": "committed_git_blobs_only",
+    "workingTreeIncluded": false
+  },
+  "current": {
+    "gitRevision": "8d848f20c8dc4a2b3d672013777e1c630ecd233e",
+    "archiveSha256": "45cdb729cb9ccf3aa5e9a063940c0d732ba2bcad59e612d5e1e3f3a9058164c4",
+    "source": "committed_git_blobs_only",
+    "workingTreeIncluded": false
+  },
+  "baselineSourceFiles": 677,
+  "currentSourceFiles": 685,
+  "unchangedOriginalFiles": 677,
+  "changedOrRemoved": [],
+  "added": [
+    {
+      "path": "src/sealed-keys/handoff-v3.ts",
+      "sha256": "c0aa101f08744b72dd212928107374adfa834371a46bfc85c53c71d1562278f4",
+      "bytes": 21601,
+      "gitBlob": "05be72982dbe19039e1b1188bd0c826209f5a0a6"
+    },
+    {
+      "path": "src/sealed-keys/journal-v3.ts",
+      "sha256": "d872a2cfc29b5380e865e79cb1b0ff751c14d4cb798903af874997551833a0ba",
+      "bytes": 5227,
+      "gitBlob": "8dd9064809c72a092c500d57d143a9434f13a0d6"
+    },
+    {
+      "path": "src/sealed-keys/protocol-v3.ts",
+      "sha256": "cb26a7b407e54b4221ffc3bb07714f71afb1be6f21057d3a8c52ef322696af5f",
+      "bytes": 6467,
+      "gitBlob": "57f913bc13c57a88dd4b360815f986663408d5ce"
+    },
+    {
+      "path": "src/suppliers/golem-finance-ledger.ts",
+      "sha256": "53fbad862e153984d85820e402dbc1e3cba052a9c4436686d79566f205275c92",
+      "bytes": 8450,
+      "gitBlob": "03f78f7d0a1d20ca23ea903c0af17a3601038718"
+    },
+    {
+      "path": "src/suppliers/golem-finance-types.ts",
+      "sha256": "7d7d4c00246f6ddb05b8dd90246a0ee1652a0242218180f8a0e249fc996563bb",
+      "bytes": 8431,
+      "gitBlob": "1fafeb2c8b4d91f726cc98bca4ed5c254094b89b"
+    },
+    {
+      "path": "src/suppliers/golem-finance.ts",
+      "sha256": "5836d8cff03127f80d3c1080e73cdc5f3da452583238d70f8a7b49ba79d362c7",
+      "bytes": 29497,
+      "gitBlob": "dd0f441f99b4e0683ffd1fff9d68ef5cede29d1d"
+    },
+    {
+      "path": "tests/golem-finance.test.ts",
+      "sha256": "7fbb757ac8f7135e02ed3714ef9e537613dd1f2f69b1396fdc0974ed3764f35e",
+      "bytes": 34802,
+      "gitBlob": "a68b2c0697f5136b935cb50955311f1b7bbee83d"
+    },
+    {
+      "path": "tests/sealed-handoff-v3.test.ts",
+      "sha256": "2bced18caa74bb2dbb18f8b85491fefe392c12021f9032d409439b9c8329c3a4",
+      "bytes": 26637,
+      "gitBlob": "532b63c925e3b4a42e24ff47b375d6826271c442"
+    }
+  ],
+  "interpretation": "The new modules are additive and unmounted; original controller, configuration, contracts, dependencies and public files are unchanged. This identity comparison alone does not assert tests passed."
+}

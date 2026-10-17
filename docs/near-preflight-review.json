@@ -1,0 +1,74 @@
+{
+  "admissionReason": "WORKLOAD_NOT_APPROVED",
+  "admissionState": "rejected",
+  "appComposeSha256": "55db164f4f8c6a837c2217c601c21bba4758f908536a6cd5b2978550205a9179",
+  "candidateProfileSha256": "7c9db494c1c62ec6d956b05a137d4197cea497aa243c6fd7ab4cd30a13c94bed",
+  "checkedAt": "2026-10-08T01:04:35Z",
+  "composeManagerActionsSha256": "79fa9649b7a3f17bad8e4af49bac46a9e9b790a0464eb15d8b364799361cc6f0",
+  "composeManagerImage": "nearaidev/compose-manager@sha256:6e035c8fb99c1d31f41760d25af178683a658cca4afd73cd0d366fbb5bf884be",
+  "documentSha256": "b0051ebada001cfb3b5df0f8f26ffd1f4aa99bcafc51a3bb787f59ca0b076cd0",
+  "gpuCount": 8,
+  "gpuModels": [
+    "GH100 A01 GSP BROM"
+  ],
+  "hardwareChecksReached": true,
+  "nvidiaEvidenceSha256": "af7c3e221af8cb571bb60c6dc94cba83700b030152fbee1f856cb286ff26f937",
+  "paidPosts": 0,
+  "policyCanonicalSha256": "7f1a6d63131dd9b077de262a478b67afb3bd4e29e33237ada5ac5b5bb68e3f94",
+  "policyValidUntil": "2026-10-08T14:29:11Z",
+  "policyVersion": "near-direct-glm-e1-2026-10-03.6-nvat",
+  "profileDifferences": [
+    {
+      "changedFields": [
+        "measurements",
+        "composeManagerActionsSha256"
+      ],
+      "changedMeasurements": [
+        "rt_mr3"
+      ],
+      "profileIndex": 0
+    },
+    {
+      "changedFields": [
+        "measurements",
+        "appComposeSha256",
+        "composeManagerActionsSha256"
+      ],
+      "changedMeasurements": [
+        "mr_config_id",
+        "rt_mr3"
+      ],
+      "profileIndex": 1
+    },
+    {
+      "changedFields": [
+        "measurements",
+        "appComposeSha256",
+        "composeManagerActionsSha256"
+      ],
+      "changedMeasurements": [
+        "mr_config_id",
+        "rt_mr3"
+      ],
+      "profileIndex": 2
+    },
+    {
+      "changedFields": [
+        "measurements",
+        "appComposeSha256",
+        "composeManagerActionsSha256"
+      ],
+      "changedMeasurements": [
+        "mr_config_id",
+        "rt_mr3"
+      ],
+      "profileIndex": 3
+    }
+  ],
+  "reviewOnly": true,
+  "reviewReference": "/opt/telomere-pilot/work/near-candidate-1791421475-b0051ebada001cfb.json",
+  "schemaVersion": 1,
+  "sessionAdmitted": false,
+  "signingAddress": "0x3b753b4406613c5e70ae640508632b600424fa0c",
+  "tlsSpkiSha256": "aaf70a60f0e55a3cfcdb3d58142a25e34b620c85e2d796e91edfd9086ca09b27"
+}

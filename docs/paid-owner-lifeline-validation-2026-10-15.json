@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-15",
+  "scope": "Independent owner Lifeline and finite funding review",
+  "productionChangesFromReview": false,
+  "focusedFundingTests": {
+    "command": "npx vitest run tests/paid-lifeline-reservations.test.ts --reporter=json --outputFile=.local/owner-loop-review-20261015.json",
+    "passed": 12,
+    "failed": 0,
+    "skipped": 0,
+    "rawResult": "docs/evidence/owner-loop-review-20261015.json",
+    "rawResultSha256": "afa2b7da466bb19b468330715b60ba727c0beb96b2c7828d545ede4240f6aaca",
+    "addedCoverage": [
+      "Actual HttpAgentLifecycleControl and CystClient independently emit quota2 negotiation headers",
+      "Factory rejects either upload client using quota1",
+      "Either client's count or byte shortage blocks wallet submission",
+      "Exact reserve of four 4096-byte states plus AEAD tags passes",
+      "Kill, pending intent, changed lifecycle version, policy expiry and quote expiry during awaited storage preflight all block submission and admission"
+    ]
+  },
+  "localAnvilFundingTest": {
+    "command": "npx vitest run tests/paid-lifeline-funding-anvil.test.ts --reporter=json --outputFile=.local/owner-loop-anvil-review-20261015.json",
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0,
+    "rawResult": "docs/evidence/owner-loop-anvil-review-20261015.json",
+    "rawResultSha256": "a4195e279e0e63cf7a2fe2fdfc20895d4b06458ca6c009281de63ec8793f6b86",
+    "established": "One actual local Vault reservation, encrypted funding/compute journal reopen, original operation and signed transaction reconciliation after wallet/admission response loss, exact canonical reservation debit and owner kill blocking further funding",
+    "cpuDispatched": false
+  },
+  "typecheck": { "command": "npx tsc --noEmit", "exitCode": 0 },
+  "postRunSourceSha256": {
+    "src/agents/paid-owner-lifeline.ts": "46d60e7440f9793fe4b7e4002cc4b56fa7757030ef63b6c2f2dff849b2317a4b",
+    "src/agents/paid-lifeline-reservations.ts": "40c16b04d47a199a8570f7787e670d114af712d7db32ed56b81228bc33665f0c",
+    "tests/paid-lifeline-reservations.test.ts": "716d34d778da620d21089f495b80e69f507b5d00d279b73a107721a162192534",
+    "tests/paid-lifeline-funding-anvil.test.ts": "a8bb12710a2c3792c918a06dda9b95a41e3fd9756f8d721f4942f871890620fb"
+  },
+  "sourceBoundary": "Independent focused executions over the shared uncommitted tree after 2600e26. Post-run hashes only; not a frozen whole-backend release regression.",
+  "publicTransactions": 0,
+  "paidPublicRequests": 0,
+  "notEstablished": [
+    "24-hour live owner loop",
+    "960 real paid compute rollovers",
+    "funded Base acceptance",
+    "independent external storage durability",
+    "hardware-confidential CPU execution"
+  ]
+}

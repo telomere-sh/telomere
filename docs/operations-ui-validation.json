@@ -1,0 +1,19 @@
+{
+  "testType": "UI behavior with mocked operations and provider-evidence responses; real local demo authentication",
+  "passed": [
+    "idle counts",
+    "TLS policy has no enclave claim",
+    "quarantine blocks new work",
+    "withdraw remains available while blocked",
+    "faulted guidance",
+    "stopped guidance",
+    "reconciliation guidance",
+    "configured enclave policy is not a request proof",
+    "recorded TLS receipt evidence",
+    "attestation reference/signer/expiry rendering",
+    "320px reflow"
+  ],
+  "syntheticProviderEvidence": true,
+  "verifiesRealEnclaveExecution": false,
+  "uncaughtBrowserErrors": []
+}

@@ -1,0 +1,233 @@
+
+> telomere-pilot@0.1.0 build
+> tsx scripts/compile-contracts.ts && tsc && esbuild public/app.ts --bundle --format=esm --outfile=dist/public/app.js && node scripts/copy-public.mjs
+
+{
+  "compiler": "0.8.28+commit.7893614a.Emscripten.clang",
+  "contracts": [
+    {
+      "name": "AgentVault",
+      "bytecodeBytes": 10121,
+      "artifact": "contracts/artifacts/AgentVault.json"
+    },
+    {
+      "name": "ISelectionVaultRegistry",
+      "bytecodeBytes": 0,
+      "artifact": "contracts/artifacts/ISelectionVaultRegistry.json"
+    },
+    {
+      "name": "CystRegistry",
+      "bytecodeBytes": 4767,
+      "artifact": "contracts/artifacts/CystRegistry.json"
+    },
+    {
+      "name": "FeeRouter",
+      "bytecodeBytes": 6652,
+      "artifact": "contracts/artifacts/FeeRouter.json"
+    },
+    {
+      "name": "FeeRouterEconomicsV2",
+      "bytecodeBytes": 7194,
+      "artifact": "contracts/artifacts/FeeRouterEconomicsV2.json"
+    },
+    {
+      "name": "HostRegistry",
+      "bytecodeBytes": 8487,
+      "artifact": "contracts/artifacts/HostRegistry.json"
+    },
+    {
+      "name": "IHostEvidenceRoot",
+      "bytecodeBytes": 0,
+      "artifact": "contracts/artifacts/IHostEvidenceRoot.json"
+    },
+    {
+      "name": "MockToken",
+      "bytecodeBytes": 2502,
+      "artifact": "contracts/artifacts/MockToken.json"
+    },
+    {
+      "name": "IPlatformEip3009Token",
+      "bytecodeBytes": 0,
+      "artifact": "contracts/artifacts/IPlatformEip3009Token.json"
+    },
+    {
+      "name": "IPlatformSelectionVaultRegistry",
+      "bytecodeBytes": 0,
+      "artifact": "contracts/artifacts/IPlatformSelectionVaultRegistry.json"
+    },
+    {
+      "name": "PlatformAgentVault",
+      "bytecodeBytes": 15129,
+      "artifact": "contracts/artifacts/PlatformAgentVault.json"
+    },
+    {
+      "name": "PlatformRunEscrow",
+      "bytecodeBytes": 22350,
+      "artifact": "contracts/artifacts/PlatformRunEscrow.json"
+    },
+    {
+      "name": "IDiscountVaultImplementation",
+      "bytecodeBytes": 0,
+      "artifact": "contracts/artifacts/IDiscountVaultImplementation.json"
+    },
+    {
+      "name": "IDiscountVaultRegistry",
+      "bytecodeBytes": 0,
+      "artifact": "contracts/artifacts/IDiscountVaultRegistry.json"
+    },
+    {
+      "name": "IEconomicsUtilityStaking",
+      "bytecodeBytes": 0,
+      "artifact": "contracts/artifacts/IEconomicsUtilityStaking.json"
+    },
+    {
+      "name": "PlatformRunEscrowEconomicsV2",
+      "bytecodeBytes": 25442,
+      "artifact": "contracts/artifacts/PlatformRunEscrowEconomicsV2.json"
+    },
+    {
+      "name": "IPlatformSelectionGrace",
+      "bytecodeBytes": 0,
+      "artifact": "contracts/artifacts/IPlatformSelectionGrace.json"
+    },
+    {
+      "name": "IPlatformSelectionIdentity",
+      "bytecodeBytes": 0,
+      "artifact": "contracts/artifacts/IPlatformSelectionIdentity.json"
+    },
+    {
+      "name": "PlatformSelectionRegistry",
+      "bytecodeBytes": 29894,
+      "artifact": "contracts/artifacts/PlatformSelectionRegistry.json"
+    },
+    {
+      "name": "IPlatformSpendPermissionManager",
+      "bytecodeBytes": 0,
+      "artifact": "contracts/artifacts/IPlatformSpendPermissionManager.json"
+    },
+    {
+      "name": "PlatformSpendPermissionEscrowV1",
+      "bytecodeBytes": 25891,
+      "artifact": "contracts/artifacts/PlatformSpendPermissionEscrowV1.json"
+    },
+    {
+      "name": "IReservationPermitProxy",
+      "bytecodeBytes": 0,
+      "artifact": "contracts/artifacts/IReservationPermitProxy.json"
+    },
+    {
+      "name": "IReservationReceiveToken",
+      "bytecodeBytes": 0,
+      "artifact": "contracts/artifacts/IReservationReceiveToken.json"
+    },
+    {
+      "name": "PlatformX402EscrowV1",
+      "bytecodeBytes": 27638,
+      "artifact": "contracts/artifacts/PlatformX402EscrowV1.json"
+    },
+    {
+      "name": "ReceiptRoot",
+      "bytecodeBytes": 1768,
+      "artifact": "contracts/artifacts/ReceiptRoot.json"
+    },
+    {
+      "name": "SignerSet",
+      "bytecodeBytes": 1165,
+      "artifact": "contracts/artifacts/SignerSet.json"
+    },
+    {
+      "name": "ISelectionGrace",
+      "bytecodeBytes": 0,
+      "artifact": "contracts/artifacts/ISelectionGrace.json"
+    },
+    {
+      "name": "ISelectionIdentity",
+      "bytecodeBytes": 0,
+      "artifact": "contracts/artifacts/ISelectionIdentity.json"
+    },
+    {
+      "name": "SelectionRegistry",
+      "bytecodeBytes": 24071,
+      "artifact": "contracts/artifacts/SelectionRegistry.json"
+    },
+    {
+      "name": "TelomereRunEscrow",
+      "bytecodeBytes": 13925,
+      "artifact": "contracts/artifacts/TelomereRunEscrow.json"
+    },
+    {
+      "name": "TestAdversarialToken",
+      "bytecodeBytes": 3827,
+      "artifact": "contracts/artifacts/TestAdversarialToken.json"
+    },
+    {
+      "name": "TestEconomicsIdentity",
+      "bytecodeBytes": 553,
+      "artifact": "contracts/artifacts/TestEconomicsIdentity.json"
+    },
+    {
+      "name": "TestReviewedV3Router",
+      "bytecodeBytes": 1987,
+      "artifact": "contracts/artifacts/TestReviewedV3Router.json"
+    },
+    {
+      "name": "TlmrBurnableToken",
+      "bytecodeBytes": 3101,
+      "artifact": "contracts/artifacts/TlmrBurnableToken.json"
+    },
+    {
+      "name": "IBurnFeeRouter",
+      "bytecodeBytes": 0,
+      "artifact": "contracts/artifacts/IBurnFeeRouter.json"
+    },
+    {
+      "name": "IBurnableUtilityToken",
+      "bytecodeBytes": 0,
+      "artifact": "contracts/artifacts/IBurnableUtilityToken.json"
+    },
+    {
+      "name": "IReviewedV3Router",
+      "bytecodeBytes": 0,
+      "artifact": "contracts/artifacts/IReviewedV3Router.json"
+    },
+    {
+      "name": "TlmrBuyAndBurn",
+      "bytecodeBytes": 10522,
+      "artifact": "contracts/artifacts/TlmrBuyAndBurn.json"
+    },
+    {
+      "name": "IStakerFeeRouter",
+      "bytecodeBytes": 0,
+      "artifact": "contracts/artifacts/IStakerFeeRouter.json"
+    },
+    {
+      "name": "TlmrRewardStaking",
+      "bytecodeBytes": 9363,
+      "artifact": "contracts/artifacts/TlmrRewardStaking.json"
+    },
+    {
+      "name": "TlmrStaking",
+      "bytecodeBytes": 4173,
+      "artifact": "contracts/artifacts/TlmrStaking.json"
+    },
+    {
+      "name": "IReviewedSwapRouter02",
+      "bytecodeBytes": 0,
+      "artifact": "contracts/artifacts/IReviewedSwapRouter02.json"
+    },
+    {
+      "name": "TlmrSwapRouter02Adapter",
+      "bytecodeBytes": 4013,
+      "artifact": "contracts/artifacts/TlmrSwapRouter02Adapter.json"
+    },
+    {
+      "name": "TlmrToken",
+      "bytecodeBytes": 2922,
+      "artifact": "contracts/artifacts/TlmrToken.json"
+    }
+  ]
+}
+
+  dist/public/app.js  861.3kb
+
+⚡ Done in 89ms

@@ -1,0 +1,518 @@
+{
+  "schemaVersion": 1,
+  "status": "passed",
+  "runner": {
+    "path": "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-08\\new-chat\\outputs\\telomere\\.local\\private-staging-rollout-attempt4-20261015\\rollout.py",
+    "bytes": 73606,
+    "sha256": "f9d9b264e9b5b447894ff982239b96c4be2973fe4d94daa23a14d4ed63943d32",
+    "unchangedBeforeAfter": true
+  },
+  "extractedFunctions": [
+    "Refusal",
+    "assert_protected",
+    "cutover",
+    "dropin_text",
+    "load_state",
+    "recover_held",
+    "require",
+    "state_path",
+    "verify_held_link"
+  ],
+  "tests": [
+    {
+      "id": "activated_parent_recovery_noop",
+      "status": "passed",
+      "observedCalls": []
+    },
+    {
+      "id": "already_recovered_parent_recovery_noop",
+      "status": "passed",
+      "observedCalls": []
+    },
+    {
+      "id": "preintent_prepared_noop",
+      "status": "passed",
+      "observedCalls": []
+    },
+    {
+      "id": "preintent_snapshotted_noop",
+      "status": "passed",
+      "observedCalls": []
+    },
+    {
+      "id": "preintent_clone_accepted_noop",
+      "status": "passed",
+      "observedCalls": []
+    },
+    {
+      "id": "preinstall_recovery_only_restarts_original_named_units",
+      "status": "passed",
+      "observedCalls": [
+        [
+          "update",
+          "/opt/telomere-pilot/rollout/staging-354fe7af62ea-launch04",
+          "cutover_recovery"
+        ],
+        [
+          "restart_original_named_units"
+        ],
+        [
+          "update",
+          "/opt/telomere-pilot/rollout/staging-354fe7af62ea-launch04",
+          "cutover_recovered"
+        ],
+        [
+          "update",
+          "/opt/telomere-pilot/rollout/staging-354fe7af62ea-final04",
+          "prepared"
+        ]
+      ]
+    },
+    {
+      "id": "exact_owned_installed_dropin_can_recover",
+      "status": "passed",
+      "observedCalls": [
+        [
+          "update",
+          "/opt/telomere-pilot/rollout/staging-354fe7af62ea-launch04",
+          "cutover_recovery"
+        ],
+        [
+          "command",
+          "systemctl",
+          "stop",
+          "telomere-staging-watchdog.service"
+        ],
+        [
+          "command",
+          "systemctl",
+          "stop",
+          "telomere-staging.service"
+        ],
+        [
+          "rename",
+          "/etc/systemd/system/telomere-staging.service.d/90-telomere-reviewed-release.conf",
+          "/etc/systemd/system/telomere-staging.service.d/90-telomere-reviewed-release.conf.disabled-staging-354fe7af62ea-launch04"
+        ],
+        [
+          "command",
+          "systemctl",
+          "daemon-reload"
+        ],
+        [
+          "restart_original_named_units"
+        ],
+        [
+          "update",
+          "/opt/telomere-pilot/rollout/staging-354fe7af62ea-launch04",
+          "cutover_recovered"
+        ],
+        [
+          "update",
+          "/opt/telomere-pilot/rollout/staging-354fe7af62ea-final04",
+          "prepared"
+        ]
+      ]
+    },
+    {
+      "id": "changed_dropin_holds_without_code_or_service_effects",
+      "status": "passed",
+      "observedCalls": []
+    },
+    {
+      "id": "foreign_dropin_holds_without_effects",
+      "status": "passed",
+      "observedCalls": []
+    },
+    {
+      "id": "symlink_dropin_holds_without_effects",
+      "status": "passed",
+      "observedCalls": []
+    },
+    {
+      "id": "symlink_dropin_parent_holds_without_effects",
+      "status": "passed",
+      "observedCalls": []
+    },
+    {
+      "id": "changed_original_runtime_holds_without_effects",
+      "status": "passed",
+      "observedCalls": []
+    },
+    {
+      "id": "unknown_stage_holds_without_effects",
+      "status": "passed",
+      "observedCalls": []
+    },
+    {
+      "id": "mismatched_child_link_holds_without_effects",
+      "status": "passed",
+      "observedCalls": []
+    },
+    {
+      "id": "live_parent_refuses_external_recovery",
+      "status": "passed",
+      "observedCalls": []
+    },
+    {
+      "id": "cleanup_incomplete_remains_recoverable",
+      "status": "passed",
+      "observedCalls": [
+        [
+          "update",
+          "/opt/telomere-pilot/rollout/staging-354fe7af62ea-launch04",
+          "cutover_recovery"
+        ],
+        [
+          "cleanup_owned_child_resources"
+        ],
+        [
+          "restart_original_named_units"
+        ],
+        [
+          "update",
+          "/opt/telomere-pilot/rollout/staging-354fe7af62ea-launch04",
+          "cutover_recovery"
+        ],
+        [
+          "update",
+          "/opt/telomere-pilot/rollout/staging-354fe7af62ea-final04",
+          "prepared"
+        ],
+        [
+          "update",
+          "/opt/telomere-pilot/rollout/staging-354fe7af62ea-launch04",
+          "cutover_recovery"
+        ],
+        [
+          "cleanup_owned_child_resources"
+        ],
+        [
+          "restart_original_named_units"
+        ],
+        [
+          "update",
+          "/opt/telomere-pilot/rollout/staging-354fe7af62ea-launch04",
+          "cutover_recovered"
+        ],
+        [
+          "update",
+          "/opt/telomere-pilot/rollout/staging-354fe7af62ea-final04",
+          "prepared"
+        ]
+      ]
+    },
+    {
+      "id": "dropin_replacement_during_cleanup_refuses_before_stop",
+      "status": "passed",
+      "observedCalls": [
+        [
+          "update",
+          "/opt/telomere-pilot/rollout/staging-354fe7af62ea-launch04",
+          "cutover_recovery"
+        ],
+        [
+          "cleanup_owned_child_resources"
+        ]
+      ]
+    },
+    {
+      "id": "dropin_replacement_during_stop_refuses_before_rename",
+      "status": "passed",
+      "observedCalls": [
+        [
+          "update",
+          "/opt/telomere-pilot/rollout/staging-354fe7af62ea-launch04",
+          "cutover_recovery"
+        ],
+        [
+          "command",
+          "systemctl",
+          "stop",
+          "telomere-staging-watchdog.service"
+        ],
+        [
+          "command",
+          "systemctl",
+          "stop",
+          "telomere-staging.service"
+        ]
+      ]
+    },
+    {
+      "id": "helper_hash_change_refused_before_effects",
+      "status": "passed",
+      "observedCalls": []
+    },
+    {
+      "id": "runner_hash_change_refused_before_effects",
+      "status": "passed",
+      "observedCalls": []
+    },
+    {
+      "id": "missing_original_state_refuses_without_effects",
+      "status": "passed",
+      "observedCalls": []
+    },
+    {
+      "id": "corrupt_original_state_refuses_without_effects",
+      "status": "passed",
+      "observedCalls": []
+    },
+    {
+      "id": "new_release_guard_before_any_cutover_effect",
+      "status": "passed",
+      "observedCalls": [
+        [
+          "assert_release",
+          "/opt/telomere-pilot/rollout/staging-354fe7af62ea-launch04"
+        ]
+      ]
+    },
+    {
+      "id": "new_release_guard_rechecked_after_clone_before_dropin",
+      "status": "passed",
+      "observedCalls": [
+        [
+          "assert_release",
+          "/opt/telomere-pilot/rollout/staging-354fe7af62ea-launch04"
+        ],
+        [
+          "create_owned_final_work"
+        ],
+        [
+          "update",
+          "/opt/telomere-pilot/rollout/staging-354fe7af62ea-final04",
+          "prepared"
+        ],
+        [
+          "update",
+          "/opt/telomere-pilot/rollout/staging-354fe7af62ea-launch04",
+          "cutover_held"
+        ],
+        [
+          "fresh_stopped_snapshot"
+        ],
+        [
+          "original_units_remain_inactive"
+        ],
+        [
+          "update",
+          "/opt/telomere-pilot/rollout/staging-354fe7af62ea-final04",
+          "snapshotted"
+        ],
+        [
+          "full_new_and_old_clone_while_original_stopped"
+        ],
+        [
+          "original_units_remain_inactive"
+        ],
+        [
+          "complete_preactivation_fingerprint"
+        ],
+        [
+          "original_units_remain_inactive"
+        ],
+        [
+          "assert_release",
+          "/opt/telomere-pilot/rollout/staging-354fe7af62ea-final04"
+        ],
+        [
+          "recovery_port_after_refusal"
+        ]
+      ]
+    },
+    {
+      "id": "complete_fresh_fingerprint_rawChainSha256_drift_blocks_activation",
+      "status": "passed",
+      "observedCalls": [
+        [
+          "assert_release",
+          "/opt/telomere-pilot/rollout/staging-354fe7af62ea-launch04"
+        ],
+        [
+          "create_owned_final_work"
+        ],
+        [
+          "update",
+          "/opt/telomere-pilot/rollout/staging-354fe7af62ea-final04",
+          "prepared"
+        ],
+        [
+          "update",
+          "/opt/telomere-pilot/rollout/staging-354fe7af62ea-launch04",
+          "cutover_held"
+        ],
+        [
+          "fresh_stopped_snapshot"
+        ],
+        [
+          "original_units_remain_inactive"
+        ],
+        [
+          "update",
+          "/opt/telomere-pilot/rollout/staging-354fe7af62ea-final04",
+          "snapshotted"
+        ],
+        [
+          "full_new_and_old_clone_while_original_stopped"
+        ],
+        [
+          "original_units_remain_inactive"
+        ],
+        [
+          "complete_preactivation_fingerprint"
+        ],
+        [
+          "recovery_port_after_refusal"
+        ]
+      ]
+    },
+    {
+      "id": "complete_fresh_fingerprint_jobs_drift_blocks_activation",
+      "status": "passed",
+      "observedCalls": [
+        [
+          "assert_release",
+          "/opt/telomere-pilot/rollout/staging-354fe7af62ea-launch04"
+        ],
+        [
+          "create_owned_final_work"
+        ],
+        [
+          "update",
+          "/opt/telomere-pilot/rollout/staging-354fe7af62ea-final04",
+          "prepared"
+        ],
+        [
+          "update",
+          "/opt/telomere-pilot/rollout/staging-354fe7af62ea-launch04",
+          "cutover_held"
+        ],
+        [
+          "fresh_stopped_snapshot"
+        ],
+        [
+          "original_units_remain_inactive"
+        ],
+        [
+          "update",
+          "/opt/telomere-pilot/rollout/staging-354fe7af62ea-final04",
+          "snapshotted"
+        ],
+        [
+          "full_new_and_old_clone_while_original_stopped"
+        ],
+        [
+          "original_units_remain_inactive"
+        ],
+        [
+          "complete_preactivation_fingerprint"
+        ],
+        [
+          "recovery_port_after_refusal"
+        ]
+      ]
+    },
+    {
+      "id": "complete_fresh_fingerprint_cysts_drift_blocks_activation",
+      "status": "passed",
+      "observedCalls": [
+        [
+          "assert_release",
+          "/opt/telomere-pilot/rollout/staging-354fe7af62ea-launch04"
+        ],
+        [
+          "create_owned_final_work"
+        ],
+        [
+          "update",
+          "/opt/telomere-pilot/rollout/staging-354fe7af62ea-final04",
+          "prepared"
+        ],
+        [
+          "update",
+          "/opt/telomere-pilot/rollout/staging-354fe7af62ea-launch04",
+          "cutover_held"
+        ],
+        [
+          "fresh_stopped_snapshot"
+        ],
+        [
+          "original_units_remain_inactive"
+        ],
+        [
+          "update",
+          "/opt/telomere-pilot/rollout/staging-354fe7af62ea-final04",
+          "snapshotted"
+        ],
+        [
+          "full_new_and_old_clone_while_original_stopped"
+        ],
+        [
+          "original_units_remain_inactive"
+        ],
+        [
+          "complete_preactivation_fingerprint"
+        ],
+        [
+          "recovery_port_after_refusal"
+        ]
+      ]
+    },
+    {
+      "id": "complete_fresh_fingerprint_unknown_drift_blocks_activation",
+      "status": "passed",
+      "observedCalls": [
+        [
+          "assert_release",
+          "/opt/telomere-pilot/rollout/staging-354fe7af62ea-launch04"
+        ],
+        [
+          "create_owned_final_work"
+        ],
+        [
+          "update",
+          "/opt/telomere-pilot/rollout/staging-354fe7af62ea-final04",
+          "prepared"
+        ],
+        [
+          "update",
+          "/opt/telomere-pilot/rollout/staging-354fe7af62ea-launch04",
+          "cutover_held"
+        ],
+        [
+          "fresh_stopped_snapshot"
+        ],
+        [
+          "original_units_remain_inactive"
+        ],
+        [
+          "update",
+          "/opt/telomere-pilot/rollout/staging-354fe7af62ea-final04",
+          "snapshotted"
+        ],
+        [
+          "full_new_and_old_clone_while_original_stopped"
+        ],
+        [
+          "original_units_remain_inactive"
+        ],
+        [
+          "complete_preactivation_fingerprint"
+        ],
+        [
+          "recovery_port_after_refusal"
+        ]
+      ]
+    }
+  ],
+  "passed": 28,
+  "failed": 0,
+  "python": "3.13.5",
+  "networkCalls": 0,
+  "subprocessCalls": 0,
+  "realServiceOperations": 0,
+  "realApplicationDataOperations": 0,
+  "boundary": "Actual recovery/state/link and negative cutover control-flow bodies with in-memory ports. Actual release byte guards have a separate filesystem cohort. Does not test Linux privileges, signals, process cleanup or real rollout."
+}

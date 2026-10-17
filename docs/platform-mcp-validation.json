@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "checkedOn": "2026-10-11",
+  "timezone": "Europe/Moscow",
+  "scope": "Backend only: checked full financial CPU MCP over separate HTTP and stdio endpoints",
+  "sourceParentCommit": "423c7b6",
+  "finalFocusedRegression": {
+    "command": "npx vitest run tests/mcp-http.test.ts tests/mcp-platform.test.ts tests/mcp-platform-stdio.test.ts tests/sdk-mcp.test.ts tests/platform-main.test.ts tests/platform-client.test.ts tests/platform-vault-client.test.ts --reporter=dot",
+    "exitCode": 0,
+    "suitesPassed": 7,
+    "testsPassed": 117,
+    "skipped": 0,
+    "failures": 0,
+    "durationSeconds": 114.35,
+    "sourceStayedFixedDuringRun": true,
+    "casesBySuite": {
+      "mcpHttp": 17,
+      "platformMcp": 12,
+      "platformMcpStdio": 3,
+      "pilotStdio": 2,
+      "platformMain": 9,
+      "platformEoaClient": 38,
+      "platformVaultClient": 36
+    }
+  },
+  "earlierCompleteRegression": {
+    "commit": "423c7b6",
+    "report": "platform-vault-validation.json",
+    "testsPassed": 807,
+    "explicitPosixSkips": 4,
+    "testsTotal": 811,
+    "suitesPassed": 49,
+    "notASingleCompletePostMcpRun": true
+  },
+  "typecheck": { "command": "npm run typecheck", "exitCode": 0 },
+  "finalBuild": { "command": "npm run build", "exitCode": 0 },
+  "dependenciesChanged": false,
+  "independentReview": "HTTP factory, MCP tool scope, public profile bounds, credentials, stdio and shutdown reviewed; no remaining critical findings reported",
+  "evidence": [
+    "Actual main server, generated agent challenge/verify signatures and disposable deployed Vault contracts return a valid EIP-712 quote and exact unsigned payRun",
+    "HTTP MCP tool/action acceptance uses the official SDK with checked EOA/Vault clients, authenticated HTTP fixtures and actual viem signatures/calldata",
+    "Quote/admission advertise mutation capabilities; no tool signs, approves, funds or broadcasts a wallet transaction",
+    "Owner/agent roles, exact cookie/session/endpoint isolation, Origin and trusted socket-IP rate limits are exercised",
+    "Public 16 KiB profile bounds, strict UTF-8/schema, private-field/hardlink refusal and actual child-process stdio negotiation pass",
+    "Both main MCP handlers close, database resources release and the server port can be reused"
+  ],
+  "limits": [
+    "The final focused 117-case run overlaps the earlier complete 811-case regression; counts must not be added as disjoint tests",
+    "The installed SDK retains the 2025 MCP protocol era; 2026 metadata and x402 authentication are not implemented",
+    "MCP HTTP replay is bounded and in memory; accepted API actions can finish after disconnect/timeout and require their original durable operation key/hash on retry",
+    "No new public deployment, personal-wallet transaction, paid provider request or Linux/gVisor Vault acceptance",
+    "Main-app MCP acceptance proves real contract-backed quote preparation; paid CPU and canonical settlement evidence belongs to the separately tested underlying runtime",
+    "Compute remains four reviewed CPU algorithms for at most 120 seconds, without generic cell.exec, GPU/suppliers or admitted sealed-host key release",
+    "The 54% functional assessment retains its pre-Vault 92d6ea9 cutoff and is not rescored by this iteration"
+  ]
+}

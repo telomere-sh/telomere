@@ -1,0 +1,25 @@
+[Unit]
+Description=Telomere private disposable staging EVM
+After=network-online.target
+
+[Service]
+Type=simple
+User=telomere
+Group=telomere
+WorkingDirectory=/opt/telomere-pilot/app
+ExecStart=/opt/telomere-pilot/app/node_modules/@foundry-rs/anvil-linux-amd64/bin/anvil --host 127.0.0.1 --port 18547 --chain-id 31337 --accounts 0 --silent --state /opt/telomere-pilot/data/chain.json --state-interval 1
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=30
+CPUQuota=50%
+MemoryMax=512M
+TasksMax=64
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/telomere-pilot/data
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target

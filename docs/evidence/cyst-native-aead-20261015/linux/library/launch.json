@@ -1,0 +1,8 @@
+{
+  "pid": 2994606,
+  "startTicks": "7158352",
+  "launchedAtUtc": "2026-10-15T12:07:31.893180+00:00",
+  "runnerSha256": "84722e1f0276d31a5260e9be5a6a7b2b2ea20ba5a80ee43fa2c5f69ef0399903",
+  "base": "/opt/telomere-host-runtime/cyst-native-20261015-1565b1dcfd542dd7c139e790",
+  "ownedFilesPreserved": true
+}

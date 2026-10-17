@@ -1,0 +1,205 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-15",
+  "checkedAt": "2026-10-15T01:20:55.794Z",
+  "scope": "Read-only observation and executable-build comparison of canonical public SpendPermissionManager; no runtime approval or configuration enablement.",
+  "managerAddress": "0xf85210B21cC50302F477BA56686d2019dC9b67Ad",
+  "canonicalAddressPrimarySources": [
+    "https://github.com/coinbase/spend-permissions/blob/e0004e63edc4e17de7aa978293800ac7a16892e5/README.md",
+    "https://github.com/coinbase/spend-permissions/releases/tag/v1.0.0"
+  ],
+  "primaryBuildSources": [
+    "https://github.com/coinbase/spend-permissions/blob/e0004e63edc4e17de7aa978293800ac7a16892e5/foundry.toml",
+    "https://github.com/coinbase/spend-permissions/blob/e0004e63edc4e17de7aa978293800ac7a16892e5/script/Deploy.s.sol",
+    "https://docs.base.org/get-started/connect-to-base"
+  ],
+  "expectedTypehash": "0xc9fa0f0252014cf89ab0539e3bb3adcb76f93e6bb6494e8cc61c14e2761ee2e4",
+  "networks": [
+    {
+      "name": "Base",
+      "chainId": 8453,
+      "rpc": "https://mainnet.base.org",
+      "block": {
+        "number": "0x322e478",
+        "hash": "0xfd18714a7016d6dbf076fd240c592bb2ed4e126b14faeba530475ba84f7dcc33",
+        "timestamp": "0x6ad025d3"
+      },
+      "runtimeBytes": 12610,
+      "runtimeKeccak256": "0x2e9e272aa2f685632aae292aaf8bca67f22e4494ec831959bc6e9ff071378bea",
+      "calls": {
+        "SPEND_PERMISSION_TYPEHASH": "0xc9fa0f0252014cf89ab0539e3bb3adcb76f93e6bb6494e8cc61c14e2761ee2e4",
+        "PUBLIC_ERC6492_VALIDATOR": "0xcfCE48B757601F3f351CB6f434CB0517aEEE293D",
+        "MAGIC_SPEND": "0x011A61C07DbF256A68256B1cB51A5e246730aB92",
+        "eip712Domain": [
+          "0x0f",
+          "Spend Permission Manager",
+          "1",
+          "8453",
+          "0xf85210B21cC50302F477BA56686d2019dC9b67Ad",
+          "0x0000000000000000000000000000000000000000000000000000000000000000",
+          []
+        ]
+      },
+      "blockStable": true,
+      "dependencies": {
+        "PUBLIC_ERC6492_VALIDATOR": {
+          "address": "0xcfCE48B757601F3f351CB6f434CB0517aEEE293D",
+          "runtimeBytes": 597,
+          "runtimeKeccak256": "0x94a000eab18fdda0465241bd0e82487463fb2e539854a3645542e57ed8dde484"
+        },
+        "MAGIC_SPEND": {
+          "address": "0x011A61C07DbF256A68256B1cB51A5e246730aB92",
+          "runtimeBytes": 6369,
+          "runtimeKeccak256": "0x009286b156593cd94bbfee6c40925aa87c52950783b97d400ee6d58639691e2e"
+        }
+      }
+    },
+    {
+      "name": "Base Sepolia",
+      "chainId": 84532,
+      "rpc": "https://sepolia.base.org",
+      "block": {
+        "number": "0x2de63e8",
+        "hash": "0xf66a5444c738dfe570b3fe8084c5dc902877b234e52a42899fc8f2a7ef3d588d",
+        "timestamp": "0x6ad026b0"
+      },
+      "runtimeBytes": 12610,
+      "runtimeKeccak256": "0x52485746e0e69bdb943d424484c356c7d3eb97599374f38b29e87dda34c521ee",
+      "calls": {
+        "SPEND_PERMISSION_TYPEHASH": "0xc9fa0f0252014cf89ab0539e3bb3adcb76f93e6bb6494e8cc61c14e2761ee2e4",
+        "PUBLIC_ERC6492_VALIDATOR": "0xcfCE48B757601F3f351CB6f434CB0517aEEE293D",
+        "MAGIC_SPEND": "0x011A61C07DbF256A68256B1cB51A5e246730aB92",
+        "eip712Domain": [
+          "0x0f",
+          "Spend Permission Manager",
+          "1",
+          "84532",
+          "0xf85210B21cC50302F477BA56686d2019dC9b67Ad",
+          "0x0000000000000000000000000000000000000000000000000000000000000000",
+          []
+        ]
+      },
+      "blockStable": true,
+      "dependencies": {
+        "PUBLIC_ERC6492_VALIDATOR": {
+          "address": "0xcfCE48B757601F3f351CB6f434CB0517aEEE293D",
+          "runtimeBytes": 597,
+          "runtimeKeccak256": "0x94a000eab18fdda0465241bd0e82487463fb2e539854a3645542e57ed8dde484"
+        },
+        "MAGIC_SPEND": {
+          "address": "0x011A61C07DbF256A68256B1cB51A5e246730aB92",
+          "runtimeBytes": 6369,
+          "runtimeKeccak256": "0x009286b156593cd94bbfee6c40925aa87c52950783b97d400ee6d58639691e2e"
+        }
+      }
+    }
+  ],
+  "buildComparison": {
+    "referenceCommit": "e0004e63edc4e17de7aa978293800ac7a16892e5",
+    "referenceCompilerInput": "tests/fixtures/spend-permissions/reference-input.json",
+    "referenceCompilerInputSha256": "5a2825705245373c5d57a56f77acf406c6c09f924e44bef8b168876ba6e01128",
+    "sourceFiles": 36,
+    "compiler": "0.8.28+commit.7893614a.Emscripten.clang",
+    "evmVersion": "cancun",
+    "localAcceptanceOptimizerRuns": 200,
+    "localAcceptanceRuntimeBytes": 9981,
+    "officialDeployOptimizerRuns": 999999,
+    "deployRuntimeBytes": 12610,
+    "executableBytesExcludingSolidityTrailer": 12557,
+    "immutableDeclarationsMatched": 7,
+    "immutableLocationsMatched": 10,
+    "immutableByteLocations": {
+      "4418": [
+        {
+          "length": 32,
+          "start": 8161
+        }
+      ],
+      "4420": [
+        {
+          "length": 32,
+          "start": 8196
+        }
+      ],
+      "4422": [
+        {
+          "length": 32,
+          "start": 8276
+        }
+      ],
+      "4424": [
+        {
+          "length": 32,
+          "start": 8314
+        }
+      ],
+      "4426": [
+        {
+          "length": 32,
+          "start": 8128
+        }
+      ],
+      "8193": [
+        {
+          "length": 32,
+          "start": 1109
+        },
+        {
+          "length": 32,
+          "start": 4295
+        },
+        {
+          "length": 32,
+          "start": 4966
+        }
+      ],
+      "8196": [
+        {
+          "length": 32,
+          "start": 1222
+        },
+        {
+          "length": 32,
+          "start": 4041
+        }
+      ]
+    },
+    "allExecutableBytesMatchAfterExactImmutableSubstitution": true,
+    "entireRuntimeMatch": false,
+    "remainingDifference": "Solidity CBOR metadata: 51 bytes plus 2-byte length trailer, same on both public chains. Its IPFS content was not retrieved/verified (HTTP429). Full source-metadata/build provenance is not established."
+  },
+  "evidence": [
+    {
+      "path": "docs/evidence/public-spend-manager-rpc-20261015.json",
+      "sha256": "0cbd8ef24018dddac1ea7ccbaf279d4bc3aaa36d757e8fa85778e316014d3684",
+      "bytes": 224375
+    },
+    {
+      "path": "docs/evidence/public-spend-manager-build-comparison-20261015.json",
+      "sha256": "e16c96c077d07cacc4f640b49c95c9e08fa48b12073807458ab475fdfbdb7b3a",
+      "bytes": 21024
+    },
+    {
+      "path": "docs/evidence/public-spend-manager-corroboration-20261015.json",
+      "sha256": "d61d8305946d1821ff20d192de4fece4ec61e536a1fba61b64c51dfbe392f3c1",
+      "bytes": 81038
+    },
+    {
+      "path": "docs/evidence/public-spend-manager-ipfs-check-20261015.json",
+      "sha256": "58dbd8910533490fd0cc5782909683523383282bc77f8ef27c516c69f5df8ea4",
+      "bytes": 541
+    }
+  ],
+  "notEstablished": [
+    "No automatic approval of public runtime pins",
+    "No public wallet funding, permission approval, spend, opening, settlement or withdrawal acceptance",
+    "No Base Account/AA, ERC6492 or MagicSpend workflow acceptance",
+    "No dependency ownership/upgradeability/audit approval",
+    "No exact deployed metadata/source-input reproduction",
+    "No whole-backend readiness or completion-percentage increment"
+  ],
+  "publicTransactions": 0,
+  "paidPublicRequests": 0,
+  "configEnabled": false,
+  "productionOrTestSourceEdits": false
+}

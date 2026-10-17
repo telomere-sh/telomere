@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 2,
+  "checkedAtUtc": "2026-10-13T08:25:18.492Z",
+  "chainId": 46630,
+  "anchor": {
+    "number": "134145656",
+    "hash": "0x92108eaf67d652a44bfb4fd0946baf4a1e6e04ed1367dde9d348cba793769e9c"
+  },
+  "implementationSlot": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+  "sourceRepository": "https://github.com/erc-8004/erc-8004-contracts",
+  "sourceCommit": "b9e466c250744a7e06b13dff9d3c2844ed64f825",
+  "sourceLockfileSha256": "c869ae3bde4d17067998631756dcb0bfb0dda8f5153ea64e75b041fabe449e5c",
+  "compiler": "0.8.24+commit.e11b9ed9.Emscripten.clang",
+  "dependencyVersions": {
+    "solc": "0.8.24",
+    "openzeppelinContracts": "5.4.0",
+    "openzeppelinUpgradeable": "5.4.0"
+  },
+  "packagePins": {
+    "@openzeppelin/contracts": {
+      "version": "5.4.0",
+      "resolved": "https://registry.npmjs.org/@openzeppelin/contracts/-/contracts-5.4.0.tgz",
+      "integrity": "sha512-eCYgWnLg6WO+X52I16TZt8uEjbtdkgLC0SUX/xnAksjjrQI4Xfn4iBRoI5j55dmlOhDv1Y7BoR3cU7e3WWhC6A=="
+    },
+    "@openzeppelin/contracts-upgradeable": {
+      "version": "5.4.0",
+      "resolved": "https://registry.npmjs.org/@openzeppelin/contracts-upgradeable/-/contracts-upgradeable-5.4.0.tgz",
+      "integrity": "sha512-STJKyDzUcYuB35Zub1JpWW58JxvrFFVgQ+Ykdr8A9PGXgtq/obF5uoh07k2XmFyPxfnZdPdBdhkJ/n2YxJ87HQ=="
+    },
+    "solc": {
+      "version": "0.8.24",
+      "resolved": "https://registry.npmjs.org/solc/-/solc-0.8.24.tgz",
+      "integrity": "sha512-G5yUqjTUPc8Np74sCFwfsevhBPlUifUOfhYrgyu6CmYlC6feSw0YS6eZW47XDT23k3JYdKx5nJ+Q7whCEmNcoA=="
+    }
+  },
+  "importedSourceSha256": {
+    "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol": "9247b9ad7939d23990dbdc9274917c3762ffb37e5137ef7bbfcc2e2fba1b8dd2",
+    "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol": "f527a063813c2bf60c153fb08e38539578935402894fcc36fac42324ca325d3b",
+    "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol": "2d07bcf9728190a5c807cf68defc3f3c52aa098d04770d44af37f30abade38d5",
+    "@openzeppelin/contracts-upgradeable/token/ERC721/ERC721Upgradeable.sol": "2589016aed958e644f7235481c1639a8657640a746c33cbd9f42a5cc28519604",
+    "@openzeppelin/contracts-upgradeable/token/ERC721/extensions/ERC721URIStorageUpgradeable.sol": "205704dcb4f17cb667aecbb8a0a66bdd175012d342e1c3abd469b67449b8e7f3",
+    "@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol": "a08e16324da33a9d666dc07a22ae58031c242a3869f6808e55b4b82fc70cb209",
+    "@openzeppelin/contracts-upgradeable/utils/cryptography/EIP712Upgradeable.sol": "91c98a39169b1ad2a4babb09e7a7c89d895956739d3f960701911cbc8b542050",
+    "@openzeppelin/contracts-upgradeable/utils/introspection/ERC165Upgradeable.sol": "d2105a1e3ba533399fb408105267329c2c134fcb18043a9c024d1b6e81982fc9",
+    "@openzeppelin/contracts/interfaces/draft-IERC1822.sol": "73653312bc2eda0ec231553a5295242eaef2d4f46a023532d45fe76cbd0f565f",
+    "@openzeppelin/contracts/interfaces/draft-IERC6093.sol": "df936240c9a5d342582cbda70dd773b1c1d0e0dda3042b1c17b902ef0c36827b",
+    "@openzeppelin/contracts/interfaces/IERC1271.sol": "2d17bba201aa2f9c55e317315b872272a60361848dfceb6b1e77081265c79a27",
+    "@openzeppelin/contracts/interfaces/IERC165.sol": "dfb3f56fa928a7c6cae41a7ce2c86b9210fa18d33fa26389099d66a0fa790368",
+    "@openzeppelin/contracts/interfaces/IERC1967.sol": "c4e901318ab6d4963582c62c62ce988a34c68dbae71846b67decacde79e9a317",
+    "@openzeppelin/contracts/interfaces/IERC4906.sol": "2b14563481c355e6a84127f0ee528d3e3b80fcdd76ff840660784c2445fcc0ae",
+    "@openzeppelin/contracts/interfaces/IERC5267.sol": "f89772d2d4fafcbef8b73bb10ee9a3373edec2eedb2f1b302320915b351dc3d1",
+    "@openzeppelin/contracts/interfaces/IERC721.sol": "4e4412e3eb28d5d2055e7b0e8153a2ab4d143f94e125a03a1b3d655ea7ed0002",
+    "@openzeppelin/contracts/proxy/beacon/IBeacon.sol": "c1c9726bbb0ec4c540c7c98059dcded69a8586b46c168036672381033ee76239",
+    "@openzeppelin/contracts/proxy/ERC1967/ERC1967Utils.sol": "58c5b19893bf3d7f9e1aa0edc5b908b915eb7af4381800deb425a6e5331f4432",
+    "@openzeppelin/contracts/token/ERC721/extensions/IERC721Metadata.sol": "33223782ea652dca413702ce92f9f59d91d758a035065b24bbedb7dc60c63a78",
+    "@openzeppelin/contracts/token/ERC721/IERC721.sol": "ff0eb9902bf0ac099205615fac90eacf34fae637571b05aab3ea35dea53d5f17",
+    "@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol": "eafee3ffdc7cb2fba4bf6bd16fb28f8e5b4679742e81c2ad42a1b1df5c179feb",
+    "@openzeppelin/contracts/token/ERC721/utils/ERC721Utils.sol": "f2041b1685dcf0cf6b968d9b8454e5a46068b1df5ab0e82ba0b269fa2f3099a8",
+    "@openzeppelin/contracts/utils/Address.sol": "f1a9255dbc40cf9ae7c786abed3b022691a9d24bca0c7f05dc60e63421d405ab",
+    "@openzeppelin/contracts/utils/cryptography/ECDSA.sol": "0964ddd02f4a7a8cf9ba130e3aeead588ca3d425d5bc13cc4221358c69108ed0",
+    "@openzeppelin/contracts/utils/cryptography/MessageHashUtils.sol": "936a89f512d5da84b0896b66d2398f2bea9eefdf2afa788af5265fcd74302693",
+    "@openzeppelin/contracts/utils/Errors.sol": "0704b9d6c032cca8512a3bc3f30f49f86f1f03102d2896a3d23e794b82efea66",
+    "@openzeppelin/contracts/utils/introspection/IERC165.sol": "9055c2994b37dea1a41b7b7926dcb510f05dbe2540b0aafc5fbee9558fffd0ca",
+    "@openzeppelin/contracts/utils/math/Math.sol": "92fee281fd46a1b058b190cf21d6b1a528f0433a907850ae1c9bcf36c5c0cd98",
+    "@openzeppelin/contracts/utils/math/SafeCast.sol": "9769274bf53f26a7c7896c526ea1980dc9bea5bf5c2a5fd04870008c4afc1de9",
+    "@openzeppelin/contracts/utils/math/SignedMath.sol": "1ed50b1056af886752f0fb48a0165d381e69bb4a4b18b893b066dc144a7e08d7",
+    "@openzeppelin/contracts/utils/Panic.sol": "270fc8401c1a13fae6a7a4a2dd6e381b95d658896701e51f0d3e2688acab3dec",
+    "@openzeppelin/contracts/utils/StorageSlot.sol": "75704538dcb223239280c6726d9a31cf769a7816718517c997fc7d63bdb70778",
+    "@openzeppelin/contracts/utils/Strings.sol": "2db7d21151644c57f75ed3ab55e87f3cf7fbf587a65345650fd740e2cfd50be3"
+  },
+  "importedSourcesDigestSha256": "d67e37cd865412246931e42fad6eb37d6486704b93c43f6d3a98892ab561c40e",
+  "settings": {
+    "evmVersion": "shanghai",
+    "optimizer": {
+      "enabled": true,
+      "runs": 200
+    },
+    "viaIR": true,
+    "outputSelection": {
+      "*": {
+        "*": [
+          "evm.deployedBytecode.object",
+          "evm.deployedBytecode.immutableReferences"
+        ]
+      }
+    }
+  },
+  "results": [
+    {
+      "name": "IdentityRegistryUpgradeable",
+      "proxy": "0x8004A818BFB912233c491871b3d84c89A494BD9e",
+      "address": "0x7274e874CA62410a93Bd8bf61c69d8045E399c02",
+      "proxyCodeHash": "0xd0e45b1d89fa9b6cc7e97c1f155d64180e5c232aaccf9900ef9d4fd738c02b41",
+      "implementationCodeHash": "0xa5f9624ea85e45b3f4b8558581f03bfb3e6cefab278d7bf0500ec9bd065dc16f",
+      "runtimeBytes": 14474,
+      "executableBytes": 14421,
+      "immutableReferences": [
+        {
+          "length": 32,
+          "start": 5717
+        },
+        {
+          "length": 32,
+          "start": 5878
+        }
+      ],
+      "metadataBytes": 53,
+      "localMetadataSha256": "ce59e1e0cc8d7d356487c437cc0b82188a279e96c2eadec2e01f13d7e5c18d8d",
+      "onchainMetadataSha256": "839dd63f5078f75e2d76522ba33eca63d04a39a80607b4ebe3c1ea9431b5cdfb",
+      "executableMatch": true,
+      "fullRuntimeMatch": false,
+      "explorerEqualsRpcAtAnchor": true
+    },
+    {
+      "name": "ReputationRegistryUpgradeable",
+      "proxy": "0x8004B663056A597Dffe9eCcC1965A193B7388713",
+      "address": "0x16e0FA7f7C56B9a767E34B192B51f921BE31dA34",
+      "proxyCodeHash": "0xd0e45b1d89fa9b6cc7e97c1f155d64180e5c232aaccf9900ef9d4fd738c02b41",
+      "implementationCodeHash": "0x38602de97f1bd86f0a4729f7f3c0a78b1d27892e6eb581272cce5504a68fd00b",
+      "runtimeBytes": 10491,
+      "executableBytes": 10438,
+      "immutableReferences": [
+        {
+          "length": 32,
+          "start": 4165
+        },
+        {
+          "length": 32,
+          "start": 4350
+        }
+      ],
+      "metadataBytes": 53,
+      "localMetadataSha256": "930a5a28070685649f6e52b016be689b5d0a51fc5d84bc22100d4d82a2a35be3",
+      "onchainMetadataSha256": "6b2db38bf5b2fc4a0eafcbbe4ab48da9f9a904da59f4fced13edd95d0f396a1c",
+      "executableMatch": true,
+      "fullRuntimeMatch": false,
+      "explorerEqualsRpcAtAnchor": true
+    }
+  ]
+}

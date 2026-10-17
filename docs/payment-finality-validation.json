@@ -1,0 +1,53 @@
+{
+  "checkedOn": "2026-10-12",
+  "scope": "Canonical reinspection and signer nonce reservation in the existing x402 service; no public deployment",
+  "baselineCommit": "7227134",
+  "sources": ["src/payments/service.ts", "tests/x402-payments.test.ts"],
+  "windows": {
+    "command": "npx vitest run tests/x402-payments.test.ts --reporter=json --outputFile=.local/payment-finality-final-2.json",
+    "exitCode": 0,
+    "total": 42,
+    "passed": 42,
+    "failed": 0,
+    "skipped": 0,
+    "elapsedSeconds": 71.618,
+    "fixtures": "Disposable Anvil, actual EIP3009 token fixture and pinned unchanged upstream Permit2/proxy, PGlite and disk reopen; generated local accounts only"
+  },
+  "newCases": [
+    "Actual successful transaction reorg: cached success is withdrawn, an old operator nonce cannot serve another authorization, original raw/hash/nonce recover across disk restart",
+    "Confirmation depth rolls back with the original receipt retained: return pending without rebroadcast, then recover after mining the required depth",
+    "Finalized RPC outage fails closed without repeating cached resource execution; an old accepted settlement is inspected after payer authorization expiry",
+    "Current recipient pins are checked for finalized nonzero and chainless zero-charge journals",
+    "Another unresolved authorization prevents orphaned terminal downgrade or broadcast",
+    "Concurrent new reservation waits for terminal reorg inspection under the shared database lock",
+    "Forged success in a prepared journal is rejected before an RPC fallback"
+  ],
+  "independentReview": "Read-only second-agent review confirmed nonce reservation, prepared/terminal serialization, configuration checks and no cached-success fallback; no remaining actionable service finding",
+  "linux": {
+    "runtimeCheckpoint": "41ede4f",
+    "report": "backend-finance-file-vault-linux-validation.json",
+    "suitePassed": 42,
+    "suiteFailed": 0,
+    "suiteSkipped": 0,
+    "combinedFocusedPassed": 247,
+    "buildExitCode": 0,
+    "includesLaterChallengeCapacityChange": false
+  },
+  "priorRun": {
+    "report": ".local/payment-finality-final.json",
+    "exitCode": 1,
+    "passed": 40,
+    "failed": 2,
+    "corrections": [
+      "An existing injected broadcast callback queried the same single-connection PGlite while reconciliation held its transaction, causing a fixture deadlock. The callback now records the actual signed bytes and the test checks the durable journal after the dropped response and reopens disk before retry.",
+      "The new concurrency fixture created its second authorization after the later branch, then reverted time. Both authorizations now originate before the branch. Production authorization-time checks were unchanged."
+    ]
+  },
+  "limitations": [
+    "This is a focused suite, not a new complete repository regression",
+    "No public Robinhood transaction, USDG capability enablement or paid-provider call",
+    "Every nonzero finality observation holds the global signer reservation lock across chain inspection and any original-byte send",
+    "Public-chain reorganization after a response remains possible; reinspection does not guarantee irreversible finality",
+    "The existing direct-token gateway and the separately implemented native Vault ingress retain separate capability and deployment boundaries"
+  ]
+}

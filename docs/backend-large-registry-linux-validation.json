@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "checkedAtUtc": "2026-10-13T06:39:13.772478+00:00",
+  "scope": "isolated exact committed large Cyst to Selection CystRegistry planner on private Linux VPS; disposable Anvil/filesystem fixtures",
+  "commit": "af8e77087f078c87da80f2aafb1f1ec9dea9be0d",
+  "sourceArchiveSha256": "0fc811444fb3252e6bbb0ba5278e6bb7fcbffddaf9147e8f5ade59452003095f",
+  "trackedFilesByteMatchedAfterBuildAndTests": 645,
+  "trackedFilesMismatched": [],
+  "normalBuild": "passed",
+  "tests": {
+    "files": 5,
+    "passed": 45,
+    "failed": 0,
+    "skipped": 0,
+    "durationSeconds": 36.513739501953125
+  },
+  "preexistingServicesActiveBefore": 6,
+  "preexistingServicesActiveAfter": 6,
+  "watchdogStateKeys": [
+    "active",
+    "checkedAt",
+    "schemaVersion",
+    "sequence"
+  ],
+  "publicProviderOrChainTestCalls": 0,
+  "liveServiceMutationDuringAcceptance": false
+}

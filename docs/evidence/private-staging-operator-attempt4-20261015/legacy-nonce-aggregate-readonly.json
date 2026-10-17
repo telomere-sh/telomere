@@ -1,0 +1,15 @@
+{
+  "allFiveOriginalNonNull": true,
+  "columnPresent": true,
+  "kind": "readonly_legacy_transaction_nonce_aggregate",
+  "nonNull": 5,
+  "null": 0,
+  "probeSha256": "198104a482c526c9bb0626df9ffb6a78f214c02340d0a4bb5b1bcfa98fb704d9",
+  "readOnlyTransaction": true,
+  "result": "verified",
+  "rowsOrCredentialsReturned": false,
+  "schemaVersion": 1,
+  "total": 5,
+  "typeInt4": true,
+  "typeInt8": false
+}

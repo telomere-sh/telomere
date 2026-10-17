@@ -1,0 +1,20 @@
+{
+  "checkedAt": "2026-10-08T16:51:08.092Z",
+  "scope": "Actual private VPS Docker/PostgreSQL/local EVM, real Chrome through SSH",
+  "chainId": 31337,
+  "nearAvailable": false,
+  "nearState": "disabled",
+  "liveAttestationChecked": false,
+  "runId": "0x584e4bebf624a70a930f990c1c119ff886e9e84f7d19789abfdf77920c23e85d",
+  "runReusedFromStorage": true,
+  "newCpuDispatches": 0,
+  "billableSeconds": 3,
+  "charged": "300",
+  "refund": "2700",
+  "signatureValid": true,
+  "anchored": true,
+  "mobileWidth": 375,
+  "horizontalOverflow": false,
+  "pageErrors": 0,
+  "paidNearPosts": 0
+}

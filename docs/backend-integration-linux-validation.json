@@ -1,0 +1,33 @@
+{
+  "commit": "98c86746fc5075cdd96f869f7b565c50d691a753",
+  "archiveSha256": "c46f9c20067658cd14f4733e643a9d44dd70803f80e0f590119c0ab5f6bb5108",
+  "sourceFiles": 588,
+  "nodeVersion": "v22.23.3",
+  "testsRequested": [
+    "tests/platform-runtime.test.ts",
+    "tests/registered-agent-checkpoint-cadence.test.ts",
+    "tests/cyst-checkpoints.test.ts",
+    "tests/cyst-checkpoints-file-vault.test.ts",
+    "tests/agent-lifecycle.test.ts",
+    "tests/operator-large-cyst-storage.test.ts",
+    "tests/operator-watchdog.test.ts",
+    "tests/large-cyst-configured.test.ts",
+    "tests/large-cyst-s3.test.ts",
+    "tests/large-cyst-checkpoints.test.ts"
+  ],
+  "buildExitCode": 0,
+  "tests": { "total": 133, "passed": 133, "failed": 0, "pending": 0 },
+  "sourceMatchesAfter": 588,
+  "publicChainOrProviderCalls": false,
+  "serviceMutations": false,
+  "healthBeforeAndAfter": { "status": "ready", "worker": "idle" },
+  "servicesBeforeAndAfter": {
+    "telomere-staging.service": "active",
+    "telomere-staging-chain.service": "active",
+    "enclave-api.service": "active",
+    "enclave-worker.service": "active",
+    "enclave-web.service": "active"
+  },
+  "temporaryDirectoryRemoved": true,
+  "success": true
+}

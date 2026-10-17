@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-10-15T00:45:38.471040+00:00",
+  "scope": "Mounted paid CPU job, exact owner approvals, original quote lane binding, conservative pending-refund accounting and local-controller 30-day reliability",
+  "command": "npx vitest run tests/paid-cpu-jobs.test.ts tests/paid-cpu-reliability.test.ts tests/interruptible-lane.test.ts --reporter=json --outputFile=.local/backend-acceptance-m8-20261015.json",
+  "platform": "Windows",
+  "cpuRuntime": "actual local child processes, explicitly marked fixture; this run did not use Docker/gVisor",
+  "financialRuntime": "disposable local Anvil",
+  "successful": true,
+  "collected": 37,
+  "passed": 37,
+  "failed": 0,
+  "skipped": 0,
+  "rawResult": "docs/evidence/paid-cpu-focused-20261015.json",
+  "rawResultSha256": "9e437a3fde63a635fc7d341aa5cc2ffd768c343140b2391ee9cfef2888cb0ebd",
+  "sourceInventoryCapturedAfterRun": {
+    "tests/paid-cpu-jobs.test.ts": "c0176454c614f1ae9dd7f014446b7aa81e0dbf1497f34d02e96387f4d749ddd6",
+    "tests/paid-cpu-reliability.test.ts": "7672f296754e550e878540182bdadda41af9a95f4cb42d91acb6a3061f670bb9",
+    "tests/interruptible-lane.test.ts": "4ef9d1e5fb12c612adb0349562893b173d170c4b3891d84302d962b2309ba216",
+    "src/scheduling/paid-jobs.ts": "929edcaa164200b421c82e1d9ffb63a1f384cdf387db7e2276b448e823a107ac",
+    "src/scheduling/paid-reliability.ts": "0a123c417a2c2fb776842e71def356460ee74bb8e9201e8f5252cfc1d997bb3b",
+    "src/scheduling/paid-lanes.ts": "a8aaaf1cc0cbeb2297c06bf11cbfd5fa9a21bd21e5b41267ad0bdd2039d5dfdb",
+    "src/scheduling/paid-job-routes.ts": "db36ab33237ce21e6ee587615ea7ac4585602be6f8626944a8b32f48bf0f8684",
+    "src/scheduling/paid-cleanup.ts": "7c39b36ed0fab8c5b1a78b78740829c9d8702fb5a09f017b91c6d325dfb887ec",
+    "src/platform-runtime/service.ts": "a0ea667a4c648d266ed070720c9d05ca0cf58ff068b1e1811730cd0806b0314b",
+    "src/platform-runtime/types.ts": "b744bcd483dfc8308ebe0990756746c20749718e8d96e2ecb62bbee3795551bc",
+    "src/platform-runtime/client.ts": "01bbdc449caab08b4d7a5c32ed5dd91580e885b5c385486a2bd421ed686ceb94",
+    "src/platform-runtime/vault-client.ts": "be49743a41d4bc07732adf2d4c9129077a10b84f5ec414866294602f8bf8756f",
+    "src/host-kit/sessions/paid-protocol.ts": "5d6e4e46b5a3ead9b7e36741efdb2241e497bb01060f76b93dc09ab61bcfec20",
+    "src/host-kit/v2-admission.ts": "9896eabc5237a51b0e0169b173fd77b0b3f6274ad224078207fc8ffb4c699dc4"
+  },
+  "sourceBoundary": "Post-run inventory only. No pre-run inventory was captured for this focused Node execution; the source tree also had concurrent unrelated root edits. Do not describe this as a complete frozen backend run.",
+  "typecheck": {
+    "command": "npm run typecheck",
+    "exitCode": 0,
+    "testOnlyCorrection": "Explicit hexadecimal template-literal types for fixed test identifiers; no production changes"
+  },
+  "publicTransactions": 0,
+  "paidPublicRequests": 0,
+  "notEstablished": [
+    "public Base funded acceptance",
+    "external host marketplace capacity",
+    "GPU execution",
+    "confidential CPU execution",
+    "whole backend frozen regression"
+  ]
+}

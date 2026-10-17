@@ -1,0 +1,171 @@
+{
+  "scope": "Optional actual-main exact native Vault inbound payment receipt",
+  "environment": "Disposable Windows Anvil and generated local accounts only",
+  "dateUtc": "2026-10-12",
+  "status": "passed",
+  "sourceHashes": [
+    {
+      "path": "src/config.ts",
+      "sha256": "cbf18991bba26da97d0654dca336533eb4c5c8b9547e1e724b4f1cdfbc8ca031"
+    },
+    {
+      "path": "src/main.ts",
+      "sha256": "fc5889b4c855b72027d2195002ac458be5fbe047a5586fbfaed3345cbb5ce5f8"
+    },
+    {
+      "path": "src/app.ts",
+      "sha256": "312df171fe98d21176b3298da4076d9c1b3480400d489cb40d9c73123b7a4b0d"
+    },
+    {
+      "path": "src/payments/vault-income-chain.ts",
+      "sha256": "0d152f6f573ffcb55918e2940a276846b3112ca19eb215f0da2e8866d4e4a53f"
+    },
+    {
+      "path": "src/payments/vault-income-configured.ts",
+      "sha256": "89581051b954148d10b46e1208dd2744d83a677ff4fe78b1fdad64fe4bda1627"
+    },
+    {
+      "path": "src/payments/vault-income-routes.ts",
+      "sha256": "1d9ce55f2050ca58d55db1c3a058bce22aed5f7d636783f4108b266023940fc3"
+    },
+    {
+      "path": "src/payments/vault-income-private-file.ts",
+      "sha256": "c1d89d21870025ba3ea4e497ffa2f3ee3af6b92090826d9c598a8a66616b3a98"
+    },
+    {
+      "path": "src/payments/vault-income-rpc.ts",
+      "sha256": "6646fe86805e80d7c89058ef7a5838b9d7c606c50b099a781ddf7e8199c3d438"
+    },
+    {
+      "path": "tests/fixtures/vault-income-main.ts",
+      "sha256": "5d1850ad3729448959b28b936ae4e78f0538a26b0501afcf855b5ca7e46764bd"
+    },
+    {
+      "path": "tests/vault-income-configured.test.ts",
+      "sha256": "588a806e7b2fab2552987d4e150b849509c12fdb8212814c30e0839bc8cf69be"
+    },
+    {
+      "path": "tests/vault-income-main.test.ts",
+      "sha256": "9ca1948413c45728ce5d5235231ca484b7d330e40c1a77a61fab803b49dffbc4"
+    },
+    {
+      "path": "tests/vault-income-private-file.test.ts",
+      "sha256": "68ae7631d61c8f7c9a96b46b1f04432edaa580ccc0fbeb1066f3af666390af1c"
+    },
+    {
+      "path": "tests/vault-income-rpc.test.ts",
+      "sha256": "b5e7e0d25717debb24fafd63666c3fbb48fa518e75506434b69388261177c215"
+    }
+  ],
+  "checks": {
+    "mainAndConfigured": {
+      "failed": 0,
+      "report": ".local/vault-income-main-configured-final.json",
+      "files": 2,
+      "intervalMilliseconds": 118369.23,
+      "actualMainPassed": 9,
+      "skipped": 0,
+      "configuredPassed": 35,
+      "sourceDifference": "A later one-line public Cache-Control middleware scope correction was checked by the two focused boundary cases below; full financial behavior was unchanged",
+      "sha256": "d3f10c8dd23131b140e9c7a59e8de846665b3ea99060a2e19c4f36f4b0b11da6",
+      "passed": 44
+    },
+    "finalBoundaryDelta": {
+      "skippedByNameFilter": 7,
+      "report": ".local/vault-income-main-cache-scope-final.json",
+      "intervalMilliseconds": 31139.4,
+      "passed": 2,
+      "sha256": "3c1c4ccd140b1db0697d74c6302f55881d9854fbef4f4c8dba4f339b9cccfd6f",
+      "failed": 0
+    },
+    "independentReadOnlyReview": "Root and generic_cpu_inventory reported no remaining actionable finding after bounded RPC transport correction",
+    "typecheckExitCode": 0,
+    "boundedRpc": {
+      "report": ".local/vault-income-rpc-vitest.json",
+      "skipped": 0,
+      "intervalMilliseconds": 10262,
+      "passed": 15,
+      "sha256": "99416d567b4710e079500b970ec366e6354918e2954f65376e838926c8f8395b",
+      "failed": 0
+    },
+    "privateFile": {
+      "details": "docs/vault-income-private-file-validation.json",
+      "report": ".local/vault-income-private-file-vitest-final4.json",
+      "posixSkippedOnWindows": 3,
+      "passed": 15,
+      "sha256": "693135b8fa279838ead7032fecf851cedf39df38c316e29fd92c4fd4f0c3029f",
+      "failed": 0
+    }
+  },
+  "coverage": [
+    "Actual startPilot HTTP payer signature without session and fixed metadata receipt",
+    "Current owner/agent administrative Auth with outsider and Origin refusal",
+    "Canonical original-payer Income and owner Subsidy on actual contracts",
+    "Filesystem PGlite/server restart preserves original signed transaction/hash/nonce",
+    "Actual reorg withdraws prior HTTP success and recovers original bytes only",
+    "Historical receipt remains valid after actual freeze and Death",
+    "Streamed five-second and 8 KiB public/admin boundaries before authority calls",
+    "Malformed UTF-8, duplicate JSON, changed fixed amount, query and header refusal before journal/result creation",
+    "Shared trusted socket rate bucket ignores forwarded identities",
+    "Bad private reviewed startup closes the actual store and releases the port",
+    "Actual agent EOA cannot be the dedicated facilitator",
+    "Retained signed legacy transfer journal refuses cross-gateway signer reuse",
+    "Actual Windows ACL and POSIX policy branches are explicitly accounted",
+    "Actual RPC trickling body obeys retained ten-second total deadline"
+  ],
+  "productionHardening": [
+    "Retained bounded headers/body RPC transport replaces headers-only viem timeout for new main client/wallet",
+    "Case-insensitive child environment keys are sanitized for fixed WindowsPowerShell ACL checks",
+    "Public no-store middleware is scoped to the exact intake route"
+  ],
+  "correctionHistory": [
+    {
+      "passed": 0,
+      "reason": "Fixture setup hit inherited PowerShell module environment collision; fixed child environment and retained strict ACL checks",
+      "failed": 7,
+      "report": ".local/vault-income-main-vitest.json"
+    },
+    {
+      "passed": 2,
+      "reason": "Fixture signed validAfter from wall time ahead of idle Anvil head and reapplied ACL to already protected files; corrected chain timing and preserved existing ACL on rewrites",
+      "failed": 5,
+      "report": ".local/vault-income-main-vitest-retry.json"
+    },
+    {
+      "passed": 6,
+      "reason": "Expected fixture address casing differed from normalized reviewed pins; corrected expected value only",
+      "failed": 1,
+      "report": ".local/vault-income-main-vitest-retry2.json"
+    },
+    {
+      "passed": 8,
+      "reason": "New guardian freeze fixture used forbidden zero evidence; supplied a valid nonzero fixture hash",
+      "failed": 1,
+      "report": ".local/vault-income-main-vitest-final.json"
+    },
+    {
+      "passed": 33,
+      "reason": "Capacity fixture repeated protected ACL mutation; use writeFile while retaining protected ACL",
+      "failed": 1,
+      "report": ".local/vault-income-configured-vitest.json"
+    },
+    {
+      "passed": 35,
+      "reason": "Corrected fixtures plus actual agent-key and legacy journal collision cases",
+      "failed": 0,
+      "report": ".local/vault-income-configured-vitest-final.json"
+    }
+  ],
+  "limitations": {
+    "publicUsdgCapabilityProfile": false,
+    "agentWorkExecution": false,
+    "automaticEndpointControlVerification": false,
+    "defaultEnabled": false,
+    "publicDeploymentPerformed": false,
+    "publicPaymentOrProviderRequests": false,
+    "automaticChallengeGarbageCollection": false,
+    "supportsUpto": false,
+    "linuxAcceptance": "Pending a separately captured exact final-source snapshot; historical 247-case report remains pinned to 41ede4f"
+  },
+  "guide": "docs/vault-income-main.md"
+}

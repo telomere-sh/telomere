@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "status": "local_actual_function_guard_cases_passed",
+  "runner": {
+    "path": "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-08\\new-chat\\outputs\\telomere\\.local\\private-staging-rollout-attempt4-20261015\\rollout.py",
+    "bytes": 73606,
+    "sha256": "f9d9b264e9b5b447894ff982239b96c4be2973fe4d94daa23a14d4ed63943d32",
+    "unchangedBeforeAfter": true
+  },
+  "extractedFunctions": [
+    "Refusal",
+    "assert_release",
+    "digest",
+    "release_pins",
+    "require",
+    "safe_member_name",
+    "within"
+  ],
+  "tests": [
+    {
+      "id": "all_retained_source_and_runtime_bytes_match",
+      "status": "passed"
+    },
+    {
+      "id": "same_length_source_change_refused",
+      "status": "passed"
+    },
+    {
+      "id": "missing_original_source_refused",
+      "status": "passed"
+    },
+    {
+      "id": "same_length_built_runtime_change_refused",
+      "status": "passed"
+    },
+    {
+      "id": "extra_built_runtime_file_refused",
+      "status": "passed"
+    },
+    {
+      "id": "missing_built_dependency_refused",
+      "status": "passed"
+    },
+    {
+      "id": "missing_built_entrypoint_refused",
+      "status": "passed"
+    },
+    {
+      "id": "retained_manifest_byte_change_refused_before_read",
+      "status": "passed"
+    },
+    {
+      "id": "retained_runtime_pins_byte_change_refused_before_read",
+      "status": "passed"
+    },
+    {
+      "id": "source_traversal_refused",
+      "status": "passed"
+    },
+    {
+      "id": "incomplete_source_manifest_refused",
+      "status": "passed"
+    },
+    {
+      "id": "reported_runtime_symlink_refused",
+      "status": "passed"
+    },
+    {
+      "id": "all_fixture_bytes_restored_after_negative_cases",
+      "status": "passed"
+    }
+  ],
+  "passed": 13,
+  "failed": 0,
+  "durationSeconds": 8.205,
+  "python": "3.13.5",
+  "networkCalls": 0,
+  "subprocessCalls": 0,
+  "applicationDatabaseOpened": false,
+  "ports": {
+    "read_private": "Injected disposable JSON fixture reader; production Linux permissions are not exercised",
+    "Path.is_symlink": "One targeted mocked symlink observation; no OS symlink creation/permission claim"
+  },
+  "limits": [
+    "Only extracted release byte guards, not full cutover/recovery execution",
+    "Local disposable filesystem, not Linux UID/systemd/signal acceptance",
+    "Runner may still be in development; final frozen recovery cohort is separate"
+  ]
+}

@@ -1,0 +1,1 @@
+import"./module-4DJGCSN4.js";var t={bodyEnd:[],bodyStart:[],headEnd:[],headStart:[]};async function a(){return{bodyEnd:[],bodyStart:[],headEnd:[],headStart:[]}}var d={};export{d as __FramerMetadata__,a as getSnippets,t as snippetsSorting};

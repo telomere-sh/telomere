@@ -1,0 +1,17 @@
+{
+  "source": "Real Telomere TypeScript SDK @noble/ciphers 1.3.0; offline public test key, no HTTP/RPC",
+  "envelope": {
+    "version": 1,
+    "algorithm": "xchacha20-poly1305",
+    "id": "0x04fe379e3e1482214de0c61151a91cd5f8da4fbb932e9a1bb36f2f82c8b42c0f",
+    "owner": "0x1111111111111111111111111111111111111111",
+    "agent": "0x2222222222222222222222222222222222222222",
+    "applicationSchema": "agent-state/v1",
+    "plaintextBytes": 60,
+    "nonce": "982493ab7ffd94d5063e1a00d53f09b22add49c4fd0473a4",
+    "sha256": "7bdbec56849abf5e6f79c0ea4c6876dda2d3b1d85bb4953376c61f85c2098f86",
+    "ciphertext": "CCPOv4lVbcO4OIeMFs3nAVHOlhkyG1TzH8VvUKFHHCFSxbv3ATITPRRnT+Yh1w2S6iSC5u7CwzQT0Z/JMTg2GR7mMRWC/qtkZZnNNA=="
+  },
+  "testOnlyRecoveryKey": "0101010101010101010101010101010101010101010101010101010101010101",
+  "plaintextBase64": "eyJjb3VudGVyIjo0MiwibWVtb3J5IjoiUHl0aG9uIOKGlCBUeXBlU2NyaXB0IPCfp6wgZml4dHVyZSJ9"
+}

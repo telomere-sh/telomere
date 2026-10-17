@@ -1,0 +1,74 @@
+{
+  "profile": "VPS demo via SSH tunnel: PostgreSQL + isolated Docker CPU + Anvil 31337",
+  "origin": "http://127.0.0.1:3281",
+  "browser": "Installed Chrome, Playwright, fresh isolated browser context",
+  "passed": [
+    "demo session",
+    "real authenticated operations",
+    "Docker worker label",
+    "NEAR disabled policy",
+    "existing metered run detail",
+    "settlement conservation",
+    "receipt signature verification",
+    "onchain anchor verification",
+    "receipt download",
+    "terminal controls hidden",
+    "funding and quote controls available",
+    "keyboard refresh",
+    "375px and 320px reflow"
+  ],
+  "operations": {
+    "worker": {
+      "state": "idle"
+    },
+    "counts": {
+      "completed": 1
+    },
+    "near": {
+      "configured": false,
+      "verification": "disabled"
+    },
+    "cpu": {
+      "mode": "docker"
+    }
+  },
+  "balance": {
+    "available": "9999800",
+    "reserved": "0"
+  },
+  "completed": {
+    "id": "0xf4ac16669705d41f559a967cde2f08623575151b9652ee95c69bf4684147bd8c",
+    "status": "completed",
+    "ceiling": "3000",
+    "charged": "200",
+    "refund": "2800",
+    "billableSeconds": 2
+  },
+  "verification": {
+    "valid": true,
+    "anchored": true,
+    "signer": "0x7D1686Bc8b611Adc1426FD2a3f0ca03a3A063cc5",
+    "evidence": "Operator-signed CPU metering; NEAR evidence is recorded separately."
+  },
+  "responsiveWidths": [
+    375,
+    320
+  ],
+  "mutations": [
+    "demo session",
+    "receipt verification request only"
+  ],
+  "notRun": [
+    "new run dispatch",
+    "new deposit or withdrawal",
+    "Robinhood testnet transaction",
+    "live NEAR inference",
+    "hardware TEE verification"
+  ],
+  "screenshots": [
+    "docs/vps-dashboard.png",
+    "docs/vps-dashboard-mobile.png",
+    "docs/vps-receipt.png"
+  ],
+  "uncaughtBrowserErrors": []
+}

@@ -1,0 +1,99 @@
+import base64,hashlib,json,os,pathlib,re,ssl,subprocess,time,urllib.error,urllib.request
+BASE=pathlib.Path('/opt/telomere-mainnet-pilot')
+NAMES={'telomere-apex-static':'c60619f3287ea933f7f5525bd41f1fa483930008a883dfa244e6c93de38995ea',
+       'telomere-owner-review':'7246164cdb5ccbec1cfb6a4b4bb4c362a0cdadce55cc26d6fcc782060c980958'}
+def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
+def run(args):return subprocess.check_output(args,text=True,stderr=subprocess.STDOUT,timeout=35).strip()
+def state(name):return run(['systemctl','show',name,'-p','MainPID,ActiveState,NRestarts']).splitlines()
+def snapshot():
+    return {str(path):sha(path.resolve()) for path in pathlib.Path('/etc/nginx/sites-enabled').iterdir() if path.is_file()}
+assert json.loads((BASE/'private/ownership.json').read_text())['id']=='f1f1fa857fb34ae9adb708ecf6af7166'
+assert not (BASE/'private/activation.json').exists() and 'MainPID=0' in state('telomere-mainnet-pilot.service')
+before=snapshot();old={name:state(name) for name in ['telomere-staging.service','telomere-staging-chain.service','telomere-staging-watchdog.service']}
+cert=pathlib.Path('/etc/letsencrypt/live/review.telomere.sh/fullchain.pem')
+assert sha(cert)=='245dda3dd39b68ca2730542043b3650ac327fb525bb962bd65a3cb172fe219e1'
+snippet=pathlib.Path('/etc/nginx/snippets/telomere-website-csp.conf')
+assert not snippet.exists() and not snippet.is_symlink()
+policy=(BASE/'work/domain-website-csp.txt').read_text().strip()
+assert policy.startswith("default-src 'self'; script-src 'self' ") and not any(char in policy for char in '\n\r"$')
+snippet.write_text('add_header Content-Security-Policy "'+policy+'" always;\n');os.chmod(snippet,0o644)
+installed=[]
+for name,digest in NAMES.items():
+    source=BASE/'work'/(name+'.conf.draft')
+    assert sha(source)==digest
+    available=pathlib.Path('/etc/nginx/sites-available')/name;enabled=pathlib.Path('/etc/nginx/sites-enabled')/name
+    assert not available.exists() and not enabled.exists() and not enabled.is_symlink()
+    available.write_bytes(source.read_bytes());os.chmod(available,0o644);enabled.symlink_to(available)
+    installed.append((available,enabled))
+try:run(['/usr/sbin/nginx','-t'])
+except Exception:
+    for available,enabled in installed:
+        assert enabled.resolve()==available;enabled.unlink();available.unlink()
+    raise
+run(['systemctl','reload','nginx'])
+# Verify genuine certificate trust and SNI locally without depending on a cached recursive DNS response.
+class LocalHttps(urllib.request.HTTPSHandler):
+    def https_open(self,request):
+        import http.client,socket
+        class Connection(http.client.HTTPSConnection):
+            def connect(self):
+                self.sock=self._context.wrap_socket(socket.create_connection(('127.0.0.1',443),self.timeout),server_hostname=self.host)
+        return self.do_open(Connection,request,context=ssl.create_default_context())
+opener=urllib.request.build_opener(urllib.request.ProxyHandler({}),LocalHttps())
+access=(BASE/'private/review-access.txt').read_text().splitlines()
+username=next(line[10:] for line in access if line.startswith('Username: '))
+password=next(line[10:] for line in access if line.startswith('Password: '))
+assert username=='owner' and re.fullmatch(r'[A-Za-z0-9_-]{32}',password)
+authorization='Basic '+base64.b64encode((username+':'+password).encode()).decode()
+def get(host,path='/',authenticated=False,body=None,headers=None):
+    merged={} if headers is None else dict(headers)
+    if authenticated:merged['Authorization']=authorization
+    request=urllib.request.Request('https://'+host+path,data=body,headers=merged)
+    try:
+        with opener.open(request,timeout=60) as response:return response.status,response.read(),dict(response.headers)
+    except urllib.error.HTTPError as error:return error.code,error.read(),dict(error.headers)
+deadline=time.monotonic()+15
+while True:
+    try:
+        code,body,headers=get('telomere.sh');assert code==200 and hashlib.sha256(body).hexdigest()==sha(pathlib.Path('/var/www/telomere-public/ee6169d1007b11f037fbc409dc1f7575f15117c9/index.html'))
+        break
+    except Exception:
+        assert time.monotonic()<deadline,'HTTPS apex did not become ready after reload';time.sleep(1)
+assert headers['Content-Security-Policy']==policy
+assert get('telomere.sh','/api/config')[0]==503 and get('telomere.sh','/assets/not-present.js')[0]==404
+assert get('review.telomere.sh')[0]==401
+assert get('review.telomere.sh','/',True)[0]==200
+code,body,headers=get('review.telomere.sh','/api/plan',True);assert code==200
+public=json.loads(body);assert public['plan']['reviewDigest']=='0xc9d585926f2489d5d3745ec996eac8fc8eab0fc2d217c9b352c5f6c627f00e2f'
+review_headers={'Origin':'https://review.telomere.sh','Content-Type':'application/json','X-Deployment-Review':public['reviewToken']}
+code,body,headers=get('review.telomere.sh','/api/review',True,b'{}',review_headers);assert code==200
+review=json.loads(body);assert review['status']=='ready_for_owner_wallet' and review['transactionsSent']==0
+review_headers['Origin']='https://telomere.sh'
+assert get('review.telomere.sh','/api/review',True,b'{}',review_headers)[0]==403
+assert get('review.telomere.sh','/api/send',True,b'{}',review_headers)[0]==404
+after=snapshot();assert all(after[name]==digest for name,digest in before.items())
+assert old=={name:state(name) for name in old}
+# The new public origin is prepared while the financial controller remains inactive.
+profile=BASE/'private/mainnet.env';profile_bytes=profile.read_bytes()
+assert profile_bytes.count(b'PUBLIC_ORIGIN=http://127.0.0.1:3282\n')==1
+old_profile_sha=sha(profile);profile_bytes=profile_bytes.replace(b'PUBLIC_ORIGIN=http://127.0.0.1:3282\n',b'PUBLIC_ORIGIN=https://telomere.sh\n')
+profile.write_bytes(profile_bytes);os.chmod(profile,0o600)
+expected_path=BASE/'private/expected.json';expected=json.loads(expected_path.read_text())
+assert expected['profileSha256']==old_profile_sha and expected['publicOrigin']=='http://127.0.0.1:3282'
+expected.update(profileSha256=sha(profile),publicOrigin='https://telomere.sh')
+expected_path.write_text(json.dumps(expected,indent=2)+'\n');os.chmod(expected_path,0o600)
+guard=json.loads(run(['/opt/node-v22.23.3-linux-x64/bin/node',str(BASE/'operator/preflight.mjs'),'--configuration-only']))
+assert guard['configurationValid'] and not guard['onChainCalls']
+# Keep exactly one owner financial origin active after the HTTPS endpoint is verified.
+run(['systemctl','stop','telomere-owner-review.service'])
+assert 'MainPID=0' in state('telomere-owner-review.service')
+record={'status':'HTTPS website and protected owner review live','origins':['https://telomere.sh','https://review.telomere.sh'],
+        'apexStatus':200,'websiteCspMatchesReviewedLoader':True,'apiBeforeActivation':503,'missingAsset':404,
+        'reviewUnauthenticatedStatus':401,'reviewAuthenticatedStatus':200,'wrongOriginStatus':403,'financialEndpointStatus':404,
+        'reviewStatus':review['status'],'gas':review['gas'],'referenceBlock':review['referenceBlock'],
+        'profileSha256':expected['profileSha256'],'expectedManifestSha256':sha(expected_path),'configurationPreflight':guard,
+        'singleFinancialReviewOrigin':True,'oldLocalReviewStopped':True,'unchangedPreexistingVhosts':True,'unchangedStagingPids':True,
+        'nginxVhosts':[{'name':name,'sha256':digest} for name,digest in NAMES.items()],
+        'ownerWalletRequests':0,'publicTransactionsSent':0,'controllerStarted':False,'activationAbsent':True}
+(BASE/'work/domain-https-activation.json').write_text(json.dumps(record,indent=2)+'\n')
+print(json.dumps(record))

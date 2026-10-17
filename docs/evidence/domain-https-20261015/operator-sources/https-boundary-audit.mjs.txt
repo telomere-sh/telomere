@@ -1,0 +1,81 @@
+// Independent local HTTP boundary check. Stub review only: no chain RPC or wallet.
+import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
+import { readFile } from 'node:fs/promises';
+import { request } from 'node:http';
+import { createOwnerWalletReviewServer } from '../mainnet-prepare-20261015/operator-helper/scripts/owner-wallet-deployment.ts';
+
+const startedAt = new Date().toISOString();
+const overlay = new URL('../mainnet-prepare-20261015/operator-helper/', import.meta.url);
+const drafts = new URL('./owner-review-https/', import.meta.url);
+const hash = data => createHash('sha256').update(data).digest('hex');
+async function checkManifest(root, name) {
+  const bytes = await readFile(new URL(name, root));
+  const manifest = JSON.parse(bytes);
+  for (const file of manifest.files) {
+    const content = await readFile(new URL(file.path, root));
+    assert.equal(hash(content), file.sha256, file.path);
+    assert.equal(content.length, file.bytes, file.path);
+  }
+  return { path: name, sha256: hash(bytes), membersVerified: manifest.files.length };
+}
+const manifests = [await checkManifest(overlay, 'PACKAGE-MANIFEST.json'), await checkManifest(drafts, 'MANIFEST.json')];
+const plan = JSON.parse(await readFile(new URL('frozen/deployment-plan-base-mainnet.json', overlay)));
+const token = 'ab'.repeat(32); // Synthetic fixture only, unrelated to running services.
+let reviewCalls = 0, unchangedChecks = 0;
+const server = createOwnerWalletReviewServer({ origin: 'https://review.telomere.sh',
+  token, javascript: Buffer.from('// inert local fixture'),
+  frozen: { plan, trust: {}, assertUnchanged: async () => { unchangedChecks++; } },
+  review: async () => { reviewCalls++; return { status: 'fixture_no_rpc' }; } });
+await new Promise((resolve, reject) => { server.once('error', reject); server.listen(0, '127.0.0.1', resolve); });
+const port = server.address().port;
+async function run(name, method, path, headers, body, expected) {
+  const response = await new Promise((resolve, reject) => {
+    const req = request({ host: '127.0.0.1', port, method, path, headers }, res => {
+      let data = ''; res.setEncoding('utf8'); res.on('data', part => { data += part; });
+      res.on('end', () => resolve({ status: res.statusCode, headers: res.headers, data }));
+    });
+    req.on('error', reject); req.end(body);
+  });
+  assert.equal(response.status, expected, name);
+  assert.equal(response.headers['cache-control'], 'no-store', name);
+  assert.equal(response.headers['x-frame-options'], 'DENY', name);
+  assert.match(response.headers['content-security-policy'], /connect-src 'self'/, name);
+  return { name, status: response.status, expected, passed: true };
+}
+const good = { Host: 'review.telomere.sh', Origin: 'https://review.telomere.sh', 'Content-Type': 'application/json', 'X-Deployment-Review': token };
+const tests = [];
+try {
+  tests.push(await run('Exact public Host serves page', 'GET', '/', { Host: good.Host }, undefined, 200));
+  tests.push(await run('Exact public Host serves inert JavaScript', 'GET', '/deployment.js', { Host: good.Host }, undefined, 200));
+  tests.push(await run('Same-origin plan available', 'GET', '/api/plan', { Host: good.Host }, undefined, 200));
+  tests.push(await run('HEAD page supported', 'HEAD', '/', { Host: good.Host }, undefined, 200));
+  for (const Host of ['127.0.0.1:' + port, 'review.telomere.sh:443', 'evil.example']) {
+    tests.push(await run('Wrong Host refused: ' + Host, 'GET', '/', { Host }, undefined, 400));
+  }
+  for (const Origin of [undefined, 'null', 'https://evil.example', 'http://review.telomere.sh']) {
+    const headers = { ...good }; if (Origin === undefined) delete headers.Origin; else headers.Origin = Origin;
+    tests.push(await run('Wrong/missing Origin refused: ' + Origin, 'POST', '/api/review', headers, '{}', 403));
+  }
+  for (const value of [undefined, '00'.repeat(32)]) {
+    const headers = { ...good }; if (value === undefined) delete headers['X-Deployment-Review']; else headers['X-Deployment-Review'] = value;
+    tests.push(await run('Missing/substituted fixture token refused', 'POST', '/api/review', headers, '{}', 403));
+  }
+  tests.push(await run('Non-JSON content type refused', 'POST', '/api/review', { ...good, 'Content-Type': 'text/plain' }, '{}', 403));
+  tests.push(await run('Query suffix refused', 'GET', '/api/plan?x=1', { Host: good.Host }, undefined, 404));
+  tests.push(await run('Absolute-form request refused', 'GET', 'https://evil.example/', { Host: good.Host }, undefined, 400));
+  tests.push(await run('Network-path request refused', 'GET', '//evil.example/', { Host: good.Host }, undefined, 400));
+  for (const path of ['/api/deploy', '/api/rpc', '/api/sign', '/api/send']) {
+    tests.push(await run('Financial route absent: ' + path, 'POST', path, good, '{}', 404));
+  }
+  assert.equal(reviewCalls, 0);
+  tests.push(await run('Exact genuine Origin and fixture token invoke only stub review', 'POST', '/api/review', good, '{}', 200));
+  assert.equal(reviewCalls, 1); assert.equal(unchangedChecks, 1);
+} finally {
+  await new Promise(resolve => server.close(resolve));
+}
+process.stdout.write(JSON.stringify({ schemaVersion: 1, startedAt, finishedAt: new Date().toISOString(),
+  scope: 'Independent local frozen-helper HTTP boundary and package hashes; no Nginx or mobile acceptance claimed',
+  manifests, tests, passed: tests.length, failed: 0, reviewCalls, unchangedChecks,
+  chainRpcCalls: 0, walletRequests: 0, publicTransactionsSent: 0, vpsChanges: 0,
+  realReviewTokensRetained: false, keysOrApplicationEnvironmentsRead: false }, null, 2) + '\n');

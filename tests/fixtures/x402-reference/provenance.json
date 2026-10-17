@@ -1,0 +1,148 @@
+{
+  "repositories": {
+    "permit2": {
+      "repository": "Uniswap/permit2",
+      "commit": "cc56ad0f3439c502c246fc5cfcc3db92bb8b7219"
+    },
+    "x402": {
+      "repository": "x402-foundation/x402",
+      "commit": "7f2b2f1f77fa5317615735e3378a6fad41cccb4e"
+    },
+    "solmate": {
+      "repository": "transmissions11/solmate",
+      "commit": "8d910d876f51c3b2585c9109409d601f600e68e1"
+    }
+  },
+  "files": [
+    {
+      "path": "permit2/LICENSE",
+      "source": "https://raw.githubusercontent.com/Uniswap/permit2/cc56ad0f3439c502c246fc5cfcc3db92bb8b7219/LICENSE",
+      "sha256": "e0e163f93b3c53b5af417ba2395506ecc7c043b50481a15017f3a6b0875a5e78"
+    },
+    {
+      "path": "permit2/src/AllowanceTransfer.sol",
+      "source": "https://raw.githubusercontent.com/Uniswap/permit2/cc56ad0f3439c502c246fc5cfcc3db92bb8b7219/src/AllowanceTransfer.sol",
+      "sha256": "7be95b655a59352a3007147a1b79f211fc819b9a615a92017acf7257ecb88276"
+    },
+    {
+      "path": "permit2/src/EIP712.sol",
+      "source": "https://raw.githubusercontent.com/Uniswap/permit2/cc56ad0f3439c502c246fc5cfcc3db92bb8b7219/src/EIP712.sol",
+      "sha256": "cbb7df63c5839a3fbec78142222886da1614a4c7fcddcd8ba5ea176f9549d859"
+    },
+    {
+      "path": "permit2/src/Permit2.sol",
+      "source": "https://raw.githubusercontent.com/Uniswap/permit2/cc56ad0f3439c502c246fc5cfcc3db92bb8b7219/src/Permit2.sol",
+      "sha256": "a19dd81d4edafe3bba0178abfc9063886c2981b4711a4cbbf3fac19370defc9a"
+    },
+    {
+      "path": "permit2/src/PermitErrors.sol",
+      "source": "https://raw.githubusercontent.com/Uniswap/permit2/cc56ad0f3439c502c246fc5cfcc3db92bb8b7219/src/PermitErrors.sol",
+      "sha256": "0919679c5bb58466d3a06d9d3297ec4946ba5d135330f10f4fb080067586afad"
+    },
+    {
+      "path": "permit2/src/SignatureTransfer.sol",
+      "source": "https://raw.githubusercontent.com/Uniswap/permit2/cc56ad0f3439c502c246fc5cfcc3db92bb8b7219/src/SignatureTransfer.sol",
+      "sha256": "234effebbe1e7ad7a3c791ea2b411f8e90993b758479817eb32c8767ea62ee8d"
+    },
+    {
+      "path": "permit2/src/interfaces/IAllowanceTransfer.sol",
+      "source": "https://raw.githubusercontent.com/Uniswap/permit2/cc56ad0f3439c502c246fc5cfcc3db92bb8b7219/src/interfaces/IAllowanceTransfer.sol",
+      "sha256": "a31c712c5cc8d171818a4225c09011f9ba86b2d5edf6045ac812bab93b6bbb87"
+    },
+    {
+      "path": "permit2/src/interfaces/IEIP712.sol",
+      "source": "https://raw.githubusercontent.com/Uniswap/permit2/cc56ad0f3439c502c246fc5cfcc3db92bb8b7219/src/interfaces/IEIP712.sol",
+      "sha256": "e386407da496dbe874c10a81801c55744fb2922a51389a51c79001422e81e0cd"
+    },
+    {
+      "path": "permit2/src/interfaces/IERC1271.sol",
+      "source": "https://raw.githubusercontent.com/Uniswap/permit2/cc56ad0f3439c502c246fc5cfcc3db92bb8b7219/src/interfaces/IERC1271.sol",
+      "sha256": "ec69c9c80939d613cda408fd05424e0dfa7b1fd76168a1fb6593f4b26b3b3d7b"
+    },
+    {
+      "path": "permit2/src/interfaces/ISignatureTransfer.sol",
+      "source": "https://raw.githubusercontent.com/Uniswap/permit2/cc56ad0f3439c502c246fc5cfcc3db92bb8b7219/src/interfaces/ISignatureTransfer.sol",
+      "sha256": "8e7f355d7751cf96e81069c17fb97a3ec973c9391fbbb58ad3fb6e75be5cb19b"
+    },
+    {
+      "path": "permit2/src/libraries/Allowance.sol",
+      "source": "https://raw.githubusercontent.com/Uniswap/permit2/cc56ad0f3439c502c246fc5cfcc3db92bb8b7219/src/libraries/Allowance.sol",
+      "sha256": "6c7d1edc74a9dca9940fa835db09302ed1a35019d69f4188351466e9a3fff458"
+    },
+    {
+      "path": "permit2/src/libraries/PermitHash.sol",
+      "source": "https://raw.githubusercontent.com/Uniswap/permit2/cc56ad0f3439c502c246fc5cfcc3db92bb8b7219/src/libraries/PermitHash.sol",
+      "sha256": "23f89633dbd02d8b52a33de3a915af5af73ff25e31f88b6cf994358f802efa60"
+    },
+    {
+      "path": "permit2/src/libraries/SignatureVerification.sol",
+      "source": "https://raw.githubusercontent.com/Uniswap/permit2/cc56ad0f3439c502c246fc5cfcc3db92bb8b7219/src/libraries/SignatureVerification.sol",
+      "sha256": "1804b3d7b1183225419ec8ee45daf89174ff3668315d71d28111d5fcc179f8e4"
+    },
+    {
+      "path": "solmate/LICENSE",
+      "source": "https://raw.githubusercontent.com/transmissions11/solmate/8d910d876f51c3b2585c9109409d601f600e68e1/LICENSE",
+      "sha256": "20b067f86de375aae6db0f283ab2e65de24d537733b89bd58432c101259d84cf"
+    },
+    {
+      "path": "solmate/src/tokens/ERC20.sol",
+      "source": "https://raw.githubusercontent.com/transmissions11/solmate/8d910d876f51c3b2585c9109409d601f600e68e1/src/tokens/ERC20.sol",
+      "sha256": "a3a7e839f42762ef24623581542a916e838f3c7c0bef647963d1fdad0f9d208a"
+    },
+    {
+      "path": "solmate/src/utils/SafeTransferLib.sol",
+      "source": "https://raw.githubusercontent.com/transmissions11/solmate/8d910d876f51c3b2585c9109409d601f600e68e1/src/utils/SafeTransferLib.sol",
+      "sha256": "cb02c2a5b1b1c66b8ba3d700a47b400684483d96d93606ed71d0e63c0b6100bf"
+    },
+    {
+      "path": "x402/LICENSE",
+      "source": "https://raw.githubusercontent.com/x402-foundation/x402/7f2b2f1f77fa5317615735e3378a6fad41cccb4e/LICENSE",
+      "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+    },
+    {
+      "path": "x402/contracts/evm/src/interfaces/ISignatureTransfer.sol",
+      "source": "https://raw.githubusercontent.com/x402-foundation/x402/7f2b2f1f77fa5317615735e3378a6fad41cccb4e/contracts/evm/src/interfaces/ISignatureTransfer.sol",
+      "sha256": "9ba755409cba5cada98715cc09c9efa50014d6f4c1e98da43e18bc301fe9bbc4"
+    },
+    {
+      "path": "x402/contracts/evm/src/x402BasePermit2Proxy.sol",
+      "source": "https://raw.githubusercontent.com/x402-foundation/x402/7f2b2f1f77fa5317615735e3378a6fad41cccb4e/contracts/evm/src/x402BasePermit2Proxy.sol",
+      "sha256": "276f1d092f740ede30bb00508b03ae25fc4f64947dde03c4aaa0cccfc73ce1f7"
+    },
+    {
+      "path": "x402/contracts/evm/src/x402UptoPermit2Proxy.sol",
+      "source": "https://raw.githubusercontent.com/x402-foundation/x402/7f2b2f1f77fa5317615735e3378a6fad41cccb4e/contracts/evm/src/x402UptoPermit2Proxy.sol",
+      "sha256": "5f58e5904439b0ae8369c430c7cad33fb96dae3d148b75764ed1c42d6baea912"
+    }
+  ],
+  "openzeppelin": "Installed pinned @openzeppelin/contracts 5.4.0; not vendored",
+  "compiled": {
+    "path": "Permit2.compiled.json",
+    "sha256": "bd550b33096f536bf0eb45834d68da0a6952ace59407fbcbe11922187dd74e04",
+    "compiler": {
+      "version": "0.8.17+commit.8df45f5f.Emscripten.clang",
+      "source": "https://github.com/ethereum/solc-bin/blob/gh-pages/bin/soljson-v0.8.17+commit.8df45f5f.js",
+      "sha256": "0x617828e63be485c7cc2dbcbdd5a22b582b40fafaa41016ad595637b83c90656c"
+    },
+    "settings": {
+      "viaIR": true,
+      "optimizer": {
+        "enabled": true,
+        "runs": 1000000
+      },
+      "metadata": {
+        "bytecodeHash": "none"
+      },
+      "evmVersion": "london",
+      "outputSelection": {
+        "*": {
+          "*": [
+            "abi",
+            "evm.bytecode.object",
+            "evm.deployedBytecode.object"
+          ]
+        }
+      }
+    }
+  }
+}

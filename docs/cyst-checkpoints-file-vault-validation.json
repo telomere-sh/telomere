@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "checkedAtUtc": "2026-10-12T11:51:42.101Z",
+  "scope": "Node-only encrypted owner application-checkpoint file vault and actual coordinator retry/restore",
+  "precedingCommittedCheckpoint": "2b3ba36",
+  "personalWalletUsed": false,
+  "publicTransactions": false,
+  "publicChainOrPaidProviderCalls": false,
+  "serviceMutations": false,
+  "fullSpecScoreChanged": false,
+  "source": {
+    "file": "src/sdk/cyst-checkpoints-file-vault.ts",
+    "sha256": "831867ee6b08b4b83e36e2b7a702280018d4d7d42830f150e97bc304309b4f7f",
+    "testFile": "tests/cyst-checkpoints-file-vault.test.ts",
+    "testSha256": "4a3acda43361f3fcd9a9059c685b47321352bdefa10fa7d5cc95e3d9250b5fda",
+    "existingBrowserEntryChanged": false,
+    "independentReadOnlyReview": "No actionable correctness or security finding in frozen source/tests"
+  },
+  "strictTypeScript": {
+    "command": "npm run typecheck",
+    "exitCode": 0
+  },
+  "windows": {
+    "nodeVersion": "v22.22.2",
+    "command": "npx vitest run tests/cyst-checkpoints-file-vault.test.ts --reporter=json",
+    "success": true,
+    "tests": 14,
+    "passed": 12,
+    "skipped": 2,
+    "failed": 0,
+    "testFiles": 1,
+    "reportElapsedSeconds": 7.046,
+    "testIntervalSeconds": 5.519,
+    "privateRawReportSha256": "0be887f4eba4081d2808ac14fd61dd0f516d0bfbf3b2339b25c4d5e196eb31f0",
+    "skippedCases": [
+      "owner encrypted filesystem checkpoint vault rejects permissive owner files and directories without changing their permissions",
+      "owner encrypted filesystem checkpoint vault rejects symlink directories and record links without following them"
+    ],
+    "platformBoundaries": [
+      "No POSIX directory fsync on Windows",
+      "POSIX mode and UID checks do not verify Windows ACL privacy",
+      "Explicit stale-lock recovery is unavailable on Windows; the crash case confirms refusal"
+    ]
+  },
+  "linux": {
+    "status": "passed",
+    "evidence": "docs/backend-finance-file-vault-linux-validation.json",
+    "evidenceSha256AtAcceptance": "d04f91cc2c2ffedc490837f5c6b601aec7f02dece2092e0caca7a0ca09e803ae",
+    "nodeVersion": "v22.23.3",
+    "fileVaultTests": 14,
+    "fileVaultPassed": 14,
+    "fileVaultSkipped": 0,
+    "fileVaultFailed": 0,
+    "combinedTests": 247,
+    "combinedPassed": 247,
+    "combinedSkipped": 0,
+    "combinedFailed": 0,
+    "combinedTestFiles": 10,
+    "combinedElapsedSeconds": 472.731,
+    "fullBuildExitCode": 0,
+    "fullBuildElapsedSeconds": 45.575,
+    "sourceMatchesBeforeAfterBuildAndTests": 288,
+    "buildAssetsMatchBeforeAfterBuildAndTests": 4,
+    "posixPermissionsDirectoryFsyncAndDeadSameBootNamespaceRecovery": true,
+    "newFixtureDirectoriesRemaining": 0,
+    "ownedCheckoutProcessesRemaining": 0,
+    "existingUnitsActiveBeforeAndAfter": 5,
+    "healthBeforeAndAfter": { "status": "ready", "worker": "idle" },
+    "harnessCorrection": "Initial manual metadata expected 241; original retained Vitest JSON independently establishes 247 passed. Six existing parameterized cases were omitted from the expected count. No source change or test rerun; failure history retained in combined evidence."
+  },
+  "establishedOnWindows": [
+    "AES-256-GCM encryption of complete scheduling state, original envelope and recovery key with fresh nonces and scope/kind/operation AAD",
+    "Wrong master key and corrupt completed pointers reject before callback overwrite",
+    "Immutable exact operation records, independent read copies and maximum 2 MiB application envelope",
+    "Actual separate Node processes exclude overlapping callbacks and reopen durable state",
+    "Bounded lock acquisition, authenticated own-token release and refusal of unsupported stale recovery",
+    "Durable journal writes survive a later callback failure and process exit",
+    "Actual owner-session Cyst HTTP/PGlite upload with lost ACK repeats the exact body/idempotency key after vault reopen",
+    "Original ciphertext/key restore succeeds locally without recovery-key API disclosure"
+  ],
+  "limitations": [
+    "Owner-controlled local filesystem; no hostile administrator/filesystem-owner or distributed-filesystem guarantee",
+    "No detection of replay of a whole older valid vault snapshot; no external monotonic anchor",
+    "Incomplete/corrupt locks, foreign boot/namespace and a crashed recovery.lock need administrative review; no force-unlock or age-based stealing",
+    "No automatic record pruning; default 512 records cover 128 hours at only a 15-minute cadence, with explicit captures consuming capacity sooner",
+    "Application scheduler, master-key custody/backup/rotation, retention and validation of restored bytes remain caller responsibilities",
+    "JavaScript does not guarantee complete secure memory erasure",
+    "No Cell process/filesystem/GPU snapshots, runtime lifecycle wiring, migration, region replication, attestation key release or public deployment"
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 1,
+  "checkedOn": "2026-10-12",
+  "scope": "Owner-side application onCyst checkpoint capture, tick cadence, durable retry and local restore",
+  "precedingCommittedCheckpoint": "e6ea0cf",
+  "publicTransactions": false,
+  "personalWalletUsed": false,
+  "paidProviderRequests": false,
+  "fullSpecScoreChanged": false,
+  "windows": {
+    "combinedAffected": {
+      "tests": 116,
+      "passed": 115,
+      "skipped": 1,
+      "failed": 0,
+      "testFiles": 3,
+      "elapsedSeconds": 81.68
+    },
+    "coordinatorFocusedAuthorRun": {
+      "tests": 26,
+      "passed": 26,
+      "skipped": 0,
+      "failed": 0,
+      "elapsedSeconds": 38.43
+    },
+    "runsOverlap": true,
+    "existingSkip": "POSIX private-permission case in Cysts; dated prior Linux evidence retained"
+  },
+  "linux": {
+    "checkedAtUtc": "2026-10-12T10:58:35.247988+00:00",
+    "nodeVersion": "v22.23.3",
+    "fullBuildExitCode": 0,
+    "buildElapsedSeconds": 37.728,
+    "tests": 26,
+    "passed": 26,
+    "failed": 0,
+    "skipped": 0,
+    "testFiles": 1,
+    "testsElapsedSeconds": 39.178,
+    "sourceMatchesBeforeAfterBuildAndTests": 273,
+    "buildAssetsMatchBeforeAfterBuildAndTests": 4,
+    "directoryFsyncExercised": true,
+    "fixtureDirectoriesRemaining": 0,
+    "ownedTestProcessesRemaining": 0,
+    "publicChainOrProviderCalls": false,
+    "serviceMutations": false,
+    "healthBefore": {
+      "status": "ready",
+      "worker": "idle"
+    },
+    "healthAfter": {
+      "status": "ready",
+      "worker": "idle"
+    },
+    "existingUnitsActiveBeforeAndAfter": 5
+  },
+  "build": {
+    "strictTypeScript": true,
+    "browserBundle": true,
+    "browserBundleApproxKiB": 157.6,
+    "solidityAndApplicationBuild": true
+  },
+  "sourceSnapshot": {
+    "files": 273,
+    "manifest": "docs/cyst-checkpoints-source-sha256.txt",
+    "manifestSha256": "229e2a859876b4cdae08305706a725734db306b2f2deb67b2854ecec9e8ea30f",
+    "tarSha256": "6d5fe375eaca648d4e2dd86f39e1033da8c18578c8a2bb62e6d17f0a59160188",
+    "excludes": [
+      "Subsequent Selection dataset and endpoint work",
+      "Python",
+      "Private configuration and keys",
+      "Subsequent Selection RPC deadline change"
+    ],
+    "buildAssets": {
+      "files": 4,
+      "manifest": "docs/cyst-checkpoints-build-assets-sha256.txt",
+      "manifestSha256": "e7bab231aad576014f733737754f06845e0917b796ce95e30931485dc405d73c",
+      "tarSha256": "68a976c2f8d93a747c67a14d833f68d6611705d5964cf8d8fdac70cd42a4b058",
+      "existingAssetsChanged": false
+    }
+  },
+  "established": [
+    "Pending operation durably saved before capture",
+    "Exact encrypted envelope and recovery key durably saved and authenticated before upload",
+    "Lost upload/record/completion acknowledgements reuse original operation and exact prepared ciphertext",
+    "Default 900000ms cadence, bounded interval, no catch-up loop",
+    "Singleflight, persistent pause/resume and explicit paused recovery",
+    "Whole original envelope comparison before local AEAD restore",
+    "Previous immutable recovery keys retained; temporary copies cleared",
+    "Real HTTP/Cysts/PGlite/filesystem reopen acceptance"
+  ],
+  "fixtureBoundaries": [
+    "Client-vault files are synced and atomically renamed; process-local shared mutex only",
+    "No production client-vault implementation or OS cross-process lock is supplied",
+    "Application hook/scheduler/key custody belong to the caller"
+  ],
+  "remaining": [
+    "Host-runtime lifecycle event integration",
+    "Persistent Cell stop/attach/resume and migration",
+    "Large filesystem/process/GPU snapshots",
+    "Independent-region deployment",
+    "Attestation-gated key release",
+    "Public deployment"
+  ],
+  "linuxInitialPackagingFailure": {
+    "fullBuildExitCode": 1,
+    "reason": "Runtime-only archive omitted unchanged public/app.ts and three build assets",
+    "testsRun": false,
+    "productionSourceChangedToResolve": false,
+    "correction": "Add separately hashed unchanged public assets in a new isolated directory, then repeat the original full build and focused tests"
+  }
+}

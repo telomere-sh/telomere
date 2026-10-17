@@ -1,0 +1,67 @@
+{
+  "date": "2026-10-14",
+  "scope": "local framework starter component acceptance on disposable chain 31337; target Base/USDC",
+  "test": {
+    "command": "npx vitest run tests/framework-starters.test.ts --reporter=verbose",
+    "filesPassed": 1,
+    "testsPassed": 1,
+    "durationSeconds": 35.01,
+    "usesActualMountedHttp": true,
+    "usesActualVaultContracts": true,
+    "usesEncryptedFileJournal": true,
+    "externalAgentWalletNonceDelta": 1,
+    "actualHostCpuStarts": 1,
+    "ceiling": "2725",
+    "positiveSettlementCharge": true,
+    "chargePlusRefundEqualsCeiling": true,
+    "starterCliProcessesCompleted": [
+      "elizaos",
+      "automaton"
+    ],
+    "lostQuoteAndAdmissionResponsesRecovered": true,
+    "wrongProfileRejectedBeforeHttp": true,
+    "unretainedJournalWriteRejectedBeforeMutationPost": true,
+    "replacementTransactionRejected": true,
+    "recordedPaymentSuppressesWalletAction": true
+  },
+  "typecheckPassed": true,
+  "frameworkStructuralTypecheckPassed": true,
+  "subsequentProtocolFloorValidation": {
+    "command": "npx vitest run tests/framework-protocol-floor.test.ts tests/framework-starters.test.ts --reporter=verbose",
+    "filesPassed": 2,
+    "testsPassed": 3,
+    "durationSeconds": 33.95,
+    "independentlyPinnedV2RejectsInitialDowngrade": true,
+    "observedV2FloorSurvivesEncryptedJournalRestart": true,
+    "sourceSha256": {
+      "src/integrations/durable-vault-compute.ts": "59e03636c8becf4b7bcf1737f653b5d0206b3c5be64f4feda7b75db1b55f35b4",
+      "tests/framework-protocol-floor.test.ts": "c58baa8aa6f68eb45db62a2b457240fb5ed186f2012fe9c406a12aceebd1c1e6"
+    }
+  },
+  "frameworkTypeSources": {
+    "elizaos": "@elizaos/core@1.7.2 official npm declaration",
+    "automaton": "Conway-Research/automaton d8f816881fd24b6f5e3d616e59edec387a447667 src/types.ts"
+  },
+  "sourceSha256": {
+    "src/integrations/durable-vault-compute.ts": "493c0a5fe6c62001aaa73a9f15106a2b3b2c8373d3c3de4acaf2a70e15867716",
+    "src/integrations/elizaos.ts": "682fbb03e601d00854834706423729b7b1cbd88ac4601429a851abf72384ef9f",
+    "src/integrations/automaton.ts": "461b1600b2c56a82c8cafe2e5366aeade984bea559aea7d5b9e2e3bcf768b36c",
+    "src/integrations/cli.ts": "3bde8c362a7c6d5cf4be9a5290af60747b5c818cf94eb8743274c5877a74a2cb",
+    "src/integrations/index.ts": "e71c9dd484681b4c8219ea50e474302c803077e536fba4b001f4bfff792d164b",
+    "tests/framework-starters.test.ts": "1cb41fce0a56d26218b470c46f72b0bc527376aca21c7841a65cfc0b3c49eae7"
+  },
+  "notEstablished": [
+    "full framework LLM autonomy loop",
+    "production agent session or funded public Base acceptance",
+    "public-chain independent receipt verification by this adapter",
+    "managed provider live completion",
+    "arbitrary GPU Cells",
+    "gVisor or TDX isolation by the local child-process fixture"
+  ],
+  "finalCombinedSourceValidation": {
+    "report": "docs/final-framework-economics-validation-2026-10-14.json",
+    "filesPassed": 3,
+    "testsPassed": 4,
+    "successful": true
+  }
+}

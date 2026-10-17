@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 2,
+  "recordedAt": "2026-10-15T04:00:34.212681+00:00",
+  "kind": "independent_static_and_local_only_composed_gate_review",
+  "result": "no_remaining_blocking_source_finding_within_reviewed_scope",
+  "files": [
+    {
+      "path": ".local/private-staging-rollout-20261015/rollout.py",
+      "bytes": 37113,
+      "sha256": "2db2d042bb3cf24ddbf2a07fc47c9f9c3ab6fd73e0375348b5a3c965ce04d958"
+    },
+    {
+      "path": ".local/private-staging-rollout-20261015/clone-smoke.mjs",
+      "bytes": 19739,
+      "sha256": "b4676b5c7b9a22e5cf3f5619b63d0485844ac50895b20a19b5ea99d7c3944005"
+    },
+    {
+      "path": ".local/private-staging-rollout-20261015/README.md",
+      "bytes": 9198,
+      "sha256": "a9b50f7621764072be2663601a0c4657989ac1c1b798e6f3174b4093025ffd79"
+    },
+    {
+      "path": ".local/private-staging-rollout-20261015/upload-launch.py",
+      "bytes": 18848,
+      "sha256": "1d51ce68e0e21b74df0ec11675398420817a5f268511726e6d3a546d35b43373"
+    },
+    {
+      "path": ".local/private-staging-rollout-20261015/upload-launch-usage.md",
+      "bytes": 4340,
+      "sha256": "f1b7ede1a66eb419546a7ba54a6ccfacd638cfbe62350462eff1ebdcc1292a0c"
+    }
+  ],
+  "priorStaticReview": {
+    "path": "docs/private-staging-rollout-review-2026-10-15.json",
+    "sha256": "b4075e7d9226d92fabbc9286227318bd4f2ecdcbed7e3a32dfd28abdf8ce019f",
+    "preservedUnchanged": true,
+    "rolloutDelta": "Only check_gates schema1-to-schema2. Replacing the current gate block with the exact old block reconstructs prior reviewed e92b6b08a4669831b690678164d68443bf551e3b7c918f587a14cd7a3f22e250.",
+    "cloneHelperUnchanged": true
+  },
+  "acceptedEvidenceBoundary": {
+    "validation": "docs/backend-composed-linux-validation-2026-10-15.json",
+    "sha256": "1689a21f8d87b5558ead024ca01352043e59ee2de813e349ba0593d54642cb3e",
+    "initialFull": {
+      "revision": "b042c1bc3119754e06f6b662f2e46c108a63db36",
+      "archiveSha256": "3e901e235bb9e50ff4c8dea8312aa05da7364f4865aa3c46014cb5a806122a49",
+      "status": "FAILED_RETAINED",
+      "passed": 2281,
+      "failed": 1,
+      "skipped": 19
+    },
+    "corrected": {
+      "revision": "354fe7af62ea6701faafc3b04522abb1b4524d2d",
+      "archiveSha256": "86b5dc9f36dcf841963f0ffa8161023c126f1fae473c94909f5dddae3040fdce",
+      "sourceFiles": 685,
+      "freshInstallExit": 0,
+      "freshBuildExit": 0,
+      "selectionFullFilePassed": 40,
+      "additivePassed": 71,
+      "failed": 0,
+      "skipped": 0
+    },
+    "retainedGvisorPassed": 16,
+    "continuity": "Independently compared pure-Git manifests and exact fixture diff:676 original files unchanged,8 additive files unchanged, only Selection settle helper gas default300000 plus2comments differs. No assertions, production, dependencies or config changed.",
+    "cleanFullPassClaimed": false
+  },
+  "failureClassification": {
+    "location": "tests/selection-contracts.test.ts:350 first zero-charge settle(free,0n), before inference and Selection sync/burn accounting",
+    "observed": "Transaction consumed137602 of137602 gas; no original opcode trace retained.",
+    "conclusion": "Reviewed test-budget exhaustion classification; exact elapsed0-to1 timing is inferred from unchanged contract source, not traced. No fee/contract arithmetic change justified.",
+    "productionGasHeadroom": "src/bridge.ts applies estimated gas*1.3+10000; production source unchanged.",
+    "reference": "https://eips.ethereum.org/EIPS/eip-140",
+    "independentDiagnosticOnly": {
+      "raw": ".local/selection-inference-readonly-20261015.json",
+      "platform": "Windows disposable local EVM",
+      "passed": 1,
+      "notSelected": 39,
+      "linuxGateCredit": false
+    }
+  },
+  "localChecks": {
+    "pythonAstParseExit": 0,
+    "nodeCheckExit": 0,
+    "actualEvidenceGate": "passed;12 evidence/archive inputs independently read/hashed, without transport",
+    "negativeControlsPassed": 16,
+    "negativeControls": [
+      "success_true_with_failureType",
+      "failureType_null",
+      "postflightFailureType",
+      "timeout_false_field",
+      "timeout_true_field",
+      "unexpected_public_transaction",
+      "initial_full_relabelled_green",
+      "different_initial_failure",
+      "legacy_full_success_gate",
+      "unaccepted_check_no_transport",
+      "unaccepted_upload_no_transport",
+      "unaccepted_prepare_no_transport",
+      "unaccepted_snapshot_no_transport",
+      "unaccepted_clone_no_transport",
+      "unaccepted_cutover_no_transport",
+      "status_available_without_local_evidence"
+    ],
+    "uploadSerializationControl": {
+      "actualFileHashesMatchExpectedBundle": 7,
+      "gateAndEvidenceUseExplicitWriteBytes": true,
+      "lfBytesConfirmedOnWindows": true,
+      "mockedTransportCalls": 3,
+      "actualTransportCalls": 0,
+      "retainedLocalAudit": ".local/private-staging-rollout-20261015/upload-gates-ewao0rfy"
+    },
+    "frozenSourceHashesUnchangedAfterChecks": true
+  },
+  "schema2RequiredConditions": [
+    "initialFullFailureClassifiedGasOnly",
+    "exactSourceContinuity",
+    "correctedSelectionCohortPassed",
+    "additive71Passed",
+    "paidFileGvisor16Passed"
+  ],
+  "transportReview": {
+    "mutatingOperationsAlwaysRecheckActualEvidence": true,
+    "legacyFullAcceptedGateRejected": true,
+    "failureTypeOrTimeoutFieldPresenceRejected": true,
+    "strictKnownHostAndBatchIdentity": true,
+    "exactUploadedBundleReverifiedBeforeLaunch": true,
+    "oneExplicitPhasePerInvocation": true,
+    "sshDisconnectionLeavesOwnedSystemdPhaseRunning": true,
+    "launchMeansLaunchedOnly": true,
+    "readOnlyStatusBypassesMissingLocalEvidence": true,
+    "unknownOutcomeFollowedByStatusNotAutomaticRetry": true,
+    "privateChildOutputSuppressedFromLocalSummary": true,
+    "automaticDataRestore": false
+  },
+  "reviewerActions": {
+    "serverCommands": 0,
+    "sshOrScp": 0,
+    "serviceOrRuntimeChanges": 0,
+    "sourceEdits": 0,
+    "localDiagnosticArtifactsOnly": true,
+    "commits": 0,
+    "readinessScoreChanges": 0
+  },
+  "limits": [
+    "This is a composed acceptance boundary, not a new clean685 full-suite run or public launch approval.",
+    "Static/mock checks establish neither successful transport nor snapshot/clone/cutover/rollback. Root must retain actual owned-unit status, private state, backup/drift proofs and cleanup evidence.",
+    "Every phase remains independently invoked. Missing/inconsistent evidence or changed frozen source refuses mutation.",
+    "Original failed full report and prior static review remain unchanged. No Enclave changes, wallet actions or external provider spending are established."
+  ]
+}

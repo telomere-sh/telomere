@@ -1,0 +1,210 @@
+{
+  "schemaVersion": 1,
+  "startedAt": "2026-10-15T03:11:14.368592+00:00",
+  "finishedAt": "2026-10-15T03:11:29.114216+00:00",
+  "sourceBoundary": "new v3 owner handoff working-tree batch plus explicit cryptographic/storage/schema dependencies; old v2 unchanged",
+  "baseGitRevision": "ad9dd8ffb497b1ee966498d71c7172b9a5cfeee5",
+  "node": "v22.22.2",
+  "command": [
+    "node",
+    "node_modules/vitest/vitest.mjs",
+    "run",
+    "tests/sealed-handoff-v3.test.ts",
+    "tests/sealed-keys-release.test.ts",
+    "tests/sealed-keys-signed-appraiser.test.ts",
+    "--maxWorkers=1",
+    "--reporter=json",
+    "--outputFile=C:\\Users\\Administrator\\Documents\\Codex\\2026-10-08\\new-chat\\outputs\\telomere\\.local\\sealed-handoff-v3-final-20261015.json"
+  ],
+  "sourceFiles": 21,
+  "before": {
+    "package-lock.json": {
+      "bytes": 124283,
+      "sha256": "e8549c057c2e4a8a3808ae2a2b386e9a20d20711c696836dd483d4c8bc7c533d"
+    },
+    "package.json": {
+      "bytes": 3228,
+      "sha256": "632c193486a5614ee2498eed76826fbb29e68d81fbe025878e48a4180de16fcc"
+    },
+    "src/common.ts": {
+      "bytes": 3206,
+      "sha256": "1036bf5ec02c7c1d7ec273aa065dd08cd5cafe40a0eb017f9a427cf9bb091fba"
+    },
+    "src/cysts/registry-reader.ts": {
+      "bytes": 9087,
+      "sha256": "abd7c6b307f2ee7422fb6af69741ff9069b31e6cb9fdaf16eb3e0e9a65a0ae8f"
+    },
+    "src/cysts/registry-types.ts": {
+      "bytes": 6927,
+      "sha256": "c980062a24339fc517396ed6599f7e378f9334fd62035ff4569ff2878721ebd7"
+    },
+    "src/cysts/types.ts": {
+      "bytes": 2480,
+      "sha256": "066f2aea2bd49463017d4664366d55271e0dea2137555bfb2f5f47eddf25783b"
+    },
+    "src/runtime/types.ts": {
+      "bytes": 1636,
+      "sha256": "982f8bb24f1ef477e8d0a30765ef2713d606e357739334b9ef1f60d7be2d2205"
+    },
+    "src/sdk/cyst-checkpoints-file-vault.ts": {
+      "bytes": 27668,
+      "sha256": "831867ee6b08b4b83e36e2b7a702280018d4d7d42830f150e97bc304309b4f7f"
+    },
+    "src/sdk/cyst-checkpoints.ts": {
+      "bytes": 15179,
+      "sha256": "b86551e04c23dd5534d94b294c0d0387b3c299882e07040f112c66592ee3cddd"
+    },
+    "src/sdk/cysts.ts": {
+      "bytes": 10000,
+      "sha256": "6c047b959c5ef79ffe3cb47b522e8f5493dac9fdd1dd62483f1e0e4c7bf36d4f"
+    },
+    "src/sealed-keys/handoff-v3.ts": {
+      "bytes": 21601,
+      "sha256": "c0aa101f08744b72dd212928107374adfa834371a46bfc85c53c71d1562278f4"
+    },
+    "src/sealed-keys/journal-v3.ts": {
+      "bytes": 5227,
+      "sha256": "d872a2cfc29b5380e865e79cb1b0ff751c14d4cb798903af874997551833a0ba"
+    },
+    "src/sealed-keys/protocol-v3.ts": {
+      "bytes": 6467,
+      "sha256": "cb26a7b407e54b4221ffc3bb07714f71afb1be6f21057d3a8c52ef322696af5f"
+    },
+    "src/sealed-keys/release.ts": {
+      "bytes": 14305,
+      "sha256": "0beb1b6c5525b2618be64131affcba8368e06b65bdc5b34afdba20c8c1b8f6f6"
+    },
+    "src/sealed-keys/signed-appraiser.ts": {
+      "bytes": 10325,
+      "sha256": "fdcae7e495586d80c0f19947df0a3fc208880c6ba5b98b8f322c50ef9597ff0e"
+    },
+    "src/suppliers/private-journal.ts": {
+      "bytes": 12387,
+      "sha256": "2da9e88d512cf5e39f592c3eb61435999f2a71136057265034347a4276bbd1b5"
+    },
+    "tests/sealed-handoff-v3.test.ts": {
+      "bytes": 26637,
+      "sha256": "2bced18caa74bb2dbb18f8b85491fefe392c12021f9032d409439b9c8329c3a4"
+    },
+    "tests/sealed-keys-release.test.ts": {
+      "bytes": 16243,
+      "sha256": "e29b6bbf83be5b5109fe4e6fa109a23894b0b9ccf5e545b13ab15ffab84cbcfa"
+    },
+    "tests/sealed-keys-signed-appraiser.test.ts": {
+      "bytes": 8872,
+      "sha256": "b8cda96daffbb6b033e28d45f293793ae114df05d170e49bb59a26d22652e5ea"
+    },
+    "tsconfig.json": {
+      "bytes": 625,
+      "sha256": "885374721d3e8f41811b511166a22796f2e50ebcf70fc6a94c64083582761e90"
+    },
+    "vitest.config.ts": {
+      "bytes": 186,
+      "sha256": "3741089250fe103f72282c9cf12105e10c0435059ca4448b396040391852842b"
+    }
+  },
+  "after": {
+    "package-lock.json": {
+      "bytes": 124283,
+      "sha256": "e8549c057c2e4a8a3808ae2a2b386e9a20d20711c696836dd483d4c8bc7c533d"
+    },
+    "package.json": {
+      "bytes": 3228,
+      "sha256": "632c193486a5614ee2498eed76826fbb29e68d81fbe025878e48a4180de16fcc"
+    },
+    "src/common.ts": {
+      "bytes": 3206,
+      "sha256": "1036bf5ec02c7c1d7ec273aa065dd08cd5cafe40a0eb017f9a427cf9bb091fba"
+    },
+    "src/cysts/registry-reader.ts": {
+      "bytes": 9087,
+      "sha256": "abd7c6b307f2ee7422fb6af69741ff9069b31e6cb9fdaf16eb3e0e9a65a0ae8f"
+    },
+    "src/cysts/registry-types.ts": {
+      "bytes": 6927,
+      "sha256": "c980062a24339fc517396ed6599f7e378f9334fd62035ff4569ff2878721ebd7"
+    },
+    "src/cysts/types.ts": {
+      "bytes": 2480,
+      "sha256": "066f2aea2bd49463017d4664366d55271e0dea2137555bfb2f5f47eddf25783b"
+    },
+    "src/runtime/types.ts": {
+      "bytes": 1636,
+      "sha256": "982f8bb24f1ef477e8d0a30765ef2713d606e357739334b9ef1f60d7be2d2205"
+    },
+    "src/sdk/cyst-checkpoints-file-vault.ts": {
+      "bytes": 27668,
+      "sha256": "831867ee6b08b4b83e36e2b7a702280018d4d7d42830f150e97bc304309b4f7f"
+    },
+    "src/sdk/cyst-checkpoints.ts": {
+      "bytes": 15179,
+      "sha256": "b86551e04c23dd5534d94b294c0d0387b3c299882e07040f112c66592ee3cddd"
+    },
+    "src/sdk/cysts.ts": {
+      "bytes": 10000,
+      "sha256": "6c047b959c5ef79ffe3cb47b522e8f5493dac9fdd1dd62483f1e0e4c7bf36d4f"
+    },
+    "src/sealed-keys/handoff-v3.ts": {
+      "bytes": 21601,
+      "sha256": "c0aa101f08744b72dd212928107374adfa834371a46bfc85c53c71d1562278f4"
+    },
+    "src/sealed-keys/journal-v3.ts": {
+      "bytes": 5227,
+      "sha256": "d872a2cfc29b5380e865e79cb1b0ff751c14d4cb798903af874997551833a0ba"
+    },
+    "src/sealed-keys/protocol-v3.ts": {
+      "bytes": 6467,
+      "sha256": "cb26a7b407e54b4221ffc3bb07714f71afb1be6f21057d3a8c52ef322696af5f"
+    },
+    "src/sealed-keys/release.ts": {
+      "bytes": 14305,
+      "sha256": "0beb1b6c5525b2618be64131affcba8368e06b65bdc5b34afdba20c8c1b8f6f6"
+    },
+    "src/sealed-keys/signed-appraiser.ts": {
+      "bytes": 10325,
+      "sha256": "fdcae7e495586d80c0f19947df0a3fc208880c6ba5b98b8f322c50ef9597ff0e"
+    },
+    "src/suppliers/private-journal.ts": {
+      "bytes": 12387,
+      "sha256": "2da9e88d512cf5e39f592c3eb61435999f2a71136057265034347a4276bbd1b5"
+    },
+    "tests/sealed-handoff-v3.test.ts": {
+      "bytes": 26637,
+      "sha256": "2bced18caa74bb2dbb18f8b85491fefe392c12021f9032d409439b9c8329c3a4"
+    },
+    "tests/sealed-keys-release.test.ts": {
+      "bytes": 16243,
+      "sha256": "e29b6bbf83be5b5109fe4e6fa109a23894b0b9ccf5e545b13ab15ffab84cbcfa"
+    },
+    "tests/sealed-keys-signed-appraiser.test.ts": {
+      "bytes": 8872,
+      "sha256": "b8cda96daffbb6b033e28d45f293793ae114df05d170e49bb59a26d22652e5ea"
+    },
+    "tsconfig.json": {
+      "bytes": 625,
+      "sha256": "885374721d3e8f41811b511166a22796f2e50ebcf70fc6a94c64083582761e90"
+    },
+    "vitest.config.ts": {
+      "bytes": 186,
+      "sha256": "3741089250fe103f72282c9cf12105e10c0435059ca4448b396040391852842b"
+    }
+  },
+  "changed": [],
+  "tests": {
+    "exitCode": 0,
+    "passed": 54,
+    "failed": 0,
+    "pending": 0,
+    "stdout": "JSON report written to C:/Users/Administrator/Documents/Codex/2026-10-08/new-chat/outputs/telomere/.local/sealed-handoff-v3-final-20261015.json\n",
+    "stderr": ""
+  },
+  "diffCheck": {
+    "exitCode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "globalTypecheck": "owned separately by root after M6/M7 freeze; not claimed by this cohort",
+  "hardwareAcceptance": false,
+  "publicRpcOrWallet": false,
+  "accepted": true
+}

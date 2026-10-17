@@ -1,0 +1,32 @@
+{
+  "checkedAt": "2026-10-13T06:49:18.936Z",
+  "status": "candidate_matches_observed_chain",
+  "chainId": 46630,
+  "upstreamCommit": "b9e466c250744a7e06b13dff9d3c2844ed64f825",
+  "anchor": {
+    "number": "134094699",
+    "hash": "0x89d48c54cb39686831d224adfff482cbb2bc5ec98d41d2b959d38be52b7b3bb4"
+  },
+  "identity": {
+    "proxy": "0x8004A818BFB912233c491871b3d84c89A494BD9e",
+    "proxyCodeHash": "0xd0e45b1d89fa9b6cc7e97c1f155d64180e5c232aaccf9900ef9d4fd738c02b41",
+    "implementation": "0x7274e874CA62410a93Bd8bf61c69d8045E399c02",
+    "implementationCodeHash": "0xa5f9624ea85e45b3f4b8558581f03bfb3e6cefab278d7bf0500ec9bd065dc16f",
+    "owner": "0x547289319C3e6aedB179C0b8e8aF0B5ACd062603",
+    "version": "2.0.0"
+  },
+  "reputation": {
+    "proxy": "0x8004B663056A597Dffe9eCcC1965A193B7388713",
+    "proxyCodeHash": "0xd0e45b1d89fa9b6cc7e97c1f155d64180e5c232aaccf9900ef9d4fd738c02b41",
+    "implementation": "0x16e0FA7f7C56B9a767E34B192B51f921BE31dA34",
+    "implementationCodeHash": "0x38602de97f1bd86f0a4729f7f3c0a78b1d27892e6eb581272cce5504a68fd00b",
+    "owner": "0x547289319C3e6aedB179C0b8e8aF0B5ACd062603",
+    "version": "2.0.0"
+  },
+  "reputationIdentityRegistry": "0x8004A818BFB912233c491871b3d84c89A494BD9e",
+  "historicalStateAvailable": false,
+  "publisherEnabled": false,
+  "readyForPublicPublication": false,
+  "source": "https://github.com/erc-8004/erc-8004-contracts/blob/b9e466c250744a7e06b13dff9d3c2844ed64f825/README.md",
+  "noTransactionsSubmitted": true
+}

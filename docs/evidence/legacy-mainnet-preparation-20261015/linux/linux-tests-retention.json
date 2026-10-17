@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "remoteWork": "/tmp/telomere-mainnet-linux-focused-20261015-sw5cd63a",
+  "exactRemoteLocalCopies": true,
+  "sourceRunnerSha256": "9d38f8aa03046d01c256728e3ec9398b7e6b64c0f0438540763fffff28897887",
+  "files": [
+    {
+      "path": ".local/mainnet-prepare-20261015/linux-tests-report.json",
+      "size": 3488,
+      "sha256": "7ab00dd0fcdb140b63cadaf9b5669b3d73ec45f9635cb139a625df6167f9aa40"
+    },
+    {
+      "path": ".local/mainnet-prepare-20261015/linux-tests-manifest-before.json",
+      "size": 88446,
+      "sha256": "eb5c425536c43b78fcd440332a98c2e8083e4fd4d6ae27330441d24a429c593a"
+    },
+    {
+      "path": ".local/mainnet-prepare-20261015/linux-tests-manifest-after.json",
+      "size": 88446,
+      "sha256": "eb5c425536c43b78fcd440332a98c2e8083e4fd4d6ae27330441d24a429c593a"
+    },
+    {
+      "path": ".local/mainnet-prepare-20261015/linux-tests-node.json",
+      "size": 28736,
+      "sha256": "f9655f352845c4dc96933c25fafbce834e5ed97bcdda9e9deef7d66481e2a3d6"
+    },
+    {
+      "path": ".local/mainnet-prepare-20261015/linux-tests-node.stdout",
+      "size": 87,
+      "sha256": "d8558bc019140a1fc8f514028e93d02cd80b0105c26ab35bca8e1bbd30f83412"
+    },
+    {
+      "path": ".local/mainnet-prepare-20261015/linux-tests-node.stderr",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".local/mainnet-prepare-20261015/linux-tests-vitest.config.mjs",
+      "size": 450,
+      "sha256": "42006161c57f342cedd637e5c60260a883a8075dbe8531908101b1bf42fa0d65"
+    }
+  ],
+  "sshReportingConnectionResetBeforeCompletion": true,
+  "completedReportRecoveredWithoutRerun": true
+}

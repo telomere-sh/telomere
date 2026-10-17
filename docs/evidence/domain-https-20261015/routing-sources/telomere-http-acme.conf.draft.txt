@@ -1,0 +1,17 @@
+# Install as a NEW site only; do not replace any existing Enclave/default vhost.
+server {
+    listen 80;
+    listen [::]:80;
+    server_name telomere.sh review.telomere.sh;
+
+    location ^~ /.well-known/acme-challenge/ {
+        root /var/www/telomere-acme;
+        default_type text/plain;
+        auth_basic off;
+        try_files $uri =404;
+    }
+
+    location / {
+        return 308 https://$host$request_uri;
+    }
+}

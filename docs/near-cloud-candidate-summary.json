@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "status": "captured",
+  "reasonCode": "CANDIDATE_CAPTURED",
+  "checkedAt": "2026-10-08T14:39:01.712Z",
+  "endpoint": "https://cloud-api.near.ai",
+  "model": "z-ai/glm-5.3-flash",
+  "approval": "UNAPPROVED",
+  "hardwareVerified": false,
+  "reportGets": 1,
+  "paidPosts": 0,
+  "httpStatus": 200,
+  "response": {
+    "sha256": "0x878b26db70406b14582ff6fd2b7cf6c9e74996ef145974d7635e806bfeaebd3c",
+    "bytes": 315786
+  },
+  "inventory": {
+    "gatewayReports": 1,
+    "modelCandidates": 1,
+    "manifests": 2,
+    "immutableImageClaims": 1
+  },
+  "pendingChecks": [
+    "Intel quote/collateral, accepted TCB/advisories and debug rejection",
+    "Verified quote nonce/signer binding and RTMR3 event-log replay",
+    "Raw app-compose hash versus verified MRCONFIGID",
+    "NVIDIA evidence for every model candidate",
+    "Gateway TLS SPKI binding on the captured connection",
+    "Cryptographic image provenance, subject digests, publisher/build/source identities",
+    "Independent measured-workload review and separately approved bounded Cloud policy",
+    "Fresh live admission and one separately authorized bounded completion/signature acceptance",
+    "Shared model-key and incomplete model/Gateway/response binding limitations"
+  ]
+}

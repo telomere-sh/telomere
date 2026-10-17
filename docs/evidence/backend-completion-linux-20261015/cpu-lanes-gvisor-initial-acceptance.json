@@ -1,0 +1,154 @@
+{
+  "schemaVersion": 1,
+  "gitRevision": "7bb69e5e73199ab372ca6c263297792634648aaf",
+  "archiveSha256": "d10f22b3259a9b677bdd0997650e2d786365203af4de0a3f418a0011733a73c1",
+  "directory": "/opt/telomere-host-runtime/backend-completion-20261015-d10f22b3259a",
+  "sourceFiles": 703,
+  "imageRepoDigest": "127.0.0.1:15002/telomere-cpu@sha256:6839949540d11906cbdbc614867ac3a825fa0e6f8cbed90c79773979517b4bbe",
+  "derivedImageId": "sha256:680cc0ec7dfa626d4105c3c26834289687e0abed785240e5bb814bac7cd55355",
+  "startedAt": "2026-10-15T12:09:43.946132+00:00",
+  "servicesBefore": {
+    "telomere-staging.service": "MainPID=1952406\nNRestarts=0\nWorkingDirectory=/opt/telomere-pilot/releases/354fe7af62ea6701faafc3b04522abb1b4524d2d-launch04\nActiveState=active\nSubState=running",
+    "telomere-staging-chain.service": "MainPID=1952401\nNRestarts=0\nWorkingDirectory=/opt/telomere-pilot/app\nActiveState=active\nSubState=running",
+    "telomere-staging-watchdog.service": "MainPID=1952410\nNRestarts=0\nWorkingDirectory=/opt/telomere-pilot/watchdog-app\nActiveState=active\nSubState=running"
+  },
+  "profileBeforeSha256": "a400feb3475b91168a5419d0a98c00ea804ba817c1c0ad34dea65d7d8808df8f",
+  "healthBefore": {
+    "live": {
+      "statusCode": 200,
+      "body": {
+        "status": "ok"
+      }
+    },
+    "ready": {
+      "statusCode": 200,
+      "body": {
+        "status": "ready",
+        "worker": "idle"
+      }
+    }
+  },
+  "protectedBeforeSha256": "6c078f8b7a3386663d9ab2f5682c317d82b54e86c54a93f67255bfa045a76079",
+  "sourceChangesBefore": [],
+  "publicTransactions": 0,
+  "paidProviderRequests": 0,
+  "serviceMutations": false,
+  "execution": {
+    "exitCode": 1,
+    "seconds": 49.276
+  },
+  "nodeTests": {
+    "numTotalTests": 19,
+    "numPassedTests": 18,
+    "numFailedTests": 1,
+    "numPendingTests": 0,
+    "success": false
+  },
+  "cases": [
+    {
+      "name": "runs a paid CPU job across two offers on one physical source and a separately funded standard target",
+      "status": "failed"
+    },
+    {
+      "name": "reviewed CPU lane offers share one physical host keeps omitted single-lane configuration and old financial workload hashes unchanged",
+      "status": "passed"
+    },
+    {
+      "name": "reviewed CPU lane offers share one physical host resolves exact lane/profile rates without duplicating or modifying physical metadata",
+      "status": "passed"
+    },
+    {
+      "name": "reviewed CPU lane offers share one physical host rejects ambiguous or unsupported reviewed catalogue missing_base",
+      "status": "passed"
+    },
+    {
+      "name": "reviewed CPU lane offers share one physical host rejects ambiguous or unsupported reviewed catalogue changed_base",
+      "status": "passed"
+    },
+    {
+      "name": "reviewed CPU lane offers share one physical host rejects ambiguous or unsupported reviewed catalogue base_profile",
+      "status": "passed"
+    },
+    {
+      "name": "reviewed CPU lane offers share one physical host rejects ambiguous or unsupported reviewed catalogue not_session",
+      "status": "passed"
+    },
+    {
+      "name": "reviewed CPU lane offers share one physical host rejects ambiguous or unsupported reviewed catalogue duplicate",
+      "status": "passed"
+    },
+    {
+      "name": "reviewed CPU lane offers share one physical host rejects ambiguous or unsupported reviewed catalogue zero",
+      "status": "passed"
+    },
+    {
+      "name": "reviewed CPU lane offers share one physical host rejects ambiguous or unsupported reviewed catalogue missing_capability",
+      "status": "passed"
+    },
+    {
+      "name": "reviewed CPU lane offers share one physical host rejects ambiguous or unsupported reviewed catalogue wrong_full",
+      "status": "passed"
+    },
+    {
+      "name": "reviewed CPU lane offers share one physical host rejects ambiguous or unsupported reviewed catalogue extra_field",
+      "status": "passed"
+    },
+    {
+      "name": "reviewed CPU lane offers share one physical host never inherits another lane profile when a reviewed offer omits reduced-quota prices",
+      "status": "passed"
+    },
+    {
+      "name": "reviewed CPU lane offers share one physical host requires original signed lane consent rather than a caller-supplied offer catalogue",
+      "status": "passed"
+    },
+    {
+      "name": "Node SDK independently verifies non-base lane prices over actual local HTTP checks exact signed lane/profile and unsigned payment calldata, vault=false",
+      "status": "passed"
+    },
+    {
+      "name": "Node SDK independently verifies non-base lane prices over actual local HTTP checks exact signed lane/profile and unsigned payment calldata, vault=true",
+      "status": "passed"
+    },
+    {
+      "name": "Node SDK independently verifies non-base lane prices over actual local HTTP refuses a retained signed plan after its exact offered rate is withdrawn",
+      "status": "passed"
+    },
+    {
+      "name": "Node SDK independently verifies non-base lane prices over actual local HTTP rejects duplicated physical hosts even when their nested offers and prices differ",
+      "status": "passed"
+    },
+    {
+      "name": "Node SDK independently verifies non-base lane prices over actual local HTTP refuses a real signed EOA interruptible plan whose legacy host omits preemption capability",
+      "status": "passed"
+    }
+  ],
+  "failureType": "AssertionError",
+  "sourceChangesAfter": [],
+  "servicesAfter": {
+    "telomere-staging.service": "MainPID=1952406\nNRestarts=0\nWorkingDirectory=/opt/telomere-pilot/releases/354fe7af62ea6701faafc3b04522abb1b4524d2d-launch04\nActiveState=active\nSubState=running",
+    "telomere-staging-chain.service": "MainPID=1952401\nNRestarts=0\nWorkingDirectory=/opt/telomere-pilot/app\nActiveState=active\nSubState=running",
+    "telomere-staging-watchdog.service": "MainPID=1952410\nNRestarts=0\nWorkingDirectory=/opt/telomere-pilot/watchdog-app\nActiveState=active\nSubState=running"
+  },
+  "profileAfterSha256": "a400feb3475b91168a5419d0a98c00ea804ba817c1c0ad34dea65d7d8808df8f",
+  "healthAfter": {
+    "live": {
+      "statusCode": 200,
+      "body": {
+        "status": "ok"
+      }
+    },
+    "ready": {
+      "statusCode": 200,
+      "body": {
+        "status": "ready",
+        "worker": "idle"
+      }
+    }
+  },
+  "protectedAfterSha256": "6c078f8b7a3386663d9ab2f5682c317d82b54e86c54a93f67255bfa045a76079",
+  "remainingContainers": [
+    "1d7ecc9b94866b9617df656ad7e2251916a9b7ceafef9a488ef6e85540076c5e"
+  ],
+  "success": false,
+  "finishedAt": "2026-10-15T12:10:33.735251+00:00"
+}

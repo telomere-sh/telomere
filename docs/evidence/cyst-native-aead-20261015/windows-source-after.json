@@ -1,0 +1,194 @@
+{
+  "package-lock.json": {
+    "bytes": 124283,
+    "sha256": "e8549c057c2e4a8a3808ae2a2b386e9a20d20711c696836dd483d4c8bc7c533d"
+  },
+  "package.json": {
+    "bytes": 3228,
+    "sha256": "632c193486a5614ee2498eed76826fbb29e68d81fbe025878e48a4180de16fcc"
+  },
+  "src/agents/agent-current-cyst-file-restore.ts": {
+    "bytes": 24014,
+    "sha256": "1aa11ee2ea9f2b478faba86f66c5dc1c2060132511260ed968ad22e68fd3eb18"
+  },
+  "src/common.ts": {
+    "bytes": 3206,
+    "sha256": "1036bf5ec02c7c1d7ec273aa065dd08cd5cafe40a0eb017f9a427cf9bb091fba"
+  },
+  "src/cysts/chunk-aead.ts": {
+    "bytes": 4638,
+    "sha256": "6db04704263d0f0f91ac10878dc88b7bc8fc56035ef900c54542ec1126448f33"
+  },
+  "src/cysts/configured.ts": {
+    "bytes": 2467,
+    "sha256": "cf45f9a3f91aaba65f6b0a81b23a4692676311cdbe0a831cbcc9cc9146c05293"
+  },
+  "src/cysts/declared-state-protocol.ts": {
+    "bytes": 3679,
+    "sha256": "893efa2667dd580a222ab9a1152d9e600c0871de845d34951e0296cedeb76b2b"
+  },
+  "src/cysts/large-checkpoints.ts": {
+    "bytes": 41155,
+    "sha256": "f69ef2959f53b5e5d51a276dccf656f91ab7e6812fa790603d6cb36dd2eac1ce"
+  },
+  "src/cysts/large-configured.ts": {
+    "bytes": 4708,
+    "sha256": "77422f1cba3cb4b3c9e0efcff936bb0a83e6e13b175fe4a626fe8dec21807e12"
+  },
+  "src/cysts/large-publication-routes.ts": {
+    "bytes": 6444,
+    "sha256": "e750ddd9504fe367c3162cf30c8092e9655e2aa871cf85dd9fc09c51d52c7abb"
+  },
+  "src/cysts/large-publication-schema.ts": {
+    "bytes": 3156,
+    "sha256": "c9a62ca8a34a21381a26670dfb7cda4ca8ddcbf34b10fa5305c5c73d463af6f1"
+  },
+  "src/cysts/large-publication-service.ts": {
+    "bytes": 27766,
+    "sha256": "950ba2c77b9765e4c9c895329ea11a89d5182d6dce4187363cf79a5d67a54352"
+  },
+  "src/cysts/large-publication-types.ts": {
+    "bytes": 805,
+    "sha256": "b5ffd1b0c63e029fda4a49d7bc5536c67eafdf0ed5a9f072bfba2ee8d3ba28d4"
+  },
+  "src/cysts/large-quota-shadow.ts": {
+    "bytes": 10179,
+    "sha256": "86e99ad34c6e9b831fe7253b7b4c7c587c5544bf51310a935099508ceac2771c"
+  },
+  "src/cysts/large-registry.ts": {
+    "bytes": 9068,
+    "sha256": "23770f3a871ef919772af06eeab4c67373186f636c298f3f51a1fed717aaa91c"
+  },
+  "src/cysts/large-replicated.ts": {
+    "bytes": 10330,
+    "sha256": "de51f6258a9bc9691c41036bafe931ae102c8c4207feb86520576e0f304c503c"
+  },
+  "src/cysts/large-routes.ts": {
+    "bytes": 9403,
+    "sha256": "47af700b10f91e5dfe1ce1621bb7d51a65d75e676be7b4cb908357f802f290a0"
+  },
+  "src/cysts/large-s3.ts": {
+    "bytes": 15251,
+    "sha256": "d08f6d0e5bf4101d9a783134dbba3e780e0e22435ba7c2810bb8b4838707cab1"
+  },
+  "src/cysts/quota-types.ts": {
+    "bytes": 1185,
+    "sha256": "a02dc52126a74813baace5ac2a7c061689bbd9b554c71e2d924d30d4a9c2f561"
+  },
+  "src/cysts/quota.ts": {
+    "bytes": 3193,
+    "sha256": "690d53cfb6f70abbfc81ac8bdf61f956c298d00c348ffcd9ebcb6d0f30f2c483"
+  },
+  "src/cysts/registry-client.ts": {
+    "bytes": 12574,
+    "sha256": "c90eccf6fcfe78d8d9e963a2fcb99797d82ca93834d430964692daf0ee3a3ebf"
+  },
+  "src/cysts/registry-configured.ts": {
+    "bytes": 1519,
+    "sha256": "0fae79dc512fa5ab77e8ab8ddaff4428598c3411af754910121be9397280c3ed"
+  },
+  "src/cysts/registry-reader.ts": {
+    "bytes": 9087,
+    "sha256": "abd7c6b307f2ee7422fb6af69741ff9069b31e6cb9fdaf16eb3e0e9a65a0ae8f"
+  },
+  "src/cysts/registry-routes.ts": {
+    "bytes": 4310,
+    "sha256": "15a00473f93af5adeb046e0c182374052dea4386dd4bf3e62a1d6f3bcbc58de1"
+  },
+  "src/cysts/registry-service.ts": {
+    "bytes": 6330,
+    "sha256": "5ec419c318eca73144963da53ee0f95c3c86a65b4bb4ff143118e2c98e590e8e"
+  },
+  "src/cysts/registry-types.ts": {
+    "bytes": 6927,
+    "sha256": "c980062a24339fc517396ed6599f7e378f9334fd62035ff4569ff2878721ebd7"
+  },
+  "src/cysts/replicated.ts": {
+    "bytes": 6542,
+    "sha256": "e4c56079428d9bc6049fe6bb975c9afed783a86ec009dc0a18c0661e95950ccb"
+  },
+  "src/cysts/routes.ts": {
+    "bytes": 2149,
+    "sha256": "de2036fc20203cbe242afca7f95e822af148d4fb5761876ecdcb09d50f9a189f"
+  },
+  "src/cysts/s3.ts": {
+    "bytes": 10418,
+    "sha256": "86ae67a643ebdf4603994f128ddfce6c264285515ef39a2257d763cc32d19cdb"
+  },
+  "src/cysts/schema.ts": {
+    "bytes": 2670,
+    "sha256": "02229f653857494f56f7c675c377bdf8d30d36a652e37866c64dc22b3cfe02a5"
+  },
+  "src/cysts/service.ts": {
+    "bytes": 9800,
+    "sha256": "7d942eceb4c6c95c7bfa8065f2c137215dbade24b6d28e3b52a2ecb80a062796"
+  },
+  "src/cysts/storage.ts": {
+    "bytes": 6888,
+    "sha256": "64c7474f45844a49b7b820d5292cce37d1ac4afc8d90626ee0efe1f1da07559f"
+  },
+  "src/cysts/types.ts": {
+    "bytes": 2480,
+    "sha256": "066f2aea2bd49463017d4664366d55271e0dea2137555bfb2f5f47eddf25783b"
+  },
+  "src/runtime/types.ts": {
+    "bytes": 1636,
+    "sha256": "982f8bb24f1ef477e8d0a30765ef2713d606e357739334b9ef1f60d7be2d2205"
+  },
+  "src/sdk/cyst-key-wrap.ts": {
+    "bytes": 7032,
+    "sha256": "dd692a6cb37a3e5c45ecc55c9598735ad33e53cc1d56dc9ccbf99b36c8b3769f"
+  },
+  "src/sdk/cysts.ts": {
+    "bytes": 10000,
+    "sha256": "6c047b959c5ef79ffe3cb47b522e8f5493dac9fdd1dd62483f1e0e4c7bf36d4f"
+  },
+  "src/sdk/large-cyst-agent-manifest.ts": {
+    "bytes": 13035,
+    "sha256": "3b4aa0d1ec21dee306a6b50c0b0c3d262d1503552f71b7246856ac55dd59f008"
+  },
+  "tests/chunk-aead.test.ts": {
+    "bytes": 8872,
+    "sha256": "2adc75c2c963efed846da9107993cc96284f3e3b35c6e6cec2c7b3879f02673d"
+  },
+  "tests/cyst-key-wrap.test.ts": {
+    "bytes": 7076,
+    "sha256": "05be709efa2e236e1022e8416070e24b7d88dc09d6948a6a5b592400fc051171"
+  },
+  "tests/large-cyst-agent-manifest.test.ts": {
+    "bytes": 12549,
+    "sha256": "b7f0476622778c2540c87657adabb575ce638f3cd23988cc6d84548261f9b8cd"
+  },
+  "tests/large-cyst-checkpoints.test.ts": {
+    "bytes": 16735,
+    "sha256": "faab3931523c8ae4ddc765a5cf7039c515f1bf66642392e84119ce33ba308bda"
+  },
+  "tests/large-cyst-current-resolver.test.ts": {
+    "bytes": 7056,
+    "sha256": "3ef66eba4067c1a90afa88c3c20041e752226596cc39a18c85efa3f5e303c551"
+  },
+  "tests/large-cyst-publication.test.ts": {
+    "bytes": 19918,
+    "sha256": "187eae42d6fb3aff1e0e3b359c11b2a7a8de5ec1109e7209da51ead49bf68498"
+  },
+  "tests/large-cyst-replication.test.ts": {
+    "bytes": 10386,
+    "sha256": "46289d020e2b82ee0e1eef3eda6f8663747d21c9377f74e011611abca271d63f"
+  },
+  "tests/large-cyst-s3.test.ts": {
+    "bytes": 20389,
+    "sha256": "1b9b276bb964acdd8457c41ef1a9744cf9d4beb19851b006a91715d405f782f2"
+  },
+  "tests/paid-cyst-file-cache-expiry.test.ts": {
+    "bytes": 6745,
+    "sha256": "3a8ada96a9547c8b7be22527bcbbfa8fbb89a08087f99b5aca96ab128855bdcd"
+  },
+  "tests/paid-cyst-file-restore.test.ts": {
+    "bytes": 32749,
+    "sha256": "c6262036d2239afc3e9fc5fa47db0f1c8e796464f80e6f22d7309cd0c9b7adb0"
+  },
+  "tsconfig.json": {
+    "bytes": 625,
+    "sha256": "885374721d3e8f41811b511166a22796f2e50ebcf70fc6a94c64083582761e90"
+  }
+}

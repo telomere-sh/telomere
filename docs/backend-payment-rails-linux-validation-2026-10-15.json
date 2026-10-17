@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "status": "accepted_exact_payment_rail_source_cutoff; later_source_excluded",
+  "gitRevision": "1ac43b1616c01d085a401bb985c6e01a1b24264a",
+  "sourceArchiveSha256": "31f5cb0cd767e4c336d33e405271b2ebdfb9eccc28915c65c64b58e8d7312c92",
+  "sourceFiles": 647,
+  "gitMatches": {
+    "exact": 639,
+    "lineEndingsOnly": 8
+  },
+  "sourceMap": "docs/evidence/backend-financial-rails-final-git-map-20261015.json",
+  "completedAt": "2026-10-15T03:00:08.629923+00:00",
+  "environment": {
+    "node": "v22.23.3",
+    "os": "owned Debian12 VPS"
+  },
+  "install": {
+    "exitCode": 0,
+    "seconds": 3.593
+  },
+  "build": {
+    "exitCode": 0,
+    "seconds": 57.833
+  },
+  "nodeFull": {
+    "exitCode": 0,
+    "seconds": 2808.514
+  },
+  "tests": {
+    "numTotalTests": 2236,
+    "numPassedTests": 2217,
+    "numFailedTests": 0,
+    "numPendingTests": 19,
+    "numTotalTestSuites": 358,
+    "success": true
+  },
+  "testFilesReported": 178,
+  "allOriginalSourcesUnchanged": true,
+  "stagingServicesUnchanged": true,
+  "stagingRestarts": 0,
+  "healthBefore": {
+    "live": {
+      "statusCode": 200,
+      "body": {
+        "status": "ok"
+      }
+    },
+    "ready": {
+      "statusCode": 200,
+      "body": {
+        "status": "ready",
+        "worker": "idle"
+      }
+    }
+  },
+  "healthAfter": {
+    "live": {
+      "statusCode": 200,
+      "body": {
+        "status": "ok"
+      }
+    },
+    "ready": {
+      "statusCode": 200,
+      "body": {
+        "status": "ready",
+        "worker": "idle"
+      }
+    }
+  },
+  "publicTransactions": 0,
+  "paidProviderRequests": 0,
+  "dockerOptIn": false,
+  "capacityOptIn": false,
+  "langgraphOptIn": false,
+  "evidence": {
+    "acceptance.json": {
+      "path": "docs/evidence/backend-financial-rails-linux-final-acceptance-20261015.json",
+      "sha256": "561204513f89ee414f4a96eae353c92632e17e42a14cc1143da92c4bc0fbc767",
+      "bytes": 2028
+    },
+    "node-full.json": {
+      "path": "docs/evidence/backend-financial-rails-linux-final-tests-20261015.json",
+      "sha256": "320a26e2d8ec5b9de1efc992afa327343db113613a7eb6ecd0ac9266c18633b7",
+      "bytes": 960708
+    }
+  },
+  "limits": [
+    "This archive excludes later domain4 x402 CPU, declared-file Cyst, supplier journal and deployment-tooling changes.",
+    "The prior full-run failures are retained as historical evidence, not overwritten.",
+    "The19 skipped cases require separately opted-in runtimes/profiles and are not passing acceptance.",
+    "This does not deploy or approve a public Base service."
+  ]
+}

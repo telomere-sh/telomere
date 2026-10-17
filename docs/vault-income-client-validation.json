@@ -1,0 +1,227 @@
+{
+  "schema": "telomere-vault-income-client-windows-validation-v1",
+  "validatedAt": "2026-10-12T13:16:05.591Z",
+  "baselineCommit": "2233a84872f32323f6a42fbefa7f1734ac09faeb",
+  "platform": "win32",
+  "scope": "New Node-only public Vault income client, mandatory caller journal contract, separate bounded public HTTP transport and independent read-only raw-transaction reader. No existing main, payment service or native adapter was edited by this SDK increment.",
+  "finalWindows": {
+    "execution": "Three separate focused commands, not one combined final batch.",
+    "total": 56,
+    "passed": 56,
+    "failed": 0,
+    "skipped": 0,
+    "reports": [
+      {
+        "path": ".local/vault-income-client-main-final13.json",
+        "sha256": "76cf0c6de65ab20830d0e9781833f0047b9de9a48e5367a4e273722107b5cf8c",
+        "total": 13,
+        "passed": 13,
+        "failed": 0,
+        "skipped": 0,
+        "suiteIntervalsMs": [
+          80545.14624023438
+        ],
+        "reportIntervalMs": 92521.14624023438,
+        "success": true,
+        "command": "npx vitest run tests/vault-income-client.test.ts --reporter=json --outputFile=.local/vault-income-client-main-final13.json"
+      },
+      {
+        "path": ".local/vault-income-client-http-final2.json",
+        "sha256": "a5bb49526549dcb33370f46066b659b01b71979d1fcd074f781a65787561a2db",
+        "total": 18,
+        "passed": 18,
+        "failed": 0,
+        "skipped": 0,
+        "suiteIntervalsMs": [
+          10044.959716796875
+        ],
+        "reportIntervalMs": 10860.959716796875,
+        "success": true,
+        "command": "npx vitest run tests/vault-income-client-http.test.ts --reporter=json --outputFile=.local/vault-income-client-http-final2.json"
+      },
+      {
+        "path": ".local/vault-income-client-reader-vitest-frozen.json",
+        "sha256": "2c5457aae9e6a7c6a22e4dae5928a70a5536a9fcd52a05ab972a513bc163f8ba",
+        "total": 25,
+        "passed": 25,
+        "failed": 0,
+        "skipped": 0,
+        "suiteIntervalsMs": [
+          4164.455810546875
+        ],
+        "reportIntervalMs": 13532.455810546875,
+        "success": true,
+        "command": "npx vitest run tests/vault-income-client-reader.test.ts --reporter=json --outputFile=.local/vault-income-client-reader-vitest-frozen.json"
+      }
+    ],
+    "typecheck": {
+      "command": "npm run typecheck",
+      "exitCode": 0
+    },
+    "diffCheck": {
+      "command": "git diff --check",
+      "exitCode": 0
+    }
+  },
+  "sources": {
+    "src/sdk/vault-income/client.ts": "f29baa6c195c849e44b8c2eb22870fc286e30037f4bf43bb875ad751c0a607e6",
+    "src/sdk/vault-income/http.ts": "e92ee88777ab0c01fc071376b00f991083512a821d19929e9cdfa029ee79a7c2",
+    "src/sdk/vault-income/types.ts": "147d891961d43b691dd6fdd526a7dac44230bc5c2f8079793c639e55c8cf735e",
+    "src/sdk/vault-income/index.ts": "8cc8c899aa8ecdb93c9d0de028f83d50a7156f48c23a623d221df02733c341d1",
+    "src/sdk/vault-income/integrity.ts": "3f8511a631de9c4ffe8375dcbdc958f4090dcd06e4bdd6cf74da37f05f0c5923",
+    "src/sdk/vault-income/reader.ts": "40711e78fa8f0958db1a9f8be308520824bef10e0f738d9c17fe48a7809cb839",
+    "tests/vault-income-client.test.ts": "8426f304573a260db108daa7210d1300b779e48300625f713222b51e9e337b32",
+    "tests/vault-income-client-http.test.ts": "3c79f7c66116dbb8825c87c9323cb46bdc656da7045d1b5a7301afcd56ba0bbd",
+    "tests/vault-income-client-reader.test.ts": "42755b64fc700eabf78ab94c82a5104f6d1e790d0b492a5c435ae6d111fad997",
+    "docs/vault-income-client.md": "0b3e9fd6bc68249099d1f87207e4702561bc3a38c50fc0fe8bd5391d567dc06b"
+  },
+  "acceptance": [
+    "Actual startPilot intake, actual Selection/Vault/token deployments and external EIP3009 payer signatures on disposable Anvil.",
+    "Mandatory separate disk caller journal: unsigned/signed persistence before exposure/POST, orderly close/reopen, lost HTTP response plus main restart, exact header retry and one canonical debit.",
+    "Actual 202 confirmation wait, independently verified raw hash/facilitator/calldata and canonical fee classification, original candidate retained.",
+    "Actual reorg withdraws success; one and two formerly settled payments recover only original hashes without cross-attempt exact-retry deadlock.",
+    "Wrong payer/signature, substituted hash/calldata, strict malformed HTTP bounds, callback persistence failure, concurrent-call refusal and retained journal capacity.",
+    "Reused untrusted challenge or nonce is rejected before save without poisoning retained evidence.",
+    "Actual outer low-gas revert remains unresolved while its bearer authorization is valid; new authorization requires canonical confirmed expiry and fresh unused-marker inspection.",
+    "Independent receipt conservation and client ref/fee/net consistency; later token or alternate Vault consumption after reverted transaction fails reconciliation.",
+    "Current and receipt-block token/Selection/implementation/clone checks, expiry/freeze/Death historical preservation, EIP1898 canonical anchors, lost depth, unsupported raw RPC and safe error handling."
+  ],
+  "review": {
+    "independentReadOnlyReview": "Root and sibling reviewers inspected the final client/HTTP/journal flow and independent reader. No remaining actionable findings reported.",
+    "corrections": [
+      "Duplicate untrusted offer poison prevented before persistence.",
+      "Unsigned/signed check states distinguish planned, authorized and submitted.",
+      "Exact previously submitted retries remain available after a multi-payment reorg.",
+      "Still-valid reverted authorization is not treated as cancelled.",
+      "Missing-reader asynchronous failures are sanitized and latest consumption pins fresh asset plus deployment.",
+      "Canonical reverted receipts are rechecked for later authorization/ref consumption; the native counterpart was fixed separately by root in the baseline."
+    ]
+  },
+  "history": [
+    {
+      "path": ".local/vault-income-client-http-first.json",
+      "sha256": "fa4feee99279ccb74e25378a7619fc621185feb66cf8d93f24526fd1ae9263bb",
+      "total": 18,
+      "passed": 17,
+      "failed": 1,
+      "skipped": 0,
+      "suiteIntervalsMs": [
+        10049.14697265625
+      ],
+      "reportIntervalMs": 10893.14697265625,
+      "success": false,
+      "note": "The real streamed-response case exposed a deadline/cancel ordering bug: cancellation could mask timeout as invalid JSON. The deadline is now rejected before cancellation."
+    },
+    {
+      "path": ".local/vault-income-client-http-final.json",
+      "sha256": "08d8fa8d9e4722f41dc0a2673196a533bad8e2bfb9131b7fdf4d50393027d95b",
+      "total": 18,
+      "passed": 17,
+      "failed": 1,
+      "skipped": 0,
+      "suiteIntervalsMs": [
+        10065.3876953125
+      ],
+      "reportIntervalMs": 11065.3876953125,
+      "success": false,
+      "note": "The timeout assertion passed; the remaining fixture failure observed the asynchronous server response-close event too early. The fixture now awaits the precise event without weakening the timeout or cleanup assertion."
+    },
+    {
+      "path": ".local/vault-income-client-main-first.json",
+      "sha256": "ffab3976e7257620d49cdb04a7ffd42db6928b448e4f5ca7e3c527ccf4bd1429",
+      "total": 10,
+      "passed": 10,
+      "failed": 0,
+      "skipped": 0,
+      "suiteIntervalsMs": [
+        57058.37451171875
+      ],
+      "reportIntervalMs": 67090.37451171875,
+      "success": true,
+      "note": "Initial ten actual-main scenarios passed before the two-payment reorg, custom-reader arithmetic and still-valid reverted authorization additions."
+    },
+    {
+      "path": ".local/vault-income-client-two-reorg.json",
+      "sha256": "14657cd26db89941e54bf735d4fc501f0b12f1c09527205fa5b010ec42719b41",
+      "total": 11,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 10,
+      "suiteIntervalsMs": [
+        8978.252685546875
+      ],
+      "reportIntervalMs": 18920.252685546875,
+      "success": true,
+      "note": "Focused delta: both formerly settled payments became pending under one actual Anvil reorg and recovered exact original hashes. Ten other cases were filtered, not executed."
+    },
+    {
+      "path": ".local/vault-income-client-main-http-final.json",
+      "sha256": "4118416b30a4bc3f491d1a089db86ff94a493da9af93c3408b3c18b9ae3d5937",
+      "total": 30,
+      "passed": 30,
+      "failed": 0,
+      "skipped": 0,
+      "suiteIntervalsMs": [
+        10061.94921875,
+        72421.78564453125
+      ],
+      "reportIntervalMs": 94620.94921875,
+      "success": true,
+      "note": "Twelve actual-main cases plus eighteen HTTP cases passed. The subsequent still-valid reverted bearer guard and thirteenth actual-main case are covered by the final13 report."
+    },
+    {
+      "path": ".local/vault-income-client-reader-vitest.json",
+      "sha256": "255e754b8c2c29d8c9b209d822f81146fac01e38618f4d4e6a9458fe9f6a089c",
+      "total": 22,
+      "passed": 17,
+      "failed": 5,
+      "skipped": 0,
+      "suiteIntervalsMs": [
+        6482.820068359375
+      ],
+      "reportIntervalMs": 16121.820068359375,
+      "success": false,
+      "note": "Five initial fixture failures: owner had no remaining tokens after entry, and historical-code proxy vectors assumed params on eth_blockNumber. Fixtures were corrected; intended override counts are now asserted."
+    },
+    {
+      "path": ".local/vault-income-client-reader-focused.json",
+      "sha256": "cf844da75153e3b42f96084105dc045abb0904b961cfd84b088fc66d54cc0afc",
+      "total": 23,
+      "passed": 2,
+      "failed": 4,
+      "skipped": 17,
+      "suiteIntervalsMs": [
+        463.725830078125
+      ],
+      "reportIntervalMs": 9984.725830078125,
+      "success": false,
+      "note": "Focused fixture-diagnostic acceptance only; filtered cases were not executed."
+    },
+    {
+      "path": ".local/vault-income-client-reader-vitest-final.json",
+      "sha256": "b4652c244892fb467ea035604f6e0b3ec587948f062ebe4b0edd22cca7154eab",
+      "total": 25,
+      "passed": 25,
+      "failed": 0,
+      "skipped": 0,
+      "suiteIntervalsMs": [
+        3625.69775390625
+      ],
+      "reportIntervalMs": 12414.69775390625,
+      "success": true,
+      "note": "Twenty-five reader cases passed before the final fresh latest-consumption deployment-anchor consistency gate."
+    }
+  ],
+  "limitations": [
+    "A production durable/exclusive journal remains a caller implementation obligation. No in-memory default or production file adapter is provided.",
+    "The acceptance-only disk fixture proves orderly process reopen, not power-loss durability, production ACL policy or stale-lock recovery.",
+    "Custom readers are trusted evidence boundaries; the concrete reader requires raw signed transaction RPC and fails closed without reconstruction fallback.",
+    "The first durably recorded candidate is immutable. A volatile hash cannot survive a failed journal save and crash.",
+    "No public network/profile, deployment, personal wallet, provider payment or service-execution integration was enabled or tested.",
+    "Linux acceptance is pending and is not implied by these Windows results; historical main190 reports remain pinned to their earlier source."
+  ],
+  "linux": {
+    "status": "pending",
+    "plannedCommands": "Full normal build followed by final native52 plus SDK56 (108 focused cases) on a fresh immutable source snapshot."
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "version": 1,
+  "capturedAt": "2026-10-15T03:21:51.845267+00:00",
+  "scope": "Transitive static local TypeScript import/export closure of the focused test and service, plus tool configuration. External packages are pinned by package-lock; this is not a full backend snapshot.",
+  "node": "v22.22.2",
+  "files": [
+    {
+      "path": "package-lock.json",
+      "bytes": 124283,
+      "sha256": "e8549c057c2e4a8a3808ae2a2b386e9a20d20711c696836dd483d4c8bc7c533d"
+    },
+    {
+      "path": "package.json",
+      "bytes": 3228,
+      "sha256": "632c193486a5614ee2498eed76826fbb29e68d81fbe025878e48a4180de16fcc"
+    },
+    {
+      "path": "src/common.ts",
+      "bytes": 3206,
+      "sha256": "1036bf5ec02c7c1d7ec273aa065dd08cd5cafe40a0eb017f9a427cf9bb091fba"
+    },
+    {
+      "path": "src/runtime/types.ts",
+      "bytes": 1636,
+      "sha256": "982f8bb24f1ef477e8d0a30765ef2713d606e357739334b9ef1f60d7be2d2205"
+    },
+    {
+      "path": "src/suppliers/golem-finance-ledger.ts",
+      "bytes": 8450,
+      "sha256": "53fbad862e153984d85820e402dbc1e3cba052a9c4436686d79566f205275c92"
+    },
+    {
+      "path": "src/suppliers/golem-finance-types.ts",
+      "bytes": 8431,
+      "sha256": "7d7d4c00246f6ddb05b8dd90246a0ee1652a0242218180f8a0e249fc996563bb"
+    },
+    {
+      "path": "src/suppliers/golem-finance.ts",
+      "bytes": 29497,
+      "sha256": "5836d8cff03127f80d3c1080e73cdc5f3da452583238d70f8a7b49ba79d362c7"
+    },
+    {
+      "path": "src/suppliers/golem-stats.ts",
+      "bytes": 5330,
+      "sha256": "6db8be9c8bce6ef21b7eb3646df78f40b014c6090e1200885c2808927b0f2954"
+    },
+    {
+      "path": "src/suppliers/private-journal.ts",
+      "bytes": 12387,
+      "sha256": "2da9e88d512cf5e39f592c3eb61435999f2a71136057265034347a4276bbd1b5"
+    },
+    {
+      "path": "tests/golem-finance.test.ts",
+      "bytes": 34802,
+      "sha256": "7fbb757ac8f7135e02ed3714ef9e537613dd1f2f69b1396fdc0974ed3764f35e"
+    },
+    {
+      "path": "tsconfig.json",
+      "bytes": 625,
+      "sha256": "885374721d3e8f41811b511166a22796f2e50ebcf70fc6a94c64083582761e90"
+    },
+    {
+      "path": "vitest.config.ts",
+      "bytes": 186,
+      "sha256": "3741089250fe103f72282c9cf12105e10c0435059ca4448b396040391852842b"
+    }
+  ]
+}

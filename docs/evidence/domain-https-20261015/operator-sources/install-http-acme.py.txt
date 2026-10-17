@@ -1,0 +1,51 @@
+import hashlib,json,os,pathlib,secrets,subprocess,urllib.error,urllib.request
+BASE=pathlib.Path('/opt/telomere-mainnet-pilot')
+AVAILABLE=pathlib.Path('/etc/nginx/sites-available/telomere-http-acme')
+ENABLED=pathlib.Path('/etc/nginx/sites-enabled/telomere-http-acme')
+WEB=pathlib.Path('/var/www/telomere-acme')
+def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
+def run(args):return subprocess.check_output(args,text=True,stderr=subprocess.STDOUT,timeout=30).strip()
+def config_snapshot():
+    names=[pathlib.Path('/etc/nginx/nginx.conf'),*pathlib.Path('/etc/nginx/sites-enabled').iterdir()]
+    return {str(path):sha(path.resolve()) for path in names if path.is_file()}
+class NoRedirect(urllib.request.HTTPRedirectHandler):
+    def redirect_request(self,*args,**kwargs):return None
+opener=urllib.request.build_opener(NoRedirect)
+def get(host,path):
+    req=urllib.request.Request('http://127.0.0.1'+path,headers={'Host':host})
+    try:
+        with opener.open(req,timeout=8) as response:return response.status,response.read(),dict(response.headers)
+    except urllib.error.HTTPError as error:return error.code,error.read(),dict(error.headers)
+assert json.loads((BASE/'private/ownership.json').read_text())['id']=='f1f1fa857fb34ae9adb708ecf6af7166'
+assert not (BASE/'private/activation.json').exists()
+assert sha(BASE/'work/telomere-http-acme.conf.draft')=='29403dcba89f719db98dc005968f551fcbec2f88dc7e0393e28c02443c50eab4'
+assert not AVAILABLE.exists() and not ENABLED.exists() and not ENABLED.is_symlink() and not WEB.exists()
+run(['/usr/sbin/nginx','-t'])
+before=config_snapshot()
+old={host:get(host,'/')[0] for host in ['2.27.12.39','enclaveagent.tech']}
+WEB.mkdir(mode=0o755);(WEB/'.well-known').mkdir(mode=0o755);(WEB/'.well-known/acme-challenge').mkdir(mode=0o755)
+name='telomere-preflight-20261015.txt';token=secrets.token_hex(16).encode()
+challenge=WEB/'.well-known/acme-challenge'/name;challenge.write_bytes(token);os.chmod(challenge,0o644)
+AVAILABLE.write_bytes((BASE/'work/telomere-http-acme.conf.draft').read_bytes());os.chmod(AVAILABLE,0o644)
+ENABLED.symlink_to(AVAILABLE)
+try:run(['/usr/sbin/nginx','-t'])
+except Exception:
+    assert ENABLED.is_symlink() and ENABLED.resolve()==AVAILABLE
+    ENABLED.unlink();AVAILABLE.unlink();raise
+run(['systemctl','reload','nginx'])
+probes=[]
+for host in ['telomere.sh','review.telomere.sh']:
+    status,body,headers=get(host,'/.well-known/acme-challenge/'+name)
+    assert status==200 and body==token
+    redirect,body,headers=get(host,'/')
+    assert redirect==308 and headers['Location']=='https://'+host+'/'
+    probes.append({'host':host,'challengeStatus':status,'redirectStatus':redirect,'location':headers['Location']})
+assert old=={host:get(host,'/')[0] for host in old}
+after=config_snapshot()
+assert all(after[name]==digest for name,digest in before.items())
+challenge.unlink()
+record={'status':'isolated HTTP ACME vhost installed','probes':probes,'nginxConfigurationPassed':True,
+        'preexistingVhostConfigurationsUnchanged':True,'preexistingVhostHttpStatuses':old,
+        'vhostSha256':sha(AVAILABLE),'webroot':str(WEB),'controllerStarted':False,'publicTransactionsSent':0}
+(BASE/'work/domain-http-preparation.json').write_text(json.dumps(record,indent=2)+'\n')
+print(json.dumps(record))

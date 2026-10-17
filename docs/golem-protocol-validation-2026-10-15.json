@@ -1,0 +1,285 @@
+{
+  "schemaVersion": 1,
+  "status": "accepted_focused_supplier_software_on_exact_committed_source",
+  "gitRevision": "5b31957bce5c2dabc50a2ca23d43906a1612fc13",
+  "archiveSha256": "dfad08e3322cfa457b387d321173d7aac2ef3085bdcbdb427aafecad43129248",
+  "sourceFiles": 689,
+  "completedAt": "2026-10-15T10:44:11.218950+00:00",
+  "node": "v22.23.3",
+  "install": {
+    "exitCode": 0,
+    "seconds": 10.759
+  },
+  "build": {
+    "exitCode": 0,
+    "seconds": 103.129
+  },
+  "cohort": {
+    "exitCode": 0,
+    "seconds": 36.895
+  },
+  "tests": {
+    "numTotalTests": 181,
+    "numPassedTests": 181,
+    "numFailedTests": 0,
+    "numPendingTests": 0,
+    "numTotalTestSuites": 31,
+    "success": true
+  },
+  "breakdown": {
+    "golem-finance-http.test.ts": 44,
+    "golem-finance.test.ts": 21,
+    "golem-payment-chain.test.ts": 10,
+    "supplier-akash-close.test.ts": 5,
+    "supplier-akash-escrow-observation.test.ts": 5,
+    "supplier-akash-exact-bid.test.ts": 5,
+    "supplier-akash-lease.test.ts": 9,
+    "supplier-akash-signed-binding.test.ts": 2,
+    "supplier-akash.test.ts": 17,
+    "supplier-golem-stats.test.ts": 6,
+    "supplier-nosana.test.ts": 17,
+    "supplier-private-journal.test.ts": 32,
+    "supplier-shared-reserve.test.ts": 8
+  },
+  "windows": {
+    "testsPassed": 179,
+    "testsSkipped": 2,
+    "testsFailed": 0,
+    "skipReason": "Two existing POSIX filesystem cases skip on Windows; both executed in Linux.",
+    "typecheckExitCode": 0,
+    "buildExitCode": 0,
+    "typecheckAndBuildEvidence": "Observed local tool exits at the final frozen source; Linux fresh build independently reran TypeScript and bundling."
+  },
+  "history": [
+    {
+      "path": "docs/evidence/golem-finance-settlement-reference-20261015.json",
+      "bytes": 11177,
+      "sha256": "7e39f0bac6b925ba78d562c48f87bdec0822d4a2b5f8d888423aae6e880aba97",
+      "tests": {
+        "numTotalTests": 20,
+        "numPassedTests": 20,
+        "numFailedTests": 0,
+        "numPendingTests": 0,
+        "success": true
+      }
+    },
+    {
+      "path": "docs/evidence/golem-finance-http-integrated-20261015.json",
+      "bytes": 12531,
+      "sha256": "8a96f8d593e6aeffecc7a842f91b6129a2b64402a7a6f72322678b5de95ff5f6",
+      "tests": {
+        "numTotalTests": 21,
+        "numPassedTests": 20,
+        "numFailedTests": 1,
+        "numPendingTests": 0,
+        "success": false
+      }
+    },
+    {
+      "path": "docs/evidence/golem-finance-http-integrated-corrected-20261015.json",
+      "bytes": 11698,
+      "sha256": "212cfd023a96ec4cd2d21b11bd1daf954303aeb45e54b7a1d59380dd5e745fd4",
+      "tests": {
+        "numTotalTests": 21,
+        "numPassedTests": 21,
+        "numFailedTests": 0,
+        "numPendingTests": 0,
+        "success": true
+      }
+    },
+    {
+      "path": "docs/evidence/golem-finance-http-initial-20261015.json",
+      "bytes": 18468,
+      "sha256": "6d9b648f1333400cf4c43e18d6dd53d2eda2c4d176d8065fbc13560093722340",
+      "tests": {
+        "numTotalTests": 42,
+        "numPassedTests": 42,
+        "numFailedTests": 0,
+        "numPendingTests": 0,
+        "success": true
+      }
+    },
+    {
+      "path": "docs/evidence/golem-payment-chain-initial-20261015.json",
+      "bytes": 3442,
+      "sha256": "d52fb6d58fefd016057e4f2d3ca438c268762435edbd3b5e654a7d42cb22cbb5",
+      "tests": {
+        "numTotalTests": 8,
+        "numPassedTests": 8,
+        "numFailedTests": 0,
+        "numPendingTests": 0,
+        "success": true
+      }
+    },
+    {
+      "path": "docs/evidence/golem-payment-chain-corrected-20261015.json",
+      "bytes": 4206,
+      "sha256": "db2903421a590eb42696b8bec74f6c34f2ed86afff29e04098a398241d6cd9aa",
+      "tests": {
+        "numTotalTests": 10,
+        "numPassedTests": 10,
+        "numFailedTests": 0,
+        "numPendingTests": 0,
+        "success": true
+      }
+    }
+  ],
+  "initialIntegrationFailure": {
+    "passed": 20,
+    "failed": 1,
+    "cause": "The old custom-client fixture expected exponent strings to be refused. The official-wire transport now accepts exact BigDecimal scientific notation. The fixture and expectation were corrected; production logic was not loosened to hide a failure."
+  },
+  "initialTypecheckDiagnostic": "A new it.each test used tuple-spread inference incorrectly; changed to explicit case objects. Final global tsc and fresh Linux build passed.",
+  "allSourcesUnchangedBeforeAfter": true,
+  "stagingServicesAndProcessSelectionUnchanged": true,
+  "protectedProfileUnchanged": true,
+  "healthBeforeAfter": [
+    {
+      "live": {
+        "statusCode": 200,
+        "body": {
+          "status": "ok"
+        }
+      },
+      "ready": {
+        "statusCode": 200,
+        "body": {
+          "status": "ready",
+          "worker": "idle"
+        }
+      }
+    },
+    {
+      "live": {
+        "statusCode": 200,
+        "body": {
+          "status": "ok"
+        }
+      },
+      "ready": {
+        "statusCode": 200,
+        "body": {
+          "status": "ready",
+          "worker": "idle"
+        }
+      }
+    }
+  ],
+  "ownedAnvilProcessesRemaining": [],
+  "publicTransactions": 0,
+  "paidProviderRequests": 0,
+  "productionYagnaRequests": 0,
+  "controllerMountEnabled": false,
+  "sourceDeployedToStaging": false,
+  "primarySourceFilesVerified": 16,
+  "sourceContinuity": {
+    "schemaVersion": 1,
+    "baselineRevision": "354fe7af62ea6701faafc3b04522abb1b4524d2d",
+    "currentRevision": "5b31957bce5c2dabc50a2ca23d43906a1612fc13",
+    "baselineArchiveSha256": "86b5dc9f36dcf841963f0ffa8161023c126f1fae473c94909f5dddae3040fdce",
+    "currentArchiveSha256": "dfad08e3322cfa457b387d321173d7aac2ef3085bdcbdb427aafecad43129248",
+    "baselineFiles": 685,
+    "currentFiles": 689,
+    "unchangedPriorFiles": 680,
+    "changed": [
+      "src/suppliers/golem-finance-ledger.ts",
+      "src/suppliers/golem-finance-types.ts",
+      "src/suppliers/golem-finance.ts",
+      "src/suppliers/index.ts",
+      "tests/golem-finance.test.ts"
+    ],
+    "added": [
+      "src/suppliers/golem-finance-http.ts",
+      "src/suppliers/golem-payment-chain.ts",
+      "tests/golem-finance-http.test.ts",
+      "tests/golem-payment-chain.test.ts"
+    ],
+    "removed": [],
+    "interpretation": "Supplier library and its focused tests only. Main, configuration, contracts, dependency locks, deployment profiles and public assets remain byte-identical. This is source continuity, not a complete backend rerun."
+  },
+  "evidence": [
+    {
+      "path": "docs/evidence/golem-protocol-linux-acceptance-20261015.json",
+      "bytes": 3953,
+      "sha256": "b6968a45da6eb5509a65ee08eb843bf061b558627cc34f09257d3f1e4aea25e1"
+    },
+    {
+      "path": "docs/evidence/golem-protocol-linux-tests-20261015.json",
+      "bytes": 75676,
+      "sha256": "65c1ad9ad37b22afa1e333d0596476c447ad809497fa177848c3e595a153b0de"
+    },
+    {
+      "path": "docs/evidence/golem-protocol-linux-source-manifest-20261015.json",
+      "bytes": 161750,
+      "sha256": "920fb71a402e620319f910c188191387d7012292d5e250e98c3a25958ed07b2a"
+    },
+    {
+      "path": "docs/evidence/run-golem-protocol-linux-20261015.py",
+      "bytes": 7803,
+      "sha256": "1160eca0bc95c804e293fd90a7cab7c5f3b44f339fb5cdb15946c31196e539df"
+    },
+    {
+      "path": "docs/evidence/golem-protocol-windows-tests-20261015.json",
+      "bytes": 75797,
+      "sha256": "eb7ef5d389517bd896e17b301d1c103689156ce62c2cad7e0e3755595c834ffc"
+    },
+    {
+      "path": "docs/evidence/golem-finance-settlement-reference-20261015.json",
+      "bytes": 11177,
+      "sha256": "7e39f0bac6b925ba78d562c48f87bdec0822d4a2b5f8d888423aae6e880aba97"
+    },
+    {
+      "path": "docs/evidence/golem-finance-http-integrated-20261015.json",
+      "bytes": 12531,
+      "sha256": "8a96f8d593e6aeffecc7a842f91b6129a2b64402a7a6f72322678b5de95ff5f6"
+    },
+    {
+      "path": "docs/evidence/golem-finance-http-integrated-corrected-20261015.json",
+      "bytes": 11698,
+      "sha256": "212cfd023a96ec4cd2d21b11bd1daf954303aeb45e54b7a1d59380dd5e745fd4"
+    },
+    {
+      "path": "docs/evidence/golem-finance-http-initial-20261015.json",
+      "bytes": 18468,
+      "sha256": "6d9b648f1333400cf4c43e18d6dd53d2eda2c4d176d8065fbc13560093722340"
+    },
+    {
+      "path": "docs/evidence/golem-payment-chain-initial-20261015.json",
+      "bytes": 3442,
+      "sha256": "d52fb6d58fefd016057e4f2d3ca438c268762435edbd3b5e654a7d42cb22cbb5"
+    },
+    {
+      "path": "docs/evidence/golem-payment-chain-corrected-20261015.json",
+      "bytes": 4206,
+      "sha256": "db2903421a590eb42696b8bec74f6c34f2ed86afff29e04098a398241d6cd9aa"
+    },
+    {
+      "path": "docs/evidence/golem-protocol-source-continuity-20261015.json",
+      "bytes": 1096,
+      "sha256": "81bc1980aa6c3c53dd8c1964883fb470ad0ebb60b23406a6feeb40db3370986c"
+    },
+    {
+      "path": "docs/evidence/golem-protocol-upstream-20261015/manifest.json",
+      "bytes": 9043,
+      "sha256": "d5ade643081fb8261e00f0c299f0ddbb7e888c28ed42d0e7caca89ec8387e840"
+    }
+  ],
+  "readiness": {
+    "functionalPercent": 76.2222,
+    "optionalGpuCellsExcluded": true,
+    "m6Completed": false,
+    "scope": "Original mandatory backend scope; this focused supplier software work adds no externally accepted functional percentage credit."
+  },
+  "limits": [
+    "Normal Yagna payment GET omits allocation provenance; the financial lifecycle still refuses it.",
+    "The direct ERC20 observer is observation-only and cannot authorize settlement; Polygon proxy implementation/storage/history remains unapproved.",
+    "Run/treasury/finality/release authority, supplier creation/execution, signed in-cell metering, obligation caps, conversion and adapter fault reserve remain open.",
+    "No actual Yagna/provider/Polygon/funded public Base acceptance or hardware-attested CPU proof.",
+    "No full backend suite rerun and no replacement of earlier frozen composed validation or private staging source cutoff."
+  ],
+  "nearDedicatedRequest": {
+    "status": "user_reports_no_reply",
+    "provisioned": null,
+    "verification": "User response in this chat; dashboard status and resource provisioning were not independently verified."
+  }
+}

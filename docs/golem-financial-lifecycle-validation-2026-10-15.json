@@ -1,0 +1,126 @@
+{
+  "version": 1,
+  "recordedAt": "2026-10-15T03:24:04.111194+00:00",
+  "status": "accepted_bounded_unmounted_local_financial_controller",
+  "scope": "Golem financial lifecycle local code and actual local HTTP protocol harness; not external supplier execution or launch approval.",
+  "modules": [
+    "src/suppliers/golem-finance-types.ts",
+    "src/suppliers/golem-finance-ledger.ts",
+    "src/suppliers/golem-finance.ts"
+  ],
+  "test": "tests/golem-finance.test.ts",
+  "documentation": "docs/golem-financial-lifecycle-v1.md",
+  "focusedAcceptance": {
+    "version": 1,
+    "completedAt": "2026-10-15T03:21:51.846226+00:00",
+    "scope": "Actual local HTTP protocol harness and durable local journal only. No production supplier execution, public chain settlement, wallet, treasury authority implementation, metering or 2% fault reserve.",
+    "command": [
+      "node",
+      "node_modules/vitest/vitest.mjs",
+      "run",
+      "tests/golem-finance.test.ts",
+      "--reporter=json",
+      "--outputFile=docs/evidence/golem-finance-complete-20261015.json"
+    ],
+    "exitCode": 0,
+    "durationSeconds": 14.016,
+    "node": "v22.22.2",
+    "platform": "Windows-11-10.0.26100-SP0",
+    "passed": 17,
+    "failed": 0,
+    "pending": 0,
+    "sourceFiles": 12,
+    "sourceUnchanged": true,
+    "before": "docs/evidence/golem-finance-complete-source-before-20261015.json",
+    "after": "docs/evidence/golem-finance-complete-source-after-20261015.json",
+    "raw": "docs/evidence/golem-finance-complete-20261015.json",
+    "globalTypecheck": "Parent owns the separate combined source cutoff and result.",
+    "receipt": "docs/evidence/golem-finance-complete-receipt-20261015.json",
+    "rawSha256": "0b9fd5128bf220f6e2728d0d975107f1f9c20ecab322c0afcd5da685445cce80",
+    "receiptSha256": "c9b594b16290c9e4905dc4c73eca5c77e443e65a0bd837885d03a3f870eaec82",
+    "manifestScope": "12 transitive static local import/export and tool inputs, not a full backend snapshot.",
+    "latestCheckedAgainstCurrentFiles": true
+  },
+  "strictTypecheckSupplement": {
+    "owner": "parent root",
+    "executionSession": 75785,
+    "exitCode": 0,
+    "diagnostics": 0,
+    "cutoff": "Uncommitted combined working tree after Golem strict typing corrections and frozen M7 batch; separate from focused source manifest.",
+    "sourceChangedByTypecheck": false,
+    "previousFailedSession": 58876,
+    "previousFailure": "Four Golem strict typing diagnostics, all fixed without casts: post-helper mutable intent narrowing; fixture ID string vs Hex; hostile proof-authority string vs Hex; unparsed original-binding fixture. Initial failure is retained in parent tool evidence.",
+    "evidenceAuthority": "Parent-reported completed tool result. Not an independently rerun typecheck, frozen Linux build or public deployment.",
+    "check": "Full-project TypeScript typecheck with no emitted output; exact invocation is retained by parent in tool execution session75785."
+  },
+  "historicalReports": [
+    {
+      "path": "docs/evidence/golem-finance-initial-20261015.json",
+      "passed": 9,
+      "failed": 1,
+      "accepted": false,
+      "reason": "Initial diagnostic run; payment fixture declared total3 but shares summed4. Controller correctly rejected it. Fixture corrected to activity2 plus other-agreement1; no weakened conservation check. Source was not frozen during this exploratory run."
+    },
+    {
+      "path": "docs/evidence/golem-finance-guarded-20261015.json",
+      "passed": 15,
+      "failed": 0,
+      "accepted": false,
+      "reason": "Intermediate snapshot before final external-stop/release-race cases."
+    },
+    {
+      "path": "docs/evidence/golem-finance-fenced-20261015.json",
+      "passed": 17,
+      "failed": 0,
+      "accepted": false,
+      "reason": "Intermediate 17-case snapshot before strict type corrections."
+    },
+    {
+      "path": "docs/evidence/golem-finance-focused-receipt-20261015.json",
+      "passed": 17,
+      "failed": 0,
+      "accepted": false,
+      "reason": "Prior frozen focused cutoff before the strict type corrections; preserved without overwriting."
+    }
+  ],
+  "coveredInvariants": [
+    "original independent authorization/treasury pins and nonzero immutable scope",
+    "exact18-decimal GLM parsing; cumulative debit/final invoice non-doublecount",
+    "separate accepted, paid and independently settled amounts",
+    "scoped batch share conservation across original runs",
+    "finite initial stock and lifetime caps never renewed by closure/refunds",
+    "durable intent before actual local HTTP POST/DELETE",
+    "dropped response/restart/new-key single-attempt refusal",
+    "queued local kill and final expiry check before authorized dispatch",
+    "external trusted physical stop persists irreversible spend fence through proof loss/restart",
+    "post-stop original final invoice<=accepted debt remains classifiable; higher invoice disputed",
+    "release requires stop, original final invoice, exact paid/settled debt and no unknown financial/stop intent",
+    "queued finality withdrawal prevents release dispatch; false release evidence restores hold",
+    "missing-marker/reinitialization refusal and immutable frozen policy/options"
+  ],
+  "sourceProvenance": {
+    "manifest": "docs/evidence/golem-finance-upstream-20261015/manifest.json",
+    "sha256": "d19b505eabcb862c5445554973d539da847ff32fde503e58d514ab6a5707647c",
+    "files": 10,
+    "purpose": "Official commit-pinned protocol/source data and original licenses; not imported, executed or deployed."
+  },
+  "excluded": [
+    "production protocol HTTP writer or main/router/config mount",
+    "real Yagna/provider workload/adoption",
+    "authenticated independent original-run/treasury/finality implementations",
+    "actual inventory, token acquisition/conversion/rebalancing",
+    "live Polygon payment or Base/USDC wallet acceptance",
+    "remote physical stop and final provider debt acceptance",
+    "external allocation as total liability cap",
+    "supplier metering, receipt eligibility or billing",
+    "2% adapter-revenue fault reserve",
+    "rollback-proof external accounting",
+    "Linux acceptance or full backend regression for this cutoff"
+  ],
+  "readinessEffect": {
+    "M6": "unchanged pending mounted real supplier execution/accounting",
+    "overallPercent": "unchanged by this local-only controller",
+    "launchApproval": false
+  },
+  "nextGate": "Parent plans fresh pure-Git Linux build and combined sealed/Golem focused acceptance; pending and must retain its own source archive identity."
+}

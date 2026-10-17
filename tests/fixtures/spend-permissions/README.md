@@ -1,0 +1,9 @@
+# Official Manager test reference
+
+`SpendPermissionManager.compiled.json` is compiled from the unmodified [Coinbase Manager source at e0004e63](https://github.com/coinbase/spend-permissions/blob/e0004e63edc4e17de7aa978293800ac7a16892e5/src/SpendPermissionManager.sol), with its pinned dependency sources. `reference-input.json` retains all 36 exact compiler input sources and compiler settings; `provenance.json` records each source SHA-256. The upstream license notices are retained in `REFERENCE_LICENSES.txt`, in addition to the original notices in the sources.
+
+The fixture uses solc 0.8.28, optimization at 200 runs and Cancun EVM instructions. To reproduce it with the repository's pinned `solc`, compile the complete `reference-input.json` as standard JSON and compare `contracts["src/SpendPermissionManager.sol"].SpendPermissionManager.evm.bytecode.object` to the artifact's creation bytecode without its `0x` prefix. Recompilation from this self-contained input has reproduced identical creation bytecode. The tests deploy that bytecode, so constructor immutables are real deployed state.
+
+The tested direct-approval path is `account.execute(manager.approve(permission))`, followed by the spender's `manager.spend(permission,value)`. The official Manager enforces approval/revocation, recurring allowance and time bounds. `spend` transfers from the account to the spender; no separate recipient argument is accepted by this pinned implementation. Its actual period calculation and token transfer code run in Anvil.
+
+The local account executor is an explicitly labeled fixture. Zero unused validator/MagicSpend constructor dependencies are allowed only in that local direct-approval fixture. This does not test ERC-6492, passkeys, a deployed Base Account, public Manager code verification or MagicSpend funding. No fixture code hash is a production Base approval.

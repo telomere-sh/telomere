@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "assessedOn": "2026-10-12",
+  "deadline": "2026-10-15",
+  "timezone": "Europe/Moscow",
+  "currentDeliveryScope": "Backend only: full Telomere Backend M1-M10, adapted to Robinhood Chain/USDG; frontend work excluded",
+  "baseline": {
+    "threadId": "01a118bb-5cd9-7063-ace0-afbbaa43ccc6",
+    "assistantMessageId": "msg_0d19270de6bbd9f8016ac6dbfa1d508191a5689e717467777e",
+    "publishedAt": "2026-10-08T02:55:49+03:00",
+    "scope": "One-host Robinhood testnet pilot; full Telomere platform is a later scope"
+  },
+  "milestones": [
+    {
+      "planned": "2026-10-08/2026-10-09",
+      "scope": "Scope, server, payments and Enclave reuse",
+      "status": "Scope and private staging ready; public deployment funding remains unresolved"
+    },
+    {
+      "planned": "2026-10-10/2026-10-11",
+      "scope": "Escrow/Leash contracts, CPU containers and metering",
+      "implementedOn": "2026-10-08",
+      "status": "Verified on isolated EVM and actual private VPS; public testnet contract deployment remains pending",
+      "implementationLeadDays": [
+        2,
+        3
+      ]
+    },
+    {
+      "planned": "2026-10-12",
+      "scope": "Public wallet to job, result, receipt and refund",
+      "status": "Private generated-account acceptance completed; public wallet acceptance remains pending",
+      "wholeMilestoneLeadClaimed": false
+    },
+    {
+      "planned": "2026-10-13/2026-10-14",
+      "scope": "Stop, host/controller failure, retries and restart",
+      "implementedOn": "2026-10-08",
+      "status": "Many planned fault cases already verified; this is not a guarantee that every future deployment issue is resolved",
+      "testedSubsetLeadDays": [
+        5,
+        6
+      ]
+    },
+    {
+      "planned": "2026-10-15",
+      "scope": "Pilot demonstration and handoff",
+      "status": "Deadline unchanged; public funded acceptance and provider readiness still constrain final handoff"
+    }
+  ],
+  "additionalWork": [
+    "Platform HostRegistry/escrow/receipt/fee and Selection/TLMR contracts",
+    "CPU Host Kit with real isolated gVisor acceptance",
+    "Hourly receipt proofs and RPC verification",
+    "Application Lifeline/Metabolism and owner/agent encrypted key wrapping",
+    "S3 replication protocol and repair acceptance",
+    "Selection event indexer and reorg recovery",
+    "Deadline quotes, refunds and controlled CPU price quantiles",
+    "Actual local x402 exact/upto facilitator and recovery",
+    "Interruptible CPU application-state orchestration",
+    "Authenticated Streamable HTTP MCP",
+    "Main-application EOA PlatformRunEscrow/HostRegistry/full financial receipt/FeeRouter integration with actual gVisor and restart acceptance",
+    "Platform-compatible Selection/AgentVault contracts and dedicated Node runtime client",
+    "Delegated Vault backend admission, lifecycle checks, fee-inclusive automatic sync and canonical restart/reorg/refund recovery",
+    "Separate Python EOA/Vault full financial CPU clients with independent EIP-712 and dynamic ABI interoperability acceptance",
+    "11 October complete Windows regression at 423c7b6: 807 passed, four explicit POSIX skips, 811 total in 49 passing suites; Python crypto-enabled 77/77",
+    "Separate eight-tool full financial HTTP/stdio MCP with reviewed EOA/Vault SDKs and main-app session/rate/shutdown acceptance; final focused MCP/main/SDK batch 117/117 in seven suites, overlapping the preceding complete regression",
+    "Explicitly opted-in one-shot CPU commands with signed image/argv/stdin through financial EOA/Vault APIs, checked Node/Python SDKs and existing MCP tools; original-lease recovery and zero-work stop preserved",
+    "12 October final-source EOA gVisor command acceptance: four billable seconds, independently verified Unicode/hash-chain result, canonical full financial receipt/fee/refund, same-database restart without redispatch",
+    "Fresh isolated gVisor HostKit identity verifies corrected UTF8 framing, BOM normalization, durable unsafe-text failure, following valid command and journal reopen; existing services unchanged",
+    "12 October complete Windows regression: 888 passed, four POSIX skips, 892 total in 54 files; after final removed-host zero-stop correction, affected six-file regression passed 57 with one POSIX skip; all four permission cases separately passed on Linux; Python crypto-enabled 87/87",
+    "12 October subsequent unscored CystRegistry implementation: actual Selection-bound agent-only CAS contract, optional main HTTP service, independent canonical RPC checks and checked Node/Python publication/download/local restore; see docs/cyst-registry-validation.json for split acceptance evidence",
+    "12 October subsequent unscored owner-side application checkpoint coordinator: durable hook/envelope/key journal before upload, tick-driven 15-minute cadence, exact retry, pause/resume and local restore; see docs/cyst-checkpoints-validation.json",
+    "12 October subsequent unscored Selection public weekly JSON/CSV/analytics: exact event amounts and historical states, canonical/reorg checks, bounded snapshot pagination, explicit partial coverage and actual main HTTP/database restart; see docs/selection-datasets-validation.json",
+    "12 October subsequent unscored Selection income endpoint declarations: owner-authenticated durable CAS/idempotency, actual agent-signed HTTP control proof, independent confirmed Selection/Vault authority, separate x402 offer-term matching and bounded SSRF-safe probes; no token transfer, payment capability or income credit; see docs/selection-income-endpoints-validation.json",
+    "12 October subsequent unscored native Vault exact EIP-3009 ingress, original-payer classification and fee conservation; canonical finality/nonce recovery and bounded retained x402 challenge capacity; see docs/vault-income-validation.json, docs/payment-finality-validation.json and docs/payment-challenge-capacity-validation.json",
+    "12 October subsequent unscored encrypted owner-side Cyst file vault with durable cross-process exclusion and explicit proven-dead Linux recovery; no automatic host/runtime checkpoint wiring; see docs/cyst-checkpoints-file-vault-validation.json",
+    "12 October subsequent unscored optional main fixed-price native Vault payment intake at c4f71bf; private dedicated facilitator, bounded requests/RPC, original-signature retry, actual local main acceptance and pinned Linux full build plus 189 passed/one Windows ACL-only skip; no public USDG capability or agent work claim; see docs/vault-income-main-linux-validation.json",
+    "12 October subsequent unscored internal persistent CPU-session primitive at ab99723: repeated commands, durable streams and exact retries, separate init/workload UIDs and whole gVisor namespace cleanup; pinned Linux full build and 27/27 with seven real gVisor cases; no public paid interactive API, long-lived financial meter, process reattachment or migration; see docs/cpu-sessions-validation.json",
+    "12 October subsequent unscored checked Node native Vault payer SDK at d38ba1b: caller-durable original request/signature/hash recovery, independent raw signed transaction/canonical receipt verification, bounded HTTP and still-valid reverted-authorization guard; pinned Linux full build and 108/108 with native later-consumption reconciliation, zero skips; no public USDG capability, production journal adapter or paid interactive session claim; see docs/vault-income-client-linux-validation.json",
+    "12 October subsequent unscored HostKit one-shot startup-inclusive deadlines and physical cleanup at a882602: pinned full Linux build, initial 87/89 plus only two exact successful retries after restoring one separately hashed omitted task-runner fixture, 89 distinct cases including four actual gVisor cases; unchanged 317 source/four build assets and five active ready services; no shared-session/public paid API claim; see docs/host-kit-startup-linux-validation.json",
+    "12 October subsequent unscored shared CPU admission at 3c6900d: one durable HostKit CLI CPU slot across signed one-shot and internal persistent sessions, original-request/restart/uncertain-create fencing; exact committed Git-blob Linux full build and single clean 209/209 focused acceptance with 16 actual gVisor cases, 325 source/five assets unchanged and zero owned leftovers; no public paid interactive API or session meter; see docs/host-kit-admission-linux-validation.json"
+  ],
+  "overallLeadDays": null,
+  "fullPlatformCompletionPercent": 56,
+  "fullPlatformCompletionPercentAssessedOn": "2026-10-12",
+  "fullPlatformCompletionPercentRange": [
+    52,
+    60
+  ],
+  "fullPlatformCompletionPercentUnroundedMidpoint": 55.5,
+  "fullPlatformRemainingPercentUnroundedMidpoint": 44.5,
+  "fullPlatformCompletionEvidenceCommit": "d44edd3",
+  "fullPlatformCompletionEvidenceScope": "Complete adapted backend M1-M10, equally weighted; delegated Vault runtime, financial Python/MCP adapters and one-shot command integration reassessed by behavior; no credit for added test counts or fixes",
+  "previousBackendAssessment": {
+    "assessedOn": "2026-10-11",
+    "evidenceCommit": "92d6ea9",
+    "percent": 54,
+    "unroundedMidpoint": 53.5,
+    "range": [
+      49,
+      58
+    ]
+  },
+  "previousFunctionalAssessment": {
+    "assessedOn": "2026-10-09",
+    "percent": 51,
+    "range": [
+      46,
+      57
+    ]
+  },
+  "limitations": [
+    "56% is approximate backend functional coverage of equally weighted M1-M10 at d44edd3, not production readiness or remaining effort; unrounded midpoint 55.5%, assessment range 52-60%",
+    "EOA and delegated Vault financial CPU paths passed consolidated local regression; no new Linux/gVisor Vault or public Vault acceptance is established",
+    "Node/Python adapters and bounded full financial CPU HTTP/stdio MCP are implemented; 2026 MCP metadata, x402 authentication, broader API coverage and framework starters remain incomplete; frontend work is outside the user's current delivery scope",
+    "One-shot commands remain bounded to 120 seconds and do not implement persistent Cells, repeated cell.exec, output streaming or long-lived lease migration",
+    "GPU cell rental/probes and Akash/Nosana/Golem adapters remain unimplemented",
+    "NEAR remains disabled pending reviewed passing attestation/TCB policy and key-release integration",
+    "Application checkpoints are limited to 2 MiB; actual independent-region S3 deployment, large snapshots, persistent cell resume and attested key release remain incomplete; subsequent CystRegistry work is unscored",
+    "x402 canonical Robinhood/USDG capabilities and production interruptible two-host runner remain unenabled",
+    "No public funded acceptance or personal wallet transaction has been performed"
+  ],
+  "fullSpecAssessment": "docs/full-spec-independent-audit.md"
+}

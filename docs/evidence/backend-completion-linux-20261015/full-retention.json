@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "remoteAndLocalHashesMatch": true,
+  "status": "failed",
+  "finishedAt": "2026-10-15T13:38:03.525885+00:00",
+  "files": [
+    {
+      "name": "full-acceptance.json",
+      "bytes": 137387,
+      "sha256": "e245c533d1da366eece0a8adf83c1e792ef3133f32ffe6cd0369d7b944876bfa"
+    },
+    {
+      "name": "full-node.json",
+      "bytes": 1084191,
+      "sha256": "3cf0f93ee928382bc09b3d85b41e751bed4d24a5f72151998ebb92e06071c110"
+    },
+    {
+      "name": "full-node.log",
+      "bytes": 1046,
+      "sha256": "fd165e3660580410df79943e0e496e88837745629656b5d9323cdbfbd424df16"
+    },
+    {
+      "name": "full-python.log",
+      "bytes": 48393,
+      "sha256": "39a783b3a6dbd6eeebd09de842eadc526300c1e1709d9988d9dfa07f21a18145"
+    },
+    {
+      "name": "source-manifest.json",
+      "bytes": 165123,
+      "sha256": "d6a7c41f3363ffd8683780a3dee1eb652e74f7b7b3130ae71e887a3a3609f946"
+    }
+  ]
+}

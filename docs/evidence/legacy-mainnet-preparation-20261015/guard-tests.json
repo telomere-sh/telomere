@@ -1,0 +1,34 @@
+{
+  "scope": "pure public fixtures; no host network mutation, private config, wallet or RPC",
+  "platform": "Windows-11-10.0.26100-SP0",
+  "nodeVersion": "v22.22.2",
+  "nodeFixturesPassed": 59,
+  "pythonTestsPassed": 8,
+  "relocationCorrection": "retained ops fixtures use repository imports and retained public plan; initial failed module-resolution attempt retained",
+  "results": [
+    {
+      "runtime": "node",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.EXE",
+        "--import",
+        "tsx",
+        "--test",
+        "ops/legacy-mainnet/preflight-fixture.test.mjs"
+      ],
+      "exitCode": 0,
+      "stdoutSha256": "2f6c052bc81b330fc80a738503f15ce10b4063e51996f11cd3092e5de799f76e",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "runtime": "python",
+      "command": [
+        "C:\\Python313\\python.exe",
+        "ops/legacy-mainnet/network-fixture.test.py"
+      ],
+      "exitCode": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "9f19866c8af7bd0425354480972b9749c259e92bd47393c4d7e76dcf44f46db3"
+    }
+  ],
+  "publicTransactionsSent": 0
+}

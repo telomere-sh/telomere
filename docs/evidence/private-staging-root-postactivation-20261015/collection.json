@@ -1,0 +1,207 @@
+{
+  "checkedAt": "2026-10-15T05:03:45.720335+00:00",
+  "results": [
+    {
+      "name": "status",
+      "script": ".local/inspect-private-staging-attempt04-20261015.py",
+      "scriptSha256": "202dba65bababddd27c254102695700869edcdda5a1743340ef4897b32934326",
+      "exitCode": 0,
+      "stderrEmpty": true,
+      "data": {
+        "checkedAt": "2026-10-15T05:03:45.296281+00:00",
+        "snapshotCaptureDirectoryPresent": true,
+        "state": {
+          "stage": "activated",
+          "revision": "354fe7af62ea6701faafc3b04522abb1b4524d2d",
+          "archiveSha256": "86b5dc9f36dcf841963f0ffa8161023c126f1fae473c94909f5dddae3040fdce",
+          "release": "/opt/telomere-pilot/releases/354fe7af62ea6701faafc3b04522abb1b4524d2d-launch04",
+          "preparedAt": 1792040437.7756944,
+          "snapshotMaintenanceSeconds": 7.471,
+          "cloneAcceptedAt": 1792040526.0617251,
+          "activatedAt": 1792040581.938875,
+          "maintenanceSeconds": 27.662,
+          "latestReportSha256": "68baae093718567967b8e930def50d3b701b2fc8db319d4e719b6af76b8c01a3",
+          "oldReportSha256": "3d7b34bc2fc89fb8545c113f0071fa2494e79c43f8602c33f623f2483f291a47",
+          "cleanupSha256": "516da5e28e7c2179fa11b688acbac5cb4168cf605b0f132cfb8ae1c4b5b565a2",
+          "controllerDropinSha256": "aecd3b49ef32d8ea3e352b5dabe288abc62f3e8b64848a94da51f33fadef0572"
+        },
+        "clone-cleanup.json": {
+          "ownedAnvilStopped": true,
+          "ownedDaemonStopped": true,
+          "ownedHelpersStopped": true,
+          "ownedNamespaceRemoved": true,
+          "ownedPostgresRemoved": true
+        },
+        "global-docker-inventory.json": {
+          "unchanged": true
+        },
+        "prepare": "MainPID=0\nResult=success\nExecMainStatus=0\nLoadState=not-found\nActiveState=inactive\nSubState=dead",
+        "prepareRecords": [
+          {
+            "status": "passed",
+            "phase": "prepare"
+          }
+        ],
+        "prepareStatus": {
+          "status": "passed",
+          "phase": "prepare"
+        },
+        "snapshot": "MainPID=0\nResult=success\nExecMainStatus=0\nLoadState=not-found\nActiveState=inactive\nSubState=dead",
+        "snapshotRecords": [
+          {
+            "status": "passed",
+            "phase": "snapshot"
+          }
+        ],
+        "snapshotStatus": {
+          "status": "passed",
+          "phase": "snapshot"
+        },
+        "validate-clone": "MainPID=0\nResult=success\nExecMainStatus=0\nLoadState=not-found\nActiveState=inactive\nSubState=dead",
+        "validate-cloneRecords": [
+          {
+            "status": "passed",
+            "phase": "validate-clone"
+          }
+        ],
+        "validate-cloneStatus": {
+          "status": "passed",
+          "phase": "validate-clone"
+        },
+        "cutover": "MainPID=0\nResult=success\nExecMainStatus=0\nLoadState=not-found\nActiveState=inactive\nSubState=dead",
+        "cutoverRecords": [
+          {
+            "status": "passed",
+            "phase": "cutover"
+          },
+          {
+            "status": "passed",
+            "phase": "recover-held"
+          }
+        ],
+        "cutoverStatus": {
+          "status": "passed",
+          "phase": "cutover"
+        },
+        "services": {
+          "telomere-staging.service": "MainPID=1952406\nNRestarts=0\nWorkingDirectory=/opt/telomere-pilot/releases/354fe7af62ea6701faafc3b04522abb1b4524d2d-launch04\nActiveState=active",
+          "telomere-staging-chain.service": "MainPID=1952401\nNRestarts=0\nWorkingDirectory=/opt/telomere-pilot/app\nActiveState=active",
+          "telomere-staging-watchdog.service": "MainPID=1952410\nNRestarts=0\nWorkingDirectory=/opt/telomere-pilot/watchdog-app\nActiveState=active"
+        },
+        "health": {
+          "live": {
+            "code": 200,
+            "body": {
+              "status": "ok"
+            }
+          },
+          "ready": {
+            "code": 200,
+            "body": {
+              "status": "ready",
+              "worker": "idle"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "runtime",
+      "script": ".local/verify-private-staging-final-runtime-20261015.py",
+      "scriptSha256": "a44c122c0ae34a7afb781b4e24c81705e23b2dfb4b4533c95761a0cab6ba94de",
+      "exitCode": 0,
+      "stderrEmpty": true,
+      "data": {
+        "schemaVersion": 1,
+        "kind": "readonly_actual_private_staging_runtime_identity",
+        "checkedAt": "2026-10-15T05:03:45.630372+00:00",
+        "status": "passed",
+        "run": "staging-354fe7af62ea-launch04",
+        "revision": "354fe7af62ea6701faafc3b04522abb1b4524d2d",
+        "archiveSha256": "86b5dc9f36dcf841963f0ffa8161023c126f1fae473c94909f5dddae3040fdce",
+        "sourceFilesVerified": 685,
+        "allSourceBytesAndRootOwnershipVerified": true,
+        "runtimeFilesVerified": 564,
+        "allGeneratedRuntimeBytesAndRootOwnershipVerified": true,
+        "controllerProcess": {
+          "executableMatches": true,
+          "cwdMatches": true,
+          "argvMatches": true
+        },
+        "controllerDropinHashVerified": true,
+        "threeUnitsActiveAndStable": true,
+        "unitRestartsUnchanged": true,
+        "source": "/opt/telomere-pilot/releases/354fe7af62ea6701faafc3b04522abb1b4524d2d-launch04",
+        "health": {
+          "live": {
+            "code": 200,
+            "status": "ok"
+          },
+          "ready": {
+            "code": 200,
+            "status": "ready"
+          }
+        },
+        "ownedRehearsalAndFinalCloneContainersNamespacesUnitsRemaining": 0,
+        "resourceObservationScope": "exact owner-labelled global containers, netns and helper/daemon units; no independent Anvil process scan",
+        "profileOrEnvironmentRead": false,
+        "transactionsSent": 0,
+        "paidRequests": 0
+      }
+    },
+    {
+      "name": "original-data",
+      "script": ".local/verify-postactivation-original-state-20261015.mjs",
+      "scriptSha256": "61bf8382fd5f5a7cfcdf7fd299a04ee62fb685223773b9952bd3e8dab62e363a",
+      "exitCode": 0,
+      "stderrEmpty": true,
+      "data": {
+        "schemaVersion": 1,
+        "kind": "readonly_postactivation_original_data_and_chain",
+        "status": "passed",
+        "checkedAt": "2026-10-15T05:03:45.669Z",
+        "exactDbEvidenceHelperSha256": "43d37c51c7d50a1a9971b444367045a2c7e73b91239418d679460d1fb06176e5",
+        "originalTableCounts": {
+          "auth_nonces": 0,
+          "auth_sessions": 28,
+          "cyst_owners": 1,
+          "cysts": 1,
+          "jobs": 5,
+          "leash_refs": 6,
+          "transaction_journal": 5
+        },
+        "originalTableHashes": {
+          "auth_nonces": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "auth_sessions": "92d992b5d4fa9cffa6895a32497cbfd71121c13d14c763eb2312a34a91f4510c",
+          "cyst_owners": "b2eec43f288f4866bbcaa231ec70f35f7e0cc6a1730a2b5d81602c4453a19e4d",
+          "cysts": "67c9b3738ea030a4044e6182d5fdb567994d40f9e390e9a5acaf1cf630dcd49c",
+          "jobs": "747c2da68e68d8852bd72454a5b68fcd3bda10eb7327bad018e6e4983d461fc8",
+          "leash_refs": "d6d21d1f8689920c0c969e71ff07c55a867b5ce6d6d98adc7201ec79055daaa7",
+          "transaction_journal": "8534afd3cbc1dce083e53d4be21b2a6b2e4d6712e2c7bac703ed58e01a85f14e"
+        },
+        "originalSevenTablesUnchanged": true,
+        "originalColumnProjectionVerified": true,
+        "currentSchemaTableCount": 43,
+        "cysts": {
+          "count": 1,
+          "bytes": 93,
+          "blobSha256": "d1bd3ed0000961764263d14e99fcdf48f070e2acdd685784c611379c23868884",
+          "metadataSha256": "67c9b3738ea030a4044e6182d5fdb567994d40f9e390e9a5acaf1cf630dcd49c",
+          "counterMismatches": 0
+        },
+        "protectedProfileUnchanged": true,
+        "canonicalHeadMatchesHeldClone": true,
+        "freshlyVerifiedCanonicalHead": {
+          "number": "23",
+          "hash": "0xdbf9dfcd25294ccce4fd0847e1d6939c113890808f20a379b293ce91e672607e",
+          "stateRoot": "0xc8823e14a0f2388825f59a3b96e5db9e57ab4d7dc883d146ad3a5fc7a290a763"
+        },
+        "retainedCloneStateSha256": "23cec63b1ac35b2ca75331436d89dcdc06754660b1c3c6e9c989e75e8123f229",
+        "sqlReadOnlyTransaction": true,
+        "credentialsOrRowContentsReturned": false,
+        "transactionsSent": 0,
+        "paidProviderRequests": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "status": "own bridge configured; previous networks unchanged across new daemon startup",
+  "bridge": {
+    "ifindex": 3141,
+    "ifname": "tlmr-mainnet0",
+    "flags": [
+      "BROADCAST",
+      "MULTICAST",
+      "UP"
+    ],
+    "mtu": 1500,
+    "qdisc": "noqueue",
+    "operstate": "UNKNOWN",
+    "linkmode": "DEFAULT",
+    "group": "default",
+    "txqlen": 1000,
+    "link_type": "ether",
+    "address": "2a:ed:ce:93:be:09",
+    "broadcast": "ff:ff:ff:ff:ff:ff"
+  },
+  "subnet": "172.31.254.0/24",
+  "oldConfigSha256": "dc27fbfc149d86b1a87fd7b89a545e5889d4c5b98b6e21d4a2d50277ee44ed05",
+  "newConfigSha256": "170611ee897155d689479785d382d532b8aaa1a4fc3dde82a3097ac621d275f2",
+  "existingNetworkInterfaces": [
+    "docker0",
+    "vethf112bc8",
+    "br-2c16427bda28",
+    "vethfaa9939",
+    "vethfd9e001"
+  ],
+  "existingNetworkInterfacesUnchanged": true,
+  "newDockerRoot": "/opt/telomere-mainnet-pilot/docker-data",
+  "defaultRuntime": "runsc",
+  "controllerStarted": false,
+  "publicTransactionsSent": 0
+}

@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "status": "prepared",
+  "startedAt": "2026-10-15T11:53:23.792828+00:00",
+  "work": "/opt/telomere-host-runtime/declared-state-gvisor-20261015",
+  "run": "/run/telomere-declared-accept-20261015",
+  "socket": "/run/telomere-declared-accept-20261015/docker.sock",
+  "namespace": "tlmr-declared-accept-20261015",
+  "unit": "telomere-declared-accept-20261015.service",
+  "dataRoot": "/opt/telomere-host-runtime/docker-data",
+  "protectedContainerId": "1d7ecc9b94866b9617df656ad7e2251916a9b7ceafef9a488ef6e85540076c5e",
+  "servicesBefore": {
+    "telomere-staging.service": "MainPID=1952406\nNRestarts=0\nWorkingDirectory=/opt/telomere-pilot/releases/354fe7af62ea6701faafc3b04522abb1b4524d2d-launch04\nActiveState=active\nSubState=running",
+    "telomere-staging-chain.service": "MainPID=1952401\nNRestarts=0\nWorkingDirectory=/opt/telomere-pilot/app\nActiveState=active\nSubState=running",
+    "telomere-staging-watchdog.service": "MainPID=1952410\nNRestarts=0\nWorkingDirectory=/opt/telomere-pilot/watchdog-app\nActiveState=active\nSubState=running"
+  },
+  "profileBeforeSha256": "a400feb3475b91168a5419d0a98c00ea804ba817c1c0ad34dea65d7d8808df8f",
+  "publicTransactions": 0,
+  "paidProviderRequests": 0,
+  "stagingServiceMutations": false,
+  "newOwnedAcceptanceDaemon": true,
+  "otherActiveDockerDataRoots": {
+    "570": "/var/lib/docker"
+  },
+  "baseImage": "127.0.0.1:15002/telomere-cpu@sha256:6839949540d11906cbdbc614867ac3a825fa0e6f8cbed90c79773979517b4bbe",
+  "baseImageId": "sha256:680cc0ec7dfa626d4105c3c26834289687e0abed785240e5bb814bac7cd55355",
+  "registryImage": "registry@sha256:ddf754342cfc8acc51a56d5d0ab6af06826461864460636d8bd5c546dab2a7b8",
+  "registryImageId": "sha256:b16ad6cc19df5d687ed2e5b4ba6fa51a38bfbb4687ecc11bf54e0899638c0ee2",
+  "protectedContainerBeforeSha256": "6c078f8b7a3386663d9ab2f5682c317d82b54e86c54a93f67255bfa045a76079",
+  "runtime": "/opt/telomere-host-runtime/gvisor/runsc",
+  "servicesAfter": {
+    "telomere-staging.service": "MainPID=1952406\nNRestarts=0\nWorkingDirectory=/opt/telomere-pilot/releases/354fe7af62ea6701faafc3b04522abb1b4524d2d-launch04\nActiveState=active\nSubState=running",
+    "telomere-staging-chain.service": "MainPID=1952401\nNRestarts=0\nWorkingDirectory=/opt/telomere-pilot/app\nActiveState=active\nSubState=running",
+    "telomere-staging-watchdog.service": "MainPID=1952410\nNRestarts=0\nWorkingDirectory=/opt/telomere-pilot/watchdog-app\nActiveState=active\nSubState=running"
+  },
+  "profileAfterSha256": "a400feb3475b91168a5419d0a98c00ea804ba817c1c0ad34dea65d7d8808df8f",
+  "health": {
+    "live": {
+      "code": 200,
+      "body": {
+        "status": "ok"
+      }
+    },
+    "ready": {
+      "code": 200,
+      "body": {
+        "status": "ready",
+        "worker": "idle"
+      }
+    }
+  },
+  "finishedAt": "2026-10-15T11:53:25.622147+00:00"
+}

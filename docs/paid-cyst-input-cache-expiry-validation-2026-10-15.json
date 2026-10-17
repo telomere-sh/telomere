@@ -1,0 +1,67 @@
+{
+  "version": 1,
+  "checkedAt": "2026-10-15T02:50:42.599348+00:00",
+  "status": "focused_private_cache_retention_regression_accepted",
+  "scope": "Tiny separate follow-up after accepted abf941b Linux15-case declared-file profile; no new funding, session, public transaction or provider request",
+  "baseline": {
+    "moduleEqualsAcceptedGitBlob": "abf941bef4688fa3f81eb986523fa16037cc3abc:src/agents/agent-current-cyst-file-restore.ts",
+    "moduleSha256": "432b2387390a3bba58ec172872269902c97930bade8096e21af133f949fd275e",
+    "testSha256": "3a8ada96a9547c8b7be22527bcbbfa8fbb89a08087f99b5aca96ab128855bdcd",
+    "expectedFailure": true,
+    "passed": 0,
+    "failed": 1,
+    "observedFailure": "Expired authenticated private state.bin was still present when the changed-registry check was entered after encrypted-journal reopen"
+  },
+  "correction": {
+    "source": "src/agents/agent-current-cyst-file-restore.ts",
+    "sourceSha256": "1aa11ee2ea9f2b478faba86f66c5dc1c2060132511260ed968ad22e68fd3eb18",
+    "test": "tests/paid-cyst-file-cache-expiry.test.ts",
+    "testSha256": "3a8ada96a9547c8b7be22527bcbbfa8fbb89a08087f99b5aca96ab128855bdcd",
+    "behavior": "After strict directory identity and authenticated original plan/ready validation, expired fixed-path plaintext is removed while holding the original encrypted-journal exclusive lock, before awaiting current-registry checks. Changed registry still rejects restore; no wallet/HTTP/compute methods run.",
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0
+  },
+  "inputBoundary": {
+    "files": 18,
+    "changedDuringRun": [],
+    "description": "Focused18-file pre/post inventory; no all-repository or new actual-host acceptance claim"
+  },
+  "globalTypecheck": {
+    "exitCode": 0,
+    "evidence": "docs/evidence/platform-payment-deployment-typecheck-retry-20261015.json",
+    "sha256": "5fe7b994831ee111e70bdfb4c4ff48fd70d71ce6585c8f2a36b7fcf66b37a417"
+  },
+  "priorAcceptedHostProfile": "paid-cyst-input-validation-2026-10-15.json",
+  "actualHostAfterThisDelta": "Parent-controlled final combined Linux/gVisor cohort is a separate cutoff; earlier15-case abf941b result remains unchanged.",
+  "notChanged": [
+    "API/task/workload/lease domains",
+    "source/target operation identity",
+    "arbitrary path policy",
+    "spool/container cleanup",
+    "wallet or compute authority",
+    "application command behavior"
+  ],
+  "evidence": [
+    {
+      "path": "docs/evidence/paid-cyst-cache-expiry-negative-control-20261015.json",
+      "bytes": 2272,
+      "sha256": "e816cf73b8bed37607c35026d73c549c53f855ae9e118901242493326b9bb1d3"
+    },
+    {
+      "path": "docs/evidence/paid-cyst-cache-expiry-accepted-20261015.json",
+      "bytes": 1174,
+      "sha256": "63bed58348088b20b26a0a07f47046523b0eb1a07508b20a7d920ae0ebe6415d"
+    },
+    {
+      "path": "docs/evidence/paid-cyst-cache-expiry-source-20261015.json",
+      "bytes": 6208,
+      "sha256": "5f447c788cf47f59a81d25c11ac5de3256f286d557b7beb4beabb6e3817b4b93"
+    },
+    {
+      "path": "docs/evidence/platform-payment-deployment-typecheck-retry-20261015.json",
+      "bytes": 10414,
+      "sha256": "5fe7b994831ee111e70bdfb4c4ff48fd70d71ce6585c8f2a36b7fcf66b37a417"
+    }
+  ]
+}

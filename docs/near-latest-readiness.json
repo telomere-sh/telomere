@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "route": "existing_reviewed_direct_profile",
+  "stageActivated": false,
+  "policyRenewed": false,
+  "paidPosts": 0,
+  "preflight": {
+    "invocations": 1,
+    "status": "rejected",
+    "paidPosts": 0,
+    "checkedAt": "2026-10-08T14:22:36.789Z",
+    "reason": "attestation",
+    "reasonCode": "WORKLOAD_NOT_APPROVED",
+    "attestationFailure": {
+      "stage": "verifier",
+      "reason": "rejected",
+      "verifierError": "WORKLOAD_NOT_APPROVED"
+    }
+  },
+  "localProbe": {
+    "readOnly": true,
+    "reportGets": 0,
+    "paidPosts": 0,
+    "readiness": {
+      "state": "ready",
+      "reasonCode": "CONFIGURATION_READY",
+      "checkedAt": "2026-10-08T14:22:54.713Z",
+      "verification": "enclave_verified",
+      "scope": "local_configuration",
+      "liveAttestationChecked": false,
+      "policyExpiresAt": "2026-10-08T14:29:11.000Z"
+    }
+  },
+  "afterExpiryProbe": {
+    "readOnly": true,
+    "reportGets": 0,
+    "paidPosts": 0,
+    "readiness": {
+      "state": "unavailable",
+      "reasonCode": "POLICY_EXPIRED",
+      "checkedAt": "2026-10-08T14:37:29.688Z",
+      "verification": "enclave_verified",
+      "scope": "local_configuration",
+      "liveAttestationChecked": false,
+      "policyExpiresAt": "2026-10-08T14:29:11.000Z"
+    }
+  },
+  "decision": "Keep live inference disabled. Local configuration readiness cannot override rejected live workload admission; the reviewed policy has now expired."
+}

@@ -1,0 +1,293 @@
+{
+  "schemaVersion": 1,
+  "kind": "FROZEN_BOUNDED_PAID_CPU_REPLAN_LINUX_ACCEPTANCE",
+  "status": "accepted_focused_linux_cpu_replan",
+  "startedAtUtc": "2026-10-15T14:37:00.821919+00:00",
+  "gitRevision": "e01b776bd86a9cdc27a3e80f987930ed8116c508",
+  "archiveSha256": "9111430f5e2713183e4f7823ca24380cb6afde5c31acff9a4ed751e21bfd4206",
+  "sourceDirectory": "/opt/telomere-host-runtime/paid-cpu-replan-20261015-9111430f5e27",
+  "sourceFiles": 710,
+  "sourceManifestSha256": "c54e4df3d998eef8f18a06a26b352a578d7c688d6f9ef9b658e3d462e367764b",
+  "cacheDirectory": "/opt/telomere-host-runtime/backend-completion-final-20261015-090932a350a5",
+  "cacheRevision": "d4481aec92179df44a533699897db2f523fbd0a2",
+  "cacheManifestSha256": "16b7ddcfb62c1d6fde5bd0f6c4a2b55013d0dbe508c62e4ff233efd896e69028",
+  "existingCryptoVenv": "/opt/telomere-host-runtime/backend-completion-final-20261015-090932a350a5/.local/python-crypto-venv",
+  "nodeTestFiles": [
+    "tests/paid-cpu-job-replan-runner.test.ts",
+    "tests/paid-cpu-jobs.test.ts",
+    "tests/paid-host-preemption.test.ts",
+    "tests/paid-vault-preemption-handoff.test.ts"
+  ],
+  "pythonPattern": "test_platform*.py",
+  "phase": "finished",
+  "commands": {
+    "typecheck": {
+      "argv": [
+        "npm",
+        "run",
+        "typecheck"
+      ],
+      "exitCode": 0,
+      "seconds": 103.078,
+      "timedOut": false,
+      "logLimitExceeded": false,
+      "logBytes": 50,
+      "logSha256": "7e452c9b4ef316f1562cd5a4039133816fbb68a6de9f9e583fb52ab3d0a434ad"
+    },
+    "build": {
+      "argv": [
+        "npm",
+        "run",
+        "build"
+      ],
+      "exitCode": 0,
+      "seconds": 140.133,
+      "timedOut": false,
+      "logLimitExceeded": false,
+      "logBytes": 6592,
+      "logSha256": "9f37f1fc6d1ce97b7dc22a35fbb639f2289413006619eef82267d66b8e5807ab"
+    },
+    "crypto-probe": {
+      "argv": [
+        "/opt/telomere-host-runtime/backend-completion-final-20261015-090932a350a5/.local/python-crypto-venv/bin/python",
+        "-B",
+        "-c",
+        "import importlib.metadata,json,platform; print(json.dumps({'python':platform.python_version(),'packages':{name:importlib.metadata.version(name) for name in ['eth-account','eth-hash','eth_abi','hexbytes','pycryptodome']}}))"
+      ],
+      "exitCode": 0,
+      "seconds": 0.519,
+      "timedOut": false,
+      "logLimitExceeded": false,
+      "logBytes": 148,
+      "logSha256": "de469736a214191036f3f809f389506946fe1ac4575f38b3e9379957a83f8273"
+    },
+    "node": {
+      "argv": [
+        "node",
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "--config=.local/vitest.config.ts",
+        "--no-cache",
+        "--reporter=json",
+        "--outputFile=.local/node.json",
+        "tests/paid-cpu-job-replan-runner.test.ts",
+        "tests/paid-cpu-jobs.test.ts",
+        "tests/paid-host-preemption.test.ts",
+        "tests/paid-vault-preemption-handoff.test.ts"
+      ],
+      "exitCode": 0,
+      "seconds": 272.538,
+      "timedOut": false,
+      "logLimitExceeded": false,
+      "logBytes": 105,
+      "logSha256": "47c5060f37598d1a953ed9921b12318974b55db33951afdde89a86b4e03ae077"
+    },
+    "python": {
+      "argv": [
+        "/opt/telomere-host-runtime/backend-completion-final-20261015-090932a350a5/.local/python-crypto-venv/bin/python",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "python/tests",
+        "-p",
+        "test_platform*.py",
+        "-v"
+      ],
+      "exitCode": 0,
+      "seconds": 4.521,
+      "timedOut": false,
+      "logLimitExceeded": false,
+      "logBytes": 13098,
+      "logSha256": "f4bb437d1c3d9bfda35e1f5f6e014bd03dfe501b3634183b8c52668661f607ff"
+    }
+  },
+  "dependencyInstalls": 0,
+  "dockerOptInEnabled": false,
+  "serviceMutations": false,
+  "paidProviderRequests": 0,
+  "publicTransactions": 0,
+  "deploymentPerformed": false,
+  "scope": "Four complete focused Node files with actual disposable local EVM/process integration, complete Python platform-family tests with crypto, strict typecheck and fresh application build. Not a full backend regression, real supplier, gVisor or production acceptance.",
+  "cacheSourceBefore": {
+    "unchanged": true,
+    "verified": 708,
+    "changed": []
+  },
+  "servicesBefore": {
+    "telomere-staging.service": {
+      "MainPID": "1952406",
+      "NRestarts": "0",
+      "WorkingDirectory": "/opt/telomere-pilot/releases/354fe7af62ea6701faafc3b04522abb1b4524d2d-launch04",
+      "ActiveState": "active",
+      "SubState": "running"
+    },
+    "telomere-staging-chain.service": {
+      "MainPID": "1952401",
+      "NRestarts": "0",
+      "WorkingDirectory": "/opt/telomere-pilot/app",
+      "ActiveState": "active",
+      "SubState": "running"
+    },
+    "telomere-staging-watchdog.service": {
+      "MainPID": "1952410",
+      "NRestarts": "0",
+      "WorkingDirectory": "/opt/telomere-pilot/watchdog-app",
+      "ActiveState": "active",
+      "SubState": "running"
+    }
+  },
+  "profileBeforeSha256": "a400feb3475b91168a5419d0a98c00ea804ba817c1c0ad34dea65d7d8808df8f",
+  "healthBefore": {
+    "live": {
+      "statusCode": 200,
+      "body": {
+        "status": "ok"
+      }
+    },
+    "ready": {
+      "statusCode": 200,
+      "body": {
+        "status": "ready",
+        "worker": "idle"
+      }
+    }
+  },
+  "nodeVersion": "v22.23.3",
+  "dependencyCopySha256": "a0b7de613ae0bd1025b652d93f51b91f2d5d9edcb5bc6d7e8d4ba8dcfe9cf656",
+  "sourceBefore": {
+    "unchanged": true,
+    "verified": 710,
+    "changed": []
+  },
+  "buildOutputInventorySha256": "d1a98028f486db87bec9cf7690047942ec07f2dec437fab80bbd21df301daf65",
+  "runtimeAndPackages": {
+    "python": "3.11.2",
+    "packages": {
+      "eth-account": "0.13.7",
+      "eth-hash": "0.8.0",
+      "eth_abi": "6.0.0",
+      "hexbytes": "2.0.0",
+      "pycryptodome": "3.24.0"
+    }
+  },
+  "nodeTests": {
+    "total": 54,
+    "passed": 54,
+    "failed": 0,
+    "assertionStatuses": {
+      "passed": 54
+    },
+    "success": true,
+    "unhandledErrors": 0,
+    "files": [
+      {
+        "name": "paid-cpu-job-replan-runner.test.ts",
+        "status": "passed",
+        "cases": 42
+      },
+      {
+        "name": "paid-cpu-jobs.test.ts",
+        "status": "passed",
+        "cases": 1
+      },
+      {
+        "name": "paid-host-preemption.test.ts",
+        "status": "passed",
+        "cases": 10
+      },
+      {
+        "name": "paid-vault-preemption-handoff.test.ts",
+        "status": "passed",
+        "cases": 1
+      }
+    ],
+    "failures": [],
+    "accepted": true
+  },
+  "pythonTests": {
+    "total": 71,
+    "passed": 71,
+    "statuses": {
+      "ok": 71
+    },
+    "skips": [],
+    "completedOk": true,
+    "accepted": true
+  },
+  "sourceAfter": {
+    "unchanged": true,
+    "verified": 710,
+    "changed": []
+  },
+  "cacheSourceAfter": {
+    "unchanged": true,
+    "verified": 708,
+    "changed": []
+  },
+  "sourceManifestUnchanged": true,
+  "inventories": {
+    "cache-node-modules": {
+      "entries": 21050,
+      "beforeSha256": "a0b7de613ae0bd1025b652d93f51b91f2d5d9edcb5bc6d7e8d4ba8dcfe9cf656",
+      "afterSha256": "a0b7de613ae0bd1025b652d93f51b91f2d5d9edcb5bc6d7e8d4ba8dcfe9cf656",
+      "unchanged": true
+    },
+    "cache-dist": {
+      "entries": 585,
+      "beforeSha256": "2183f2b8129a9e5ac1e0bb8eb53c2b20588f0f1b2e5e434f193c4b58a94310f6",
+      "afterSha256": "2183f2b8129a9e5ac1e0bb8eb53c2b20588f0f1b2e5e434f193c4b58a94310f6",
+      "unchanged": true
+    },
+    "crypto-venv": {
+      "entries": 2922,
+      "beforeSha256": "4cf1af54aff887175f9b2c00d85a9d14536df87cc94c367982d477d4b2264eb2",
+      "afterSha256": "4cf1af54aff887175f9b2c00d85a9d14536df87cc94c367982d477d4b2264eb2",
+      "unchanged": true
+    }
+  },
+  "copiedNodeModulesUnchanged": true,
+  "servicesAfter": {
+    "telomere-staging.service": {
+      "MainPID": "1952406",
+      "NRestarts": "0",
+      "WorkingDirectory": "/opt/telomere-pilot/releases/354fe7af62ea6701faafc3b04522abb1b4524d2d-launch04",
+      "ActiveState": "active",
+      "SubState": "running"
+    },
+    "telomere-staging-chain.service": {
+      "MainPID": "1952401",
+      "NRestarts": "0",
+      "WorkingDirectory": "/opt/telomere-pilot/app",
+      "ActiveState": "active",
+      "SubState": "running"
+    },
+    "telomere-staging-watchdog.service": {
+      "MainPID": "1952410",
+      "NRestarts": "0",
+      "WorkingDirectory": "/opt/telomere-pilot/watchdog-app",
+      "ActiveState": "active",
+      "SubState": "running"
+    }
+  },
+  "profileAfterSha256": "a400feb3475b91168a5419d0a98c00ea804ba817c1c0ad34dea65d7d8808df8f",
+  "healthAfter": {
+    "live": {
+      "statusCode": 200,
+      "body": {
+        "status": "ok"
+      }
+    },
+    "ready": {
+      "statusCode": 200,
+      "body": {
+        "status": "ready",
+        "worker": "idle"
+      }
+    }
+  },
+  "ownedProcessesRemaining": [],
+  "success": true,
+  "finishedAtUtc": "2026-10-15T14:45:48.048671+00:00"
+}

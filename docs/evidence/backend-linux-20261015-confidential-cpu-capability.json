@@ -1,0 +1,30 @@
+{
+  "checkedAt": "2026-10-15T00:56:18.938237+00:00",
+  "devices": {
+    "/dev/tdx_guest": false,
+    "/dev/tdx-guest": false,
+    "/dev/sev-guest": false,
+    "/sys/module/tdx_guest": false,
+    "/sys/firmware/tdx": false
+  },
+  "virtualization": {
+    "exitCode": 0,
+    "type": "kvm"
+  },
+  "cpu": {
+    "vendor": "AuthenticAMD",
+    "model": "AMD Ryzen 9 9950X 16-Core Processor",
+    "selectedFlags": {
+      "hypervisor": true,
+      "vmx": false,
+      "svm": false,
+      "tdx_guest": false,
+      "tdx": false,
+      "sev": false,
+      "sev_es": false,
+      "sev_snp": false
+    }
+  },
+  "scope": "Read-only guest-visible device/module/CPU inspection after acceptance. No quote generation, keys, kernel or service changes.",
+  "conclusion": "No guest-visible TDX or SEV attestation device/module was detected. Current VPS has not established confidential CPU Cell execution; runsc isolation is not a TEE."
+}

@@ -1,0 +1,84 @@
+{
+  "backupMatchesStoppedFingerprint": true,
+  "completeBlocks": {
+    "addedEntrySha256": [
+      "d4d8ea1528e59a5b227d97b5a2cec01ed6f14f0df49ebb743e3942807a710b76"
+    ],
+    "allOriginalEntriesRetained": true,
+    "currentEntries": 36,
+    "removedEntrySha256": [],
+    "snapshotEntries": 35
+  },
+  "completeExactObjects": {
+    "accounts": {
+      "currentValueSha256": "098222aac20303af91639c20005d1a25248ab2ceff26c820ba928cdd0d949a55",
+      "equal": true,
+      "snapshotValueSha256": "098222aac20303af91639c20005d1a25248ab2ceff26c820ba928cdd0d949a55"
+    },
+    "best_block_number": {
+      "currentValueSha256": "535fa30d7e25dd8a49f1536779734ec8286108d115da5045d77f3b4185d8f790",
+      "equal": true,
+      "snapshotValueSha256": "535fa30d7e25dd8a49f1536779734ec8286108d115da5045d77f3b4185d8f790"
+    },
+    "block": {
+      "currentValueSha256": "8b60257d92d9478707b83df0ce48e8bbc5aa9893892ef9fccbfe017b4b1c5743",
+      "equal": true,
+      "snapshotValueSha256": "8b60257d92d9478707b83df0ce48e8bbc5aa9893892ef9fccbfe017b4b1c5743"
+    },
+    "historical_states": {
+      "currentValueSha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "equal": true,
+      "snapshotValueSha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+    }
+  },
+  "completeTransactions": {
+    "currentEntries": 23,
+    "duplicatePreservingMultisetEqual": true,
+    "multisetSha256": "2c75a919758fc8dc6fae5692a16ba23e1b9f3b20e6528937def2d87f1f1d0ed7",
+    "snapshotEntries": 23
+  },
+  "currentChain": {
+    "bytes": 335674,
+    "sha256": "cf5cc45ca4ca9608cff17c7c65d0324dd8cafa368540be457ded09b5879071c3",
+    "stableDuringRead": true
+  },
+  "equivalenceApproved": false,
+  "extraBlockClassification": {
+    "allFullObjectsMatchExceptHeaderTimestamp": true,
+    "currentTimestampValueSha256": "7d108e00398f6189a400f266afd4a7818e2495ec6d69a249e98333eda60bc6c0",
+    "fullBlockEntrySha256": "d4d8ea1528e59a5b227d97b5a2cec01ed6f14f0df49ebb743e3942807a710b76",
+    "headerFields": 21,
+    "nonTimestampTemplateSha256": "c3d118916dad7dce7296d2aaa209bf2529d3da254699537ff13d1c2274776e76",
+    "sameHeightOriginalEntries": 12,
+    "snapshotTimestampValueSha256": [
+      "00b71bc2812e1463c4ab8fb0c346068573f663853b45051b495cd51d746c3008",
+      "1d880384cde1f25f2ff9b4ea03bfdc4d0cc816a2fc94c9a655bed7a63816403e",
+      "3f3aa7e7eff0b9a0bf77dee975f342a63719930629bd785fd4b29132c562dcc6",
+      "62ff77bfa890940c4c2a9fb4c02f9e4273e18ed5771457ee5332f011a8aaf09a",
+      "700cb1448560bb1e3cac8d3882d5b61513d250b12268c1d2dc3f21d67d3406f7",
+      "7c7aaf34a59e8bffd685944adbff3f5ea9183a0efd48e509c9b91e202402289d",
+      "85796e5c9b1af169dba356c76b5739c327aca036fe76d931a127c9ffebb67407",
+      "8e9e0a3000b01642d126cedfce171634a0b0c0c8fd7908eca78c23aac909b09a",
+      "b4d6892451cca48152508429e289c0c44a09e654661f7e7433d0d92ab4442e42",
+      "d0d0360018707c212ce3b9651b9c4e177304298a321161562f60c6724b2bb99f",
+      "db3a6af077925e84d54984b81ba60df95b5954157a70eebb60692f0736efb4a1",
+      "de3783d00c8a6dcb42cb1e9aac3d9ed7d78f9b08c43e0b61cf6fc399cc566d5e"
+    ]
+  },
+  "rawEqual": false,
+  "readOnly": true,
+  "recommendedAuthority": "fresh stopped snapshot; validate clone while original remains stopped; activate without intervening old-chain restart; preserve all records and strict preactivation bytes",
+  "snapshotChain": {
+    "bytes": 334055,
+    "sha256": "060033c4f59257d27fe793b50d028735f9f3a7128d0e731a9320e92ffef0906c",
+    "stableDuringRead": true
+  },
+  "snapshotFingerprint": {
+    "bytes": 3205,
+    "sha256": "098bed091f227e310e99e446574a7b27e5999d348fece22ac1dfd4ba6dc0687e",
+    "stableDuringRead": true
+  },
+  "stoppedSnapshotRawChainSha256": "060033c4f59257d27fe793b50d028735f9f3a7128d0e731a9320e92ffef0906c",
+  "topLevelFieldCount": 6,
+  "topLevelFieldSetExact": true
+}

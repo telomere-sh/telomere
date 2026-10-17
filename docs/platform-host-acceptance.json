@@ -1,0 +1,20 @@
+{
+  "status": "passed",
+  "checkedAt": "2026-10-09T15:20:47.203Z",
+  "chainId": 31337,
+  "isolation": "gvisor",
+  "image": "127.0.0.1:15002/telomere-cpu@sha256:6839949540d11906cbdbc614867ac3a825fa0e6f8cbed90c79773979517b4bbe",
+  "runId": "0x285a917d33309dc93bd4f2a3fa46c5a7344fe2072ceec48af35da1dcd9c3d545",
+  "billableSeconds": 8,
+  "charged": "800",
+  "refund": "2200",
+  "signedHostTicks": 4,
+  "signedControlAcknowledgments": 4,
+  "actualEscrowSettlement": true,
+  "ownerBalanceConserved": true,
+  "restartWithoutRedispatch": true,
+  "hourlyRootPublishedAndRpcVerified": true,
+  "publicTransactions": 0,
+  "paidProviderRequests": 0,
+  "privateKeysIncluded": false
+}

@@ -1,0 +1,21 @@
+{
+  "status": "HTTPS-origin loopback runtime and exact static copy prepared; DNS/TLS activation pending",
+  "publicOrigin": "https://review.telomere.sh",
+  "bind": "127.0.0.1:3284",
+  "unitSha256": "c5bbc253d46605308444ba26a58aec5946cba0a1d777a7931c78f8ab10a1370f",
+  "wrapperSha256": "35c0ec5e911c4d8f8284afa9b14303a2681129d64ca368331e34dc4c2a4169be",
+  "frozenOverlayUnchanged": true,
+  "sourceCommit": "ee6169d1007b11f037fbc409dc1f7575f15117c9",
+  "websiteFiles": 312,
+  "websiteBytes": 50435601,
+  "publicRoot": "/var/www/telomere-public/ee6169d1007b11f037fbc409dc1f7575f15117c9",
+  "basicAuthGeneratedOnVpsOnly": true,
+  "authFileUid": 0,
+  "authFileGid": 33,
+  "authFileMode": "0o640",
+  "tlsCertificateNotIssuedYet": true,
+  "oldStagingProcessesUnchanged": true,
+  "controllerStarted": false,
+  "ownerWalletRequests": 0,
+  "publicTransactionsSent": 0
+}

@@ -1,0 +1,264 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-10-15T02:29:17.508337+00:00",
+  "status": "committed_isolated_local_68_accepted_full_linux_gate_separate",
+  "scope": {
+    "feature": "Explicit Telomere x402-v2 CPU reservation extension, domain4",
+    "chainsTested": [
+      31337
+    ],
+    "publicTransactionSent": false,
+    "payer": "Disposable generated EOA",
+    "tasks": "One-shot bounded CPU fixture",
+    "receiptVersion": 1,
+    "maxSeconds": 120,
+    "ordinaryHostFeeBps": 900,
+    "gpuCellsIncluded": false,
+    "launchReady": false
+  },
+  "semantics": {
+    "exactAuthorizationType": "ReceiveWithAuthorization",
+    "uptoSignatureType": "PermitWitnessTransferFrom",
+    "uptoSpender": "Pinned official x402 Upto Proxy",
+    "uptoWitnessToAndFacilitator": "New escrow",
+    "immediateDebit": "Complete conservative CPU ceiling",
+    "settlement": "Accepted CPU work plus fee; unused funds credit original EOA escrow balance",
+    "walletBroadcast": "External wallet or relayer only",
+    "compatibility": "Both schemes require the explicit Telomere reservation extension; no generic exact/upto fallback"
+  },
+  "primaryAcceptance": {
+    "evidence": {
+      "path": "docs/evidence/m3-m5-committed-final-20261015.json",
+      "bytes": 33733,
+      "sha256": "35b5fe5da4b79e3459e1971dea00e0c2ecea1576bb9069afb751fc37d29c6394"
+    },
+    "result": {
+      "numTotalTests": 68,
+      "numPassedTests": 68,
+      "numFailedTests": 0,
+      "numPendingTests": 0,
+      "success": true
+    },
+    "gitRevision": "a89eddb01f76c1d7249dcc8e9ae2702c92e1daf5",
+    "archive": {
+      "path": "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-08\\new-chat\\outputs\\telomere\\.local\\telomere-compute-restore-20261015.tar.gz",
+      "sha256": "a6bf50b4c37bef87decec13a1713132d20bf841fdb2c2b116ec3d5d99d92559f"
+    },
+    "sourceManifest": {
+      "path": "docs/evidence/m3-m5-committed-final-20261015-source.json",
+      "bytes": 212431,
+      "sha256": "4b617876441ed94e53791a65f3c54bb350b240bd85694660efdae138ff99c9d9"
+    },
+    "dependencySetup": {
+      "path": "docs/evidence/m3-m5-committed-dependencies-20261015.json",
+      "bytes": 521,
+      "sha256": "2b65eed0ac5d2d7213f8023700bc6c662ce5f7241209062212507f821d1509f5"
+    },
+    "sourceBoundary": "Entire669-file exact committed Gitblob archive; isolated local directory with fresh npmci. Activeworking-treeM6 changes excluded.",
+    "inventoriedFiles": 669,
+    "allInventoriedSourcesUnchangedDuringRun": true,
+    "changedDuringRun": [],
+    "scope": "9 fundedCPU/rollback/reorg cases,3 nativeESM orders,52 existingMCP/execSDK cases,1 actual configured-main payment-intake case,3 M5ingress/config cases. No public payment or GPU/TEE claim."
+  },
+  "additionalAcceptance": {
+    "originalFailedImportSuitesAndNativeOrders": {
+      "path": "docs/evidence/x402-payment-import-leaves-20261015.json",
+      "bytes": 26905,
+      "sha256": "62bbd58880002de4c90939af4993929bac1dfeba09cc065b70b596b2752e266f",
+      "result": {
+        "numTotalTests": 55,
+        "numPassedTests": 55,
+        "numFailedTests": 0,
+        "numPendingTests": 0,
+        "success": true
+      }
+    },
+    "configuredMain": "Parent-owned tests/platform-x402-main.test.ts passed1/1 at its stated earlier cutoff; real authenticated intake/intent acceptance with no token transfer."
+  },
+  "historicalAcceptance": {
+    "beforeLeafFix9": {
+      "evidence": {
+        "path": "docs/evidence/x402-cpu-frozen-20261015.json",
+        "bytes": 4891,
+        "sha256": "8089d778e2dfd821bb9539979fd8a676d908d37edc9fcc2f5fb735e6493cdc02",
+        "result": {
+          "numTotalTests": 9,
+          "numPassedTests": 9,
+          "numFailedTests": 0,
+          "numPendingTests": 0,
+          "success": true
+        }
+      },
+      "sourceManifest": {
+        "path": "docs/evidence/x402-cpu-frozen-source-20261015.json",
+        "bytes": 9970,
+        "sha256": "7398082f29e353942350e52a475004f73a550c4a3d14ed7f235813039fd4c0bb"
+      },
+      "inventoriedFiles": 30,
+      "stableFiles": 29,
+      "changedFiles": [
+        "src/app.ts"
+      ],
+      "explanation": "Parent changed independent M5 ingress Pick wiring during the run; historical focused evidence only."
+    },
+    "earlier7": {
+      "path": "docs/evidence/x402-cpu-complete-20261015.json",
+      "bytes": 3872,
+      "sha256": "842fb7cdb74a58464751585ba8744bacdda7a86cffdf67a3b87b95236377e4cb",
+      "result": {
+        "numTotalTests": 7,
+        "numPassedTests": 7,
+        "numFailedTests": 0,
+        "numPendingTests": 0,
+        "success": true
+      }
+    },
+    "postLeafFocused12": {
+      "evidence": {
+        "path": "docs/evidence/x402-cpu-leaf-final-20261015.json",
+        "bytes": 6060,
+        "sha256": "e2a4be1f3cfb6bfb249b58c809a6542b4cddf6d4105485c2035767e787207782",
+        "result": {
+          "numTotalTests": 12,
+          "numPassedTests": 12,
+          "numFailedTests": 0,
+          "numPendingTests": 0,
+          "success": true
+        }
+      },
+      "cases": "9 actual funded/legacy/reorg cases plus3 fresh native ESM import-order processes",
+      "failed": 0,
+      "skipped": 0,
+      "sourceManifest": {
+        "path": "docs/evidence/x402-cpu-leaf-final-source-20261015.json",
+        "bytes": 11201,
+        "sha256": "81e4f49c77612af509011a6d856f4696a0973686ef33ccbb13d9f654d3a90e9f"
+      },
+      "inventoriedFiles": 34,
+      "allInventoriedSourcesUnchangedDuringRun": true,
+      "changedDuringRun": [],
+      "currentFilesChangedSinceAcceptance": [
+        "src/sdk/index.ts",
+        "src/main.ts"
+      ],
+      "postRunChangeExplanation": "After the run sdk/index.ts gained independent M5 named exports and main.ts changed parent-owned M5 startup wiring. A fresh native ESM SDK import succeeded separately. The later full source gate must include both exact files.",
+      "sourceBoundary": "Focused inventory only, not the entire dependency graph; coordinated full pre/post and Linux regression remain pending."
+    }
+  },
+  "historicalFailedRuns": [
+    {
+      "evidence": {
+        "path": "docs/evidence/x402-cpu-initial-20261015.json",
+        "bytes": 5403,
+        "sha256": "7a4e9269eec5001391ab5ac46fdec1dba3679e68a3585b4c94d268c642b03f43",
+        "result": {
+          "numTotalTests": 6,
+          "numPassedTests": 2,
+          "numFailedTests": 4,
+          "numPendingTests": 0,
+          "success": false
+        }
+      },
+      "reason": "Fixture teardown called nonexistent runtime.close; affected case outcomes not accepted."
+    },
+    {
+      "evidence": {
+        "path": "docs/evidence/x402-cpu-retry-20261015.json",
+        "bytes": 4242,
+        "sha256": "3d7aeddee48db484a43ba45e7fd13f34107b8d086c13ff6c80e7736e10807f04",
+        "result": {
+          "numTotalTests": 6,
+          "numPassedTests": 4,
+          "numFailedTests": 2,
+          "numPendingTests": 0,
+          "success": false
+        }
+      },
+      "reason": "Fixture expected raw digest but HostKit returned JSON-encoded task output."
+    },
+    {
+      "evidence": {
+        "path": "docs/evidence/x402-cpu-expanded-20261015.json",
+        "bytes": 4045,
+        "sha256": "f3f021a9a8ac8fe6fad6d7cdc7350e04aa4543fc825724936aa43e0c97789b2c",
+        "result": {
+          "numTotalTests": 6,
+          "numPassedTests": 4,
+          "numFailedTests": 2,
+          "numPendingTests": 0,
+          "success": false
+        }
+      },
+      "reason": "1.5-second fixture workload did not establish positive billable meter interval; positive workload extended to12seconds."
+    },
+    {
+      "evidence": {
+        "path": "docs/evidence/x402-cpu-full-20261015.json",
+        "bytes": 4300,
+        "sha256": "e2198bb5f03ede8cb41b4a1f4f062541336e22bc0f4ecf05a2674eaa374acf14",
+        "result": {
+          "numTotalTests": 7,
+          "numPassedTests": 6,
+          "numFailedTests": 1,
+          "numPendingTests": 0,
+          "success": false
+        }
+      },
+      "reason": "One fixture closed hour from stale pre-CPU block time; now closes max(actual endedAt,chain timestamp). Receipt_pending was not treated as paid completion."
+    }
+  ],
+  "verifiedBehavior": [
+    "Durable challenge/run before402; immutable payment/intent hashes before response; no signatures/private keys/raw wallet transactions retained",
+    "Retained upstream Permit2 bytecode and unchanged official x402 Upto Proxy, ordinary EIP170 deployment",
+    "Both schemes fully reserve for an undeposited EOA and execute actual HTTP HostKit CPU subprocess once",
+    "Identical authorized outsider call admits actual successful hash; owner duplicate reverts without replacement payment",
+    "Positive final CPU charge with original9percent fee; exact remaining EOA escrow refund and EOA withdrawal",
+    "Independent historical reader accepts legitimate later Leash updates and rejects wrong asset runtime pin",
+    "Real reverted admissions conserve token balances and authorization state for wrong scope, cross-scheme signature, expiry, cancellation and caps",
+    "Extracted Receive/Transfer or standalone Upto Proxy call cannot consume protected reservation authorization",
+    "Original intent reconstructed after response loss, expiry or used nonce without a fresh run/nonce or payment-success claim",
+    "Actual post-execution reorg plus same-quote balance-funded replacement cannot publish, settle or redispatch old x402/domain3 outcome",
+    "Pure payment schema leaves preserve old APIs and remove native ESM initialization cycle"
+  ],
+  "contractBuild": {
+    "compiler": "0.8.28+commit.7893614a.Emscripten.clang",
+    "creationBytes": 27638,
+    "runtimeBytes": 23621,
+    "eip170RuntimeLimit": 24576,
+    "unlimitedCodeSizeFlagUsed": false
+  },
+  "upstreamReferences": {
+    "manifest": "tests/fixtures/x402-reference/provenance.json",
+    "permit2Commit": "cc56ad0f3439c502c246fc5cfcc3db92bb8b7219",
+    "x402Commit": "7f2b2f1f77fa5317615735e3378a6fad41cccb4e",
+    "localFixtureIsPublicRuntimeProvenance": false
+  },
+  "remainingBoundaries": [
+    "No public Base escrow deployment, owner funding, Permit2 approval or wallet acceptance",
+    "No generic x402 client/settlement compatibility claim for the mandatory reservation extension",
+    "No automatic external transaction discovery, backend payment relayer, replacement authorization or credit from used nonce state",
+    "Unknown unadmitted external refunds require original evidence; stop, timeout refund and withdrawal remain owner actions",
+    "No Vault/economics/SPM/receipt-v2/session/inference/GPU/TEE combination on domain4",
+    "The68-case committed local cohort is accepted. Parent-owned full backend/Linux regression and actual gVisor file restore are separate gates; these counts do not establish the full specification or launch readiness."
+  ],
+  "caseAccounting": {
+    "primary12": {
+      "newX402": 6,
+      "newDomain3Reorg": 1,
+      "existingDomain3Regression": 2,
+      "nativeEsmImportOrders": 3
+    },
+    "additional55": "The same3 native ESM cases plus52 existing MCP/platform-exec-client cases. Do not add overlapping native cases twice.",
+    "distinctPrimaryAndImportCases": 64,
+    "parentConfiguredMainSeparate": 1,
+    "finalCoordinatedDistinctCases": 68,
+    "finalBreakdown": {
+      "fundedCpuLegacyAndReorg": 9,
+      "nativeEsmImportOrders": 3,
+      "existingMcpAndExecSdk": 52,
+      "configuredMain": 1,
+      "m5IngressApp": 1,
+      "m5InputConfig": 2
+    }
+  }
+}

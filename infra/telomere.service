@@ -1,0 +1,28 @@
+[Unit]
+Description=Telomere closed testnet pilot
+After=network-online.target docker.service
+Requires=docker.service
+
+[Service]
+Type=simple
+User=telomere
+Group=telomere
+SupplementaryGroups=docker
+WorkingDirectory=/opt/telomere-pilot/app
+EnvironmentFile=/opt/telomere-pilot/config/pilot.env
+ExecStart=/usr/bin/node dist/src/main.js
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=35
+CPUQuota=100%
+MemoryMax=768M
+TasksMax=128
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/telomere-pilot/data
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target

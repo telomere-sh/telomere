@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "initial677Revision": "b042c1bc3119754e06f6b662f2e46c108a63db36",
+  "initial677ArchiveSha256": "3e901e235bb9e50ff4c8dea8312aa05da7364f4865aa3c46014cb5a806122a49",
+  "prior685Revision": "8d848f20c8dc4a2b3d672013777e1c630ecd233e",
+  "prior685ArchiveSha256": "45cdb729cb9ccf3aa5e9a063940c0d732ba2bcad59e612d5e1e3f3a9058164c4",
+  "correctedRevision": "354fe7af62ea6701faafc3b04522abb1b4524d2d",
+  "correctedArchiveSha256": "86b5dc9f36dcf841963f0ffa8161023c126f1fae473c94909f5dddae3040fdce",
+  "correctedSourceFiles": 685,
+  "priorCoreFilesByteIdentical": 676,
+  "allProductionDependencyAndConfigFilesByteIdentical": true,
+  "allEightAdditiveFilesByteIdentical": true,
+  "onlyChangedPath": "tests/selection-contracts.test.ts",
+  "exactFixtureReplacementVerified": true,
+  "change": "Test-only bounded settle gas default300000 and two explanatory comments; no assertion, contract, production or dependency change.",
+  "sources": [
+    {
+      "revision": "b042c1bc3119754e06f6b662f2e46c108a63db36",
+      "archiveSha256": "3e901e235bb9e50ff4c8dea8312aa05da7364f4865aa3c46014cb5a806122a49",
+      "files": 677
+    },
+    {
+      "revision": "8d848f20c8dc4a2b3d672013777e1c630ecd233e",
+      "archiveSha256": "45cdb729cb9ccf3aa5e9a063940c0d732ba2bcad59e612d5e1e3f3a9058164c4",
+      "files": 685
+    },
+    {
+      "revision": "354fe7af62ea6701faafc3b04522abb1b4524d2d",
+      "archiveSha256": "86b5dc9f36dcf841963f0ffa8161023c126f1fae473c94909f5dddae3040fdce",
+      "files": 685
+    }
+  ]
+}

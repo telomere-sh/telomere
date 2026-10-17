@@ -1,0 +1,264 @@
+{
+  "schemaVersion": 1,
+  "status": "passed",
+  "runnerSha256": "f9d9b264e9b5b447894ff982239b96c4be2973fe4d94daa23a14d4ed63943d32",
+  "actualCleanupFunctionAstSha256": "ae96ed09d411117eb3c1535724438674fd4962a5d4c75ac98355d079467b46b2",
+  "sourceUnchanged": true,
+  "cases": [
+    {
+      "case": "no_requested_objects_is_noop",
+      "passed": true,
+      "complete": true,
+      "reason": null,
+      "mockMutations": [],
+      "mockPidSignals": [],
+      "deadlinesObserved": [
+        145
+      ]
+    },
+    {
+      "case": "exact_owned_pg_full_id_removed",
+      "passed": true,
+      "complete": true,
+      "reason": null,
+      "mockMutations": [
+        [
+          "docker",
+          "container",
+          "rm",
+          "--force",
+          "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        ]
+      ],
+      "mockPidSignals": [],
+      "deadlinesObserved": [
+        145
+      ]
+    },
+    {
+      "case": "lost_pg_ack_resolves_exact_name_label_full_id",
+      "passed": true,
+      "complete": true,
+      "reason": null,
+      "mockMutations": [
+        [
+          "docker",
+          "container",
+          "rm",
+          "--force",
+          "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        ]
+      ],
+      "mockPidSignals": [],
+      "deadlinesObserved": [
+        145
+      ]
+    },
+    {
+      "case": "mismatched_pg_id_held",
+      "passed": true,
+      "complete": false,
+      "reason": null,
+      "mockMutations": [],
+      "mockPidSignals": [],
+      "deadlinesObserved": [
+        145
+      ]
+    },
+    {
+      "case": "mismatched_pg_owner_label_held",
+      "passed": true,
+      "complete": false,
+      "reason": null,
+      "mockMutations": [],
+      "mockPidSignals": [],
+      "deadlinesObserved": [
+        145
+      ]
+    },
+    {
+      "case": "occupied_namespace_not_deleted",
+      "passed": true,
+      "complete": false,
+      "reason": null,
+      "mockMutations": [],
+      "mockPidSignals": [],
+      "deadlinesObserved": [
+        145
+      ]
+    },
+    {
+      "case": "empty_owned_namespace_deleted",
+      "passed": true,
+      "complete": true,
+      "reason": null,
+      "mockMutations": [
+        [
+          "ip",
+          "netns",
+          "delete",
+          "tlmr-roll-87b79e1aa092"
+        ]
+      ],
+      "mockPidSignals": [],
+      "deadlinesObserved": [
+        145
+      ]
+    },
+    {
+      "case": "daemon_stop_failure_not_complete",
+      "passed": true,
+      "complete": false,
+      "reason": null,
+      "mockMutations": [
+        [
+          "systemctl",
+          "stop",
+          "telomere-tlmr-roll-87b79e1aa092.service"
+        ]
+      ],
+      "mockPidSignals": [],
+      "deadlinesObserved": [
+        145
+      ]
+    },
+    {
+      "case": "exact_helper_stop_failure_uses_exact_kill",
+      "passed": true,
+      "complete": true,
+      "reason": null,
+      "mockMutations": [
+        [
+          "systemctl",
+          "stop",
+          "telomere-staging-354fe7af62ea-final04-latest.service"
+        ],
+        [
+          "systemctl",
+          "kill",
+          "--kill-whom=all",
+          "--signal=KILL",
+          "telomere-staging-354fe7af62ea-final04-latest.service"
+        ]
+      ],
+      "mockPidSignals": [],
+      "deadlinesObserved": [
+        145
+      ]
+    },
+    {
+      "case": "reused_pid_is_never_signalled",
+      "passed": true,
+      "complete": true,
+      "reason": null,
+      "mockMutations": [],
+      "mockPidSignals": [],
+      "deadlinesObserved": [
+        145
+      ]
+    },
+    {
+      "case": "exact_start_and_cmdline_anvil_stopped",
+      "passed": true,
+      "complete": true,
+      "reason": null,
+      "mockMutations": [],
+      "mockPidSignals": [
+        [
+          43210,
+          15
+        ]
+      ],
+      "deadlinesObserved": [
+        145
+      ]
+    },
+    {
+      "case": "live_pid_without_original_start_held",
+      "passed": true,
+      "complete": false,
+      "reason": null,
+      "mockMutations": [],
+      "mockPidSignals": [],
+      "deadlinesObserved": [
+        145
+      ]
+    },
+    {
+      "case": "lost_anvil_ack_exact_cgroup_empty_except_guard",
+      "passed": true,
+      "complete": true,
+      "reason": null,
+      "mockMutations": [],
+      "mockPidSignals": [],
+      "deadlinesObserved": [
+        145
+      ]
+    },
+    {
+      "case": "lost_anvil_ack_other_cgroup_child_held",
+      "passed": true,
+      "complete": false,
+      "reason": null,
+      "mockMutations": [],
+      "mockPidSignals": [],
+      "deadlinesObserved": [
+        145
+      ]
+    },
+    {
+      "case": "foreign_outer_cgroup_rejected_before_mutation",
+      "passed": true,
+      "complete": null,
+      "reason": "clone_outer_cgroup",
+      "mockMutations": [],
+      "mockPidSignals": [],
+      "deadlinesObserved": []
+    },
+    {
+      "case": "invalid_inventory_rejected_before_mutation",
+      "passed": true,
+      "complete": null,
+      "reason": "clone_inventory_bound",
+      "mockMutations": [],
+      "mockPidSignals": [],
+      "deadlinesObserved": []
+    },
+    {
+      "case": "nonboolean_request_rejected_before_mutation",
+      "passed": true,
+      "complete": null,
+      "reason": "clone_resource_flags",
+      "mockMutations": [],
+      "mockPidSignals": [],
+      "deadlinesObserved": []
+    },
+    {
+      "case": "cleanup_has_independent_allowance_after_operation_expired",
+      "passed": true,
+      "complete": true,
+      "reason": null,
+      "mockMutations": [],
+      "mockPidSignals": [],
+      "deadlinesObserved": [
+        145
+      ]
+    },
+    {
+      "case": "recovery_cleanup_respects_remaining_recovery_budget",
+      "passed": true,
+      "complete": true,
+      "reason": null,
+      "mockMutations": [],
+      "mockPidSignals": [],
+      "deadlinesObserved": [
+        120
+      ]
+    }
+  ],
+  "actualDockerCalls": 0,
+  "actualSshCalls": 0,
+  "actualSignals": 0,
+  "actualProcessSpawns": 0,
+  "profileOrKeyReads": false
+}

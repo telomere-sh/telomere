@@ -1,0 +1,216 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-14",
+  "checkedAt": "2026-10-14T17:12:10.562509+00:00",
+  "sourceSnapshot": "/opt/telomere-host-runtime/backend-preflight-20261014-4635959f",
+  "decision": "UNAPPROVED",
+  "liveAdmission": false,
+  "readOnly": true,
+  "nearReportGets": 2,
+  "paidInferencePosts": 0,
+  "walletTransactions": 0,
+  "serviceChanges": 0,
+  "policyChanges": 0,
+  "policy": {
+    "path": "/var/lib/enclave/releases/e1-20261001/acceptance-v6-20261004/accepted/provider-policy.json",
+    "sha256": "0x75abdd6f7e2a075863b71afa68a7e7dddb43115f3834b6428ace33a228d89ffa",
+    "validUntil": "2026-10-08T14:29:11Z"
+  },
+  "localReadiness": {
+    "readOnly": true,
+    "reportGets": 0,
+    "paidPosts": 0,
+    "readiness": {
+      "state": "unavailable",
+      "reasonCode": "POLICY_EXPIRED",
+      "checkedAt": "2026-10-14T17:09:57.069Z",
+      "verification": "enclave_verified",
+      "scope": "local_configuration",
+      "liveAttestationChecked": false,
+      "policyExpiresAt": "2026-10-08T14:29:11.000Z"
+    }
+  },
+  "cloudPacket": {
+    "schemaVersion": 1,
+    "status": "captured",
+    "reasonCode": "CANDIDATE_CAPTURED",
+    "checkedAt": "2026-10-14T17:07:50.684Z",
+    "endpoint": "https://cloud-api.near.ai",
+    "model": "z-ai/glm-5.3-flash",
+    "approval": "UNAPPROVED",
+    "hardwareVerified": false,
+    "reportGets": 1,
+    "paidPosts": 0,
+    "inventory": {
+      "gatewayReports": 1,
+      "modelCandidates": 1,
+      "manifests": 2,
+      "immutableImageClaims": 1
+    },
+    "pendingChecks": [
+      "Intel quote/collateral, accepted TCB/advisories and debug rejection",
+      "Verified quote nonce/signer binding and RTMR3 event-log replay",
+      "Raw app-compose hash versus verified MRCONFIGID",
+      "NVIDIA evidence for every model candidate",
+      "Gateway TLS SPKI binding on the captured connection",
+      "Cryptographic image provenance, subject digests, publisher/build/source identities",
+      "Independent measured-workload review and separately approved bounded Cloud policy",
+      "Fresh live admission and one separately authorized bounded completion/signature acceptance",
+      "Shared model-key and incomplete model/Gateway/response binding limitations"
+    ],
+    "httpStatus": 200,
+    "response": {
+      "sha256": "0xa1c60438d5a0964f299e2d126c3db88ef0f97a666c29c971c57aeda8f38336dc",
+      "bytes": 298730
+    }
+  },
+  "directPacket": {
+    "schemaVersion": 1,
+    "status": "captured",
+    "reasonCode": "CANDIDATE_CAPTURED",
+    "checkedAt": "2026-10-14T17:08:56.479Z",
+    "endpoint": "https://glm-5-3-flash.completions.near.ai",
+    "model": "z-ai/glm-5.3-flash",
+    "approval": "UNAPPROVED",
+    "hardwareVerified": false,
+    "reportGets": 1,
+    "paidPosts": 0,
+    "httpStatus": 200,
+    "response": {
+      "sha256": "0xff5f06a813fa43fe26303a7d20dca187a1aa2ce746fc4d8ecff1375356462aa8",
+      "bytes": 394794
+    }
+  },
+  "gatewayAppraisal": {
+    "schemaVersion": 1,
+    "mode": "capture",
+    "scope": "captured_gateway_evidence",
+    "approval": "UNAPPROVED",
+    "liveAdmission": false,
+    "verifiedAt": 1791997736,
+    "checkedAt": "2026-10-14T17:08:56.675680+00:00",
+    "nativeTcb": {
+      "overall": {
+        "status": "OutOfDate",
+        "advisory_ids": [
+          "INTEL-SA-01192",
+          "INTEL-SA-01245",
+          "INTEL-SA-01312",
+          "INTEL-SA-01313"
+        ]
+      },
+      "qe": {
+        "status": "UpToDate",
+        "advisory_ids": []
+      },
+      "platform": {
+        "status": "OutOfDate",
+        "advisory_ids": [
+          "INTEL-SA-01192",
+          "INTEL-SA-01245",
+          "INTEL-SA-01312",
+          "INTEL-SA-01313"
+        ]
+      }
+    },
+    "strictTcbAccepted": false,
+    "classification": "PLATFORM_TCB_OUT_OF_DATE",
+    "bindingChecks": {
+      "nonceSignerSpkiBinding": true,
+      "echoedNonce": true,
+      "echoedSpki": true,
+      "recordedCertificateSpki": true,
+      "appComposeMrconfig": true,
+      "eventLogRtmr3": true,
+      "debugBitClear": true
+    },
+    "offlineReplayMatches": true,
+    "tamperedQuoteRejectedOffline": true,
+    "tamperedCollateralRejectedOffline": true,
+    "intelCollateralFetchInvocations": 1,
+    "newNearReportGets": 0,
+    "inferencePosts": 0,
+    "files": [
+      {
+        "name": "quote.bin",
+        "sha256": "51598a2bf7ae1d5ef11cfdc00c8eebe0d57a55968114696dc42813528a9e9c09",
+        "bytes": 5006
+      },
+      {
+        "name": "intel-collateral.json",
+        "sha256": "3831900ac3f91c1447b4630b56ea062253cdd51b6432d4bdfb192fa63fd05886",
+        "bytes": 20537
+      },
+      {
+        "name": "native-verdict.json",
+        "sha256": "99c0d9022f1034420a19601b4573ed5cadb60eed3ee9b7a7872efe40a8da99ad",
+        "bytes": 1990
+      },
+      {
+        "name": "gateway-evidence.json",
+        "sha256": "7f77db550df37e3b244a9ca566d92d78e39b8c5e0ad9c2ad590871eb6d332d0e",
+        "bytes": 82843
+      }
+    ]
+  },
+  "cloudModelAppraisal": {
+    "status": "MODEL_HARDWARE_VERIFIED",
+    "approval": "UNAPPROVED",
+    "liveAdmission": false,
+    "gatewayAppraised": false,
+    "newNearReportGets": 0,
+    "paidInferencePosts": 0,
+    "candidates": [
+      {
+        "index": 0,
+        "status": "MODEL_HARDWARE_VERIFIED",
+        "model": "z-ai/glm-5.3-flash",
+        "gpuCount": 8,
+        "composeManagerActionsSha256": "4c6eb48f299c533df1ed2b79d098333a0d694bbfe6c8b23b71da882689ea177b"
+      }
+    ]
+  },
+  "directAppraisal": {
+    "status": "DIRECT_HARDWARE_VERIFIED",
+    "model": "z-ai/glm-5.3-flash",
+    "gpuCount": 8,
+    "composeManagerActionsSha256": "f903bd0f836f7720580c6bb94534c2399e7800956d5bb8011a3b1432bbd54733",
+    "approval": "UNAPPROVED",
+    "liveAdmission": false,
+    "newNearReportGets": 0,
+    "paidInferencePosts": 0
+  },
+  "directPolicyComparison": {
+    "status": "POLICY_EXPIRED",
+    "policyTimeGate": "EXPIRED",
+    "approval": "UNAPPROVED",
+    "liveAdmission": false,
+    "policyRenewed": false,
+    "newNearReportGets": 0,
+    "paidInferencePosts": 0,
+    "model": "z-ai/glm-5.3-flash",
+    "gpuCount": 8,
+    "composeManagerActionsSha256": "f903bd0f836f7720580c6bb94534c2399e7800956d5bb8011a3b1432bbd54733",
+    "baselineProfileIndex": 0,
+    "profileExactMatch": false,
+    "deltas": [
+      {
+        "field": "composeManagerActionsSha256",
+        "baseline": "00ac037cde28499ca5ee97b3fda1cd168d174bcd24f3a52adfa09f64047f6013",
+        "candidate": "f903bd0f836f7720580c6bb94534c2399e7800956d5bb8011a3b1432bbd54733"
+      },
+      {
+        "field": "measurements.rt_mr3",
+        "baseline": "7163da0f28d141a255a70e58fd999db70af07b802c404ee3ecf780d6f9c11159f7c4489a4c615146879d2e76784af347",
+        "candidate": "5321bf7a942a3429115a7bcb011fbb941bbc47141beceb66fc3460c286157f3fd282817f718515e8ddb6285ba307c9ca"
+      }
+    ]
+  },
+  "privateEvidenceRoot": "/opt/telomere-host-runtime/backend-preflight-20261014-4635959f/.local/near-fresh-20261014T170748Z",
+  "limitations": [
+    "candidate captures and model hardware appraisals do not authorize a live session",
+    "no inference completion or response signature was tested",
+    "raw evidence and credentials remain private on the VPS",
+    "vendor collateral GETs are additional read-only traffic and not included in nearReportGets"
+  ]
+}

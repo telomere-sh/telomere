@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "scope": "One requested post-review direct parent delegation recheck; no ongoing polling",
+  "queries": [
+    {
+      "observedAt": "2026-10-15T19:54:35.634574+00:00",
+      "command": [
+        "/usr/bin/dig",
+        "@a0.nic.sh",
+        "telomere.sh",
+        "NS",
+        "+norecurse",
+        "+time=3",
+        "+tries=1",
+        "+nocmd"
+      ],
+      "exitCode": 0,
+      "stdout": ";; Got answer:\n;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 51398\n;; flags: qr; QUERY: 1, ANSWER: 0, AUTHORITY: 2, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version: 0, flags:; udp: 1232\n;; QUESTION SECTION:\n;telomere.sh.\t\t\tIN\tNS\n\n;; AUTHORITY SECTION:\ntelomere.sh.\t\t3600\tIN\tNS\tdns1.registrar-servers.com.\ntelomere.sh.\t\t3600\tIN\tNS\tdns2.registrar-servers.com.\n\n;; Query time: 4 msec\n;; SERVER: 65.22.160.9#53(a0.nic.sh) (UDP)\n;; WHEN: Thu Oct 15 21:54:35 CEST 2026\n;; MSG SIZE  rcvd: 99\n\n",
+      "stderr": ""
+    },
+    {
+      "observedAt": "2026-10-15T19:54:35.680295+00:00",
+      "command": [
+        "/usr/bin/dig",
+        "@a2.nic.sh",
+        "telomere.sh",
+        "NS",
+        "+norecurse",
+        "+time=3",
+        "+tries=1",
+        "+nocmd"
+      ],
+      "exitCode": 0,
+      "stdout": ";; Got answer:\n;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 59591\n;; flags: qr; QUERY: 1, ANSWER: 0, AUTHORITY: 2, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version: 0, flags:; udp: 1232\n;; QUESTION SECTION:\n;telomere.sh.\t\t\tIN\tNS\n\n;; AUTHORITY SECTION:\ntelomere.sh.\t\t3600\tIN\tNS\tdns1.registrar-servers.com.\ntelomere.sh.\t\t3600\tIN\tNS\tdns2.registrar-servers.com.\n\n;; Query time: 16 msec\n;; SERVER: 65.22.163.9#53(a2.nic.sh) (UDP)\n;; WHEN: Thu Oct 15 21:54:35 CEST 2026\n;; MSG SIZE  rcvd: 99\n\n",
+      "stderr": ""
+    }
+  ],
+  "dnsChanges": 0,
+  "externalMessages": 0
+}

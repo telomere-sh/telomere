@@ -1,0 +1,10 @@
+{
+  "checkedAt": "2026-10-08T14:19:42.665Z",
+  "readOnly": true,
+  "chainId": 46630,
+  "rpcChainIdMatched": true,
+  "deployer": { "address": "0x2C85d8d8B177476A7c705970891ed97a4046941D", "balanceWei": "0" },
+  "operator": { "address": "0x5d38F6db9E574337f6F7a3895B1Eb9374198bFE1", "balanceWei": "0" },
+  "publicDeploymentSubmitted": false,
+  "ownerWalletRequiredForOperatorFunding": false
+}

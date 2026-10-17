@@ -1,0 +1,51 @@
+{
+  "status": "passed",
+  "checkedAt": "2026-10-12T08:53:06.275Z",
+  "isolation": "gvisor",
+  "image": "127.0.0.1:15002/telomere-cpu@sha256:6839949540d11906cbdbc614867ac3a825fa0e6f8cbed90c79773979517b4bbe",
+  "dedicatedDockerSocket": true,
+  "freshHostIdentity": true,
+  "existingHostKitDaemonUnchanged": true,
+  "actualLoopbackHttp": true,
+  "splitUtf8Preserved": true,
+  "initialUtf8BomNormalized": true,
+  "nulStdoutRejectedDurably": true,
+  "incompleteUtf8RejectedDurably": true,
+  "subsequentValidCommandCompleted": true,
+  "journalCloseReopenVerified": true,
+  "cases": [
+    {
+      "name": "split_utf8_and_bom",
+      "state": "completed",
+      "executorValidated": true,
+      "signedGvisorStatusVerified": true,
+      "durableCleanupConfirmed": true
+    },
+    {
+      "name": "nul_stdout",
+      "state": "failed",
+      "executorValidated": true,
+      "signedGvisorStatusVerified": true,
+      "durableCleanupConfirmed": true
+    },
+    {
+      "name": "incomplete_utf8_stdout",
+      "state": "failed",
+      "executorValidated": true,
+      "signedGvisorStatusVerified": true,
+      "durableCleanupConfirmed": true
+    },
+    {
+      "name": "following_valid_utf8",
+      "state": "completed",
+      "executorValidated": true,
+      "signedGvisorStatusVerified": true,
+      "durableCleanupConfirmed": true
+    }
+  ],
+  "publicTransactions": 0,
+  "paidProviderRequests": 0,
+  "privateKeysIncluded": false,
+  "isolatedHttpAndJournalStopped": true,
+  "isolatedCellsCleanupConfirmed": true
+}

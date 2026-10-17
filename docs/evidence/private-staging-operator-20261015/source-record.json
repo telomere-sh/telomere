@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "kind": "exact_reviewed_operator_bytes",
+  "files": [
+    {
+      "path": "docs/evidence/private-staging-operator-20261015/rollout.py",
+      "sha256": "2db2d042bb3cf24ddbf2a07fc47c9f9c3ab6fd73e0375348b5a3c965ce04d958",
+      "bytes": 37113
+    },
+    {
+      "path": "docs/evidence/private-staging-operator-20261015/clone-smoke.mjs",
+      "sha256": "b4676b5c7b9a22e5cf3f5619b63d0485844ac50895b20a19b5ea99d7c3944005",
+      "bytes": 19739
+    },
+    {
+      "path": "docs/evidence/private-staging-operator-20261015/README.md",
+      "sha256": "a9b50f7621764072be2663601a0c4657989ac1c1b798e6f3174b4093025ffd79",
+      "bytes": 9198
+    },
+    {
+      "path": "docs/evidence/private-staging-operator-20261015/upload-launch.py",
+      "sha256": "1d51ce68e0e21b74df0ec11675398420817a5f268511726e6d3a546d35b43373",
+      "bytes": 18848
+    },
+    {
+      "path": "docs/evidence/private-staging-operator-20261015/upload-launch-usage.md",
+      "sha256": "f1b7ede1a66eb419546a7ba54a6ccfacd638cfbe62350462eff1ebdcc1292a0c",
+      "bytes": 4340
+    }
+  ],
+  "review": "docs/private-staging-rollout-composed-review-2026-10-15.json",
+  "executionProofSeparate": true,
+  "containsProfileOrKeyContents": false
+}

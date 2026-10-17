@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "checkedAtUtc": "2026-10-13T14:58:00Z",
+  "scope": "Exact committed current-Cyst resolver and LangGraph paid CPU starter in an isolated private Linux checkout",
+  "commit": "6d84c84a6b6ffe13daf10139f6a278d1034536f7",
+  "sourceArchiveSha256": "4be5e08518318bbd39e8cb31bdf42940a7d8d3221215b281c5e970b677818d92",
+  "normalBuild": "passed",
+  "tests": {
+    "largeCystFiles": 4,
+    "largeCystPassed": 18,
+    "largeCystFailed": 0,
+    "largeCystSkipped": 0,
+    "langGraphFiles": 1,
+    "langGraphPassed": 1,
+    "langGraphFailed": 0,
+    "langGraphSkipped": 0
+  },
+  "trackedFilesComparedWithArchiveAfterBuildAndTests": 710,
+  "trackedFilesMismatched": [],
+  "existingTelomereAndEnclaveServicesStillRunning": true,
+  "ownedRemoteCheckoutRemoved": true,
+  "publicProviderOrChainTestCalls": 0,
+  "liveServiceMutationDuringAcceptance": false,
+  "limits": "Local Anvil and loopback S3 fixtures; no public funded wallet transaction, independent-region S3, real GPU Cell, supplier lease or production rollout. The later 5e91dd7 MCP resource commit was verified locally, not in this Linux archive."
+}

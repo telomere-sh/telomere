@@ -1,0 +1,83 @@
+import hashlib,json,os,pathlib,pwd,re,secrets,shutil,subprocess,tarfile,time,urllib.request
+BASE=pathlib.Path('/opt/telomere-mainnet-pilot')
+RELEASE=BASE/'releases/ee6169d1007b11f037fbc409dc1f7575f15117c9'
+SOURCE=RELEASE/'dist/website'
+PUBLIC_BASE=pathlib.Path('/var/www/telomere-public')
+PUBLIC=PUBLIC_BASE/RELEASE.name
+WRAPPER=BASE/'operator-wallet-https'
+UNIT=pathlib.Path('/etc/systemd/system/telomere-owner-review-https.service')
+ARCHIVE=BASE/'work/domain-owner-review-https.tar.gz'
+def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
+def run(args,timeout=45):return subprocess.check_output(args,text=True,stderr=subprocess.STDOUT,timeout=timeout).strip()
+assert json.loads((BASE/'private/ownership.json').read_text())['id']=='f1f1fa857fb34ae9adb708ecf6af7166'
+assert not (BASE/'private/activation.json').exists()
+assert sha(ARCHIVE)=='2fec96ea274fa844667a46b5bd2f5b2e9dab0e104538f079fd93eafccdb363c3'
+assert not WRAPPER.exists() and not WRAPPER.is_symlink() and not UNIT.exists()
+assert sha(BASE/'operator-wallet/PACKAGE-MANIFEST.json')=='fca399b17e90f7193266d5be89489ec6acdfe061f7374539678fa5122db2ce58'
+before={unit:run(['systemctl','show',unit,'-p','MainPID,ActiveState,NRestarts']).splitlines() for unit in ['telomere-staging.service','telomere-staging-chain.service','telomere-staging-watchdog.service']}
+WRAPPER.mkdir(mode=0o750);os.chown(WRAPPER,0,993)
+with tarfile.open(ARCHIVE,'r:gz') as source:
+    entries=source.getmembers()
+    assert len(entries)==5 and all(p.isfile() and len(pathlib.PurePosixPath(p.name).parts)==1 and p.name not in ['.','..'] for p in entries)
+    for entry in entries:
+        path=WRAPPER/entry.name;path.write_bytes(source.extractfile(entry).read());os.chmod(path,0o640);os.chown(path,0,993)
+assert sha(WRAPPER/'MANIFEST.json')=='d62fe9d4ad300e073fcd5e590f44ad992d8cdf70a033199f54e058fe16f2e2bc'
+manifest=json.loads((WRAPPER/'MANIFEST.json').read_bytes())
+for item in manifest['files']:assert sha(WRAPPER/item['path'])==item['sha256']
+assert sha(WRAPPER/'run-review-https.sh')=='35c0ec5e911c4d8f8284afa9b14303a2681129d64ca368331e34dc4c2a4169be'
+UNIT.write_bytes((WRAPPER/'telomere-owner-review-https.service.draft').read_bytes());os.chmod(UNIT,0o644)
+run(['/bin/sh','-n',str(WRAPPER/'run-review-https.sh')])
+expected=json.loads((BASE/'private/expected.json').read_text());pins={p['path']:p['sha256'] for p in expected['runtimePins']}
+assert SOURCE.is_dir() and not SOURCE.is_symlink() and not PUBLIC_BASE.exists()
+PUBLIC_BASE.mkdir(mode=0o755);PUBLIC.mkdir(mode=0o755)
+files=[]
+for path in sorted(SOURCE.rglob('*')):
+    assert not path.is_symlink() and path.resolve()==path
+    relative=path.relative_to(SOURCE);target=PUBLIC/relative
+    assert all(re.fullmatch(r'[A-Za-z0-9_-][A-Za-z0-9._-]*',part) for part in relative.parts)
+    if path.is_dir():target.mkdir(mode=0o755);continue
+    assert path.is_file() and path.stat().st_size<=32*1024*1024
+    digest=sha(path);assert pins['dist/website/'+relative.as_posix()]==digest
+    with target.open('xb') as out:out.write(path.read_bytes())
+    os.chmod(target,0o644);assert sha(target)==digest
+    files.append({'path':relative.as_posixPath() if False else relative.as_posix(),'bytes':path.stat().st_size,'sha256':digest})
+assert len(files)<=2048 and {'index.html','page.html'}<={item['path'] for item in files}
+(BASE/'work/domain-static-website.json').write_text(json.dumps({'sourceCommit':RELEASE.name,'source':str(SOURCE),'publicRoot':str(PUBLIC),'files':files,'sourceChanged':False,'byteExact':True},indent=2)+'\n')
+code="import {loadWebsite} from './dist/src/website.js';const w=await loadWebsite('./dist/website');console.log(w.policyFor(new Request('https://telomere.sh/')));"
+policy=subprocess.check_output(['/opt/node-v22.23.3-linux-x64/bin/node','--input-type=module'],input=code,text=True,cwd=RELEASE,timeout=15).strip()
+assert policy.startswith("default-src 'self'; script-src 'self' ") and '$' not in policy and '"' not in policy and '\n' not in policy
+(BASE/'work/domain-website-csp.txt').write_text(policy+'\n')
+auth=pathlib.Path('/etc/nginx/telomere-owner-review.htpasswd')
+assert not auth.exists() and not auth.is_symlink()
+password=secrets.token_urlsafe(24)
+hashed=subprocess.check_output(['/usr/bin/openssl','passwd','-6','-stdin'],input=password+'\n',text=True,timeout=10).strip()
+assert hashed.startswith('$6$')
+fd=os.open(auth,os.O_WRONLY|os.O_CREAT|os.O_EXCL,0o640)
+with os.fdopen(fd,'w') as stream:stream.write('owner:'+hashed+'\n')
+os.chmod(auth,0o640);os.chown(auth,0,pwd.getpwnam('www-data').pw_gid)
+access=BASE/'private/review-access.txt'
+fd=os.open(access,os.O_WRONLY|os.O_CREAT|os.O_EXCL,0o600)
+with os.fdopen(fd,'w') as stream:stream.write('URL: https://review.telomere.sh/\nUsername: owner\nPassword: '+password+'\n')
+run(['systemctl','daemon-reload'])
+run(['systemctl','start',UNIT.name])
+deadline=time.monotonic()+45
+while True:
+    try:
+        req=urllib.request.Request('http://127.0.0.1:3284/api/plan',headers={'Host':'review.telomere.sh'})
+        with urllib.request.urlopen(req,timeout=3) as response:public=json.load(response)
+        break
+    except Exception:
+        assert time.monotonic()<deadline,'New HTTPS-origin helper did not start'
+        time.sleep(1)
+assert public['plan']['reviewDigest']=='0xc9d585926f2489d5d3745ec996eac8fc8eab0fc2d217c9b352c5f6c627f00e2f'
+after={unit:run(['systemctl','show',unit,'-p','MainPID,ActiveState,NRestarts']).splitlines() for unit in before}
+assert after==before
+record={'status':'HTTPS-origin loopback runtime and exact static copy prepared; DNS/TLS activation pending',
+        'publicOrigin':'https://review.telomere.sh','bind':'127.0.0.1:3284','unitSha256':sha(UNIT),
+        'wrapperSha256':sha(WRAPPER/'run-review-https.sh'),'frozenOverlayUnchanged':True,'sourceCommit':RELEASE.name,
+        'websiteFiles':len(files),'websiteBytes':sum(item['bytes'] for item in files),'publicRoot':str(PUBLIC),
+        'basicAuthGeneratedOnVpsOnly':True,'authFileUid':auth.stat().st_uid,'authFileGid':auth.stat().st_gid,
+        'authFileMode':oct(auth.stat().st_mode&0o777),'tlsCertificateNotIssuedYet':True,
+        'oldStagingProcessesUnchanged':True,'controllerStarted':False,'ownerWalletRequests':0,'publicTransactionsSent':0}
+(BASE/'work/domain-runtime-preparation.json').write_text(json.dumps(record,indent=2)+'\n')
+print(json.dumps(record))

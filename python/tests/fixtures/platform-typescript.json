@@ -1,0 +1,665 @@
+{
+  "source": "viem 2.57.3; actual compiled platform ABI; offline public test identities; no RPC/HTTP/broadcast",
+  "epoch": 1700000000,
+  "owner": "0x1563915e194D8CfBA1943570603F7606A3115508",
+  "agent": "0x5CbDd86a2FA8Dc4bDdd8a8f69dBa48572EeC07FB",
+  "pins": {
+    "chainId": 31337,
+    "escrowAddress": "0x4444444444444444444444444444444444444444",
+    "tokenAddress": "0x5555555555555555555555555555555555555555",
+    "tokenCodeHash": "0x5555555555555555555555555555555555555555555555555555555555555555",
+    "reviewedTokenKind": "immutable",
+    "quoteSigner": "0x19E7E376E7C213B7E7e7e46cc70A5dD086DAff2A",
+    "receiptRootAddress": "0x6666666666666666666666666666666666666666",
+    "hostRegistryAddress": "0x7777777777777777777777777777777777777777",
+    "feeRouterAddress": "0x8888888888888888888888888888888888888888",
+    "escrowCodeHash": "0x4444444444444444444444444444444444444444444444444444444444444444",
+    "receiptRootCodeHash": "0x6666666666666666666666666666666666666666666666666666666666666666",
+    "hostRegistryCodeHash": "0x7777777777777777777777777777777777777777777777777777777777777777",
+    "feeRouterCodeHash": "0x8888888888888888888888888888888888888888888888888888888888888888"
+  },
+  "vaultPins": {
+    "registryAddress": "0x9999999999999999999999999999999999999999",
+    "registryCodeHash": "0x9999999999999999999999999999999999999999999999999999999999999999",
+    "implementationAddress": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "implementationCodeHash": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  "binding": {
+    "vault": "0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "owner": "0x1563915e194D8CfBA1943570603F7606A3115508",
+    "agentWallet": "0x5CbDd86a2FA8Dc4bDdd8a8f69dBa48572EeC07FB",
+    "agentId": "0xcccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+    "leashId": "0xdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+  },
+  "config": {
+    "protocol": "telomere-platform-v1",
+    "pins": {
+      "chainId": 31337,
+      "escrowAddress": "0x4444444444444444444444444444444444444444",
+      "tokenAddress": "0x5555555555555555555555555555555555555555",
+      "tokenCodeHash": "0x5555555555555555555555555555555555555555555555555555555555555555",
+      "reviewedTokenKind": "immutable",
+      "quoteSigner": "0x19E7E376E7C213B7E7e7e46cc70A5dD086DAff2A",
+      "receiptRootAddress": "0x6666666666666666666666666666666666666666",
+      "hostRegistryAddress": "0x7777777777777777777777777777777777777777",
+      "feeRouterAddress": "0x8888888888888888888888888888888888888888",
+      "escrowCodeHash": "0x4444444444444444444444444444444444444444444444444444444444444444",
+      "receiptRootCodeHash": "0x6666666666666666666666666666666666666666666666666666666666666666",
+      "hostRegistryCodeHash": "0x7777777777777777777777777777777777777777777777777777777777777777",
+      "feeRouterCodeHash": "0x8888888888888888888888888888888888888888888888888888888888888888"
+    },
+    "maxSeconds": 120,
+    "feeBps": 900,
+    "capacity": [
+      {
+        "hostId": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+        "hardwareClass": "cpu",
+        "region": "test-one",
+        "imageDigest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "lane": "standard",
+        "pricePerSecond": "101"
+      }
+    ]
+  },
+  "vaultConfig": {
+    "protocol": "telomere-platform-v1",
+    "pins": {
+      "chainId": 31337,
+      "escrowAddress": "0x4444444444444444444444444444444444444444",
+      "tokenAddress": "0x5555555555555555555555555555555555555555",
+      "tokenCodeHash": "0x5555555555555555555555555555555555555555555555555555555555555555",
+      "reviewedTokenKind": "immutable",
+      "quoteSigner": "0x19E7E376E7C213B7E7e7e46cc70A5dD086DAff2A",
+      "receiptRootAddress": "0x6666666666666666666666666666666666666666",
+      "hostRegistryAddress": "0x7777777777777777777777777777777777777777",
+      "feeRouterAddress": "0x8888888888888888888888888888888888888888",
+      "escrowCodeHash": "0x4444444444444444444444444444444444444444444444444444444444444444",
+      "receiptRootCodeHash": "0x6666666666666666666666666666666666666666666666666666666666666666",
+      "hostRegistryCodeHash": "0x7777777777777777777777777777777777777777777777777777777777777777",
+      "feeRouterCodeHash": "0x8888888888888888888888888888888888888888888888888888888888888888"
+    },
+    "maxSeconds": 120,
+    "feeBps": 900,
+    "capacity": [
+      {
+        "hostId": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+        "hardwareClass": "cpu",
+        "region": "test-one",
+        "imageDigest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "lane": "standard",
+        "pricePerSecond": "101"
+      }
+    ],
+    "binding": {
+      "vault": "0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "owner": "0x1563915e194D8CfBA1943570603F7606A3115508",
+      "agentWallet": "0x5CbDd86a2FA8Dc4bDdd8a8f69dBa48572EeC07FB",
+      "agentId": "0xcccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "leashId": "0xdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+    },
+    "vaultPins": {
+      "registryAddress": "0x9999999999999999999999999999999999999999",
+      "registryCodeHash": "0x9999999999999999999999999999999999999999999999999999999999999999",
+      "implementationAddress": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "implementationCodeHash": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    }
+  },
+  "input": {
+    "leashId": "0xdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+    "task": {
+      "kind": "hash_chain",
+      "text": "Telomere проверка 🧬",
+      "iterations": 13
+    },
+    "maxSeconds": 3,
+    "deadline": 1700000090,
+    "maxSpend": "331",
+    "regions": [
+      "test-one"
+    ]
+  },
+  "eoa": {
+    "prepared": {
+      "input": {
+        "leashId": "0xdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "task": {
+          "kind": "hash_chain",
+          "text": "Telomere проверка 🧬",
+          "iterations": 13
+        },
+        "maxSeconds": 3,
+        "deadline": 1700000090,
+        "maxSpend": "331",
+        "regions": [
+          "test-one"
+        ]
+      },
+      "quote": {
+        "runId": "0x1212121212121212121212121212121212121212121212121212121212121212",
+        "leashId": "0xdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "hostId": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+        "payer": "0x1563915e194D8CfBA1943570603F7606A3115508",
+        "hwClass": 0,
+        "regionHash": "0xf882b041df1e48481702647ad2ea091d422a9ae84e3f2d14aca8f94cb93caabe",
+        "imageHash": "0x97073bd2a182e6ce50d876bd362c16b06a7f8982c69af5219273cbe688663f7c",
+        "workloadHash": "0xccd387cb017d1894436c696d936d702853ece2c63ace8193ef668820f6317bc0",
+        "maxSeconds": 3,
+        "pricePerSecond": "101",
+        "inferencePrice": "0",
+        "quoteExpiry": 1700000060
+      },
+      "signature": "0x8f5455fe7aad563821b651d44492f3f22d714a89b07761cec9564a33577d93243eca5ca78fa75773f4ad1f77781dfbccc82cdcc9c5e91225950c7ff420a3b74f1c",
+      "ceiling": "331",
+      "imageProof": [
+        "0x1010101010101010101010101010101010101010101010101010101010101010"
+      ],
+      "regionProof": [
+        "0x2020202020202020202020202020202020202020202020202020202020202020",
+        "0x3030303030303030303030303030303030303030303030303030303030303030"
+      ],
+      "transaction": {
+        "chainId": 31337,
+        "to": "0x4444444444444444444444444444444444444444",
+        "data": "0x1efc1e2c1212121212121212121212121212121212121212121212121212121212121212ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee0000000000000000000000001563915e194d8cfba1943570603f7606a31155080000000000000000000000000000000000000000000000000000000000000000f882b041df1e48481702647ad2ea091d422a9ae84e3f2d14aca8f94cb93caabe97073bd2a182e6ce50d876bd362c16b06a7f8982c69af5219273cbe688663f7cccd387cb017d1894436c696d936d702853ece2c63ace8193ef668820f6317bc0000000000000000000000000000000000000000000000000000000000000000300000000000000000000000000000000000000000000000000000000000000650000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000006553f13c00000000000000000000000000000000000000000000000000000000000001e0000000000000000000000000000000000000000000000000000000000000026000000000000000000000000000000000000000000000000000000000000002a000000000000000000000000000000000000000000000000000000000000000418f5455fe7aad563821b651d44492f3f22d714a89b07761cec9564a33577d93243eca5ca78fa75773f4ad1f77781dfbccc82cdcc9c5e91225950c7ff420a3b74f1c0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000011010101010101010101010101010101010101010101010101010101010101010000000000000000000000000000000000000000000000000000000000000000220202020202020202020202020202020202020202020202020202020202020203030303030303030303030303030303030303030303030303030303030303030",
+        "value": "0"
+      }
+    },
+    "quoteDigest": "0x8ae49d2366ad3c78131cb1a8a6d9c7d9afbf370a3337444cd2bfc6216b229f71",
+    "run": {
+      "id": "0x1212121212121212121212121212121212121212121212121212121212121212",
+      "status": "queued",
+      "quote": {
+        "runId": "0x1212121212121212121212121212121212121212121212121212121212121212",
+        "leashId": "0xdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "hostId": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+        "payer": "0x1563915e194D8CfBA1943570603F7606A3115508",
+        "hwClass": 0,
+        "regionHash": "0xf882b041df1e48481702647ad2ea091d422a9ae84e3f2d14aca8f94cb93caabe",
+        "imageHash": "0x97073bd2a182e6ce50d876bd362c16b06a7f8982c69af5219273cbe688663f7c",
+        "workloadHash": "0xccd387cb017d1894436c696d936d702853ece2c63ace8193ef668820f6317bc0",
+        "maxSeconds": 3,
+        "pricePerSecond": "101",
+        "inferencePrice": "0",
+        "quoteExpiry": 1700000060
+      },
+      "ceiling": "331",
+      "admissionTx": "0x7878787878787878787878787878787878787878787878787878787878787878",
+      "settlementTx": null,
+      "result": null,
+      "settlement": null,
+      "charged": null,
+      "refund": null,
+      "errorCode": null
+    },
+    "admissionHash": "0x7878787878787878787878787878787878787878787878787878787878787878",
+    "actions": {
+      "stop": {
+        "chainId": 31337,
+        "to": "0x4444444444444444444444444444444444444444",
+        "data": "0xe66f99f91212121212121212121212121212121212121212121212121212121212121212",
+        "value": "0"
+      },
+      "refund": {
+        "chainId": 31337,
+        "to": "0x4444444444444444444444444444444444444444",
+        "data": "0x3070c7361212121212121212121212121212121212121212121212121212121212121212",
+        "value": "0"
+      }
+    }
+  },
+  "vault": {
+    "prepared": {
+      "input": {
+        "leashId": "0xdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "task": {
+          "kind": "hash_chain",
+          "text": "Telomere проверка 🧬",
+          "iterations": 13
+        },
+        "maxSeconds": 3,
+        "deadline": 1700000090,
+        "maxSpend": "331",
+        "regions": [
+          "test-one"
+        ]
+      },
+      "quote": {
+        "runId": "0x3434343434343434343434343434343434343434343434343434343434343434",
+        "leashId": "0xdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "hostId": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+        "payer": "0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "hwClass": 0,
+        "regionHash": "0xf882b041df1e48481702647ad2ea091d422a9ae84e3f2d14aca8f94cb93caabe",
+        "imageHash": "0x97073bd2a182e6ce50d876bd362c16b06a7f8982c69af5219273cbe688663f7c",
+        "workloadHash": "0xccd387cb017d1894436c696d936d702853ece2c63ace8193ef668820f6317bc0",
+        "maxSeconds": 3,
+        "pricePerSecond": "101",
+        "inferencePrice": "0",
+        "quoteExpiry": 1700000060
+      },
+      "signature": "0x363287e115e4669ce7b1731a5f4b6b96037757933385a3a381ae8e1daaef737b553690e4d06baa9976c1e752c7aa663fea822c2ecf24f79a57a921f60743f6841c",
+      "ceiling": "331",
+      "imageProof": [
+        "0x4040404040404040404040404040404040404040404040404040404040404040",
+        "0x5050505050505050505050505050505050505050505050505050505050505050"
+      ],
+      "regionProof": [
+        "0x6060606060606060606060606060606060606060606060606060606060606060"
+      ],
+      "transaction": {
+        "chainId": 31337,
+        "to": "0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "data": "0xb1ba416d3434343434343434343434343434343434343434343434343434343434343434ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee000000000000000000000000bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb0000000000000000000000000000000000000000000000000000000000000000f882b041df1e48481702647ad2ea091d422a9ae84e3f2d14aca8f94cb93caabe97073bd2a182e6ce50d876bd362c16b06a7f8982c69af5219273cbe688663f7cccd387cb017d1894436c696d936d702853ece2c63ace8193ef668820f6317bc0000000000000000000000000000000000000000000000000000000000000000300000000000000000000000000000000000000000000000000000000000000650000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000006553f13c00000000000000000000000000000000000000000000000000000000000001e0000000000000000000000000000000000000000000000000000000000000026000000000000000000000000000000000000000000000000000000000000002c00000000000000000000000000000000000000000000000000000000000000041363287e115e4669ce7b1731a5f4b6b96037757933385a3a381ae8e1daaef737b553690e4d06baa9976c1e752c7aa663fea822c2ecf24f79a57a921f60743f6841c0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000024040404040404040404040404040404040404040404040404040404040404040505050505050505050505050505050505050505050505050505050505050505000000000000000000000000000000000000000000000000000000000000000016060606060606060606060606060606060606060606060606060606060606060",
+        "value": "0"
+      }
+    },
+    "quoteDigest": "0xd6aa4bd53b54f762326f923e5cbb2579440aceb043eeb95aaec0b5967e7de3eb",
+    "run": {
+      "id": "0x3434343434343434343434343434343434343434343434343434343434343434",
+      "status": "queued",
+      "quote": {
+        "runId": "0x3434343434343434343434343434343434343434343434343434343434343434",
+        "leashId": "0xdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "hostId": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+        "payer": "0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "hwClass": 0,
+        "regionHash": "0xf882b041df1e48481702647ad2ea091d422a9ae84e3f2d14aca8f94cb93caabe",
+        "imageHash": "0x97073bd2a182e6ce50d876bd362c16b06a7f8982c69af5219273cbe688663f7c",
+        "workloadHash": "0xccd387cb017d1894436c696d936d702853ece2c63ace8193ef668820f6317bc0",
+        "maxSeconds": 3,
+        "pricePerSecond": "101",
+        "inferencePrice": "0",
+        "quoteExpiry": 1700000060
+      },
+      "ceiling": "331",
+      "admissionTx": "0x5656565656565656565656565656565656565656565656565656565656565656",
+      "settlementTx": null,
+      "result": null,
+      "settlement": null,
+      "charged": null,
+      "refund": null,
+      "errorCode": null
+    },
+    "admissionHash": "0x5656565656565656565656565656565656565656565656565656565656565656",
+    "actions": {
+      "stop": {
+        "chainId": 31337,
+        "to": "0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "data": "0xe66f99f93434343434343434343434343434343434343434343434343434343434343434",
+        "value": "0"
+      },
+      "refund": {
+        "chainId": 31337,
+        "to": "0x4444444444444444444444444444444444444444",
+        "data": "0x3070c7363434343434343434343434343434343434343434343434343434343434343434",
+        "value": "0"
+      }
+    }
+  },
+  "emptyProofs": {
+    "prepared": {
+      "input": {
+        "leashId": "0xdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "task": {
+          "kind": "hash_chain",
+          "text": "Telomere проверка 🧬",
+          "iterations": 13
+        },
+        "maxSeconds": 3,
+        "deadline": 1700000090,
+        "maxSpend": "331",
+        "regions": [
+          "test-one"
+        ]
+      },
+      "quote": {
+        "runId": "0x1212121212121212121212121212121212121212121212121212121212121212",
+        "leashId": "0xdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "hostId": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+        "payer": "0x1563915e194D8CfBA1943570603F7606A3115508",
+        "hwClass": 0,
+        "regionHash": "0xf882b041df1e48481702647ad2ea091d422a9ae84e3f2d14aca8f94cb93caabe",
+        "imageHash": "0x97073bd2a182e6ce50d876bd362c16b06a7f8982c69af5219273cbe688663f7c",
+        "workloadHash": "0xccd387cb017d1894436c696d936d702853ece2c63ace8193ef668820f6317bc0",
+        "maxSeconds": 3,
+        "pricePerSecond": "101",
+        "inferencePrice": "0",
+        "quoteExpiry": 1700000060
+      },
+      "signature": "0x8f5455fe7aad563821b651d44492f3f22d714a89b07761cec9564a33577d93243eca5ca78fa75773f4ad1f77781dfbccc82cdcc9c5e91225950c7ff420a3b74f1c",
+      "ceiling": "331",
+      "imageProof": [],
+      "regionProof": [],
+      "transaction": {
+        "chainId": 31337,
+        "to": "0x4444444444444444444444444444444444444444",
+        "data": "0x1efc1e2c1212121212121212121212121212121212121212121212121212121212121212ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee0000000000000000000000001563915e194d8cfba1943570603f7606a31155080000000000000000000000000000000000000000000000000000000000000000f882b041df1e48481702647ad2ea091d422a9ae84e3f2d14aca8f94cb93caabe97073bd2a182e6ce50d876bd362c16b06a7f8982c69af5219273cbe688663f7cccd387cb017d1894436c696d936d702853ece2c63ace8193ef668820f6317bc0000000000000000000000000000000000000000000000000000000000000000300000000000000000000000000000000000000000000000000000000000000650000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000006553f13c00000000000000000000000000000000000000000000000000000000000001e00000000000000000000000000000000000000000000000000000000000000260000000000000000000000000000000000000000000000000000000000000028000000000000000000000000000000000000000000000000000000000000000418f5455fe7aad563821b651d44492f3f22d714a89b07761cec9564a33577d93243eca5ca78fa75773f4ad1f77781dfbccc82cdcc9c5e91225950c7ff420a3b74f1c0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "value": "0"
+      }
+    },
+    "quoteDigest": "0x8ae49d2366ad3c78131cb1a8a6d9c7d9afbf370a3337444cd2bfc6216b229f71",
+    "run": {
+      "id": "0x1212121212121212121212121212121212121212121212121212121212121212",
+      "status": "queued",
+      "quote": {
+        "runId": "0x1212121212121212121212121212121212121212121212121212121212121212",
+        "leashId": "0xdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "hostId": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+        "payer": "0x1563915e194D8CfBA1943570603F7606A3115508",
+        "hwClass": 0,
+        "regionHash": "0xf882b041df1e48481702647ad2ea091d422a9ae84e3f2d14aca8f94cb93caabe",
+        "imageHash": "0x97073bd2a182e6ce50d876bd362c16b06a7f8982c69af5219273cbe688663f7c",
+        "workloadHash": "0xccd387cb017d1894436c696d936d702853ece2c63ace8193ef668820f6317bc0",
+        "maxSeconds": 3,
+        "pricePerSecond": "101",
+        "inferencePrice": "0",
+        "quoteExpiry": 1700000060
+      },
+      "ceiling": "331",
+      "admissionTx": "0x7878787878787878787878787878787878787878787878787878787878787878",
+      "settlementTx": null,
+      "result": null,
+      "settlement": null,
+      "charged": null,
+      "refund": null,
+      "errorCode": null
+    },
+    "admissionHash": "0x7878787878787878787878787878787878787878787878787878787878787878",
+    "actions": {
+      "stop": {
+        "chainId": 31337,
+        "to": "0x4444444444444444444444444444444444444444",
+        "data": "0xe66f99f91212121212121212121212121212121212121212121212121212121212121212",
+        "value": "0"
+      },
+      "refund": {
+        "chainId": 31337,
+        "to": "0x4444444444444444444444444444444444444444",
+        "data": "0x3070c7361212121212121212121212121212121212121212121212121212121212121212",
+        "value": "0"
+      }
+    }
+  },
+  "execInput": {
+    "leashId": "0xdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+    "task": {
+      "kind": "exec",
+      "imageDigest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "argv": [
+        "/usr/local/bin/node",
+        "-e",
+        "process.stdout.write(require(\"node:fs\").readFileSync(0,\"utf8\"))"
+      ],
+      "stdin": "Telomere проверка 🧬\n"
+    },
+    "maxSeconds": 3,
+    "deadline": 1700000090,
+    "maxSpend": "331",
+    "regions": [
+      "test-one"
+    ]
+  },
+  "execConfig": {
+    "protocol": "telomere-platform-v1",
+    "pins": {
+      "chainId": 31337,
+      "escrowAddress": "0x4444444444444444444444444444444444444444",
+      "tokenAddress": "0x5555555555555555555555555555555555555555",
+      "tokenCodeHash": "0x5555555555555555555555555555555555555555555555555555555555555555",
+      "reviewedTokenKind": "immutable",
+      "quoteSigner": "0x19E7E376E7C213B7E7e7e46cc70A5dD086DAff2A",
+      "receiptRootAddress": "0x6666666666666666666666666666666666666666",
+      "hostRegistryAddress": "0x7777777777777777777777777777777777777777",
+      "feeRouterAddress": "0x8888888888888888888888888888888888888888",
+      "escrowCodeHash": "0x4444444444444444444444444444444444444444444444444444444444444444",
+      "receiptRootCodeHash": "0x6666666666666666666666666666666666666666666666666666666666666666",
+      "hostRegistryCodeHash": "0x7777777777777777777777777777777777777777777777777777777777777777",
+      "feeRouterCodeHash": "0x8888888888888888888888888888888888888888888888888888888888888888"
+    },
+    "maxSeconds": 120,
+    "feeBps": 900,
+    "capacity": [
+      {
+        "hostId": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+        "hardwareClass": "cpu",
+        "region": "test-one",
+        "imageDigest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "lane": "standard",
+        "pricePerSecond": "101",
+        "execEnabled": true
+      }
+    ]
+  },
+  "execVaultConfig": {
+    "protocol": "telomere-platform-v1",
+    "pins": {
+      "chainId": 31337,
+      "escrowAddress": "0x4444444444444444444444444444444444444444",
+      "tokenAddress": "0x5555555555555555555555555555555555555555",
+      "tokenCodeHash": "0x5555555555555555555555555555555555555555555555555555555555555555",
+      "reviewedTokenKind": "immutable",
+      "quoteSigner": "0x19E7E376E7C213B7E7e7e46cc70A5dD086DAff2A",
+      "receiptRootAddress": "0x6666666666666666666666666666666666666666",
+      "hostRegistryAddress": "0x7777777777777777777777777777777777777777",
+      "feeRouterAddress": "0x8888888888888888888888888888888888888888",
+      "escrowCodeHash": "0x4444444444444444444444444444444444444444444444444444444444444444",
+      "receiptRootCodeHash": "0x6666666666666666666666666666666666666666666666666666666666666666",
+      "hostRegistryCodeHash": "0x7777777777777777777777777777777777777777777777777777777777777777",
+      "feeRouterCodeHash": "0x8888888888888888888888888888888888888888888888888888888888888888"
+    },
+    "maxSeconds": 120,
+    "feeBps": 900,
+    "capacity": [
+      {
+        "hostId": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+        "hardwareClass": "cpu",
+        "region": "test-one",
+        "imageDigest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "lane": "standard",
+        "pricePerSecond": "101",
+        "execEnabled": true
+      }
+    ],
+    "binding": {
+      "vault": "0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "owner": "0x1563915e194D8CfBA1943570603F7606A3115508",
+      "agentWallet": "0x5CbDd86a2FA8Dc4bDdd8a8f69dBa48572EeC07FB",
+      "agentId": "0xcccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "leashId": "0xdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+    },
+    "vaultPins": {
+      "registryAddress": "0x9999999999999999999999999999999999999999",
+      "registryCodeHash": "0x9999999999999999999999999999999999999999999999999999999999999999",
+      "implementationAddress": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "implementationCodeHash": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    }
+  },
+  "execEoa": {
+    "prepared": {
+      "input": {
+        "leashId": "0xdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "task": {
+          "kind": "exec",
+          "imageDigest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "argv": [
+            "/usr/local/bin/node",
+            "-e",
+            "process.stdout.write(require(\"node:fs\").readFileSync(0,\"utf8\"))"
+          ],
+          "stdin": "Telomere проверка 🧬\n"
+        },
+        "maxSeconds": 3,
+        "deadline": 1700000090,
+        "maxSpend": "331",
+        "regions": [
+          "test-one"
+        ]
+      },
+      "quote": {
+        "runId": "0x9090909090909090909090909090909090909090909090909090909090909090",
+        "leashId": "0xdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "hostId": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+        "payer": "0x1563915e194D8CfBA1943570603F7606A3115508",
+        "hwClass": 0,
+        "regionHash": "0xf882b041df1e48481702647ad2ea091d422a9ae84e3f2d14aca8f94cb93caabe",
+        "imageHash": "0x97073bd2a182e6ce50d876bd362c16b06a7f8982c69af5219273cbe688663f7c",
+        "workloadHash": "0xa9d519ab47f7e613159a4398599496f57be2fa0673a8f2edd6647e05b5a3d6e8",
+        "maxSeconds": 3,
+        "pricePerSecond": "101",
+        "inferencePrice": "0",
+        "quoteExpiry": 1700000060
+      },
+      "signature": "0xe845241a8979379662a23c9eceb7be93a95bd02c68b6763b49ae0bf57679b1706fa9081c140ab0e7f6026f3e025360066f6faee9df8b60c2b4de544a362713fc1c",
+      "ceiling": "331",
+      "imageProof": [
+        "0x1010101010101010101010101010101010101010101010101010101010101010"
+      ],
+      "regionProof": [
+        "0x2020202020202020202020202020202020202020202020202020202020202020",
+        "0x3030303030303030303030303030303030303030303030303030303030303030"
+      ],
+      "transaction": {
+        "chainId": 31337,
+        "to": "0x4444444444444444444444444444444444444444",
+        "data": "0x1efc1e2c9090909090909090909090909090909090909090909090909090909090909090ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee0000000000000000000000001563915e194d8cfba1943570603f7606a31155080000000000000000000000000000000000000000000000000000000000000000f882b041df1e48481702647ad2ea091d422a9ae84e3f2d14aca8f94cb93caabe97073bd2a182e6ce50d876bd362c16b06a7f8982c69af5219273cbe688663f7ca9d519ab47f7e613159a4398599496f57be2fa0673a8f2edd6647e05b5a3d6e8000000000000000000000000000000000000000000000000000000000000000300000000000000000000000000000000000000000000000000000000000000650000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000006553f13c00000000000000000000000000000000000000000000000000000000000001e0000000000000000000000000000000000000000000000000000000000000026000000000000000000000000000000000000000000000000000000000000002a00000000000000000000000000000000000000000000000000000000000000041e845241a8979379662a23c9eceb7be93a95bd02c68b6763b49ae0bf57679b1706fa9081c140ab0e7f6026f3e025360066f6faee9df8b60c2b4de544a362713fc1c0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000011010101010101010101010101010101010101010101010101010101010101010000000000000000000000000000000000000000000000000000000000000000220202020202020202020202020202020202020202020202020202020202020203030303030303030303030303030303030303030303030303030303030303030",
+        "value": "0"
+      }
+    },
+    "quoteDigest": "0x8c17d95c7cce1962adc2e623dcb9d4d5562c743a3d7cd3f1bfc6ba1dd356ffe4",
+    "run": {
+      "id": "0x9090909090909090909090909090909090909090909090909090909090909090",
+      "status": "queued",
+      "quote": {
+        "runId": "0x9090909090909090909090909090909090909090909090909090909090909090",
+        "leashId": "0xdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "hostId": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+        "payer": "0x1563915e194D8CfBA1943570603F7606A3115508",
+        "hwClass": 0,
+        "regionHash": "0xf882b041df1e48481702647ad2ea091d422a9ae84e3f2d14aca8f94cb93caabe",
+        "imageHash": "0x97073bd2a182e6ce50d876bd362c16b06a7f8982c69af5219273cbe688663f7c",
+        "workloadHash": "0xa9d519ab47f7e613159a4398599496f57be2fa0673a8f2edd6647e05b5a3d6e8",
+        "maxSeconds": 3,
+        "pricePerSecond": "101",
+        "inferencePrice": "0",
+        "quoteExpiry": 1700000060
+      },
+      "ceiling": "331",
+      "admissionTx": "0x7878787878787878787878787878787878787878787878787878787878787878",
+      "settlementTx": null,
+      "result": null,
+      "settlement": null,
+      "charged": null,
+      "refund": null,
+      "errorCode": null
+    },
+    "admissionHash": "0x7878787878787878787878787878787878787878787878787878787878787878",
+    "actions": {
+      "stop": {
+        "chainId": 31337,
+        "to": "0x4444444444444444444444444444444444444444",
+        "data": "0xe66f99f99090909090909090909090909090909090909090909090909090909090909090",
+        "value": "0"
+      },
+      "refund": {
+        "chainId": 31337,
+        "to": "0x4444444444444444444444444444444444444444",
+        "data": "0x3070c7369090909090909090909090909090909090909090909090909090909090909090",
+        "value": "0"
+      }
+    }
+  },
+  "execVault": {
+    "prepared": {
+      "input": {
+        "leashId": "0xdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "task": {
+          "kind": "exec",
+          "imageDigest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "argv": [
+            "/usr/local/bin/node",
+            "-e",
+            "process.stdout.write(require(\"node:fs\").readFileSync(0,\"utf8\"))"
+          ],
+          "stdin": "Telomere проверка 🧬\n"
+        },
+        "maxSeconds": 3,
+        "deadline": 1700000090,
+        "maxSpend": "331",
+        "regions": [
+          "test-one"
+        ]
+      },
+      "quote": {
+        "runId": "0x9191919191919191919191919191919191919191919191919191919191919191",
+        "leashId": "0xdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "hostId": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+        "payer": "0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "hwClass": 0,
+        "regionHash": "0xf882b041df1e48481702647ad2ea091d422a9ae84e3f2d14aca8f94cb93caabe",
+        "imageHash": "0x97073bd2a182e6ce50d876bd362c16b06a7f8982c69af5219273cbe688663f7c",
+        "workloadHash": "0xa9d519ab47f7e613159a4398599496f57be2fa0673a8f2edd6647e05b5a3d6e8",
+        "maxSeconds": 3,
+        "pricePerSecond": "101",
+        "inferencePrice": "0",
+        "quoteExpiry": 1700000060
+      },
+      "signature": "0x97dae1a261f37a9209c51d65885fb94ff8cb7f57cee2a2455a6ef479c66b921e52d3fe1a715280aec7d57f961e0755e2bed9fddff44005e4c21d9bd3f5e3895b1b",
+      "ceiling": "331",
+      "imageProof": [
+        "0x4040404040404040404040404040404040404040404040404040404040404040",
+        "0x5050505050505050505050505050505050505050505050505050505050505050"
+      ],
+      "regionProof": [
+        "0x6060606060606060606060606060606060606060606060606060606060606060"
+      ],
+      "transaction": {
+        "chainId": 31337,
+        "to": "0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "data": "0xb1ba416d9191919191919191919191919191919191919191919191919191919191919191ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee000000000000000000000000bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb0000000000000000000000000000000000000000000000000000000000000000f882b041df1e48481702647ad2ea091d422a9ae84e3f2d14aca8f94cb93caabe97073bd2a182e6ce50d876bd362c16b06a7f8982c69af5219273cbe688663f7ca9d519ab47f7e613159a4398599496f57be2fa0673a8f2edd6647e05b5a3d6e8000000000000000000000000000000000000000000000000000000000000000300000000000000000000000000000000000000000000000000000000000000650000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000006553f13c00000000000000000000000000000000000000000000000000000000000001e0000000000000000000000000000000000000000000000000000000000000026000000000000000000000000000000000000000000000000000000000000002c0000000000000000000000000000000000000000000000000000000000000004197dae1a261f37a9209c51d65885fb94ff8cb7f57cee2a2455a6ef479c66b921e52d3fe1a715280aec7d57f961e0755e2bed9fddff44005e4c21d9bd3f5e3895b1b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000024040404040404040404040404040404040404040404040404040404040404040505050505050505050505050505050505050505050505050505050505050505000000000000000000000000000000000000000000000000000000000000000016060606060606060606060606060606060606060606060606060606060606060",
+        "value": "0"
+      }
+    },
+    "quoteDigest": "0x74074fcd5d702076be26a59e70d5989b5dc9ce0923655f0db35f3d458fbb604f",
+    "run": {
+      "id": "0x9191919191919191919191919191919191919191919191919191919191919191",
+      "status": "queued",
+      "quote": {
+        "runId": "0x9191919191919191919191919191919191919191919191919191919191919191",
+        "leashId": "0xdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "hostId": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+        "payer": "0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "hwClass": 0,
+        "regionHash": "0xf882b041df1e48481702647ad2ea091d422a9ae84e3f2d14aca8f94cb93caabe",
+        "imageHash": "0x97073bd2a182e6ce50d876bd362c16b06a7f8982c69af5219273cbe688663f7c",
+        "workloadHash": "0xa9d519ab47f7e613159a4398599496f57be2fa0673a8f2edd6647e05b5a3d6e8",
+        "maxSeconds": 3,
+        "pricePerSecond": "101",
+        "inferencePrice": "0",
+        "quoteExpiry": 1700000060
+      },
+      "ceiling": "331",
+      "admissionTx": "0x5656565656565656565656565656565656565656565656565656565656565656",
+      "settlementTx": null,
+      "result": null,
+      "settlement": null,
+      "charged": null,
+      "refund": null,
+      "errorCode": null
+    },
+    "admissionHash": "0x5656565656565656565656565656565656565656565656565656565656565656",
+    "actions": {
+      "stop": {
+        "chainId": 31337,
+        "to": "0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "data": "0xe66f99f99191919191919191919191919191919191919191919191919191919191919191",
+        "value": "0"
+      },
+      "refund": {
+        "chainId": 31337,
+        "to": "0x4444444444444444444444444444444444444444",
+        "data": "0x3070c7369191919191919191919191919191919191919191919191919191919191919191",
+        "value": "0"
+      }
+    }
+  }
+}

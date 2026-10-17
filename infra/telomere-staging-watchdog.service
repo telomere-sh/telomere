@@ -1,0 +1,26 @@
+[Unit]
+Description=Telomere private staging read-only operator watchdog
+After=network-online.target telomere-staging.service
+Wants=network-online.target telomere-staging.service
+
+[Service]
+Type=simple
+User=telomere
+Group=telomere
+WorkingDirectory=/opt/telomere-pilot/watchdog-app
+ExecStart=/opt/node-v22.23.3-linux-x64/bin/node dist/scripts/operator-watchdog.js --env-file=/opt/telomere-pilot/config/staging.env --state-file=/opt/telomere-pilot/data/watchdog/state.json --expected-mode=demo --expected-chain-id=31337 --expected-escrow=0xCC29B19b5EcAc380688d02bd14c131e13a2a74dc --expected-token=0xb280248C1299144a3Ab708ea23B133ea188B3F8d --expected-signer=0x7D1686Bc8b611Adc1426FD2a3f0ca03a3A063cc5
+Restart=always
+RestartSec=5
+TimeoutStopSec=15
+CPUQuota=50%
+MemoryMax=512M
+TasksMax=48
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/telomere-pilot/data/watchdog
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-15T05:08:40.713963+00:00",
+  "script": ".local/private-staging-postoperation-independent-checker-20261015.py",
+  "scriptSha256": "1460a8678d64df99c34fe389806ae65a5171aaf09b2d15dcfe1ab1f4a6a5ce0c",
+  "exitCode": 0,
+  "stderrEmpty": true,
+  "sshSessions": 1,
+  "checkedSourceScripts": {
+    "status": "202dba65bababddd27c254102695700869edcdda5a1743340ef4897b32934326",
+    "runtime": "a44c122c0ae34a7afb781b4e24c81705e23b2dfb4b4533c95761a0cab6ba94de",
+    "original-data": "61bf8382fd5f5a7cfcdf7fd299a04ee62fb685223773b9952bd3e8dab62e363a"
+  },
+  "status": "passed"
+}

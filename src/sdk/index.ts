@@ -1,0 +1,86 @@
+export { TelomereClient, WalletActionUncertainError, sdkTaskSchema, sdkQuoteRequestSchema } from "./client.js";
+export type { DeadlineJobView, DeadlineQuotedRun } from './client.js';
+export { ClientAgentCoordinator } from '../agents/client.js';
+export { PaidSessionCheckpointRunner, PAID_SESSION_CHECKPOINT_MAX_BYTES } from '../agents/paid-session-checkpoint.js';
+export { PaidAgentLifecycleRunner, PaidLifecycleClientVault } from '../agents/paid-lifecycle-runner.js';
+export { PaidAgentLifecycleRunnerV2 } from '../agents/paid-lifecycle-runner-v2.js';
+export type { PaidAgentLifecycleRunnerV2Options } from '../agents/paid-lifecycle-runner-v2.js';
+export { PaidAgentLifeline } from '../agents/paid-lifeline.js';
+export { PaidLifecycleClientVaultV3, paidLifecycleVaultV3PolicySchema } from '../agents/paid-lifecycle-vault-v3.js';
+export type { PaidLifecycleVaultV3Policy } from '../agents/paid-lifecycle-vault-v3.js';
+export { PaidLifelineReservations, paidLifelineFundingPolicySchema, PAID_LIFELINE_FUNDING_SCHEMA } from '../agents/paid-lifeline-reservations.js';
+export type { PaidLifelineFundingPolicy, PaidLifelineFundingPort } from '../agents/paid-lifeline-reservations.js';
+export { createPaidOwnerLifeline } from '../agents/paid-owner-lifeline.js';
+export type { PaidLifelineIntent, PaidLifelineResult } from '../agents/paid-lifeline.js';
+export { DurableVaultCompute, createTelomereElizaPlugin, createTelomereAutomatonTools } from '../integrations/index.js';
+export type { FrameworkComputeProfile, FrameworkComputeCommand, FrameworkComputeJournal } from '../integrations/index.js';
+export type { PaidLifecycleStopPort } from '../agents/paid-lifecycle-runner.js';
+export { PaidSessionStateHandoff, PAID_SESSION_HANDOFF_MAX_BYTES } from '../agents/paid-session-handoff.js';
+export type { PaidSessionHandoffInput, PaidSessionHandoffReceipt } from '../agents/paid-session-handoff.js';
+export { PaidPreemptionHandoff } from '../agents/paid-preemption-handoff.js';
+export type { PaidPreemptionCapture } from '../agents/paid-preemption-handoff.js';
+export { PaidCpuJobReplanRunner, PAID_CPU_JOB_REPLAN_SCHEMA } from '../agents/paid-cpu-job-replan-runner.js';
+export type { PaidCpuJobReplanRunnerOptions, PaidCpuJobReplanResult } from '../agents/paid-cpu-job-replan-runner.js';
+export { PaidCpuJobFinishRunner, PAID_CPU_JOB_FINISH_SCHEMA } from '../agents/paid-cpu-job-finish-runner.js';
+export type { PaidCpuJobFinishRunnerOptions, PaidCpuJobFinishResult } from '../agents/paid-cpu-job-finish-runner.js';
+export { AgentCurrentCystPaidRestore, AGENT_CURRENT_CYST_RESTORE_MAX_BYTES } from '../agents/agent-current-cyst-restore.js';
+export type { AgentCurrentCystRestoreInput, AgentCurrentCystRestoreReceipt } from '../agents/agent-current-cyst-restore.js';
+export type { ClientAgentRunner, ClientLifecycleVault, ClientLifecycleControl } from '../agents/client.js';
+export { ClientLifeline } from '../agents/lifeline.js';
+export { HttpAgentLifecycleControl } from '../agents/http-client.js';
+export { generateCystWrappingIdentity, wrapCystRecoveryKey, unwrapCystRecoveryKey } from './cyst-key-wrap.js';
+export type { CystWrappingIdentity, CystKeyScope, WrappedCystKey } from './cyst-key-wrap.js';
+export { TelomereApiError } from "./transport.js";
+export { createPlatformReadOnlyBridge } from '../platform-runtime/read-only.js';
+export { verifyPlatformV2CombinedEvidence } from '../receipts/platform-v2-combined.js';
+export { verifyPlatformV2PublishedEvidence } from '../receipts/platform-v2-combined.js';
+export { readTlmrSchedulingWeights } from '../economics/staking-reader.js';
+export type { StakingReadPolicy, SchedulingWeightRow } from '../economics/staking-reader.js';
+export { prepareBuyAndBurn, reconcileBuyAndBurn, burnQuoteTypedData } from '../economics/buy-and-burn.js';
+export type { BuyAndBurnPins, BurnQuote } from '../economics/buy-and-burn.js';
+export { buildWeeklyWorkAllocation, weeklyWorkLeaf, CompositeWorkActivityVerifier } from '../economics/work-allocation.js';
+export type { WorkActivityVerifier, VerifiedWorkActivity, WorkAllocationPolicy, WorkClaim } from '../economics/work-allocation.js';
+export { prepareWeeklyWorkAllocation } from '../economics/work-operator.js';
+export { CanonicalCpuWorkVerifier } from '../economics/cpu-work-verifier.js';
+export { CanonicalCommittedWorkVerifier, committedWorkLeaf } from '../economics/committed-work-verifier.js';
+export { platformV2EvidenceCoreSchema } from '../receipts/platform-v2.js';
+export type { PlatformV2EvidenceCore } from '../receipts/platform-v2.js';
+export { CystClient, encryptCheckpoint, decryptCheckpoint, generateCystRecoveryKey, exportCystRecoveryKey, importCystRecoveryKey } from './cysts.js';
+export type { CystEnvelope, CystHeader, CystMetadata } from '../cysts/types.js';
+export { CystCheckpointCoordinator, DEFAULT_CYST_CHECKPOINT_INTERVAL_MS } from './cyst-checkpoints.js';
+export type { CystCheckpointTrigger, CystCheckpointScope, CystCheckpointState, CystCheckpointRecord,
+  CystCheckpointJournal, CystCheckpointVault, CystCheckpointResult } from './cyst-checkpoints.js';
+export { CystRegistryClient } from '../cysts/registry-client.js';
+export { RpcCystRegistryReader } from '../cysts/registry-reader.js';
+export { cystRegistryStorageRef, cystRegistryMatches } from '../cysts/registry-types.js';
+export type { CystRegistryReader, CystRegistryPins, CystRegistryConfig, CystRegistrySnapshot,
+  CystRegistryCommitPrepared, CystRegistryRetirePrepared, CystRegistryVerification, CystRegistryDownload } from '../cysts/registry-types.js';
+export type { DeploymentPins, FetchTransport, OwnerWallet, PilotConfig, QuoteRequest, QuotedRun, RunView,
+  WalletActionPlan, WalletConfirmation, WalletExecution, WalletIntent, WalletTransaction, WireQuote } from "./types.js";
+export { paidCpuJobInputSchema, paidCpuJobReplanSchema, paidCpuJobFinishSchema, paidCpuJobApprovalSchema, paidCpuJobSchema } from '../scheduling/paid-job-types.js';
+export type { PaidCpuJob, PaidCpuJobInput, PaidCpuJobReplan } from '../scheduling/paid-job-types.js';
+export type { PaidCpuScheduling } from '../scheduling/paid-lanes.js';
+export { evaluateMetabolismV2, paidMetabolismRate, paidMetabolismRateSchema, paidMetabolismSnapshotSchema } from '../agents/metabolism-v2.js';
+export type { PaidMetabolismRate, PaidMetabolismSnapshot } from '../agents/metabolism-v2.js';
+export { spendPermissionSchema, spendPermissionFundingSchema, spendPermissionProfileSchema,
+  spendPermissionHash, spendPermissionExtraData, spendPermissionLeashTermsHash,
+  readSpendPermissionFunding, verifySpendPermissionOpening } from '../payments/spend-permissions.js';
+export type { SpendPermission } from '../payments/spend-permissions.js';
+export { X402CpuReservationClient } from '../platform-runtime/x402-client.js';
+export { x402CpuTypedData, x402CpuRequired, x402CpuAuthorization, x402AuthorizationNonce,
+  verifyX402CpuOpening, checkX402CpuDeploymentAt } from '../payments/cpu-reservations.js';
+export type { X402CpuReservation, X402CpuPayment } from '../payments/cpu-reservations.js';
+export type { PlatformX402Challenge, PlatformX402Intent } from '../platform-runtime/types.js';
+export { PaidCystInputClient } from './paid-cyst-input.js';
+export { AgentCurrentCystPaidFileRestore } from '../agents/agent-current-cyst-file-restore.js';
+export { CYST_INPUT_PATH, cystInputDescriptorSchema, cystInputDescriptorHash } from '../host-kit/sessions/cyst-input-protocol.js';
+export type { CystInputDescriptor } from '../host-kit/sessions/cyst-input-protocol.js';
+export { captureDeclaredStateBundle } from './declared-state-bundle.js';
+export { restoreDeclaredStateBundle } from './declared-state-restore.js';
+export { declaredStateManifestSchema, declaredStatePathSchema, DECLARED_STATE_MAX_BYTES,
+  DECLARED_STATE_CELL_DIRECTORY } from '../cysts/declared-state-protocol.js';
+export type { DeclaredStateManifest } from '../cysts/declared-state-protocol.js';
+export { cpuLaneOfferSchema, cpuLaneOffersSchema, cpuLaneOffer } from '../scheduling/cpu-offers.js';
+export type { CpuLaneOffer, CpuLaneOffers } from '../scheduling/cpu-offers.js';
+export { captureDeclaredStateCheckpoint, DECLARED_STATE_CHECKPOINT_MAX_BYTES } from './declared-state-checkpoint.js';
+export type { DeclaredStateCheckpointOutput } from './declared-state-checkpoint.js';

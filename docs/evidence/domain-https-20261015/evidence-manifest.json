@@ -1,0 +1,244 @@
+{
+  "schemaVersion": 1,
+  "recordedAtUtc": "2026-10-15T20:43:06.508530+00:00",
+  "scope": "Public HTTPS preparation, narrow delivery corrections, explicitly approved social links, and bounded reference/production browser acceptance; normal-motion loops unverified; financial controller inactive",
+  "sourceArchive": {
+    "remotePublicPath": "/opt/telomere-mainnet-pilot/work/public-domain-evidence.tar.gz",
+    "sha256": "b99ef525959004a607ce91d8300b1fcdd5b75006c4b4a631d45c741b6e221699",
+    "bytes": 23205,
+    "archiveMembers": 7,
+    "uncompressedBytes": 61048,
+    "safePathsAndRegularFilesVerified": true
+  },
+  "additionalPublicRemoteRecords": [
+    "/opt/telomere-mainnet-pilot/work/enclave-temporary-stop.json",
+    "/opt/telomere-mainnet-pilot/work/website-wav-mime-fix.json",
+    "/opt/telomere-mainnet-pilot/work/website-icon-csp-fix.json",
+    "/opt/telomere-mainnet-pilot/work/website-required-icon-sources.json",
+    "/opt/telomere-mainnet-pilot/work/website-social-links-deployment.json",
+    "/opt/telomere-mainnet-pilot/work/website-current-manifest.json",
+    "/opt/telomere-mainnet-pilot/work/website-final-services.json"
+  ],
+  "privateCredentialsOrEnvironmentCopied": false,
+  "credentialFileContentRead": false,
+  "certificatePrivateKeysRead": false,
+  "existingHistoricalOpsFilesModified": false,
+  "secretScan": {
+    "scope": "All retained public records, operator sources and compact metric reports; no credentials or account files read",
+    "patterns": [
+      "private-key-pem",
+      "literal-private-key",
+      "credential-dsn",
+      "basic-auth-value",
+      "literal-secret",
+      "github-token"
+    ],
+    "findings": 0
+  },
+  "files": [
+    {
+      "path": "docs/evidence/domain-https-20261015/dns-delegation-recheck.json",
+      "bytes": 1876,
+      "sha256": "bdc8a5ce1d19d1c0bcf344a9e3523868be20d5fc8e72388ca981e119a538dc39"
+    },
+    {
+      "path": "docs/evidence/domain-https-20261015/domain-certificate-validation.json",
+      "bytes": 885,
+      "sha256": "084ac6c8313747444464c9f847d888d3cf70dba8ed05ad90284d7311960b6670"
+    },
+    {
+      "path": "docs/evidence/domain-https-20261015/domain-expected-public-summary.json",
+      "bytes": 2223,
+      "sha256": "45383e13bd9a528db33b574ffbfa728647aaca9d7d4faa4a0f829592a0dfc2a7"
+    },
+    {
+      "path": "docs/evidence/domain-https-20261015/domain-http-preparation.json",
+      "bytes": 735,
+      "sha256": "46dc2610085b0f9094771f1568d1b19470f843344b7a5fd2d42a90e79f8496c1"
+    },
+    {
+      "path": "docs/evidence/domain-https-20261015/domain-https-activation.json",
+      "bytes": 2056,
+      "sha256": "504deb6929b011d693cba4f99c316d9b685ac740b33ba911de4f1b2fa4b9fecf"
+    },
+    {
+      "path": "docs/evidence/domain-https-20261015/domain-runtime-preparation.json",
+      "bytes": 860,
+      "sha256": "cb280c0ca8614be57143823cf80e4d2a32179349510bf5a07e579697319a65ae"
+    },
+    {
+      "path": "docs/evidence/domain-https-20261015/domain-static-website.json",
+      "bytes": 53399,
+      "sha256": "4e2a4365162f98717d4054e6438a3da80ce0b5421a7ca4dbd6bfa885c469068a"
+    },
+    {
+      "path": "docs/evidence/domain-https-20261015/domain-website-csp.txt",
+      "bytes": 890,
+      "sha256": "9e5972698dda982b6989eb32ac83a55fa3904b4ce88d7509075bc3f5ef79c9bf"
+    },
+    {
+      "path": "docs/evidence/domain-https-20261015/enclave-temporary-stop.json",
+      "bytes": 3100,
+      "sha256": "301b32ec75dd851c29809fcc2bbb2338bc87e220a1f9e78472071754be74c6d2"
+    },
+    {
+      "path": "docs/evidence/domain-https-20261015/external-domain-audit-correction.json",
+      "bytes": 1217,
+      "sha256": "d36c4fdea196638d3ea7f4c0bb0266e11dad6f75679cf66287c75a900757e136"
+    },
+    {
+      "path": "docs/evidence/domain-https-20261015/external-domain-audit-summary.json",
+      "bytes": 4220,
+      "sha256": "6713e59a7d7112f2d672c834fff77d357ea16ef4c298f5d9d95a625f603d70ee"
+    },
+    {
+      "path": "docs/evidence/domain-https-20261015/external-domain-audit.json",
+      "bytes": 256389,
+      "sha256": "b0acdb7c3980fe167f48f44ec4628815b8f997d6cd7158ff096ba34b0b434bfb"
+    },
+    {
+      "path": "docs/evidence/domain-https-20261015/final-nginx-audit.json",
+      "bytes": 13302,
+      "sha256": "bfcf4615c0f8ab18a8e868233b86958ba3b28e710b8d0ae3efa3448fdfbddaea"
+    },
+    {
+      "path": "docs/evidence/domain-https-20261015/https-runtime-isolation.json",
+      "bytes": 3849,
+      "sha256": "481432bf92f9c9f6c354db4e272ff04177e93c8adf17466ab8397bf301ca0e90"
+    },
+    {
+      "path": "docs/evidence/domain-https-20261015/operator-sources/audit-external-domain.py.txt",
+      "bytes": 10588,
+      "sha256": "6bd036aa93bbcab07a3b122e85e0cb09b13ff6a128fc9f644f3eb2269b99cb53"
+    },
+    {
+      "path": "docs/evidence/domain-https-20261015/operator-sources/enable-domain-https.py.txt",
+      "bytes": 7601,
+      "sha256": "fcd5ac488132cc724ac5e4677cb712ff460023079704c5eb5b9f35b9f2199cdf"
+    },
+    {
+      "path": "docs/evidence/domain-https-20261015/operator-sources/https-boundary-audit.mjs.txt",
+      "bytes": 5600,
+      "sha256": "356cd3790a6827016ae3fa11a8e256e8eb37602bb535ffc78e015bd9a71b5b1e"
+    },
+    {
+      "path": "docs/evidence/domain-https-20261015/operator-sources/install-http-acme.py.txt",
+      "bytes": 3275,
+      "sha256": "89ef77e67cf84c31ea67051f7af91911d610d5691ad17659b278e260c52d41d6"
+    },
+    {
+      "path": "docs/evidence/domain-https-20261015/operator-sources/observe-dns.py.txt",
+      "bytes": 3662,
+      "sha256": "6f214080ccd4233bbae5daf1577c127a5ca2db4146bac47ca00f0fbf337ddc57"
+    },
+    {
+      "path": "docs/evidence/domain-https-20261015/operator-sources/prepare-domain-runtime.py.txt",
+      "bytes": 6335,
+      "sha256": "c9d8c81a6d027e5c3d6afdc9ef7dee1656df34e030d76ec95d3f1c92c62a6c4f"
+    },
+    {
+      "path": "docs/evidence/domain-https-20261015/operator-sources/render-wav-mime-only.py.txt",
+      "bytes": 2595,
+      "sha256": "e06b421b7be369718eef163ce3f4bf6491431e08fc38516f6871845d4d842857"
+    },
+    {
+      "path": "docs/evidence/domain-https-20261015/public-static-website-manifest.json",
+      "bytes": 53399,
+      "sha256": "4e2a4365162f98717d4054e6438a3da80ce0b5421a7ca4dbd6bfa885c469068a"
+    },
+    {
+      "path": "docs/evidence/domain-https-20261015/README.md",
+      "bytes": 9747,
+      "sha256": "4ae4f287a84d46a692c4d985d50e8e582f909ff949852baaaadd95fa8a75f383"
+    },
+    {
+      "path": "docs/evidence/domain-https-20261015/routing-sources/generate-website-csp.mjs.txt",
+      "bytes": 1428,
+      "sha256": "6a9435cc22f8e17c00a8b99ca07c7e1dfc151554e19e5dd2e169e9dc57621d19"
+    },
+    {
+      "path": "docs/evidence/domain-https-20261015/routing-sources/telomere-apex-static.conf.draft.txt",
+      "bytes": 1543,
+      "sha256": "c60619f3287ea933f7f5525bd41f1fa483930008a883dfa244e6c93de38995ea"
+    },
+    {
+      "path": "docs/evidence/domain-https-20261015/routing-sources/telomere-http-acme.conf.draft.txt",
+      "bytes": 422,
+      "sha256": "29403dcba89f719db98dc005968f551fcbec2f88dc7e0393e28c02443c50eab4"
+    },
+    {
+      "path": "docs/evidence/domain-https-20261015/routing-sources/telomere-owner-review.conf.draft.txt",
+      "bytes": 1613,
+      "sha256": "7246164cdb5ccbec1cfb6a4b4bb4c362a0cdadce55cc26d6fcc782060c980958"
+    },
+    {
+      "path": "docs/evidence/domain-https-20261015/social-deployment-recheck.json",
+      "bytes": 2583,
+      "sha256": "2ff106226558aa143eb9750e74463e5a4b106352e86ffbe4fabdc05b6fa79c4c"
+    },
+    {
+      "path": "docs/evidence/domain-https-20261015/social-links-approved-change.json",
+      "bytes": 1873,
+      "sha256": "d7a2022f3c86a209e14d60d8ca05f8b62c35b694fe3579f31d67627eb4a57f6e"
+    },
+    {
+      "path": "docs/evidence/domain-https-20261015/telomere-website-csp.current.conf",
+      "bytes": 1860,
+      "sha256": "201329ed30f78ce89881a5213f095979756e6c6b7b4bd79634da87eb1192090c"
+    },
+    {
+      "path": "docs/evidence/domain-https-20261015/visual-verification-summary.json",
+      "bytes": 11100,
+      "sha256": "5325000bcac5f26bdec27eb6c1844f9d4bb9e88fbb04f37c4c483ffca6dc1159"
+    },
+    {
+      "path": "docs/evidence/domain-https-20261015/wav-mime-recheck.json",
+      "bytes": 3113,
+      "sha256": "8facdabbda8742fa82b804cfef2b0c907d47af4038f3fdf3bb80fdcda3525c75"
+    },
+    {
+      "path": "docs/evidence/domain-https-20261015/website-current-manifest.json",
+      "bytes": 48800,
+      "sha256": "ede2272bc9b6d86adfc6573aae1b474f43e050f84a7be09a71d63d88830add3c"
+    },
+    {
+      "path": "docs/evidence/domain-https-20261015/website-final-services.json",
+      "bytes": 1278,
+      "sha256": "3dbb44703bafc390bc606b7d10aa809f8e712f5ff5f8cd13ece98d428d28d5b4"
+    },
+    {
+      "path": "docs/evidence/domain-https-20261015/website-icon-csp-fix.json",
+      "bytes": 1668,
+      "sha256": "77dc539f09cf6d383392bfcd4921b97fc09443be280dcde04c0afd0f24718f48"
+    },
+    {
+      "path": "docs/evidence/domain-https-20261015/website-required-icon-sources.json",
+      "bytes": 7091,
+      "sha256": "988b2800d87e7b790ef73defa1d7058474f206bb2915b19d7ec97be3679c03cb"
+    },
+    {
+      "path": "docs/evidence/domain-https-20261015/website-social-links-deployment.json",
+      "bytes": 1343,
+      "sha256": "149b38392bf04f95e7f10f3762783c193007532baffe0b9275741ec6d94d974a"
+    },
+    {
+      "path": "docs/evidence/domain-https-20261015/website-wav-mime-fix.json",
+      "bytes": 650,
+      "sha256": "36c6c6614d81efbfe78c26ac2a1f5498fbede13f1aa591423c3727086ea7a672"
+    }
+  ],
+  "managedPathBase": "repository-root",
+  "browserAcceptance": {
+    "prefersReducedMotionReduceObservedAfterCaptures": true,
+    "preferenceEmulated": false,
+    "normalMotionLoopsVerified": false,
+    "exhaustiveAnimationTimelineParityClaimed": false,
+    "screenshotsRetainedInThisDirectory": false
+  },
+  "approvedFrontendDelta": {
+    "path": "website/dist/site.js",
+    "sha256": "859669b4db1c9ba2061823769cbd80e1c38fc30be0bcbf71d4245318ab5e29ce",
+    "otherwiseOriginalImportedFiles": 410,
+    "otherwiseOriginalPublicBuiltFiles": 311
+  }
+}

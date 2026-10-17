@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "status": "passed",
+  "runnerSha256": "f9d9b264e9b5b447894ff982239b96c4be2973fe4d94daa23a14d4ed63943d32",
+  "actualCommandFunctionAstSha256": "db26c2619b0cbb5da40cb884afc8724ebfe8c2342c0aca30ea4929094ac46155",
+  "sourceUnchanged": true,
+  "cases": [
+    {
+      "case": "no_operation_deadline",
+      "passed": true,
+      "communicateTimeouts": [
+        30
+      ],
+      "signalsToMockOwnedGroup": [],
+      "reason": null
+    },
+    {
+      "case": "requested_child_timeout_clamped_to_remaining_deadline",
+      "passed": true,
+      "communicateTimeouts": [
+        5
+      ],
+      "signalsToMockOwnedGroup": [],
+      "reason": null
+    },
+    {
+      "case": "smaller_child_timeout_preserved",
+      "passed": true,
+      "communicateTimeouts": [
+        3
+      ],
+      "signalsToMockOwnedGroup": [],
+      "reason": null
+    },
+    {
+      "case": "expired_before_spawn_refused",
+      "passed": true,
+      "communicateTimeouts": [],
+      "signalsToMockOwnedGroup": [],
+      "reason": "bounded_operation_deadline"
+    },
+    {
+      "case": "child_timeout_kills_only_own_group",
+      "passed": true,
+      "communicateTimeouts": [
+        30
+      ],
+      "signalsToMockOwnedGroup": [
+        15,
+        9
+      ],
+      "reason": "TimeoutExpired"
+    },
+    {
+      "case": "controlled_termination_during_child_kills_only_own_group",
+      "passed": true,
+      "communicateTimeouts": [
+        30
+      ],
+      "signalsToMockOwnedGroup": [
+        15,
+        9
+      ],
+      "reason": "injected_termination"
+    },
+    {
+      "case": "child_nonzero_fixed_refusal",
+      "passed": true,
+      "communicateTimeouts": [
+        30
+      ],
+      "signalsToMockOwnedGroup": [],
+      "reason": "private_child_failed"
+    },
+    {
+      "case": "oversized_output_fixed_refusal",
+      "passed": true,
+      "communicateTimeouts": [
+        30
+      ],
+      "signalsToMockOwnedGroup": [],
+      "reason": "command_output_bound"
+    }
+  ],
+  "actualProcessSpawns": 0,
+  "actualSignals": 0,
+  "actualSshCalls": 0,
+  "actualDockerCalls": 0,
+  "profileOrKeyReads": false
+}

@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "gitRevision": "7bb69e5e73199ab372ca6c263297792634648aaf",
+  "archiveSha256": "d10f22b3259a9b677bdd0997650e2d786365203af4de0a3f418a0011733a73c1",
+  "sourceFiles": 703,
+  "directory": "/opt/telomere-host-runtime/backend-completion-20261015-d10f22b3259a",
+  "startedAt": "2026-10-15T11:56:17.659709+00:00",
+  "serviceMutations": false,
+  "publicTransactions": 0,
+  "paidProviderRequests": 0,
+  "nodeVersion": "v22.23.3",
+  "npm-ci": {
+    "exitCode": 0,
+    "seconds": 13.019
+  },
+  "build": {
+    "exitCode": 0,
+    "seconds": 121.62
+  },
+  "cell-bundle": {
+    "exitCode": 0,
+    "seconds": 0.251
+  },
+  "cellCjsSha256": "fd0322ab64c19b5520ae9380cc6334c30583a20e792cecb654c1f203b792c155",
+  "imageBuildContext": "/opt/telomere-host-runtime/backend-completion-20261015-d10f22b3259a/.local/declared-state-image-context",
+  "success": true,
+  "changedSource": [],
+  "finishedAt": "2026-10-15T11:58:32.685637+00:00"
+}

@@ -1,0 +1,21 @@
+{
+  "data-root": "/opt/telomere-mainnet-pilot/docker-data",
+  "exec-root": "/run/telomere-mainnet-docker/exec",
+  "pidfile": "/run/telomere-mainnet-docker/docker.pid",
+  "hosts": ["unix:///run/telomere-mainnet-docker/docker.sock"],
+  "group": "telomere-mainnet",
+  "containerd-namespace": "telomere-mainnet-cpu",
+  "bridge": "tlmr-mainnet0",
+  "fixed-cidr": "172.31.254.0/24",
+  "iptables": false,
+  "ip6tables": false,
+  "ip-forward": false,
+  "ip-masq": false,
+  "live-restore": false,
+  "default-runtime": "runsc",
+  "runtimes": {
+    "runsc": {"path": "/opt/telomere-host-runtime/gvisor/runsc"}
+  },
+  "log-driver": "json-file",
+  "log-opts": {"max-size": "10m", "max-file": "3"}
+}

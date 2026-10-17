@@ -1,0 +1,14 @@
+{
+  "ownerReviewed": false,
+  "chainId": 8453,
+  "sourceCommit": "ee6169d1007b11f037fbc409dc1f7575f15117c9",
+  "reviewDigest": "0xc9d585926f2489d5d3745ec996eac8fc8eab0fc2d217c9b352c5f6c627f00e2f",
+  "escrowAddress": "0x27c1e35F563Aa4f57a68B192d88a76c25e68e0db",
+  "operatorAddress": "0x87599dBF6f720DE7751E8CB2d36d4Ea96A4A1d38",
+  "tokenAddress": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+  "profileSha256": "8cc56fe11956df8b74725528f713fa9fb0bc1fee69f7f8485935d45499dfd7cd",
+  "deploymentTransactionHash": "REQUIRED_ACTUAL_OWNER_CREATE_TRANSACTION_HASH",
+  "deploymentBlockNumber": "REQUIRED_ACTUAL_FINALIZED_DEPLOYMENT_BLOCK_NUMBER",
+  "deploymentBlockHash": "REQUIRED_ACTUAL_CANONICAL_DEPLOYMENT_BLOCK_HASH",
+  "escrowRuntimeKeccak256": "0xd2ce03e0de4dc334d671294ae5f900eee12ff05cebc6f6484455103f0b204ed5"
+}

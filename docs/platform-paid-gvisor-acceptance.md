@@ -1,0 +1,21 @@
+# Reproducible paid CPU session acceptance on Linux
+
+Current network target: Base 8453 / Base Sepolia 84532 with native USDC. Dated acceptance and linked JSON evidence retain their original network/source scope; see [migration record](base-usdc-migration-2026-10-14.md).
+
+Run `npm run acceptance:paid-gvisor` on a Linux x86-64 host with Node.js 22+, installed project dependencies, a local Anvil binary from the optional package, Docker with the `runsc` runtime, and a reviewed CPU image already present by immutable `repo@sha256:` reference. The image must contain `/usr/local/bin/node` and permit the nonroot session user to write to `/tmp`. The operator supplies a **dedicated** Docker Unix socket for acceptance. The script rejects the default shared `/var/run/docker.sock` and `/run/docker.sock` paths. It never pulls an image, modifies a system service, connects to a public chain, or contacts a paid provider.
+
+```sh
+npm run acceptance:paid-gvisor -- \
+  --image 'registry.example/telomere-cpu@sha256:<64-hex-digest>' \
+  --docker-socket /run/telomere-acceptance/docker.sock
+```
+
+`--docker-binary /absolute/path/to/docker` is optional. Run the script from a checkout that has been installed with `npm ci`. Record the Git commit and source archive hash separately alongside the JSON report; a passing run applies only to the source actually executed. The `repo@sha256:` reference must be replaced with the reviewed image already loaded into the acceptance daemon. Do not pass a live wallet key, RPC URL, NEAR credential, or production config. The script generates all chain and signing identities in a private temporary directory.
+
+The driver starts a fresh loopback Host Kit HTTP server with a fresh host journal and controller identity, then starts its own loopback Anvil on chain 31337. It deploys local fixture token, escrow, host registry, router, signer set and receipt root, registers the fresh host, funds a local Leash, starts the platform API, and opens a 30-second paid session. It runs two Node commands in one real `runsc` Cell. The first writes a file in the Cell's `/tmp`; the second reads it. Docker inspection confirms the same container ID, `runsc`, no network, and a read-only root during both commands.
+
+The driver waits for signed lease expiry and physical cleanup. It replays every persisted host tick against the signed controller ACKs and compares the host's signed complete event-history hash with the controller's receipt-bound history. It advances only the disposable Anvil clock to close the receipt hour, checks the onchain Merkle proof, exact host charge, rounded fee, refund, token conservation, host release, and fee buckets. The same command IDs and exact inputs must return their original results after expiry, settlement, and controller restart without another Docker dispatch. A changed input under a prior ID and a new ID after expiry must be rejected. The host journal must still contain exactly two commands, and no owned session container may remain.
+
+The result is one sanitized JSON object on stdout and a mode-0600 `acceptance.json` inside the private temporary directory. It contains no private keys, PEM, cookie, raw signed transaction, or database row. Failures print a stage and bounded code, exit nonzero, stop the disposable API, Host Kit and Anvil, and remove only Docker containers bearing the fresh acceptance host key and `telomere.session=true` label. If physical cleanup cannot be confirmed, the report fails. Preserve the private directory only as long as needed for operator diagnosis and delete it using normal operational controls.
+
+This acceptance proves one local-chain CPU host path with real gVisor isolation and the current 120-second maximum session protocol. It does not prove public Base Chain deployment, a live wallet, GPU scheduling, NEAR attestation, multi-host availability, or production service reliability. The prior [single-run VPS result](platform-paid-gvisor-validation.json) is evidence for its exact earlier source snapshot. The [reproducible harness report](platform-paid-gvisor-reproducible-validation.json) records the newer checked source and script hashes, its isolated run result, and the unchanged staging state.

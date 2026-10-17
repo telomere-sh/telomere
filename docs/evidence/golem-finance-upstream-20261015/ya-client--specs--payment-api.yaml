@@ -1,0 +1,1605 @@
+openapi: 3.0.2
+info:
+  title: Yagna Payment API
+  version: 1.6.3
+  description: '
+    Invoicing and Payments is a fundamental area of Yagna Ecosystem
+    functionality. It includes aspects of communication between Requestor,
+    Provider and a selected Payment Platform, which becomes crucial when
+    Activities are executed in the context of negotiated Agreements. Yagna
+    applications must be able to exercise various payment models, and the
+    Invoicing/Payment-related communication is happening in parallel to
+    Activity control communication. To define functional patterns of
+    Requestor/Provider interaction in this area, Payment API is specified.
+
+
+    An important principle of the Yagna Payment API is that the actual payment
+    transactions are hidden behind the Invoice flow. In other words, a Yagna
+    Application on Requestor side isn’t expected to trigger actual payment
+    transactions. Instead it is expected to receive and accept Invoices raised
+    by the Provider - based on Application’s Invoice Accept notifications, the
+    Payment API implementation orchestrates the payment via a configured
+    Payment platform.
+
+
+    **NOTE:** This specification is work-in-progress.'
+
+servers:
+  - url: /payment-api/v1
+
+tags:
+  - name: requestor
+    description: Requestor part
+  - name: provider
+    description: Provider part
+
+security:
+  - app_key: []
+
+paths:
+  /debitNotes:
+    post:
+      tags:
+        - provider
+      summary: Issue a Debit Note.
+      operationId: issueDebitNote
+      requestBody:
+        $ref: '#/components/requestBodies/DebitNote'
+      responses:
+        201:
+          $ref: '#/components/responses/DebitNote'
+        400:
+          $ref: 'common.yaml#/responses/BadRequest'
+        401:
+          $ref: 'common.yaml#/responses/Unauthorized'
+        500:
+          $ref: 'common.yaml#/responses/ServerError'
+
+    get:
+      tags:
+        - requestor
+        - provider
+      summary: Get Debit Notes known by this node (either issued by this Provider or received by this Requestor).
+      operationId: getDebitNotes
+      parameters:
+        - $ref: 'common.yaml#/parameters/afterTimestamp'
+        - $ref: 'common.yaml#/parameters/maxItems'
+      responses:
+        200:
+          $ref: '#/components/responses/DebitNoteList'
+        401:
+          $ref: 'common.yaml#/responses/Unauthorized'
+        500:
+          $ref: 'common.yaml#/responses/ServerError'
+
+  /debitNotes/{debitNoteId}:
+    get:
+      tags:
+        - requestor
+        - provider
+      summary: Get Debit Note.
+      operationId: getDebitNote
+      parameters:
+        - $ref: '#/components/parameters/debitNoteId'
+      responses:
+        200:
+          $ref: '#/components/responses/DebitNote'
+        401:
+          $ref: 'common.yaml#/responses/Unauthorized'
+        404:
+          $ref: 'common.yaml#/responses/NotFound'
+        500:
+          $ref: 'common.yaml#/responses/ServerError'
+
+  /debitNotes/{debitNoteId}/payments:
+    get:
+      tags:
+        - requestor
+        - provider
+      summary: Get Payments for Debit Note.
+      deprecated: true
+      description: >
+        **WARNING:** Operation not implemented.
+      operationId: getPaymentsForDebitNote
+      parameters:
+        - $ref: 'common.yaml#/parameters/afterTimestamp'
+        - $ref: 'common.yaml#/parameters/maxItems'
+        - $ref: '#/components/parameters/debitNoteId'
+      responses:
+        200:
+          $ref: '#/components/responses/PaymentList'
+        401:
+          $ref: 'common.yaml#/responses/Unauthorized'
+        500:
+          $ref: 'common.yaml#/responses/ServerError'
+
+  /debitNotes/{debitNoteId}/send:
+    post:
+      tags:
+        - provider
+      summary: Send Debit Note to Requestor.
+      operationId: sendDebitNote
+      description: >
+        This is a blocking operation. It will not return until the Requestor
+        has acknowledged receiving the Debit Note or timeout has passed.
+      parameters:
+        - $ref: '#/components/parameters/debitNoteId'
+        - $ref: 'common.yaml#/parameters/ackTimeout'
+      responses:
+        200:
+          $ref: '#/components/responses/OK'
+        401:
+          $ref: 'common.yaml#/responses/Unauthorized'
+        404:
+          $ref: 'common.yaml#/responses/NotFound'
+        500:
+          $ref: 'common.yaml#/responses/ServerError'
+        504:
+          $ref: 'common.yaml#/responses/AckTimeout'
+
+  /debitNotes/{debitNoteId}/cancel:
+    post:
+      tags:
+        - provider
+      summary: Cancel Debit Note.
+      operationId: cancelDebitNote
+      description: >
+        **WARNING:** Operation not implemented.
+
+
+        This is a blocking operation. It will not return until the Requestor
+        has acknowledged cancelling the Debit Note or timeout has passed.
+        The Requestor may refuse to cancel the Debit Note if they have already
+        accepted it.
+      parameters:
+        - $ref: '#/components/parameters/debitNoteId'
+        - $ref: 'common.yaml#/parameters/ackTimeout'
+      responses:
+        200:
+          $ref: '#/components/responses/OK'
+        401:
+          $ref: 'common.yaml#/responses/Unauthorized'
+        404:
+          $ref: 'common.yaml#/responses/NotFound'
+        409:
+          $ref: '#/components/responses/DebitNoteCancelRefused'
+        500:
+          $ref: 'common.yaml#/responses/ServerError'
+        504:
+          $ref: 'common.yaml#/responses/AckTimeout'
+
+  /debitNoteEvents:
+    get:
+      tags:
+        - requestor
+        - provider
+      summary: Get Debit Note events.
+      operationId: getDebitNoteEvents
+      description: >
+        Listen for Debit Note-related events using long-polling. If there are
+        any events the method will return them immediately. If there are none
+        the method will wait until one appears or timeout passes.
+        `afterTimestamp` parameter can be used in order to get just the 'new' events.
+        Setting the parameter value to the timestamp of the last processed event
+        ensures that no events will go unnoticed.
+
+
+        **NOTE:** The events are persistent, ie. calling the API does not remove the
+        event records from receiving queue.
+      parameters:
+        - $ref: 'common.yaml#/parameters/pollTimeout'
+        - $ref: 'common.yaml#/parameters/afterTimestamp'
+        - $ref: 'common.yaml#/parameters/maxEvents'
+        - $ref: 'common.yaml#/parameters/appSessionId'
+      responses:
+        200:
+          $ref: '#/components/responses/DebitNoteEventList'
+        401:
+          $ref: 'common.yaml#/responses/Unauthorized'
+        500:
+          $ref: 'common.yaml#/responses/ServerError'
+
+  /invoices:
+    post:
+      tags:
+        - requestor
+        - provider
+      summary: Issue an Invoice.
+      operationId: issueInvoice
+      requestBody:
+        $ref: '#/components/requestBodies/Invoice'
+      responses:
+        201:
+          $ref: '#/components/responses/Invoice'
+        400:
+          $ref: 'common.yaml#/responses/BadRequest'
+        401:
+          $ref: 'common.yaml#/responses/Unauthorized'
+        500:
+          $ref: 'common.yaml#/responses/ServerError'
+
+    get:
+      tags:
+        - requestor
+        - provider
+      summary: Get Invoices known to this node (either issued by this Provider or received by this Requestor).
+      operationId: getInvoices
+      parameters:
+        - $ref: 'common.yaml#/parameters/afterTimestamp'
+        - $ref: 'common.yaml#/parameters/maxItems'
+      responses:
+        200:
+          $ref: '#/components/responses/InvoiceList'
+        401:
+          $ref: 'common.yaml#/responses/Unauthorized'
+        500:
+          $ref: 'common.yaml#/responses/ServerError'
+
+  /invoices/{invoiceId}:
+    get:
+      tags:
+        - requestor
+        - provider
+      summary: Get Invoice.
+      operationId: getInvoice
+      parameters:
+        - $ref: '#/components/parameters/invoiceId'
+      responses:
+        200:
+          $ref: '#/components/responses/Invoice'
+        401:
+          $ref: 'common.yaml#/responses/Unauthorized'
+        404:
+          $ref: 'common.yaml#/responses/NotFound'
+        500:
+          $ref: 'common.yaml#/responses/ServerError'
+
+  /invoices/{invoiceId}/payments:
+    get:
+      tags:
+        - requestor
+        - provider
+      summary: Get Payments for Invoice.
+      deprecated: true
+      description: >
+        **WARNING:** Operation not implemented.
+      operationId: getPaymentsForInvoice
+      parameters:
+        - $ref: '#/components/parameters/invoiceId'
+        - $ref: 'common.yaml#/parameters/afterTimestamp'
+        - $ref: 'common.yaml#/parameters/maxItems'
+      responses:
+        200:
+          $ref: '#/components/responses/PaymentList'
+        401:
+          $ref: 'common.yaml#/responses/Unauthorized'
+        500:
+          $ref: 'common.yaml#/responses/ServerError'
+
+  /invoices/{invoiceId}/send:
+    post:
+      tags:
+        - provider
+      summary: Send Invoice to Requestor.
+      operationId: sendInvoice
+      description: >
+        This is a blocking operation. It will not return until the Requestor
+        has acknowledged receiving the Invoice or timeout has passed.
+      parameters:
+        - $ref: '#/components/parameters/invoiceId'
+        - $ref: 'common.yaml#/parameters/ackTimeout'
+      responses:
+        200:
+          $ref: '#/components/responses/OK'
+        401:
+          $ref: 'common.yaml#/responses/Unauthorized'
+        404:
+          $ref: 'common.yaml#/responses/NotFound'
+        500:
+          $ref: 'common.yaml#/responses/ServerError'
+        504:
+          $ref: 'common.yaml#/responses/AckTimeout'
+
+  /invoices/{invoiceId}/cancel:
+    post:
+      tags:
+        - provider
+      summary: Cancel Invoice.
+      operationId: cancelInvoice
+      description: >
+        This is a blocking operation. It will not return until the Requestor
+        has acknowledged cancelling the Invoice or timeout has passed.
+        The Requestor may refuse to cancel the Invoice if they have already
+        accepted it.
+      parameters:
+        - $ref: '#/components/parameters/invoiceId'
+        - $ref: 'common.yaml#/parameters/ackTimeout'
+      responses:
+        200:
+          $ref: '#/components/responses/OK'
+        401:
+          $ref: 'common.yaml#/responses/Unauthorized'
+        404:
+          $ref: 'common.yaml#/responses/NotFound'
+        409:
+          $ref: '#/components/responses/InvoiceCancelRefused'
+        500:
+          $ref: 'common.yaml#/responses/ServerError'
+        504:
+          $ref: 'common.yaml#/responses/AckTimeout'
+
+  /invoiceEvents:
+    get:
+      tags:
+        - requestor
+        - provider
+      summary: Get Invoice events.
+      operationId: getInvoiceEvents
+      description: >
+        Listen for Invoice-related events using long-polling. If there are
+        any events the method will return them immediately. If there are none
+        the method will wait until one appears or timeout passes.
+        `afterTimestamp` parameter can be used in order to get just the 'new' events.
+        Setting the parameter value to the timestamp of the last processed event
+        ensures that no events will go unnoticed.
+
+
+        **NOTE:** The events are persistent, ie. calling the API does not remove the
+        event records from receiving queue.
+      parameters:
+        - $ref: 'common.yaml#/parameters/pollTimeout'
+        - $ref: 'common.yaml#/parameters/afterTimestamp'
+        - $ref: 'common.yaml#/parameters/maxEvents'
+        - $ref: 'common.yaml#/parameters/appSessionId'
+      responses:
+        200:
+          $ref: '#/components/responses/InvoiceEventList'
+        401:
+          $ref: 'common.yaml#/responses/Unauthorized'
+        500:
+          $ref: 'common.yaml#/responses/ServerError'
+
+  /providerAccounts:
+    get:
+      tags:
+        - provider
+      summary: Get available accounts for receiving payments.
+      operationId: getProviderAccounts
+      responses:
+        200:
+          $ref: '#/components/responses/AccountList'
+        401:
+          $ref: 'common.yaml#/responses/Unauthorized'
+        404:
+          $ref: 'common.yaml#/responses/NotFound'
+        500:
+          $ref: 'common.yaml#/responses/ServerError'
+
+  /debitNotes/{debitNoteId}/accept:
+    post:
+      tags:
+        - requestor
+      summary: Accept received Debit Note.
+      operationId: acceptDebitNote
+      description: >
+        Send Debit Note Accepted message to Debit Note Issuer. If Debit Note is
+        binding (i.e. has non-null payment due date) trigger payment
+        orchestration for this Debit Note using specified Allocation.
+
+
+        This is a blocking operation. It will not return until the Requestor
+        has acknowledged accepting the Invoice or timeout has passed.
+
+
+        **NOTE:** An Accepted Debit Note cannot be Rejected later.
+      parameters:
+        - $ref: '#/components/parameters/debitNoteId'
+        - $ref: 'common.yaml#/parameters/ackTimeout'
+      requestBody:
+        $ref: '#/components/requestBodies/DebitNoteAcceptance'
+      responses:
+        200:
+          $ref: '#/components/responses/OK'
+        400:
+          $ref: 'common.yaml#/responses/BadRequest'
+        401:
+          $ref: 'common.yaml#/responses/Unauthorized'
+        404:
+          $ref: 'common.yaml#/responses/NotFound'
+        500:
+          $ref: 'common.yaml#/responses/ServerError'
+        504:
+          $ref: 'common.yaml#/responses/AckTimeout'
+
+  /debitNotes/{debitNoteId}/reject:
+    post:
+      tags:
+        - requestor
+      summary: Reject received Debit Note.
+      operationId: rejectDebitNote
+      description: >
+        **WARNING:** Operation not implemented.
+
+
+        Send Debit Note Rejected message to Invoice Issuer. Notification of
+        rejection is signalling that Requestor does not accept the Debit Note
+        (for some reason).
+
+
+        This is a blocking operation. It will not return until the Requestor
+        has acknowledged rejecting the Invoice or timeout has passed.
+
+
+        **NOTE:** A Rejected Debit Note can be Accepted subsequently (e.g. as a
+        result of some arbitrage).
+      parameters:
+        - $ref: '#/components/parameters/debitNoteId'
+        - $ref: 'common.yaml#/parameters/ackTimeout'
+      requestBody:
+        $ref: '#/components/requestBodies/Rejection'
+      responses:
+        200:
+          $ref: '#/components/responses/OK'
+        400:
+          $ref: 'common.yaml#/responses/BadRequest'
+        401:
+          $ref: 'common.yaml#/responses/Unauthorized'
+        404:
+          $ref: 'common.yaml#/responses/NotFound'
+        500:
+          $ref: 'common.yaml#/responses/ServerError'
+        504:
+          $ref: 'common.yaml#/responses/AckTimeout'
+
+  /invoices/{invoiceId}/accept:
+    post:
+      tags:
+        - requestor
+      summary: Accept received Invoice.
+      operationId: acceptInvoice
+      description: >
+        Send Invoice Accepted message to Invoice Issuer. Trigger payment
+        orchestration for this Invoice using specified Allocation.
+
+
+        This is a blocking operation. It will not return until the Requestor
+        has acknowledged rejecting the Invoice or timeout has passed.
+
+
+        **NOTE:** An Accepted Invoice cannot be Rejected later.
+      parameters:
+        - $ref: '#/components/parameters/invoiceId'
+        - $ref: 'common.yaml#/parameters/ackTimeout'
+      requestBody:
+        $ref: '#/components/requestBodies/Acceptance'
+      responses:
+        200:
+          $ref: '#/components/responses/OK'
+        400:
+          $ref: 'common.yaml#/responses/BadRequest'
+        401:
+          $ref: 'common.yaml#/responses/Unauthorized'
+        404:
+          $ref: 'common.yaml#/responses/NotFound'
+        500:
+          $ref: 'common.yaml#/responses/ServerError'
+        504:
+          $ref: 'common.yaml#/responses/AckTimeout'
+
+  /invoices/{invoiceId}/reject:
+    post:
+      tags:
+        - requestor
+      summary: Reject received Invoice.
+      operationId: rejectInvoice
+      description: >
+        **WARNING:** Operation not implemented.
+
+
+        Send Invoice Rejected message to Invoice Issuer. Notification of
+        rejection is signalling that Requestor does not accept Invoice
+        (for some reason).
+
+
+        This is a blocking operation. It will not return until the Requestor
+        has acknowledged rejecting the Invoice or timeout has passed.
+
+
+        **NOTE:** A Rejected Invoice can be Accepted subsequently (e.g. as a result
+        of some arbitrage).
+      parameters:
+        - $ref: '#/components/parameters/invoiceId'
+        - $ref: 'common.yaml#/parameters/ackTimeout'
+      requestBody:
+        $ref: '#/components/requestBodies/Rejection'
+      responses:
+        200:
+          $ref: '#/components/responses/OK'
+        400:
+          $ref: 'common.yaml#/responses/BadRequest'
+        401:
+          $ref: 'common.yaml#/responses/Unauthorized'
+        404:
+          $ref: 'common.yaml#/responses/NotFound'
+        500:
+          $ref: 'common.yaml#/responses/ServerError'
+        504:
+          $ref: 'common.yaml#/responses/AckTimeout'
+
+  /allocations:
+    post:
+      tags:
+        - requestor
+      summary: Create Allocation.
+      operationId: createAllocation
+      description: Allocate funds to make sure they are not spent elsewhere.
+      parameters:
+        - $ref: 'common.yaml#/parameters/afterTimestamp'
+        - $ref: 'common.yaml#/parameters/maxItems'
+      requestBody:
+        $ref: '#/components/requestBodies/Allocation'
+      responses:
+        201:
+          $ref: '#/components/responses/Allocation'
+        400:
+          $ref: 'common.yaml#/responses/BadRequest'
+        401:
+          $ref: 'common.yaml#/responses/Unauthorized'
+        500:
+          $ref: 'common.yaml#/responses/ServerError'
+
+    get:
+      tags:
+        - requestor
+      summary: Get Allocations.
+      operationId: getAllocations
+      responses:
+        200:
+          $ref: '#/components/responses/AllocationList'
+        401:
+          $ref: 'common.yaml#/responses/Unauthorized'
+        500:
+          $ref: 'common.yaml#/responses/ServerError'
+
+  /allocations/{allocationId}:
+    get:
+      tags:
+        - requestor
+      summary: Get Allocation.
+      operationId: getAllocation
+      parameters:
+        - $ref: '#/components/parameters/allocationId'
+      responses:
+        200:
+          $ref: '#/components/responses/Allocation'
+        401:
+          $ref: 'common.yaml#/responses/Unauthorized'
+        404:
+          $ref: 'common.yaml#/responses/NotFound'
+        500:
+          $ref: 'common.yaml#/responses/ServerError'
+
+    put:
+      tags:
+        - requestor
+      summary: Amend Allocation.
+      operationId: amendAllocation
+      parameters:
+        - $ref: '#/components/parameters/allocationId'
+      requestBody:
+        $ref: '#/components/requestBodies/AllocationUpdate'
+      responses:
+        200:
+          $ref: '#/components/responses/Allocation'
+        401:
+          $ref: 'common.yaml#/responses/Unauthorized'
+        404:
+          $ref: 'common.yaml#/responses/NotFound'
+        500:
+          $ref: 'common.yaml#/responses/ServerError'
+
+    delete:
+      tags:
+        - requestor
+      summary: Release Allocation.
+      operationId: releaseAllocation
+      description: >
+        The Allocation of amount is released. Note that this operation releases
+        currently allocated amount (which may have been reduced by subsequent
+        Invoice Payments).
+
+
+        **WARNING:** Deposits not implemented.
+
+
+        If the Allocation was connected with a Deposit the release amount from
+        Deposit shall be marked as pending to be paid back to Requestor - and
+        eventually will be paid back, unless a subsequent Allocation with
+        Deposit is made. The Payment Platform implementations may optimize
+        unnecessary fund transfers (i.e. will not pay back the Deposit if
+        released funds can be assigned to a new Allocation with Deposit).
+      parameters:
+        - $ref: '#/components/parameters/allocationId'
+      responses:
+        200:
+          $ref: '#/components/responses/OK'
+        401:
+          $ref: 'common.yaml#/responses/Unauthorized'
+        404:
+          $ref: 'common.yaml#/responses/NotFound'
+        410:
+          $ref: 'common.yaml#/responses/Gone'
+        500:
+          $ref: 'common.yaml#/responses/ServerError'
+
+  /payments:
+    get:
+      tags:
+        - requestor
+        - provider
+      summary: Get Payments.
+      operationId: getPayments
+      description: >
+        Payments can be treated as events and this method can be used to listen
+        for new payments by long-polling.  If there are any payments the method
+        will return them immediately. If there are none the method will wait
+        until one appears or timeout passes.
+        `afterTimestamp` parameter can be used in order to get just the 'new'
+        payments. Setting the parameter value to the timestamp of the last
+        processed payment ensures that no payments will go unnoticed.
+        `network` and `driver` parameters can be used in order to filter payments.
+      parameters:
+        - $ref: 'common.yaml#/parameters/pollTimeout'
+        - $ref: 'common.yaml#/parameters/afterTimestamp'
+        - $ref: 'common.yaml#/parameters/maxEvents'
+        - $ref: 'common.yaml#/parameters/appSessionId'
+        - $ref: 'common.yaml#/parameters/network'
+        - $ref: 'common.yaml#/parameters/driver'
+      responses:
+        200:
+          $ref: '#/components/responses/PaymentList'
+        401:
+          $ref: 'common.yaml#/responses/Unauthorized'
+        500:
+          $ref: 'common.yaml#/responses/ServerError'
+
+  /payments/{paymentId}:
+    get:
+      tags:
+        - requestor
+        - provider
+      summary: Get Payment.
+      operationId: getPayment
+      parameters:
+        - $ref: '#/components/parameters/paymentId'
+      responses:
+        200:
+          $ref: '#/components/responses/Payment'
+        401:
+          $ref: 'common.yaml#/responses/Unauthorized'
+        404:
+          $ref: 'common.yaml#/responses/NotFound'
+        500:
+          $ref: 'common.yaml#/responses/ServerError'
+
+  /payments/status:
+    get:
+      tags:
+        - requestor
+        - provider
+      summary: Get status of the payment driver
+      operationId: paymentsStatus
+      description: >
+        This only relates to the erc20 driver, not erc20legacy. The returned
+        list contains individual status properties, which can be used to identify
+        problems like missing funds or misconfigured max fee per gas on a per-chain
+        (network) basis.
+      parameters:
+        - $ref: 'common.yaml#/parameters/network'
+        - $ref: 'common.yaml#/parameters/driver'
+      responses:
+        200:
+          $ref: '#/components/responses/DriverStatus'
+        400:
+          $ref: 'common.yaml#/responses/BadRequest'
+        401:
+          $ref: 'common.yaml#/responses/Unauthorized'
+        404:
+          $ref: 'common.yaml#/responses/NotFound'
+        500:
+          $ref: 'common.yaml#/responses/ServerError'
+
+  /requestorAccounts:
+    get:
+      tags:
+        - requestor
+      summary: Get available accounts for sending payments.
+      operationId: getRequestorAccounts
+      responses:
+        200:
+          $ref: '#/components/responses/AccountList'
+        401:
+          $ref: 'common.yaml#/responses/Unauthorized'
+        500:
+          $ref: 'common.yaml#/responses/ServerError'
+
+  /demandDecorations:
+    get:
+      tags:
+        - requestor
+      summary: Obtain Demand elements specific to the given allocations, to be appended to a market Demand.
+      operationId: getDemandDecorations
+      description: >
+        Generate payment-related properties and constraints to be added to a
+        demand published on the marketplace. As a parameter it accepts a list of
+        IDs of allocations to be used to pay for invoices resulting from the
+        decorated demand.
+      parameters:
+        - $ref: '#/components/parameters/allocationIds'
+      responses:
+        200:
+          $ref: '#/components/responses/MarketDecoration'
+        400:
+          $ref: 'common.yaml#/responses/BadRequest'
+        401:
+          $ref: 'common.yaml#/responses/Unauthorized'
+        500:
+          $ref: 'common.yaml#/responses/ServerError'
+
+components:
+  securitySchemes:
+    app_key:
+      $ref: 'common.yaml#/components/securitySchemes/app_key'
+
+  parameters:
+    debitNoteId:
+      name: debitNoteId
+      required: true
+      in: path
+      schema:
+        type: string
+
+    invoiceId:
+      name: invoiceId
+      required: true
+      in: path
+      schema:
+        type: string
+
+    allocationId:
+      name: allocationId
+      required: true
+      in: path
+      schema:
+        type: string
+
+    paymentId:
+      name: paymentId
+      required: true
+      in: path
+      schema:
+        type: string
+
+    allocationIds:
+      name: allocationIds
+      required: true
+      in: query
+      style: form
+      explode: false
+      schema:
+        type: array
+        items:
+          type: string
+
+  requestBodies:
+    DebitNote:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/DebitNote'
+
+    Invoice:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Invoice'
+
+    Allocation:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Allocation'
+
+    AllocationUpdate:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AllocationUpdate'
+
+    DebitNoteAcceptance:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/DebitNoteAcceptance'
+
+
+    Acceptance:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Acceptance'
+
+    Rejection:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Rejection'
+
+  responses:
+    OK:
+      description: OK
+
+    DebitNoteCancelRefused:
+      description: The Requestor has refused to cancel the Debit Note.
+      content:
+        application/json:
+          schema:
+            $ref: 'common.yaml#/components/schemas/ErrorMessage'
+
+    DebitNote:
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/DebitNote'
+
+    DebitNoteList:
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/DebitNote'
+
+    InvoiceCancelRefused:
+      description: The Requestor has refused to cancel the Invoice.
+      content:
+        application/json:
+          schema:
+            $ref: 'common.yaml#/components/schemas/ErrorMessage'
+
+    Invoice:
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Invoice'
+
+    InvoiceList:
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Invoice'
+
+    Allocation:
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Allocation'
+
+    AllocationList:
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Allocation'
+
+    Payment:
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Payment'
+
+    PaymentList:
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Payment'
+
+    DriverStatus:
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/DriverStatusProperty'
+
+    DebitNoteEventList:
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/DebitNoteEvent'
+
+    InvoiceEventList:
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/InvoiceEvent'
+
+    AccountList:
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Account'
+
+    MarketDecoration:
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/MarketDecoration'
+
+  schemas:
+    DebitNote:
+      description: >
+        A Debit Note is an artifact issued by the Provider to the Requestor,
+        in the context of a specific Activity. It is a notification of Total
+        Amount Due incurred by the Activity until the moment the
+        Debit Note is issued. This is expected to be used as trigger for payment
+        in upfront-payment or pay-as-you-go scenarios.
+
+
+        **NOTE:** Only Debit Notes with non-null paymentDueDate are expected to
+        trigger payments.
+
+
+        **NOTE:** Debit Notes flag the current Total Amount Due, which is
+        accumulated from the start of Activity. Debit Notes are expected to
+        trigger payments, therefore payment amount for the newly received Debit
+        Note is expected to be determined by difference of Total Payments for
+        the Agreement vs Total Amount Due.
+      type: object
+      properties:
+        debitNoteId:
+          type: string
+          readOnly: true
+        issuerId:
+          type: string
+          readOnly: true
+        recipientId:
+          type: string
+          readOnly: true
+        payeeAddr:
+          type: string
+          readOnly: true
+        payerAddr:
+          type: string
+          readOnly: true
+        paymentPlatform:
+          type: string
+          readOnly: true
+        previousDebitNoteId:
+          type: string
+          readOnly: true
+        timestamp:
+          type: string
+          format: date-time
+          readOnly: true
+        agreementId:
+          type: string
+          readOnly: true
+        activityId:
+          type: string
+        totalAmountDue:
+          type: string
+        usageCounterVector:
+          type: object
+        paymentDueDate:
+          type: string
+          format: date-time
+        status:
+          $ref: '#/components/schemas/InvoiceStatus'
+
+      required:
+        - debitNoteId
+        - issuerId
+        - recipientId
+        - payeeAddr
+        - payerAddr
+        - paymentPlatform
+        - timestamp
+        - agreementId
+        - activityId
+        - totalAmountDue
+        - status
+
+    Invoice:
+      description: >
+        An Invoice is an artifact issued by the Provider to the Requestor, in
+        the context of a specific Agreement. It indicates the total Amount owed
+        by the Requestor in this Agreement. No further Debit Notes shall be
+        issued after the Invoice is issued. The issue of Invoice signals the
+        Termination of the Agreement (if it hasn't been terminated already).
+        No Activity execution is allowed after the Invoice is issued.
+
+
+        **NOTE:** An invoice can be issued even before any Activity is started in
+        the context of an Agreement (eg. in one off, 'fire-and-forget' payment
+        regime).
+      type: object
+      properties:
+        invoiceId:
+          type: string
+          readOnly: true
+        issuerId:
+          type: string
+          readOnly: true
+        recipientId:
+          type: string
+          readOnly: true
+        payeeAddr:
+          type: string
+          readOnly: true
+        payerAddr:
+          type: string
+          readOnly: true
+        paymentPlatform:
+          type: string
+          readOnly: true
+        timestamp:
+          type: string
+          format: date-time
+          readOnly: true
+        agreementId:
+          type: string
+        activityIds:
+          type: array
+          items:
+            type: string
+        amount:
+          type: string
+        paymentDueDate:
+          type: string
+          format: date-time
+        status:
+          $ref: '#/components/schemas/InvoiceStatus'
+
+      required:
+        - invoiceId
+        - issuerId
+        - recipientId
+        - payeeAddr
+        - payerAddr
+        - paymentPlatform
+        - timestamp
+        - agreementId
+        - amount
+        - paymentDueDate
+        - status
+
+    InvoiceStatus:
+      description: >
+        Accepted status indicates that the Requestor confirms the Amount/Total
+        Amount Due on the Invoice/Debit Note, respectively. The Payment API
+        Implementation is expected to proceed with the orchestration of the
+        payment. Internals of the payment processing (e.g. payment processing
+        internal states) are specific to the selected Payment Platform, and must
+        be indicated as an attribute of the Accepted status. However, as they
+        are specific - they shall not be standardized by the Payment API.
+
+
+        A Rejected Invoice/Debit Note can subsequently be Accepted.
+
+
+        An Accepted Invoice/Debit Note cannot be subsequently Rejected.
+
+
+        There is a difference between Paid and Settled - depending on a Payment
+        Platform. Paid indicates that the Requestor has ordered Payments of
+        Total Amount Due as indicated by received/accepted Debit Notes/Invoice.
+        Settled indicates that the Provider has reliably received the Payments.
+
+
+        **WARNING:** 'Paid' status currently not implemented.
+      type: string
+      enum:
+        - ISSUED
+        - RECEIVED
+        - ACCEPTED
+        - REJECTED
+        - FAILED
+        - SETTLED
+        - CANCELLED
+      readOnly: true
+
+    DebitNoteAcceptance:
+      description: Message sent when Requestor accepts a Debit Note or Invoice.
+      type: object
+      properties:
+        totalAmountAccepted:
+          type: string
+        allocationId:
+          type: string
+        autoAcceptTo:
+          type: string
+          format: decimal
+      required:
+        - totalAmountAccepted
+        - allocationId
+
+
+    Acceptance:
+      description: Message sent when Requestor accepts a Debit Note or Invoice.
+      type: object
+      properties:
+        totalAmountAccepted:
+          type: string
+        allocationId:
+          type: string
+      required:
+        - totalAmountAccepted
+        - allocationId
+
+    Rejection:
+      description: Message sent when Requestor rejects a Debit Note or Invoice.
+      type: object
+      properties:
+        rejectionReason:
+          $ref: '#/components/schemas/RejectionReason'
+        totalAmountAccepted:
+          type: string
+        message:
+          type: string
+      required:
+        - rejectionReason
+        - totalAmountAccepted
+
+    RejectionReason:
+      description: Possible reasons to reject a Debit Note or Invoice.
+      type: string
+      enum:
+        - UNSOLICITED_SERVICE
+        - BAD_SERVICE
+        - INCORRECT_AMOUNT
+
+    PaymentPlatform:
+      description: >
+        PaymentPlatform is a object that is helping to chose which driver and network to use
+      properties:
+        driver:
+          type: string
+        network:
+          type: string
+        token:
+          type: string
+
+    Allocation:
+      type: object
+      description: >
+        An Allocation is a designated sum of money reserved for the purpose of
+        making some particular payments. Allocations are currently purely virtual
+        objects. They exist only in Requestor's database. An Allocation is
+        connected to a payment account (wallet) specified by `address` and
+        `paymentPlatform` field. If these fields are not present the default
+        payment platform is used and the address is assumed to be identical to
+        the Requestor's Node ID.
+
+
+        **NOTE:** `timeout` and `makeDeposit` field are currently ignored.
+      properties:
+        allocationId:
+          type: string
+          readOnly: true
+        address:
+          type: string
+        paymentPlatform:
+          oneOf:
+            - $ref: '#/components/schemas/PaymentPlatform'
+            - type: string
+        totalAmount:
+          type: string
+        spentAmount:
+          type: string
+          readOnly: true
+        remainingAmount:
+          type: string
+          readOnly: true
+        timestamp:
+          type: string
+          format: date-time
+          readOnly: true
+        timeout:
+          type: string
+          format: date-time
+        makeDeposit:
+          type: boolean
+        extendTimeout:
+          description: >
+            in seconds, the time by which the allocation timeout is
+            extended after it is last used.
+          type: integer
+          format: int64
+        deposit:
+          type: object
+          properties:
+            id:
+              type: string
+            contract:
+              type: string
+            validate:
+              type: object
+          required:
+            - id
+            - contract
+      required:
+        - allocationId
+        - totalAmount
+        - spentAmount
+        - remainingAmount
+        - timestamp
+
+    AllocationUpdate:
+      type: object
+      description: >
+        AllocationUpdate represents the changes that can be made to an existing
+        allocation.
+      properties:
+        totalAmount:
+          type: string
+        timeout:
+          type: string
+          format: date-time
+        deposit:
+          type: object
+          properties:
+            validate:
+              type: object
+
+    Payment:
+      type: object
+      description: >
+        A Payment is a single transaction sent from Requestor to Provider.
+        A single payment can be made for multiple Agreements and Activities.
+        `agreementPayments` and `activityPayments` specify what is the basis
+        for payment.
+      readOnly: true
+      properties:
+        paymentId:
+          type: string
+        payerId:
+          type: string
+        payeeId:
+          type: string
+        payerAddr:
+          type: string
+        payeeAddr:
+          type: string
+        paymentPlatform:
+          type: string
+        amount:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        agreementPayments:
+          type: array
+          items:
+            $ref: '#/components/schemas/AgreementPayment'
+        activityPayments:
+          type: array
+          items:
+            $ref: '#/components/schemas/ActivityPayment'
+        details:
+          type: string
+          format: byte
+      required:
+        - paymentId
+        - payerId
+        - payeeId
+        - payerAddr
+        - payeeAddr
+        - paymentPlatform
+        - amount
+        - timestamp
+        - agreementPayments
+        - activityPayments
+        - details
+
+    DriverStatusProperty:
+      type: object
+      description: Individual actionable property of the payment driver status
+      readOnly: true
+      properties:
+        kind:
+          description: >
+            Determines what property this is.
+            - InsufficientGas -- Driver cannot proceed due to missing gas.
+            - InsufficientToken -- Driver cannot proceed due to missing tokens.
+            - InvalidChainId -- A transaction can't be processed because its chain-id
+              isn't present in the configuration. This hints at a network being removed
+              from driver configuration after a transaction on this network has been
+              scheduled.
+            - CantSign -- Driver cannot sign transactions (locked wallet?).
+            - RpcError -- All configured RPC endpoints are failing.
+            - TxStuck -- Transaction was sent to blockchain successfully but cannot
+              proceed any further. Likely indicative of too low setting of max fee
+              per gas.
+          type: string
+          enum:
+            - InsufficientGas
+            - InsufficientToken
+            - InvalidChainId
+            - CantSign
+            - TxStuck
+            - RpcError
+        driver:
+          description: Payment driver to which this status property is applicable
+          type: string
+        network:
+          description: >
+            Indicates which chain the problem occurs on. No statuses other than
+            CantSign necessarily imply issues on other chains than the one the status
+            property originates from.
+
+            Present for all status properties other than InvalidChainId.
+          type: string
+        neededGasEst:
+          description: >
+            Estimate total required gas to complete all outstanding transactions.
+
+            Only present for InsufficientGas
+          type: string
+        neededTokenEst:
+          description: >
+            Estimate total required token to complete all outstanding transactions.
+
+            Only present for InsufficientToken
+          type: string
+        address:
+          description: >
+            Relates the status event to a specific blockchain address.
+
+            Only present for CantSign, InsufficientGas and InsufficientToken.
+          type: string
+        chainId:
+          description: >
+            Chain-id that the error relates to.
+
+            Only present for InvalidChainId.
+          type: integer
+      required:
+        - kind
+        - driver
+
+    AgreementPayment:
+      description: >
+        Share of a Payment assigned to an Agreement, but not to any particular
+        Activity within that Agreement.
+      type: object
+      readOnly: true
+      properties:
+        agreementId:
+          type: string
+        amount:
+          type: string
+        allocationId:
+          type: string
+      required:
+        - agreementId
+        - amount
+
+    ActivityPayment:
+      description: >
+        Share of a Payment assigned to a particular Activity.
+      type: object
+      readOnly: true
+      properties:
+        activityId:
+          type: string
+        amount:
+          type: string
+        allocationId:
+          type: string
+      required:
+        - activityId
+        - amount
+
+    DebitNoteEvent:
+      type: object
+      required:
+        - eventType
+        - eventDate
+        - debitNoteId
+      discriminator:
+        propertyName: eventType
+      properties:
+        eventType:
+          type: string
+        eventDate:
+          type: string
+          format: date-time
+        debitNoteId:
+          type: string
+
+    DebitNoteReceivedEvent:
+      allOf:
+        - $ref: '#/components/schemas/DebitNoteEvent'
+
+    DebitNoteAcceptedEvent:
+      allOf:
+        - $ref: '#/components/schemas/DebitNoteEvent'
+
+    DebitNoteRejectedEvent:
+      allOf:
+        - $ref: '#/components/schemas/DebitNoteEvent'
+        - type: object
+          properties:
+            rejection:
+              $ref: '#/components/schemas/Rejection'
+
+    DebitNoteFailedEvent:
+      allOf:
+        - $ref: '#/components/schemas/DebitNoteEvent'
+
+    DebitNoteSettledEvent:
+      allOf:
+        - $ref: '#/components/schemas/DebitNoteEvent'
+
+    DebitNoteCancelledEvent:
+      allOf:
+        - $ref: '#/components/schemas/DebitNoteEvent'
+
+    DebitNotePaymentStatusEvent:
+      allOf:
+        - $ref: '#/components/schemas/DebitNoteEvent'
+        - type: object
+          properties:
+            property:
+              $ref: '#/components/schemas/DriverStatusProperty'
+
+    DebitNotePaymentOkEvent:
+      allOf:
+        - $ref: '#/components/schemas/DebitNoteEvent'
+
+    InvoiceEvent:
+      type: object
+      required:
+        - eventType
+        - eventDate
+        - invoiceId
+      discriminator:
+        propertyName: eventType
+      properties:
+        eventType:
+          type: string
+        eventDate:
+          type: string
+          format: date-time
+        invoiceId:
+          type: string
+
+    InvoiceReceivedEvent:
+      allOf:
+        - $ref: '#/components/schemas/InvoiceEvent'
+
+    InvoiceAcceptedEvent:
+      allOf:
+        - $ref: '#/components/schemas/InvoiceEvent'
+
+    InvoiceRejectedEvent:
+      allOf:
+        - $ref: '#/components/schemas/InvoiceEvent'
+        - type: object
+          properties:
+            rejection:
+              $ref: '#/components/schemas/Rejection'
+
+    InvoiceFailedEvent:
+      allOf:
+        - $ref: '#/components/schemas/InvoiceEvent'
+
+    InvoiceSettledEvent:
+      allOf:
+        - $ref: '#/components/schemas/InvoiceEvent'
+
+    InvoiceCancelledEvent:
+      allOf:
+        - $ref: '#/components/schemas/InvoiceEvent'
+
+    InvoicePaymentStatusEvent:
+      allOf:
+        - $ref: '#/components/schemas/InvoiceEvent'
+        - type: object
+          properties:
+            property:
+              $ref: '#/components/schemas/DriverStatusProperty'
+
+    InvoicePaymentOkEvent:
+      allOf:
+        - $ref: '#/components/schemas/InvoiceEvent'
+
+    Account:
+      description: Payment account (wallet)
+      type: object
+      readOnly: true
+      properties:
+        platform:
+          type: string
+        address:
+          type: string
+        driver:
+          type: string
+        network:
+          type: string
+        token:
+          type: string
+        send:
+          type: boolean
+        receive:
+          type: boolean
+      required:
+        - platform
+        - address
+        - driver
+        - network
+        - token
+        - send
+        - receive
+
+    MarketDecoration:
+      description: >
+        Properties and constraints to be added to a market object (i.e. a demand
+        or an offer).
+      type: object
+      readOnly: true
+      properties:
+        properties:
+          type: array
+          items:
+            $ref: '#/components/schemas/MarketProperty'
+        constraints:
+          type: array
+          items:
+            type: string
+      required:
+        - properties
+        - constraints
+
+    MarketProperty:
+      type: object
+      properties:
+        key:
+          type: string
+        value:
+          type: string
+      required:
+        - key
+        - value

@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-15T05:10:02.079669+00:00",
+  "kind": "independent_readonly_actual_private_staging_postoperation_review",
+  "status": "passed_closed_no_confirmed_remaining_issue_in_checked_scope",
+  "independentlyCheckedAt": "2026-10-15T05:08:40.651840+00:00",
+  "parentRun": "staging-354fe7af62ea-launch04",
+  "freshFinalRun": "staging-354fe7af62ea-final04",
+  "revision": "354fe7af62ea6701faafc3b04522abb1b4524d2d",
+  "archiveSha256": "86b5dc9f36dcf841963f0ffa8161023c126f1fae473c94909f5dddae3040fdce",
+  "selectedRelease": "/opt/telomere-pilot/releases/354fe7af62ea6701faafc3b04522abb1b4524d2d-launch04",
+  "operation": {
+    "actualPrivateStagingActivated": true,
+    "primaryCutoverPassDistinctFromNoOpRecoveryGuard": true,
+    "heldMaintenanceSeconds": 27.662,
+    "parentStateSha256": "4f0e247d36ecaa4b65007347077495936d520f2e2956d594b6e5d4749a0e565e",
+    "freshFinalChildStateSha256": "bad6c797a5f9995d53d6fc690c93440b7d52bf571ee6b7c2070bca865ec51a8f",
+    "authoritativeCompletion": "Parent activated and heldStop.active=false. Child clone_accepted/held intent is an unchanged historical record bound by parent.finalStateSha256.",
+    "outerUnitObservation": "Phase units were garbage-collected at collection. Their default success fields were not used alone; actual primary passed records, completed activated state and absence of owned processes/cgroups establish completion."
+  },
+  "verified": {
+    "allFiveLocalFrozenOperatorHashesStable": true,
+    "allSevenUploadedFileHashesAndRoot0600Modes": true,
+    "exactSourceFilesAndRootOwnership": 685,
+    "exactGeneratedRuntimeFilesAndRootOwnership": 564,
+    "oldCodeAndInheritedOriginalUnitPinsUnchanged": true,
+    "exactControllerExecutableCwdArgvAndDropinHash": true,
+    "threeLiveUnitPidsAndStartTimesStableAcrossCheck": true,
+    "threeUnitsActiveRestartCountersUnchanged": true,
+    "liveAndReadyHttpStatus": 200,
+    "rehearsalAndFreshFinalClones": "Each latest and old startup closed successfully against the same migrated clone, each verified all5 historical receipts, original table projections, Cyst and unchanged complete canonical anchor; latest exercised a real CPU container.",
+    "bothCloneScopesAllFiveCleanupFlags": true,
+    "bothGlobalDockerInventoriesStillEqualOriginal": true,
+    "bothBackupV2AllFourOpaqueFileHashesAndSizesVerified": true,
+    "entireFreshSnapshotEqualsPreactivationFingerprintIncludingRawChain": true,
+    "retainedImageArchiveAndGraphProofBindingsVerified": true,
+    "originalSevenTableHashesAndColumnsUnchangedAfterMigration": true,
+    "currentSchemaTableCount": 43,
+    "originalCyst": {
+      "count": 1,
+      "ciphertextBytes": 93,
+      "counterMismatches": 0
+    },
+    "freshCanonicalHeadMatchesHeldClone": {
+      "number": "23",
+      "hash": "0xdbf9dfcd25294ccce4fd0847e1d6939c113890808f20a379b293ce91e672607e",
+      "stateRoot": "0xc8823e14a0f2388825f59a3b96e5db9e57ab4d7dc883d146ad3a5fc7a290a763"
+    },
+    "ownedAnvilPidOrArgvReferencesRemaining": 0,
+    "ownedCgroupMembersRemaining": 0,
+    "exactAnvilExecutableProcessesObserved": 1,
+    "anvilObservationScope": "Recorded PID/start metadata plus bounded /proc scan of only matching Anvil executables for the two owned work paths; no other process argv or environments returned.",
+    "retainedParentChildProofHashesStableDuringAudit": true
+  },
+  "readOnlyExecution": {
+    "strictKnownHostBatchModeSshSessions": 1,
+    "remoteCheckerExitCode": 0,
+    "stderrEmpty": true,
+    "liveDatabaseAudit": "Fresh independently invoked approved checker; read-only repeatable-read transaction after exact activated parent/child/fingerprint/report bindings.",
+    "protectedProfileHandling": "Parsed only in memory by the bounded approved original-data audit for the original loopback DB and public pins. No profile, keys, credentials or row contents returned.",
+    "remoteFilesCreated": 0,
+    "servicesResourcesOrDataChanged": false,
+    "transactionsSent": 0,
+    "paidProviderRequests": 0
+  },
+  "evidence": [
+    {
+      "path": "docs/evidence/private-staging-postoperation-independent-checker-20261015.py",
+      "sha256": "1460a8678d64df99c34fe389806ae65a5171aaf09b2d15dcfe1ab1f4a6a5ce0c",
+      "bytes": 36107
+    },
+    {
+      "path": "docs/evidence/private-staging-postoperation-independent-collector-20261015.py",
+      "sha256": "f754dcb1e4f17419c6474549c37c34b90a600e7f976fab7964925979a2f39be1",
+      "bytes": 3141
+    },
+    {
+      "path": "docs/evidence/private-staging-postoperation-independent-proof-20261015.json",
+      "sha256": "247a838370b845edeef678d8c25bacc2156faf91ad6a5baebfaa8ad6084a91ef",
+      "bytes": 5202
+    },
+    {
+      "path": "docs/evidence/private-staging-postoperation-independent-collection-20261015.json",
+      "sha256": "be7716b66a986d4d4e8ef13a30af7ab274442ddaef7651b020cec32e598a7998",
+      "bytes": 614
+    }
+  ],
+  "relatedEvidence": [
+    {
+      "path": "docs/private-staging-rollout-attempt4-review-2026-10-15.json",
+      "sha256": "1f075f183f9dcd7e23bd7b9139abceeabeb45ad342df41a619a95d961623dfef"
+    },
+    {
+      "path": "docs/evidence/private-staging-attempt04-runtime-20261015/source-record.json",
+      "sha256": "2ea4d3e9c7a2c381f09f3b4a5691d40d4db4048ab56f302d12d87cd145286ebb",
+      "allElevenSafeProofFilesRehashed": true
+    }
+  ],
+  "limits": {
+    "deploymentScope": "Private demo chain31337, legacy CPU+Cyst profile only.",
+    "basePublicDeploymentOrWalletValidationClaimed": false,
+    "newSupplierNetworkExecutionOrGpuCellsClaimed": false,
+    "liveProviderInferenceClaimed": false,
+    "realKernelKillRecoveryOrLiveCodeRollbackClaimed": false,
+    "rollbackEvidence": "Old startup against migrated clone; actual live rollback was not performed.",
+    "cleanFullSuiteClaimed": false,
+    "composedAcceptanceAndInitialFullFailurePreserved": true,
+    "readinessScoreChanged": false,
+    "sourceOrOperatorEditsByReviewerDuringRuntimeAudit": false,
+    "currentLiveRawAnvilSerializationEqualityToStoppedDumpClaimed": false,
+    "rawChainBoundary": "Exact complete stopped fresh snapshot/preactivation fingerprint retained and checked. After activation the live canonical head/hash/stateRoot matches; Anvil boot serialization drift is documented separately."
+  }
+}

@@ -1,0 +1,59 @@
+Collecting annotated-types==0.8.0
+  Downloading annotated_types-0.8.0-py3-none-any.whl (13 kB)
+Collecting bitarray==3.11.0
+  Downloading bitarray-3.11.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (383 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 383.4/383.4 kB 13.8 MB/s eta 0:00:00
+Collecting ckzg==2.1.8
+  Downloading ckzg-2.1.8-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (176 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 176.4/176.4 kB 232.6 MB/s eta 0:00:00
+Collecting cytoolz==1.1.0
+  Downloading cytoolz-1.1.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (2.8 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.8/2.8 MB 10.9 MB/s eta 0:00:00
+Collecting eth-account==0.13.7
+  Downloading eth_account-0.13.7-py3-none-any.whl (587 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 587.5/587.5 kB 35.0 MB/s eta 0:00:00
+Collecting eth-hash==0.8.0
+  Downloading eth_hash-0.8.0-py3-none-any.whl (8.0 kB)
+Collecting eth-keyfile==0.8.1
+  Downloading eth_keyfile-0.8.1-py3-none-any.whl (7.5 kB)
+Collecting eth-keys==0.8.0
+  Downloading eth_keys-0.8.0-py3-none-any.whl (20 kB)
+Collecting eth-rlp==3.0.0
+  Downloading eth_rlp-3.0.0-py3-none-any.whl (15 kB)
+Collecting eth-typing==6.0.0
+  Downloading eth_typing-6.0.0-py3-none-any.whl (19 kB)
+Collecting eth-utils==6.0.0
+  Downloading eth_utils-6.0.0-py3-none-any.whl (102 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 102.5/102.5 kB 355.9 MB/s eta 0:00:00
+Collecting eth_abi==6.0.0
+  Downloading eth_abi-6.0.0-py3-none-any.whl (53 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 53.1/53.1 kB 131.6 MB/s eta 0:00:00
+Collecting hexbytes==2.0.0
+  Downloading hexbytes-2.0.0-py3-none-any.whl (18 kB)
+Collecting parsimonious==0.10.0
+  Downloading parsimonious-0.10.0-py3-none-any.whl (48 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 48.4/48.4 kB 342.1 MB/s eta 0:00:00
+Collecting pycryptodome==3.24.0
+  Downloading pycryptodome-3.24.0-cp37-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (2.3 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.3/2.3 MB 80.2 MB/s eta 0:00:00
+Collecting pydantic==2.14.0
+  Downloading pydantic-2.14.0-py3-none-any.whl (487 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 487.1/487.1 kB 367.4 MB/s eta 0:00:00
+Collecting pydantic_core==2.50.0
+  Downloading pydantic_core-2.50.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.2 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.2/2.2 MB 67.3 MB/s eta 0:00:00
+Collecting regex==2026.9.29
+  Downloading regex-2026.9.29-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (804 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 805.0/805.0 kB 377.7 MB/s eta 0:00:00
+Collecting rlp==5.0.0
+  Downloading rlp-5.0.0-py3-none-any.whl (19 kB)
+Collecting toolz==1.2.0
+  Downloading toolz-1.2.0-py3-none-any.whl (60 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 60.8/60.8 kB 326.9 MB/s eta 0:00:00
+Collecting typing-inspection==0.4.4
+  Downloading typing_inspection-0.4.4-py3-none-any.whl (14 kB)
+Collecting typing_extensions==4.16.0
+  Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 45.6/45.6 kB 250.7 MB/s eta 0:00:00
+Installing collected packages: parsimonious, ckzg, typing-inspection, typing_extensions, toolz, rlp, regex, pydantic_core, pydantic, pycryptodome, hexbytes, eth-utils, eth-typing, eth-rlp, eth-keys, eth-keyfile, eth-hash, eth-account, eth_abi, cytoolz, bitarray, annotated-types
+Successfully installed annotated-types-0.8.0 bitarray-3.11.0 ckzg-2.1.8 cytoolz-1.1.0 eth-account-0.13.7 eth-hash-0.8.0 eth-keyfile-0.8.1 eth-keys-0.8.0 eth-rlp-3.0.0 eth-typing-6.0.0 eth-utils-6.0.0 eth_abi-6.0.0 hexbytes-2.0.0 parsimonious-0.10.0 pycryptodome-3.24.0 pydantic-2.14.0 pydantic_core-2.50.0 regex-2026.9.29 rlp-5.0.0 toolz-1.2.0 typing-inspection-0.4.4 typing_extensions-4.16.0

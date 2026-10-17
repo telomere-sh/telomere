@@ -1,0 +1,37 @@
+{
+  "recordedAtUtc": "2026-10-15T20:33:06.963897+00:00",
+  "authorization": "Explicit user request: add Telegram and X buttons using existing site design",
+  "scope": "Two social destinations only; original preservation exception does not apply to other frontend content",
+  "file": "website/dist/site.js",
+  "sourceZipEntry": "Telomere-Website/dist/site.js",
+  "sourceZipFileBytesMatchedBeforeEdit": true,
+  "originalBytes": 43961,
+  "updatedBytes": 44283,
+  "originalSha256": "9e8eb19cf38c72cccdd3765e9b498b9924cb851d5c4b222cfca00e64c0c434e6",
+  "updatedSha256": "859669b4db1c9ba2061823769cbd80e1c38fc30be0bcbf71d4245318ab5e29ce",
+  "changes": [
+    "Shared generated menu/footer social links use requested Telegram/X URLs",
+    "Native home placeholders receive the same requested destinations",
+    "Existing markup/classes/icons retained; GitHub placeholder behavior retained",
+    "External links open a new tab with noopener noreferrer"
+  ],
+  "telegram": "https://t.me/telomereonchain",
+  "x": "https://x.com/telomere_base?s=11",
+  "lineEndings": "LF preserved",
+  "unrelatedBytesVerifiedUnchangedByReversibleTargetReplacement": true,
+  "htmlOrCssModified": false,
+  "deployedByThisAgent": false,
+  "privateFeatureFlagsChanged": false,
+  "schemaVersion": 1,
+  "originalImportCommit": "9823db6fb9d2c2e70d636358c458eb96e4f2e625",
+  "originalImportRecord": "docs/evidence/website-handoff-import-20261015.json",
+  "files": [
+    {
+      "path": "website/dist/site.js",
+      "bytes": 44283,
+      "sha256": "859669b4db1c9ba2061823769cbd80e1c38fc30be0bcbf71d4245318ab5e29ce"
+    }
+  ],
+  "deploymentRecord": "docs/evidence/domain-https-20261015/website-social-links-deployment.json",
+  "scopeNote": "Only site.js differs by explicit user authorization; historical source remains verified against the original import Git revision."
+}

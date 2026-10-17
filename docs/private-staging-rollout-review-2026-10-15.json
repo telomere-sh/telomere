@@ -1,0 +1,147 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-15T03:43:52.147750+00:00",
+  "reviewer": "independent final_readiness_review subagent",
+  "kind": "static_read_only_review",
+  "result": "no_remaining_blocking_source_finding_within_scope",
+  "files": [
+    {
+      "path": ".local/private-staging-rollout-20261015/rollout.py",
+      "bytes": 36997,
+      "sha256": "e92b6b08a4669831b690678164d68443bf551e3b7c918f587a14cd7a3f22e250"
+    },
+    {
+      "path": ".local/private-staging-rollout-20261015/clone-smoke.mjs",
+      "bytes": 19739,
+      "sha256": "b4676b5c7b9a22e5cf3f5619b63d0485844ac50895b20a19b5ea99d7c3944005"
+    },
+    {
+      "path": ".local/private-staging-rollout-20261015/README.md",
+      "bytes": 8320,
+      "sha256": "53991297da9db97a5117f427f60f301c90bb5f2fc1d5b2f25a33a40d9c6a8ca9"
+    }
+  ],
+  "syntaxChecks": [
+    {
+      "check": "Python ast.parse of rollout.py without imports or execution",
+      "exitCode": 0,
+      "performedBy": "independent reviewer"
+    },
+    {
+      "command": "node --check .local/private-staging-rollout-20261015/clone-smoke.mjs",
+      "exitCode": 0,
+      "performedBy": "independent reviewer",
+      "executesModule": false
+    }
+  ],
+  "findings": [
+    {
+      "id": "tar_directory_escape",
+      "file": "rollout.py",
+      "status": "closed_at_frozen_cutoff",
+      "resolution": "Directory members could escape using lexical .. parents. All member names now reject traversal/absolute/noncanonical paths and resolved containment rejects symlink ancestors."
+    },
+    {
+      "id": "install_lifecycle",
+      "file": "rollout.py",
+      "status": "closed_at_frozen_cutoff",
+      "resolution": "Offline npm alone allowed lifecycle scripts. Install now uses --offline --ignore-scripts with locked source and no online fallback."
+    },
+    {
+      "id": "historical_row_transaction_binding",
+      "file": "clone-smoke.mjs",
+      "status": "closed_at_frozen_cutoff",
+      "resolution": "Embedded valid receipts and unrelated successful transactions were insufficient. All five now bind DB run/billing, exact canonical RunSettled event, original journal hash/nonce and signer/to."
+    },
+    {
+      "id": "zero_transaction_claim",
+      "file": "clone-smoke.mjs",
+      "status": "closed_at_frozen_cutoff",
+      "resolution": "Post-start anchor alone did not prove zero transactions. Before/after canonical head/stateRoot plus account/nonce/balance/code/run/Leash digest must match for both starts."
+    },
+    {
+      "id": "additive_column_migration",
+      "file": "clone-smoke.mjs",
+      "status": "closed_at_frozen_cutoff",
+      "resolution": "Whole-row hashes could reject legitimate additive schema. All original columns/types/values are pinned, with only explicit jobs.agent_address and transaction_journal.nonce additions allowed."
+    },
+    {
+      "id": "transient_controller_timeout",
+      "file": "rollout.py",
+      "status": "closed_at_frozen_cutoff",
+      "resolution": "Killing systemd-run could leave the real Node unit. Finally now stops or kills only the exact owned unit and verifies inactive/failed with MainPID0."
+    },
+    {
+      "id": "ambiguous_pg_creation_cleanup",
+      "file": "rollout.py",
+      "status": "closed_at_frozen_cutoff",
+      "resolution": "A lost docker-run acknowledgement could leave cid unset. Creation attempt is retained, then only the exact expected name and owner label can resolve the full cleanup ID."
+    },
+    {
+      "id": "independent_cleanup",
+      "file": "rollout.py",
+      "status": "closed_at_frozen_cutoff",
+      "resolution": "One cleanup error previously skipped other owned resources. Bounded independent outcomes now cover Anvil, daemon, namespace and PG; any ambiguity blocks acceptance."
+    },
+    {
+      "id": "startup_readiness_race",
+      "file": "rollout.py",
+      "status": "closed_at_frozen_cutoff",
+      "resolution": "Type=simple start precedes HTTP readiness. Live/ready are now polled within a finite deadline."
+    },
+    {
+      "id": "rollback_identity",
+      "file": "rollout.py",
+      "status": "closed_at_frozen_cutoff",
+      "resolution": "Old executable/unit identity and full owned drop-in bytes are now pinned for cutover and rollback. Only exact controller drop-in is disabled with same-directory rename; no data restore."
+    },
+    {
+      "id": "dropin_symlink_scope",
+      "file": "rollout.py",
+      "status": "closed_at_frozen_cutoff",
+      "resolution": "Controller drop-in directory/target symlinks are explicitly refused."
+    },
+    {
+      "id": "default_daemon_preservation",
+      "file": "rollout.py and clone-smoke.mjs",
+      "status": "closed_at_frozen_cutoff",
+      "resolution": "Both actual controller processes inherit a dedicated Docker socket with verified daemon root and private socket; global container/image identities must remain equal. Only exact labelled clone PG is removed."
+    }
+  ],
+  "scope": [
+    "new root-owned release preparation from accepted pure Git685 archive",
+    "stopped v2 DB/chain/profile/Cyst capture followed by old unit restart",
+    "same migrated owned clone: latest startup then original old source startup",
+    "five historical canonical receipt/event/journal proofs and exact one93-byte Cyst integrity",
+    "dedicated clone Docker daemon/namespace and exact labelled cleanup",
+    "fresh second stopped snapshot and strict semantic/profile/raw-chain drift refusal",
+    "controller-only complete drop-in and code-only rollback preserving current data"
+  ],
+  "notExecuted": {
+    "serverCommands": true,
+    "serviceChanges": true,
+    "snapshot": true,
+    "cloneStartup": true,
+    "cutover": true,
+    "rollback": true,
+    "walletOrPublicProviderActions": true,
+    "clarification": "Every value here means that action was NOT executed by the reviewer; syntax checks only."
+  },
+  "executionGates": {
+    "baseline677FullAccepted": "pending at this static-review cutoff; root must inspect and accept the actual frozen full regression before first prepare invocation",
+    "additive685FocusedAccepted": "root must bind acceptance to the exact actual Linux build plus71-case focused report and matching revision/archive",
+    "reviewedProposedRevision": "8d848f20c8dc4a2b3d672013777e1c630ecd233e",
+    "reviewedProposedArchiveSha256": "45cdb729cb9ccf3aa5e9a063940c0d732ba2bcad59e612d5e1e3f3a9058164c4",
+    "staticReviewSatisfiesRuntimeGates": false,
+    "allowEarlyRollout": false
+  },
+  "limits": [
+    "Source review is not successful rollout, migration or recovery evidence. Root must retain actual operations and cleanup reports separately.",
+    "Strict raw Anvil fingerprint drift refuses activation even if only metadata appears changed; no ignore-drift switch.",
+    "Timeouts and safe restart attempts cannot guarantee service recovery if OS/systemd is unavailable or protected identities changed. Such states require operator review.",
+    "No automatic DB/chain/Cyst/profile restoration after a new or unknown action.",
+    "No Enclave unit/configuration changes or external provider execution authorized by this record."
+  ],
+  "readinessScoreChanged": false,
+  "committedByReviewer": false
+}

@@ -1,0 +1,44 @@
+{
+  "approval": "UNAPPROVED",
+  "paidInferencePosts": 0,
+  "newReportGets": 0,
+  "policySha256": "75abdd6f7e2a075863b71afa68a7e7dddb43115f3834b6428ace33a228d89ffa",
+  "validUntil": "2026-10-08T14:29:11Z",
+  "policyChanged": false,
+  "readOnlyOfflineComparison": true,
+  "policyValidation": "POLICY_EXPIRED",
+  "directProfiles": [
+    {
+      "profileIndex": 0,
+      "measurementDifferences": [
+        "rt_mr3"
+      ],
+      "actionsHashMatches": false
+    },
+    {
+      "profileIndex": 1,
+      "measurementDifferences": [
+        "mr_config_id",
+        "rt_mr3"
+      ],
+      "actionsHashMatches": false
+    },
+    {
+      "profileIndex": 2,
+      "measurementDifferences": [
+        "mr_config_id",
+        "rt_mr3"
+      ],
+      "actionsHashMatches": false
+    },
+    {
+      "profileIndex": 3,
+      "measurementDifferences": [
+        "mr_config_id",
+        "rt_mr3"
+      ],
+      "actionsHashMatches": false
+    }
+  ],
+  "capturedQuoteSha256": "326a65c60c16d09ebc2f59837e9e284c300364eea4a58c949009e7e7ef649e44"
+}

@@ -1,0 +1,51 @@
+{
+  "observedAt": "2026-10-15T20:38:55.383816+00:00",
+  "services": {
+    "enclave-api.service": [
+      "MainPID=0",
+      "ActiveState=inactive"
+    ],
+    "enclave-worker.service": [
+      "MainPID=0",
+      "ActiveState=inactive"
+    ],
+    "enclave-web.service": [
+      "MainPID=0",
+      "ActiveState=inactive"
+    ],
+    "enclave-infra.service": [
+      "MainPID=0",
+      "ActiveState=inactive"
+    ],
+    "nginx.service": [
+      "MainPID=540",
+      "ActiveState=active"
+    ],
+    "telomere-staging.service": [
+      "MainPID=3888942",
+      "ActiveState=active"
+    ],
+    "telomere-mainnet-pilot.service": [
+      "MainPID=0",
+      "ActiveState=inactive"
+    ],
+    "telomere-owner-review-https.service": [
+      "MainPID=4103781",
+      "ActiveState=active"
+    ],
+    "telomere-mainnet-docker.service": [
+      "MainPID=3911563",
+      "ActiveState=active"
+    ],
+    "telomere-mainnet-postgres.service": [
+      "MainPID=3911671",
+      "ActiveState=active"
+    ],
+    "enclave-cert-renew.timer": [
+      "ActiveState=active"
+    ]
+  },
+  "activationFilePresent": false,
+  "publicSiteJsSha256": "859669b4db1c9ba2061823769cbd80e1c38fc30be0bcbf71d4245318ab5e29ce",
+  "ownerReviewVhostSha256": "7246164cdb5ccbec1cfb6a4b4bb4c362a0cdadce55cc26d6fcc782060c980958"
+}

@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "helperSha256": "b766d3d897b886061801273254318aafe818ed0a52fde6d3f3af3c9d916ca2dc",
+  "sourceStable": true,
+  "passed": 27,
+  "failed": 0,
+  "actualDockerCalls": 0,
+  "actualSSHCalls": 0,
+  "actualServiceCalls": 0,
+  "actualBlobReads": 0,
+  "posixFilesystemClaim": false,
+  "cases": [
+    {
+      "name": "valid-json",
+      "result": "accepted"
+    },
+    {
+      "name": "duplicate-json",
+      "result": "refused"
+    },
+    {
+      "name": "NaN",
+      "result": "refused"
+    },
+    {
+      "name": "Infinity",
+      "result": "refused"
+    },
+    {
+      "name": "invalid-utf8",
+      "result": "refused"
+    },
+    {
+      "name": "exact-blob-descriptor",
+      "result": "accepted"
+    },
+    {
+      "name": "wrong-size",
+      "result": "refused"
+    },
+    {
+      "name": "url",
+      "result": "refused"
+    },
+    {
+      "name": "inline-data",
+      "result": "refused"
+    },
+    {
+      "name": "zero-size",
+      "result": "refused"
+    },
+    {
+      "name": "bool-size",
+      "result": "refused"
+    },
+    {
+      "name": "oversize",
+      "result": "refused"
+    },
+    {
+      "name": "wrong-algorithm",
+      "result": "refused"
+    },
+    {
+      "name": "non-digest",
+      "result": "refused"
+    },
+    {
+      "name": "wrong-hash",
+      "result": "refused"
+    },
+    {
+      "name": "all-708-source-including-empty",
+      "result": "accepted"
+    },
+    {
+      "name": "wrong-revision",
+      "result": "refused"
+    },
+    {
+      "name": "working-tree",
+      "result": "refused"
+    },
+    {
+      "name": "wrong-source-kind",
+      "result": "refused"
+    },
+    {
+      "name": "wrong-count",
+      "result": "refused"
+    },
+    {
+      "name": "duplicate-path",
+      "result": "refused"
+    },
+    {
+      "name": "traversal",
+      "result": "refused"
+    },
+    {
+      "name": "backslash",
+      "result": "refused"
+    },
+    {
+      "name": "excluded-dependencies",
+      "result": "refused"
+    },
+    {
+      "name": "changed-source-sha",
+      "result": "refused"
+    },
+    {
+      "name": "oversize-source",
+      "result": "refused"
+    },
+    {
+      "name": "changed-manifest-anchor",
+      "result": "refused"
+    }
+  ]
+}

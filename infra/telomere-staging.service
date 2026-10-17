@@ -1,0 +1,28 @@
+[Unit]
+Description=Telomere private staging controller (test funds only)
+After=network-online.target docker.service telomere-staging-chain.service
+Requires=docker.service telomere-staging-chain.service
+
+[Service]
+Type=simple
+User=telomere
+Group=telomere
+SupplementaryGroups=docker
+WorkingDirectory=/opt/telomere-pilot/app
+EnvironmentFile=/opt/telomere-pilot/config/staging.env
+ExecStart=/opt/node-v22.23.3-linux-x64/bin/node dist/src/main.js
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=35
+CPUQuota=100%
+MemoryMax=768M
+TasksMax=128
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/telomere-pilot/data
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target

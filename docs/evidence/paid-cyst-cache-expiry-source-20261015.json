@@ -1,0 +1,167 @@
+{
+  "startedAt": "2026-10-15T02:49:41.127Z",
+  "finishedAt": "2026-10-15T02:49:44.801Z",
+  "scope": "Focused18-file M5 private-cache retention boundary; no funding or compute session; global backend readiness is separate",
+  "before": [
+    {
+      "path": "src/agents/agent-current-cyst-file-restore.ts",
+      "sha256": "1aa11ee2ea9f2b478faba86f66c5dc1c2060132511260ed968ad22e68fd3eb18"
+    },
+    {
+      "path": "tests/paid-cyst-file-cache-expiry.test.ts",
+      "sha256": "3a8ada96a9547c8b7be22527bcbbfa8fbb89a08087f99b5aca96ab128855bdcd"
+    },
+    {
+      "path": "src/sdk/cyst-checkpoints-file-vault.ts",
+      "sha256": "831867ee6b08b4b83e36e2b7a702280018d4d7d42830f150e97bc304309b4f7f"
+    },
+    {
+      "path": "src/sdk/cyst-checkpoints.ts",
+      "sha256": "b86551e04c23dd5534d94b294c0d0387b3c299882e07040f112c66592ee3cddd"
+    },
+    {
+      "path": "src/sdk/cysts.ts",
+      "sha256": "6c047b959c5ef79ffe3cb47b522e8f5493dac9fdd1dd62483f1e0e4c7bf36d4f"
+    },
+    {
+      "path": "src/sdk/cyst-key-wrap.ts",
+      "sha256": "dd692a6cb37a3e5c45ecc55c9598735ad33e53cc1d56dc9ccbf99b36c8b3769f"
+    },
+    {
+      "path": "src/cysts/large-checkpoints.ts",
+      "sha256": "8b72749fb55fb1903aa284ae89bcf241e9565d8fb1146e23f8954cbf5cd643bc"
+    },
+    {
+      "path": "src/cysts/large-registry.ts",
+      "sha256": "23770f3a871ef919772af06eeab4c67373186f636c298f3f51a1fed717aaa91c"
+    },
+    {
+      "path": "src/cysts/registry-types.ts",
+      "sha256": "c980062a24339fc517396ed6599f7e378f9334fd62035ff4569ff2878721ebd7"
+    },
+    {
+      "path": "src/cysts/types.ts",
+      "sha256": "066f2aea2bd49463017d4664366d55271e0dea2137555bfb2f5f47eddf25783b"
+    },
+    {
+      "path": "src/host-kit/sessions/cyst-input-protocol.ts",
+      "sha256": "d2d6199bc7297399643f1db307a7b6b0c1abdd23d024aa663112e5ae99f50ccb"
+    },
+    {
+      "path": "src/host-kit/sessions/paid-protocol.ts",
+      "sha256": "364ef7fe271e8f9795306b5e2890614f601abe24926a06e8bde3413f5d143db2"
+    },
+    {
+      "path": "src/host-kit/sessions/types.ts",
+      "sha256": "5cb7fc36b80e9ec53556d3a0d54759c10773a88653df55cbb5f7769013b3d76a"
+    },
+    {
+      "path": "src/host-kit/protocol.ts",
+      "sha256": "0e840195a300586db360f855bb8c246a3eb4205e3814bfc5426af2ffd7c97836"
+    },
+    {
+      "path": "src/platform-runtime/session-client.ts",
+      "sha256": "e786a039de88c7b78605d839342645f2535d37af1e34a074d50f920663c125de"
+    },
+    {
+      "path": "src/common.ts",
+      "sha256": "1036bf5ec02c7c1d7ec273aa065dd08cd5cafe40a0eb017f9a427cf9bb091fba"
+    },
+    {
+      "path": "package.json",
+      "sha256": "632c193486a5614ee2498eed76826fbb29e68d81fbe025878e48a4180de16fcc"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "e8549c057c2e4a8a3808ae2a2b386e9a20d20711c696836dd483d4c8bc7c533d"
+    }
+  ],
+  "after": [
+    {
+      "path": "src/agents/agent-current-cyst-file-restore.ts",
+      "sha256": "1aa11ee2ea9f2b478faba86f66c5dc1c2060132511260ed968ad22e68fd3eb18"
+    },
+    {
+      "path": "tests/paid-cyst-file-cache-expiry.test.ts",
+      "sha256": "3a8ada96a9547c8b7be22527bcbbfa8fbb89a08087f99b5aca96ab128855bdcd"
+    },
+    {
+      "path": "src/sdk/cyst-checkpoints-file-vault.ts",
+      "sha256": "831867ee6b08b4b83e36e2b7a702280018d4d7d42830f150e97bc304309b4f7f"
+    },
+    {
+      "path": "src/sdk/cyst-checkpoints.ts",
+      "sha256": "b86551e04c23dd5534d94b294c0d0387b3c299882e07040f112c66592ee3cddd"
+    },
+    {
+      "path": "src/sdk/cysts.ts",
+      "sha256": "6c047b959c5ef79ffe3cb47b522e8f5493dac9fdd1dd62483f1e0e4c7bf36d4f"
+    },
+    {
+      "path": "src/sdk/cyst-key-wrap.ts",
+      "sha256": "dd692a6cb37a3e5c45ecc55c9598735ad33e53cc1d56dc9ccbf99b36c8b3769f"
+    },
+    {
+      "path": "src/cysts/large-checkpoints.ts",
+      "sha256": "8b72749fb55fb1903aa284ae89bcf241e9565d8fb1146e23f8954cbf5cd643bc"
+    },
+    {
+      "path": "src/cysts/large-registry.ts",
+      "sha256": "23770f3a871ef919772af06eeab4c67373186f636c298f3f51a1fed717aaa91c"
+    },
+    {
+      "path": "src/cysts/registry-types.ts",
+      "sha256": "c980062a24339fc517396ed6599f7e378f9334fd62035ff4569ff2878721ebd7"
+    },
+    {
+      "path": "src/cysts/types.ts",
+      "sha256": "066f2aea2bd49463017d4664366d55271e0dea2137555bfb2f5f47eddf25783b"
+    },
+    {
+      "path": "src/host-kit/sessions/cyst-input-protocol.ts",
+      "sha256": "d2d6199bc7297399643f1db307a7b6b0c1abdd23d024aa663112e5ae99f50ccb"
+    },
+    {
+      "path": "src/host-kit/sessions/paid-protocol.ts",
+      "sha256": "364ef7fe271e8f9795306b5e2890614f601abe24926a06e8bde3413f5d143db2"
+    },
+    {
+      "path": "src/host-kit/sessions/types.ts",
+      "sha256": "5cb7fc36b80e9ec53556d3a0d54759c10773a88653df55cbb5f7769013b3d76a"
+    },
+    {
+      "path": "src/host-kit/protocol.ts",
+      "sha256": "0e840195a300586db360f855bb8c246a3eb4205e3814bfc5426af2ffd7c97836"
+    },
+    {
+      "path": "src/platform-runtime/session-client.ts",
+      "sha256": "e786a039de88c7b78605d839342645f2535d37af1e34a074d50f920663c125de"
+    },
+    {
+      "path": "src/common.ts",
+      "sha256": "1036bf5ec02c7c1d7ec273aa065dd08cd5cafe40a0eb017f9a427cf9bb091fba"
+    },
+    {
+      "path": "package.json",
+      "sha256": "632c193486a5614ee2498eed76826fbb29e68d81fbe025878e48a4180de16fcc"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "e8549c057c2e4a8a3808ae2a2b386e9a20d20711c696836dd483d4c8bc7c533d"
+    }
+  ],
+  "changedDuringRun": [],
+  "negativeControl": {
+    "sourceEqualsGitBlob": "abf941bef4688fa3f81eb986523fa16037cc3abc:src/agents/agent-current-cyst-file-restore.ts",
+    "moduleSha256": "432b2387390a3bba58ec172872269902c97930bade8096e21af133f949fd275e",
+    "testSha256": "3a8ada96a9547c8b7be22527bcbbfa8fbb89a08087f99b5aca96ab128855bdcd",
+    "expectedExit": 1,
+    "actualExit": 1,
+    "output": "JSON report written to C:/Users/Administrator/Documents/Codex/2026-10-08/new-chat/outputs/telomere/.local/m5-final-a89eddb/.local/paid-cyst-cache-expiry-negative-control-20261015.json\n"
+  },
+  "corrected": {
+    "expectedExit": 0,
+    "actualExit": 0,
+    "output": "JSON report written to C:/Users/Administrator/Documents/Codex/2026-10-08/new-chat/outputs/telomere/.local/paid-cyst-cache-expiry-accepted-20261015.json\n"
+  }
+}

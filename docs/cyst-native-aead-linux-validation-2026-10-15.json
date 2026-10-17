@@ -1,0 +1,290 @@
+{
+  "schema": 1,
+  "recordedAtUtc": "2026-10-15T12:19:22.099585+00:00",
+  "status": "ACCEPTED_COMPATIBLE_NATIVE_CRYPTO_AND_LOCAL_STREAM_MEASUREMENT",
+  "productionCommit": "c87824f698020aa561ffb9df6d6c6874e4b644ba",
+  "productionParent": "7bb69e5e73199ab372ca6c263297792634648aaf",
+  "productionFiles": [
+    "src/cysts/chunk-aead.ts",
+    "src/cysts/large-checkpoints.ts",
+    "tests/chunk-aead.test.ts"
+  ],
+  "archiveSha256": "18208d0650d2bc0741b33f32d9ba64a7364b817bc1a54bb783ccc8f01bd9d5eb",
+  "windows": {
+    "typecheckExitCode": 0,
+    "focused": {
+      "status": "PASS",
+      "exitCode": 0,
+      "seconds": 110.15837287902832,
+      "capturedSourceFiles": 48,
+      "changedDuringRun": [],
+      "numTotalTests": 90,
+      "numPassedTests": 87,
+      "numFailedTests": 0,
+      "numPendingTests": 3,
+      "testFiles": [
+        "tests/chunk-aead.test.ts",
+        "tests/large-cyst-checkpoints.test.ts",
+        "tests/large-cyst-agent-manifest.test.ts",
+        "tests/large-cyst-current-resolver.test.ts",
+        "tests/large-cyst-publication.test.ts",
+        "tests/large-cyst-s3.test.ts",
+        "tests/large-cyst-replication.test.ts",
+        "tests/cyst-key-wrap.test.ts",
+        "tests/paid-cyst-file-restore.test.ts",
+        "tests/paid-cyst-file-cache-expiry.test.ts"
+      ]
+    },
+    "independentSourceReview": "Closed by separate reviewer; final truthful setAAD plaintextLength and real-update spy overload corrections also read."
+  },
+  "linux": {
+    "compileExitCode": 0,
+    "focused": {
+      "exitCode": 0,
+      "stdoutSha256": "2b352a5a64a30bc6ebc14b9db91c8189ff54d7742149914ab03e3928674f228f",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "total": 90,
+      "passed": 89,
+      "failed": 0,
+      "skipped": 1
+    },
+    "skippedCases": [
+      {
+        "file": "paid-cyst-file-restore.test.ts",
+        "test": "declared multi-chunk current Cyst into an actual locally paid CPU application restores declared-directory state through encrypted multi-chunk Cyst, real Vault payment and one application command"
+      }
+    ],
+    "trackedArchiveFiles": 1349,
+    "changedTrackedArchiveFiles": [],
+    "copiedDependencyEntries": 21050,
+    "changedDependencyEntries": [],
+    "originalDependencyCheckoutUnchanged": true,
+    "loadedCriticalModuleProofFiles": 14,
+    "loadedCriticalModulesUnchanged": true,
+    "runtimeExecutableSha256": "fde6a4bf8d0562f7751d1a2d6cb9b417c4cfe107bbcb0aa3e9a24e125e348f48",
+    "wrapperStillAliveAtDownload": false
+  },
+  "measurement": {
+    "startedAtUtc": "2026-10-15T12:13:49.913Z",
+    "finishedAtUtc": "2026-10-15T12:15:23.325Z",
+    "backend": "node",
+    "plaintextBytes": 2147221504,
+    "packageBytes": 2147297276,
+    "chunkBytes": 4194304,
+    "partCount": 512,
+    "sourceAllocatedBytes": 2147225600,
+    "restoredAllocatedBytes": 2147225600,
+    "everyByteCompared": true,
+    "sourceSha256": "dd4aef2b53b96215feb8dd12dac791a262bff899b3a36869bfe8bd474a417d24",
+    "restoredSha256": "dd4aef2b53b96215feb8dd12dac791a262bff899b3a36869bfe8bd474a417d24",
+    "restoreMs": 19632.194268000007,
+    "localRestoreThresholdMs": 20000,
+    "localRestoreThresholdMetInThisRun": true,
+    "marginMs": 367.80573199999344,
+    "baselineRestoreMs": 29475.997332000014,
+    "restoreReductionPercent": 33.39599659046407,
+    "saveMs": 60432.889371000005,
+    "baselineSaveMs": 73787.991874,
+    "independentVerificationMsExcludedFromRestore": 5895.977633000002,
+    "peakRssBytes": 177143808,
+    "baselinePeakRssBytes": 182206464,
+    "resourceBefore": {
+      "stage": "before",
+      "freeDiskBytes": 190377005056,
+      "freeMemoryBytes": 13689085952,
+      "rssBytes": 60100608,
+      "loadAverage": [
+        6.01,
+        5.93,
+        4.13
+      ],
+      "maxRssBytes": 96149504,
+      "cpu": {
+        "user": 69070,
+        "system": 19822
+      }
+    },
+    "resourceAfter": {
+      "stage": "after",
+      "freeDiskBytes": 183932526592,
+      "freeMemoryBytes": 14588706816,
+      "rssBytes": 153767936,
+      "loadAverage": [
+        5.35,
+        5.72,
+        4.23
+      ],
+      "maxRssBytes": 177143808,
+      "cpu": {
+        "user": 37084927,
+        "system": 17867686
+      }
+    },
+    "minimumFreeMemoryBytes": 13445451776,
+    "minimumFreeDiskBytes": 183932522496
+  },
+  "baselineReport": "docs/large-cyst-2g-stream-baseline-linux-validation-2026-10-15.json",
+  "fullSpecResumeTargetVerified": false,
+  "limits": [
+    "One shared-VPS local encrypted private-store SDK stream; no universal or cold-cache latency guarantee. Margin below20s is only367.8ms in this run.",
+    "No complete object-store/network pull, registry, paid admission, different-host Cell/application or sealed-key release latency measurement.",
+    "The original <=2GB pull/verify/decrypt-inside-new-Cell/restore target is not closed by this benchmark.",
+    "Ordinary Cell declared bundle8MiB and writable scratch16MiB limits are unchanged; no2GiB writable-tree/tar/overlay/CRIU acceptance.",
+    "No dependencies, encrypted format,24byte nonce prefix, existing AAD, header/manifest HMAC, wrapping or key custody changed.",
+    "Native availability is selected before data processing; any native encryption/authentication failure refuses without portable fallback.",
+    "Existing baseline evidence, accepted checkout, staging services and provider/public-wallet state were not modified.",
+    "Buffer clearing is best-effort for retained JavaScript allocations, not an OpenSSL-internal/physical-memory erasure guarantee."
+  ],
+  "ownedRemoteFilesPreserved": true,
+  "remoteScope": {
+    "revision": "c87824f698020aa561ffb9df6d6c6874e4b644ba",
+    "base": "/opt/telomere-host-runtime/cyst-native-20261015-1565b1dcfd542dd7c139e790",
+    "work": "/opt/telomere-host-runtime/cyst-2g-stream-native-20261015-1565b1dcfd542dd7c139e790",
+    "archiveSha256": "18208d0650d2bc0741b33f32d9ba64a7364b817bc1a54bb783ccc8f01bd9d5eb",
+    "archiveBytes": 6756263,
+    "sourceFiles": 1349,
+    "benchmarkSha256": "4c93e8f8fc10891bb2d32c615992fbfe02dcc3802b7832077a7df430a9e11b89"
+  },
+  "evidence": [
+    {
+      "path": "docs/evidence/cyst-native-aead-20261015/linux/benchmark/benchmark.mjs",
+      "bytes": 12807,
+      "sha256": "caea1a12af2bc8fc2c2142b51a2dc6095d3799a4accec3c43c0d30ea702d75bb"
+    },
+    {
+      "path": "docs/evidence/cyst-native-aead-20261015/linux/benchmark/progress.json",
+      "bytes": 77,
+      "sha256": "023ef0bb03f34adcfe61ec3698c80e2d942f0422d6258ed91a46547436d2d975"
+    },
+    {
+      "path": "docs/evidence/cyst-native-aead-20261015/linux/benchmark/result.json",
+      "bytes": 13849,
+      "sha256": "11693612131ae23241ea307bbf3ed0094f2132c5838a31a436d756bd33f63417"
+    },
+    {
+      "path": "docs/evidence/cyst-native-aead-20261015/linux/benchmark/stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/evidence/cyst-native-aead-20261015/linux/benchmark/stdout",
+      "bytes": 158,
+      "sha256": "bedb3edfbe46b8836f9bf62d19f97ad25d47217d8d36dfd2d9b40a9c1ead4381"
+    },
+    {
+      "path": "docs/evidence/cyst-native-aead-20261015/linux/download-manifest.json",
+      "bytes": 3006,
+      "sha256": "8613f58626770195a0a5d4b7861d4fcdfa1e5501d4f7981a88e1865f137de79a"
+    },
+    {
+      "path": "docs/evidence/cyst-native-aead-20261015/linux/library/acceptance.json",
+      "bytes": 1612,
+      "sha256": "ffee7b9f39e42c39643e00225b016f89a2127330b8d274f801789568d0a0e5ca"
+    },
+    {
+      "path": "docs/evidence/cyst-native-aead-20261015/linux/library/compile.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/evidence/cyst-native-aead-20261015/linux/library/compile.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/evidence/cyst-native-aead-20261015/linux/library/cyst-native-runner-20261015.py",
+      "bytes": 6230,
+      "sha256": "84722e1f0276d31a5260e9be5a6a7b2b2ea20ba5a80ee43fa2c5f69ef0399903"
+    },
+    {
+      "path": "docs/evidence/cyst-native-aead-20261015/linux/library/dependency-after.json",
+      "bytes": 3208043,
+      "sha256": "712204ab45aefdda70ea46b52b073a33925f98965d5c2a4ef9899ba1fe68f449"
+    },
+    {
+      "path": "docs/evidence/cyst-native-aead-20261015/linux/library/dependency-before.json",
+      "bytes": 3208043,
+      "sha256": "712204ab45aefdda70ea46b52b073a33925f98965d5c2a4ef9899ba1fe68f449"
+    },
+    {
+      "path": "docs/evidence/cyst-native-aead-20261015/linux/library/focused.json",
+      "bytes": 34552,
+      "sha256": "1ca79822d8c87bd2fe27384647fc2c0cf652b30e4c3e441e7ad5345c35becfe9"
+    },
+    {
+      "path": "docs/evidence/cyst-native-aead-20261015/linux/library/focused.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/evidence/cyst-native-aead-20261015/linux/library/focused.stdout",
+      "bytes": 109,
+      "sha256": "2b352a5a64a30bc6ebc14b9db91c8189ff54d7742149914ab03e3928674f228f"
+    },
+    {
+      "path": "docs/evidence/cyst-native-aead-20261015/linux/library/launch.json",
+      "bytes": 305,
+      "sha256": "cebe92dc26b4dfd852b998d58e7ee172fd7a4aa4d9ff3d45343fd177df97395d"
+    },
+    {
+      "path": "docs/evidence/cyst-native-aead-20261015/linux/library/runner.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/evidence/cyst-native-aead-20261015/linux/library/runner.stdout",
+      "bytes": 1498,
+      "sha256": "2cb81f556253dbfdde20f0b3a279828a7fd208071d00e63e07f1ac228b09def9"
+    },
+    {
+      "path": "docs/evidence/cyst-native-aead-20261015/linux/library/scope.json",
+      "bytes": 476,
+      "sha256": "91fe31b888383a408393348c1bdb16afd91f803ac286555e1ec5d92f2de33a73"
+    },
+    {
+      "path": "docs/evidence/cyst-native-aead-20261015/linux/library/source-after.json",
+      "bytes": 209330,
+      "sha256": "928a3b5f685a013bf70c164bcffce2d3f5e1e142048970ae19fdf489660ee42d"
+    },
+    {
+      "path": "docs/evidence/cyst-native-aead-20261015/linux/library/source-manifest.json",
+      "bytes": 214726,
+      "sha256": "304c3e7c3a1b76c4fc2592e083d69eea21673ec7d3fe77f895f0e5a3bb8eece9"
+    },
+    {
+      "path": "docs/evidence/cyst-native-aead-20261015/primary-source-facts.json",
+      "bytes": 2193,
+      "sha256": "6a73b5342ea78c105aa722ad9f8b1006f670a6cb65a689f54f4fa9c7281a65f9"
+    },
+    {
+      "path": "docs/evidence/cyst-native-aead-20261015/windows-crypto-initial.json",
+      "bytes": 7611,
+      "sha256": "c6d3f545b47dbac6e10592de2ad63e53af0cbe90000d2072aebc1f564293bce7"
+    },
+    {
+      "path": "docs/evidence/cyst-native-aead-20261015/windows-focused.json",
+      "bytes": 34458,
+      "sha256": "12f298193c18854c3087a0eccee6a9e3e091f1f9cb92512cc6573a91c4e09a23"
+    },
+    {
+      "path": "docs/evidence/cyst-native-aead-20261015/windows-source-after.json",
+      "bytes": 6944,
+      "sha256": "a42f4d975412a8d490da8521b736b9413f27636b992f2c07640cb504b739b81d"
+    },
+    {
+      "path": "docs/evidence/cyst-native-aead-20261015/windows-source-before.json",
+      "bytes": 6944,
+      "sha256": "a42f4d975412a8d490da8521b736b9413f27636b992f2c07640cb504b739b81d"
+    },
+    {
+      "path": "docs/evidence/cyst-native-aead-20261015/windows-typecheck.json",
+      "bytes": 627,
+      "sha256": "a776ceda170cd45ec89f8a8b1e63cb1525d5a17f1ef53bc355a1e366d773fba3"
+    },
+    {
+      "path": "docs/evidence/cyst-native-aead-20261015/windows-validation.json",
+      "bytes": 687,
+      "sha256": "38cf936c04aab0e58bfce006344724f4f20c590cbd57771ca3bcb69b7eeb8b3d"
+    }
+  ]
+}

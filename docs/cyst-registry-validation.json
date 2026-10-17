@@ -1,0 +1,193 @@
+{
+  "schemaVersion": 1,
+  "checkedOn": "2026-10-12",
+  "scope": "Registered-agent CystRegistry contract, optional main HTTP API, checked Node/Python publication/download/local application restore",
+  "precedingCommittedCheckpoint": "6d87859",
+  "fullSpecScoreCutoff": "d44edd3",
+  "fullSpecScoreChanged": false,
+  "publicTransactions": false,
+  "personalWalletUsed": false,
+  "paidProviderRequests": false,
+  "liveRegistryEnabled": false,
+  "windows": {
+    "runsAreSplitAndOverlapEarlierRegression": true,
+    "registryCore": {
+      "tests": 41,
+      "passed": 41,
+      "failed": 0,
+      "skipped": 0,
+      "testFiles": 3,
+      "success": true,
+      "elapsedSeconds": 123.91
+    },
+    "registryClient": {
+      "tests": 65,
+      "passed": 65,
+      "failed": 0,
+      "skipped": 0,
+      "testFiles": 1,
+      "success": true,
+      "elapsedSeconds": 7.62
+    },
+    "registryConfiguration": {
+      "tests": 17,
+      "passed": 15,
+      "failed": 0,
+      "skipped": 2,
+      "testFiles": 1,
+      "elapsedSeconds": 3.41,
+      "skipReasons": [
+        "POSIX private permissions unavailable on Windows",
+        "File symlink creation unavailable without Windows privilege"
+      ]
+    },
+    "legacyAffected": {
+      "tests": 61,
+      "passed": 60,
+      "failed": 0,
+      "skipped": 1,
+      "testFiles": 4,
+      "success": true,
+      "elapsedSeconds": 150.98
+    },
+    "legacySkipReason": "Existing POSIX permissions case; separately dated prior Linux evidence retained"
+  },
+  "python": {
+    "platform": "Windows",
+    "cryptoEnabled": {
+      "tests": 117,
+      "passed": 117,
+      "failed": 0,
+      "skipped": 0,
+      "elapsedSeconds": 6.382
+    },
+    "withoutOptionalCrypto": {
+      "tests": 117,
+      "passed": 60,
+      "failed": 0,
+      "skipped": 57,
+      "elapsedSeconds": 3.853
+    },
+    "actualTrickledBodyDeadline": {
+      "tests": 1,
+      "passed": 1,
+      "framingSubcases": [
+        "content-length",
+        "trickled chunk header"
+      ],
+      "elapsedSeconds": 2.046
+    },
+    "rpcReaderSuppliedByCaller": true,
+    "hardDnsAndHeaderDeadlineEstablished": false
+  },
+  "linux": {
+    "checkedAtUtc": "2026-10-12T10:42:35.842868+00:00",
+    "nodeVersion": "v22.23.3",
+    "tests": 123,
+    "passed": 123,
+    "failed": 0,
+    "skipped": 0,
+    "testFiles": [
+      {
+        "name": "cyst-registry-client.test.ts",
+        "status": "passed",
+        "tests": 65,
+        "passed": 65,
+        "skipped": 0
+      },
+      {
+        "name": "cyst-registry-configured.test.ts",
+        "status": "passed",
+        "tests": 17,
+        "passed": 17,
+        "skipped": 0
+      },
+      {
+        "name": "cyst-registry-contracts.test.ts",
+        "status": "passed",
+        "tests": 11,
+        "passed": 11,
+        "skipped": 0
+      },
+      {
+        "name": "cyst-registry-reader.test.ts",
+        "status": "passed",
+        "tests": 12,
+        "passed": 12,
+        "skipped": 0
+      },
+      {
+        "name": "cyst-registry-runtime.test.ts",
+        "status": "passed",
+        "tests": 18,
+        "passed": 18,
+        "skipped": 0
+      }
+    ],
+    "elapsedSeconds": 100.447,
+    "sourceMatchesBefore": 271,
+    "sourceMatchesAfter": 271,
+    "diagnosticHooks": false,
+    "publicChainOrProviderCalls": false,
+    "serviceMutations": false,
+    "healthBefore": {
+      "status": "ready",
+      "worker": "idle"
+    },
+    "healthAfter": {
+      "status": "ready",
+      "worker": "idle"
+    },
+    "existingUnitsActiveBeforeAndAfter": 5,
+    "ownedTestProcessesRemaining": 0
+  },
+  "linuxInitialFailure": {
+    "supersededSnapshotManifestSha256": "d349879f1d16ef4d01c43524f4bc2ee4c82fa242e701f572c03636409e8f967b",
+    "tests": 121,
+    "passed": 120,
+    "failed": 1,
+    "skipped": 0,
+    "causeCode": "ECONNRESET",
+    "case": "Oversized blob response after the preceding maximum-size download",
+    "standaloneUnchangedCasePassed": true,
+    "completeUnchangedClientRerun": {
+      "passed": 62,
+      "total": 63
+    },
+    "fixtureCorrection": "Longer idle keepalive and actual chunked oversized response; exact response_limit assertion retained",
+    "additionalProductionCorrection": "Cancel both header-rejected and streamed oversized bodies without awaiting cancellation or replacing the limit error"
+  },
+  "sourceSnapshot": {
+    "files": 271,
+    "manifest": "docs/cyst-registry-source-sha256.txt",
+    "manifestSha256": "4cfb9a15c7ee55c4099efbb5930e8a328344481412199ffc935794bb7eaab199",
+    "tarSha256": "a2fff52b3e055bc6fa7cafae7034956a0b765176bc5e98857ecccdf4bb9a0718",
+    "excludes": [
+      "Python",
+      "Subsequent checkpoint coordinator",
+      "Private configuration and keys",
+      "Unrelated local acceptance artifacts"
+    ]
+  },
+  "build": {
+    "strictTypeScript": true,
+    "solidityAndApplicationBuild": true,
+    "registryBrowserBundle": true,
+    "registryBrowserBundleApproxKiB": 240.7
+  },
+  "established": [
+    "Actual local Selection-bound agent-only commit/retire, monotonic revisions, stale-CAS refusal and lifecycle checks",
+    "Actual main application, signed generated-account authentication, persistent PGlite/filesystem ciphertext and restart",
+    "Common canonical EIP-1898 state/code anchor, independent SDK role/calldata/metadata verification and reorg/depth/pin refusal",
+    "Current-live delegated encrypted download, exact original envelope/digest/length and local AEAD recovery",
+    "Bounded request/RPC/body/ciphertext handling and private configuration startup failure/cleanup"
+  ],
+  "remaining": [
+    "Reviewed funded public deployment",
+    "2 GiB or multipart filesystem/process/GPU snapshots",
+    "Actual independent-region replication",
+    "Persistent Cell resume or host migration",
+    "Attestation-gated recovery-key release",
+    "Caller-provided durable private key custody"
+  ]
+}

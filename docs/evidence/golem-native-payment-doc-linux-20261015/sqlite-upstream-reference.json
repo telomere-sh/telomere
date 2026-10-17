@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "verifiedAtUtc": "2026-10-15T13:46:47.130626+00:00",
+  "url": "https://raw.githubusercontent.com/nodejs/node/v22.23.3/deps/sqlite/sqlite3.c",
+  "repositoryUrl": "https://github.com/nodejs/node/blob/v22.23.3/deps/sqlite/sqlite3.c",
+  "bytes": 9390466,
+  "sha256": "9512509b1bccb7461f79bea8aad6280ae4699e925fa4804381b71f59e7efb0c5",
+  "sourceTag": "v22.23.3",
+  "functionLines": [
+    39913,
+    39923
+  ],
+  "walOpenCallerLines": [
+    45913,
+    45927
+  ],
+  "rootOnlyFchownConditionVerified": true,
+  "walOpenCallsFchownVerified": true,
+  "scope": "Source reference and static condition only. Actual filesystem effect is separately established by retained Linux probes.",
+  "fullSourceSaved": false
+}

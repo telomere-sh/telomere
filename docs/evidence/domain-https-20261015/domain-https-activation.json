@@ -1,0 +1,64 @@
+{
+  "status": "HTTPS website and protected owner review live",
+  "origins": [
+    "https://telomere.sh",
+    "https://review.telomere.sh"
+  ],
+  "apexStatus": 200,
+  "websiteCspMatchesReviewedLoader": true,
+  "apiBeforeActivation": 503,
+  "missingAsset": 404,
+  "reviewUnauthenticatedStatus": 401,
+  "reviewAuthenticatedStatus": 200,
+  "wrongOriginStatus": 403,
+  "financialEndpointStatus": 404,
+  "reviewStatus": "ready_for_owner_wallet",
+  "gas": {
+    "estimated": "2835534",
+    "limit": "3402641",
+    "maxFeePerGasWei": "7000000",
+    "maxPriorityFeePerGasWei": "1000000",
+    "l2GasBudgetWei": "23818487000000",
+    "unsignedTransactionBytes": 14079,
+    "l1DataFeeUpperBoundWei": "89364674283",
+    "operatorFeeWei": "0",
+    "totalGasBudgetWei": "23907851674283",
+    "includesL1DataFee": true,
+    "futureL1FeeHardCap": false,
+    "nativeBalanceWei": "3668724411292060",
+    "balanceOverrideUsed": false
+  },
+  "referenceBlock": "52652598",
+  "profileSha256": "f53cec74742e3ca7eb8eda806ffb00468d992e1b4d6dd421010782ea63fa5f0e",
+  "expectedManifestSha256": "e57f5e28264891f93ae35fa3b3b047cbdfdf9235fc4e984e13f084c87d916c2d",
+  "configurationPreflight": {
+    "readOnly": true,
+    "configurationValid": true,
+    "chainId": 8453,
+    "operator": "0x87599dBF6f720DE7751E8CB2d36d4Ea96A4A1d38",
+    "verifiedRuntimePins": 906,
+    "unsignedPlanBound": true,
+    "bootstrapOwnershipVerified": true,
+    "dockerIsolationVerified": true,
+    "controllerStarted": false,
+    "onChainCalls": false
+  },
+  "singleFinancialReviewOrigin": true,
+  "oldLocalReviewStopped": true,
+  "unchangedPreexistingVhosts": true,
+  "unchangedStagingPids": true,
+  "nginxVhosts": [
+    {
+      "name": "telomere-apex-static",
+      "sha256": "c60619f3287ea933f7f5525bd41f1fa483930008a883dfa244e6c93de38995ea"
+    },
+    {
+      "name": "telomere-owner-review",
+      "sha256": "7246164cdb5ccbec1cfb6a4b4bb4c362a0cdadce55cc26d6fcc782060c980958"
+    }
+  ],
+  "ownerWalletRequests": 0,
+  "publicTransactionsSent": 0,
+  "controllerStarted": false,
+  "activationAbsent": true
+}

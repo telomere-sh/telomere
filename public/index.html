@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f3ec">
+  <title>Telomere — bounded compute</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script type="module" src="/app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a href="/" class="wordmark" aria-label="Telomere dashboard"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>telomere<span class="pilot">pilot</span></a>
+    <div class="header-actions"><span id="profile-badge" class="badge">Loading profile</span><button id="connect-wallet" class="button button-dark" type="button">Connect wallet</button><button id="use-demo" class="button" type="button" hidden>Use demo account</button></div>
+  </header>
+  <main id="main">
+    <section class="intro" aria-labelledby="page-title">
+      <div><p class="eyebrow">Bounded compute / CPU + NEAR</p><h1 id="page-title">Work, within limits.</h1><p class="intro-copy">Set a budget. Approve a ceiling. Keep a receipt.</p></div>
+      <div class="identity"><span class="eyebrow">Account</span><span id="account-label" class="mono">Connect a wallet to begin</span><span id="account-state" class="quiet">Sign a message to access your runs.</span></div>
+    </section>
+
+    <div id="notice" class="notice" hidden><p id="notice-text" role="status" aria-live="polite"></p><button id="dismiss-notice" type="button" class="text-button" aria-label="Dismiss message">Dismiss</button></div>
+    <p id="live-status" class="sr-only" role="status" aria-live="polite"></p>
+
+    <section class="ledger" aria-labelledby="balance-title">
+      <div class="ledger-top"><h2 id="balance-title">Balance</h2><button id="refresh" class="text-button" type="button">Refresh</button></div>
+      <div class="balance-grid"><div><span class="eyebrow">Available</span><p id="available-balance" class="balance-value">—</p><span id="token-caption" class="quiet">Loading token</span></div><div><span class="eyebrow">Reserved</span><p id="reserved-balance" class="balance-value">—</p><span class="quiet">Held for active runs</span></div><div class="funding">
+        <form id="funding-form"><label for="funding-amount">Amount</label><div class="funding-controls"><input id="funding-amount" name="amount" type="text" inputmode="decimal" autocomplete="off" value="10" required aria-describedby="funding-hint funding-error"><button id="deposit" class="button button-dark signed-action" type="submit" disabled>Deposit</button><button id="withdraw" class="button signed-action" type="button" disabled>Withdraw</button></div><p id="funding-hint" class="hint">Deposits may require a token approval first.</p><p id="funding-error" class="field-error" role="alert" hidden></p></form>
+        <button id="demo-fund" class="text-button signed-action" type="button" hidden disabled>Fund demo balance</button>
+      </div></div>
+    </section>
+
+    <div class="workbench">
+      <section class="panel task-panel" aria-labelledby="task-title">
+        <div class="section-heading"><div><p class="eyebrow">01 / Workload</p><h2 id="task-title">Start a run</h2></div><span class="tag">Allowlisted tasks</span></div>
+        <form id="task-form">
+          <div class="two-fields"><div><label for="run-leash">Leash</label><select id="run-leash" name="leashId" required aria-describedby="leash-select-hint"><option value="">Create a leash first</option></select><p id="leash-select-hint" class="hint">A leash caps hourly and daily spend.</p></div><div><label for="task-kind">CPU task</label><select id="task-kind" name="task"><option value="sha256">SHA-256 hash</option><option value="hash_chain">Hash chain</option><option value="sort">Sort numbers</option><option value="primes">Find primes</option></select></div></div>
+          <div id="text-task"><label id="task-text-label" for="task-text">Text to hash</label><textarea id="task-text" name="text" rows="3" maxlength="8192" aria-describedby="task-input-hint">hello telomere</textarea></div>
+          <div id="hash-chain-task" class="hash-chain-input" hidden><label for="hash-iterations">Hash iterations</label><input id="hash-iterations" name="iterations" type="number" min="1" max="2000000" step="1" value="200000" aria-describedby="task-input-hint"></div>
+          <div id="sort-task" hidden><label for="task-numbers">Numbers to sort</label><textarea id="task-numbers" name="numbers" rows="3" aria-describedby="task-input-hint">8, 3, 21, 1, 5</textarea></div>
+          <div id="primes-task" hidden><label for="task-limit">Find primes up to</label><input id="task-limit" name="limit" type="number" min="2" max="2000000" step="1" value="100000" aria-describedby="task-input-hint"></div>
+          <p id="task-input-hint" class="hint">Text is hashed by the configured CPU worker. Maximum: 8 KB of UTF-8 text.</p>
+          <div class="two-fields task-limits"><div><label for="max-seconds">Maximum runtime <span class="label-unit">seconds</span></label><input id="max-seconds" name="maxSeconds" type="number" min="1" step="1" value="10" required aria-describedby="runtime-hint"><p id="runtime-hint" class="hint">The worker stops at this limit.</p></div><div class="price-preview"><span class="eyebrow">CPU rate</span><strong id="cpu-price" class="mono">—</strong><span class="hint">Charged for billable runtime</span></div></div>
+          <div class="near-option"><label class="checkbox-label"><input id="add-near" name="addNear" type="checkbox" disabled><span>Add a NEAR inference prompt</span><span id="near-status" class="tag">Checking availability</span></label><p id="near-hint" class="hint">Inference availability depends on the server configuration.</p><div id="near-fields" hidden><label for="near-prompt">Prompt</label><textarea id="near-prompt" name="nearPrompt" rows="3" maxlength="8000" placeholder="Summarize this result in one sentence."></textarea><p id="near-limit" class="hint"></p></div></div>
+          <p id="worker-task-guidance" class="worker-guidance" role="status" hidden></p><p id="task-error" class="field-error" role="alert" hidden></p><div class="form-footer"><span class="hint">A quote reserves nothing until you approve it.</span><button id="get-quote" class="button button-dark signed-action" type="submit" disabled>Get quote</button></div>
+        </form>
+        <div id="quote-panel" class="quote-panel" hidden aria-labelledby="quote-title"><div><p class="eyebrow">02 / Approval</p><h3 id="quote-title">Maximum reservation</h3><p id="quote-ceiling" class="quote-amount"></p><p id="quote-summary" class="hint"></p></div><dl class="quote-facts"><div><dt>Quote expires</dt><dd id="quote-expiry"></dd></div><div><dt>Run ID</dt><dd id="quote-run" class="mono"></dd></div></dl><p class="hint">Approve the onchain run. Unused reservation returns after settlement.</p><div class="form-footer"><button id="discard-quote" class="text-button" type="button">Discard quote</button><button id="approve-quote" class="button button-dark signed-action" type="button" disabled>Approve and run</button></div></div>
+      </section>
+
+      <aside class="side-column">
+        <section class="panel" aria-labelledby="leash-title"><div class="section-heading"><div><p class="eyebrow">Spending controls</p><h2 id="leash-title">Leashes</h2></div><span id="leash-count" class="tag">0 active</span></div><p class="section-copy">Authorize an agent within a fixed spending window. Kill a leash to stop its work and block new runs.</p>
+          <div id="leashes-list" class="leashes-list"><p class="empty-copy">Sign in to view spending controls.</p></div>
+          <details id="leash-details" class="create-leash"><summary>Create a leash<span aria-hidden="true">+</span></summary><form id="leash-form"><label for="leash-agent">Agent address <span class="label-unit">optional</span></label><input id="leash-agent" name="agent" type="text" autocomplete="off" spellcheck="false" placeholder="Use this account" aria-describedby="agent-hint"><p id="agent-hint" class="hint">Leave blank to authorize your connected account.</p><div class="two-fields"><div><label for="hour-budget">Hourly budget</label><input id="hour-budget" name="maxPerHour" type="text" inputmode="decimal" value="5" required></div><div><label for="day-budget">Daily budget</label><input id="day-budget" name="maxPerDay" type="text" inputmode="decimal" value="20" required></div></div><label for="leash-duration">Valid for</label><select id="leash-duration" name="duration"><option value="3600">1 hour</option><option value="86400" selected>1 day</option><option value="604800">7 days</option></select><p id="leash-error" class="field-error" role="alert" hidden></p><button id="create-leash" class="button button-dark signed-action" type="submit" disabled>Create leash</button></form></details>
+        </section>
+        <section class="evidence panel" aria-labelledby="evidence-title"><div class="section-heading"><div><p class="eyebrow">Execution status</p><h2 id="evidence-title">Worker status</h2></div><span id="worker-state" class="tag">Sign in</span></div><dl class="operations-facts"><div id="worker-active-row" hidden><dt>Active run</dt><dd><button id="worker-active-run" class="text-button mono" type="button"></button></dd></div><div><dt>Queue</dt><dd id="worker-queue">—</dd></div><div><dt>Settlement</dt><dd id="worker-settling">—</dd></div><div><dt>Reconciliation</dt><dd id="worker-reconciling">—</dd></div></dl><p id="worker-message" class="worker-guidance" role="status" hidden></p><p id="worker-reason" class="hint mono" hidden></p><div class="evidence-divider"></div><dl><div><dt>CPU worker</dt><dd id="cpu-evidence">Loading configuration</dd></div><div><dt>Provider checks</dt><dd id="near-evidence">Loading configuration</dd></div><div id="near-model-row" hidden><dt>NEAR model</dt><dd id="near-model" class="mono"></dd></div><div><dt>Receipt signer</dt><dd id="signer-evidence" class="mono">—</dd></div></dl><p class="hint">Provider checks describe the configured policy. Each run's receipt records its execution evidence. An operator signature alone does not prove TEE execution.</p><details class="agent-guidance"><summary>Use an agent</summary><p class="hint">SDK and MCP requests use the same leashes, reservations, and receipts. Opening a run requires an onchain transaction.</p></details></section>
+      </aside>
+    </div>
+
+    <section class="runs-section" aria-labelledby="runs-title"><div class="section-heading"><div><p class="eyebrow">Execution ledger</p><h2 id="runs-title">Runs</h2></div><span id="poll-state" class="quiet">Sign in to view runs</span></div><div id="runs-empty" class="empty-state"><span class="empty-mark" aria-hidden="true">↗</span><h3>No runs yet</h3><p>Choose a CPU task and get a quote to start.</p></div><ol id="runs-list" class="runs-list"></ol></section>
+    <section id="checkpoints-section" class="panel checkpoints-section" aria-labelledby="checkpoints-title" hidden>
+      <div class="section-heading"><div><p class="eyebrow">Application state</p><h2 id="checkpoints-title">Encrypted checkpoints</h2></div><button id="refresh-checkpoints" type="button" class="button" disabled>Refresh checkpoints</button></div>
+      <p class="section-copy">Save an application state file and restore it with your recovery key. Encryption and decryption run in your browser.</p>
+      <p id="checkpoint-sign-in" class="hint">Sign in to save or restore your checkpoints.</p>
+      <form id="checkpoint-form" class="checkpoint-form" novalidate><div><label for="checkpoint-file">Application state file · up to 2 MiB</label><input id="checkpoint-file" type="file" aria-describedby="checkpoint-error"></div><div><label for="checkpoint-schema">State format</label><input id="checkpoint-schema" value="agent-state/v1" maxlength="64" aria-describedby="checkpoint-error" autocomplete="off"></div><button id="prepare-checkpoint" type="submit" class="button" disabled>Encrypt file</button></form>
+      <div id="checkpoint-prepared" class="checkpoint-prepared" hidden><p id="checkpoint-prepared-summary" class="hint"></p><button id="checkpoint-key" type="button" class="button">Download recovery key</button><label class="checkbox-label"><input id="checkpoint-key-saved" type="checkbox">I saved the key in a private place</label><p class="hint">The server receives ciphertext and metadata. It cannot recover the file without your key.</p><div class="dialog-footer"><button id="discard-checkpoint" type="button" class="button">Discard</button><button id="upload-checkpoint" type="button" class="button button-dark" disabled>Upload checkpoint</button></div></div>
+      <p id="checkpoint-error" class="field-error" role="alert"></p><p id="checkpoint-usage" class="hint"></p><ul id="checkpoint-list" class="checkpoint-list"></ul><button id="more-checkpoints" type="button" class="button" hidden>Load more checkpoints</button>
+    </section>
+    <footer class="site-footer"><span>Telomere / bounded compute pilot</span><span id="footer-profile">Loading configuration</span></footer>
+  </main>
+
+  <dialog id="run-dialog" aria-labelledby="run-detail-title"><div class="dialog-header"><div><p class="eyebrow">Run details</p><h2 id="run-detail-title">Run</h2></div><button id="close-dialog" type="button" class="button" aria-label="Close run details">Close</button></div><div id="run-detail-content"></div><div class="dialog-footer"><button id="stop-detail-run" type="button" class="button danger" hidden>Stop run</button><button id="claim-refund" type="button" class="button" hidden>Claim expired refund</button><button id="verify-receipt" type="button" class="button" hidden>Verify receipt</button><button id="download-receipt" type="button" class="button button-dark" hidden>Download receipt</button></div><p id="receipt-verification" class="verification-message" role="status" aria-live="polite"></p></dialog>
+  <dialog id="leash-edit-dialog" aria-labelledby="leash-edit-title">
+    <div class="dialog-header"><div><p class="eyebrow">Spending controls</p><h2 id="leash-edit-title">Edit leash budget</h2></div></div>
+    <form id="leash-edit-form" novalidate>
+      <div class="two-fields"><div><label for="edit-hour-budget">Hourly budget</label><input id="edit-hour-budget" inputmode="decimal" autocomplete="off" aria-describedby="edit-leash-error" required></div><div><label for="edit-day-budget">Daily budget</label><input id="edit-day-budget" inputmode="decimal" autocomplete="off" aria-describedby="edit-leash-error" required></div></div>
+      <div class="edit-expiry"><label for="edit-leash-expiry">Expiry · your local time</label><input id="edit-leash-expiry" type="datetime-local" aria-describedby="edit-expiry-hint edit-leash-error" required><p id="edit-expiry-hint" class="hint">Choose a future time within 30 days. Current spending and reserved funds count toward the new limits.</p></div>
+      <p class="hint">Agent <span id="edit-leash-agent" class="mono"></span></p>
+      <p id="edit-leash-error" class="field-error" role="alert" hidden></p>
+      <div class="dialog-footer"><button id="cancel-leash-edit" type="button" class="button">Cancel</button><button id="save-leash" type="submit" class="button button-dark signed-action" disabled>Save budget</button></div>
+    </form>
+  </dialog>
+  <dialog id="checkpoint-restore-dialog" aria-labelledby="checkpoint-restore-title"><div class="dialog-header"><div><p class="eyebrow">Application state</p><h2 id="checkpoint-restore-title">Restore checkpoint</h2></div></div><form id="restore-checkpoint-form" novalidate><label for="restore-key-file">Checkpoint recovery key file</label><input id="restore-key-file" type="file" accept=".json,application/json" aria-describedby="restore-key-hint restore-checkpoint-error"><p id="restore-key-hint" class="hint">The key stays in this browser. The restored state downloads after its authentication check.</p><p id="restore-checkpoint-error" class="field-error" role="alert"></p><div class="dialog-footer"><button id="cancel-checkpoint-restore" type="button" class="button">Cancel</button><button id="restore-checkpoint" type="submit" class="button button-dark">Restore file</button></div></form></dialog>
+</body>
+</html>

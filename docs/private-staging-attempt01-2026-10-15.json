@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "status": "first_operator_attempt_aborted_before_activation;old_services_restored",
+  "run": "staging-354fe7af62ea-launch01",
+  "revision": "354fe7af62ea6701faafc3b04522abb1b4524d2d",
+  "archiveSha256": "86b5dc9f36dcf841963f0ffa8161023c126f1fae473c94909f5dddae3040fdce",
+  "newReleasePrepared": true,
+  "snapshot": "failed_before_capture_directory_creation",
+  "cutoverAttempted": false,
+  "cause": "Operator path work/snapshot is rejected by the unchanged privateBackupPath contract.",
+  "repairPlan": "New attempt02 uses work/.local/snapshot, work/.local/cutover-snapshot and clone/.local/cysts, verified by the actual Linux API.",
+  "productionSourceOrProfileChanges": false,
+  "oldThreeUnitsActive": true,
+  "oldHealth": {
+    "live": {
+      "code": 200,
+      "body": {
+        "status": "ok"
+      }
+    },
+    "ready": {
+      "code": 200,
+      "body": {
+        "status": "ready",
+        "worker": "idle"
+      }
+    }
+  },
+  "automaticDataRestore": false,
+  "publicTransactions": 0,
+  "paidProviderRequests": 0,
+  "originalPrivateLogRetained": "/opt/telomere-pilot/rollout/staging-354fe7af62ea-launch01/snapshot.private.log",
+  "evidence": [
+    {
+      "path": "docs/evidence/private-staging-attempt01-status-20261015.json",
+      "sha256": "29b03ef64b38e4c147d5ac492f7f31bbeb63dfac8b7c9ccb922e6d4409839687",
+      "bytes": 1483
+    },
+    {
+      "path": "docs/evidence/private-staging-backup-path-probe-20261015.json",
+      "sha256": "eae35831e6c41f20104ca00a6610e04dcf154d960bfec44e8fc6c8f442560b74",
+      "bytes": 284
+    },
+    {
+      "path": "docs/evidence/verify-private-staging-backup-paths-20261015.mjs",
+      "sha256": "bcbfda8384446707b5666a24b23079c25d08887bdc1fae369f0359f8f7c04572",
+      "bytes": 1246
+    }
+  ]
+}

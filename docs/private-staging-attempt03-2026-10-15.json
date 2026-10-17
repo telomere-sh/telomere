@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "status": "third_operator_attempt_aborted_before_controller_clone_startup;old_staging_healthy",
+  "checkedAt": "2026-10-15T04:35:15.493313+00:00",
+  "run": "staging-354fe7af62ea-launch03",
+  "revision": "354fe7af62ea6701faafc3b04522abb1b4524d2d",
+  "archiveSha256": "86b5dc9f36dcf841963f0ffa8161023c126f1fae473c94909f5dddae3040fdce",
+  "prepare": "passed",
+  "consistentBackupV2": "passed",
+  "snapshotMaintenanceSeconds": 6.398,
+  "sameInstalledCpuImageCryptographicallyVerified": true,
+  "cloneControllerJavaScriptStarted": false,
+  "cutoverAttempted": false,
+  "cause": "Operator work.mkdir(mode=0750) was reduced by process umask077 to root:telomere0700. The telomere helper could not traverse its parent directory and Node exited before executing clone-smoke.mjs.",
+  "minimalRepair": "A new attempt explicitly chmods only its newly created root:telomere work directory0750; all private files remain0600.",
+  "productionSourceOrProfileChanges": false,
+  "ownedCloneCleanup": {
+    "ownedAnvilStopped": true,
+    "ownedDaemonStopped": true,
+    "ownedNamespaceRemoved": true,
+    "ownedPostgresRemoved": true
+  },
+  "globalDockerInventoryUnchanged": true,
+  "originalServicesHealthy": true,
+  "automaticDataRestore": false,
+  "publicTransactions": 0,
+  "paidProviderRequests": 0,
+  "evidence": [
+    {
+      "path": "docs/evidence/private-staging-attempt03-status-20261015.json",
+      "sha256": "d40c6353e740a07d9f0dc1de4a6deac1855521b4141cdac6e3e43fee0f91b094",
+      "bytes": 1882
+    },
+    {
+      "path": "docs/evidence/private-staging-attempt03-image-equivalence-20261015.json",
+      "sha256": "8526f65efea34428d7c2e92c623af4d698c715772d2c9054d49113e932942a26",
+      "bytes": 3576
+    }
+  ]
+}

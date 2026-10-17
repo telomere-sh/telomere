@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "completedAt": "2026-10-15T03:21:51.846226+00:00",
+  "scope": "Actual local HTTP protocol harness and durable local journal only. No production supplier execution, public chain settlement, wallet, treasury authority implementation, metering or 2% fault reserve.",
+  "command": [
+    "node",
+    "node_modules/vitest/vitest.mjs",
+    "run",
+    "tests/golem-finance.test.ts",
+    "--reporter=json",
+    "--outputFile=docs/evidence/golem-finance-complete-20261015.json"
+  ],
+  "exitCode": 0,
+  "durationSeconds": 14.016,
+  "node": "v22.22.2",
+  "platform": "Windows-11-10.0.26100-SP0",
+  "passed": 17,
+  "failed": 0,
+  "pending": 0,
+  "sourceFiles": 12,
+  "sourceUnchanged": true,
+  "before": "docs/evidence/golem-finance-complete-source-before-20261015.json",
+  "after": "docs/evidence/golem-finance-complete-source-after-20261015.json",
+  "raw": "docs/evidence/golem-finance-complete-20261015.json",
+  "globalTypecheck": "Parent owns the separate combined source cutoff and result."
+}

@@ -1,0 +1,230 @@
+{
+  "isolatedPath": "/opt/telomere-host-runtime/backend-finance-file-vault-check-9FlrB6mQ",
+  "checkedAtUtc": "2026-10-12T11:54:41.774451+00:00",
+  "packageMetadataSha256": "1d726db665a0fa769704de0ed4cd37855bd666ffafaf0984c0ce921f1abff81d",
+  "package": {
+    "expectedSourceFiles": 288,
+    "expectedBuildAssets": 4,
+    "expectedTests": 241,
+    "expectedTestFiles": {
+      "x402-payments.test.ts": 42,
+      "vault-income.test.ts": 50,
+      "cyst-checkpoints-file-vault.test.ts": 14,
+      "cyst-checkpoints.test.ts": 26,
+      "platform-selection.test.ts": 17,
+      "platform-contracts.test.ts": 23,
+      "platform-vault-runtime.test.ts": 10,
+      "controller-platform.test.ts": 6,
+      "selection-income-endpoints.test.ts": 49,
+      "selection-income-endpoints-main.test.ts": 4
+    },
+    "snapshotAtUtc": "2026-10-12T11:53:50.535713+00:00",
+    "gitHeadAtSnapshot": "2b3ba360cbe884e06e018de590a10ce591e56fef",
+    "reviewedFreeze": {
+      "contracts/PlatformAgentVault.sol": "3e2640f17ae4e9c3623a5faebb107a943caad207116f73e2d1252238a342c370",
+      "src/payments/vault-income-chain.ts": "27f7e44045e17f5a623e0bc8c30a80472a0c5677e2aa3d3a2b872f08fd6cfdba",
+      "tests/vault-income.test.ts": "f1dd5d76ab8bddfa3d3343e810d2f951ce8fb09634d9fab3efa06ee7d6e982ea",
+      "src/sdk/cyst-checkpoints-file-vault.ts": "831867ee6b08b4b83e36e2b7a702280018d4d7d42830f150e97bc304309b4f7f",
+      "tests/cyst-checkpoints-file-vault.test.ts": "4a3acda43361f3fcd9a9059c685b47321352bdefa10fa7d5cc95e3d9250b5fda"
+    },
+    "source": {
+      "archive": "backend-finance-file-vault-source.tar",
+      "manifest": "backend-finance-file-vault-source-sha256.txt",
+      "archiveSha256": "edbf06262bbf6daa4482a143054798f478b7863baa4d77ce58353f4f85013790",
+      "manifestSha256": "d64550609830ec3be1ab1ab026840e987cc58964ea4ca80a9715717812126f99",
+      "archiveBytes": 3491840,
+      "files": 288
+    },
+    "build-assets": {
+      "archive": "backend-finance-file-vault-build-assets.tar",
+      "manifest": "backend-finance-file-vault-build-assets-sha256.txt",
+      "archiveSha256": "f079ccfdf3bf99a5cdd1de7bceec8a0ec356c097315959055c4ebea5ec26b138",
+      "manifestSha256": "e7bab231aad576014f733737754f06845e0917b796ce95e30931485dc405d73c",
+      "archiveBytes": 112640,
+      "files": 4
+    }
+  },
+  "publicChainOrProviderCalls": false,
+  "serviceMutations": false,
+  "healthBefore": {
+    "status": "ready",
+    "worker": "idle"
+  },
+  "servicesBefore": {
+    "telomere-staging.service": "active",
+    "telomere-staging-chain.service": "active",
+    "enclave-api.service": "active",
+    "enclave-worker.service": "active",
+    "enclave-web.service": "active"
+  },
+  "sourceMatchesBefore": 288,
+  "buildAssetsMatchesBefore": 4,
+  "nodeVersion": "v22.23.3",
+  "buildOwnedProcessGroupCleanup": false,
+  "buildElapsedSeconds": 45.575,
+  "buildExitCode": 0,
+  "sourceMatchesAfterBuild": 288,
+  "buildAssetsMatchesAfterBuild": 4,
+  "testsOwnedProcessGroupCleanup": false,
+  "testsElapsedSeconds": 472.731,
+  "testsExitCode": 0,
+  "tests": {
+    "numTotalTestSuites": 21,
+    "numPassedTestSuites": 21,
+    "numFailedTestSuites": 0,
+    "numTotalTests": 247,
+    "numPassedTests": 247,
+    "numFailedTests": 0,
+    "numPendingTests": 0,
+    "success": true
+  },
+  "testFiles": [
+    {
+      "name": "controller-platform.test.ts",
+      "status": "passed",
+      "tests": 6,
+      "passed": 6,
+      "skipped": 0
+    },
+    {
+      "name": "cyst-checkpoints-file-vault.test.ts",
+      "status": "passed",
+      "tests": 14,
+      "passed": 14,
+      "skipped": 0
+    },
+    {
+      "name": "cyst-checkpoints.test.ts",
+      "status": "passed",
+      "tests": 26,
+      "passed": 26,
+      "skipped": 0
+    },
+    {
+      "name": "platform-contracts.test.ts",
+      "status": "passed",
+      "tests": 23,
+      "passed": 23,
+      "skipped": 0
+    },
+    {
+      "name": "platform-selection.test.ts",
+      "status": "passed",
+      "tests": 21,
+      "passed": 21,
+      "skipped": 0
+    },
+    {
+      "name": "platform-vault-runtime.test.ts",
+      "status": "passed",
+      "tests": 12,
+      "passed": 12,
+      "skipped": 0
+    },
+    {
+      "name": "selection-income-endpoints-main.test.ts",
+      "status": "passed",
+      "tests": 4,
+      "passed": 4,
+      "skipped": 0
+    },
+    {
+      "name": "selection-income-endpoints.test.ts",
+      "status": "passed",
+      "tests": 49,
+      "passed": 49,
+      "skipped": 0
+    },
+    {
+      "name": "vault-income.test.ts",
+      "status": "passed",
+      "tests": 50,
+      "passed": 50,
+      "skipped": 0
+    },
+    {
+      "name": "x402-payments.test.ts",
+      "status": "passed",
+      "tests": 42,
+      "passed": 42,
+      "skipped": 0
+    }
+  ],
+  "sourceMatchesAfter": 288,
+  "buildAssetsMatchesAfter": 4,
+  "newFixtureDirectoriesRemaining": 0,
+  "healthAfter": {
+    "status": "ready",
+    "worker": "idle"
+  },
+  "servicesAfter": {
+    "telomere-staging.service": "active",
+    "telomere-staging-chain.service": "active",
+    "enclave-api.service": "active",
+    "enclave-worker.service": "active",
+    "enclave-web.service": "active"
+  },
+  "ownedCheckoutProcessesRemaining": 0,
+  "success": true,
+  "rawRunnerReportSha256": "be9b210cd3c61b927cb90c8b7536a4617c41a1ed0703f5146b05d2f02ed84cd8",
+  "rawVitestReportSha256": "953bb1201f39113480fef2ac1444870615a72ce8b57a7f42cf5f614f008d8ed4",
+  "acceptedExpectedTests": 247,
+  "acceptedExpectedTestFiles": {
+    "x402-payments.test.ts": 42,
+    "vault-income.test.ts": 50,
+    "cyst-checkpoints-file-vault.test.ts": 14,
+    "cyst-checkpoints.test.ts": 26,
+    "platform-selection.test.ts": 21,
+    "platform-contracts.test.ts": 23,
+    "platform-vault-runtime.test.ts": 12,
+    "controller-platform.test.ts": 6,
+    "selection-income-endpoints.test.ts": 49,
+    "selection-income-endpoints-main.test.ts": 4
+  },
+  "failureHistory": [
+    {
+      "kind": "acceptance_harness_expected_count",
+      "runnerExitCode": 1,
+      "expectedTests": 241,
+      "actualPassedTests": 247,
+      "countCorrections": {
+        "platform-selection.test.ts": {
+          "before": 17,
+          "after": 21
+        },
+        "platform-vault-runtime.test.ts": {
+          "before": 10,
+          "after": 12
+        }
+      },
+      "reason": "Six existing parameterized platform cases were omitted from the initial manually counted metadata",
+      "resolution": "Independently parsed original retained Vitest JSON; all 247 assertions passed and all hash/cleanup/service guards passed",
+      "sourceChanged": false,
+      "testRerun": false
+    }
+  ],
+  "originalRunnerFailure": {
+    "stage": "focused_tests",
+    "type": "AssertionError"
+  },
+  "runtimeEquivalentCommittedRevision": "41ede4fc6cb32d6dfaf1957bca9d26d7fdde6459",
+  "committedRevisionMatchingSourceFiles": 288,
+  "committedRevisionMatchingBuildAssets": 4,
+  "committedRevisionComparison": "git hash-object --path --stdin equals committed blob IDs after Git clean line-ending filters; exact executed bytes independently pinned by SHA256 manifests",
+  "schemaVersion": 1,
+  "scope": "Isolated Linux full build and focused payment finality, atomic exact Vault income, encrypted owner file checkpoint vault, coordinator and affected platform/Selection acceptance",
+  "manifestArtifacts": [
+    "backend-finance-file-vault-source-sha256.txt",
+    "backend-finance-file-vault-build-assets-sha256.txt"
+  ],
+  "posixFileVaultPermissionsSymlinksAndSameBootNamespaceDeadRecovery": true,
+  "limitations": [
+    "Focused ten-file acceptance, not the entire repository test suite",
+    "Disposable Anvil, actual child processes and loopback HTTP; no public Robinhood transaction or real asset capability established",
+    "Native Vault ingress remains explicitly unmounted and requires a new reviewed immutable implementation and Selection deployment",
+    "Existing staging and enclave services were observed only; no service configuration or private environment was read or changed",
+    "File vault assumes an owner-controlled local filesystem and caller-provided key; it does not prevent replay of an older valid filesystem snapshot",
+    "Linux POSIX permission/fsync and proven-dead same-boot/PID-namespace recovery evidence does not establish Windows ACL privacy or Windows stale recovery",
+    "Financial evidence is per-transaction canonical event and pin verification, not public token support or live paid operation"
+  ]
+}

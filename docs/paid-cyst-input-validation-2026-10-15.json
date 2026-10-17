@@ -1,0 +1,211 @@
+{
+  "version": 1,
+  "checkedAt": "2026-10-15T02:45:19.339219+00:00",
+  "status": "accepted_bounded_declared_file_profile",
+  "scope": "One declared authenticated application-state file streamed from a current encrypted multipart Cyst into an ordinary Vault-paid CPU session. No arbitrary filesystem, tar extraction, sealed key release or full original M5 completion claim.",
+  "authoritativeLinux": {
+    "gitRevision": "abf941bef4688fa3f81eb986523fa16037cc3abc",
+    "archiveSha256": "407ca6d444dcc28616e56c504715fcbf053b11d9a6f935f1b4f74c768e690517",
+    "sourceFiles": 672,
+    "sourceChangedAfter": [],
+    "npmCi": {
+      "exitCode": 0,
+      "seconds": 4.058
+    },
+    "build": {
+      "exitCode": 0,
+      "seconds": 70.667
+    },
+    "cohort": {
+      "exitCode": 0,
+      "seconds": 55.668
+    },
+    "tests": {
+      "numTotalTests": 15,
+      "numPassedTests": 15,
+      "numFailedTests": 0,
+      "numPendingTests": 0,
+      "success": true
+    },
+    "sourceKind": "committed_git_blobs_only; uncommitted work excluded",
+    "image": "127.0.0.1:15002/telomere-cpu@sha256:6839949540d11906cbdbc614867ac3a825fa0e6f8cbed90c79773979517b4bbe",
+    "imageId": "sha256:680cc0ec7dfa626d4105c3c26834289687e0abed785240e5bb814bac7cd55355"
+  },
+  "measuredFunctionalProfile": {
+    "plaintextBytes": 4194561,
+    "checkpointChunks": 2,
+    "maximumSizeAcceptanceClaim": false,
+    "latency20SecondsClaim": false,
+    "cohortSecondsIsNotRestoreLatency": true,
+    "financialChainId": 31337,
+    "token": "disposable MockToken fixture, not a public Base USDC transaction",
+    "identity": "disposable identity fixture, not production identity acceptance",
+    "paidRuns": 2,
+    "sessionLimitSeconds": 60,
+    "cpuMemoryLimitBytes": 268435456,
+    "scratchLimitBytes": 16777216,
+    "network": "none",
+    "rootFilesystem": "read-only",
+    "consumerUid": 10001,
+    "stateFile": "/run/telomere-cyst/state.bin",
+    "applicationState": "restored counter71, next paid command advances it to72; restore command executed once after lost-response replay"
+  },
+  "verifiedBehaviors": [
+    "Wallet-free multi-chunk preparation leaves agent transaction nonce unchanged; wrapped recovery key remains client-side",
+    "Signed descriptor is included in workload and original paid lease; full bytes reserved before HostKit allocation",
+    "Private streaming input is outside the mounted READY directory; exact length/SHA precede publication",
+    "Guardian freeze after host staging rejects publication, leaves zero application commands, and live policy monitor stops/cleans the original negative run",
+    "A separately prepared explicit operation and separately funded positive run perform successful restore",
+    "Lost HostKit upload response recovers staged transfer; duplicate HTTP bytes are fully consumed and hashed without inode/mtime rewrite",
+    "READY transition between SDK GET and PUT and direct HostKit READY resend retain the original file; wrong duplicate body returns422",
+    "Same-size wrong local source digest sends zero PUTs; binary origin must equal checked runtime origin",
+    "Actual nonroot gVisor application reads committed file and cannot append;16MiB scratch and256MiB memory/network/read-only settings checked",
+    "Lost application-command response survives encrypted client-journal reopen without second application dispatch",
+    "Actual ACK-billed local settlement conserves charged plus refund equals original ceiling for both independently funded runs",
+    "Terminal replay after private plaintext disposal returns original application receipt without opening a new Cell",
+    "Deterministic cleanup-versus-upload barrier; missing unfinished reservation and unmatched spool inventory fail closed; already-clean backup history remains readable",
+    "Root app streaming/authentication/Origin/exact-route and pure private policy/backup-scope guards"
+  ],
+  "operationalNonMutation": {
+    "publicTransactions": 0,
+    "paidProviderRequests": 0,
+    "stagingServiceMutations": false,
+    "servicesBefore": {
+      "telomere-staging.service": "NRestarts=0\nActiveState=active\nSubState=running",
+      "telomere-staging-chain.service": "NRestarts=0\nActiveState=active\nSubState=running",
+      "telomere-staging-watchdog.service": "NRestarts=0\nActiveState=active\nSubState=running"
+    },
+    "servicesAfter": {
+      "telomere-staging.service": "NRestarts=0\nActiveState=active\nSubState=running",
+      "telomere-staging-chain.service": "NRestarts=0\nActiveState=active\nSubState=running",
+      "telomere-staging-watchdog.service": "NRestarts=0\nActiveState=active\nSubState=running"
+    },
+    "healthBefore": {
+      "live": {
+        "statusCode": 200,
+        "body": {
+          "status": "ok"
+        }
+      },
+      "ready": {
+        "statusCode": 200,
+        "body": {
+          "status": "ready",
+          "worker": "idle"
+        }
+      }
+    },
+    "healthAfter": {
+      "live": {
+        "statusCode": 200,
+        "body": {
+          "status": "ok"
+        }
+      },
+      "ready": {
+        "statusCode": 200,
+        "body": {
+          "status": "ready",
+          "worker": "idle"
+        }
+      }
+    },
+    "ownedSessionContainersAfter": "",
+    "protectedContainerBefore": {
+      "id": "1d7ecc9b94866b9617df656ad7e2251916a9b7ceafef9a488ef6e85540076c5e",
+      "name": "/telomere-hostkit-registry",
+      "imageId": "sha256:b16ad6cc19df5d687ed2e5b4ba6fa51a38bfbb4687ecc11bf54e0899638c0ee2",
+      "status": "exited",
+      "labels": {},
+      "metadataSha256": "6c078f8b7a3386663d9ab2f5682c317d82b54e86c54a93f67255bfa045a76079"
+    },
+    "protectedContainerAfter": {
+      "id": "1d7ecc9b94866b9617df656ad7e2251916a9b7ceafef9a488ef6e85540076c5e",
+      "name": "/telomere-hostkit-registry",
+      "imageId": "sha256:b16ad6cc19df5d687ed2e5b4ba6fa51a38bfbb4687ecc11bf54e0899638c0ee2",
+      "status": "exited",
+      "labels": {},
+      "metadataSha256": "6c078f8b7a3386663d9ab2f5682c317d82b54e86c54a93f67255bfa045a76079"
+    }
+  },
+  "preservedEarlierEvidence": {
+    "a89Linux": {
+      "passed": 12,
+      "failed": 2,
+      "skipped": 0,
+      "status": "failed; retained rather than overwritten",
+      "corrections": "Replace multi-megabyte structural Buffer equality with Buffer.equals; separate frozen negative from successful paid run; verify duplicate streaming bodies instead of cancelling successful replay requests early"
+    },
+    "a89Windows": {
+      "passed": 85,
+      "failed": 0,
+      "skipped": 12,
+      "skips": "actual Docker/gVisor cohorts unavailable on Windows",
+      "runtimeOriginalInputs": 617,
+      "archiveClosureOriginalInputs": 669,
+      "changedOriginalInputs": [],
+      "additionalCompilerOutputs": 16,
+      "wrapperExitCode": 1,
+      "wrapperExitReason": "Conservative manifest wrapper treats newly generated contract-artifact JSON outputs as added files. No original input changed. Raw result and archive closure retained."
+    }
+  },
+  "pendingSeparateFollowup": "Expired private agent cache must be removed before a rejected changed-registry read after process restart; this tiny retention fix is outside the accepted abf941b cutoff and will receive separate source/test evidence.",
+  "notEstablished": [
+    "2GiB combined restore",
+    "20-second restore target",
+    "tar or general filesystem extraction",
+    "container writable-layer/CRIU/VM snapshot restore",
+    "sealed CPU or attestation-gated recovery-key release",
+    "independent physical-host failover",
+    "public Base USDC funding/settlement",
+    "GPU Cells",
+    "public production rollout"
+  ],
+  "evidence": [
+    {
+      "path": "docs/evidence/paid-cyst-file-a89-windows-20261015.json",
+      "bytes": 43315,
+      "sha256": "31fa754480fd015f15fdbabb7288543e3c3b71e0d17b0f79e2bd55286119ca62"
+    },
+    {
+      "path": "docs/evidence/paid-cyst-file-a89-windows-archive-closure-20261015.json",
+      "bytes": 183779,
+      "sha256": "558b88b976de0f2453960c8c8047dfd918782817d9cb588a25a78dd56ab7925c"
+    },
+    {
+      "path": "docs/evidence/paid-cyst-file-a89-windows-source-20261015.json",
+      "bytes": 211249,
+      "sha256": "b8779a2b0c5c1ed890331fcd2d7c9492a5bb84ca3aed66e51f76f80ab4c4b782"
+    },
+    {
+      "path": "docs/evidence/paid-cyst-file-linux-accepted-20261015.json",
+      "bytes": 3024,
+      "sha256": "dc9281bb7138ad88d61a49ab27a789e3482f5527757f6774807096e3edfa7764"
+    },
+    {
+      "path": "docs/evidence/paid-cyst-file-linux-accepted-20261015.log",
+      "bytes": 127,
+      "sha256": "2cafb6e3110f2f99ce49ddc8b73e4e9a828b96db5a8f8b6586819d4627642466"
+    },
+    {
+      "path": "docs/evidence/paid-cyst-file-linux-accepted-source-20261015.json",
+      "bytes": 157704,
+      "sha256": "a931284bc8e6e4c40ebb25abba2e84e7dee6db464b3f39f2e7c6fb2808fda67a"
+    },
+    {
+      "path": "docs/evidence/paid-cyst-file-linux-accepted-tests-20261015.json",
+      "bytes": 7782,
+      "sha256": "6583190e922660bf2409da937c9a56bcd131623514ba3a4e317e098bfa8b889f"
+    },
+    {
+      "path": "docs/evidence/paid-cyst-file-linux-initial-20261015.json",
+      "bytes": 9708,
+      "sha256": "f12ec2b2b9e7b57bb32a91880bb58042283a92fa8bf76baf83b074692d2d787b"
+    },
+    {
+      "path": "docs/evidence/paid-cyst-file-linux-initial-acceptance-20261015.json",
+      "bytes": 3016,
+      "sha256": "86d9cfda42491e71e95bfbaf7f429f7a8ab8215fb6338304b760653f3e9936a2"
+    }
+  ]
+}

@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 1,
+  "gitRevision": "c2ed573f700ce2313a405395e2b94443afb3c79f",
+  "archiveSha256": "c1412023c81538ddbab00b92f7d074d97e42f9239e6dc9ca51f6080f27944582",
+  "manifestSha256": "4e8b1d13c05109b2edda8c61a7a1a46593409ca141d6990133321f0cf7d2b9ec",
+  "directory": "/opt/telomere-host-runtime/supplier-journals-20261015-c1412023c815",
+  "sourceFiles": 671,
+  "startedAt": "2026-10-15T02:36:26.433590+00:00",
+  "serviceMutations": false,
+  "publicTransactions": 0,
+  "paidProviderRequests": 0,
+  "dockerOptIn": false,
+  "scope": "Local supplier journal filesystem and protocol-fixture acceptance only",
+  "sourceBefore": {
+    "files": 671,
+    "allMatchArchive": true,
+    "sha256": "e2deca191f8d0ca5fecff694f913e61ecb5acb2a64b2f156367757e1d3d23797"
+  },
+  "healthBefore": {
+    "live": {
+      "statusCode": 200,
+      "body": {
+        "status": "ok"
+      }
+    },
+    "ready": {
+      "statusCode": 200,
+      "body": {
+        "status": "ready",
+        "worker": "idle"
+      }
+    }
+  },
+  "servicesBefore": {
+    "telomere-staging.service": "NRestarts=0\nActiveState=active\nSubState=running",
+    "telomere-staging-chain.service": "NRestarts=0\nActiveState=active\nSubState=running",
+    "telomere-staging-watchdog.service": "NRestarts=0\nActiveState=active\nSubState=running"
+  },
+  "nodeVersion": "v22.23.3",
+  "npmVersion": "10.9.9",
+  "platform": "Linux 6.1.0-45-amd64 x86_64",
+  "npm-ci": {
+    "command": [
+      "npm",
+      "ci",
+      "--ignore-scripts",
+      "--no-audit",
+      "--no-fund"
+    ],
+    "exitCode": 0,
+    "seconds": 4.578
+  },
+  "build": {
+    "command": [
+      "npm",
+      "run",
+      "build"
+    ],
+    "exitCode": 0,
+    "seconds": 69.966
+  },
+  "supplier-focused": {
+    "command": [
+      "node",
+      "node_modules/vitest/vitest.mjs",
+      "run",
+      "tests/supplier-private-journal.test.ts",
+      "tests/supplier-akash.test.ts",
+      "tests/supplier-akash-lease.test.ts",
+      "tests/supplier-akash-close.test.ts",
+      "tests/supplier-akash-signed-binding.test.ts",
+      "tests/supplier-nosana.test.ts",
+      "tests/supplier-shared-reserve.test.ts",
+      "tests/supplier-akash-exact-bid.test.ts",
+      "tests/supplier-akash-escrow-observation.test.ts",
+      "tests/supplier-golem-stats.test.ts",
+      "--reporter=json",
+      "--outputFile=.local/supplier-focused.json"
+    ],
+    "exitCode": 0,
+    "seconds": 7.706
+  },
+  "tests": {
+    "numTotalTests": 106,
+    "numPassedTests": 106,
+    "numFailedTests": 0,
+    "numPendingTests": 0,
+    "numTotalTestSuites": 26,
+    "success": true
+  },
+  "failures": [],
+  "sourceAfter": {
+    "files": 671,
+    "unchanged": true,
+    "changed": [],
+    "sha256": "e2deca191f8d0ca5fecff694f913e61ecb5acb2a64b2f156367757e1d3d23797"
+  },
+  "healthAfter": {
+    "live": {
+      "statusCode": 200,
+      "body": {
+        "status": "ok"
+      }
+    },
+    "ready": {
+      "statusCode": 200,
+      "body": {
+        "status": "ready",
+        "worker": "idle"
+      }
+    }
+  },
+  "servicesAfter": {
+    "telomere-staging.service": "NRestarts=0\nActiveState=active\nSubState=running",
+    "telomere-staging-chain.service": "NRestarts=0\nActiveState=active\nSubState=running",
+    "telomere-staging-watchdog.service": "NRestarts=0\nActiveState=active\nSubState=running"
+  },
+  "stagingServicesUnchanged": true,
+  "success": true,
+  "finishedAt": "2026-10-15T02:37:48.850256+00:00"
+}

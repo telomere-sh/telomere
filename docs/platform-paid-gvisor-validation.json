@@ -1,0 +1,65 @@
+{
+  "status": "passed",
+  "checkedAt": "2026-10-12T21:33:39.109Z",
+  "scope": "Disposable private VPS acceptance of an authenticated paid interactive CPU session; all transactions used an isolated local Anvil chain (chain ID 31337).",
+  "sourceArchiveSha256": "fd7651c0d86da38f84f2900d4d649479466f63e57208f31660263e1ca56be172",
+  "acceptanceScriptSha256": "5de3b0e97fbb7e58d0199235ee29e9f257a5329604cb0157c52a5f5333f7b66f",
+  "privateEvidenceReportSha256": "67208295d7f1bf1beb672d33f19b2a70b6999c199f0234732424d56b011cc5c4",
+  "sourceNote": "The acceptance applies to the exact transferred source archive. Isolated npm ci and snapshot-wide TypeScript typecheck both passed.",
+  "quote": {
+    "nineSecondPaidSessionRejected": true,
+    "acceptedSessionSeconds": 30,
+    "canonicalLocalEscrowAdmissionBeforeDispatch": true
+  },
+  "host": {
+    "isolation": "gvisor",
+    "runtime": "runsc",
+    "dedicatedHostKitDockerSocket": true,
+    "freshHostIdentityAndJournal": true,
+    "reviewedImage": "127.0.0.1:15002/telomere-cpu@sha256:6839949540d11906cbdbc614867ac3a825fa0e6f8cbed90c79773979517b4bbe",
+    "containerNetwork": "none",
+    "readOnlyRoot": true,
+    "sameContainerForBothCommands": true,
+    "commands": 2,
+    "stateSharedAcrossCommands": true,
+    "physicalCleanupConfirmed": true,
+    "remainingSessionContainersAfterRun": 0
+  },
+  "terminalReplay": {
+    "sameCommandIdAndInputAfterSignedLeaseExpiry": true,
+    "originalResultReturned": true,
+    "durableCommandCountBeforeAndAfter": 2,
+    "noCellRedispatch": true,
+    "terminalEventCountMatchedRetainedHistory": true
+  },
+  "meter": {
+    "signedHostTicks": 4,
+    "signedControllerAcknowledgments": 4,
+    "hostAndControllerEvidenceMatched": true,
+    "billableSeconds": 4
+  },
+  "finance": {
+    "eventHistoryDigestCommitted": true,
+    "closedHourReceiptProofPresent": true,
+    "localEscrowSettled": true,
+    "hostReleased": true,
+    "chargedBaseUnits": "436",
+    "refundedBaseUnits": "2834",
+    "reservedBaseUnits": "3270",
+    "budgetConserved": true,
+    "publicTransactions": 0,
+    "paidProviderRequests": 0
+  },
+  "existingServicesAfterRun": {
+    "telomereStaging": "active",
+    "telomereStagingActiveSinceUtc": "2026-10-09T15:20:28Z",
+    "telomereStagingChain": "active",
+    "telomereStagingChainActiveSinceUtc": "2026-10-08T17:50:35Z",
+    "neitherRestartedDuringAcceptance": true
+  },
+  "limits": [
+    "The run used a disposable Anvil chain and generated test accounts, not Robinhood Chain or a live wallet.",
+    "It exercised one reviewed gVisor CPU host and a 30-second paid session; it does not establish multi-host throughput, GPU operation or NEAR attestation.",
+    "The source archive is an exact snapshot; later workspace edits require their own verification."
+  ]
+}

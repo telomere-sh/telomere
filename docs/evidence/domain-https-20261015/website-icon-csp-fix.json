@@ -1,0 +1,25 @@
+{
+  "observedAt": "2026-10-15T20:29:30.809734+00:00",
+  "change": "finite exact six native icon module closures allowed in marketing script-src",
+  "beforeSha256": "5055a79d90e99810b9a841fc95e27ae3db8ae575d7a8bc43b24b17746e48fc37",
+  "afterSha256": "201329ed30f78ce89881a5213f095979756e6c6b7b4bd79634da87eb1192090c",
+  "requiredScriptSources": [
+    "https://framer.com/m/phosphor-icons/MapPin.js@0.0.57",
+    "https://framerusercontent.com/modules/abiiCALz8WCxyBRQ7TCc/VAAsSLSNcZXdVY8ls4xS/MapPin.js",
+    "https://framer.com/m/phosphor-icons/CaretRight.js@0.0.57",
+    "https://framerusercontent.com/modules/4DdaUvaccgEgxMd5tHRL/hWGATDnHlzpAXNQv6svp/CaretRight.js",
+    "https://framer.com/m/phosphor-icons/ArrowUpRight.js@0.0.57",
+    "https://framerusercontent.com/modules/KXToc4n8n0VjRJoxIyl7/iepv8YZRWzIKS6xRTtLY/ArrowUpRight.js",
+    "https://framer.com/m/phosphor-icons/ArrowRight.js@0.0.57",
+    "https://framerusercontent.com/modules/K3PeUzM4qhL5IiaYcDem/hZzGgUtf1YrXicbBr18G/ArrowRight.js",
+    "https://framer.com/m/phosphor-icons/ArrowLeft.js@0.0.57",
+    "https://framerusercontent.com/modules/ONm9jMUgANzvfN4aCBBq/meiJHuEisL0wVC4Lu5EU/ArrowLeft.js",
+    "https://framer.com/m/phosphor-icons/House.js@0.0.57",
+    "https://framerusercontent.com/modules/Qc8yuHkQmGO0kFiSWbkX/rVmMAFttOHuuiwSg6KjZ/House.js"
+  ],
+  "ownerReviewUnchangedSha256": "7246164cdb5ccbec1cfb6a4b4bb4c362a0cdadce55cc26d6fcc782060c980958",
+  "nginxTest": "nginx: the configuration file /etc/nginx/nginx.conf syntax is ok\nnginx: configuration file /etc/nginx/nginx.conf test is successful",
+  "mainnetControllerPid": 0,
+  "frontendFilesChanged": 0,
+  "externalEditorAllowed": false
+}

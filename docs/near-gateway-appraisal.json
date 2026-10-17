@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "reportCapturedAt": "2026-10-08T14:39:01.712Z",
+  "privateArchive": "/opt/telomere-pilot/work/gateway-appraisal-replay-2026-10-08T15-37-13Z",
+  "archiveMode": "0700",
+  "artifactModes": "0600",
+  "offlineReplay": {
+    "checkedAt": "2026-10-08T15:37:45.690489Z",
+    "networkIsolation": "Linux unshare --net",
+    "intelCollateralFetchInvocations": 0,
+    "newNearReportGets": 0,
+    "inferencePosts": 0,
+    "matchesArchivedNativeVerdict": true,
+    "tamperedQuoteRejected": true,
+    "tamperedSignedCollateralRejected": true
+  },
+  "signedCollateralMetadata": {
+    "platformTcbInfo": {
+      "id": "TDX",
+      "version": 3,
+      "issueDate": "2026-10-08T14:22:42Z",
+      "nextUpdate": "2026-11-07T14:22:42Z",
+      "tcbEvaluationDataNumber": 20
+    },
+    "qeIdentity": {
+      "id": "TD_QE",
+      "version": 2,
+      "issueDate": "2026-10-08T14:46:11Z",
+      "nextUpdate": "2026-11-07T14:46:11Z",
+      "tcbEvaluationDataNumber": 20
+    }
+  },
+  "runtime": {
+    "dcapQvlVersion": "0.6.3",
+    "dependencyLock": "infra/near/requirements-linux.lock"
+  },
+  "diagnosis": "Native platform and overall TCB OutOfDate with advisory arrays present; strict rejection is correct. No admission policy or production verifier was changed.",
+  "requiredRemediation": "Provider host firmware/TDX module/TCB recovery update, then fresh endpoint-bound quote; current workload/source provenance review still required separately.",
+  "mode": "capture",
+  "scope": "captured_gateway_evidence",
+  "approval": "UNAPPROVED",
+  "liveAdmission": false,
+  "verifiedAt": 1791473844,
+  "checkedAt": "2026-10-08T15:37:24.313785+00:00",
+  "nativeTcb": {
+    "overall": {
+      "status": "OutOfDate",
+      "advisory_ids": [
+        "INTEL-SA-01192",
+        "INTEL-SA-01245",
+        "INTEL-SA-01312",
+        "INTEL-SA-01313"
+      ]
+    },
+    "qe": {
+      "status": "UpToDate",
+      "advisory_ids": []
+    },
+    "platform": {
+      "status": "OutOfDate",
+      "advisory_ids": [
+        "INTEL-SA-01192",
+        "INTEL-SA-01245",
+        "INTEL-SA-01312",
+        "INTEL-SA-01313"
+      ]
+    }
+  },
+  "strictTcbAccepted": false,
+  "classification": "PLATFORM_TCB_OUT_OF_DATE",
+  "bindingChecks": {
+    "nonceSignerSpkiBinding": true,
+    "echoedNonce": true,
+    "echoedSpki": true,
+    "recordedCertificateSpki": true,
+    "appComposeMrconfig": true,
+    "eventLogRtmr3": true,
+    "debugBitClear": true
+  },
+  "offlineReplayMatches": true,
+  "tamperedQuoteRejectedOffline": true,
+  "tamperedCollateralRejectedOffline": true,
+  "intelCollateralFetchInvocations": 1,
+  "newNearReportGets": 0,
+  "inferencePosts": 0,
+  "files": [
+    {
+      "name": "quote.bin",
+      "sha256": "35260f50a1b6b70039729af09456d8d5fd010a01f4b5b073c4d649d2f11c6f39",
+      "bytes": 5006
+    },
+    {
+      "name": "intel-collateral.json",
+      "sha256": "3e09d3e68f96025799ef1c8b0dee593d9d1945f613d346d7337bbc48bac978f7",
+      "bytes": 20537
+    },
+    {
+      "name": "native-verdict.json",
+      "sha256": "a933224798cbadd0e7b9f9807effc0104226de6daec3e818c05ee615045c99c9",
+      "bytes": 1990
+    },
+    {
+      "name": "gateway-evidence.json",
+      "sha256": "fe960d0c8285a163fe87c91707a331ea416ced7164183e9c3c272c8b178deb07",
+      "bytes": 82526
+    }
+  ]
+}

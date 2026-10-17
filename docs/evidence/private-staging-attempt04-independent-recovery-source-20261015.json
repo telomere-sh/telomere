@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "startedAt": "2026-10-15T04:56:24.8058450Z",
+  "completedAt": "2026-10-15T04:56:33.4469871Z",
+  "kind": "independent_actual_function_local_review",
+  "runnerSha256": "f9d9b264e9b5b447894ff982239b96c4be2973fe4d94daa23a14d4ed63943d32",
+  "operatorSourceFiles": 5,
+  "totalCapturedInputs": 8,
+  "before": [
+    {
+      "path": "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-08\\new-chat\\outputs\\telomere\\.local\\private-staging-rollout-attempt4-20261015\\README.md",
+      "bytes": 12264,
+      "sha256": "5bd0e8957d30b43c7077c0dfc8834a1b3eb13dcf19b07c0f29f1cb2542731c9d"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-08\\new-chat\\outputs\\telomere\\.local\\private-staging-rollout-attempt4-20261015\\clone-smoke.mjs",
+      "bytes": 19759,
+      "sha256": "43d37c51c7d50a1a9971b444367045a2c7e73b91239418d679460d1fb06176e5"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-08\\new-chat\\outputs\\telomere\\.local\\private-staging-rollout-attempt4-20261015\\rollout.py",
+      "bytes": 73606,
+      "sha256": "f9d9b264e9b5b447894ff982239b96c4be2973fe4d94daa23a14d4ed63943d32"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-08\\new-chat\\outputs\\telomere\\.local\\private-staging-rollout-attempt4-20261015\\upload-launch-usage.md",
+      "bytes": 5728,
+      "sha256": "afbcca59e9a5112d299822c500922a78194485d03478624f195fc491b5d894ec"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-08\\new-chat\\outputs\\telomere\\.local\\private-staging-rollout-attempt4-20261015\\upload-launch.py",
+      "bytes": 19110,
+      "sha256": "247ed20abdc173e4b7b172d6cc558c5fddf94cf5b2cbf1256be13bc8564ab198"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-08\\new-chat\\outputs\\telomere\\.local\\private-staging-rollout-attempt4-20261015\\attempt04-local-freeze.json",
+      "bytes": 2162,
+      "sha256": "66393306da530441a2fc44a8c8dae56d9cdce868d78f279230d4550c390e0f3c"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-08\\new-chat\\outputs\\telomere\\.local\\private-staging-recovery-review-20261015\\test-release-pins.py",
+      "bytes": 8663,
+      "sha256": "698106174cb08d44d61bf3edbdb5a67fdbbe66b74985b682e2f4bfb5f2c9a6c8"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-08\\new-chat\\outputs\\telomere\\.local\\private-staging-recovery-review-20261015\\test-recovery-states.py",
+      "bytes": 19113,
+      "sha256": "f01e6902674bb0a7df85a9e2d8bdce94a5145380055769ead7b445c6dbe75637"
+    }
+  ],
+  "after": [
+    {
+      "path": "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-08\\new-chat\\outputs\\telomere\\.local\\private-staging-rollout-attempt4-20261015\\README.md",
+      "bytes": 12264,
+      "sha256": "5bd0e8957d30b43c7077c0dfc8834a1b3eb13dcf19b07c0f29f1cb2542731c9d"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-08\\new-chat\\outputs\\telomere\\.local\\private-staging-rollout-attempt4-20261015\\clone-smoke.mjs",
+      "bytes": 19759,
+      "sha256": "43d37c51c7d50a1a9971b444367045a2c7e73b91239418d679460d1fb06176e5"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-08\\new-chat\\outputs\\telomere\\.local\\private-staging-rollout-attempt4-20261015\\rollout.py",
+      "bytes": 73606,
+      "sha256": "f9d9b264e9b5b447894ff982239b96c4be2973fe4d94daa23a14d4ed63943d32"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-08\\new-chat\\outputs\\telomere\\.local\\private-staging-rollout-attempt4-20261015\\upload-launch-usage.md",
+      "bytes": 5728,
+      "sha256": "afbcca59e9a5112d299822c500922a78194485d03478624f195fc491b5d894ec"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-08\\new-chat\\outputs\\telomere\\.local\\private-staging-rollout-attempt4-20261015\\upload-launch.py",
+      "bytes": 19110,
+      "sha256": "247ed20abdc173e4b7b172d6cc558c5fddf94cf5b2cbf1256be13bc8564ab198"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-08\\new-chat\\outputs\\telomere\\.local\\private-staging-rollout-attempt4-20261015\\attempt04-local-freeze.json",
+      "bytes": 2162,
+      "sha256": "66393306da530441a2fc44a8c8dae56d9cdce868d78f279230d4550c390e0f3c"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-08\\new-chat\\outputs\\telomere\\.local\\private-staging-recovery-review-20261015\\test-release-pins.py",
+      "bytes": 8663,
+      "sha256": "698106174cb08d44d61bf3edbdb5a67fdbbe66b74985b682e2f4bfb5f2c9a6c8"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-08\\new-chat\\outputs\\telomere\\.local\\private-staging-recovery-review-20261015\\test-recovery-states.py",
+      "bytes": 19113,
+      "sha256": "f01e6902674bb0a7df85a9e2d8bdce94a5145380055769ead7b445c6dbe75637"
+    }
+  ],
+  "changedDuringRun": [],
+  "releaseGuardExitCode": 0,
+  "recoveryMatrixExitCode": 0,
+  "networkCalls": 0,
+  "operatorOrServiceProcessesExecuted": 0,
+  "applicationDatabaseOpened": false,
+  "privateDataCopied": false
+}

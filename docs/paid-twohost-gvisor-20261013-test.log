@@ -1,0 +1,11 @@
+
+ RUN  v4.1.11 /tmp/telomere-twohost-268b888
+
+ ✓ tests/paid-vault-preemption-handoff.test.ts (1 test) 111984ms
+   ✓ preempts one real Vault-paid fixture host and restores bounded state in a separately funded second host  104664ms
+
+ Test Files  1 passed (1)
+      Tests  1 passed (1)
+   Start at  19:03:54
+   Duration  115.29s (transform 1.65s, setup 0ms, import 3.13s, tests 111.98s, environment 0ms)
+

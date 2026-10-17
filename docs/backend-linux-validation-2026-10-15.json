@@ -1,0 +1,560 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-10-15T00:58:51.334957+00:00",
+  "scope": "Exact source-cutoff Linux paid CPU and owner-side checkpoint acceptance. GPU Cells excluded.",
+  "successful": true,
+  "sourceCutoff": {
+    "commitReference": "edc788c703a1a8bf26487b78f094713ccc13e54f",
+    "archiveSha256": "763ad81f8bbf4fd1aa601c2c8dd875e65f677a0531e39209a42bb6ecd84362db",
+    "files": 624,
+    "snapshot": "/opt/telomere-host-runtime/backend-final-20261015-763ad81f8bbf",
+    "allArchiveMemberHashesVerifiedBeforeExtraction": true,
+    "allSourceHashesUnchangedAfterExecution": true,
+    "gitComparison": {
+      "byteIdenticalFiles": 617,
+      "lineEndingOnlyDifferences": [
+        "public/styles.css",
+        "src/agents/paid-lifecycle-vault-v3.ts",
+        "src/cysts/configured.ts",
+        "src/cysts/quota-types.ts",
+        "src/cysts/quota.ts",
+        "src/cysts/routes.ts",
+        "src/cysts/service.ts"
+      ],
+      "allFilesEqualAfterCrLfNormalization": true
+    },
+    "note": "Archive SHA256 and member manifest are the exact tested byte authority. Root started another implementation phase after edc788c; this report does not cover later working-tree changes."
+  },
+  "typecheck": {
+    "command": "node node_modules/typescript/bin/tsc --noEmit",
+    "exitCode": 0
+  },
+  "total": {
+    "collected": 71,
+    "passed": 65,
+    "failed": 0,
+    "skippedOrUnselected": 6
+  },
+  "results": [
+    {
+      "stage": "lifecycle-gvisor",
+      "successful": true,
+      "collected": 3,
+      "passed": 3,
+      "failed": 0,
+      "skippedOrUnselected": 0,
+      "cases": [
+        {
+          "title": "continues a real paid agent full\u0432\u2020\u2019lean, sleep/wake/torpor and kill with policy 1 after response loss and restart",
+          "status": "passed",
+          "durationSeconds": 76.864
+        },
+        {
+          "title": "continues a real paid agent full\u0432\u2020\u2019lean, sleep/wake/torpor and kill with policy 2 after response loss and restart",
+          "status": "passed",
+          "durationSeconds": 71.994
+        },
+        {
+          "title": "reconciles concurrent queued kills only after canonical no-dispatch full refund, with one external wallet submission",
+          "status": "passed",
+          "durationSeconds": 4.291
+        }
+      ]
+    },
+    {
+      "stage": "cpu-jobs-gvisor",
+      "successful": true,
+      "collected": 1,
+      "passed": 1,
+      "failed": 0,
+      "skippedOrUnselected": 0,
+      "cases": [
+        {
+          "title": "runs a durable owner-approved paid CPU job across interruptible and standard lanes without spending pending refunds",
+          "status": "passed",
+          "durationSeconds": 60.226
+        }
+      ]
+    },
+    {
+      "stage": "current-cyst-paid",
+      "successful": true,
+      "collected": 7,
+      "passed": 1,
+      "failed": 0,
+      "skippedOrUnselected": 6,
+      "cases": [
+        {
+          "title": "paid interactive CPU session through canonical escrow and receipt binds paid 'lean' CPU policy and price to the original signed workload",
+          "status": "skipped",
+          "durationSeconds": 0.0
+        },
+        {
+          "title": "paid interactive CPU session through canonical escrow and receipt binds paid 'torpor' CPU policy and price to the original signed workload",
+          "status": "skipped",
+          "durationSeconds": 0.0
+        },
+        {
+          "title": "paid interactive CPU session through canonical escrow and receipt drops an unadmitted paid-session lease if cancellation arrives during the optional v2 gate",
+          "status": "skipped",
+          "durationSeconds": 0.0
+        },
+        {
+          "title": "paid interactive CPU session through canonical escrow and receipt runs two owner commands in one Cell, settles signed seconds and exposes durable events",
+          "status": "skipped",
+          "durationSeconds": 0.0
+        },
+        {
+          "title": "paid interactive CPU session through canonical escrow and receipt runs a funded Vault Cell for its agent, grants owner reads, denies owner commands and burns settled cost",
+          "status": "skipped",
+          "durationSeconds": 0.0
+        },
+        {
+          "title": "paid interactive CPU session through canonical escrow and receipt replays current small Cyst state into a real Vault-funded Host Kit Cell after losing command response",
+          "status": "passed",
+          "durationSeconds": 5.692
+        },
+        {
+          "title": "paid interactive CPU session through canonical escrow and receipt recovers the original paid Cell after controller interruption without redispatching commands",
+          "status": "skipped",
+          "durationSeconds": 0.0
+        }
+      ]
+    },
+    {
+      "stage": "adjacent-regression",
+      "successful": true,
+      "collected": 60,
+      "passed": 60,
+      "failed": 0,
+      "skippedOrUnselected": 0,
+      "cases": [
+        {
+          "title": "bounded private Cyst backup and relocation keeps historical version 1 backups unchanged when Cysts are disabled",
+          "status": "passed",
+          "durationSeconds": 1.402
+        },
+        {
+          "title": "bounded private Cyst backup and relocation requires the fourth encrypted snapshot before an enabled backup can be finalized",
+          "status": "passed",
+          "durationSeconds": 0.985
+        },
+        {
+          "title": "bounded private Cyst backup and relocation captures opaque ciphertext, verifies version 2 and restores real encrypted state under new paths",
+          "status": "passed",
+          "durationSeconds": 2.623
+        },
+        {
+          "title": "bounded private Cyst backup and relocation refuses a complete backup when a ready database checkpoint has no ciphertext",
+          "status": "passed",
+          "durationSeconds": 1.191
+        },
+        {
+          "title": "bounded private Cyst backup and relocation preserves interrupted pending uploads and their quota, allowing only the original retry to finish",
+          "status": "passed",
+          "durationSeconds": 2.132
+        },
+        {
+          "title": "bounded private Cyst backup and relocation retains a pending blob after interrupted readiness storage and lets CystService recover it",
+          "status": "passed",
+          "durationSeconds": 2.217
+        },
+        {
+          "title": "bounded private Cyst backup and relocation proves recoverable and missing pending checkpoints in a real read-only transaction without promotions",
+          "status": "passed",
+          "durationSeconds": 2.081
+        },
+        {
+          "title": "bounded private Cyst backup and relocation verifies 513 restored encrypted checkpoints under explicit quota2 in read-only SQL without schema or metadata changes",
+          "status": "passed",
+          "durationSeconds": 7.421
+        },
+        {
+          "title": "bounded private Cyst backup and relocation accepts the external private quota policy only with both reviewed configuration pins",
+          "status": "passed",
+          "durationSeconds": 1.056
+        },
+        {
+          "title": "bounded private Cyst backup and relocation checks tenant-derived names and database lengths instead of accepting an unrelated valid blob",
+          "status": "passed",
+          "durationSeconds": 1.022
+        },
+        {
+          "title": "bounded private Cyst backup and relocation rejects unsafe snapshot name ../escape.blob before creating restore files",
+          "status": "passed",
+          "durationSeconds": 1.14
+        },
+        {
+          "title": "bounded private Cyst backup and relocation rejects unsafe snapshot name C:\\outside.blob before creating restore files",
+          "status": "passed",
+          "durationSeconds": 1.206
+        },
+        {
+          "title": "bounded private Cyst backup and relocation rejects unsafe snapshot name nested/blob before creating restore files",
+          "status": "passed",
+          "durationSeconds": 1.041
+        },
+        {
+          "title": "bounded private Cyst backup and relocation rejects unsafe snapshot name KEY.txt before creating restore files",
+          "status": "passed",
+          "durationSeconds": 0.949
+        },
+        {
+          "title": "bounded private Cyst backup and relocation rejects duplicate names, noncanonical base64 and mismatched byte totals",
+          "status": "passed",
+          "durationSeconds": 0.993
+        },
+        {
+          "title": "bounded private Cyst backup and relocation checks inner ciphertext digests even when a changed outer snapshot checksum is supplied",
+          "status": "passed",
+          "durationSeconds": 1.014
+        },
+        {
+          "title": "bounded private Cyst backup and relocation refuses snapshot limits before restoring or writing a capture output",
+          "status": "passed",
+          "durationSeconds": 1.123
+        },
+        {
+          "title": "bounded private Cyst backup and relocation does not overwrite an existing restore directory or its retained data",
+          "status": "passed",
+          "durationSeconds": 0.956
+        },
+        {
+          "title": "bounded private Cyst backup and relocation fails capture rather than including unexpected storage file recovery-key.txt",
+          "status": "passed",
+          "durationSeconds": 0.988
+        },
+        {
+          "title": "bounded private Cyst backup and relocation fails capture rather than including unexpected storage file .tmp-11111111-1111-4111-8111-111111111111",
+          "status": "passed",
+          "durationSeconds": 0.932
+        },
+        {
+          "title": "bounded private Cyst backup and relocation rejects hard-linked blobs instead of copying mutable external aliases",
+          "status": "passed",
+          "durationSeconds": 1.223
+        },
+        {
+          "title": "bounded private Cyst backup and relocation bounds snapshot descriptor reads when a file grows after its checked stat",
+          "status": "passed",
+          "durationSeconds": 0.969
+        },
+        {
+          "title": "bounded private Cyst backup and relocation bounds streamed hashing and rejects a concurrent append instead of hashing undeclared bytes",
+          "status": "passed",
+          "durationSeconds": 1.094
+        },
+        {
+          "title": "bounded private Cyst backup and relocation checks the original pathname inode after the final descriptor stat",
+          "status": "passed",
+          "durationSeconds": 1.085
+        },
+        {
+          "title": "bounded private Cyst backup and relocation rejects hard-linked general backup files at hash preflight",
+          "status": "passed",
+          "durationSeconds": 1.027
+        },
+        {
+          "title": "bounded private Cyst backup and relocation rejects public permissions and symlinked source or restore paths",
+          "status": "passed",
+          "durationSeconds": 1.054
+        },
+        {
+          "title": "bounded private Cyst backup and relocation rejects a profile/version mismatch even after the profile checksum is recomputed",
+          "status": "passed",
+          "durationSeconds": 1.049
+        },
+        {
+          "title": "owner encrypted filesystem checkpoint vault encrypts all state, original envelope and recovery key, and retains writes when a callback throws",
+          "status": "passed",
+          "durationSeconds": 0.039
+        },
+        {
+          "title": "owner encrypted filesystem checkpoint vault copies the caller key, uses a fresh GCM nonce for every state write and expires escaped journals",
+          "status": "passed",
+          "durationSeconds": 0.021
+        },
+        {
+          "title": "owner encrypted filesystem checkpoint vault binds immutable records to the exact operation, envelope and recovery key",
+          "status": "passed",
+          "durationSeconds": 0.024
+        },
+        {
+          "title": "owner encrypted filesystem checkpoint vault rejects wrong master keys and corrupt journals before the application callback can overwrite them",
+          "status": "passed",
+          "durationSeconds": 0.015
+        },
+        {
+          "title": "owner encrypted filesystem checkpoint vault rejects cross-scope ciphertext substitution and missing or corrupt original records behind completed pointers",
+          "status": "passed",
+          "durationSeconds": 0.033
+        },
+        {
+          "title": "owner encrypted filesystem checkpoint vault validates bounded scope/state/records, rejects wrong recovery keys and enforces immutable record capacity",
+          "status": "passed",
+          "durationSeconds": 0.036
+        },
+        {
+          "title": "owner encrypted filesystem checkpoint vault accepts the maximum 2 MiB original application envelope without truncation",
+          "status": "passed",
+          "durationSeconds": 0.629
+        },
+        {
+          "title": "owner encrypted filesystem checkpoint vault rejects permissive owner files and directories without changing their permissions",
+          "status": "passed",
+          "durationSeconds": 0.048
+        },
+        {
+          "title": "owner encrypted filesystem checkpoint vault rejects symlink directories and record links without following them",
+          "status": "passed",
+          "durationSeconds": 0.048
+        },
+        {
+          "title": "owner encrypted filesystem checkpoint vault rejects hard-linked private files and never releases a replacement or corrupted owner lock",
+          "status": "passed",
+          "durationSeconds": 0.061
+        },
+        {
+          "title": "owner encrypted filesystem checkpoint vault serializes separate actual Node processes and reopens the same durable state in a fresh process",
+          "status": "passed",
+          "durationSeconds": 0.58
+        },
+        {
+          "title": "owner encrypted filesystem checkpoint vault bounds lock acquisition and refuses live/reused or unknown PID recovery",
+          "status": "passed",
+          "durationSeconds": 0.236
+        },
+        {
+          "title": "owner encrypted filesystem checkpoint vault keeps crashed-process writes and locks, with explicit proven-dead recovery only in the same Linux boot and PID namespace",
+          "status": "passed",
+          "durationSeconds": 0.251
+        },
+        {
+          "title": "owner encrypted filesystem checkpoint vault uses the production vault for actual owner Cyst HTTP lost-ACK exact retry and independent restore after reopen",
+          "status": "passed",
+          "durationSeconds": 1.618
+        },
+        {
+          "title": "persists an observed CPU v2 protocol floor before any payment and rejects downgrade after encrypted journal reopen",
+          "status": "passed",
+          "durationSeconds": 0.117
+        },
+        {
+          "title": "binds the independent expected CPU v2 protocol into the immutable private profile and rejects initial v1",
+          "status": "passed",
+          "durationSeconds": 0.004
+        },
+        {
+          "title": "Eliza and Conway tools recover exact paid Vault work across response loss and encrypted journal restart over real HTTP",
+          "status": "passed",
+          "durationSeconds": 23.497
+        },
+        {
+          "title": "agent-side checked manifest fetch accepts only a bounded, scoped, valid manifest and treats only 404 as absent",
+          "status": "passed",
+          "durationSeconds": 0.024
+        },
+        {
+          "title": "agent-side checked manifest fetch checks exact ciphertext part length, digest and transport headers",
+          "status": "passed",
+          "durationSeconds": 0.004
+        },
+        {
+          "title": "agent-side checked manifest fetch bounds and independently checks the current locator against manifest and canonical registry",
+          "status": "passed",
+          "durationSeconds": 0.011
+        },
+        {
+          "title": "agent-side checked manifest fetch publishes a restored current file only after a fresh canonical revision check",
+          "status": "passed",
+          "durationSeconds": 0.07
+        },
+        {
+          "title": "durable large Cyst current-checkpoint catalog resolves only after an onchain match and survives the short-lived job plan expiring",
+          "status": "passed",
+          "durationSeconds": 1.5
+        },
+        {
+          "title": "durable large Cyst current-checkpoint catalog fails closed on missing, altered, or reorged catalog and manifest evidence",
+          "status": "passed",
+          "durationSeconds": 1.165
+        },
+        {
+          "title": "verifies 513 paid checkpoint replicas with explicit reviewed quota in real read-only SQL and sends GETs only",
+          "status": "passed",
+          "durationSeconds": 2.289
+        },
+        {
+          "title": "paid stopped-state backup boundaries rejects every paid Docker namespace, including a malformed session label",
+          "status": "passed",
+          "durationSeconds": 0.007
+        },
+        {
+          "title": "paid stopped-state backup boundaries rejects small Cyst owner accounting that differs from stored ciphertext metadata",
+          "status": "passed",
+          "durationSeconds": 0.001
+        },
+        {
+          "title": "paid stopped-state backup boundaries requires an explicit quota2 policy for expanded paid-backup owners and retains the 32 MiB byte cap",
+          "status": "passed",
+          "durationSeconds": 0.004
+        },
+        {
+          "title": "paid stopped-state backup boundaries scans a real sealed local large Cyst and rejects corrupt shadow files or excess quota",
+          "status": "passed",
+          "durationSeconds": 0.218
+        },
+        {
+          "title": "paid stopped-state backup boundaries restores a private HostKit PGlite copy and rejects missing/altered host files",
+          "status": "passed",
+          "durationSeconds": 7.902
+        },
+        {
+          "title": "paid stopped-state backup boundaries fingerprints every public table and validates the original signed transaction bytes",
+          "status": "passed",
+          "durationSeconds": 1.042
+        },
+        {
+          "title": "routes real economics-v2 EOA/Vault work over HTTP, applies canonical stake placement and locks admission fee tiers",
+          "status": "passed",
+          "durationSeconds": 38.316
+        },
+        {
+          "title": "registered agent automatic owner-side Cyst cadence captures actual registered application state at 15 minutes, retries a lost HTTP ACK after DB/vault reopen and restores privately",
+          "status": "passed",
+          "durationSeconds": 2.541
+        },
+        {
+          "title": "registered agent automatic owner-side Cyst cadence starts a real timer, captures after the configured interval, and stops cleanly",
+          "status": "passed",
+          "durationSeconds": 3.487
+        }
+      ]
+    }
+  ],
+  "runtime": {
+    "node": "v22.23.3",
+    "dependencyLockSha256": "504c9add77b034fb369416537487f630f529350fe46d08bf2f59b2ca0bbcbebb",
+    "cpu": "Actual gVisor/runsc for both lifecycle metabolism policies and paid CPU job. Queued-kill and other CPU cases use explicit local-process fixtures.",
+    "socket": "/run/telomere-accept-20261014/docker.sock",
+    "image": "127.0.0.1:15002/telomere-cpu@sha256:6839949540d11906cbdbc614867ac3a825fa0e6f8cbed90c79773979517b4bbe",
+    "imageId": "sha256:680cc0ec7dfa626d4105c3c26834289687e0abed785240e5bb814bac7cd55355",
+    "finance": "Disposable local Anvil; no public-chain transactions"
+  },
+  "verifiedBehavior": [
+    "Real full/lean/torpor guest CPU quotas 1/0.5/0.25, 256MiB RAM+swap, readonly root, no network, pids64",
+    "Both metabolism policies migrate, checkpoint, sleep/wake, recover lost responses/private-vault reopen, kill and conserve exact financial ceilings",
+    "Queued kill admits no guest, waits for canonical full refund and uses one external-wallet submission",
+    "Paid CPU job captures under host-signed notice, enforces cleanup, waits for canonical source settlement, obtains exact owner approval and restores on another gVisor host without spending pending refunds",
+    "Current small registered Cyst restore is replay-safe in a real Vault-funded local-process Cell",
+    "Framework protocol floor/encrypted reopen; economics-v2 actual EOA/Vault HTTP routes and admission fee locks",
+    "POSIX private-vault boundaries, registered checkpoint cadence, current manifest/reorg checks, and backup quota2 GET-only replica verification"
+  ],
+  "serverContinuity": {
+    "telomereServicesBeforeAndAfter": "All three active, NRestarts0",
+    "liveAndReadyBeforeAndAfter": "HTTP200",
+    "enclaveApi": "Pre-existing ACCEPTANCE_EXPIRED restart loop persists; not a failure introduced by this work",
+    "unrelatedServicesChanged": false
+  },
+  "confidentialCpu": {
+    "checkedAt": "2026-10-15T00:56:18.938237+00:00",
+    "devices": {
+      "/dev/tdx_guest": false,
+      "/dev/tdx-guest": false,
+      "/dev/sev-guest": false,
+      "/sys/module/tdx_guest": false,
+      "/sys/firmware/tdx": false
+    },
+    "virtualization": {
+      "exitCode": 0,
+      "type": "kvm"
+    },
+    "cpu": {
+      "vendor": "AuthenticAMD",
+      "model": "AMD Ryzen 9 9950X 16-Core Processor",
+      "selectedFlags": {
+        "hypervisor": true,
+        "vmx": false,
+        "svm": false,
+        "tdx_guest": false,
+        "tdx": false,
+        "sev": false,
+        "sev_es": false,
+        "sev_snp": false
+      }
+    },
+    "scope": "Read-only guest-visible device/module/CPU inspection after acceptance. No quote generation, keys, kernel or service changes.",
+    "conclusion": "No guest-visible TDX or SEV attestation device/module was detected. Current VPS has not established confidential CPU Cell execution; runsc isolation is not a TEE."
+  },
+  "cleanup": {
+    "successful": true,
+    "stoppedUnit": "telomere-accept-20261014.service",
+    "unitState": "inactive/dead, ExecMainPID0",
+    "removedNamespace": "tlmr-accept-20261014",
+    "namespaceHadProcesses": false,
+    "runningDedicatedContainersAtCleanup": 0,
+    "preserved": "All server data/images/registry metadata/source snapshots. No global Docker or network changes.",
+    "telomereHealthAfter": "All three active; live/ready HTTP200"
+  },
+  "artifacts": {
+    "lifecycle-gvisor.json": {
+      "path": "docs/evidence/backend-linux-20261015-lifecycle-gvisor.json",
+      "sha256": "4d61244df0c0f95e6b8fcf883d472da5904de7701ef775d29f63f17c73ba09a6"
+    },
+    "cpu-jobs-gvisor.json": {
+      "path": "docs/evidence/backend-linux-20261015-cpu-jobs-gvisor.json",
+      "sha256": "434767cc8ca774ea35b3a533aa4265350c8668416b9ec87f93b7b3242a3b9919"
+    },
+    "current-cyst-paid.json": {
+      "path": "docs/evidence/backend-linux-20261015-current-cyst-paid.json",
+      "sha256": "3a337ef30df891bc5d0edfdf21c6227d8a16e3c9221533153fc369b4cc32c02b"
+    },
+    "adjacent-regression.json": {
+      "path": "docs/evidence/backend-linux-20261015-adjacent-regression.json",
+      "sha256": "3fa07795db2f08d2f86e1a77d7473aa8140310c71a02321647441c3c2af12ac8"
+    },
+    "paid-agent-lifecycle-v2-gvisor-evidence-20261014.json": {
+      "path": "docs/evidence/backend-linux-20261015-paid-agent-lifecycle-v2-gvisor-evidence-20261014.json",
+      "sha256": "e482a80d8491f45d9dd1102b9b383d8f306b675b97db1a8faf349a38a6692156"
+    },
+    "paid-agent-metabolism-v2-gvisor-evidence-20261014.json": {
+      "path": "docs/evidence/backend-linux-20261015-paid-agent-metabolism-v2-gvisor-evidence-20261014.json",
+      "sha256": "7652b4353af514d6c7864d70f6ef82796c478d6b27c73bf950363b79b9eb3757"
+    },
+    "source-manifest.json": {
+      "path": "docs/evidence/backend-linux-20261015-source-manifest.json",
+      "sha256": "c1153c164b90e1b846af66e0e6d820e57480d975133dcf42f6941e39f96bbb69"
+    },
+    "source-after.json": {
+      "path": "docs/evidence/backend-linux-20261015-source-after.json",
+      "sha256": "d56172a401a8da3d0bd063bf094dae551d87ca7a5d59c05cf106309933b5075d"
+    },
+    "environment-before.json": {
+      "path": "docs/evidence/backend-linux-20261015-environment-before.json",
+      "sha256": "7496214fd1344bb1ab16cc1ceb0b285da790e781c897ba43cf25f3e8ebe6168e"
+    },
+    "environment-after.json": {
+      "path": "docs/evidence/backend-linux-20261015-environment-after.json",
+      "sha256": "6e6ef4e778f91182f55a8dca0d28bd56b38d7f2adde987b278dd16767eb82f8e"
+    },
+    "confidential-cpu-capability.json": {
+      "path": "docs/evidence/backend-linux-20261015-confidential-cpu-capability.json",
+      "sha256": "9156b5f1c61e75ebb7699aabb00fe3bd7e64ebd9610aae9a477e3051a35e1ef7"
+    },
+    "cleanup.json": {
+      "path": "docs/evidence/backend-linux-20261015-cleanup.json",
+      "sha256": "5b5eb0b40bfdcb2085f293d7c6aae61f18b5746339653072050df59c94636ba3"
+    }
+  },
+  "publicTransactions": 0,
+  "paidPublicRequests": 0,
+  "notEstablished": [
+    "Public Base funded deployment and acceptance",
+    "Confidential CPU execution or fresh TDX/SEV guest quote",
+    "External provider host availability or independent marketplace capacity",
+    "24-hour continuous real-time soak",
+    "Large2GiB application restore",
+    "GPU Cell execution",
+    "Changes after commit edc788c"
+  ]
+}

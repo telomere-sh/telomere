@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "status": "accepted_focused_software_behaviour_on_exact_committed_source",
+  "gitRevision": "8d848f20c8dc4a2b3d672013777e1c630ecd233e",
+  "archiveSha256": "45cdb729cb9ccf3aa5e9a063940c0d732ba2bcad59e612d5e1e3f3a9058164c4",
+  "sourceFiles": 685,
+  "completedAt": "2026-10-15T03:25:38.749044+00:00",
+  "node": "v22.23.3",
+  "install": {
+    "exitCode": 0,
+    "seconds": 4.196
+  },
+  "build": {
+    "exitCode": 0,
+    "seconds": 73.784
+  },
+  "cohort": {
+    "exitCode": 0,
+    "seconds": 10.407
+  },
+  "tests": {
+    "numTotalTests": 71,
+    "numPassedTests": 71,
+    "numFailedTests": 0,
+    "numPendingTests": 0,
+    "numTotalTestSuites": 7,
+    "success": true
+  },
+  "breakdown": {
+    "newOwnerAuthenticatedHandoff": 13,
+    "unchangedLegacyReleaseAndSignedAppraiser": 41,
+    "newGolemFinancialLifecycle": 17
+  },
+  "all685SourcesUnchangedBeforeAfter": true,
+  "all677PriorCoreFilesIdentical": true,
+  "stagingServiceStateUnchanged": true,
+  "stagingHealthBeforeAfter": [
+    {
+      "live": {
+        "statusCode": 200,
+        "body": {
+          "status": "ok"
+        }
+      },
+      "ready": {
+        "statusCode": 200,
+        "body": {
+          "status": "ready",
+          "worker": "idle"
+        }
+      }
+    },
+    {
+      "live": {
+        "statusCode": 200,
+        "body": {
+          "status": "ok"
+        }
+      },
+      "ready": {
+        "statusCode": 200,
+        "body": {
+          "status": "ready",
+          "worker": "idle"
+        }
+      }
+    }
+  ],
+  "publicTransactions": 0,
+  "paidProviderRequests": 0,
+  "evidence": [
+    {
+      "path": "docs/evidence/finance-keys-linux-acceptance-20261015.json",
+      "sha256": "815b0cb041aa88f1b35fc9a68520045263cc3348ac9c14758f2137041774a57d",
+      "bytes": 2080
+    },
+    {
+      "path": "docs/evidence/finance-keys-linux-tests-20261015.json",
+      "sha256": "20c8c497c81aadc762bee3a98472ed42a643175c704e5f52bd855a21367e5ae3",
+      "bytes": 30792
+    },
+    {
+      "path": "docs/evidence/finance-keys-linux-source-manifest-20261015.json",
+      "sha256": "ade0cacdb0b4b74388a40613873f9321e3fdf4e4cb1162df81341c7ab72cf825",
+      "bytes": 160802
+    },
+    {
+      "path": "docs/evidence/run-finance-keys-linux-20261015.py",
+      "sha256": "f2ef82b75f33c5675d6f5c7e00855d41c0c759038ab05e0b37f2963667924bed",
+      "bytes": 6596
+    },
+    {
+      "path": "docs/evidence/finance-keys-core-source-continuity-20261015.json",
+      "sha256": "1c49a892311bc6735d556a866aa025df88e107c1c3d3ee7ffb81af5a44b37980"
+    }
+  ],
+  "limits": [
+    "A complete677-source baseline regression is separate; source continuity adds8new unmounted module/test files only.",
+    "New handoff tests use actual cryptography and private files with synthetic quote/registry/appraiser fixtures, not real TDX.",
+    "Golem tests perform real loopback HTTP calls against a protocol harness; production Yagna/Polygon and trusted finality/treasury adapters remain absent.",
+    "No new controller route/profile is activated; no public Base wallet acceptance or launch claim."
+  ]
+}

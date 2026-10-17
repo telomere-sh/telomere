@@ -1,0 +1,212 @@
+{
+  "schemaVersion": 1,
+  "isPolicy": false,
+  "reviewedAt": "2026-10-15T03:25:22.066741+00:00",
+  "decision": "NO_CANDIDATE_POLICY_GENERATED_PROVENANCE_INCOMPLETE",
+  "approval": "UNAPPROVED",
+  "candidatePolicy": null,
+  "liveAdmission": false,
+  "policyApproval": false,
+  "installedPolicyChanged": false,
+  "network": {
+    "newNearReportGets": 0,
+    "paidInferencePosts": 0,
+    "walletTransactions": 0,
+    "publicImmutableSourceGets": 17,
+    "browserPrimarySourceOpens": 4,
+    "ociImageLayerDownloads": 0,
+    "newHardwareAppraisals": 0
+  },
+  "rawReportsRemainPrivate": true,
+  "credentialsRead": false,
+  "serviceChanges": 0,
+  "remoteFileWrites": 0,
+  "input": {
+    "capturedAt": "2026-10-15T02:59:37.460Z",
+    "privatePacketDirectory": "/opt/telomere-host-runtime/near-readonly-20261015-0300/direct",
+    "responseSha256": "9c2e72ec9d5dac867a5a189a6db43f3b49fc8b2d9da599cafcfcd5befda199a4",
+    "packetSha256": "853b979047e981ce7effee19e33d26c6636d707064dec8415eb36158616c0cf9",
+    "installedPolicySha256": "75abdd6f7e2a075863b71afa68a7e7dddb43115f3834b6428ace33a228d89ffa",
+    "policyValidUntil": "2026-10-08T14:29:11Z",
+    "safeInventoryBeforeAfterEqual": true,
+    "safeInventoryBeforeAfterSha256": "4b97eb2a5ddf028d6f5b742f0b0b8ff7f63266dbb3b83c87d0ad9212c537a1a8"
+  },
+  "hardwareBoundary": "Uses root retained current native appraisal; this review did not repeat cryptographic hardware appraisal or quote GETs.",
+  "measuredManagerHistory": {
+    "actions": 186,
+    "actionsSha256": "f903bd0f836f7720580c6bb94534c2399e7800956d5bb8011a3b1432bbd54733",
+    "exactApprovedPrefix": {
+      "profileIndex": 0,
+      "count": 135,
+      "sha256": "00ac037cde28499ca5ee97b3fda1cd168d174bcd24f3a52adfa09f64047f6013"
+    },
+    "postApprovedPrefixActions": 51,
+    "deltaActionTypes": {
+      "compose_up": 40,
+      "compose_down": 11
+    },
+    "distinctPublicSourceFiles": 17,
+    "filesWithMeasuredHashClaims": 16,
+    "allMeasuredFileHashClaimsMatch": true,
+    "sourceWithoutMeasuredHashClaim": [
+      {
+        "commit": "88103a2b6551a16896562b05face6aba22be534f",
+        "file": "prod/GLM-5.3-Flash-SGL-TP2x4-W4AFP8.yaml",
+        "actionIndices": [
+          137
+        ]
+      }
+    ]
+  },
+  "latestEngineComposeUpDeclarationsNotLiveState": {
+    "model-sg-glm53-w4afp8-tp2-r1": {
+      "actionIndex": 181,
+      "commit": "b9acc8f208409daa2c35d26f0b7bbd93ecc5eef5",
+      "file": "prod/GLM-5.3-Flash-SGL-TP2x4-W4AFP8.yaml",
+      "image": "docker.io/nearaidev/sglang@sha256:fa730e6e62b2ae8058114ce540487ade33ab93bc42b1179ae78edc92bd563fc5",
+      "volumes": [
+        "kernel_cache:/root/.cache",
+        "huggingface_cache:/root/.cache/huggingface",
+        "ghost:/ghost"
+      ]
+    },
+    "model-sg-glm53-w4afp8-tp2-r2": {
+      "actionIndex": 182,
+      "commit": "b9acc8f208409daa2c35d26f0b7bbd93ecc5eef5",
+      "file": "prod/GLM-5.3-Flash-SGL-TP2x4-W4AFP8.yaml",
+      "image": "docker.io/nearaidev/sglang@sha256:fa730e6e62b2ae8058114ce540487ade33ab93bc42b1179ae78edc92bd563fc5",
+      "volumes": [
+        "kernel_cache:/root/.cache",
+        "huggingface_cache:/root/.cache/huggingface",
+        "ghost:/ghost"
+      ]
+    },
+    "model-sg-glm53-w4afp8-tp2-r3": {
+      "actionIndex": 183,
+      "commit": "b9acc8f208409daa2c35d26f0b7bbd93ecc5eef5",
+      "file": "prod/GLM-5.3-Flash-SGL-TP2x4-W4AFP8.yaml",
+      "image": "docker.io/nearaidev/sglang@sha256:fa730e6e62b2ae8058114ce540487ade33ab93bc42b1179ae78edc92bd563fc5",
+      "volumes": [
+        "kernel_cache:/root/.cache",
+        "huggingface_cache:/root/.cache/huggingface",
+        "ghost:/ghost"
+      ]
+    },
+    "model-sg-glm53-w4afp8-tp2-r4": {
+      "actionIndex": 185,
+      "commit": "46bfd83ec22c179693e06308e40950d540154b4d",
+      "file": "prod/GLM-5.3-Flash-SGL-TP2x4-W4AFP8-V8KdaCanary.yaml",
+      "image": "docker.io/nearaidev/sglang@sha256:59700363c0b6885301ea1f344fe3d45c8335597fdef4ffd49def79dca347f91d",
+      "volumes": [
+        "kernel_cache:/root/.cache",
+        "huggingface_cache:/root/.cache/huggingface",
+        "ghost:/ghost"
+      ]
+    },
+    "glm53-ghost-aggregator": {
+      "actionIndex": 179,
+      "commit": "1121ee56851dcec7dc89e60099d7be28fc51a73e",
+      "file": "prod/GLM-5.3-Flash-SGL-TP2x4-W4AFP8.yaml",
+      "image": "docker.io/nearaidev/sglang@sha256:fa730e6e62b2ae8058114ce540487ade33ab93bc42b1179ae78edc92bd563fc5",
+      "volumes": [
+        "ghost:/ghost"
+      ]
+    }
+  },
+  "newlyReviewedServingDelta": {
+    "fleetV7ManifestCommit": "1121ee56851dcec7dc89e60099d7be28fc51a73e",
+    "fleetQueue32ManifestCommit": "b9acc8f208409daa2c35d26f0b7bbd93ecc5eef5",
+    "v8CanaryManifestCommit": "46bfd83ec22c179693e06308e40950d540154b4d",
+    "parsed1121ToB9Changes": [
+      {
+        "service": "model-sg-glm53-w4afp8-tp2-r1",
+        "precedingToken": "--max-queued-requests",
+        "removedTokens": [
+          "8"
+        ],
+        "addedTokens": [
+          "32"
+        ]
+      },
+      {
+        "service": "model-sg-glm53-w4afp8-tp2-r2",
+        "precedingToken": "--max-queued-requests",
+        "removedTokens": [
+          "8"
+        ],
+        "addedTokens": [
+          "32"
+        ]
+      },
+      {
+        "service": "model-sg-glm53-w4afp8-tp2-r3",
+        "precedingToken": "--max-queued-requests",
+        "removedTokens": [
+          "8"
+        ],
+        "addedTokens": [
+          "32"
+        ]
+      },
+      {
+        "service": "model-sg-glm53-w4afp8-tp2-r4",
+        "precedingToken": "--max-queued-requests",
+        "removedTokens": [
+          "8"
+        ],
+        "addedTokens": [
+          "32"
+        ]
+      }
+    ],
+    "environmentInterpolationVerified": false,
+    "actualContainerImageIdsVerified": false,
+    "actualModelWeightBytesVerified": false
+  },
+  "retainedPriorPublisherEvidence": [
+    "docs/near-image-provenance-review.md",
+    "docs/near-image-provenance-review.json",
+    "docs/near-v8-image-provenance-2026-10-13.md"
+  ],
+  "remainingBlockingEvidence": [
+    {
+      "id": "historical_mutable_privileged_image",
+      "actionIndex": 138,
+      "manifestCommit": "ddec8d8c4f637d16884ca949e43c51582d8ed858",
+      "manifest": "prod/GLM-5.2-W4AFP8-SGL-2xTP4.yaml",
+      "service": "dcgm-glm52",
+      "image": "nvcr.io/nvidia/k8s/dcgm-exporter:4.5.2-4.8.1-distroless",
+      "capability": "SYS_ADMIN",
+      "gap": "Measured action and immutable YAML do not identify the historical executed image digest or success. Current tag resolution cannot recover historical identity."
+    },
+    {
+      "id": "effective_runtime_and_history_scope",
+      "gap": "Manager declarations omit operation result, effective environment/project scope and authenticated current container/image inventory. Per-service latest up is not live-state reconstruction."
+    },
+    {
+      "id": "full_tcb_publisher_and_base_closure",
+      "gap": "Retained signed V6/V7/V8 engine and immediate-base statements cover only a subset. Wider manager/proxy/telemetry/history images and deeper base chain lack complete independent approval evidence in this review."
+    },
+    {
+      "id": "cached_weights_and_functional_acceptance",
+      "gap": "Declared HuggingFace revisions do not authenticate cached model-weight bytes; FP8 KV, KDA, preprocessing, ghost token retention, concurrency64 and queue32 lack independent deployed functional/numerical acceptance."
+    },
+    {
+      "id": "serving_instance_binding",
+      "gap": "Managed shared signing-key and incomplete exact serving-replica/response binding remain; this is not arbitrary GPU Cell or sealed Cell recipient evidence."
+    }
+  ],
+  "cloudGatewayBoundary": "Strict OutOfDate platform TCB rejection remains unchanged; direct avoids that Gateway but not the workload policy gate.",
+  "evidence": [
+    {
+      "path": "docs/evidence/near-current-direct-claims-20261015.json",
+      "sha256": "4b97eb2a5ddf028d6f5b742f0b0b8ff7f63266dbb3b83c87d0ad9212c537a1a8",
+      "bytes": 138927
+    },
+    {
+      "path": "docs/evidence/near-current-direct-source-20261015.json",
+      "sha256": "8f0b10b1c7ee65a13f85aab87fcd707d97aef6da763bf4e82613f9d9e66a05cd",
+      "bytes": 223283
+    }
+  ]
+}

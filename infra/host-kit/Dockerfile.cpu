@@ -1,0 +1,8 @@
+# Build with a reviewed immutable Node 22 Linux image digest. No mutable default.
+ARG NODE_IMAGE
+FROM ${NODE_IMAGE}
+# BuildKit also applies this mode to a newly created destination directory.
+# Traverse permission is required by the unprivileged runner.
+COPY --chmod=0555 infra/host-kit/task-runner.mjs /opt/telomere/task-runner.mjs
+USER 10001:10001
+ENTRYPOINT ["/usr/local/bin/node", "/opt/telomere/task-runner.mjs"]

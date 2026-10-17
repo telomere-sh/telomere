@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "status": "second_operator_attempt_aborted_before_controller_clone_startup;old_staging_healthy",
+  "run": "staging-354fe7af62ea-launch02",
+  "revision": "354fe7af62ea6701faafc3b04522abb1b4524d2d",
+  "archiveSha256": "86b5dc9f36dcf841963f0ffa8161023c126f1fae473c94909f5dddae3040fdce",
+  "prepare": "passed",
+  "consistentBackupV2": "passed",
+  "snapshotMaintenanceSeconds": 5.272,
+  "clonePostgresRestore": "passed",
+  "cloneCystRestore": "passed",
+  "controllerStarted": false,
+  "cutoverAttempted": false,
+  "cause": "Original containerd-backed Docker exposes OCI index ID; imported classic-vfs image uses its bound config digest. Operator incorrectly required identical IDs.",
+  "loadedImageConfigMatchedOriginalExport": true,
+  "repairRequiresBoundedCryptographicGraphAndLoadedContentComparison": true,
+  "ownedCloneCleanup": {
+    "ownedAnvilStopped": true,
+    "ownedDaemonStopped": true,
+    "ownedNamespaceRemoved": true,
+    "ownedPostgresRemoved": true
+  },
+  "globalDockerInventoryUnchanged": true,
+  "originalServicesHealthy": true,
+  "automaticDataRestore": false,
+  "publicTransactions": 0,
+  "paidProviderRequests": 0,
+  "evidence": [
+    {
+      "path": "docs/evidence/private-staging-attempt02-status-20261015.json",
+      "sha256": "3c14fc155bee3f2937bbcdacaccfb0ee356cb7124d013ddddd25cc86ed49f68b",
+      "bytes": 1850
+    },
+    {
+      "path": "docs/evidence/private-staging-attempt02-image-identities-20261015.json",
+      "sha256": "05b0399fa7f7167d1167e8f34a245e81bbfdd75ff16d156baefc1ae325564133",
+      "bytes": 994
+    },
+    {
+      "path": "docs/evidence/inspect-private-staging-image-identities-20261015.py",
+      "sha256": "115f1b15ab2d2034daa7e8b82e76a8ee97a24bfbbed5ce5218dd397e6f6f1d8a",
+      "bytes": 2207
+    }
+  ]
+}

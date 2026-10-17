@@ -1,0 +1,194 @@
+{
+  "schemaVersion": 2,
+  "status": "accepted_composed_regression_after_test_only_gas_fixture_repair;not_a_clean_full_run",
+  "gitRevision": "354fe7af62ea6701faafc3b04522abb1b4524d2d",
+  "sourceArchiveSha256": "86b5dc9f36dcf841963f0ffa8161023c126f1fae473c94909f5dddae3040fdce",
+  "sourceFiles": 685,
+  "completedAt": "2026-10-15T03:53:28.703465+00:00",
+  "environment": {
+    "node": "v22.23.3",
+    "os": "owned Debian12 VPS"
+  },
+  "initial677FullRun": {
+    "status": "failed_retained",
+    "tests": {
+      "numTotalTests": 2301,
+      "numPassedTests": 2281,
+      "numFailedTests": 1,
+      "numPendingTests": 19,
+      "numTotalTestSuites": 377,
+      "success": false
+    },
+    "testFilesReported": 190,
+    "seconds": 3113.179,
+    "failure": "records inference-only burn and zero-charge settlement accurately without fabricating paid work",
+    "error": "Error: settleRun reverted (used 137602 of 137602 gas)\n    at write (/opt/telomere-host-runtime/backend-current-20261015-3e901e235bb9/tests/selection-contracts.test.ts:91:13)\n    at processTicksAndRejections (node:internal/process/task_queues:103:5)\n    at settle (/opt/telomere-host-runtime/backend-current-20261015-3e901e235bb9/tests/selection-contracts.test.ts:127:5)\n    at /opt/telomere-host-runtime/backend-current-20261015-3e901e235bb9/tests/selection-contracts.test.ts:350:37\n    at file:///opt/telomere-host-runtime/backend-current-20261015-3e901e235bb9/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20",
+    "classification": "Zero-charge fixture settlement consumed exactly its gas limit before inference accounting; exact elapsed-branch timing is inferred from code, not an opcode trace."
+  },
+  "corrected685Cohort": {
+    "install": {
+      "exitCode": 0,
+      "seconds": 5.595
+    },
+    "build": {
+      "exitCode": 0,
+      "seconds": 74.525
+    },
+    "command": {
+      "exitCode": 0,
+      "seconds": 21.103
+    },
+    "tests": {
+      "numTotalTests": 111,
+      "numPassedTests": 111,
+      "numFailedTests": 0,
+      "numPendingTests": 0,
+      "numTotalTestSuites": 9,
+      "success": true
+    },
+    "selectionFullFile": 40,
+    "ownerHandoffAndLegacyAppraiser": 54,
+    "golemFinance": 17
+  },
+  "initial677ActualGvisorCohort": {
+    "tests": {
+      "numTotalTests": 16,
+      "numPassedTests": 16,
+      "numFailedTests": 0,
+      "numPendingTests": 0,
+      "success": true
+    },
+    "command": {
+      "exitCode": 0,
+      "seconds": 54.912
+    },
+    "allSourcesStable": true,
+    "protectedRegistryPreserved": true,
+    "ownedSessionContainersRemaining": 0
+  },
+  "sourceContinuity": {
+    "schemaVersion": 1,
+    "initial677Revision": "b042c1bc3119754e06f6b662f2e46c108a63db36",
+    "initial677ArchiveSha256": "3e901e235bb9e50ff4c8dea8312aa05da7364f4865aa3c46014cb5a806122a49",
+    "prior685Revision": "8d848f20c8dc4a2b3d672013777e1c630ecd233e",
+    "prior685ArchiveSha256": "45cdb729cb9ccf3aa5e9a063940c0d732ba2bcad59e612d5e1e3f3a9058164c4",
+    "correctedRevision": "354fe7af62ea6701faafc3b04522abb1b4524d2d",
+    "correctedArchiveSha256": "86b5dc9f36dcf841963f0ffa8161023c126f1fae473c94909f5dddae3040fdce",
+    "correctedSourceFiles": 685,
+    "priorCoreFilesByteIdentical": 676,
+    "allProductionDependencyAndConfigFilesByteIdentical": true,
+    "allEightAdditiveFilesByteIdentical": true,
+    "onlyChangedPath": "tests/selection-contracts.test.ts",
+    "exactFixtureReplacementVerified": true,
+    "change": "Test-only bounded settle gas default300000 and two explanatory comments; no assertion, contract, production or dependency change.",
+    "sources": [
+      {
+        "revision": "b042c1bc3119754e06f6b662f2e46c108a63db36",
+        "archiveSha256": "3e901e235bb9e50ff4c8dea8312aa05da7364f4865aa3c46014cb5a806122a49",
+        "files": 677
+      },
+      {
+        "revision": "8d848f20c8dc4a2b3d672013777e1c630ecd233e",
+        "archiveSha256": "45cdb729cb9ccf3aa5e9a063940c0d732ba2bcad59e612d5e1e3f3a9058164c4",
+        "files": 685
+      },
+      {
+        "revision": "354fe7af62ea6701faafc3b04522abb1b4524d2d",
+        "archiveSha256": "86b5dc9f36dcf841963f0ffa8161023c126f1fae473c94909f5dddae3040fdce",
+        "files": 685
+      }
+    ]
+  },
+  "originalServicesUnchangedAcrossBothRuns": true,
+  "healthBeforeAfterCorrected": [
+    {
+      "live": {
+        "statusCode": 200,
+        "body": {
+          "status": "ok"
+        }
+      },
+      "ready": {
+        "statusCode": 200,
+        "body": {
+          "status": "ready",
+          "worker": "idle"
+        }
+      }
+    },
+    {
+      "live": {
+        "statusCode": 200,
+        "body": {
+          "status": "ok"
+        }
+      },
+      "ready": {
+        "statusCode": 200,
+        "body": {
+          "status": "ready",
+          "worker": "idle"
+        }
+      }
+    }
+  ],
+  "publicTransactions": 0,
+  "paidProviderRequests": 0,
+  "stagingServiceMutations": false,
+  "evidence": [
+    {
+      "path": "docs/evidence/backend-current-linux-initial-acceptance-20261015.json",
+      "sha256": "8bdd2eaa68f5ce6a01cb67724060329e4209a24d14a5701d739631540030e52c",
+      "bytes": 3573
+    },
+    {
+      "path": "docs/evidence/backend-current-linux-initial-tests-20261015.json",
+      "sha256": "71d60bc6818432fb5cf041de6510f1227b67b803cb02e7326d68b0d0816a1f5e",
+      "bytes": 988716
+    },
+    {
+      "path": "docs/evidence/backend-current-gvisor-accepted-tests-20261015.json",
+      "sha256": "41171bf9dda2a088e3e3535fda739f503a50a3f45c93bbb2f354312f7b99bdcb",
+      "bytes": 8435
+    },
+    {
+      "path": "docs/evidence/backend-current-linux-initial-source-manifest-20261015.json",
+      "sha256": "4c2a582329311cc72ad1eb4d533f58cbe8888fe041c9c326c753a878f7f46d27",
+      "bytes": 158933
+    },
+    {
+      "path": "docs/evidence/run-backend-current-linux-initial-20261015.py",
+      "sha256": "0ea5ade3c857b5ac457693a4fadcf8643e85412eb7fff76f073a8da21c8d976a",
+      "bytes": 8504
+    },
+    {
+      "path": "docs/evidence/selection-composed-linux-acceptance-20261015.json",
+      "sha256": "617e8287b1a734be9280b816444c5acf6b6a108564c77201b15020b96135cef9",
+      "bytes": 2104
+    },
+    {
+      "path": "docs/evidence/selection-composed-linux-tests-20261015.json",
+      "sha256": "9eb2c5e72b99d6238d1321ac105a9b71340a3460912c1d8e828f8cd992ba86b8",
+      "bytes": 49916
+    },
+    {
+      "path": "docs/evidence/selection-composed-linux-source-manifest-20261015.json",
+      "sha256": "d7f75f2be9ab97c1ea2cd438a2f053cd0f63ca73fa802574aca25a6b939ab4ab",
+      "bytes": 160802
+    },
+    {
+      "path": "docs/evidence/run-selection-composed-corrected-linux-20261015.py",
+      "sha256": "a94903cfef118db5fbda7d541e2b6b55e5ea8cae322808724e812aa91a900ead",
+      "bytes": 6674
+    },
+    {
+      "path": "docs/evidence/selection-composed-source-continuity-20261015.json",
+      "sha256": "874b8815330d0b046a73bb16fb08f917786997b5165a841877c334edb32abd79"
+    }
+  ],
+  "limits": [
+    "Initial full failure and19 opt-in skips remain visible; focused111 is not relabelled a clean whole685 run.",
+    "Repair changes only a test gas default and comments. All676 other original inputs and8 additive files are byte-identical to their retained source cutoffs.",
+    "No public Base deployment, funded public acceptance, real external supplier or actual sealed CPU workload is established."
+  ]
+}

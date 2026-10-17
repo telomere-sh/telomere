@@ -1,0 +1,16 @@
+{
+  "checkedAt": "2026-10-08T16:24:12.751Z",
+  "scope": "Chrome UI acceptance with explicit API response fixture for receipt_pending",
+  "origin": "http://127.0.0.1:3281",
+  "financialStateModified": false,
+  "providerRequests": 0,
+  "personalWalletUsed": false,
+  "pendingStatusVisible": true,
+  "pendingIncludedInSettlementCount": true,
+  "retryExplanationVisible": true,
+  "finishedWorkStopHidden": true,
+  "detailStopHidden": true,
+  "mobileWidth": 375,
+  "horizontalOverflow": false,
+  "pageErrors": 0
+}

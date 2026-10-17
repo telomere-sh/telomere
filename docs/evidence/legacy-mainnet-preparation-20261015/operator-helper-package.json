@@ -1,0 +1,10 @@
+{
+  "status": "operator_overlay_archive_prepared_locally",
+  "archive": "C:\\Users\\Administrator\\Documents\\GitHub\\tt\\Telomere\\.local\\mainnet-prepare-20261015\\operator-helper-8f5f41e.tar.gz",
+  "files": 22,
+  "archiveSha256": "bc171f311ef6228266ff5747a04ec4361209f8967a4132c485f1c837905569ff",
+  "archiveBytes": 69408,
+  "manifestSha256": "fca399b17e90f7193266d5be89489ec6acdfe061f7374539678fa5122db2ce58",
+  "transactionsSent": 0,
+  "walletCalls": 0
+}

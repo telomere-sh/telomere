@@ -1,0 +1,38 @@
+{
+  "status": "passed",
+  "checkedAt": "2026-10-08T14:10:51.136Z",
+  "chainId": 31337,
+  "paymentToken": "disposable MockToken",
+  "scope": "Separate random loopback EVM, generated accounts, durable PGlite and namespaced Docker cells; existing staging untouched",
+  "cpuImage": "node@sha256:0a7108bf6c7bf5de370ffb1a3ed6be93d405b43ff159f681a8d18c0e2bc2e402",
+  "providerCalls": 0,
+  "cpuCrash": {
+    "controllerSignal": "SIGKILL",
+    "orphanObservedRunning": true,
+    "persistedTickCount": 2,
+    "persistedBillableSeconds": 9,
+    "acceptanceCpuLimit": 0.1,
+    "orphanRemovedOnRestart": true,
+    "executions": 1,
+    "charged": "900",
+    "refund": "2100",
+    "settledOnce": true
+  },
+  "heldSettlement": {
+    "journalPersistedBeforeBroadcast": true,
+    "positiveCharge": "300",
+    "transactionHash": "0xad54ffa5426b173843c5b651efa11ce5040d66e726eb9576bf92b283985fdb2b",
+    "rawBytesUnchangedAfterRestart": true,
+    "repeatedRestartDidNotChargeAgain": true,
+    "executions": 1
+  },
+  "timeoutRefund": {
+    "evmTimeAdvancedSeconds": 21632,
+    "contractStatus": 3,
+    "jobStatus": "refunded",
+    "charged": "0",
+    "refund": "3000",
+    "fullReservationReturned": true
+  },
+  "remainingAcceptanceContainers": 0
+}

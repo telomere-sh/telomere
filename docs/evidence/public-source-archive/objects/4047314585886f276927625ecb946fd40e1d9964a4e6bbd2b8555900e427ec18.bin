@@ -1,0 +1,10 @@
+# Auto detect text files and perform LF normalization
+* text=auto eol=lf
+*.png -text
+# Preserve all imported website source and built asset bytes from the handoff.
+website/** -text -whitespace
+# Acceptance records are hashed as exact bytes, including their original EOLs.
+docs/evidence/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+# Retained stdout/stderr includes the command's original blank lines.
+docs/evidence/**/*.log -text -whitespace
+docs/*.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

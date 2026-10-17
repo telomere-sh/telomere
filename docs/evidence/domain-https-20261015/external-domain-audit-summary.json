@@ -1,0 +1,153 @@
+{
+  "path": "C:\\Users\\Administrator\\Documents\\GitHub\\tt\\Telomere\\.local\\domain-prepare-20261015\\external-domain-audit.json",
+  "sha256": "b0acdb7c3980fe167f48f44ec4628815b8f997d6cd7158ff096ba34b0b434bfb",
+  "startedAt": "2026-10-15T20:05:22.423683+00:00",
+  "finishedAt": "2026-10-15T20:11:28.990628+00:00",
+  "passed": false,
+  "normalDns": {
+    "telomere.sh": {
+      "addresses": [
+        "2.27.12.39"
+      ]
+    },
+    "review.telomere.sh": {
+      "addresses": [
+        "2.27.12.39"
+      ]
+    }
+  },
+  "tls": [
+    {
+      "host": "telomere.sh",
+      "connectMode": "normal system DNS",
+      "verified": true,
+      "peerAddress": "2.27.12.39",
+      "errorType": null,
+      "certificateSha256": "b8b869868910d84f5d94538919ac23d44261a23697fb201814ec3f27c688302e"
+    },
+    {
+      "host": "telomere.sh",
+      "connectMode": "fixed-IP with real hostname SNI",
+      "verified": true,
+      "peerAddress": "2.27.12.39",
+      "errorType": null,
+      "certificateSha256": "b8b869868910d84f5d94538919ac23d44261a23697fb201814ec3f27c688302e"
+    },
+    {
+      "host": "review.telomere.sh",
+      "connectMode": "normal system DNS",
+      "verified": true,
+      "peerAddress": "2.27.12.39",
+      "errorType": null,
+      "certificateSha256": "b8b869868910d84f5d94538919ac23d44261a23697fb201814ec3f27c688302e"
+    },
+    {
+      "host": "review.telomere.sh",
+      "connectMode": "fixed-IP with real hostname SNI",
+      "verified": true,
+      "peerAddress": "2.27.12.39",
+      "errorType": null,
+      "certificateSha256": "b8b869868910d84f5d94538919ac23d44261a23697fb201814ec3f27c688302e"
+    }
+  ],
+  "assetFiles": 312,
+  "assetBytes": 50435601,
+  "assetFailures": [
+    "assets/audio/telomere-motion.wav"
+  ],
+  "routeFailures": [
+    {
+      "path": "/dashboard",
+      "status": 200,
+      "expectedStatus": 200,
+      "contentType": "text/html",
+      "sha256": "77a5d0ac5869c50d0c176966147fa6f937d200075f2f7a24b3374995ad2bb369",
+      "expectedSha256": "87a531c1eb8a7f88aa16cfad26cf869767fdb0b14844cc528000661584c126ed",
+      "passed": false
+    }
+  ],
+  "ranges": [
+    {
+      "path": "assets/audio/telomere-motion.wav",
+      "status": 206,
+      "bytes": 64,
+      "contentRange": "bytes 0-63/2880044",
+      "contentType": "application/octet-stream",
+      "checks": {
+        "status": true,
+        "length": true,
+        "contentRange": true,
+        "prefixHash": true
+      },
+      "passed": true
+    },
+    {
+      "path": "assets/video/telomere-compute-reel.mp4",
+      "status": 206,
+      "bytes": 64,
+      "contentRange": "bytes 0-63/15780583",
+      "contentType": "video/mp4",
+      "checks": {
+        "status": true,
+        "length": true,
+        "contentRange": true,
+        "prefixHash": true
+      },
+      "passed": true
+    },
+    {
+      "path": "assets/video/telomere-protocol-film.mp4",
+      "status": 206,
+      "bytes": 64,
+      "contentRange": "bytes 0-63/11563109",
+      "contentType": "video/mp4",
+      "checks": {
+        "status": true,
+        "length": true,
+        "contentRange": true,
+        "prefixHash": true
+      },
+      "passed": true
+    }
+  ],
+  "reviewUnauthenticated": [
+    {
+      "path": "/",
+      "status": 401,
+      "wwwAuthenticate": "Basic realm=\"Telomere owner review\"",
+      "bodyRetained": false,
+      "passed": true
+    },
+    {
+      "path": "/deployment.js",
+      "status": 401,
+      "wwwAuthenticate": "Basic realm=\"Telomere owner review\"",
+      "bodyRetained": false,
+      "passed": true
+    },
+    {
+      "path": "/api/plan",
+      "status": 401,
+      "wwwAuthenticate": "Basic realm=\"Telomere owner review\"",
+      "bodyRetained": false,
+      "passed": true
+    }
+  ],
+  "httpRedirects": [
+    {
+      "host": "telomere.sh",
+      "status": 308,
+      "location": "https://telomere.sh/",
+      "passed": true
+    },
+    {
+      "host": "review.telomere.sh",
+      "status": 308,
+      "location": "https://review.telomere.sh/",
+      "passed": true
+    }
+  ],
+  "authenticatedRequests": 0,
+  "walletRequests": 0,
+  "financialRequests": 0
+}

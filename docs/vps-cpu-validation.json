@@ -1,0 +1,14 @@
+{
+  "checkedAt": "2026-10-08",
+  "status": "passed",
+  "isolatedContainersChecked": 3,
+  "cpuImage": "node@sha256:0a7108bf6c7bf5de370ffb1a3ed6be93d405b43ff159f681a8d18c0e2bc2e402",
+  "tasks": ["sha256", "primes", "hash_chain", "pre_dispatch_cancel"],
+  "taskStatuses": ["completed", "completed", "completed", "cancelled"],
+  "billableSeconds": [0, 0, 2],
+  "tickCounts": [1, 1, 1],
+  "providerCalls": 0,
+  "remainingManagedContainers": 0,
+  "limitsInspected": {"cpu": 1, "memoryBytes": 268435456, "memorySwapBytes": 268435456, "pids": 64, "network": "none", "readonlyRootfs": true, "user": "10001:10001", "capDrop": ["ALL"], "noNewPrivileges": true, "hostBinds": []},
+  "scope": "Actual Docker execution on the existing VPS; no application service deployed and no NEAR request made."
+}

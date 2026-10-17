@@ -1,0 +1,42 @@
+{
+  "operation": "old staging bridge and exact stale session recovery",
+  "cause": "new daemon bridge=none removed global docker0; disconnected old pg session retained controller advisory lock",
+  "oldBridgeRestored": "docker0 172.17.0.1/16 MTU1500",
+  "exactReattachedPeer": "vethf112bc8 ifindex6",
+  "terminatedStalePgBackend": {
+    "pid": 1600,
+    "backendStart": "2026-10-15 05:02:59.827278+00",
+    "client": "172.17.0.1:51318",
+    "advisoryLock": "0/728419023/1",
+    "originalControllerPidAbsent": 1952406
+  },
+  "stagingApiReachable": true,
+  "stagingConfigurationUnchanged": true,
+  "serviceStates": {
+    "telomere-staging.service": [
+      "MainPID=3888942",
+      "NRestarts=104",
+      "ActiveState=active",
+      "SubState=running"
+    ],
+    "telomere-staging-chain.service": [
+      "MainPID=1952401",
+      "NRestarts=0",
+      "ActiveState=active",
+      "SubState=running"
+    ],
+    "telomere-staging-watchdog.service": [
+      "MainPID=1952410",
+      "NRestarts=0",
+      "ActiveState=active",
+      "SubState=running"
+    ],
+    "telomere-mainnet-pilot.service": [
+      "MainPID=0",
+      "NRestarts=0",
+      "ActiveState=inactive",
+      "SubState=dead"
+    ]
+  },
+  "publicTransactionsSent": 0
+}

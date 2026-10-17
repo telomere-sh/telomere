@@ -1,0 +1,3093 @@
+{
+  "schemaVersion": 1,
+  "status": "failed",
+  "startedAt": "2026-10-15T11:59:39.161299+00:00",
+  "gitRevision": "7bb69e5e73199ab372ca6c263297792634648aaf",
+  "archiveSha256": "d10f22b3259a9b677bdd0997650e2d786365203af4de0a3f418a0011733a73c1",
+  "sourceDirectory": "/opt/telomere-host-runtime/backend-completion-20261015-d10f22b3259a",
+  "sourceFiles": 703,
+  "sourceManifestSha256": "d6a7c41f3363ffd8683780a3dee1eb652e74f7b7b3130ae71e887a3a3609f946",
+  "sourceBefore": {
+    "unchanged": true,
+    "verified": 703,
+    "changed": []
+  },
+  "nodeVersion": "v22.23.3",
+  "servicesBefore": {
+    "telomere-staging.service": "MainPID=1952406\nNRestarts=0\nWorkingDirectory=/opt/telomere-pilot/releases/354fe7af62ea6701faafc3b04522abb1b4524d2d-launch04\nActiveState=active\nSubState=running",
+    "telomere-staging-chain.service": "MainPID=1952401\nNRestarts=0\nWorkingDirectory=/opt/telomere-pilot/app\nActiveState=active\nSubState=running",
+    "telomere-staging-watchdog.service": "MainPID=1952410\nNRestarts=0\nWorkingDirectory=/opt/telomere-pilot/watchdog-app\nActiveState=active\nSubState=running"
+  },
+  "profileBeforeSha256": "a400feb3475b91168a5419d0a98c00ea804ba817c1c0ad34dea65d7d8808df8f",
+  "healthBefore": {
+    "live": {
+      "statusCode": 200,
+      "body": {
+        "status": "ok"
+      }
+    },
+    "ready": {
+      "statusCode": 200,
+      "body": {
+        "status": "ready",
+        "worker": "idle"
+      }
+    }
+  },
+  "serviceMutations": false,
+  "publicTransactions": 0,
+  "paidProviderRequests": 0,
+  "dockerOptInEnabled": false,
+  "buildOrInstallPerformed": false,
+  "scope": "Full default Node/Python regressions on frozen source; explicit opt-in cases may skip. Not a deployment or live provider/public-chain acceptance.",
+  "node": {
+    "exitCode": 1,
+    "seconds": 5887.06,
+    "timedOut": false,
+    "logLimitExceeded": false,
+    "logBytes": 1046
+  },
+  "nodeTests": {
+    "numTotalTests": 2482,
+    "numPassedTests": 2434,
+    "numFailedTests": 28,
+    "numPendingTests": 20,
+    "numTodoTests": 0,
+    "numTotalTestSuites": 391,
+    "numPassedTestSuites": 384,
+    "numFailedTestSuites": 7,
+    "numPendingTestSuites": 0,
+    "success": false,
+    "actualAssertionStatuses": {
+      "passed": 2434,
+      "failed": 28,
+      "skipped": 20
+    },
+    "files": [
+      {
+        "name": "agent-lifecycle.test.ts",
+        "status": "passed",
+        "assertions": 24
+      },
+      {
+        "name": "appraisal-tcb.test.ts",
+        "status": "passed",
+        "assertions": 10
+      },
+      {
+        "name": "asset-facets.test.ts",
+        "status": "passed",
+        "assertions": 6
+      },
+      {
+        "name": "base-migration.test.ts",
+        "status": "passed",
+        "assertions": 8
+      },
+      {
+        "name": "bridge-circle-usdc.test.ts",
+        "status": "passed",
+        "assertions": 6
+      },
+      {
+        "name": "chain-gateway.test.ts",
+        "status": "passed",
+        "assertions": 8
+      },
+      {
+        "name": "circle-usdc.test.ts",
+        "status": "passed",
+        "assertions": 4
+      },
+      {
+        "name": "cloud-candidate.test.ts",
+        "status": "passed",
+        "assertions": 17
+      },
+      {
+        "name": "contracts.test.ts",
+        "status": "passed",
+        "assertions": 16
+      },
+      {
+        "name": "controller-host-kit.test.ts",
+        "status": "passed",
+        "assertions": 8
+      },
+      {
+        "name": "controller-platform.test.ts",
+        "status": "passed",
+        "assertions": 8
+      },
+      {
+        "name": "cyst-backup.test.ts",
+        "status": "passed",
+        "assertions": 27
+      },
+      {
+        "name": "cyst-checkpoints-file-vault.test.ts",
+        "status": "passed",
+        "assertions": 14
+      },
+      {
+        "name": "cyst-checkpoints.test.ts",
+        "status": "passed",
+        "assertions": 26
+      },
+      {
+        "name": "cyst-input-spool.test.ts",
+        "status": "passed",
+        "assertions": 7
+      },
+      {
+        "name": "cyst-key-wrap.test.ts",
+        "status": "passed",
+        "assertions": 12
+      },
+      {
+        "name": "cyst-quota-v2.test.ts",
+        "status": "passed",
+        "assertions": 2
+      },
+      {
+        "name": "cyst-registry-client.test.ts",
+        "status": "passed",
+        "assertions": 65
+      },
+      {
+        "name": "cyst-registry-configured.test.ts",
+        "status": "passed",
+        "assertions": 17
+      },
+      {
+        "name": "cyst-registry-contracts.test.ts",
+        "status": "passed",
+        "assertions": 11
+      },
+      {
+        "name": "cyst-registry-reader.test.ts",
+        "status": "passed",
+        "assertions": 12
+      },
+      {
+        "name": "cyst-registry-runtime.test.ts",
+        "status": "passed",
+        "assertions": 18
+      },
+      {
+        "name": "cyst-replication.test.ts",
+        "status": "passed",
+        "assertions": 20
+      },
+      {
+        "name": "cysts.test.ts",
+        "status": "passed",
+        "assertions": 25
+      },
+      {
+        "name": "deadline-jobs.test.ts",
+        "status": "passed",
+        "assertions": 11
+      },
+      {
+        "name": "declared-state-bundle.test.ts",
+        "status": "passed",
+        "assertions": 20
+      },
+      {
+        "name": "declared-state-restore.test.ts",
+        "status": "failed",
+        "assertions": 29
+      },
+      {
+        "name": "deployment.test.ts",
+        "status": "passed",
+        "assertions": 5
+      },
+      {
+        "name": "direct-candidate.test.ts",
+        "status": "passed",
+        "assertions": 21
+      },
+      {
+        "name": "erc8004-testnet-preflight.test.ts",
+        "status": "passed",
+        "assertions": 5
+      },
+      {
+        "name": "fork-guard.test.ts",
+        "status": "passed",
+        "assertions": 10
+      },
+      {
+        "name": "framework-protocol-floor.test.ts",
+        "status": "passed",
+        "assertions": 2
+      },
+      {
+        "name": "framework-starters.test.ts",
+        "status": "passed",
+        "assertions": 1
+      },
+      {
+        "name": "golem-allocation-attribution.test.ts",
+        "status": "failed",
+        "assertions": 25
+      },
+      {
+        "name": "golem-finance-http.test.ts",
+        "status": "passed",
+        "assertions": 44
+      },
+      {
+        "name": "golem-finance.test.ts",
+        "status": "passed",
+        "assertions": 21
+      },
+      {
+        "name": "golem-payment-chain.test.ts",
+        "status": "passed",
+        "assertions": 10
+      },
+      {
+        "name": "gpu-admission.test.ts",
+        "status": "passed",
+        "assertions": 12
+      },
+      {
+        "name": "host-kit-admission-docker.test.ts",
+        "status": "passed",
+        "assertions": 5
+      },
+      {
+        "name": "host-kit-admission.test.ts",
+        "status": "passed",
+        "assertions": 30
+      },
+      {
+        "name": "host-kit-cleanup.test.ts",
+        "status": "passed",
+        "assertions": 13
+      },
+      {
+        "name": "host-kit-command.test.ts",
+        "status": "passed",
+        "assertions": 18
+      },
+      {
+        "name": "host-kit-create-fence.test.ts",
+        "status": "passed",
+        "assertions": 13
+      },
+      {
+        "name": "host-kit-gpu-admission.test.ts",
+        "status": "passed",
+        "assertions": 11
+      },
+      {
+        "name": "host-kit-inventory.test.ts",
+        "status": "passed",
+        "assertions": 46
+      },
+      {
+        "name": "host-kit-plain-binding.test.ts",
+        "status": "passed",
+        "assertions": 12
+      },
+      {
+        "name": "host-kit-startup-docker.test.ts",
+        "status": "passed",
+        "assertions": 4
+      },
+      {
+        "name": "host-kit-timing.test.ts",
+        "status": "passed",
+        "assertions": 16
+      },
+      {
+        "name": "host-kit.test.ts",
+        "status": "passed",
+        "assertions": 31
+      },
+      {
+        "name": "host-v2-admission.test.ts",
+        "status": "passed",
+        "assertions": 4
+      },
+      {
+        "name": "host-v2-current-circle.test.ts",
+        "status": "passed",
+        "assertions": 1
+      },
+      {
+        "name": "interruptible-lane.test.ts",
+        "status": "passed",
+        "assertions": 33
+      },
+      {
+        "name": "langgraph-starter.test.ts",
+        "status": "passed",
+        "assertions": 1
+      },
+      {
+        "name": "large-cyst-agent-manifest.test.ts",
+        "status": "passed",
+        "assertions": 4
+      },
+      {
+        "name": "large-cyst-checkpoints.test.ts",
+        "status": "passed",
+        "assertions": 12
+      },
+      {
+        "name": "large-cyst-configured.test.ts",
+        "status": "passed",
+        "assertions": 10
+      },
+      {
+        "name": "large-cyst-current-resolver.test.ts",
+        "status": "passed",
+        "assertions": 2
+      },
+      {
+        "name": "large-cyst-http.test.ts",
+        "status": "passed",
+        "assertions": 5
+      },
+      {
+        "name": "large-cyst-part-abort.test.ts",
+        "status": "passed",
+        "assertions": 1
+      },
+      {
+        "name": "large-cyst-publication-main.test.ts",
+        "status": "passed",
+        "assertions": 3
+      },
+      {
+        "name": "large-cyst-publication.test.ts",
+        "status": "passed",
+        "assertions": 11
+      },
+      {
+        "name": "large-cyst-quota-shadow.test.ts",
+        "status": "passed",
+        "assertions": 13
+      },
+      {
+        "name": "large-cyst-registry.test.ts",
+        "status": "passed",
+        "assertions": 5
+      },
+      {
+        "name": "large-cyst-replication.test.ts",
+        "status": "passed",
+        "assertions": 5
+      },
+      {
+        "name": "large-cyst-s3.test.ts",
+        "status": "passed",
+        "assertions": 17
+      },
+      {
+        "name": "leash-update.test.ts",
+        "status": "passed",
+        "assertions": 20
+      },
+      {
+        "name": "mcp-http.test.ts",
+        "status": "passed",
+        "assertions": 20
+      },
+      {
+        "name": "mcp-platform-stdio.test.ts",
+        "status": "passed",
+        "assertions": 3
+      },
+      {
+        "name": "mcp-platform.test.ts",
+        "status": "passed",
+        "assertions": 14
+      },
+      {
+        "name": "metabolism-current-rate.test.ts",
+        "status": "passed",
+        "assertions": 12
+      },
+      {
+        "name": "near-admission-readiness.test.ts",
+        "status": "passed",
+        "assertions": 10
+      },
+      {
+        "name": "near-testnet-verification.test.ts",
+        "status": "passed",
+        "assertions": 4
+      },
+      {
+        "name": "near.test.ts",
+        "status": "passed",
+        "assertions": 12
+      },
+      {
+        "name": "operations.test.ts",
+        "status": "passed",
+        "assertions": 8
+      },
+      {
+        "name": "operator-large-cyst-storage.test.ts",
+        "status": "passed",
+        "assertions": 3
+      },
+      {
+        "name": "operator-platform-journal.test.ts",
+        "status": "passed",
+        "assertions": 9
+      },
+      {
+        "name": "operator-platform-prepared.test.ts",
+        "status": "passed",
+        "assertions": 3
+      },
+      {
+        "name": "operator-watchdog.test.ts",
+        "status": "passed",
+        "assertions": 19
+      },
+      {
+        "name": "operator.test.ts",
+        "status": "passed",
+        "assertions": 15
+      },
+      {
+        "name": "paid-agent-lifecycle-runner.test.ts",
+        "status": "passed",
+        "assertions": 1
+      },
+      {
+        "name": "paid-agent-lifecycle-v2.test.ts",
+        "status": "passed",
+        "assertions": 3
+      },
+      {
+        "name": "paid-agent-lifecycle.test.ts",
+        "status": "passed",
+        "assertions": 3
+      },
+      {
+        "name": "paid-cpu-jobs.test.ts",
+        "status": "passed",
+        "assertions": 1
+      },
+      {
+        "name": "paid-cpu-reliability.test.ts",
+        "status": "passed",
+        "assertions": 3
+      },
+      {
+        "name": "paid-cyst-file-cache-expiry.test.ts",
+        "status": "passed",
+        "assertions": 1
+      },
+      {
+        "name": "paid-cyst-file-restore.test.ts",
+        "status": "passed",
+        "assertions": 2
+      },
+      {
+        "name": "paid-cyst-input-app.test.ts",
+        "status": "passed",
+        "assertions": 1
+      },
+      {
+        "name": "paid-cyst-input-config.test.ts",
+        "status": "passed",
+        "assertions": 2
+      },
+      {
+        "name": "paid-cyst-input-recovery.test.ts",
+        "status": "passed",
+        "assertions": 4
+      },
+      {
+        "name": "paid-host-preemption.test.ts",
+        "status": "passed",
+        "assertions": 9
+      },
+      {
+        "name": "paid-host-session.test.ts",
+        "status": "passed",
+        "assertions": 7
+      },
+      {
+        "name": "paid-lifecycle-vault-v3.test.ts",
+        "status": "passed",
+        "assertions": 2
+      },
+      {
+        "name": "paid-lifeline-funding-anvil.test.ts",
+        "status": "passed",
+        "assertions": 1
+      },
+      {
+        "name": "paid-lifeline-reservations.test.ts",
+        "status": "passed",
+        "assertions": 12
+      },
+      {
+        "name": "paid-session-checkpoint.test.ts",
+        "status": "passed",
+        "assertions": 2
+      },
+      {
+        "name": "paid-session-handoff.test.ts",
+        "status": "passed",
+        "assertions": 1
+      },
+      {
+        "name": "paid-vault-agent-lifecycle.test.ts",
+        "status": "passed",
+        "assertions": 3
+      },
+      {
+        "name": "paid-vault-agent-main.test.ts",
+        "status": "passed",
+        "assertions": 1
+      },
+      {
+        "name": "paid-vault-preemption-handoff.test.ts",
+        "status": "passed",
+        "assertions": 1
+      },
+      {
+        "name": "platform-asset-pins.test.ts",
+        "status": "passed",
+        "assertions": 4
+      },
+      {
+        "name": "platform-backup-quota-v2.test.ts",
+        "status": "passed",
+        "assertions": 1
+      },
+      {
+        "name": "platform-backup.test.ts",
+        "status": "passed",
+        "assertions": 6
+      },
+      {
+        "name": "platform-client.test.ts",
+        "status": "passed",
+        "assertions": 43
+      },
+      {
+        "name": "platform-configured.test.ts",
+        "status": "passed",
+        "assertions": 14
+      },
+      {
+        "name": "platform-contracts.test.ts",
+        "status": "passed",
+        "assertions": 23
+      },
+      {
+        "name": "platform-cpu-offers.test.ts",
+        "status": "passed",
+        "assertions": 18
+      },
+      {
+        "name": "platform-deployment-plan.test.ts",
+        "status": "passed",
+        "assertions": 2
+      },
+      {
+        "name": "platform-economics-runtime.test.ts",
+        "status": "passed",
+        "assertions": 1
+      },
+      {
+        "name": "platform-escrow.test.ts",
+        "status": "passed",
+        "assertions": 26
+      },
+      {
+        "name": "platform-exec-client.test.ts",
+        "status": "passed",
+        "assertions": 38
+      },
+      {
+        "name": "platform-exec-runtime.test.ts",
+        "status": "passed",
+        "assertions": 12
+      },
+      {
+        "name": "platform-funded-reorg.test.ts",
+        "status": "passed",
+        "assertions": 1
+      },
+      {
+        "name": "platform-main.test.ts",
+        "status": "passed",
+        "assertions": 12
+      },
+      {
+        "name": "platform-paid-session.test.ts",
+        "status": "passed",
+        "assertions": 7
+      },
+      {
+        "name": "platform-payment-deployment-plan.test.ts",
+        "status": "passed",
+        "assertions": 6
+      },
+      {
+        "name": "platform-payment-imports.test.ts",
+        "status": "passed",
+        "assertions": 3
+      },
+      {
+        "name": "platform-presented-meter.test.ts",
+        "status": "passed",
+        "assertions": 5
+      },
+      {
+        "name": "platform-public-financial.test.ts",
+        "status": "passed",
+        "assertions": 9
+      },
+      {
+        "name": "platform-read-only.test.ts",
+        "status": "passed",
+        "assertions": 2
+      },
+      {
+        "name": "platform-readiness.test.ts",
+        "status": "passed",
+        "assertions": 6
+      },
+      {
+        "name": "platform-receipt-v2-core.test.ts",
+        "status": "passed",
+        "assertions": 4
+      },
+      {
+        "name": "platform-receipts.test.ts",
+        "status": "passed",
+        "assertions": 11
+      },
+      {
+        "name": "platform-runtime.test.ts",
+        "status": "failed",
+        "assertions": 29
+      },
+      {
+        "name": "platform-selection.test.ts",
+        "status": "passed",
+        "assertions": 27
+      },
+      {
+        "name": "platform-session-client.test.ts",
+        "status": "passed",
+        "assertions": 2
+      },
+      {
+        "name": "platform-spend-permission.test.ts",
+        "status": "passed",
+        "assertions": 2
+      },
+      {
+        "name": "platform-v2-durable-bridge.test.ts",
+        "status": "passed",
+        "assertions": 1
+      },
+      {
+        "name": "platform-v2-history-circle.test.ts",
+        "status": "passed",
+        "assertions": 3
+      },
+      {
+        "name": "platform-v2-history.test.ts",
+        "status": "passed",
+        "assertions": 2
+      },
+      {
+        "name": "platform-v2-host-transport.test.ts",
+        "status": "passed",
+        "assertions": 1
+      },
+      {
+        "name": "platform-v2-issuance.test.ts",
+        "status": "passed",
+        "assertions": 1
+      },
+      {
+        "name": "platform-v2-publication.test.ts",
+        "status": "passed",
+        "assertions": 9
+      },
+      {
+        "name": "platform-v2-refund-recovery.test.ts",
+        "status": "passed",
+        "assertions": 6
+      },
+      {
+        "name": "platform-v2-routes.test.ts",
+        "status": "passed",
+        "assertions": 8
+      },
+      {
+        "name": "platform-v2-s3.test.ts",
+        "status": "passed",
+        "assertions": 9
+      },
+      {
+        "name": "platform-v2-seal-gate.test.ts",
+        "status": "passed",
+        "assertions": 1
+      },
+      {
+        "name": "platform-v2-witness.test.ts",
+        "status": "passed",
+        "assertions": 4
+      },
+      {
+        "name": "platform-vault-bridge.test.ts",
+        "status": "passed",
+        "assertions": 14
+      },
+      {
+        "name": "platform-vault-client.test.ts",
+        "status": "passed",
+        "assertions": 40
+      },
+      {
+        "name": "platform-vault-runtime.test.ts",
+        "status": "passed",
+        "assertions": 12
+      },
+      {
+        "name": "platform-x402-cpu.test.ts",
+        "status": "passed",
+        "assertions": 6
+      },
+      {
+        "name": "platform-x402-main.test.ts",
+        "status": "passed",
+        "assertions": 1
+      },
+      {
+        "name": "provider-readiness.test.ts",
+        "status": "passed",
+        "assertions": 25
+      },
+      {
+        "name": "provider-recovery.test.ts",
+        "status": "passed",
+        "assertions": 39
+      },
+      {
+        "name": "receipt-merkle.test.ts",
+        "status": "passed",
+        "assertions": 23
+      },
+      {
+        "name": "receipt-pending.test.ts",
+        "status": "passed",
+        "assertions": 19
+      },
+      {
+        "name": "refund-scheduling.test.ts",
+        "status": "passed",
+        "assertions": 3
+      },
+      {
+        "name": "registered-agent-checkpoint-cadence.test.ts",
+        "status": "passed",
+        "assertions": 2
+      },
+      {
+        "name": "retry-scheduling.test.ts",
+        "status": "passed",
+        "assertions": 4
+      },
+      {
+        "name": "runtime-command.test.ts",
+        "status": "passed",
+        "assertions": 3
+      },
+      {
+        "name": "runtime.test.ts",
+        "status": "passed",
+        "assertions": 11
+      },
+      {
+        "name": "scheduling-collateral-cap.test.ts",
+        "status": "passed",
+        "assertions": 3
+      },
+      {
+        "name": "scheduling-price-bands.test.ts",
+        "status": "passed",
+        "assertions": 17
+      },
+      {
+        "name": "sdk-client.test.ts",
+        "status": "passed",
+        "assertions": 13
+      },
+      {
+        "name": "sdk-mcp.test.ts",
+        "status": "passed",
+        "assertions": 2
+      },
+      {
+        "name": "sealed-handoff-v3.test.ts",
+        "status": "passed",
+        "assertions": 13
+      },
+      {
+        "name": "sealed-keys-release.test.ts",
+        "status": "passed",
+        "assertions": 25
+      },
+      {
+        "name": "sealed-keys-signed-appraiser.test.ts",
+        "status": "passed",
+        "assertions": 16
+      },
+      {
+        "name": "selection-contracts.test.ts",
+        "status": "passed",
+        "assertions": 40
+      },
+      {
+        "name": "selection-dataset.test.ts",
+        "status": "passed",
+        "assertions": 9
+      },
+      {
+        "name": "selection-income-endpoints-config.test.ts",
+        "status": "passed",
+        "assertions": 25
+      },
+      {
+        "name": "selection-income-endpoints-main.test.ts",
+        "status": "passed",
+        "assertions": 4
+      },
+      {
+        "name": "selection-income-endpoints.test.ts",
+        "status": "passed",
+        "assertions": 49
+      },
+      {
+        "name": "selection-indexer.test.ts",
+        "status": "passed",
+        "assertions": 9
+      },
+      {
+        "name": "selection-reputation-publisher-main.test.ts",
+        "status": "passed",
+        "assertions": 1
+      },
+      {
+        "name": "selection-reputation-publisher.test.ts",
+        "status": "failed",
+        "assertions": 30
+      },
+      {
+        "name": "selection-reputation.test.ts",
+        "status": "passed",
+        "assertions": 7
+      },
+      {
+        "name": "selection-rpc.test.ts",
+        "status": "passed",
+        "assertions": 12
+      },
+      {
+        "name": "service.test.ts",
+        "status": "passed",
+        "assertions": 6
+      },
+      {
+        "name": "session-runtime-docker.test.ts",
+        "status": "passed",
+        "assertions": 7
+      },
+      {
+        "name": "session-runtime.test.ts",
+        "status": "passed",
+        "assertions": 20
+      },
+      {
+        "name": "supplier-akash-close.test.ts",
+        "status": "passed",
+        "assertions": 5
+      },
+      {
+        "name": "supplier-akash-escrow-observation.test.ts",
+        "status": "passed",
+        "assertions": 5
+      },
+      {
+        "name": "supplier-akash-exact-bid.test.ts",
+        "status": "passed",
+        "assertions": 5
+      },
+      {
+        "name": "supplier-akash-lease.test.ts",
+        "status": "passed",
+        "assertions": 9
+      },
+      {
+        "name": "supplier-akash-signed-binding.test.ts",
+        "status": "passed",
+        "assertions": 2
+      },
+      {
+        "name": "supplier-akash.test.ts",
+        "status": "passed",
+        "assertions": 17
+      },
+      {
+        "name": "supplier-golem-stats.test.ts",
+        "status": "passed",
+        "assertions": 6
+      },
+      {
+        "name": "supplier-nosana.test.ts",
+        "status": "passed",
+        "assertions": 17
+      },
+      {
+        "name": "supplier-private-journal.test.ts",
+        "status": "passed",
+        "assertions": 32
+      },
+      {
+        "name": "supplier-shared-reserve.test.ts",
+        "status": "passed",
+        "assertions": 8
+      },
+      {
+        "name": "tlmr-economics.test.ts",
+        "status": "passed",
+        "assertions": 19
+      },
+      {
+        "name": "treasury-solana-reader.test.ts",
+        "status": "passed",
+        "assertions": 4
+      },
+      {
+        "name": "treasury-topup-main.test.ts",
+        "status": "passed",
+        "assertions": 2
+      },
+      {
+        "name": "treasury-topups.test.ts",
+        "status": "passed",
+        "assertions": 6
+      },
+      {
+        "name": "usdg-archive.test.ts",
+        "status": "passed",
+        "assertions": 2
+      },
+      {
+        "name": "vault-income-client-base.test.ts",
+        "status": "passed",
+        "assertions": 21
+      },
+      {
+        "name": "vault-income-client-http.test.ts",
+        "status": "passed",
+        "assertions": 18
+      },
+      {
+        "name": "vault-income-client-reader.test.ts",
+        "status": "passed",
+        "assertions": 71
+      },
+      {
+        "name": "vault-income-client.test.ts",
+        "status": "passed",
+        "assertions": 13
+      },
+      {
+        "name": "vault-income-configured.test.ts",
+        "status": "passed",
+        "assertions": 37
+      },
+      {
+        "name": "vault-income-main.test.ts",
+        "status": "passed",
+        "assertions": 9
+      },
+      {
+        "name": "vault-income-private-file.test.ts",
+        "status": "passed",
+        "assertions": 18
+      },
+      {
+        "name": "vault-income-rpc.test.ts",
+        "status": "passed",
+        "assertions": 15
+      },
+      {
+        "name": "vault-income.test.ts",
+        "status": "passed",
+        "assertions": 53
+      },
+      {
+        "name": "verified-near.test.ts",
+        "status": "passed",
+        "assertions": 29
+      },
+      {
+        "name": "worker.test.ts",
+        "status": "passed",
+        "assertions": 19
+      },
+      {
+        "name": "x402-payments.test.ts",
+        "status": "passed",
+        "assertions": 46
+      }
+    ],
+    "skips": [
+      {
+        "file": "host-kit-admission-docker.test.ts",
+        "name": "actual reviewed gVisor shared Host Kit admission retains session tmp, nonzero command and detached descendants while excluding signed HTTP until full stop",
+        "status": "skipped"
+      },
+      {
+        "file": "host-kit-admission-docker.test.ts",
+        "name": "actual reviewed gVisor shared Host Kit admission keeps the original signed one-shot claim exclusive until its actual namespace is removed",
+        "status": "skipped"
+      },
+      {
+        "file": "host-kit-admission-docker.test.ts",
+        "name": "actual reviewed gVisor shared Host Kit admission recovers a genuinely crashed disk-journal session by original scope without removing another host or rerunning its command",
+        "status": "skipped"
+      },
+      {
+        "file": "host-kit-admission-docker.test.ts",
+        "name": "actual reviewed gVisor shared Host Kit admission shutdown removes the actual oneshot namespace and descendants while synchronously fencing both modes",
+        "status": "skipped"
+      },
+      {
+        "file": "host-kit-admission-docker.test.ts",
+        "name": "actual reviewed gVisor shared Host Kit admission shutdown removes the actual session namespace and descendants while synchronously fencing both modes",
+        "status": "skipped"
+      },
+      {
+        "file": "host-kit-startup-docker.test.ts",
+        "name": "actual reviewed gVisor HostKit signed startup deadlines rejects a signed lease that actually expires in the admission queue without reserving or starting it",
+        "status": "skipped"
+      },
+      {
+        "file": "host-kit-startup-docker.test.ts",
+        "name": "actual reviewed gVisor HostKit signed startup deadlines removes the actual parent and detached descendants at deadline while the created handle is still withheld",
+        "status": "skipped"
+      },
+      {
+        "file": "host-kit-startup-docker.test.ts",
+        "name": "actual reviewed gVisor HostKit signed startup deadlines cleans a real container created only after startup expiry before releasing the slot to a successor",
+        "status": "skipped"
+      },
+      {
+        "file": "host-kit-startup-docker.test.ts",
+        "name": "actual reviewed gVisor HostKit signed startup deadlines charges startup delay against the original lease budget and does not grant a fresh runtime window",
+        "status": "skipped"
+      },
+      {
+        "file": "langgraph-starter.test.ts",
+        "name": "runs the LangGraph wallet interrupt against the actual paid controller and local escrow",
+        "status": "skipped"
+      },
+      {
+        "file": "paid-cyst-file-restore.test.ts",
+        "name": "declared multi-chunk current Cyst into an actual locally paid CPU application restores declared-directory state through encrypted multi-chunk Cyst, real Vault payment and one application command",
+        "status": "skipped"
+      },
+      {
+        "file": "paid-lifecycle-vault-v3.test.ts",
+        "name": "retains 960 logical hops and more than twenty thousand actual encrypted immutable records across restarts without deleting history",
+        "status": "skipped"
+      },
+      {
+        "file": "session-runtime-docker.test.ts",
+        "name": "actual reviewed gVisor persistent CPU session keeps one init/container and shared tmp across commands with incremental exact Unicode stdin/output and exact retry",
+        "status": "skipped"
+      },
+      {
+        "file": "session-runtime-docker.test.ts",
+        "name": "actual reviewed gVisor persistent CPU session denies workload access to init control FDs and treats forged lifecycle JSON as ordinary output after a normal failed command",
+        "status": "skipped"
+      },
+      {
+        "file": "session-runtime-docker.test.ts",
+        "name": "actual reviewed gVisor persistent CPU session ends the whole container at host expiry with a running parent, background descendant and following queued command",
+        "status": "skipped"
+      },
+      {
+        "file": "session-runtime-docker.test.ts",
+        "name": "actual reviewed gVisor persistent CPU session removes the entire namespace after an output cap instead of merely killing the docker exec client",
+        "status": "skipped"
+      },
+      {
+        "file": "session-runtime-docker.test.ts",
+        "name": "actual reviewed gVisor persistent CPU session removes the entire namespace after live nul output fails strict text validation",
+        "status": "skipped"
+      },
+      {
+        "file": "session-runtime-docker.test.ts",
+        "name": "actual reviewed gVisor persistent CPU session removes the entire namespace after live invalid output fails strict text validation",
+        "status": "skipped"
+      },
+      {
+        "file": "session-runtime-docker.test.ts",
+        "name": "actual reviewed gVisor persistent CPU session reopens the private journal with a fresh backend, removes the old exact container and never retries an ambiguous started command",
+        "status": "skipped"
+      },
+      {
+        "file": "vault-income-private-file.test.ts",
+        "name": "bounded private Vault income files with actual filesystem permissions and Windows ACLs accepts actual restricted Windows ACLs and rejects an actual Everyone Allow ACE",
+        "status": "skipped"
+      }
+    ],
+    "failures": [
+      {
+        "file": "declared-state-restore.test.ts",
+        "name": "bounded declared state restore inside the application Cell restores a declared file across multiple bounded streaming chunks without materializing the whole payload",
+        "status": "failed"
+      },
+      {
+        "file": "golem-allocation-attribution.test.ts",
+        "name": "reconstructs omitted allocation only from the actual native payment\u2192order\u2192document join and preserves the database bytes",
+        "status": "failed"
+      },
+      {
+        "file": "golem-allocation-attribution.test.ts",
+        "name": "reads a real existing WAL snapshot without changing DB/WAL bytes and refuses WAL over the reviewed bound",
+        "status": "failed"
+      },
+      {
+        "file": "golem-allocation-attribution.test.ts",
+        "name": "refuses exact native attribution mismatch: payment-id",
+        "status": "failed"
+      },
+      {
+        "file": "golem-allocation-attribution.test.ts",
+        "name": "refuses exact native attribution mismatch: unpaid",
+        "status": "failed"
+      },
+      {
+        "file": "golem-allocation-attribution.test.ts",
+        "name": "refuses exact native attribution mismatch: item-total",
+        "status": "failed"
+      },
+      {
+        "file": "golem-allocation-attribution.test.ts",
+        "name": "refuses exact native attribution mismatch: document-total",
+        "status": "failed"
+      },
+      {
+        "file": "golem-allocation-attribution.test.ts",
+        "name": "refuses exact native attribution mismatch: order-payer",
+        "status": "failed"
+      },
+      {
+        "file": "golem-allocation-attribution.test.ts",
+        "name": "refuses exact native attribution mismatch: order-platform",
+        "status": "failed"
+      },
+      {
+        "file": "golem-allocation-attribution.test.ts",
+        "name": "refuses exact native attribution mismatch: agreement-peer",
+        "status": "failed"
+      },
+      {
+        "file": "golem-allocation-attribution.test.ts",
+        "name": "refuses exact native attribution mismatch: foreign-activity",
+        "status": "failed"
+      },
+      {
+        "file": "golem-allocation-attribution.test.ts",
+        "name": "refuses exact native attribution mismatch: orphan-order",
+        "status": "failed"
+      },
+      {
+        "file": "golem-allocation-attribution.test.ts",
+        "name": "refuses exact native attribution mismatch: orphan-allocation",
+        "status": "failed"
+      },
+      {
+        "file": "golem-allocation-attribution.test.ts",
+        "name": "refuses exact native attribution mismatch: payment-details",
+        "status": "failed"
+      },
+      {
+        "file": "golem-allocation-attribution.test.ts",
+        "name": "refuses exact native attribution mismatch: oversized-native-proof",
+        "status": "failed"
+      },
+      {
+        "file": "golem-allocation-attribution.test.ts",
+        "name": "refuses exact native attribution mismatch: payment-role",
+        "status": "failed"
+      },
+      {
+        "file": "golem-allocation-attribution.test.ts",
+        "name": "refuses exact native attribution mismatch: native-payment-share",
+        "status": "failed"
+      },
+      {
+        "file": "golem-allocation-attribution.test.ts",
+        "name": "refuses exact native attribution mismatch: oversized-native-field",
+        "status": "failed"
+      },
+      {
+        "file": "golem-allocation-attribution.test.ts",
+        "name": "refuses exact native attribution mismatch: deposit",
+        "status": "failed"
+      },
+      {
+        "file": "golem-allocation-attribution.test.ts",
+        "name": "rejects mixed allocations, duplicate native documents and schema changes rather than allocating by amount",
+        "status": "failed"
+      },
+      {
+        "file": "golem-allocation-attribution.test.ts",
+        "name": "attributes an agreement share and rejects duplicate NULL-activity document rows permitted by native composite keys",
+        "status": "failed"
+      },
+      {
+        "file": "golem-allocation-attribution.test.ts",
+        "name": "pins source file/directory identity, rejects links/unsafe limits and never creates a missing source",
+        "status": "failed"
+      },
+      {
+        "file": "golem-allocation-attribution.test.ts",
+        "name": "refuses an actual filesystem symlink instead of following a reviewed database name",
+        "status": "failed"
+      },
+      {
+        "file": "golem-allocation-attribution.test.ts",
+        "name": "bounds a worker and honors already-aborted or in-flight cancellation without a main-loop SQLite call",
+        "status": "failed"
+      },
+      {
+        "file": "golem-allocation-attribution.test.ts",
+        "name": "limits concurrent native readers and refuses a third worker without creating an unbounded local queue",
+        "status": "failed"
+      },
+      {
+        "file": "golem-allocation-attribution.test.ts",
+        "name": "feeds normal authenticated missing-allocation HTTP payments into the existing financial lifecycle without weakening strict transport or inventing finality",
+        "status": "failed"
+      },
+      {
+        "file": "platform-runtime.test.ts",
+        "name": "full platform controller CPU admission, full financial proof and fee settlement never repeats a paid ambiguous POST, settles CPU at zero inference charge, and frees the receipt hour",
+        "status": "failed"
+      },
+      {
+        "file": "selection-reputation-publisher.test.ts",
+        "name": "durable canonical Selection ERC-8004 death publication refuses partial replacement-branch evidence until later real revival blocks are fully indexed before revocation",
+        "status": "failed"
+      }
+    ],
+    "accepted": false,
+    "skipInterpretation": "Recorded opt-in/platform exclusions remain untested; skipped requirements receive no acceptance credit."
+  },
+  "python": {
+    "exitCode": 1,
+    "seconds": 17.045,
+    "timedOut": false,
+    "logLimitExceeded": false,
+    "logBytes": 48393
+  },
+  "pythonTests": {
+    "testsRun": 236,
+    "seconds": 16.081,
+    "summary": "FAILED (errors=1, skipped=111)",
+    "namedResults": [
+      {
+        "name": "test_cyst_quota_v2.CystQuotaV2Tests.test_explicit_quota_cannot_downgrade_or_raise_the_fixed_byte_count_caps",
+        "method": "test_explicit_quota_cannot_downgrade_or_raise_the_fixed_byte_count_caps",
+        "status": "ok"
+      },
+      {
+        "name": "test_cyst_quota_v2.CystQuotaV2Tests.test_explicit_v2_real_http_header_and_usage_over512_are_scoped_to_cysts",
+        "method": "test_explicit_v2_real_http_header_and_usage_over512_are_scoped_to_cysts",
+        "status": "ok"
+      },
+      {
+        "name": "test_cyst_quota_v2.CystQuotaV2Tests.test_invalid_or_non_cyst_transport_profile_is_rejected_before_any_http",
+        "method": "test_invalid_or_non_cyst_transport_profile_is_rejected_before_any_http",
+        "status": "ok"
+      },
+      {
+        "name": "test_cyst_quota_v2.CystQuotaV2Tests.test_legacy_default_does_not_opt_in_or_accept_a_silent_quota_change",
+        "method": "test_legacy_default_does_not_opt_in_or_accept_a_silent_quota_change",
+        "status": "ok"
+      },
+      {
+        "name": "test_cyst_registry.RegistryCryptoTests.test_bad_inputs_and_retired_or_absent_entry_fail_before_post",
+        "method": "test_bad_inputs_and_retired_or_absent_entry_fail_before_post",
+        "status": "skipped 'Optional reviewed Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_cyst_registry.RegistryCryptoTests.test_cas_revision_and_session_rechecked_after_server_response",
+        "method": "test_cas_revision_and_session_rechecked_after_server_response",
+        "status": "skipped 'Optional reviewed Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_cyst_registry.RegistryCryptoTests.test_checkpoint_owner_and_agent_labels_must_match_selection_binding",
+        "method": "test_checkpoint_owner_and_agent_labels_must_match_selection_binding",
+        "status": "skipped 'Optional reviewed Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_cyst_registry.RegistryCryptoTests.test_dormant_frozen_preservation_and_dead_retire_remain_available",
+        "method": "test_dormant_frozen_preservation_and_dead_retire_remain_available",
+        "status": "skipped 'Optional reviewed Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_cyst_registry.RegistryCryptoTests.test_download_rejects_every_metadata_substitution",
+        "method": "test_download_rejects_every_metadata_substitution",
+        "status": "skipped 'Optional reviewed Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_cyst_registry.RegistryCryptoTests.test_download_rejects_invalid_noncanonical_truncated_and_wrong_digest_ciphertext",
+        "method": "test_download_rejects_invalid_noncanonical_truncated_and_wrong_digest_ciphertext",
+        "status": "skipped 'Optional reviewed Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_cyst_registry.RegistryCryptoTests.test_download_rejects_retired_unpublished_and_foreign_labels_before_blob",
+        "method": "test_download_rejects_retired_unpublished_and_foreign_labels_before_blob",
+        "status": "skipped 'Optional reviewed Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_cyst_registry.RegistryCryptoTests.test_download_rejects_revision_binding_and_session_races",
+        "method": "test_download_rejects_revision_binding_and_session_races",
+        "status": "skipped 'Optional reviewed Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_cyst_registry.RegistryCryptoTests.test_download_returns_original_envelope_for_owner_and_agent_without_plaintext",
+        "method": "test_download_returns_original_envelope_for_owner_and_agent_without_plaintext",
+        "status": "skipped 'Optional reviewed Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_cyst_registry.RegistryCryptoTests.test_every_original_metadata_field_is_bound",
+        "method": "test_every_original_metadata_field_is_bound",
+        "status": "skipped 'Optional reviewed Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_cyst_registry.RegistryCryptoTests.test_exact_unsigned_commit_and_retire_transaction_cannot_be_substituted",
+        "method": "test_exact_unsigned_commit_and_retire_transaction_cannot_be_substituted",
+        "status": "skipped 'Optional reviewed Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_cyst_registry.RegistryCryptoTests.test_exact_viem_commit_and_retire_vectors_and_independent_eth_abi",
+        "method": "test_exact_viem_commit_and_retire_vectors_and_independent_eth_abi",
+        "status": "skipped 'Optional reviewed Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_cyst_registry.RegistryCryptoTests.test_owner_and_vault_cannot_replace_agent_wallet_authority",
+        "method": "test_owner_and_vault_cannot_replace_agent_wallet_authority",
+        "status": "skipped 'Optional reviewed Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_cyst_registry.RegistryCryptoTests.test_restore_authenticates_real_typescript_ciphertext_locally_and_never_sends_key",
+        "method": "test_restore_authenticates_real_typescript_ciphertext_locally_and_never_sends_key",
+        "status": "skipped 'Optional reviewed Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_cyst_registry.RegistryCryptoTests.test_verify_does_not_trust_api_matches_bit",
+        "method": "test_verify_does_not_trust_api_matches_bit",
+        "status": "skipped 'Optional reviewed Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_cyst_registry.RegistryHttpTests.test_actual_authenticated_http_exact_plans_and_independent_reads",
+        "method": "test_actual_authenticated_http_exact_plans_and_independent_reads",
+        "status": "skipped 'Optional reviewed Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_cyst_registry.RegistryHttpTests.test_actual_http_maximum_checkpoint_payload_is_bounded_and_verified",
+        "method": "test_actual_http_maximum_checkpoint_payload_is_bounded_and_verified",
+        "status": "skipped 'Optional reviewed Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_cyst_registry.RegistryHttpTests.test_actual_http_transport_does_not_relax_other_paths_or_methods",
+        "method": "test_actual_http_transport_does_not_relax_other_paths_or_methods",
+        "status": "skipped 'Optional reviewed Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_cyst_registry.RegistryReadTests.test_config_protocol_limits_and_strict_unknown_fields_fail_closed",
+        "method": "test_config_protocol_limits_and_strict_unknown_fields_fail_closed",
+        "status": "ok"
+      },
+      {
+        "name": "test_cyst_registry.RegistryReadTests.test_dependency_free_pins_and_latest_return_defensive_canonical_reader_copy",
+        "method": "test_dependency_free_pins_and_latest_return_defensive_canonical_reader_copy",
+        "status": "ok"
+      },
+      {
+        "name": "test_cyst_registry.RegistryReadTests.test_every_substantive_api_binding_and_state_field_must_match_reader",
+        "method": "test_every_substantive_api_binding_and_state_field_must_match_reader",
+        "status": "ok"
+      },
+      {
+        "name": "test_cyst_registry.RegistryReadTests.test_fresh_configuration_and_reader_pins_cannot_be_cached",
+        "method": "test_fresh_configuration_and_reader_pins_cannot_be_cached",
+        "status": "ok"
+      },
+      {
+        "name": "test_cyst_registry.RegistryReadTests.test_independent_reader_and_each_reviewed_pin_are_required",
+        "method": "test_independent_reader_and_each_reviewed_pin_are_required",
+        "status": "ok"
+      },
+      {
+        "name": "test_cyst_registry.RegistryReadTests.test_no_verifier_or_cipher_never_prepares_or_downloads",
+        "method": "test_no_verifier_or_cipher_never_prepares_or_downloads",
+        "status": "ok"
+      },
+      {
+        "name": "test_cyst_registry.RegistryReadTests.test_only_exact_private_blob_get_can_raise_response_bound",
+        "method": "test_only_exact_private_blob_get_can_raise_response_bound",
+        "status": "ok"
+      },
+      {
+        "name": "test_cyst_registry.RegistryReadTests.test_owner_reads_but_owner_labels_do_not_authorize_an_outsider",
+        "method": "test_owner_reads_but_owner_labels_do_not_authorize_an_outsider",
+        "status": "ok"
+      },
+      {
+        "name": "test_cyst_registry.RegistryReadTests.test_same_substantive_state_accepts_different_api_head",
+        "method": "test_same_substantive_state_accepts_different_api_head",
+        "status": "ok"
+      },
+      {
+        "name": "test_cyst_registry.RegistryReadTests.test_sha3_is_not_ethereum_keccak",
+        "method": "test_sha3_is_not_ethereum_keccak",
+        "status": "ok"
+      },
+      {
+        "name": "test_cyst_registry.RegistryReadTests.test_unavailable_and_changed_independent_evidence_fails_closed",
+        "method": "test_unavailable_and_changed_independent_evidence_fails_closed",
+        "status": "ok"
+      },
+      {
+        "name": "test_cysts.CystApiTests.test_capabilities_cannot_widen_limits",
+        "method": "test_capabilities_cannot_widen_limits",
+        "status": "ok"
+      },
+      {
+        "name": "test_cysts.CystApiTests.test_cursor_and_quota_bounds_fail_closed",
+        "method": "test_cursor_and_quota_bounds_fail_closed",
+        "status": "ok"
+      },
+      {
+        "name": "test_cysts.CystApiTests.test_download_scope_digest_and_pending_state_rejected",
+        "method": "test_download_scope_digest_and_pending_state_rejected",
+        "status": "ok"
+      },
+      {
+        "name": "test_cysts.CystApiTests.test_full_sorted_page_cursor_and_filters",
+        "method": "test_full_sorted_page_cursor_and_filters",
+        "status": "ok"
+      },
+      {
+        "name": "test_cysts.CystApiTests.test_restore_without_explicit_cipher_fails_before_network",
+        "method": "test_restore_without_explicit_cipher_fails_before_network",
+        "status": "ok"
+      },
+      {
+        "name": "test_cysts.CystApiTests.test_scope_changed_during_download_is_rejected",
+        "method": "test_scope_changed_during_download_is_rejected",
+        "status": "ok"
+      },
+      {
+        "name": "test_cysts.CystApiTests.test_stdlib_capabilities_list_metadata_and_opaque_download",
+        "method": "test_stdlib_capabilities_list_metadata_and_opaque_download",
+        "status": "ok"
+      },
+      {
+        "name": "test_cysts.CystApiTests.test_uncertain_upload_reuses_only_original_envelope_and_key",
+        "method": "test_uncertain_upload_reuses_only_original_envelope_and_key",
+        "status": "ok"
+      },
+      {
+        "name": "test_cysts.CystApiTests.test_unknown_key_plaintext_and_filename_fields_never_upload",
+        "method": "test_unknown_key_plaintext_and_filename_fields_never_upload",
+        "status": "ok"
+      },
+      {
+        "name": "test_cysts.CystApiTests.test_upload_checks_exact_echoed_header_and_ready_state",
+        "method": "test_upload_checks_exact_echoed_header_and_ready_state",
+        "status": "ok"
+      },
+      {
+        "name": "test_cysts.CystApiTests.test_upload_sends_only_strict_ciphertext_envelope",
+        "method": "test_upload_sends_only_strict_ciphertext_envelope",
+        "status": "ok"
+      },
+      {
+        "name": "test_cysts.CystCipherTests.test_failed_decrypt_clears_internal_key_copy",
+        "method": "test_failed_decrypt_clears_internal_key_copy",
+        "status": "skipped 'Install the recorded optional PyCryptodome requirements for real AEAD checks'"
+      },
+      {
+        "name": "test_cysts.CystCipherTests.test_fresh_default_keys_nonces_ids_and_secret_repr",
+        "method": "test_fresh_default_keys_nonces_ids_and_secret_repr",
+        "status": "skipped 'Install the recorded optional PyCryptodome requirements for real AEAD checks'"
+      },
+      {
+        "name": "test_cysts.CystCipherTests.test_maximum_two_mib_checkpoint_roundtrip_and_sdk_transfer",
+        "method": "test_maximum_two_mib_checkpoint_roundtrip_and_sdk_transfer",
+        "status": "skipped 'Install the recorded optional PyCryptodome requirements for real AEAD checks'"
+      },
+      {
+        "name": "test_cysts.CystCipherTests.test_plaintext_size_and_explicit_cipher_bounds",
+        "method": "test_plaintext_size_and_explicit_cipher_bounds",
+        "status": "skipped 'Install the recorded optional PyCryptodome requirements for real AEAD checks'"
+      },
+      {
+        "name": "test_cysts.CystCipherTests.test_real_python_ciphertext_decrypts_in_typescript",
+        "method": "test_real_python_ciphertext_decrypts_in_typescript",
+        "status": "skipped 'Install the recorded optional PyCryptodome requirements for real AEAD checks'"
+      },
+      {
+        "name": "test_cysts.CystCipherTests.test_real_typescript_ciphertext_decrypts_in_python",
+        "method": "test_real_typescript_ciphertext_decrypts_in_python",
+        "status": "skipped 'Install the recorded optional PyCryptodome requirements for real AEAD checks'"
+      },
+      {
+        "name": "test_cysts.CystCipherTests.test_recomputed_public_digest_cannot_forge_aead",
+        "method": "test_recomputed_public_digest_cannot_forge_aead",
+        "status": "skipped 'Install the recorded optional PyCryptodome requirements for real AEAD checks'"
+      },
+      {
+        "name": "test_cysts.CystCipherTests.test_wrong_key_aad_metadata_and_scope_rejected",
+        "method": "test_wrong_key_aad_metadata_and_scope_rejected",
+        "status": "skipped 'Install the recorded optional PyCryptodome requirements for real AEAD checks'"
+      },
+      {
+        "name": "test_cysts.CystTransportTests.test_blob_http_stream_larger_than_normal_limit_and_bounded_overflow",
+        "method": "test_blob_http_stream_larger_than_normal_limit_and_bounded_overflow",
+        "status": "ok"
+      },
+      {
+        "name": "test_cysts.CystTransportTests.test_cyst_upload_budget_does_not_expand_other_post_endpoints",
+        "method": "test_cyst_upload_budget_does_not_expand_other_post_endpoints",
+        "status": "ok"
+      },
+      {
+        "name": "test_cysts.CystTransportTests.test_only_exact_blob_get_can_raise_response_limit",
+        "method": "test_only_exact_blob_get_can_raise_response_limit",
+        "status": "ok"
+      },
+      {
+        "name": "test_cysts.CystTransportTests.test_real_http_filtered_pagination_accepts_agent_and_cursor_together",
+        "method": "test_real_http_filtered_pagination_accepts_agent_and_cursor_together",
+        "status": "ok"
+      },
+      {
+        "name": "test_platform.PlatformCommandValidationTests.test_exec_capability_accepts_only_explicit_true_for_both_clients",
+        "method": "test_exec_capability_accepts_only_explicit_true_for_both_clients",
+        "status": "ok"
+      },
+      {
+        "name": "test_platform.PlatformCommandValidationTests.test_exec_exact_boundaries_and_no_implicit_shell",
+        "method": "test_exec_exact_boundaries_and_no_implicit_shell",
+        "status": "ok"
+      },
+      {
+        "name": "test_platform.PlatformCommandValidationTests.test_exec_image_arguments_stdin_and_runtime_bounds_fail_closed",
+        "method": "test_exec_image_arguments_stdin_and_runtime_bounds_fail_closed",
+        "status": "ok"
+      },
+      {
+        "name": "test_platform.PlatformCommandValidationTests.test_financial_exec_validation_preserves_legacy_task_boundary",
+        "method": "test_financial_exec_validation_preserves_legacy_task_boundary",
+        "status": "ok"
+      },
+      {
+        "name": "test_platform.PlatformCryptoTests.test_action_calldata_and_admission_hash_cannot_be_substituted",
+        "method": "test_action_calldata_and_admission_hash_cannot_be_substituted",
+        "status": "skipped 'Optional Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_platform.PlatformCryptoTests.test_both_proof_arrays_accept_64_siblings_and_reject_65",
+        "method": "test_both_proof_arrays_accept_64_siblings_and_reject_65",
+        "status": "skipped 'Optional Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_platform.PlatformCryptoTests.test_eoa_and_vault_quote_open_admit_and_unsigned_actions",
+        "method": "test_eoa_and_vault_quote_open_admit_and_unsigned_actions",
+        "status": "skipped 'Optional Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_platform.PlatformCryptoTests.test_excluded_host_is_preserved_and_cannot_be_silently_selected",
+        "method": "test_excluded_host_is_preserved_and_cannot_be_silently_selected",
+        "status": "skipped 'Optional Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_platform.PlatformCryptoTests.test_exec_argv_stdin_scope_signature_and_calldata_tampering_are_rejected",
+        "method": "test_exec_argv_stdin_scope_signature_and_calldata_tampering_are_rejected",
+        "status": "skipped 'Optional Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_platform.PlatformCryptoTests.test_exec_eoa_and_vault_preserve_unsigned_financial_flow",
+        "method": "test_exec_eoa_and_vault_preserve_unsigned_financial_flow",
+        "status": "skipped 'Optional Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_platform.PlatformCryptoTests.test_exec_requires_matching_opted_in_host_before_request_and_on_cached_plan",
+        "method": "test_exec_requires_matching_opted_in_host_before_request_and_on_cached_plan",
+        "status": "skipped 'Optional Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_platform.PlatformCryptoTests.test_exec_selected_host_must_enable_exec_even_if_another_host_does",
+        "method": "test_exec_selected_host_must_enable_exec_even_if_another_host_does",
+        "status": "skipped 'Optional Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_platform.PlatformCryptoTests.test_exec_selected_image_cannot_change_even_with_valid_operator_signature",
+        "method": "test_exec_selected_image_cannot_change_even_with_valid_operator_signature",
+        "status": "skipped 'Optional Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_platform.PlatformCryptoTests.test_expiry_and_changed_session_are_rechecked_for_cached_quotes",
+        "method": "test_expiry_and_changed_session_are_rechecked_for_cached_quotes",
+        "status": "skipped 'Optional Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_platform.PlatformCryptoTests.test_full_quote_scope_signature_fee_and_both_dynamic_proofs_are_checked",
+        "method": "test_full_quote_scope_signature_fee_and_both_dynamic_proofs_are_checked",
+        "status": "skipped 'Optional Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_platform.PlatformCryptoTests.test_input_bounds_body_limit_and_non_ethereum_hash_fail_closed",
+        "method": "test_input_bounds_body_limit_and_non_ethereum_hash_fail_closed",
+        "status": "skipped 'Optional Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_platform.PlatformCryptoTests.test_nonboolean_signature_verdict_and_invalid_clock_are_rejected",
+        "method": "test_nonboolean_signature_verdict_and_invalid_clock_are_rejected",
+        "status": "skipped 'Optional Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_platform.PlatformCryptoTests.test_paid_session_quote_is_opted_in_signed_and_rechecked_before_wallet_plan",
+        "method": "test_paid_session_quote_is_opted_in_signed_and_rechecked_before_wallet_plan",
+        "status": "skipped 'Optional Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_platform.PlatformCryptoTests.test_python_eip712_hash_and_abi_independently_match_actual_viem_vectors",
+        "method": "test_python_eip712_hash_and_abi_independently_match_actual_viem_vectors",
+        "status": "skipped 'Optional Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_platform.PlatformCryptoTests.test_quote_singleflight_retry_and_defensive_copy_preserve_original_work",
+        "method": "test_quote_singleflight_retry_and_defensive_copy_preserve_original_work",
+        "status": "skipped 'Optional Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_platform.PlatformCryptoTests.test_signed_inference_only_quote_and_run_bind_policy_prompt_and_fixed_price",
+        "method": "test_signed_inference_only_quote_and_run_bind_policy_prompt_and_fixed_price",
+        "status": "skipped 'Optional Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_platform.PlatformCryptoTests.test_vault_quote_admit_stop_roles_and_leash_cannot_be_widened",
+        "method": "test_vault_quote_admit_stop_roles_and_leash_cannot_be_widened",
+        "status": "skipped 'Optional Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_platform.PlatformCryptoTests.test_wrong_eip712_signer_or_domain_fails_even_when_calldata_is_reencoded",
+        "method": "test_wrong_eip712_signer_or_domain_fails_even_when_calldata_is_reencoded",
+        "status": "skipped 'Optional Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_platform.PlatformHttpTests.test_actual_http_exec_eoa_and_vault_keep_exact_unicode_input_and_unsigned_plans",
+        "method": "test_actual_http_exec_eoa_and_vault_keep_exact_unicode_input_and_unsigned_plans",
+        "status": "skipped 'Optional Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_platform.PlatformHttpTests.test_actual_http_paid_session_command_and_events_use_exact_scoped_idempotency",
+        "method": "test_actual_http_paid_session_command_and_events_use_exact_scoped_idempotency",
+        "status": "ok"
+      },
+      {
+        "name": "test_platform.PlatformHttpTests.test_actual_http_quote_preserves_scoped_cookie_origin_and_idempotency_without_wallet_calls",
+        "method": "test_actual_http_quote_preserves_scoped_cookie_origin_and_idempotency_without_wallet_calls",
+        "status": "skipped 'Optional Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_platform.PlatformHttpTests.test_actual_http_read_uses_existing_bounded_transport",
+        "method": "test_actual_http_read_uses_existing_bounded_transport",
+        "status": "ok"
+      },
+      {
+        "name": "test_platform.PlatformReadTests.test_all_financial_methods_fail_closed_without_verifier",
+        "method": "test_all_financial_methods_fail_closed_without_verifier",
+        "status": "ok"
+      },
+      {
+        "name": "test_platform.PlatformReadTests.test_balance_uint256_and_run_lists_are_bounded",
+        "method": "test_balance_uint256_and_run_lists_are_bounded",
+        "status": "ok"
+      },
+      {
+        "name": "test_platform.PlatformReadTests.test_base_usdc_circle_proxy_pins_are_exact_and_old_rails_rejected",
+        "method": "test_base_usdc_circle_proxy_pins_are_exact_and_old_rails_rejected",
+        "status": "ok"
+      },
+      {
+        "name": "test_platform.PlatformReadTests.test_config_requires_exact_protocol_types_and_bounded_distinct_hosts",
+        "method": "test_config_requires_exact_protocol_types_and_bounded_distinct_hosts",
+        "status": "ok"
+      },
+      {
+        "name": "test_platform.PlatformReadTests.test_defensive_copies_prevent_config_and_run_mutation",
+        "method": "test_defensive_copies_prevent_config_and_run_mutation",
+        "status": "ok"
+      },
+      {
+        "name": "test_platform.PlatformReadTests.test_dependency_free_reads_checked_pins_balances_and_scoped_runs",
+        "method": "test_dependency_free_reads_checked_pins_balances_and_scoped_runs",
+        "status": "ok"
+      },
+      {
+        "name": "test_platform.PlatformReadTests.test_every_reviewed_platform_pin_is_mandatory_and_checked",
+        "method": "test_every_reviewed_platform_pin_is_mandatory_and_checked",
+        "status": "ok"
+      },
+      {
+        "name": "test_platform.PlatformReadTests.test_inference_only_input_and_provider_config_are_strictly_bounded",
+        "method": "test_inference_only_input_and_provider_config_are_strictly_bounded",
+        "status": "ok"
+      },
+      {
+        "name": "test_platform.PlatformReadTests.test_inference_settlement_charged_and_terminal_status_match_signed_quote",
+        "method": "test_inference_settlement_charged_and_terminal_status_match_signed_quote",
+        "status": "ok"
+      },
+      {
+        "name": "test_platform.PlatformReadTests.test_mainnet_bad_origin_and_transport_origin_mismatch_fail_closed",
+        "method": "test_mainnet_bad_origin_and_transport_origin_mismatch_fail_closed",
+        "status": "ok"
+      },
+      {
+        "name": "test_platform.PlatformReadTests.test_run_binding_amount_settlement_and_structure_tampering_is_rejected",
+        "method": "test_run_binding_amount_settlement_and_structure_tampering_is_rejected",
+        "status": "ok"
+      },
+      {
+        "name": "test_platform.PlatformReadTests.test_vault_pins_binding_and_roles_are_checked_without_cached_authorization",
+        "method": "test_vault_pins_binding_and_roles_are_checked_without_cached_authorization",
+        "status": "ok"
+      },
+      {
+        "name": "test_platform.PlatformSessionTests.test_bounded_event_pages_roles_and_sequence_tampering",
+        "method": "test_bounded_event_pages_roles_and_sequence_tampering",
+        "status": "ok"
+      },
+      {
+        "name": "test_platform.PlatformSessionTests.test_command_and_event_boundaries_fail_before_network",
+        "method": "test_command_and_event_boundaries_fail_before_network",
+        "status": "ok"
+      },
+      {
+        "name": "test_platform.PlatformSessionTests.test_eoa_and_vault_commands_bind_idempotency_and_exact_response",
+        "method": "test_eoa_and_vault_commands_bind_idempotency_and_exact_response",
+        "status": "ok"
+      },
+      {
+        "name": "test_platform.PlatformSessionTests.test_explicit_session_task_and_revocable_host_capability",
+        "method": "test_explicit_session_task_and_revocable_host_capability",
+        "status": "ok"
+      },
+      {
+        "name": "test_platform.PlatformSessionTests.test_lost_command_response_keeps_original_idempotency_scope",
+        "method": "test_lost_command_response_keeps_original_idempotency_scope",
+        "status": "ok"
+      },
+      {
+        "name": "test_platform_cpu_jobs.CpuJobCryptoTests.test_checks_owner_job_binding_and_real_signature_without_wallet_authority",
+        "method": "test_checks_owner_job_binding_and_real_signature_without_wallet_authority",
+        "status": "skipped 'Requires eth-account reviewed crypto adapter'"
+      },
+      {
+        "name": "test_platform_cpu_jobs.CpuJobCryptoTests.test_rejects_response_scope_budget_and_signed_consent_tampering",
+        "method": "test_rejects_response_scope_budget_and_signed_consent_tampering",
+        "status": "skipped 'Requires eth-account reviewed crypto adapter'"
+      },
+      {
+        "name": "test_platform_cpu_jobs.CpuJobInputTests.test_lane_consent_is_explicit_and_old_workload_remains_exact",
+        "method": "test_lane_consent_is_explicit_and_old_workload_remains_exact",
+        "status": "ok"
+      },
+      {
+        "name": "test_platform_cpu_jobs.CpuJobInputTests.test_owner_job_never_accepts_unbounded_or_unconsented_work",
+        "method": "test_owner_job_never_accepts_unbounded_or_unconsented_work",
+        "status": "ok"
+      },
+      {
+        "name": "test_platform_cpu_offers.CpuOfferBoundaryTests.test_exact_legacy_and_lane_specific_profile_prices",
+        "method": "test_exact_legacy_and_lane_specific_profile_prices",
+        "status": "ok"
+      },
+      {
+        "name": "test_platform_cpu_offers.CpuOfferBoundaryTests.test_missing_profile_does_not_inherit_other_lane_rate",
+        "method": "test_missing_profile_does_not_inherit_other_lane_rate",
+        "status": "ok"
+      },
+      {
+        "name": "test_platform_cpu_offers.CpuOfferBoundaryTests.test_rejects_ambiguous_unreviewed_or_changed_base_catalogue",
+        "method": "test_rejects_ambiguous_unreviewed_or_changed_base_catalogue",
+        "status": "ok"
+      },
+      {
+        "name": "test_platform_cpu_offers.CpuOfferCryptoTests.test_real_signatures_use_exact_non_base_lane_profile_without_wallet_authority",
+        "method": "test_real_signatures_use_exact_non_base_lane_profile_without_wallet_authority",
+        "status": "skipped 'Requires eth-account reviewed crypto adapter'"
+      },
+      {
+        "name": "test_platform_cpu_offers.CpuOfferCryptoTests.test_withdrawn_offer_does_not_fall_back_to_base_rate",
+        "method": "test_withdrawn_offer_does_not_fall_back_to_base_rate",
+        "status": "skipped 'Requires eth-account reviewed crypto adapter'"
+      },
+      {
+        "name": "test_platform_profiles.CpuProfileFinancialTests.test_actual_domain_two_signatures_and_receipt_version_acceptance_never_downgrade",
+        "method": "test_actual_domain_two_signatures_and_receipt_version_acceptance_never_downgrade",
+        "status": "skipped 'Optional actual Ethereum crypto adapter required'"
+      },
+      {
+        "name": "test_platform_profiles.CpuProfileFinancialTests.test_actual_signed_cpu_receipt_version_matches_public_marker_in_both_directions",
+        "method": "test_actual_signed_cpu_receipt_version_matches_public_marker_in_both_directions",
+        "status": "skipped 'Optional actual Ethereum crypto adapter required'"
+      },
+      {
+        "name": "test_platform_profiles.CpuProfileFinancialTests.test_actual_signed_session_quotes_bind_selected_price_profile_and_cpu_workload_for_both_clients",
+        "method": "test_actual_signed_session_quotes_bind_selected_price_profile_and_cpu_workload_for_both_clients",
+        "status": "skipped 'Optional actual Ethereum crypto adapter required'"
+      },
+      {
+        "name": "test_platform_profiles.CpuProfileValidationTests.test_admission_discount_is_required_bounded_and_impossible_on_legacy_profile",
+        "method": "test_admission_discount_is_required_bounded_and_impossible_on_legacy_profile",
+        "status": "ok"
+      },
+      {
+        "name": "test_platform_profiles.CpuProfileValidationTests.test_discount_applies_only_to_fee_and_conservative_ceiling_does_not_shrink",
+        "method": "test_discount_applies_only_to_fee_and_conservative_ceiling_does_not_shrink",
+        "status": "ok"
+      },
+      {
+        "name": "test_platform_profiles.CpuProfileValidationTests.test_financial_profile_is_strict_and_cannot_alias_payment_asset",
+        "method": "test_financial_profile_is_strict_and_cannot_alias_payment_asset",
+        "status": "ok"
+      },
+      {
+        "name": "test_platform_profiles.CpuProfileValidationTests.test_independent_cpu_receipt_version_constructor_prevents_initial_downgrade",
+        "method": "test_independent_cpu_receipt_version_constructor_prevents_initial_downgrade",
+        "status": "ok"
+      },
+      {
+        "name": "test_platform_profiles.CpuProfileValidationTests.test_invalid_config_cannot_promote_the_observed_cpu_protocol_floor",
+        "method": "test_invalid_config_cannot_promote_the_observed_cpu_protocol_floor",
+        "status": "ok"
+      },
+      {
+        "name": "test_platform_profiles.CpuProfileValidationTests.test_never_dispatched_controller_observation_is_exact_terminal_and_zero_charge",
+        "method": "test_never_dispatched_controller_observation_is_exact_terminal_and_zero_charge",
+        "status": "ok"
+      },
+      {
+        "name": "test_platform_profiles.CpuProfileValidationTests.test_observed_cpu_v2_cannot_drop_its_config_marker_later_in_the_same_client",
+        "method": "test_observed_cpu_v2_cannot_drop_its_config_marker_later_in_the_same_client",
+        "status": "ok"
+      },
+      {
+        "name": "test_platform_profiles.CpuProfileValidationTests.test_optional_profiles_preserve_absent_workload_and_exact_cpu_policy",
+        "method": "test_optional_profiles_preserve_absent_workload_and_exact_cpu_policy",
+        "status": "ok"
+      },
+      {
+        "name": "test_platform_profiles.CpuProfileValidationTests.test_pinned_financial_profile_downgrade_or_any_identity_change_fails_before_mutation",
+        "method": "test_pinned_financial_profile_downgrade_or_any_identity_change_fails_before_mutation",
+        "status": "ok"
+      },
+      {
+        "name": "test_platform_profiles.CpuProfileValidationTests.test_public_cpu_receipt_marker_is_an_explicit_integer_two",
+        "method": "test_public_cpu_receipt_marker_is_an_explicit_integer_two",
+        "status": "ok"
+      },
+      {
+        "name": "test_platform_profiles.CpuProfileValidationTests.test_reviewed_capacity_prices_are_strict_positive_and_ordered_for_both_clients",
+        "method": "test_reviewed_capacity_prices_are_strict_positive_and_ordered_for_both_clients",
+        "status": "ok"
+      },
+      {
+        "name": "test_platform_profiles.CpuProfileValidationTests.test_trusted_vault_discount_registry_is_exact_optional_independent_profile_pin",
+        "method": "test_trusted_vault_discount_registry_is_exact_optional_independent_profile_pin",
+        "status": "ok"
+      },
+      {
+        "name": "test_platform_profiles.CpuProfileValidationTests.test_vault_financial_factory_and_implementation_pins_must_match_before_any_http",
+        "method": "test_vault_financial_factory_and_implementation_pins_must_match_before_any_http",
+        "status": "ok"
+      },
+      {
+        "name": "test_sdk.CryptographicClientTests.test_admission_requires_original_checked_quote_and_original_transaction",
+        "method": "test_admission_requires_original_checked_quote_and_original_transaction",
+        "status": "skipped 'Install the explicit crypto extra to verify real cross-language signatures'"
+      },
+      {
+        "name": "test_sdk.CryptographicClientTests.test_all_wallet_intents_match_existing_solidity_abi",
+        "method": "test_all_wallet_intents_match_existing_solidity_abi",
+        "status": "skipped 'Install the explicit crypto extra to verify real cross-language signatures'"
+      },
+      {
+        "name": "test_sdk.CryptographicClientTests.test_bad_signature_and_changed_quote_terms_fail_closed",
+        "method": "test_bad_signature_and_changed_quote_terms_fail_closed",
+        "status": "skipped 'Install the explicit crypto extra to verify real cross-language signatures'"
+      },
+      {
+        "name": "test_sdk.CryptographicClientTests.test_concurrent_quote_calls_have_one_post_and_immutable_quote_copy",
+        "method": "test_concurrent_quote_calls_have_one_post_and_immutable_quote_copy",
+        "status": "skipped 'Install the explicit crypto extra to verify real cross-language signatures'"
+      },
+      {
+        "name": "test_sdk.CryptographicClientTests.test_cross_language_quote_signature_workload_hash_and_exact_abi",
+        "method": "test_cross_language_quote_signature_workload_hash_and_exact_abi",
+        "status": "skipped 'Install the explicit crypto extra to verify real cross-language signatures'"
+      },
+      {
+        "name": "test_sdk.CryptographicClientTests.test_idempotency_key_cannot_change_input_even_after_failed_post",
+        "method": "test_idempotency_key_cannot_change_input_even_after_failed_post",
+        "status": "skipped 'Install the explicit crypto extra to verify real cross-language signatures'"
+      },
+      {
+        "name": "test_sdk.CryptographicClientTests.test_local_receipt_signature_billing_and_server_anchor_are_separate",
+        "method": "test_local_receipt_signature_billing_and_server_anchor_are_separate",
+        "status": "skipped 'Install the explicit crypto extra to verify real cross-language signatures'"
+      },
+      {
+        "name": "test_sdk.CryptographicClientTests.test_owner_authentication_verifies_exact_challenge_before_signer",
+        "method": "test_owner_authentication_verifies_exact_challenge_before_signer",
+        "status": "skipped 'Install the explicit crypto extra to verify real cross-language signatures'"
+      },
+      {
+        "name": "test_sdk.CryptographicClientTests.test_rejects_calldata_target_value_and_extra_fields",
+        "method": "test_rejects_calldata_target_value_and_extra_fields",
+        "status": "skipped 'Install the explicit crypto extra to verify real cross-language signatures'"
+      },
+      {
+        "name": "test_sdk.CryptographicClientTests.test_rejects_expired_quote_and_reused_cached_expiry",
+        "method": "test_rejects_expired_quote_and_reused_cached_expiry",
+        "status": "skipped 'Install the explicit crypto extra to verify real cross-language signatures'"
+      },
+      {
+        "name": "test_sdk.CryptographicClientTests.test_reviewed_pins_and_budget_bounds",
+        "method": "test_reviewed_pins_and_budget_bounds",
+        "status": "skipped 'Install the explicit crypto extra to verify real cross-language signatures'"
+      },
+      {
+        "name": "test_sdk.CryptographicClientTests.test_unknown_task_utf8_bound_and_boolean_numbers_never_dispatch",
+        "method": "test_unknown_task_utf8_bound_and_boolean_numbers_never_dispatch",
+        "status": "skipped 'Install the explicit crypto extra to verify real cross-language signatures'"
+      },
+      {
+        "name": "test_sdk.CryptographicClientTests.test_update_preserves_agent_and_refuses_replacement",
+        "method": "test_update_preserves_agent_and_refuses_replacement",
+        "status": "skipped 'Install the explicit crypto extra to verify real cross-language signatures'"
+      },
+      {
+        "name": "test_sdk.ReadClientTests.test_bad_bounds_and_unknown_run_status_fail_closed",
+        "method": "test_bad_bounds_and_unknown_run_status_fail_closed",
+        "status": "ok"
+      },
+      {
+        "name": "test_sdk.ReadClientTests.test_base_modes_pin_native_usdc_and_old_rails_fail_before_wallet_work",
+        "method": "test_base_modes_pin_native_usdc_and_old_rails_fail_before_wallet_work",
+        "status": "ok"
+      },
+      {
+        "name": "test_sdk.ReadClientTests.test_demo_requires_explicit_opt_in",
+        "method": "test_demo_requires_explicit_opt_in",
+        "status": "ok"
+      },
+      {
+        "name": "test_sdk.ReadClientTests.test_foreign_injected_transport_is_rejected",
+        "method": "test_foreign_injected_transport_is_rejected",
+        "status": "ok"
+      },
+      {
+        "name": "test_sdk.ReadClientTests.test_logout_clears_local_session_even_if_request_fails",
+        "method": "test_logout_clears_local_session_even_if_request_fails",
+        "status": "ok"
+      },
+      {
+        "name": "test_sdk.ReadClientTests.test_no_crypto_means_only_server_reported_receipt_claims",
+        "method": "test_no_crypto_means_only_server_reported_receipt_claims",
+        "status": "ok"
+      },
+      {
+        "name": "test_sdk.ReadClientTests.test_oversized_injected_response_is_rejected",
+        "method": "test_oversized_injected_response_is_rejected",
+        "status": "ok"
+      },
+      {
+        "name": "test_sdk.ReadClientTests.test_standard_library_reads_and_config_copy",
+        "method": "test_standard_library_reads_and_config_copy",
+        "status": "ok"
+      },
+      {
+        "name": "test_sdk.ReadClientTests.test_wallet_intents_require_pins_and_crypto_before_dispatch",
+        "method": "test_wallet_intents_require_pins_and_crypto_before_dispatch",
+        "status": "ok"
+      },
+      {
+        "name": "test_sdk.TransportTests.test_error_redaction_and_no_post_retry",
+        "method": "test_error_redaction_and_no_post_retry",
+        "status": "ok"
+      },
+      {
+        "name": "test_sdk.TransportTests.test_header_and_stream_size_limits",
+        "method": "test_header_and_stream_size_limits",
+        "status": "ok"
+      },
+      {
+        "name": "test_sdk.TransportTests.test_invalid_paths_headers_and_bodies_never_dispatch",
+        "method": "test_invalid_paths_headers_and_bodies_never_dispatch",
+        "status": "ok"
+      },
+      {
+        "name": "test_sdk.TransportTests.test_origin_scope_and_production_https",
+        "method": "test_origin_scope_and_production_https",
+        "status": "ok"
+      },
+      {
+        "name": "test_sdk.TransportTests.test_real_http_cookie_and_origin_header",
+        "method": "test_real_http_cookie_and_origin_header",
+        "status": "ok"
+      },
+      {
+        "name": "test_sdk.TransportTests.test_redirect_never_reaches_other_origin",
+        "method": "test_redirect_never_reaches_other_origin",
+        "status": "ok"
+      },
+      {
+        "name": "test_sdk.TransportTests.test_rejects_invalid_utf8_duplicate_keys_and_nonfinite_json",
+        "method": "test_rejects_invalid_utf8_duplicate_keys_and_nonfinite_json",
+        "status": "ok"
+      },
+      {
+        "name": "test_sdk.TransportTests.test_session_cookie_requires_exact_scope",
+        "method": "test_session_cookie_requires_exact_scope",
+        "status": "ok"
+      },
+      {
+        "name": "test_sdk.TransportTests.test_slow_trickle_body_and_chunk_headers_obey_total_deadline_then_release_session_and_lock",
+        "method": "test_slow_trickle_body_and_chunk_headers_obey_total_deadline_then_release_session_and_lock",
+        "status": "ok"
+      },
+      {
+        "name": "test_sdk.TransportTests.test_timeout_is_bounded_and_redacted",
+        "method": "test_timeout_is_bounded_and_redacted",
+        "status": "ok"
+      },
+      {
+        "name": "test_sdk.TransportTests.test_untrusted_error_code_is_redacted",
+        "method": "test_untrusted_error_code_is_redacted",
+        "status": "ok"
+      },
+      {
+        "name": "test_vault_income.PublicHttpTests.test_actual_http_fixed_post_body_has_no_credentials_and_never_retries",
+        "method": "test_actual_http_fixed_post_body_has_no_credentials_and_never_retries",
+        "status": "ok"
+      },
+      {
+        "name": "test_vault_income.PublicHttpTests.test_noncanonical_resource_and_oversized_signed_header_never_connect",
+        "method": "test_noncanonical_resource_and_oversized_signed_header_never_connect",
+        "status": "ok"
+      },
+      {
+        "name": "test_vault_income.PublicHttpTests.test_retained_deadline_interrupts_trickling_headers_and_body",
+        "method": "test_retained_deadline_interrupts_trickling_headers_and_body",
+        "status": "ok"
+      },
+      {
+        "name": "test_vault_income.PublicHttpTests.test_stalled_dns_or_connect_has_bounded_caller_and_one_worker",
+        "method": "test_stalled_dns_or_connect_has_bounded_caller_and_one_worker",
+        "status": "ok"
+      },
+      {
+        "name": "test_vault_income.PublicHttpTests.test_strict_body_headers_and_credential_free_redirect_refusal",
+        "method": "test_strict_body_headers_and_credential_free_redirect_refusal",
+        "status": "ok"
+      },
+      {
+        "name": "test_vault_income.VaultIncomeTests.test_base_usdc_eip3009_domains_and_old_signed_journal_cannot_be_rewritten",
+        "method": "test_base_usdc_eip3009_domains_and_old_signed_journal_cannot_be_rewritten",
+        "status": "skipped 'Install the explicitly pinned optional Ethereum verifier'"
+      },
+      {
+        "name": "test_vault_income.VaultIncomeTests.test_caller_disk_journal_reopen_keeps_exact_signed_authorization",
+        "method": "test_caller_disk_journal_reopen_keeps_exact_signed_authorization",
+        "status": "skipped 'Install the explicitly pinned optional Ethereum verifier'"
+      },
+      {
+        "name": "test_vault_income.VaultIncomeTests.test_candidate_saved_before_rpc_failure_and_previous_success_withdrawn",
+        "method": "test_candidate_saved_before_rpc_failure_and_previous_success_withdrawn",
+        "status": "skipped 'Install the explicitly pinned optional Ethereum verifier'"
+      },
+      {
+        "name": "test_vault_income.VaultIncomeTests.test_changed_reader_profile_withdraws_prior_success",
+        "method": "test_changed_reader_profile_withdraws_prior_success",
+        "status": "skipped 'Install the explicitly pinned optional Ethereum verifier'"
+      },
+      {
+        "name": "test_vault_income.VaultIncomeTests.test_concurrent_same_instance_rejects_without_unbounded_queue",
+        "method": "test_concurrent_same_instance_rejects_without_unbounded_queue",
+        "status": "skipped 'Install the explicitly pinned optional Ethereum verifier'"
+      },
+      {
+        "name": "test_vault_income.VaultIncomeTests.test_corrupted_signed_journal_duplicate_attempts_and_capacity_fail_closed",
+        "method": "test_corrupted_signed_journal_duplicate_attempts_and_capacity_fail_closed",
+        "status": "skipped 'Install the explicitly pinned optional Ethereum verifier'"
+      },
+      {
+        "name": "test_vault_income.VaultIncomeTests.test_durable_save_failure_cannot_expose_plan_or_success",
+        "method": "test_durable_save_failure_cannot_expose_plan_or_success",
+        "status": "skipped 'Install the explicitly pinned optional Ethereum verifier'"
+      },
+      {
+        "name": "test_vault_income.VaultIncomeTests.test_external_signature_exact_header_and_local_reference",
+        "method": "test_external_signature_exact_header_and_local_reference",
+        "status": "skipped 'Install the explicitly pinned optional Ethereum verifier'"
+      },
+      {
+        "name": "test_vault_income.VaultIncomeTests.test_http_success_remains_pending_until_fresh_independent_income_and_subsidy",
+        "method": "test_http_success_remains_pending_until_fresh_independent_income_and_subsidy",
+        "status": "skipped 'Install the explicitly pinned optional Ethereum verifier'"
+      },
+      {
+        "name": "test_vault_income.VaultIncomeTests.test_immutable_candidate_rejects_changed_http_hash_after_reorg",
+        "method": "test_immutable_candidate_rejects_changed_http_hash_after_reorg",
+        "status": "skipped 'Install the explicitly pinned optional Ethereum verifier'"
+      },
+      {
+        "name": "test_vault_income.VaultIncomeTests.test_lost_response_preserves_bearer_and_blocks_replacement_until_exact_retry",
+        "method": "test_lost_response_preserves_bearer_and_blocks_replacement_until_exact_retry",
+        "status": "skipped 'Install the explicitly pinned optional Ethereum verifier'"
+      },
+      {
+        "name": "test_vault_income.VaultIncomeTests.test_mainnet_private_profile_fields_and_unreviewed_usdg_facet_fail_closed",
+        "method": "test_mainnet_private_profile_fields_and_unreviewed_usdg_facet_fail_closed",
+        "status": "skipped 'Install the explicitly pinned optional Ethereum verifier'"
+      },
+      {
+        "name": "test_vault_income.VaultIncomeTests.test_nonboolean_signature_verdict_fails_closed_before_authorization",
+        "method": "test_nonboolean_signature_verdict_fails_closed_before_authorization",
+        "status": "skipped 'Install the explicitly pinned optional Ethereum verifier'"
+      },
+      {
+        "name": "test_vault_income.VaultIncomeTests.test_payer_guard_retains_reverted_bearer_until_confirmed_expiry",
+        "method": "test_payer_guard_retains_reverted_bearer_until_confirmed_expiry",
+        "status": "skipped 'Install the explicitly pinned optional Ethereum verifier'"
+      },
+      {
+        "name": "test_vault_income.VaultIncomeTests.test_prepare_is_durable_original_and_never_refreshes_across_reopen",
+        "method": "test_prepare_is_durable_original_and_never_refreshes_across_reopen",
+        "status": "skipped 'Install the explicitly pinned optional Ethereum verifier'"
+      },
+      {
+        "name": "test_vault_income.VaultIncomeTests.test_profile_pins_reader_and_clock_are_mandatory",
+        "method": "test_profile_pins_reader_and_clock_are_mandatory",
+        "status": "skipped 'Install the explicitly pinned optional Ethereum verifier'"
+      },
+      {
+        "name": "test_vault_income.VaultIncomeTests.test_reorg_multiple_exact_retries_do_not_deadlock",
+        "method": "test_reorg_multiple_exact_retries_do_not_deadlock",
+        "status": "skipped 'Install the explicitly pinned optional Ethereum verifier'"
+      },
+      {
+        "name": "test_vault_income.VaultIncomeTests.test_untrusted_offer_cannot_substitute_payment_terms",
+        "method": "test_untrusted_offer_cannot_substitute_payment_terms",
+        "status": "skipped 'Install the explicitly pinned optional Ethereum verifier'"
+      },
+      {
+        "name": "test_vault_income.VaultIncomeTests.test_wrong_original_payer_ref_or_fee_never_returns_settled",
+        "method": "test_wrong_original_payer_ref_or_fee_never_returns_settled",
+        "status": "skipped 'Install the explicitly pinned optional Ethereum verifier'"
+      },
+      {
+        "name": "test_vault_income.VaultIncomeTests.test_wrong_signer_tampered_journal_and_evidence_are_rejected",
+        "method": "test_wrong_signer_tampered_journal_and_evidence_are_rejected",
+        "status": "skipped 'Install the explicitly pinned optional Ethereum verifier'"
+      },
+      {
+        "name": "test_vault_income_acceptance.NativeVaultAcceptance.test_real_native_income_subsidy_lost_ack_restart_and_reorg",
+        "method": "test_real_native_income_subsidy_lost_ack_restart_and_reorg",
+        "status": "skipped 'Explicitly enable disposable Anvil acceptance with the pinned crypto environment'"
+      },
+      {
+        "name": "test_vault_income_journal.FileVaultIncomeJournalTests.test_closed_journal_rejects_operations_and_context_entry",
+        "method": "test_closed_journal_rejects_operations_and_context_entry",
+        "status": "ok"
+      },
+      {
+        "name": "test_vault_income_journal.FileVaultIncomeJournalTests.test_concurrent_exclusive_has_bounded_timeout",
+        "method": "test_concurrent_exclusive_has_bounded_timeout",
+        "status": "ok"
+      },
+      {
+        "name": "test_vault_income_journal.FileVaultIncomeJournalTests.test_constructor_validation",
+        "method": "test_constructor_validation",
+        "status": "ok"
+      },
+      {
+        "name": "test_vault_income_journal.FileVaultIncomeJournalTests.test_crash_preserves_state_and_requires_explicit_owner_recovery",
+        "method": "test_crash_preserves_state_and_requires_explicit_owner_recovery",
+        "status": "ok"
+      },
+      {
+        "name": "test_vault_income_journal.FileVaultIncomeJournalTests.test_duplicate_owner_is_rejected_and_orderly_close_releases",
+        "method": "test_duplicate_owner_is_rejected_and_orderly_close_releases",
+        "status": "ok"
+      },
+      {
+        "name": "test_vault_income_journal.FileVaultIncomeJournalTests.test_escaped_transaction_cannot_be_used_after_callback_or_in_later_callback",
+        "method": "test_escaped_transaction_cannot_be_used_after_callback_or_in_later_callback",
+        "status": "ok"
+      },
+      {
+        "name": "test_vault_income_journal.FileVaultIncomeJournalTests.test_hardlinked_state_rejected",
+        "method": "test_hardlinked_state_rejected",
+        "status": "ok"
+      },
+      {
+        "name": "test_vault_income_journal.FileVaultIncomeJournalTests.test_malformed_state_is_rejected_before_callback",
+        "method": "test_malformed_state_is_rejected_before_callback",
+        "status": "ok"
+      },
+      {
+        "name": "test_vault_income_journal.FileVaultIncomeJournalTests.test_nested_rejection_keeps_outer_transaction_active",
+        "method": "test_nested_rejection_keeps_outer_transaction_active",
+        "status": "ok"
+      },
+      {
+        "name": "test_vault_income_journal.FileVaultIncomeJournalTests.test_non_storage_callback_error_also_preserves_save",
+        "method": "test_non_storage_callback_error_also_preserves_save",
+        "status": "ok"
+      },
+      {
+        "name": "test_vault_income_journal.FileVaultIncomeJournalTests.test_other_process_cannot_open_owned_directory",
+        "method": "test_other_process_cannot_open_owned_directory",
+        "status": "ok"
+      },
+      {
+        "name": "test_vault_income_journal.FileVaultIncomeJournalTests.test_oversized_existing_state_rejected",
+        "method": "test_oversized_existing_state_rejected",
+        "status": "ok"
+      },
+      {
+        "name": "test_vault_income_journal.FileVaultIncomeJournalTests.test_partial_write_failure_preserves_previous_state_and_cleans_temporary",
+        "method": "test_partial_write_failure_preserves_previous_state_and_cleans_temporary",
+        "status": "ok"
+      },
+      {
+        "name": "test_vault_income_journal.FileVaultIncomeJournalTests.test_posix_directory_replacement_is_detected",
+        "method": "test_posix_directory_replacement_is_detected",
+        "status": "ok"
+      },
+      {
+        "name": "test_vault_income_journal.FileVaultIncomeJournalTests.test_posix_existing_nonprivate_leaf_is_not_repaired",
+        "method": "test_posix_existing_nonprivate_leaf_is_not_repaired",
+        "status": "ok"
+      },
+      {
+        "name": "test_vault_income_journal.FileVaultIncomeJournalTests.test_posix_fork_cannot_reuse_inherited_owner",
+        "method": "test_posix_fork_cannot_reuse_inherited_owner",
+        "status": "ok"
+      },
+      {
+        "name": "test_vault_income_journal.FileVaultIncomeJournalTests.test_posix_nonprivate_state_is_not_repaired",
+        "method": "test_posix_nonprivate_state_is_not_repaired",
+        "status": "ok"
+      },
+      {
+        "name": "test_vault_income_journal.FileVaultIncomeJournalTests.test_posix_replaced_owner_is_detected",
+        "method": "test_posix_replaced_owner_is_detected",
+        "status": "ERROR"
+      },
+      {
+        "name": "test_vault_income_journal.FileVaultIncomeJournalTests.test_post_replace_sync_failure_preserves_committed_state_for_recovery",
+        "method": "test_post_replace_sync_failure_preserves_committed_state_for_recovery",
+        "status": "ok"
+      },
+      {
+        "name": "test_vault_income_journal.FileVaultIncomeJournalTests.test_replace_failure_preserves_previous_state_and_cleans_temporary",
+        "method": "test_replace_failure_preserves_previous_state_and_cleans_temporary",
+        "status": "ok"
+      },
+      {
+        "name": "test_vault_income_journal.FileVaultIncomeJournalTests.test_save_is_private_and_loads_are_detached",
+        "method": "test_save_is_private_and_loads_are_detached",
+        "status": "ok"
+      },
+      {
+        "name": "test_vault_income_journal.FileVaultIncomeJournalTests.test_saved_bytes_survive_callback_failure_and_reopen",
+        "method": "test_saved_bytes_survive_callback_failure_and_reopen",
+        "status": "ok"
+      },
+      {
+        "name": "test_vault_income_journal.FileVaultIncomeJournalTests.test_scope_cannot_change_or_overwrite_persisted_profile",
+        "method": "test_scope_cannot_change_or_overwrite_persisted_profile",
+        "status": "ok"
+      },
+      {
+        "name": "test_vault_income_journal.FileVaultIncomeJournalTests.test_size_and_attempt_bounds_do_not_replace_original",
+        "method": "test_size_and_attempt_bounds_do_not_replace_original",
+        "status": "ok"
+      },
+      {
+        "name": "test_vault_income_journal.FileVaultIncomeJournalTests.test_symlinked_ancestor_rejected",
+        "method": "test_symlinked_ancestor_rejected",
+        "status": "ok"
+      },
+      {
+        "name": "test_vault_income_journal.FileVaultIncomeJournalTests.test_symlinked_state_rejected",
+        "method": "test_symlinked_state_rejected",
+        "status": "ok"
+      },
+      {
+        "name": "test_vault_income_journal.FileVaultIncomeJournalTests.test_transaction_rejects_calls_from_other_thread",
+        "method": "test_transaction_rejects_calls_from_other_thread",
+        "status": "ok"
+      },
+      {
+        "name": "test_vault_income_journal.WindowsAclTests.test_broad_directory_acl_is_rejected_without_repair",
+        "method": "test_broad_directory_acl_is_rejected_without_repair",
+        "status": "skipped 'Actual Windows ACL API'"
+      },
+      {
+        "name": "test_vault_income_journal.WindowsAclTests.test_broad_state_acl_is_rejected_without_repair",
+        "method": "test_broad_state_acl_is_rejected_without_repair",
+        "status": "skipped 'Actual Windows ACL API'"
+      },
+      {
+        "name": "test_vault_income_journal.WindowsAclTests.test_created_files_have_actual_private_windows_acls",
+        "method": "test_created_files_have_actual_private_windows_acls",
+        "status": "skipped 'Actual Windows ACL API'"
+      },
+      {
+        "name": "test_vault_income_journal.WindowsAclTests.test_junction_ancestor_and_leaf_are_rejected",
+        "method": "test_junction_ancestor_and_leaf_are_rejected",
+        "status": "skipped 'Actual Windows ACL API'"
+      },
+      {
+        "name": "test_vault_income_journal.WindowsAclTests.test_open_directory_handle_prevents_rename",
+        "method": "test_open_directory_handle_prevents_rename",
+        "status": "skipped 'Actual Windows ACL API'"
+      },
+      {
+        "name": "test_vault_income_rpc.CircleProxyBoundaries.test_base_proxy_slot_metadata_domain_and_historical_code_are_pinned",
+        "method": "test_base_proxy_slot_metadata_domain_and_historical_code_are_pinned",
+        "status": "skipped 'Install the explicitly pinned optional Ethereum verifier'"
+      },
+      {
+        "name": "test_vault_income_rpc.NativeRpcAcceptance.test_actual_rpc_failure_clears_client_terminal_observation_and_redacts_provider",
+        "method": "test_actual_rpc_failure_clears_client_terminal_observation_and_redacts_provider",
+        "status": "skipped 'Explicitly enable disposable Anvil acceptance with the pinned crypto environment'"
+      },
+      {
+        "name": "test_vault_income_rpc.NativeRpcAcceptance.test_contradictory_markers_events_transfers_and_payer_never_return_success",
+        "method": "test_contradictory_markers_events_transfers_and_payer_never_return_success",
+        "status": "skipped 'Explicitly enable disposable Anvil acceptance with the pinned crypto environment'"
+      },
+      {
+        "name": "test_vault_income_rpc.NativeRpcAcceptance.test_direct_python_reader_rechecks_exact_historical_receipt_and_all_hash_state_calls",
+        "method": "test_direct_python_reader_rechecks_exact_historical_receipt_and_all_hash_state_calls",
+        "status": "skipped 'Explicitly enable disposable Anvil acceptance with the pinned crypto environment'"
+      },
+      {
+        "name": "test_vault_income_rpc.NativeRpcAcceptance.test_historical_asset_registry_implementation_and_clone_code_cannot_be_substituted",
+        "method": "test_historical_asset_registry_implementation_and_clone_code_cannot_be_substituted",
+        "status": "skipped 'Explicitly enable disposable Anvil acceptance with the pinned crypto environment'"
+      },
+      {
+        "name": "test_vault_income_rpc.NativeRpcAcceptance.test_lost_confirmation_depth_and_final_canonicality_withdraw_success",
+        "method": "test_lost_confirmation_depth_and_final_canonicality_withdraw_success",
+        "status": "skipped 'Explicitly enable disposable Anvil acceptance with the pinned crypto environment'"
+      },
+      {
+        "name": "test_vault_income_rpc.NativeRpcAcceptance.test_missing_candidate_with_consumed_authorization_requires_reconciliation",
+        "method": "test_missing_candidate_with_consumed_authorization_requires_reconciliation",
+        "status": "skipped 'Explicitly enable disposable Anvil acceptance with the pinned crypto environment'"
+      },
+      {
+        "name": "test_vault_income_rpc.NativeRpcAcceptance.test_nonzero_related_mapping_cannot_return_unknown_or_wrong_agent_tuple",
+        "method": "test_nonzero_related_mapping_cannot_return_unknown_or_wrong_agent_tuple",
+        "status": "skipped 'Explicitly enable disposable Anvil acceptance with the pinned crypto environment'"
+      },
+      {
+        "name": "test_vault_income_rpc.NativeRpcAcceptance.test_original_payer_related_vault_or_wallet_cannot_be_credited_as_income",
+        "method": "test_original_payer_related_vault_or_wallet_cannot_be_credited_as_income",
+        "status": "skipped 'Explicitly enable disposable Anvil acceptance with the pinned crypto environment'"
+      },
+      {
+        "name": "test_vault_income_rpc.NativeRpcAcceptance.test_raw_transaction_hash_and_recovered_facilitator_are_independent",
+        "method": "test_raw_transaction_hash_and_recovered_facilitator_are_independent",
+        "status": "skipped 'Explicitly enable disposable Anvil acceptance with the pinned crypto environment'"
+      },
+      {
+        "name": "test_vault_income_rpc.NativeRpcAcceptance.test_signed_type2_reconstruction_detects_every_altered_signed_field",
+        "method": "test_signed_type2_reconstruction_detects_every_altered_signed_field",
+        "status": "skipped 'Explicitly enable disposable Anvil acceptance with the pinned crypto environment'"
+      },
+      {
+        "name": "test_vault_income_rpc.NativeRpcAcceptance.test_type2_fallback_requires_explicit_method_code_and_complete_signed_fields",
+        "method": "test_type2_fallback_requires_explicit_method_code_and_complete_signed_fields",
+        "status": "skipped 'Explicitly enable disposable Anvil acceptance with the pinned crypto environment'"
+      },
+      {
+        "name": "test_vault_income_rpc.NativeRpcAcceptance.test_wrong_chain_token_domain_decimals_and_current_deployment_pins_fail_closed",
+        "method": "test_wrong_chain_token_domain_decimals_and_current_deployment_pins_fail_closed",
+        "status": "skipped 'Explicitly enable disposable Anvil acceptance with the pinned crypto environment'"
+      },
+      {
+        "name": "test_vault_income_rpc.NativeRpcAcceptance.test_wrong_payer_signature_or_request_binding_is_rejected_before_rpc",
+        "method": "test_wrong_payer_signature_or_request_binding_is_rejected_before_rpc",
+        "status": "skipped 'Explicitly enable disposable Anvil acceptance with the pinned crypto environment'"
+      },
+      {
+        "name": "test_vault_income_rpc.NativeRpcAcceptance.test_z_same_block_later_family_registration_preserves_original_income",
+        "method": "test_z_same_block_later_family_registration_preserves_original_income",
+        "status": "skipped 'Explicitly enable disposable Anvil acceptance with the pinned crypto environment'"
+      },
+      {
+        "name": "test_vault_income_rpc.RpcTransportTests.test_rpc_is_strict_bounded_read_only_and_no_proxy_or_redirect",
+        "method": "test_rpc_is_strict_bounded_read_only_and_no_proxy_or_redirect",
+        "status": "ok"
+      },
+      {
+        "name": "test_vault_income_rpc.RpcTransportTests.test_rpc_total_body_deadline_and_error_codes_are_not_remote_text",
+        "method": "test_rpc_total_body_deadline_and_error_codes_are_not_remote_text",
+        "status": "ok"
+      },
+      {
+        "name": "test_vault_income_rpc.StaticRpcBoundaries.test_facet_receipt_parent_routes_and_upgrade_logs_cannot_be_ignored",
+        "method": "test_facet_receipt_parent_routes_and_upgrade_logs_cannot_be_ignored",
+        "status": "skipped 'Install the explicitly pinned optional Ethereum verifier'"
+      },
+      {
+        "name": "test_vault_income_rpc.StaticRpcBoundaries.test_genuine_legacy_type1_type2_recovery_and_minimal_signature_scalar_reconstruction",
+        "method": "test_genuine_legacy_type1_type2_recovery_and_minimal_signature_scalar_reconstruction",
+        "status": "skipped 'Install the explicitly pinned optional Ethereum verifier'"
+      },
+      {
+        "name": "test_vault_income_rpc.StaticRpcBoundaries.test_proxy_slot_implementation_code_facet_code_and_three_routes_are_pinned",
+        "method": "test_proxy_slot_implementation_code_facet_code_and_three_routes_are_pinned",
+        "status": "skipped 'Install the explicitly pinned optional Ethereum verifier'"
+      }
+    ],
+    "skips": [
+      {
+        "name": "test_cyst_registry.RegistryCryptoTests.test_bad_inputs_and_retired_or_absent_entry_fail_before_post",
+        "method": "test_bad_inputs_and_retired_or_absent_entry_fail_before_post",
+        "status": "skipped 'Optional reviewed Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_cyst_registry.RegistryCryptoTests.test_cas_revision_and_session_rechecked_after_server_response",
+        "method": "test_cas_revision_and_session_rechecked_after_server_response",
+        "status": "skipped 'Optional reviewed Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_cyst_registry.RegistryCryptoTests.test_checkpoint_owner_and_agent_labels_must_match_selection_binding",
+        "method": "test_checkpoint_owner_and_agent_labels_must_match_selection_binding",
+        "status": "skipped 'Optional reviewed Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_cyst_registry.RegistryCryptoTests.test_dormant_frozen_preservation_and_dead_retire_remain_available",
+        "method": "test_dormant_frozen_preservation_and_dead_retire_remain_available",
+        "status": "skipped 'Optional reviewed Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_cyst_registry.RegistryCryptoTests.test_download_rejects_every_metadata_substitution",
+        "method": "test_download_rejects_every_metadata_substitution",
+        "status": "skipped 'Optional reviewed Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_cyst_registry.RegistryCryptoTests.test_download_rejects_invalid_noncanonical_truncated_and_wrong_digest_ciphertext",
+        "method": "test_download_rejects_invalid_noncanonical_truncated_and_wrong_digest_ciphertext",
+        "status": "skipped 'Optional reviewed Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_cyst_registry.RegistryCryptoTests.test_download_rejects_retired_unpublished_and_foreign_labels_before_blob",
+        "method": "test_download_rejects_retired_unpublished_and_foreign_labels_before_blob",
+        "status": "skipped 'Optional reviewed Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_cyst_registry.RegistryCryptoTests.test_download_rejects_revision_binding_and_session_races",
+        "method": "test_download_rejects_revision_binding_and_session_races",
+        "status": "skipped 'Optional reviewed Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_cyst_registry.RegistryCryptoTests.test_download_returns_original_envelope_for_owner_and_agent_without_plaintext",
+        "method": "test_download_returns_original_envelope_for_owner_and_agent_without_plaintext",
+        "status": "skipped 'Optional reviewed Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_cyst_registry.RegistryCryptoTests.test_every_original_metadata_field_is_bound",
+        "method": "test_every_original_metadata_field_is_bound",
+        "status": "skipped 'Optional reviewed Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_cyst_registry.RegistryCryptoTests.test_exact_unsigned_commit_and_retire_transaction_cannot_be_substituted",
+        "method": "test_exact_unsigned_commit_and_retire_transaction_cannot_be_substituted",
+        "status": "skipped 'Optional reviewed Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_cyst_registry.RegistryCryptoTests.test_exact_viem_commit_and_retire_vectors_and_independent_eth_abi",
+        "method": "test_exact_viem_commit_and_retire_vectors_and_independent_eth_abi",
+        "status": "skipped 'Optional reviewed Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_cyst_registry.RegistryCryptoTests.test_owner_and_vault_cannot_replace_agent_wallet_authority",
+        "method": "test_owner_and_vault_cannot_replace_agent_wallet_authority",
+        "status": "skipped 'Optional reviewed Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_cyst_registry.RegistryCryptoTests.test_restore_authenticates_real_typescript_ciphertext_locally_and_never_sends_key",
+        "method": "test_restore_authenticates_real_typescript_ciphertext_locally_and_never_sends_key",
+        "status": "skipped 'Optional reviewed Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_cyst_registry.RegistryCryptoTests.test_verify_does_not_trust_api_matches_bit",
+        "method": "test_verify_does_not_trust_api_matches_bit",
+        "status": "skipped 'Optional reviewed Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_cyst_registry.RegistryHttpTests.test_actual_authenticated_http_exact_plans_and_independent_reads",
+        "method": "test_actual_authenticated_http_exact_plans_and_independent_reads",
+        "status": "skipped 'Optional reviewed Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_cyst_registry.RegistryHttpTests.test_actual_http_maximum_checkpoint_payload_is_bounded_and_verified",
+        "method": "test_actual_http_maximum_checkpoint_payload_is_bounded_and_verified",
+        "status": "skipped 'Optional reviewed Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_cyst_registry.RegistryHttpTests.test_actual_http_transport_does_not_relax_other_paths_or_methods",
+        "method": "test_actual_http_transport_does_not_relax_other_paths_or_methods",
+        "status": "skipped 'Optional reviewed Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_cysts.CystCipherTests.test_failed_decrypt_clears_internal_key_copy",
+        "method": "test_failed_decrypt_clears_internal_key_copy",
+        "status": "skipped 'Install the recorded optional PyCryptodome requirements for real AEAD checks'"
+      },
+      {
+        "name": "test_cysts.CystCipherTests.test_fresh_default_keys_nonces_ids_and_secret_repr",
+        "method": "test_fresh_default_keys_nonces_ids_and_secret_repr",
+        "status": "skipped 'Install the recorded optional PyCryptodome requirements for real AEAD checks'"
+      },
+      {
+        "name": "test_cysts.CystCipherTests.test_maximum_two_mib_checkpoint_roundtrip_and_sdk_transfer",
+        "method": "test_maximum_two_mib_checkpoint_roundtrip_and_sdk_transfer",
+        "status": "skipped 'Install the recorded optional PyCryptodome requirements for real AEAD checks'"
+      },
+      {
+        "name": "test_cysts.CystCipherTests.test_plaintext_size_and_explicit_cipher_bounds",
+        "method": "test_plaintext_size_and_explicit_cipher_bounds",
+        "status": "skipped 'Install the recorded optional PyCryptodome requirements for real AEAD checks'"
+      },
+      {
+        "name": "test_cysts.CystCipherTests.test_real_python_ciphertext_decrypts_in_typescript",
+        "method": "test_real_python_ciphertext_decrypts_in_typescript",
+        "status": "skipped 'Install the recorded optional PyCryptodome requirements for real AEAD checks'"
+      },
+      {
+        "name": "test_cysts.CystCipherTests.test_real_typescript_ciphertext_decrypts_in_python",
+        "method": "test_real_typescript_ciphertext_decrypts_in_python",
+        "status": "skipped 'Install the recorded optional PyCryptodome requirements for real AEAD checks'"
+      },
+      {
+        "name": "test_cysts.CystCipherTests.test_recomputed_public_digest_cannot_forge_aead",
+        "method": "test_recomputed_public_digest_cannot_forge_aead",
+        "status": "skipped 'Install the recorded optional PyCryptodome requirements for real AEAD checks'"
+      },
+      {
+        "name": "test_cysts.CystCipherTests.test_wrong_key_aad_metadata_and_scope_rejected",
+        "method": "test_wrong_key_aad_metadata_and_scope_rejected",
+        "status": "skipped 'Install the recorded optional PyCryptodome requirements for real AEAD checks'"
+      },
+      {
+        "name": "test_platform.PlatformCryptoTests.test_action_calldata_and_admission_hash_cannot_be_substituted",
+        "method": "test_action_calldata_and_admission_hash_cannot_be_substituted",
+        "status": "skipped 'Optional Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_platform.PlatformCryptoTests.test_both_proof_arrays_accept_64_siblings_and_reject_65",
+        "method": "test_both_proof_arrays_accept_64_siblings_and_reject_65",
+        "status": "skipped 'Optional Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_platform.PlatformCryptoTests.test_eoa_and_vault_quote_open_admit_and_unsigned_actions",
+        "method": "test_eoa_and_vault_quote_open_admit_and_unsigned_actions",
+        "status": "skipped 'Optional Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_platform.PlatformCryptoTests.test_excluded_host_is_preserved_and_cannot_be_silently_selected",
+        "method": "test_excluded_host_is_preserved_and_cannot_be_silently_selected",
+        "status": "skipped 'Optional Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_platform.PlatformCryptoTests.test_exec_argv_stdin_scope_signature_and_calldata_tampering_are_rejected",
+        "method": "test_exec_argv_stdin_scope_signature_and_calldata_tampering_are_rejected",
+        "status": "skipped 'Optional Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_platform.PlatformCryptoTests.test_exec_eoa_and_vault_preserve_unsigned_financial_flow",
+        "method": "test_exec_eoa_and_vault_preserve_unsigned_financial_flow",
+        "status": "skipped 'Optional Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_platform.PlatformCryptoTests.test_exec_requires_matching_opted_in_host_before_request_and_on_cached_plan",
+        "method": "test_exec_requires_matching_opted_in_host_before_request_and_on_cached_plan",
+        "status": "skipped 'Optional Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_platform.PlatformCryptoTests.test_exec_selected_host_must_enable_exec_even_if_another_host_does",
+        "method": "test_exec_selected_host_must_enable_exec_even_if_another_host_does",
+        "status": "skipped 'Optional Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_platform.PlatformCryptoTests.test_exec_selected_image_cannot_change_even_with_valid_operator_signature",
+        "method": "test_exec_selected_image_cannot_change_even_with_valid_operator_signature",
+        "status": "skipped 'Optional Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_platform.PlatformCryptoTests.test_expiry_and_changed_session_are_rechecked_for_cached_quotes",
+        "method": "test_expiry_and_changed_session_are_rechecked_for_cached_quotes",
+        "status": "skipped 'Optional Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_platform.PlatformCryptoTests.test_full_quote_scope_signature_fee_and_both_dynamic_proofs_are_checked",
+        "method": "test_full_quote_scope_signature_fee_and_both_dynamic_proofs_are_checked",
+        "status": "skipped 'Optional Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_platform.PlatformCryptoTests.test_input_bounds_body_limit_and_non_ethereum_hash_fail_closed",
+        "method": "test_input_bounds_body_limit_and_non_ethereum_hash_fail_closed",
+        "status": "skipped 'Optional Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_platform.PlatformCryptoTests.test_nonboolean_signature_verdict_and_invalid_clock_are_rejected",
+        "method": "test_nonboolean_signature_verdict_and_invalid_clock_are_rejected",
+        "status": "skipped 'Optional Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_platform.PlatformCryptoTests.test_paid_session_quote_is_opted_in_signed_and_rechecked_before_wallet_plan",
+        "method": "test_paid_session_quote_is_opted_in_signed_and_rechecked_before_wallet_plan",
+        "status": "skipped 'Optional Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_platform.PlatformCryptoTests.test_python_eip712_hash_and_abi_independently_match_actual_viem_vectors",
+        "method": "test_python_eip712_hash_and_abi_independently_match_actual_viem_vectors",
+        "status": "skipped 'Optional Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_platform.PlatformCryptoTests.test_quote_singleflight_retry_and_defensive_copy_preserve_original_work",
+        "method": "test_quote_singleflight_retry_and_defensive_copy_preserve_original_work",
+        "status": "skipped 'Optional Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_platform.PlatformCryptoTests.test_signed_inference_only_quote_and_run_bind_policy_prompt_and_fixed_price",
+        "method": "test_signed_inference_only_quote_and_run_bind_policy_prompt_and_fixed_price",
+        "status": "skipped 'Optional Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_platform.PlatformCryptoTests.test_vault_quote_admit_stop_roles_and_leash_cannot_be_widened",
+        "method": "test_vault_quote_admit_stop_roles_and_leash_cannot_be_widened",
+        "status": "skipped 'Optional Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_platform.PlatformCryptoTests.test_wrong_eip712_signer_or_domain_fails_even_when_calldata_is_reencoded",
+        "method": "test_wrong_eip712_signer_or_domain_fails_even_when_calldata_is_reencoded",
+        "status": "skipped 'Optional Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_platform.PlatformHttpTests.test_actual_http_exec_eoa_and_vault_keep_exact_unicode_input_and_unsigned_plans",
+        "method": "test_actual_http_exec_eoa_and_vault_keep_exact_unicode_input_and_unsigned_plans",
+        "status": "skipped 'Optional Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_platform.PlatformHttpTests.test_actual_http_quote_preserves_scoped_cookie_origin_and_idempotency_without_wallet_calls",
+        "method": "test_actual_http_quote_preserves_scoped_cookie_origin_and_idempotency_without_wallet_calls",
+        "status": "skipped 'Optional Ethereum crypto adapter is not installed'"
+      },
+      {
+        "name": "test_platform_cpu_jobs.CpuJobCryptoTests.test_checks_owner_job_binding_and_real_signature_without_wallet_authority",
+        "method": "test_checks_owner_job_binding_and_real_signature_without_wallet_authority",
+        "status": "skipped 'Requires eth-account reviewed crypto adapter'"
+      },
+      {
+        "name": "test_platform_cpu_jobs.CpuJobCryptoTests.test_rejects_response_scope_budget_and_signed_consent_tampering",
+        "method": "test_rejects_response_scope_budget_and_signed_consent_tampering",
+        "status": "skipped 'Requires eth-account reviewed crypto adapter'"
+      },
+      {
+        "name": "test_platform_cpu_offers.CpuOfferCryptoTests.test_real_signatures_use_exact_non_base_lane_profile_without_wallet_authority",
+        "method": "test_real_signatures_use_exact_non_base_lane_profile_without_wallet_authority",
+        "status": "skipped 'Requires eth-account reviewed crypto adapter'"
+      },
+      {
+        "name": "test_platform_cpu_offers.CpuOfferCryptoTests.test_withdrawn_offer_does_not_fall_back_to_base_rate",
+        "method": "test_withdrawn_offer_does_not_fall_back_to_base_rate",
+        "status": "skipped 'Requires eth-account reviewed crypto adapter'"
+      },
+      {
+        "name": "test_platform_profiles.CpuProfileFinancialTests.test_actual_domain_two_signatures_and_receipt_version_acceptance_never_downgrade",
+        "method": "test_actual_domain_two_signatures_and_receipt_version_acceptance_never_downgrade",
+        "status": "skipped 'Optional actual Ethereum crypto adapter required'"
+      },
+      {
+        "name": "test_platform_profiles.CpuProfileFinancialTests.test_actual_signed_cpu_receipt_version_matches_public_marker_in_both_directions",
+        "method": "test_actual_signed_cpu_receipt_version_matches_public_marker_in_both_directions",
+        "status": "skipped 'Optional actual Ethereum crypto adapter required'"
+      },
+      {
+        "name": "test_platform_profiles.CpuProfileFinancialTests.test_actual_signed_session_quotes_bind_selected_price_profile_and_cpu_workload_for_both_clients",
+        "method": "test_actual_signed_session_quotes_bind_selected_price_profile_and_cpu_workload_for_both_clients",
+        "status": "skipped 'Optional actual Ethereum crypto adapter required'"
+      },
+      {
+        "name": "test_sdk.CryptographicClientTests.test_admission_requires_original_checked_quote_and_original_transaction",
+        "method": "test_admission_requires_original_checked_quote_and_original_transaction",
+        "status": "skipped 'Install the explicit crypto extra to verify real cross-language signatures'"
+      },
+      {
+        "name": "test_sdk.CryptographicClientTests.test_all_wallet_intents_match_existing_solidity_abi",
+        "method": "test_all_wallet_intents_match_existing_solidity_abi",
+        "status": "skipped 'Install the explicit crypto extra to verify real cross-language signatures'"
+      },
+      {
+        "name": "test_sdk.CryptographicClientTests.test_bad_signature_and_changed_quote_terms_fail_closed",
+        "method": "test_bad_signature_and_changed_quote_terms_fail_closed",
+        "status": "skipped 'Install the explicit crypto extra to verify real cross-language signatures'"
+      },
+      {
+        "name": "test_sdk.CryptographicClientTests.test_concurrent_quote_calls_have_one_post_and_immutable_quote_copy",
+        "method": "test_concurrent_quote_calls_have_one_post_and_immutable_quote_copy",
+        "status": "skipped 'Install the explicit crypto extra to verify real cross-language signatures'"
+      },
+      {
+        "name": "test_sdk.CryptographicClientTests.test_cross_language_quote_signature_workload_hash_and_exact_abi",
+        "method": "test_cross_language_quote_signature_workload_hash_and_exact_abi",
+        "status": "skipped 'Install the explicit crypto extra to verify real cross-language signatures'"
+      },
+      {
+        "name": "test_sdk.CryptographicClientTests.test_idempotency_key_cannot_change_input_even_after_failed_post",
+        "method": "test_idempotency_key_cannot_change_input_even_after_failed_post",
+        "status": "skipped 'Install the explicit crypto extra to verify real cross-language signatures'"
+      },
+      {
+        "name": "test_sdk.CryptographicClientTests.test_local_receipt_signature_billing_and_server_anchor_are_separate",
+        "method": "test_local_receipt_signature_billing_and_server_anchor_are_separate",
+        "status": "skipped 'Install the explicit crypto extra to verify real cross-language signatures'"
+      },
+      {
+        "name": "test_sdk.CryptographicClientTests.test_owner_authentication_verifies_exact_challenge_before_signer",
+        "method": "test_owner_authentication_verifies_exact_challenge_before_signer",
+        "status": "skipped 'Install the explicit crypto extra to verify real cross-language signatures'"
+      },
+      {
+        "name": "test_sdk.CryptographicClientTests.test_rejects_calldata_target_value_and_extra_fields",
+        "method": "test_rejects_calldata_target_value_and_extra_fields",
+        "status": "skipped 'Install the explicit crypto extra to verify real cross-language signatures'"
+      },
+      {
+        "name": "test_sdk.CryptographicClientTests.test_rejects_expired_quote_and_reused_cached_expiry",
+        "method": "test_rejects_expired_quote_and_reused_cached_expiry",
+        "status": "skipped 'Install the explicit crypto extra to verify real cross-language signatures'"
+      },
+      {
+        "name": "test_sdk.CryptographicClientTests.test_reviewed_pins_and_budget_bounds",
+        "method": "test_reviewed_pins_and_budget_bounds",
+        "status": "skipped 'Install the explicit crypto extra to verify real cross-language signatures'"
+      },
+      {
+        "name": "test_sdk.CryptographicClientTests.test_unknown_task_utf8_bound_and_boolean_numbers_never_dispatch",
+        "method": "test_unknown_task_utf8_bound_and_boolean_numbers_never_dispatch",
+        "status": "skipped 'Install the explicit crypto extra to verify real cross-language signatures'"
+      },
+      {
+        "name": "test_sdk.CryptographicClientTests.test_update_preserves_agent_and_refuses_replacement",
+        "method": "test_update_preserves_agent_and_refuses_replacement",
+        "status": "skipped 'Install the explicit crypto extra to verify real cross-language signatures'"
+      },
+      {
+        "name": "test_vault_income.VaultIncomeTests.test_base_usdc_eip3009_domains_and_old_signed_journal_cannot_be_rewritten",
+        "method": "test_base_usdc_eip3009_domains_and_old_signed_journal_cannot_be_rewritten",
+        "status": "skipped 'Install the explicitly pinned optional Ethereum verifier'"
+      },
+      {
+        "name": "test_vault_income.VaultIncomeTests.test_caller_disk_journal_reopen_keeps_exact_signed_authorization",
+        "method": "test_caller_disk_journal_reopen_keeps_exact_signed_authorization",
+        "status": "skipped 'Install the explicitly pinned optional Ethereum verifier'"
+      },
+      {
+        "name": "test_vault_income.VaultIncomeTests.test_candidate_saved_before_rpc_failure_and_previous_success_withdrawn",
+        "method": "test_candidate_saved_before_rpc_failure_and_previous_success_withdrawn",
+        "status": "skipped 'Install the explicitly pinned optional Ethereum verifier'"
+      },
+      {
+        "name": "test_vault_income.VaultIncomeTests.test_changed_reader_profile_withdraws_prior_success",
+        "method": "test_changed_reader_profile_withdraws_prior_success",
+        "status": "skipped 'Install the explicitly pinned optional Ethereum verifier'"
+      },
+      {
+        "name": "test_vault_income.VaultIncomeTests.test_concurrent_same_instance_rejects_without_unbounded_queue",
+        "method": "test_concurrent_same_instance_rejects_without_unbounded_queue",
+        "status": "skipped 'Install the explicitly pinned optional Ethereum verifier'"
+      },
+      {
+        "name": "test_vault_income.VaultIncomeTests.test_corrupted_signed_journal_duplicate_attempts_and_capacity_fail_closed",
+        "method": "test_corrupted_signed_journal_duplicate_attempts_and_capacity_fail_closed",
+        "status": "skipped 'Install the explicitly pinned optional Ethereum verifier'"
+      },
+      {
+        "name": "test_vault_income.VaultIncomeTests.test_durable_save_failure_cannot_expose_plan_or_success",
+        "method": "test_durable_save_failure_cannot_expose_plan_or_success",
+        "status": "skipped 'Install the explicitly pinned optional Ethereum verifier'"
+      },
+      {
+        "name": "test_vault_income.VaultIncomeTests.test_external_signature_exact_header_and_local_reference",
+        "method": "test_external_signature_exact_header_and_local_reference",
+        "status": "skipped 'Install the explicitly pinned optional Ethereum verifier'"
+      },
+      {
+        "name": "test_vault_income.VaultIncomeTests.test_http_success_remains_pending_until_fresh_independent_income_and_subsidy",
+        "method": "test_http_success_remains_pending_until_fresh_independent_income_and_subsidy",
+        "status": "skipped 'Install the explicitly pinned optional Ethereum verifier'"
+      },
+      {
+        "name": "test_vault_income.VaultIncomeTests.test_immutable_candidate_rejects_changed_http_hash_after_reorg",
+        "method": "test_immutable_candidate_rejects_changed_http_hash_after_reorg",
+        "status": "skipped 'Install the explicitly pinned optional Ethereum verifier'"
+      },
+      {
+        "name": "test_vault_income.VaultIncomeTests.test_lost_response_preserves_bearer_and_blocks_replacement_until_exact_retry",
+        "method": "test_lost_response_preserves_bearer_and_blocks_replacement_until_exact_retry",
+        "status": "skipped 'Install the explicitly pinned optional Ethereum verifier'"
+      },
+      {
+        "name": "test_vault_income.VaultIncomeTests.test_mainnet_private_profile_fields_and_unreviewed_usdg_facet_fail_closed",
+        "method": "test_mainnet_private_profile_fields_and_unreviewed_usdg_facet_fail_closed",
+        "status": "skipped 'Install the explicitly pinned optional Ethereum verifier'"
+      },
+      {
+        "name": "test_vault_income.VaultIncomeTests.test_nonboolean_signature_verdict_fails_closed_before_authorization",
+        "method": "test_nonboolean_signature_verdict_fails_closed_before_authorization",
+        "status": "skipped 'Install the explicitly pinned optional Ethereum verifier'"
+      },
+      {
+        "name": "test_vault_income.VaultIncomeTests.test_payer_guard_retains_reverted_bearer_until_confirmed_expiry",
+        "method": "test_payer_guard_retains_reverted_bearer_until_confirmed_expiry",
+        "status": "skipped 'Install the explicitly pinned optional Ethereum verifier'"
+      },
+      {
+        "name": "test_vault_income.VaultIncomeTests.test_prepare_is_durable_original_and_never_refreshes_across_reopen",
+        "method": "test_prepare_is_durable_original_and_never_refreshes_across_reopen",
+        "status": "skipped 'Install the explicitly pinned optional Ethereum verifier'"
+      },
+      {
+        "name": "test_vault_income.VaultIncomeTests.test_profile_pins_reader_and_clock_are_mandatory",
+        "method": "test_profile_pins_reader_and_clock_are_mandatory",
+        "status": "skipped 'Install the explicitly pinned optional Ethereum verifier'"
+      },
+      {
+        "name": "test_vault_income.VaultIncomeTests.test_reorg_multiple_exact_retries_do_not_deadlock",
+        "method": "test_reorg_multiple_exact_retries_do_not_deadlock",
+        "status": "skipped 'Install the explicitly pinned optional Ethereum verifier'"
+      },
+      {
+        "name": "test_vault_income.VaultIncomeTests.test_untrusted_offer_cannot_substitute_payment_terms",
+        "method": "test_untrusted_offer_cannot_substitute_payment_terms",
+        "status": "skipped 'Install the explicitly pinned optional Ethereum verifier'"
+      },
+      {
+        "name": "test_vault_income.VaultIncomeTests.test_wrong_original_payer_ref_or_fee_never_returns_settled",
+        "method": "test_wrong_original_payer_ref_or_fee_never_returns_settled",
+        "status": "skipped 'Install the explicitly pinned optional Ethereum verifier'"
+      },
+      {
+        "name": "test_vault_income.VaultIncomeTests.test_wrong_signer_tampered_journal_and_evidence_are_rejected",
+        "method": "test_wrong_signer_tampered_journal_and_evidence_are_rejected",
+        "status": "skipped 'Install the explicitly pinned optional Ethereum verifier'"
+      },
+      {
+        "name": "test_vault_income_acceptance.NativeVaultAcceptance.test_real_native_income_subsidy_lost_ack_restart_and_reorg",
+        "method": "test_real_native_income_subsidy_lost_ack_restart_and_reorg",
+        "status": "skipped 'Explicitly enable disposable Anvil acceptance with the pinned crypto environment'"
+      },
+      {
+        "name": "test_vault_income_journal.WindowsAclTests.test_broad_directory_acl_is_rejected_without_repair",
+        "method": "test_broad_directory_acl_is_rejected_without_repair",
+        "status": "skipped 'Actual Windows ACL API'"
+      },
+      {
+        "name": "test_vault_income_journal.WindowsAclTests.test_broad_state_acl_is_rejected_without_repair",
+        "method": "test_broad_state_acl_is_rejected_without_repair",
+        "status": "skipped 'Actual Windows ACL API'"
+      },
+      {
+        "name": "test_vault_income_journal.WindowsAclTests.test_created_files_have_actual_private_windows_acls",
+        "method": "test_created_files_have_actual_private_windows_acls",
+        "status": "skipped 'Actual Windows ACL API'"
+      },
+      {
+        "name": "test_vault_income_journal.WindowsAclTests.test_junction_ancestor_and_leaf_are_rejected",
+        "method": "test_junction_ancestor_and_leaf_are_rejected",
+        "status": "skipped 'Actual Windows ACL API'"
+      },
+      {
+        "name": "test_vault_income_journal.WindowsAclTests.test_open_directory_handle_prevents_rename",
+        "method": "test_open_directory_handle_prevents_rename",
+        "status": "skipped 'Actual Windows ACL API'"
+      },
+      {
+        "name": "test_vault_income_rpc.CircleProxyBoundaries.test_base_proxy_slot_metadata_domain_and_historical_code_are_pinned",
+        "method": "test_base_proxy_slot_metadata_domain_and_historical_code_are_pinned",
+        "status": "skipped 'Install the explicitly pinned optional Ethereum verifier'"
+      },
+      {
+        "name": "test_vault_income_rpc.NativeRpcAcceptance.test_actual_rpc_failure_clears_client_terminal_observation_and_redacts_provider",
+        "method": "test_actual_rpc_failure_clears_client_terminal_observation_and_redacts_provider",
+        "status": "skipped 'Explicitly enable disposable Anvil acceptance with the pinned crypto environment'"
+      },
+      {
+        "name": "test_vault_income_rpc.NativeRpcAcceptance.test_contradictory_markers_events_transfers_and_payer_never_return_success",
+        "method": "test_contradictory_markers_events_transfers_and_payer_never_return_success",
+        "status": "skipped 'Explicitly enable disposable Anvil acceptance with the pinned crypto environment'"
+      },
+      {
+        "name": "test_vault_income_rpc.NativeRpcAcceptance.test_direct_python_reader_rechecks_exact_historical_receipt_and_all_hash_state_calls",
+        "method": "test_direct_python_reader_rechecks_exact_historical_receipt_and_all_hash_state_calls",
+        "status": "skipped 'Explicitly enable disposable Anvil acceptance with the pinned crypto environment'"
+      },
+      {
+        "name": "test_vault_income_rpc.NativeRpcAcceptance.test_historical_asset_registry_implementation_and_clone_code_cannot_be_substituted",
+        "method": "test_historical_asset_registry_implementation_and_clone_code_cannot_be_substituted",
+        "status": "skipped 'Explicitly enable disposable Anvil acceptance with the pinned crypto environment'"
+      },
+      {
+        "name": "test_vault_income_rpc.NativeRpcAcceptance.test_lost_confirmation_depth_and_final_canonicality_withdraw_success",
+        "method": "test_lost_confirmation_depth_and_final_canonicality_withdraw_success",
+        "status": "skipped 'Explicitly enable disposable Anvil acceptance with the pinned crypto environment'"
+      },
+      {
+        "name": "test_vault_income_rpc.NativeRpcAcceptance.test_missing_candidate_with_consumed_authorization_requires_reconciliation",
+        "method": "test_missing_candidate_with_consumed_authorization_requires_reconciliation",
+        "status": "skipped 'Explicitly enable disposable Anvil acceptance with the pinned crypto environment'"
+      },
+      {
+        "name": "test_vault_income_rpc.NativeRpcAcceptance.test_nonzero_related_mapping_cannot_return_unknown_or_wrong_agent_tuple",
+        "method": "test_nonzero_related_mapping_cannot_return_unknown_or_wrong_agent_tuple",
+        "status": "skipped 'Explicitly enable disposable Anvil acceptance with the pinned crypto environment'"
+      },
+      {
+        "name": "test_vault_income_rpc.NativeRpcAcceptance.test_original_payer_related_vault_or_wallet_cannot_be_credited_as_income",
+        "method": "test_original_payer_related_vault_or_wallet_cannot_be_credited_as_income",
+        "status": "skipped 'Explicitly enable disposable Anvil acceptance with the pinned crypto environment'"
+      },
+      {
+        "name": "test_vault_income_rpc.NativeRpcAcceptance.test_raw_transaction_hash_and_recovered_facilitator_are_independent",
+        "method": "test_raw_transaction_hash_and_recovered_facilitator_are_independent",
+        "status": "skipped 'Explicitly enable disposable Anvil acceptance with the pinned crypto environment'"
+      },
+      {
+        "name": "test_vault_income_rpc.NativeRpcAcceptance.test_signed_type2_reconstruction_detects_every_altered_signed_field",
+        "method": "test_signed_type2_reconstruction_detects_every_altered_signed_field",
+        "status": "skipped 'Explicitly enable disposable Anvil acceptance with the pinned crypto environment'"
+      },
+      {
+        "name": "test_vault_income_rpc.NativeRpcAcceptance.test_type2_fallback_requires_explicit_method_code_and_complete_signed_fields",
+        "method": "test_type2_fallback_requires_explicit_method_code_and_complete_signed_fields",
+        "status": "skipped 'Explicitly enable disposable Anvil acceptance with the pinned crypto environment'"
+      },
+      {
+        "name": "test_vault_income_rpc.NativeRpcAcceptance.test_wrong_chain_token_domain_decimals_and_current_deployment_pins_fail_closed",
+        "method": "test_wrong_chain_token_domain_decimals_and_current_deployment_pins_fail_closed",
+        "status": "skipped 'Explicitly enable disposable Anvil acceptance with the pinned crypto environment'"
+      },
+      {
+        "name": "test_vault_income_rpc.NativeRpcAcceptance.test_wrong_payer_signature_or_request_binding_is_rejected_before_rpc",
+        "method": "test_wrong_payer_signature_or_request_binding_is_rejected_before_rpc",
+        "status": "skipped 'Explicitly enable disposable Anvil acceptance with the pinned crypto environment'"
+      },
+      {
+        "name": "test_vault_income_rpc.NativeRpcAcceptance.test_z_same_block_later_family_registration_preserves_original_income",
+        "method": "test_z_same_block_later_family_registration_preserves_original_income",
+        "status": "skipped 'Explicitly enable disposable Anvil acceptance with the pinned crypto environment'"
+      },
+      {
+        "name": "test_vault_income_rpc.StaticRpcBoundaries.test_facet_receipt_parent_routes_and_upgrade_logs_cannot_be_ignored",
+        "method": "test_facet_receipt_parent_routes_and_upgrade_logs_cannot_be_ignored",
+        "status": "skipped 'Install the explicitly pinned optional Ethereum verifier'"
+      },
+      {
+        "name": "test_vault_income_rpc.StaticRpcBoundaries.test_genuine_legacy_type1_type2_recovery_and_minimal_signature_scalar_reconstruction",
+        "method": "test_genuine_legacy_type1_type2_recovery_and_minimal_signature_scalar_reconstruction",
+        "status": "skipped 'Install the explicitly pinned optional Ethereum verifier'"
+      },
+      {
+        "name": "test_vault_income_rpc.StaticRpcBoundaries.test_proxy_slot_implementation_code_facet_code_and_three_routes_are_pinned",
+        "method": "test_proxy_slot_implementation_code_facet_code_and_three_routes_are_pinned",
+        "status": "skipped 'Install the explicitly pinned optional Ethereum verifier'"
+      }
+    ],
+    "failures": [
+      {
+        "name": "test_vault_income_journal.FileVaultIncomeJournalTests.test_posix_replaced_owner_is_detected",
+        "method": "test_posix_replaced_owner_is_detected",
+        "status": "ERROR"
+      }
+    ],
+    "accepted": false
+  },
+  "sourceAfter": {
+    "unchanged": true,
+    "verified": 703,
+    "changed": []
+  },
+  "servicesAfter": {
+    "telomere-staging.service": "MainPID=1952406\nNRestarts=0\nWorkingDirectory=/opt/telomere-pilot/releases/354fe7af62ea6701faafc3b04522abb1b4524d2d-launch04\nActiveState=active\nSubState=running",
+    "telomere-staging-chain.service": "MainPID=1952401\nNRestarts=0\nWorkingDirectory=/opt/telomere-pilot/app\nActiveState=active\nSubState=running",
+    "telomere-staging-watchdog.service": "MainPID=1952410\nNRestarts=0\nWorkingDirectory=/opt/telomere-pilot/watchdog-app\nActiveState=active\nSubState=running"
+  },
+  "profileAfterSha256": "a400feb3475b91168a5419d0a98c00ea804ba817c1c0ad34dea65d7d8808df8f",
+  "healthAfter": {
+    "live": {
+      "statusCode": 200,
+      "body": {
+        "status": "ok"
+      }
+    },
+    "ready": {
+      "statusCode": 200,
+      "body": {
+        "status": "ready",
+        "worker": "idle"
+      }
+    }
+  },
+  "ownedAnvilProcessesRemaining": [],
+  "success": false,
+  "finishedAt": "2026-10-15T13:38:03.525885+00:00"
+}

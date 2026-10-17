@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-15T18:28:18.498820+00:00",
+  "installedMobyVersionReportedByRoot": "29.8.1",
+  "installedMobyCommitReportedByRoot": "464cd50",
+  "sourceObservations": [
+    {
+      "url": "https://raw.githubusercontent.com/moby/moby/464cd50/daemon/info.go",
+      "bytes": 15416,
+      "sha256": "dc5c48932854189ccb1094c3d52470290a27ad91b13b40f8aa32b588bf5e052a",
+      "relevantLines": [
+        264,
+        265,
+        266,
+        267,
+        268,
+        269,
+        270
+      ],
+      "finding": "Info response uses cfg.ContainerdPluginNamespace, not a hardcoded plugin namespace."
+    },
+    {
+      "url": "https://raw.githubusercontent.com/moby/moby/464cd50/daemon/daemon.go",
+      "bytes": 69670,
+      "sha256": "d565103612ada3fe0c2d8ed8cd7cfa8acf06a5ed2a75feedfb67f03f43b82c1d",
+      "relevantLines": [
+        1062,
+        1063,
+        1064,
+        1083
+      ],
+      "finding": "Plugin containerd client and executor use cfgStore.ContainerdPluginNamespace."
+    },
+    {
+      "url": "https://raw.githubusercontent.com/moby/moby/464cd50/daemon/config/config.go",
+      "bytes": 35069,
+      "sha256": "bbbc7a045ccad96f67376ed0a2f00034e52c8f186804b09172fc0605a251f51d",
+      "relevantLines": [
+        60,
+        302,
+        303,
+        382,
+        383
+      ],
+      "correctJsonKey": "containerd-plugin-namespace",
+      "default": "plugins.moby"
+    }
+  ],
+  "runtimeObservation": {
+    "path": ".local/mainnet-prepare-20261015/linux-tests-docker-isolation.json",
+    "sha256": "c3263c4100b577c30ddda47b6c63d71dce864e25ff4dc79e964e50f926783e92"
+  },
+  "finding": "The inspected daemon JSON used containerd-plugins-namespace (plural). The actual API reported plugins.moby. Correct singular config field and validate/recheck after separately authorized restart.",
+  "configurationOrServicesChangedByReviewer": false
+}

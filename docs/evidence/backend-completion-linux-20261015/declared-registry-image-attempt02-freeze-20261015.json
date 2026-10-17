@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "status": "source_frozen_independently_reviewed_not_executed",
+  "reviewer": "/root/final_readiness_review",
+  "reviewClosedAtExactHelperSha256": "5c157b9c75048846d19081743f420102afecad53e79b8661d91d6a8f2de840d5",
+  "candidateArguments": [
+    "SOURCE",
+    "CONTEXT",
+    "REVISION",
+    "ARCHIVE_SHA256",
+    "RESTORE_CJS_SHA256",
+    "CAPTURE_CJS_SHA256"
+  ],
+  "rootRuntimeSource": {
+    "revision": "d4481aec92179df44a533699897db2f523fbd0a2",
+    "archiveSha256": "090932a350a522ddfe2c056775edf194176060c3cca79a06d286e5d3f1989bd6",
+    "files": 708,
+    "manifestPolicy": "filtered_runtime_source_not_all_tracked_evidence"
+  },
+  "offlineActualFunctionControls": 42,
+  "operatorExecutionByAuthor": false,
+  "oldBuilderBytesUnchanged": true,
+  "artifacts": [
+    {
+      "path": ".local/build-declared-state-cell-image-attempt02-20261015.py",
+      "bytes": 38686,
+      "sha256": "5c157b9c75048846d19081743f420102afecad53e79b8661d91d6a8f2de840d5"
+    },
+    {
+      "path": ".local/build-declared-state-cell-image-20261015.py",
+      "bytes": 25546,
+      "sha256": "b3a560ce165f6b1078389d7c6b210336c3d398bba773509c8759f902419a322c"
+    },
+    {
+      "path": ".local/test-registry-binary-attempt02-controls-20261015.py",
+      "bytes": 8808,
+      "sha256": "21771966929b40371a9b7c00ad1a05d2e379a2300b11eda5fc6716ae680ed322"
+    },
+    {
+      "path": ".local/test-registry-binary-attempt02-controls-20261015.json",
+      "bytes": 4325,
+      "sha256": "0d420a77747b9b3ec3260fc07730e624cf2f2b145afdf9db4fe247eb6e2e4bbf"
+    },
+    {
+      "path": ".local/probe-declared-registry-image-files-readonly-20261015.py",
+      "bytes": 2214,
+      "sha256": "314dbadeffe627fa712043c2ef719bcc5b638aa80e47e4e38d9da40a469aca38"
+    },
+    {
+      "path": ".local/probe-declared-registry-image-files-readonly-20261015.json",
+      "bytes": 850,
+      "sha256": "240971e91ad291df1cd17ecdf788fb293ec48ecc28fb89365d824ba381e45895"
+    }
+  ]
+}

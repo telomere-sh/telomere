@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "checkedAtUtc": "2026-10-13T05:12:32.350322+00:00",
+  "scope": "isolated exact committed source on private Linux VPS; disposable Anvil/process fixtures",
+  "commit": "f649e8bdafdd2bfaa10245f16bca090c54d7ad64",
+  "sourceArchiveSha256": "774c3e8104fbda6927a3307fc678efdef35eebb8a3b88f4b53fb7a1f05d9bf40",
+  "trackedFilesByteMatchedAfterBuildAndTests": 621,
+  "trackedFilesMismatched": [],
+  "normalBuild": "passed",
+  "tests": {
+    "files": 10,
+    "passed": 103,
+    "failed": 0,
+    "skipped": 0,
+    "durationSeconds": 313.7926022949219,
+    "suites": [
+      "tests/paid-agent-lifecycle.test.ts", "tests/platform-runtime.test.ts", "tests/platform-main.test.ts",
+      "tests/controller-platform.test.ts", "tests/registered-agent-checkpoint-cadence.test.ts", "tests/interruptible-lane.test.ts",
+      "tests/selection-dataset.test.ts", "tests/selection-reputation.test.ts", "tests/sdk-client.test.ts", "tests/platform-configured.test.ts"
+    ]
+  },
+  "preexistingServicesActiveBefore": 6,
+  "preexistingServicesActiveAfter": 6,
+  "watchdogStateKeys": [
+    "active",
+    "checkedAt",
+    "schemaVersion",
+    "sequence"
+  ],
+  "publicProviderOrChainTestCalls": 0,
+  "liveServiceMutationDuringAcceptance": false,
+  "temporaryBuildDirectoryRemoved": true,
+  "subsequentReadOnlyWatchdogCheck": { "sequence": 330, "activeAlertCount": 0 },
+  "subsequentMaintenanceDelta": {
+    "commit": "f72d387",
+    "windowsControllerTestsPassed": 7,
+    "typecheck": "passed",
+    "linuxIncludedInOriginalSnapshot": false
+  },
+  "limitations": "Focused regression, not a full repository run. Disposable local Anvil/process/HTTP fixtures; no new gVisor, GPU, supplier, TEE, independent S3 or funded Robinhood acceptance. Python concrete RPC/journal work in progress was excluded from this archive."
+}

@@ -1,0 +1,67 @@
+{
+  "checkedAt": "2026-10-15T00:55:08.363571+00:00",
+  "services": {
+    "telomere-staging": {
+      "exitCode": 0,
+      "stdout": "Result=success\nNRestarts=0\nActiveState=active\nSubState=running",
+      "stderr": ""
+    },
+    "telomere-staging-chain": {
+      "exitCode": 0,
+      "stdout": "Result=success\nNRestarts=0\nActiveState=active\nSubState=running",
+      "stderr": ""
+    },
+    "telomere-staging-watchdog": {
+      "exitCode": 0,
+      "stdout": "Result=success\nNRestarts=0\nActiveState=active\nSubState=running",
+      "stderr": ""
+    },
+    "enclave-api": {
+      "exitCode": 0,
+      "stdout": "Result=exit-code\nNRestarts=4473\nActiveState=activating\nSubState=auto-restart",
+      "stderr": ""
+    },
+    "telomere-accept-20261014.service": {
+      "exitCode": 0,
+      "stdout": "Result=success\nNRestarts=0\nActiveState=active\nSubState=running",
+      "stderr": ""
+    }
+  },
+  "node": {
+    "exitCode": 0,
+    "stdout": "v22.23.3",
+    "stderr": ""
+  },
+  "runsc": {
+    "exitCode": 0,
+    "stdout": "\"/opt/telomere-host-runtime/gvisor/runsc\"",
+    "stderr": ""
+  },
+  "image": {
+    "exitCode": 0,
+    "stdout": "\"sha256:680cc0ec7dfa626d4105c3c26834289687e0abed785240e5bb814bac7cd55355\" [\"127.0.0.1:15002/telomere-cpu@sha256:6839949540d11906cbdbc614867ac3a825fa0e6f8cbed90c79773979517b4bbe\"]",
+    "stderr": ""
+  },
+  "dedicatedContainers": {
+    "exitCode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "namespaces": {
+    "exitCode": 0,
+    "stdout": "tlmr-accept-20261014",
+    "stderr": ""
+  },
+  "health": {
+    "/health/live": {
+      "exitCode": 0,
+      "stdout": "200",
+      "stderr": ""
+    },
+    "/health/ready": {
+      "exitCode": 0,
+      "stdout": "200",
+      "stderr": ""
+    }
+  }
+}

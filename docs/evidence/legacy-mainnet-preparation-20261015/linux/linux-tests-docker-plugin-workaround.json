@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-15T18:35:03.545499+00:00",
+  "scope": "Installed-binary read-only config validation and independent local pure guard fixtures; supersedes singular-JSON recommendation in earlier source-only note",
+  "installedVersion": "29.8.1",
+  "upstreamCommit": "464cd50",
+  "sourceUrls": [
+    "https://github.com/moby/moby/blob/464cd50/daemon/config/config.go#L300-L304",
+    "https://github.com/moby/moby/blob/464cd50/daemon/config/config.go#L522-L565",
+    "https://github.com/moby/moby/blob/464cd50/daemon/config/config.go#L590-L613",
+    "https://github.com/moby/moby/blob/464cd50/daemon/info.go#L264-L270"
+  ],
+  "finding": "JSON conflict validation recognizes plural CLI flag but JSON unmarshal expects singular struct tag; singular rejected, plural accepted then ignored. Omit both JSON keys and use explicit plural CLI flag. API info is actual configuration, not hardcoded.",
+  "installedReadOnlyValidation": [
+    {
+      "command": [
+        "/usr/bin/dockerd",
+        "--validate",
+        "--config-file=/dev/stdin",
+        "--containerd-plugins-namespace=telomere-mainnet-plugins"
+      ],
+      "jsonPluginKey": null,
+      "exitCode": 0,
+      "stderr": "configuration OK\n"
+    },
+    {
+      "command": [
+        "/usr/bin/dockerd",
+        "--validate",
+        "--config-file=/dev/stdin"
+      ],
+      "jsonPluginKey": "containerd-plugin-namespace",
+      "exitCode": 1,
+      "stderr": "unable to configure the Docker daemon with file /dev/stdin: the following directives don't match any configuration option: containerd-plugin-namespace\n"
+    },
+    {
+      "command": [
+        "/usr/bin/dockerd",
+        "--validate",
+        "--config-file=/dev/stdin"
+      ],
+      "jsonPluginKey": "containerd-plugins-namespace",
+      "exitCode": 0,
+      "stderr": "configuration OK\n"
+    }
+  ],
+  "files": [
+    {
+      "path": "C:\\Users\\Administrator\\Documents\\GitHub\\tt\\Telomere\\.local\\mainnet-prepare-20261015\\infra-audit\\preflight.mjs",
+      "sha256": "347c99c62d57980cdb1fcde364a6e8232b3d542419aa6bed21e49ca6aa84e52e",
+      "bytes": 19505
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Documents\\GitHub\\tt\\Telomere\\.local\\mainnet-prepare-20261015\\infra-audit\\prepare-network.py",
+      "sha256": "ab9832d987bf3d1c0086b356e10e7f07dbc281d6628d725df8cff906496c7eef",
+      "bytes": 7063
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Documents\\GitHub\\tt\\Telomere\\.local\\mainnet-prepare-20261015\\infra-audit\\docker-daemon.json.draft",
+      "sha256": "8c016088338d6bd889b079a47bbfa0d5dc61f59679b1110e8557ea09fcbf5173",
+      "bytes": 686
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Documents\\GitHub\\tt\\Telomere\\.local\\mainnet-prepare-20261015\\infra-audit\\telomere-mainnet-network.service.draft",
+      "sha256": "1a9e5740510b96711c41cac20d636e8046f21a2267a6f794236604692b843d0e",
+      "bytes": 497
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Documents\\GitHub\\tt\\Telomere\\.local\\mainnet-prepare-20261015\\infra-audit\\telomere-mainnet-docker.service.draft",
+      "sha256": "286f0c8ef13d25f55a0e0f1d2e29551bd147f044bc4f38bf3d7aad915e160bea",
+      "bytes": 918
+    }
+  ],
+  "independentLocalFixtures": [
+    {
+      "command": "node --import tsx --test .local/mainnet-prepare-20261015/infra-audit/preflight-fixture.test.mjs",
+      "exitCode": 0,
+      "tests": 59,
+      "passed": 59,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "command": "python -B .local/mainnet-prepare-20261015/infra-audit/network-fixture.test.py",
+      "exitCode": 0,
+      "tests": 8,
+      "passed": 8,
+      "failed": 0
+    }
+  ],
+  "runtimeVerification": {
+    "path": ".local/final-runtime-audit.json",
+    "sha256": "964e898167c110431808e0455c601d5dc3a93297846c8e758dff690399b15c70",
+    "pluginNamespace": "telomere-mainnet-plugins",
+    "containerNamespace": "telomere-mainnet-cpu",
+    "mainnetControllerActive": false
+  },
+  "remoteMutationsByAuditor": 0,
+  "walletRequests": 0,
+  "publicTransactionsSent": 0,
+  "keysOrApplicationEnvironmentsRead": false
+}

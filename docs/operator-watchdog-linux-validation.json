@@ -1,0 +1,29 @@
+{
+  "commit": "0c37d2e",
+  "archiveSha256": "9edfe216142936f8e98234496d21b1d73059830906043d6fdbe0b33d05e700d2",
+  "mode": "demo",
+  "chainId": 31337,
+  "publicChainOrProviderCalls": false,
+  "serviceMutations": false,
+  "healthBefore": { "status": "ready", "worker": "idle" },
+  "sourceFiles": 576,
+  "buildExitCode": 0,
+  "cycles": [
+    { "exitCode": 0, "health": "ok", "sequence": 1, "transitions": [] },
+    { "exitCode": 1, "health": "critical", "sequence": 2,
+      "transitions": [{ "code": "deployment_pin_mismatch", "change": "raised", "severity": "critical" }] },
+    { "exitCode": 0, "health": "ok", "sequence": 3,
+      "transitions": [{ "code": "deployment_pin_mismatch", "change": "resolved", "severity": "critical" }] }
+  ],
+  "sourceMatchesAfter": 576,
+  "healthAfter": { "status": "ready", "worker": "idle" },
+  "servicesBeforeAndAfter": {
+    "telomere-staging.service": "active",
+    "telomere-staging-chain.service": "active",
+    "enclave-api.service": "active",
+    "enclave-worker.service": "active",
+    "enclave-web.service": "active"
+  },
+  "temporaryDirectoryRemoved": true,
+  "success": true
+}

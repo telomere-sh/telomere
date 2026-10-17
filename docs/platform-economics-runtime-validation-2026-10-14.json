@@ -1,0 +1,62 @@
+{
+  "date": "2026-10-14",
+  "scope": "economics-v2 financial domain with CPU receipt v1, disposable chain31337, MockToken, real mounted HTTP and HostKit child processes",
+  "command": "npx vitest run tests/platform-economics-runtime.test.ts --reporter=verbose",
+  "filesPassed": 1,
+  "testsPassed": 1,
+  "durationSeconds": 40.82,
+  "actualHostCpuStarts": [
+    1,
+    1
+  ],
+  "positiveChargeAndCanonicalSettlementVerified": [
+    "EOA",
+    "canonical AgentVault"
+  ],
+  "eip712Domain": "2",
+  "hostPlacement": {
+    "highStake": "1000 TLMR active stake, canonical onchain snapshot",
+    "withinPriceBand": {
+      "highStakeRate": "104",
+      "otherRate": "100",
+      "selected": "highStake"
+    },
+    "outsidePriceBand": {
+      "highStakeRate": "106",
+      "otherRate": "100",
+      "selected": "other"
+    }
+  },
+  "lockedFeeDiscountBps": {
+    "EOA": 100,
+    "canonicalAgentVault": 100
+  },
+  "discountAfterOwnerTransfersLiquidHoldingsAndQueuesUnstake": 0,
+  "conservativeCeilings": {
+    "EOA": "6802",
+    "canonicalAgentVault": "6540"
+  },
+  "vaultHoldsNoUtilityTokens": true,
+  "trustedFactoryAndImplementationCodePinsVerified": true,
+  "omittedRegistryPinRejected": true,
+  "wrongRegistryCodeHashRejected": true,
+  "wrongRegistryAddressWithMatchingActualCodeHashRejected": true,
+  "sourceSha256": {
+    "tests/platform-economics-runtime.test.ts": "761b1a09422b9ab864198d3aa4e631605084a4ae0d8e4cbc111a881f264e82f5",
+    "tests/fixtures/platform-economics-runtime.ts": "35b383a26275a8788cd00686185f856ab312601265bc2f9a38be414c5cc316c4"
+  },
+  "paidPublicRequests": 0,
+  "publicTransactions": 0,
+  "notEstablished": [
+    "CPU receipt v2 AgentVault issuer acceptance",
+    "public Base deployment or funded acceptance",
+    "independent security audit",
+    "TEE isolation"
+  ],
+  "finalCombinedSourceValidation": {
+    "report": "docs/final-framework-economics-validation-2026-10-14.json",
+    "filesPassed": 3,
+    "testsPassed": 4,
+    "successful": true
+  }
+}

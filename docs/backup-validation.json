@@ -1,0 +1,11 @@
+{
+  "status": "verified_backup",
+  "createdAt": "2026-10-08T16:49:58.19Z",
+  "chainId": 31337,
+  "escrow": "0xCC29B19b5EcAc380688d02bd14c131e13a2a74dc",
+  "token": "0xb280248C1299144a3Ab708ea23B133ea188B3F8d",
+  "signer": "0x7D1686Bc8b611Adc1426FD2a3f0ca03a3A063cc5",
+  "checksumVerifiedFiles": 3,
+  "archiveStructure": "checksum_and_header_checked",
+  "restored": false
+}

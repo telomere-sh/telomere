@@ -1,0 +1,228 @@
+{
+  "isolatedPath": "/opt/telomere-host-runtime/vault-income-main-check-XdPy0K94",
+  "checkedAtUtc": "2026-10-12T12:36:55.837163+00:00",
+  "packageMetadataSha256": "80ff08f7742dda70f480231e9e909d118059b5ccb79dcfbf67c1136d8a1f59eb",
+  "package": {
+    "expectedSourceFiles": 297,
+    "expectedBuildAssets": 4,
+    "expectedTests": 190,
+    "expectedTestFiles": {
+      "x402-payments.test.ts": 44,
+      "vault-income.test.ts": 50,
+      "vault-income-private-file.test.ts": 18,
+      "vault-income-rpc.test.ts": 15,
+      "vault-income-configured.test.ts": 35,
+      "vault-income-main.test.ts": 9,
+      "platform-main.test.ts": 9,
+      "selection-income-endpoints-main.test.ts": 4,
+      "controller-platform.test.ts": 6
+    },
+    "expectedSkips": {
+      "vault-income-private-file.test.ts": [
+        "accepts actual restricted Windows ACLs and rejects an actual Everyone Allow ACE"
+      ]
+    },
+    "expectedPassedTests": 189,
+    "snapshotAtUtc": "2026-10-12T12:36:09.136971+00:00",
+    "gitHeadAtSnapshot": "c4f71bfbf524b666ddd1809471d108f2c5f9b268",
+    "commitComparison": "Git clean-filter blob IDs match HEAD; exact executed bytes separately SHA256-pinned",
+    "excludedWip": [
+      "src/host-kit/sessions/backends.ts",
+      "src/host-kit/sessions/index.ts",
+      "src/host-kit/sessions/init-program.ts",
+      "src/host-kit/sessions/journal.ts",
+      "src/host-kit/sessions/runtime.ts",
+      "src/host-kit/sessions/types.ts",
+      "tests/session-runtime-docker.test.ts",
+      "tests/session-runtime.test.ts"
+    ],
+    "reviewedFreeze": {
+      "src/payments/vault-income-private-file.ts": "c1d89d21870025ba3ea4e497ffa2f3ee3af6b92090826d9c598a8a66616b3a98",
+      "tests/vault-income-private-file.test.ts": "68ae7631d61c8f7c9a96b46b1f04432edaa580ccc0fbeb1066f3af666390af1c",
+      "src/payments/vault-income-rpc.ts": "6646fe86805e80d7c89058ef7a5838b9d7c606c50b099a781ddf7e8199c3d438",
+      "tests/vault-income-rpc.test.ts": "b5e7e0d25717debb24fafd63666c3fbb48fa518e75506434b69388261177c215"
+    },
+    "source": {
+      "archive": "vault-income-main-source.tar",
+      "manifest": "vault-income-main-source-sha256.txt",
+      "archiveSha256": "73e7333f90ed73b0d54880cc39ac0033dc65de8193323445fb94b121e97dd5c1",
+      "manifestSha256": "40c170b9acf7dd25443f0a14d062d2da00a3cc05edeec05a67471da1a43897bc",
+      "archiveBytes": 3584000,
+      "files": 297
+    },
+    "build-assets": {
+      "archive": "vault-income-main-build-assets.tar",
+      "manifest": "vault-income-main-build-assets-sha256.txt",
+      "archiveSha256": "f079ccfdf3bf99a5cdd1de7bceec8a0ec356c097315959055c4ebea5ec26b138",
+      "manifestSha256": "e7bab231aad576014f733737754f06845e0917b796ce95e30931485dc405d73c",
+      "archiveBytes": 112640,
+      "files": 4
+    }
+  },
+  "publicChainOrProviderCalls": false,
+  "serviceMutations": false,
+  "posixProfilePermissionsAndSymlinkBranches": true,
+  "healthBefore": {
+    "status": "ready",
+    "worker": "idle"
+  },
+  "servicesBefore": {
+    "telomere-staging.service": "active",
+    "telomere-staging-chain.service": "active",
+    "enclave-api.service": "active",
+    "enclave-worker.service": "active",
+    "enclave-web.service": "active"
+  },
+  "sourceMatchesBefore": 297,
+  "buildAssetsMatchesBefore": 4,
+  "nodeVersion": "v22.23.3",
+  "buildOwnedProcessGroupCleanup": false,
+  "buildElapsedSeconds": 47.044,
+  "buildExitCode": 0,
+  "sourceMatchesAfterBuild": 297,
+  "buildAssetsMatchesAfterBuild": 4,
+  "testsOwnedProcessGroupCleanup": false,
+  "testsElapsedSeconds": 344.597,
+  "testsExitCode": 0,
+  "tests": {
+    "numTotalTestSuites": 18,
+    "numPassedTestSuites": 18,
+    "numFailedTestSuites": 0,
+    "numTotalTests": 190,
+    "numPassedTests": 189,
+    "numFailedTests": 0,
+    "numPendingTests": 1,
+    "success": true
+  },
+  "testFiles": [
+    {
+      "name": "controller-platform.test.ts",
+      "status": "passed",
+      "tests": 6,
+      "passed": 6,
+      "skipped": 0,
+      "skippedTitles": []
+    },
+    {
+      "name": "platform-main.test.ts",
+      "status": "passed",
+      "tests": 9,
+      "passed": 9,
+      "skipped": 0,
+      "skippedTitles": []
+    },
+    {
+      "name": "selection-income-endpoints-main.test.ts",
+      "status": "passed",
+      "tests": 4,
+      "passed": 4,
+      "skipped": 0,
+      "skippedTitles": []
+    },
+    {
+      "name": "vault-income-configured.test.ts",
+      "status": "passed",
+      "tests": 35,
+      "passed": 35,
+      "skipped": 0,
+      "skippedTitles": []
+    },
+    {
+      "name": "vault-income-main.test.ts",
+      "status": "passed",
+      "tests": 9,
+      "passed": 9,
+      "skipped": 0,
+      "skippedTitles": []
+    },
+    {
+      "name": "vault-income-private-file.test.ts",
+      "status": "passed",
+      "tests": 18,
+      "passed": 17,
+      "skipped": 1,
+      "skippedTitles": [
+        "accepts actual restricted Windows ACLs and rejects an actual Everyone Allow ACE"
+      ]
+    },
+    {
+      "name": "vault-income-rpc.test.ts",
+      "status": "passed",
+      "tests": 15,
+      "passed": 15,
+      "skipped": 0,
+      "skippedTitles": []
+    },
+    {
+      "name": "vault-income.test.ts",
+      "status": "passed",
+      "tests": 50,
+      "passed": 50,
+      "skipped": 0,
+      "skippedTitles": []
+    },
+    {
+      "name": "x402-payments.test.ts",
+      "status": "passed",
+      "tests": 44,
+      "passed": 44,
+      "skipped": 0,
+      "skippedTitles": []
+    }
+  ],
+  "rawVitestSha256": "faff1e2d268ce810bb46993f95f96ff8b2f8eaa6f6facd88ebc8af49b90cc20d",
+  "sourceMatchesAfter": 297,
+  "buildAssetsMatchesAfter": 4,
+  "newFixtureDirectoriesRemaining": 0,
+  "healthAfter": {
+    "status": "ready",
+    "worker": "idle"
+  },
+  "servicesAfter": {
+    "telomere-staging.service": "active",
+    "telomere-staging-chain.service": "active",
+    "enclave-api.service": "active",
+    "enclave-worker.service": "active",
+    "enclave-web.service": "active"
+  },
+  "ownedCheckoutProcessesRemaining": 0,
+  "success": true,
+  "rawRunnerReportSha256": "8fb98366b6fa965fb0d0449ac0d2c7108945d072f6de9c3249bffede19b8eb33",
+  "rawVitestReportSha256": "faff1e2d268ce810bb46993f95f96ff8b2f8eaa6f6facd88ebc8af49b90cc20d",
+  "runtimeEquivalentCommittedRevision": "c4f71bfbf524b666ddd1809471d108f2c5f9b268",
+  "committedRevisionMatchingSourceFiles": 297,
+  "committedRevisionMatchingBuildAssets": 4,
+  "committedRevisionComparison": "Git clean-filter blob IDs match the committed revision; exact executed bytes independently pinned by SHA256 manifests",
+  "schemaVersion": 1,
+  "scope": "Isolated Linux normal full build and focused optional exact Vault income startup, HTTP, private-file/RPC, payment finality and affected main/platform acceptance",
+  "manifestArtifacts": [
+    "vault-income-main-source-sha256.txt",
+    "vault-income-main-build-assets-sha256.txt"
+  ],
+  "posixPrivateFileBranches": [
+    "requires exact private POSIX 0600 and never repairs unsafe permissions",
+    "refuses a private POSIX file owned by a different effective user"
+  ],
+  "failureHistory": [
+    {
+      "kind": "local_package_preflight",
+      "reason": "The first package invocation supplied an abbreviated revision while the packager required a full immutable revision",
+      "resolution": "Resolved the revision to its full SHA before packaging; no archive, remote checkout, build or tests had been created",
+      "sourceChanged": false,
+      "testRerun": false
+    }
+  ],
+  "relatedEvidence": [
+    "vault-income-main-validation.json",
+    "vault-income-private-file-validation.json",
+    "backend-finance-file-vault-linux-validation.json"
+  ],
+  "limitations": [
+    "Focused nine-file acceptance, not the entire repository test suite",
+    "Eight untracked session runtime source/test files explicitly excluded; this does not validate the active persistent-session work",
+    "Disposable Anvil and actual loopback HTTP; no public Robinhood transaction, live asset capability or public paid operation established",
+    "Optional exact native Vault income remains disabled without a reviewed private profile and requires its new immutable implementation/Selection deployment",
+    "Linux validates POSIX owner/mode/symlink boundaries; its one Windows ACL-only case is explicitly skipped and separate Windows evidence covers that branch",
+    "Existing staging and enclave services observed only; no private environment or existing service configuration read or changed"
+  ]
+}

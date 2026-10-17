@@ -1,0 +1,79 @@
+{
+  "name": "telomere-pilot",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "tsx src/main.ts",
+    "start": "node dist/src/main.js",
+    "build": "tsx scripts/compile-contracts.ts && tsc && esbuild public/app.ts --bundle --format=esm --outfile=dist/public/app.js && node scripts/copy-public.mjs",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "contracts:compile": "tsx scripts/compile-contracts.ts",
+    "demo": "tsx scripts/demo.ts",
+    "chain:local": "tsx scripts/local-chain.ts",
+    "deploy:prepare": "tsx scripts/deploy-contracts.ts",
+    "deploy:platform:prepare": "tsx scripts/prepare-platform-deployment.ts",
+    "deploy:platform:payments:prepare": "tsx scripts/prepare-platform-payment-deployment.ts",
+    "deploy:submit": "tsx scripts/submit-deployment.ts",
+    "db:migrate": "tsx scripts/migrate.ts",
+    "mcp": "tsx scripts/mcp.ts",
+    "mcp:platform": "tsx scripts/mcp-platform.ts",
+    "staging:prepare": "tsx scripts/staging-prepare.ts",
+    "near:preflight": "tsx scripts/near-preflight.ts",
+    "near:readiness": "tsx scripts/near-readiness.ts",
+    "near:cloud:evidence": "tsx scripts/near-cloud-evidence.ts",
+    "near:direct:evidence": "tsx scripts/near-direct-evidence.ts",
+    "operator:status": "tsx scripts/operator-status.ts",
+    "operator:watchdog": "tsx scripts/operator-watchdog.ts",
+    "operator:platform-journal": "tsx scripts/operator-platform-journal.ts",
+    "operator:platform-meter": "tsx scripts/platform-presented-meter.ts",
+    "operator:platform-v2": "tsx scripts/platform-v2-verify.ts",
+    "operator:platform-prepared": "tsx scripts/operator-platform-prepared.ts",
+    "backup:staging": "tsx scripts/backup-staging.ts",
+    "backup:platform": "tsx scripts/backup-platform.ts",
+    "restore:platform:verify": "tsx scripts/verify-platform-restore.ts",
+    "backup:verify": "tsx scripts/verify-backup.ts",
+    "acceptance:recovery": "tsx scripts/recovery-acceptance.ts",
+    "restore:acceptance": "tsx scripts/restore-acceptance.ts",
+    "testnet:fork": "tsx scripts/testnet-fork-acceptance.ts",
+    "acceptance:usdc-vault-fork": "tsx scripts/usdc-vault-fork-acceptance.ts",
+    "preflight:usdc-archive": "tsx scripts/usdc-archive-preflight.ts",
+    "acceptance:receipt-recovery": "tsx scripts/receipt-recovery-acceptance.ts",
+    "acceptance:paid-gvisor": "tsx scripts/platform-paid-gvisor-acceptance.ts"
+  },
+  "dependencies": {
+    "@electric-sql/pglite": "0.5.8",
+    "@hono/node-server": "1.19.17",
+    "@modelcontextprotocol/sdk": "1.32.1",
+    "@noble/ciphers": "1.3.0",
+    "@noble/curves": "1.9.1",
+    "@openzeppelin/contracts": "5.4.0",
+    "drizzle-orm": "0.45.3",
+    "hono": "4.13.13",
+    "pg": "8.16.3",
+    "pino": "10.1.0",
+    "viem": "2.57.3",
+    "zod": "3.25.76"
+  },
+  "devDependencies": {
+    "@types/node": "22.19.15",
+    "@types/pg": "8.15.6",
+    "esbuild": "0.28.1",
+    "solc": "0.8.28",
+    "tsx": "4.21.0",
+    "typescript": "5.9.3",
+    "vitest": "4.1.11"
+  },
+  "overrides": {
+    "tmp": "0.2.7",
+    "esbuild": "0.28.1"
+  },
+  "optionalDependencies": {
+    "@foundry-rs/anvil-linux-amd64": "1.7.1",
+    "@foundry-rs/anvil-win32-amd64": "1.7.1"
+  }
+}

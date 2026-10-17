@@ -1,0 +1,11 @@
+{
+  "observedAt": "2026-10-15T20:18:41.033737+00:00",
+  "change": "exact WAV audio MIME only",
+  "target": "/etc/nginx/sites-available/telomere-apex-static",
+  "beforeSha256": "c60619f3287ea933f7f5525bd41f1fa483930008a883dfa244e6c93de38995ea",
+  "afterSha256": "1d62089da137aa3e10e68833ec11c58054559e2c303b2d7073456595525abadc",
+  "ownerReviewUnchangedSha256": "7246164cdb5ccbec1cfb6a4b4bb4c362a0cdadce55cc26d6fcc782060c980958",
+  "nginxTest": "nginx: the configuration file /etc/nginx/nginx.conf syntax is ok\nnginx: configuration file /etc/nginx/nginx.conf test is successful",
+  "mainnetControllerPid": 0,
+  "originalWebsiteBytesChanged": false
+}

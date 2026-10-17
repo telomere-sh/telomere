@@ -1,0 +1,377 @@
+{
+  "schemaVersion": 1,
+  "status": "accepted_focused_linux_cpu_replan",
+  "success": true,
+  "source": {
+    "gitRevision": "e01b776bd86a9cdc27a3e80f987930ed8116c508",
+    "archiveSha256": "9111430f5e2713183e4f7823ca24380cb6afde5c31acff9a4ed751e21bfd4206",
+    "files": 710,
+    "gitBlobsIndependentlyMatched": true,
+    "sourceManifestSha256": "c54e4df3d998eef8f18a06a26b352a578d7c688d6f9ef9b658e3d462e367764b",
+    "before": {
+      "unchanged": true,
+      "verified": 710,
+      "changed": []
+    },
+    "after": {
+      "unchanged": true,
+      "verified": 710,
+      "changed": []
+    }
+  },
+  "startedAtUtc": "2026-10-15T14:37:00.821919+00:00",
+  "finishedAtUtc": "2026-10-15T14:45:48.048671+00:00",
+  "runtime": {
+    "node": "v22.23.3",
+    "python": "3.11.2",
+    "packages": {
+      "eth-account": "0.13.7",
+      "eth-hash": "0.8.0",
+      "eth_abi": "6.0.0",
+      "hexbytes": "2.0.0",
+      "pycryptodome": "3.24.0"
+    }
+  },
+  "typecheck": {
+    "argv": [
+      "npm",
+      "run",
+      "typecheck"
+    ],
+    "exitCode": 0,
+    "seconds": 103.078,
+    "timedOut": false,
+    "logLimitExceeded": false,
+    "logBytes": 50,
+    "logSha256": "7e452c9b4ef316f1562cd5a4039133816fbb68a6de9f9e583fb52ab3d0a434ad"
+  },
+  "applicationBuild": {
+    "argv": [
+      "npm",
+      "run",
+      "build"
+    ],
+    "exitCode": 0,
+    "seconds": 140.133,
+    "timedOut": false,
+    "logLimitExceeded": false,
+    "logBytes": 6592,
+    "logSha256": "9f37f1fc6d1ce97b7dc22a35fbb639f2289413006619eef82267d66b8e5807ab"
+  },
+  "buildOutputInventorySha256": "d1a98028f486db87bec9cf7690047942ec07f2dec437fab80bbd21df301daf65",
+  "node": {
+    "total": 54,
+    "passed": 54,
+    "failed": 0,
+    "assertionStatuses": {
+      "passed": 54
+    },
+    "success": true,
+    "unhandledErrors": 0,
+    "files": [
+      {
+        "name": "paid-cpu-job-replan-runner.test.ts",
+        "status": "passed",
+        "cases": 42
+      },
+      {
+        "name": "paid-cpu-jobs.test.ts",
+        "status": "passed",
+        "cases": 1
+      },
+      {
+        "name": "paid-host-preemption.test.ts",
+        "status": "passed",
+        "cases": 10
+      },
+      {
+        "name": "paid-vault-preemption-handoff.test.ts",
+        "status": "passed",
+        "cases": 1
+      }
+    ],
+    "failures": [],
+    "accepted": true
+  },
+  "python": {
+    "total": 71,
+    "passed": 71,
+    "statuses": {
+      "ok": 71
+    },
+    "skips": [],
+    "completedOk": true,
+    "accepted": true
+  },
+  "dependencyCacheAndCryptoVenv": {
+    "installs": 0,
+    "originalSourceUnchanged": true,
+    "copiedNodeModulesUnchanged": true,
+    "inventories": {
+      "cache-node-modules": {
+        "entries": 21050,
+        "beforeSha256": "a0b7de613ae0bd1025b652d93f51b91f2d5d9edcb5bc6d7e8d4ba8dcfe9cf656",
+        "afterSha256": "a0b7de613ae0bd1025b652d93f51b91f2d5d9edcb5bc6d7e8d4ba8dcfe9cf656",
+        "unchanged": true
+      },
+      "cache-dist": {
+        "entries": 585,
+        "beforeSha256": "2183f2b8129a9e5ac1e0bb8eb53c2b20588f0f1b2e5e434f193c4b58a94310f6",
+        "afterSha256": "2183f2b8129a9e5ac1e0bb8eb53c2b20588f0f1b2e5e434f193c4b58a94310f6",
+        "unchanged": true
+      },
+      "crypto-venv": {
+        "entries": 2922,
+        "beforeSha256": "4cf1af54aff887175f9b2c00d85a9d14536df87cc94c367982d477d4b2264eb2",
+        "afterSha256": "4cf1af54aff887175f9b2c00d85a9d14536df87cc94c367982d477d4b2264eb2",
+        "unchanged": true
+      }
+    },
+    "priorAcceptedCacheBinding": {
+      "path": "docs/evidence/backend-completion-linux-20261015/reused-dependencies-before.json",
+      "sha256": "8e1255e6d331e8bcf68f8182ad8cfc03fd2f349b4987ca1e21e4e5674cd08080",
+      "matchesFrozenGitArtifact": true,
+      "comparedFields": [
+        "path",
+        "type",
+        "bytes",
+        "sha256",
+        "target"
+      ],
+      "proof": {
+        "node_modules": {
+          "entries": 21050,
+          "projectedEntriesIdentical": true,
+          "projectionSha256": "c2f45b2c2a90ddbda7b55be353d29fdfff148b884cbe54e921101c6a1452e93a"
+        },
+        "dist": {
+          "entries": 585,
+          "projectedEntriesIdentical": true,
+          "projectionSha256": "5863526daf75b263d6a406d006b1c238b54f982bb972f4d7c80298af2d37750b"
+        }
+      }
+    }
+  },
+  "staging": {
+    "servicesBefore": {
+      "telomere-staging.service": {
+        "MainPID": "1952406",
+        "NRestarts": "0",
+        "WorkingDirectory": "/opt/telomere-pilot/releases/354fe7af62ea6701faafc3b04522abb1b4524d2d-launch04",
+        "ActiveState": "active",
+        "SubState": "running"
+      },
+      "telomere-staging-chain.service": {
+        "MainPID": "1952401",
+        "NRestarts": "0",
+        "WorkingDirectory": "/opt/telomere-pilot/app",
+        "ActiveState": "active",
+        "SubState": "running"
+      },
+      "telomere-staging-watchdog.service": {
+        "MainPID": "1952410",
+        "NRestarts": "0",
+        "WorkingDirectory": "/opt/telomere-pilot/watchdog-app",
+        "ActiveState": "active",
+        "SubState": "running"
+      }
+    },
+    "servicesAfter": {
+      "telomere-staging.service": {
+        "MainPID": "1952406",
+        "NRestarts": "0",
+        "WorkingDirectory": "/opt/telomere-pilot/releases/354fe7af62ea6701faafc3b04522abb1b4524d2d-launch04",
+        "ActiveState": "active",
+        "SubState": "running"
+      },
+      "telomere-staging-chain.service": {
+        "MainPID": "1952401",
+        "NRestarts": "0",
+        "WorkingDirectory": "/opt/telomere-pilot/app",
+        "ActiveState": "active",
+        "SubState": "running"
+      },
+      "telomere-staging-watchdog.service": {
+        "MainPID": "1952410",
+        "NRestarts": "0",
+        "WorkingDirectory": "/opt/telomere-pilot/watchdog-app",
+        "ActiveState": "active",
+        "SubState": "running"
+      }
+    },
+    "profileBeforeSha256": "a400feb3475b91168a5419d0a98c00ea804ba817c1c0ad34dea65d7d8808df8f",
+    "profileAfterSha256": "a400feb3475b91168a5419d0a98c00ea804ba817c1c0ad34dea65d7d8808df8f",
+    "healthBefore": {
+      "live": {
+        "statusCode": 200,
+        "body": {
+          "status": "ok"
+        }
+      },
+      "ready": {
+        "statusCode": 200,
+        "body": {
+          "status": "ready",
+          "worker": "idle"
+        }
+      }
+    },
+    "healthAfter": {
+      "live": {
+        "statusCode": 200,
+        "body": {
+          "status": "ok"
+        }
+      },
+      "ready": {
+        "statusCode": 200,
+        "body": {
+          "status": "ready",
+          "worker": "idle"
+        }
+      }
+    },
+    "serviceMutations": false,
+    "deploymentPerformed": false
+  },
+  "ownedProcessesRemaining": [],
+  "publicTransactions": 0,
+  "paidProviderRequests": 0,
+  "scope": "Four complete focused Node files with actual disposable local EVM/process integration, complete Python platform-family tests with crypto, strict typecheck and fresh application build. Not a full backend regression, real supplier, gVisor or production acceptance.",
+  "limitations": [
+    "Focused four-file Node acceptance and Python platform family only; no full final 710-file backend suite claim.",
+    "Actual paid job integration used disposable local Anvil and local-process HostKit fixtures on one VPS.",
+    "No new Docker/gVisor, physical host failover, live supplier, public funded Base or sealed CPU attestation acceptance.",
+    "No application deployment, launch-readiness certification or readiness percentage rescore."
+  ],
+  "launch": {
+    "gitRevision": "e01b776bd86a9cdc27a3e80f987930ed8116c508",
+    "archiveSha256": "9111430f5e2713183e4f7823ca24380cb6afde5c31acff9a4ed751e21bfd4206",
+    "sourceFiles": 710,
+    "sourceDirectory": "/opt/telomere-host-runtime/paid-cpu-replan-20261015-9111430f5e27",
+    "runnerSha256": "29af080e37be9fe6205a365f69beb55d5b0805ca902b892e689c30b79445aedb",
+    "controllerSha256": "8e686044083bff3f4f9fcd9fe95c54488890f5de6e512d4f6f05ad78568e28cd",
+    "command": [
+      "python3",
+      "/tmp/run-paid-cpu-replan-linux-20261015-29af080e37be.py",
+      "/tmp/telomere-paid-cpu-replan-20261015.tar.gz",
+      "/tmp/telomere-paid-cpu-replan-20261015.tar.gz.manifest.json",
+      "e01b776bd86a9cdc27a3e80f987930ed8116c508",
+      "9111430f5e2713183e4f7823ca24380cb6afde5c31acff9a4ed751e21bfd4206"
+    ]
+  },
+  "generatorSha256": "3758a502753f87625b16c3f420a5e60629d7f92b68cee2a3cb74aa3ae2c6da54",
+  "remoteLocalRetentionSha256": "a2e466a671b8f5e2789022944ea9806e3b7325ad3ad4e635b947a661860b759c",
+  "rawFiles": [
+    {
+      "path": "docs/evidence/paid-cpu-replan-linux-20261015/acceptance.json",
+      "bytes": 8863,
+      "sha256": "e517bfe25c16741d3c50ca0119b52bd513f4e5d0e9b8a2b2991f13c50dc3fe80"
+    },
+    {
+      "path": "docs/evidence/paid-cpu-replan-linux-20261015/build.log",
+      "bytes": 6592,
+      "sha256": "9f37f1fc6d1ce97b7dc22a35fbb639f2289413006619eef82267d66b8e5807ab"
+    },
+    {
+      "path": "docs/evidence/paid-cpu-replan-linux-20261015/cache-dist-after.json",
+      "bytes": 113106,
+      "sha256": "adce437a4c16fd0e69c585b137daf4e00c5784b6b5f50d1e7f456efd954d637f"
+    },
+    {
+      "path": "docs/evidence/paid-cpu-replan-linux-20261015/cache-dist-before.json",
+      "bytes": 113106,
+      "sha256": "adce437a4c16fd0e69c585b137daf4e00c5784b6b5f50d1e7f456efd954d637f"
+    },
+    {
+      "path": "docs/evidence/paid-cpu-replan-linux-20261015/cache-node-modules-after.json",
+      "bytes": 4239298,
+      "sha256": "d9003ad729f8793f839cbf866a8bfdd815df09c86e33783a8dcde1aa6e14f7dc"
+    },
+    {
+      "path": "docs/evidence/paid-cpu-replan-linux-20261015/cache-node-modules-before.json",
+      "bytes": 4239298,
+      "sha256": "d9003ad729f8793f839cbf866a8bfdd815df09c86e33783a8dcde1aa6e14f7dc"
+    },
+    {
+      "path": "docs/evidence/paid-cpu-replan-linux-20261015/composed-validation-generator.py",
+      "bytes": 10954,
+      "sha256": "3758a502753f87625b16c3f420a5e60629d7f92b68cee2a3cb74aa3ae2c6da54"
+    },
+    {
+      "path": "docs/evidence/paid-cpu-replan-linux-20261015/copied-node-modules-after.json",
+      "bytes": 4239298,
+      "sha256": "d9003ad729f8793f839cbf866a8bfdd815df09c86e33783a8dcde1aa6e14f7dc"
+    },
+    {
+      "path": "docs/evidence/paid-cpu-replan-linux-20261015/crypto-probe.log",
+      "bytes": 148,
+      "sha256": "de469736a214191036f3f809f389506946fe1ac4575f38b3e9379957a83f8273"
+    },
+    {
+      "path": "docs/evidence/paid-cpu-replan-linux-20261015/crypto-venv-after.json",
+      "bytes": 681162,
+      "sha256": "f2b8ccdf3cfa9c8328d1bbb1ba9cadcafb1f8e066d947ea7daf2df9906aeec49"
+    },
+    {
+      "path": "docs/evidence/paid-cpu-replan-linux-20261015/crypto-venv-before.json",
+      "bytes": 681162,
+      "sha256": "f2b8ccdf3cfa9c8328d1bbb1ba9cadcafb1f8e066d947ea7daf2df9906aeec49"
+    },
+    {
+      "path": "docs/evidence/paid-cpu-replan-linux-20261015/executed-controller.py",
+      "bytes": 5815,
+      "sha256": "8e686044083bff3f4f9fcd9fe95c54488890f5de6e512d4f6f05ad78568e28cd"
+    },
+    {
+      "path": "docs/evidence/paid-cpu-replan-linux-20261015/executed-runner.py",
+      "bytes": 21190,
+      "sha256": "29af080e37be9fe6205a365f69beb55d5b0805ca902b892e689c30b79445aedb"
+    },
+    {
+      "path": "docs/evidence/paid-cpu-replan-linux-20261015/launch.json",
+      "bytes": 775,
+      "sha256": "d063aee7b969a255aadcff982a9924c3a43c054c790b177c2f0a119c8960b23b"
+    },
+    {
+      "path": "docs/evidence/paid-cpu-replan-linux-20261015/node.json",
+      "bytes": 17864,
+      "sha256": "965123c1b1c06a6ab7fd0538a5640806d24c11326e6d8a81ef246babdf72230a"
+    },
+    {
+      "path": "docs/evidence/paid-cpu-replan-linux-20261015/node.log",
+      "bytes": 105,
+      "sha256": "47c5060f37598d1a953ed9921b12318974b55db33951afdde89a86b4e03ae077"
+    },
+    {
+      "path": "docs/evidence/paid-cpu-replan-linux-20261015/python.log",
+      "bytes": 13098,
+      "sha256": "f4bb437d1c3d9bfda35e1f5f6e014bd03dfe501b3634183b8c52668661f607ff"
+    },
+    {
+      "path": "docs/evidence/paid-cpu-replan-linux-20261015/retention.json",
+      "bytes": 3039,
+      "sha256": "a2e466a671b8f5e2789022944ea9806e3b7325ad3ad4e635b947a661860b759c"
+    },
+    {
+      "path": "docs/evidence/paid-cpu-replan-linux-20261015/runner.log",
+      "bytes": 1204,
+      "sha256": "353eff11dc3f4b680fa98600100c33c12693b0662876e8a3ff9d6201571fd455"
+    },
+    {
+      "path": "docs/evidence/paid-cpu-replan-linux-20261015/source-manifest.json",
+      "bytes": 166788,
+      "sha256": "c54e4df3d998eef8f18a06a26b352a578d7c688d6f9ef9b658e3d462e367764b"
+    },
+    {
+      "path": "docs/evidence/paid-cpu-replan-linux-20261015/typecheck.log",
+      "bytes": 50,
+      "sha256": "7e452c9b4ef316f1562cd5a4039133816fbb68a6de9f9e583fb52ab3d0a434ad"
+    },
+    {
+      "path": "docs/evidence/paid-cpu-replan-linux-20261015/vitest.config.ts",
+      "bytes": 262,
+      "sha256": "1c317749c1fd6b904ad9ec18a413b2596313321aa87152f9a2b8ad1b925ef19c"
+    }
+  ]
+}

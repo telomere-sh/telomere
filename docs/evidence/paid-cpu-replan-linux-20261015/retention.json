@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "remoteAndLocalHashesMatch": true,
+  "status": "accepted_focused_linux_cpu_replan",
+  "success": true,
+  "finishedAtUtc": "2026-10-15T14:45:48.048671+00:00",
+  "files": [
+    {
+      "name": "acceptance.json",
+      "present": true,
+      "bytes": 8863,
+      "sha256": "e517bfe25c16741d3c50ca0119b52bd513f4e5d0e9b8a2b2991f13c50dc3fe80"
+    },
+    {
+      "name": "source-manifest.json",
+      "present": true,
+      "bytes": 166788,
+      "sha256": "c54e4df3d998eef8f18a06a26b352a578d7c688d6f9ef9b658e3d462e367764b"
+    },
+    {
+      "name": "vitest.config.ts",
+      "present": true,
+      "bytes": 262,
+      "sha256": "1c317749c1fd6b904ad9ec18a413b2596313321aa87152f9a2b8ad1b925ef19c"
+    },
+    {
+      "name": "typecheck.log",
+      "present": true,
+      "bytes": 50,
+      "sha256": "7e452c9b4ef316f1562cd5a4039133816fbb68a6de9f9e583fb52ab3d0a434ad"
+    },
+    {
+      "name": "build.log",
+      "present": true,
+      "bytes": 6592,
+      "sha256": "9f37f1fc6d1ce97b7dc22a35fbb639f2289413006619eef82267d66b8e5807ab"
+    },
+    {
+      "name": "crypto-probe.log",
+      "present": true,
+      "bytes": 148,
+      "sha256": "de469736a214191036f3f809f389506946fe1ac4575f38b3e9379957a83f8273"
+    },
+    {
+      "name": "node.log",
+      "present": true,
+      "bytes": 105,
+      "sha256": "47c5060f37598d1a953ed9921b12318974b55db33951afdde89a86b4e03ae077"
+    },
+    {
+      "name": "node.json",
+      "present": true,
+      "bytes": 17864,
+      "sha256": "965123c1b1c06a6ab7fd0538a5640806d24c11326e6d8a81ef246babdf72230a"
+    },
+    {
+      "name": "python.log",
+      "present": true,
+      "bytes": 13098,
+      "sha256": "f4bb437d1c3d9bfda35e1f5f6e014bd03dfe501b3634183b8c52668661f607ff"
+    },
+    {
+      "name": "cache-node-modules-before.json",
+      "present": true,
+      "bytes": 4239298,
+      "sha256": "d9003ad729f8793f839cbf866a8bfdd815df09c86e33783a8dcde1aa6e14f7dc"
+    },
+    {
+      "name": "cache-node-modules-after.json",
+      "present": true,
+      "bytes": 4239298,
+      "sha256": "d9003ad729f8793f839cbf866a8bfdd815df09c86e33783a8dcde1aa6e14f7dc"
+    },
+    {
+      "name": "cache-dist-before.json",
+      "present": true,
+      "bytes": 113106,
+      "sha256": "adce437a4c16fd0e69c585b137daf4e00c5784b6b5f50d1e7f456efd954d637f"
+    },
+    {
+      "name": "cache-dist-after.json",
+      "present": true,
+      "bytes": 113106,
+      "sha256": "adce437a4c16fd0e69c585b137daf4e00c5784b6b5f50d1e7f456efd954d637f"
+    },
+    {
+      "name": "crypto-venv-before.json",
+      "present": true,
+      "bytes": 681162,
+      "sha256": "f2b8ccdf3cfa9c8328d1bbb1ba9cadcafb1f8e066d947ea7daf2df9906aeec49"
+    },
+    {
+      "name": "crypto-venv-after.json",
+      "present": true,
+      "bytes": 681162,
+      "sha256": "f2b8ccdf3cfa9c8328d1bbb1ba9cadcafb1f8e066d947ea7daf2df9906aeec49"
+    },
+    {
+      "name": "copied-node-modules-after.json",
+      "present": true,
+      "bytes": 4239298,
+      "sha256": "d9003ad729f8793f839cbf866a8bfdd815df09c86e33783a8dcde1aa6e14f7dc"
+    }
+  ]
+}

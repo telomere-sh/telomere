@@ -1,0 +1,17 @@
+{
+  "operation": "telomere-mainnet-prepare-20261015",
+  "id": "f1f1fa857fb34ae9adb708ecf6af7166",
+  "base": "/opt/telomere-mainnet-pilot",
+  "uid": 995,
+  "gid": 993,
+  "owner": "0xa67c6a174409b9b44e67d24cdd386a31d44edb1d",
+  "controllerStarted": false,
+  "transactionsSent": 0,
+  "serviceSigner": "0x87599dBF6f720DE7751E8CB2d36d4Ea96A4A1d38",
+  "chainId": 8453,
+  "treasuryProposal": "0xa67c6a174409b9b44e67d24cdd386a31d44edb1d",
+  "deployerProposal": "0xa67c6a174409b9b44e67d24cdd386a31d44edb1d",
+  "publicOrigin": "http://127.0.0.1:3282",
+  "keyStoredOnVpsOnly": true,
+  "state": "prepared identities; no controller or wallet action"
+}

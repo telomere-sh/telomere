@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-15T11:45:55.644456+00:00",
+  "status": "author-focused-local-accepted",
+  "baseRevision": "24b5bbd0967c1e92ed21706060aeb6b6e3ba9830",
+  "sourceBoundary": "Selected working-tree inputs; not a whole-backend release or deployment inventory",
+  "sourceFileCount": 35,
+  "sourceManifest": "docs/evidence/cpu-lane-offers-capability-final-source-20261015.json",
+  "acceptance": {
+    "broadNode": {
+      "passed": 181,
+      "failed": 0,
+      "skipped": 0,
+      "files": 10
+    },
+    "python": {
+      "passed": 69,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "actualCryptoAdapter": true,
+      "modules": 4
+    },
+    "postReviewAffectedNode": {
+      "passed": 113,
+      "failed": 0,
+      "skipped": 0,
+      "files": 4
+    },
+    "broadSourceUnchanged": true,
+    "finalSourceUnchanged": true,
+    "postBroadChanges": [
+      "src/platform-runtime/client.ts",
+      "tests/platform-cpu-offers.test.ts"
+    ],
+    "globalTypecheck": "Owned by parent combined acceptance, not claimed by this author report",
+    "currentSourceGvisor": "Pending parent exact-source Linux acceptance",
+    "wholeBackendRegression": false
+  },
+  "actualBehavior": [
+    "one physical source publishes standard200 and interruptible100",
+    "one shared HostKit slot rejects another standard quote while interruptible source runs",
+    "owner-approved paid job selects exact nested interruptible price and original signed lane workload",
+    "signed30second notice, encrypted checkpoint, actual cleanup, canonical source settlement",
+    "replacement excludes source physical host in both lanes and waits for confirmed original liabilities",
+    "separately funded standard target restores application and settles canonically",
+    "response-loss replay reuses original job, decision, quote and reservations",
+    "post-cleanup standard full/lean/torpor quotes bind200/120/60",
+    "Node and Python independently validate real EIP712 signatures and exact requested lane/profile",
+    "EOA legacy interruptible plan without explicit preemption capability is refused"
+  ],
+  "historicalAttempts": [
+    {
+      "path": "docs/evidence/cpu-lane-offers-initial-fixture-failure-20261015.json",
+      "result": "one expected-positive fixture failed",
+      "reason": "New standard-quote assertion used ownerSDK where ordinary Vault quotes require the agent role",
+      "correction": "Fixture principal changed to agentSDK; no production behavior weakened"
+    },
+    {
+      "path": "docs/evidence/cpu-lane-offers-paid-retry-20261015.json",
+      "result": "18/18 passed before final added capability guard"
+    }
+  ],
+  "limits": [
+    "CPU only, at most16physicalhosts and2reviewedlaneoffers perhost",
+    "ordinary existing10to120second paid reservations and original64run jobbound unchanged",
+    "local session fixture has no sandbox or TEE isolation",
+    "operator-reviewed static offers, not a dynamic host marketplace",
+    "external owner funding, approval and restore actions remain explicit",
+    "no public Base payment, external supplier execution or server activation"
+  ],
+  "mutations": {
+    "externalTransactions": 0,
+    "paidProviderRequests": 0,
+    "serverChanges": 0,
+    "localAnvilTransactions": true
+  },
+  "evidence": [
+    {
+      "path": "docs/evidence/cpu-lane-offers-broad-20261015.json",
+      "bytes": 79977,
+      "sha256": "6e1dcb492a2e1e2b5983608a7948ce7488c1f5bdfd8cd1dfdf06ede04c402ad6",
+      "source": ".local/cpu-lane-offers-final-20261015.node.json"
+    },
+    {
+      "path": "docs/evidence/cpu-lane-offers-broad-source-20261015.json",
+      "bytes": 12896,
+      "sha256": "c6e7c6388e545e90892cf47a688735dfd9e72e00e19440f32f310b68d5a505c4",
+      "source": ".local/cpu-lane-offers-final-20261015.source.json"
+    },
+    {
+      "path": "docs/evidence/cpu-lane-offers-python-20261015.txt",
+      "bytes": 12789,
+      "sha256": "931917b91fb2ee07cef8dd07b3cc57c43d83a744e03ed5115c5d4fb6df686470",
+      "source": ".local/cpu-lane-offers-final-20261015.python.log"
+    },
+    {
+      "path": "docs/evidence/cpu-lane-offers-capability-final-20261015.json",
+      "bytes": 50938,
+      "sha256": "8d64adec4dede9c246d2cb982890a77a137dfaef64d07412afa75d106f5cbe4d",
+      "source": ".local/cpu-lane-offers-capability-final-20261015.node.json"
+    },
+    {
+      "path": "docs/evidence/cpu-lane-offers-capability-final-source-20261015.json",
+      "bytes": 12608,
+      "sha256": "277f950b8daa5d997345d1b64f49dbd5c560251383574c0e12dcf75b8876b27c",
+      "source": ".local/cpu-lane-offers-capability-final-20261015.source.json"
+    },
+    {
+      "path": "docs/evidence/cpu-lane-offers-initial-fixture-failure-20261015.json",
+      "bytes": 2021,
+      "sha256": "57b4af8a730e437b397cae2eadaf774197bc9572d80f640585a6e61ba228ccb0",
+      "source": ".local/paid-cpu-dual-lane-initial-20261015.json"
+    },
+    {
+      "path": "docs/evidence/cpu-lane-offers-paid-retry-20261015.json",
+      "bytes": 7865,
+      "sha256": "2de06072095d8c29090a9f5558350878d1e4c8207083d312cac33fddce05b2c2",
+      "source": ".local/paid-cpu-dual-lane-retry-20261015.json"
+    }
+  ]
+}

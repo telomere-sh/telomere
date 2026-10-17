@@ -1,0 +1,290 @@
+{
+  "startedAt": "2026-10-15T02:12:18.927472+00:00",
+  "sourceBoundary": "focused 34-file inventory; not the entire import graph or frozen Linux archive",
+  "head": "1ac43b1616c01d085a401bb985c6e01a1b24264a",
+  "before": {
+    "contracts/PlatformX402EscrowV1.sol": {
+      "bytes": 30537,
+      "sha256": "bf8d6962a710520155a6be5e7caa51979d6b9eb0e97a9f283370ab27acc4538e"
+    },
+    "src/payments/cpu-reservations.ts": {
+      "bytes": 24836,
+      "sha256": "873d7cafbfd4c1c8c6d80d771c344a089dcad10e4e32154888031521906dd218"
+    },
+    "src/platform-runtime/bridge.ts": {
+      "bytes": 18328,
+      "sha256": "a49c735a62e6d92c38aaaea8ac29502c1deb1edfc6cc816accfae77f13641f4f"
+    },
+    "src/platform-runtime/client.ts": {
+      "bytes": 19629,
+      "sha256": "07b79b7b4d0b73073477e7ee3517d4bb939e5ef40bd66bf69f05fa07dae73c19"
+    },
+    "src/platform-runtime/x402-client.ts": {
+      "bytes": 8398,
+      "sha256": "7929c8172ea8bc71592a85634ebad2173bc77b4b3aba29f0a676e62ba3df1fd7"
+    },
+    "src/platform-runtime/types.ts": {
+      "bytes": 19926,
+      "sha256": "682ba728f3989e132d3029a98ef4a5c4f8c2fdde932d607ffcb94cc1e6237d17"
+    },
+    "src/platform-runtime/schema.ts": {
+      "bytes": 6595,
+      "sha256": "d939fe645dd20f1c27c27c98f4bb26855beaa5fad5fce07ebcfbf86209be26df"
+    },
+    "src/platform-runtime/service.ts": {
+      "bytes": 108875,
+      "sha256": "5a290c31d4d9298781a1b6b19091dfd1fdb91b3f26859cd821ae703a6bcf7db1"
+    },
+    "src/platform-runtime/routes.ts": {
+      "bytes": 7723,
+      "sha256": "83e25aeabbf993836299d92722262518bf31aa695c7266624ec71d7bf3da9df8"
+    },
+    "src/platform-runtime/read-only.ts": {
+      "bytes": 8803,
+      "sha256": "aba53bd8428e685ae27662ea8639a627b21253d3e1f287ed72883c64e68efcf8"
+    },
+    "src/sdk/transport.ts": {
+      "bytes": 4982,
+      "sha256": "77043f47235c71b01e7f89d383b8b540cb3dc3c4274dcf16244ac0784a4cd8f0"
+    },
+    "src/sdk/index.ts": {
+      "bytes": 6639,
+      "sha256": "77a24e4acf1b8d5d7bada201984836cee3a4ec4e6910b639f290b852111e4eef"
+    },
+    "src/platform-runtime/configured.ts": {
+      "bytes": 6675,
+      "sha256": "3e11a0de07e1bf64cbd7f72528a0418870bcb7574f8139d930fd59076a7d579e"
+    },
+    "src/app.ts": {
+      "bytes": 25631,
+      "sha256": "f847f39df19d258791500d6a8d72d154f4fcabdb4032cf680886bda467ed1464"
+    },
+    "tests/platform-x402-cpu.test.ts": {
+      "bytes": 25715,
+      "sha256": "dd689ad9009095e350c335160938da2d450d44e4e5c442a0a5a5d75409546e9a"
+    },
+    "tests/platform-funded-reorg.test.ts": {
+      "bytes": 8026,
+      "sha256": "e67599da01d83055a178d06d3b926c95017819882b5e0fc08021e57b6a1f9289"
+    },
+    "tests/platform-spend-permission.test.ts": {
+      "bytes": 25920,
+      "sha256": "3e40034c962427e55eadf93e5306116ae9402b778633e2c55c4b9f0d6ff50eb7"
+    },
+    "tests/fixtures/platform-x402-cpu.ts": {
+      "bytes": 8655,
+      "sha256": "b60304a531d4923e16b0d3e8d91a6cecacfb32de7f48addd84c45dd2edd44c43"
+    },
+    "tests/fixtures/x402-cpu/LocalReceiveToken.sol": {
+      "bytes": 3042,
+      "sha256": "a42e4f2dd9d938ed9ffd0984d64ef9f75ab1d17145816bf1c193fc18a83dc329"
+    },
+    "tests/fixtures/platform-spend-permission.ts": {
+      "bytes": 10429,
+      "sha256": "a02547f26534f4fb71e04a36fa0ecf9da2b41315ee117fea3f0b5d8b257fae51"
+    },
+    "src/payments/gateway.ts": {
+      "bytes": 20199,
+      "sha256": "233615edc0cf4112f56f06ccb35e5f330daf82ab067a1e1c9d56ab02aed86b27"
+    },
+    "src/payments/protocol.ts": {
+      "bytes": 5513,
+      "sha256": "98d757a82771fe1aefbc2a42a11a7a540fe6398e75d937d74675a680c04767d7"
+    },
+    "src/payments/spend-permissions.ts": {
+      "bytes": 19321,
+      "sha256": "7a1143c6d34167f02c4a860511885b1b3b1a32166db1a82a2c4dc25ba8613ed3"
+    },
+    "contracts/PlatformSpendPermissionEscrowV1.sol": {
+      "bytes": 26684,
+      "sha256": "26c97a481151f50300544cc851f8240718470e31e95219edf6f014b9fad5be53"
+    },
+    "scripts/compile-contracts.ts": {
+      "bytes": 3463,
+      "sha256": "fd7c65be6290aa0531cbb0ba5f8310e806d9a81aa3bdc68fb384e3ceed2c8d6b"
+    },
+    "src/host-kit/agent.ts": {
+      "bytes": 41150,
+      "sha256": "c7791b66d384eb4a32fe1b01e3469baeefb8e2d767ee39bfbbaa05bd8acbf8ae"
+    },
+    "src/platform-runtime/host-executor.ts": {
+      "bytes": 31394,
+      "sha256": "4a5bda861bbddf44f03a71dfb143dcc22126ad0135d2a8f6a70f11df986d285a"
+    },
+    "src/host-kit/client.ts": {
+      "bytes": 28087,
+      "sha256": "a0d1549b32b7cfbf28759d00a8a023e07a7b360c9a1b935c76ee042d10331a19"
+    },
+    "src/host-kit/protocol.ts": {
+      "bytes": 7008,
+      "sha256": "0e840195a300586db360f855bb8c246a3eb4205e3814bfc5426af2ffd7c97836"
+    },
+    "src/host-kit/sessions/paid-protocol.ts": {
+      "bytes": 4610,
+      "sha256": "364ef7fe271e8f9795306b5e2890614f601abe24926a06e8bde3413f5d143db2"
+    },
+    "src/payments/spend-permission-types.ts": {
+      "bytes": 1731,
+      "sha256": "4f715ccca1e5cd0a34df1226bdac13d8ba975a310b8d25a07c7731c3173de67c"
+    },
+    "src/payments/cpu-reservation-types.ts": {
+      "bytes": 2288,
+      "sha256": "2118975ac6c9fda341e7a72466c41ab432582683afa29144372ed25de63ffb64"
+    },
+    "tests/platform-payment-imports.test.ts": {
+      "bytes": 1417,
+      "sha256": "97333c7cd3c1606ed50b7bcc61b9674cd6b1439e9b8783f2971667e7aac53093"
+    },
+    "src/main.ts": {
+      "bytes": 15707,
+      "sha256": "7413fd826576d3490ecb0669e694a05979dd33afd6ab36988f16641dbb764c77"
+    }
+  },
+  "finishedAt": "2026-10-15T02:14:29.967132+00:00",
+  "exitCode": 0,
+  "after": {
+    "contracts/PlatformX402EscrowV1.sol": {
+      "bytes": 30537,
+      "sha256": "bf8d6962a710520155a6be5e7caa51979d6b9eb0e97a9f283370ab27acc4538e"
+    },
+    "src/payments/cpu-reservations.ts": {
+      "bytes": 24836,
+      "sha256": "873d7cafbfd4c1c8c6d80d771c344a089dcad10e4e32154888031521906dd218"
+    },
+    "src/platform-runtime/bridge.ts": {
+      "bytes": 18328,
+      "sha256": "a49c735a62e6d92c38aaaea8ac29502c1deb1edfc6cc816accfae77f13641f4f"
+    },
+    "src/platform-runtime/client.ts": {
+      "bytes": 19629,
+      "sha256": "07b79b7b4d0b73073477e7ee3517d4bb939e5ef40bd66bf69f05fa07dae73c19"
+    },
+    "src/platform-runtime/x402-client.ts": {
+      "bytes": 8398,
+      "sha256": "7929c8172ea8bc71592a85634ebad2173bc77b4b3aba29f0a676e62ba3df1fd7"
+    },
+    "src/platform-runtime/types.ts": {
+      "bytes": 19926,
+      "sha256": "682ba728f3989e132d3029a98ef4a5c4f8c2fdde932d607ffcb94cc1e6237d17"
+    },
+    "src/platform-runtime/schema.ts": {
+      "bytes": 6595,
+      "sha256": "d939fe645dd20f1c27c27c98f4bb26855beaa5fad5fce07ebcfbf86209be26df"
+    },
+    "src/platform-runtime/service.ts": {
+      "bytes": 108875,
+      "sha256": "5a290c31d4d9298781a1b6b19091dfd1fdb91b3f26859cd821ae703a6bcf7db1"
+    },
+    "src/platform-runtime/routes.ts": {
+      "bytes": 7723,
+      "sha256": "83e25aeabbf993836299d92722262518bf31aa695c7266624ec71d7bf3da9df8"
+    },
+    "src/platform-runtime/read-only.ts": {
+      "bytes": 8803,
+      "sha256": "aba53bd8428e685ae27662ea8639a627b21253d3e1f287ed72883c64e68efcf8"
+    },
+    "src/sdk/transport.ts": {
+      "bytes": 4982,
+      "sha256": "77043f47235c71b01e7f89d383b8b540cb3dc3c4274dcf16244ac0784a4cd8f0"
+    },
+    "src/sdk/index.ts": {
+      "bytes": 6639,
+      "sha256": "77a24e4acf1b8d5d7bada201984836cee3a4ec4e6910b639f290b852111e4eef"
+    },
+    "src/platform-runtime/configured.ts": {
+      "bytes": 6675,
+      "sha256": "3e11a0de07e1bf64cbd7f72528a0418870bcb7574f8139d930fd59076a7d579e"
+    },
+    "src/app.ts": {
+      "bytes": 25631,
+      "sha256": "f847f39df19d258791500d6a8d72d154f4fcabdb4032cf680886bda467ed1464"
+    },
+    "tests/platform-x402-cpu.test.ts": {
+      "bytes": 25715,
+      "sha256": "dd689ad9009095e350c335160938da2d450d44e4e5c442a0a5a5d75409546e9a"
+    },
+    "tests/platform-funded-reorg.test.ts": {
+      "bytes": 8026,
+      "sha256": "e67599da01d83055a178d06d3b926c95017819882b5e0fc08021e57b6a1f9289"
+    },
+    "tests/platform-spend-permission.test.ts": {
+      "bytes": 25920,
+      "sha256": "3e40034c962427e55eadf93e5306116ae9402b778633e2c55c4b9f0d6ff50eb7"
+    },
+    "tests/fixtures/platform-x402-cpu.ts": {
+      "bytes": 8655,
+      "sha256": "b60304a531d4923e16b0d3e8d91a6cecacfb32de7f48addd84c45dd2edd44c43"
+    },
+    "tests/fixtures/x402-cpu/LocalReceiveToken.sol": {
+      "bytes": 3042,
+      "sha256": "a42e4f2dd9d938ed9ffd0984d64ef9f75ab1d17145816bf1c193fc18a83dc329"
+    },
+    "tests/fixtures/platform-spend-permission.ts": {
+      "bytes": 10429,
+      "sha256": "a02547f26534f4fb71e04a36fa0ecf9da2b41315ee117fea3f0b5d8b257fae51"
+    },
+    "src/payments/gateway.ts": {
+      "bytes": 20199,
+      "sha256": "233615edc0cf4112f56f06ccb35e5f330daf82ab067a1e1c9d56ab02aed86b27"
+    },
+    "src/payments/protocol.ts": {
+      "bytes": 5513,
+      "sha256": "98d757a82771fe1aefbc2a42a11a7a540fe6398e75d937d74675a680c04767d7"
+    },
+    "src/payments/spend-permissions.ts": {
+      "bytes": 19321,
+      "sha256": "7a1143c6d34167f02c4a860511885b1b3b1a32166db1a82a2c4dc25ba8613ed3"
+    },
+    "contracts/PlatformSpendPermissionEscrowV1.sol": {
+      "bytes": 26684,
+      "sha256": "26c97a481151f50300544cc851f8240718470e31e95219edf6f014b9fad5be53"
+    },
+    "scripts/compile-contracts.ts": {
+      "bytes": 3463,
+      "sha256": "fd7c65be6290aa0531cbb0ba5f8310e806d9a81aa3bdc68fb384e3ceed2c8d6b"
+    },
+    "src/host-kit/agent.ts": {
+      "bytes": 41150,
+      "sha256": "c7791b66d384eb4a32fe1b01e3469baeefb8e2d767ee39bfbbaa05bd8acbf8ae"
+    },
+    "src/platform-runtime/host-executor.ts": {
+      "bytes": 31394,
+      "sha256": "4a5bda861bbddf44f03a71dfb143dcc22126ad0135d2a8f6a70f11df986d285a"
+    },
+    "src/host-kit/client.ts": {
+      "bytes": 28087,
+      "sha256": "a0d1549b32b7cfbf28759d00a8a023e07a7b360c9a1b935c76ee042d10331a19"
+    },
+    "src/host-kit/protocol.ts": {
+      "bytes": 7008,
+      "sha256": "0e840195a300586db360f855bb8c246a3eb4205e3814bfc5426af2ffd7c97836"
+    },
+    "src/host-kit/sessions/paid-protocol.ts": {
+      "bytes": 4610,
+      "sha256": "364ef7fe271e8f9795306b5e2890614f601abe24926a06e8bde3413f5d143db2"
+    },
+    "src/payments/spend-permission-types.ts": {
+      "bytes": 1731,
+      "sha256": "4f715ccca1e5cd0a34df1226bdac13d8ba975a310b8d25a07c7731c3173de67c"
+    },
+    "src/payments/cpu-reservation-types.ts": {
+      "bytes": 2288,
+      "sha256": "2118975ac6c9fda341e7a72466c41ab432582683afa29144372ed25de63ffb64"
+    },
+    "tests/platform-payment-imports.test.ts": {
+      "bytes": 1417,
+      "sha256": "97333c7cd3c1606ed50b7bcc61b9674cd6b1439e9b8783f2971667e7aac53093"
+    },
+    "src/main.ts": {
+      "bytes": 15707,
+      "sha256": "7413fd826576d3490ecb0669e694a05979dd33afd6ab36988f16641dbb764c77"
+    }
+  },
+  "changedFiles": [],
+  "allInventoriedSourcesUnchanged": true,
+  "rawReport": {
+    "path": ".local/platform-x402-cpu-leaf-final-20261015.json",
+    "bytes": 6060,
+    "sha256": "e2a4be1f3cfb6bfb249b58c809a6542b4cddf6d4105485c2035767e787207782"
+  }
+}

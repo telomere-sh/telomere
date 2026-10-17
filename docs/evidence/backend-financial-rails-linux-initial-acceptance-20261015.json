@@ -1,0 +1,101 @@
+{
+  "archiveSha256": "556e200a6afe81c50b080d20b220cb24bd25651dce04a4ef76e93cc466e964e9",
+  "directory": "/opt/telomere-host-runtime/financial-rails-20261015-556e200a6afe",
+  "sourceFiles": 646,
+  "startedAt": "2026-10-15T01:21:29.771589+00:00",
+  "serviceMutations": false,
+  "publicTransactions": 0,
+  "paidProviderRequests": 0,
+  "dockerOptIn": false,
+  "capacityOptIn": false,
+  "langgraphOptIn": false,
+  "healthBefore": {
+    "live": {
+      "statusCode": 200,
+      "body": {
+        "status": "ok"
+      }
+    },
+    "ready": {
+      "statusCode": 200,
+      "body": {
+        "status": "ready",
+        "worker": "idle"
+      }
+    }
+  },
+  "servicesBefore": {
+    "telomere-staging.service": "NRestarts=0\nActiveState=active\nSubState=running",
+    "telomere-staging-chain.service": "NRestarts=0\nActiveState=active\nSubState=running",
+    "telomere-staging-watchdog.service": "NRestarts=0\nActiveState=active\nSubState=running"
+  },
+  "nodeVersion": "v22.23.3",
+  "npm-ci": {
+    "exitCode": 0,
+    "seconds": 3.555
+  },
+  "build": {
+    "exitCode": 0,
+    "seconds": 56.959
+  },
+  "node-full": {
+    "exitCode": 1,
+    "seconds": 2636.772
+  },
+  "nodeTests": {
+    "numTotalTests": 2184,
+    "numPassedTests": 2163,
+    "numFailedTests": 2,
+    "numPendingTests": 19,
+    "numTotalTestSuites": 354,
+    "success": false
+  },
+  "nodeFailures": [
+    {
+      "file": "host-kit-gpu-admission.test.ts",
+      "tests": [
+        "default-off GPU HostKit admission seam asks the runtime to stop automatically at the reviewed deadline"
+      ]
+    },
+    {
+      "file": "mcp-platform.test.ts",
+      "tests": []
+    },
+    {
+      "file": "platform-exec-client.test.ts",
+      "tests": []
+    },
+    {
+      "file": "platform-main.test.ts",
+      "tests": [
+        "actual startPilot platform startup failure boundaries mounts ten full platform MCP tools with real signed Vault sessions, checked unsigned quotes and isolated session cookies"
+      ]
+    }
+  ],
+  "sourceAfter": {
+    "unchanged": true,
+    "changed": []
+  },
+  "healthAfter": {
+    "live": {
+      "statusCode": 200,
+      "body": {
+        "status": "ok"
+      }
+    },
+    "ready": {
+      "statusCode": 200,
+      "body": {
+        "status": "ready",
+        "worker": "idle"
+      }
+    }
+  },
+  "servicesAfter": {
+    "telomere-staging.service": "NRestarts=0\nActiveState=active\nSubState=running",
+    "telomere-staging-chain.service": "NRestarts=0\nActiveState=active\nSubState=running",
+    "telomere-staging-watchdog.service": "NRestarts=0\nActiveState=active\nSubState=running"
+  },
+  "success": false,
+  "finishedAt": "2026-10-15T02:06:27.143494+00:00"
+}

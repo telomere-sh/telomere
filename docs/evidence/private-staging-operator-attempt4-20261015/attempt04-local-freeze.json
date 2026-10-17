@@ -1,0 +1,52 @@
+{
+  "archiveSha256": "86b5dc9f36dcf841963f0ffa8161023c126f1fae473c94909f5dddae3040fdce",
+  "boundaries": {
+    "actualHeldCloneCutoverOrRecoveryAccepted": false,
+    "attempt04PhaseOrUploadCalls": 0,
+    "authorizedDisposableFilesystemRegressionOnly": true,
+    "independentFinalReviewPending": true,
+    "privateProfilesKeysDatabasesBackupsOrRawLogsRetained": false,
+    "stagingMutations": 0
+  },
+  "checks": {
+    "authorActualCutoverAndLauncherCases": 16,
+    "nonceNonNull": 5,
+    "permissionsActualLinux": "passed",
+    "pythonAst": "passed",
+    "schema2ActualGates": "passed"
+  },
+  "cloneSmokeUnchangedFromAttempt03": true,
+  "evidence": [
+    {
+      "path": "attempt03-access-readonly.json",
+      "sha256": "bc36477f81090eb8a06ddd5e321a2857dd5a5b0bb10f3a538e643895ad1977f0"
+    },
+    {
+      "path": "held-cutover-offline-results.json",
+      "sha256": "c4a47f60535f81a164ca3dd0cfa2c89f2a16d3382bc001dbcfad61b364dfc49c"
+    },
+    {
+      "path": "legacy-nonce-aggregate-readonly.json",
+      "sha256": "2a36571a494ce3b067498840da3ccd22d3a52967c6d4289c0c4e24475e056ecf"
+    },
+    {
+      "path": "work-permissions-linux-results.json",
+      "sha256": "4824b87a4a39cbd479e8b8da2fc2ba78482426e3d055004d1b885be302c8fc54"
+    }
+  ],
+  "files": {
+    "README.md": "5bd0e8957d30b43c7077c0dfc8834a1b3eb13dcf19b07c0f29f1cb2542731c9d",
+    "clone-smoke.mjs": "43d37c51c7d50a1a9971b444367045a2c7e73b91239418d679460d1fb06176e5",
+    "rollout.py": "f9d9b264e9b5b447894ff982239b96c4be2973fe4d94daa23a14d4ed63943d32",
+    "upload-launch-usage.md": "afbcca59e9a5112d299822c500922a78194485d03478624f195fc491b5d894ec",
+    "upload-launch.py": "247ed20abdc173e4b7b172d6cc558c5fddf94cf5b2cbf1256be13bc8564ab198"
+  },
+  "finalRunId": "staging-354fe7af62ea-final04",
+  "frozenAt": "2026-10-15T04:55:06.748716+00:00",
+  "kind": "private_staging_attempt04_local_frozen_operator_source",
+  "oldAttempt01And02And03All15FilesUnchanged": true,
+  "operatorPath": "/opt/telomere-host-runtime/private-staging-operator-20261015-354fe7af62ea-attempt04",
+  "revision": "354fe7af62ea6701faafc3b04522abb1b4524d2d",
+  "runId": "staging-354fe7af62ea-launch04",
+  "schemaVersion": 1
+}

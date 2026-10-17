@@ -1,0 +1,161 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-08T18:02:34.252Z",
+  "status": "passed",
+  "scope": "Closed private VPS plus isolated local tests; public Robinhood deployment remains pending",
+  "changes": [
+    "Leash budget/expiry editing across API, browser, TypeScript SDK and MCP",
+    "Python owner SDK",
+    "Client-encrypted application checkpoints",
+    "v2 bounded ciphertext backup and read-only scratch restore"
+  ],
+  "tests": {
+    "typescript": {
+      "passed": 337,
+      "skipped": 3,
+      "failed": 0,
+      "suites": 24,
+      "unhandledErrors": 0,
+      "processExitCode": 0
+    },
+    "linux": {
+      "passed": 98,
+      "skipped": 0,
+      "suites": 6
+    },
+    "python": {
+      "passed": 55,
+      "skipped": 0,
+      "failed": 0,
+      "dependencyFreePassed": 34,
+      "dependencyFreeSkipped": 21,
+      "typescriptAeadInterop": "passed",
+      "actualCombinedFilterPagination": "passed",
+      "fullCheckpointBytes": 2097152
+    },
+    "build": "passed",
+    "typecheck": "passed",
+    "dependencyAudit": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0,
+      "total": 0
+    }
+  },
+  "deployed": {
+    "sourceArchiveSha256": "f5f01561e55d1a80bbed99e0e307de9d7bceb8f0b7ae52c4d0d2a425f88e7c49",
+    "artifactSyncSha256": "aa3802398c08e8a49ab7ae0c394b98fb99e871031e17696cce4e6f2bceadb3e0",
+    "artifactSyncMembers": 77,
+    "runtimeSourceMatchesAcceptedRelease": true,
+    "dependency": "@noble/ciphers@1.3.0",
+    "hashes": {
+      "dist/src/worker.js": "97fab6e71684c19f231260caf18c29331992311106708a9526779e09b124803b",
+      "dist/src/cysts/service.js": "b344680f26ba72ffa49afebe86702f9f23c4452262392dc23d6ba7a61cd3143f",
+      "dist/public/app.js": "3303ef6ed9f100d30191f4bd321bf22aa5033a5ae73acc4bc66dd8a6640b396b"
+    },
+    "controller": {
+      "status": "ready",
+      "worker": "idle"
+    },
+    "counts": {
+      "completed": 5
+    },
+    "journal": {
+      "count": 5,
+      "unknownNonceCount": 0,
+      "highestNonce": 5,
+      "truncated": false
+    },
+    "latestNonce": 6,
+    "pendingNonce": 6,
+    "controllerLockHeld": true,
+    "diagnostics": [],
+    "enclaveServices": "all three active",
+    "managedCpuCells": 0,
+    "artifactSyncStatus": "passed",
+    "artifactSyncedAt": "2026-10-08T18:04:47.937Z",
+    "servicesVerifiedAfterArtifactSync": 5
+  },
+  "backup": {
+    "schemaVersion": 2,
+    "createdAt": "2026-10-08T17:50:35.361Z",
+    "files": [
+      "database.dump",
+      "chain.json",
+      "profile.env",
+      "cysts.snapshot.json"
+    ],
+    "cysts": {
+      "snapshotVersion": 1,
+      "blobs": 1,
+      "ciphertextBytes": 93
+    },
+    "secretFilesPrivate": true,
+    "clientRecoveryKeysIncluded": false
+  },
+  "restore": {
+    "status": "passed",
+    "signatureValid": true,
+    "anchored": true,
+    "journalMatches": true,
+    "cysts": {
+      "enabled": true,
+      "snapshotVersion": 1,
+      "blobs": 1,
+      "ciphertextBytes": 93,
+      "readyCheckpoints": 1,
+      "pendingCheckpoints": 0,
+      "pendingWithoutBlob": 0,
+      "recoverablePending": 0,
+      "metadataMatches": true,
+      "serviceListOwnersVerified": 1,
+      "pendingOwnerListsDeferred": 0,
+      "downloadHashesMatch": true,
+      "pendingStatePreserved": true,
+      "clientRecoveryKeyRequired": true,
+      "metadataSha256": "1f20269e259aacf9e630b5d4611bfd6a7a47632e149bf52d3d45a69e65576666"
+    },
+    "cleanup": {
+      "databaseConnectionClosed": true,
+      "ownedAnvilStopped": true,
+      "labelledScratchContainerRemoved": true
+    },
+    "controllerStarted": false,
+    "transactionsSent": 0
+  },
+  "browser": {
+    "checkpointId": "0x5d86aced96c7a4544ebcc982b5fbcb47a21b34b203ab1ff8cc50f2a0840773b6",
+    "ciphertextSha256": "d1bd3ed0000961764263d14e99fcdf48f070e2acdd685784c611379c23868884",
+    "aeadAuthenticatedAfterRestart": true,
+    "wrongKeyRejected": true,
+    "recoveryKeySentToApi": false,
+    "plaintextSentToApi": false,
+    "oldSessionBroadcasts": 0,
+    "changedSessionDepositBroadcasts": 0,
+    "mobileWidth": 375,
+    "horizontalOverflow": false,
+    "pageErrors": 0,
+    "sessionEndUsedBrowserResponseFixture": true
+  },
+  "publicTestnetTransactions": 0,
+  "paidNearPosts": 0,
+  "pythonCheckpoint": {
+    "checkpointId": "0x5d86aced96c7a4544ebcc982b5fbcb47a21b34b203ab1ff8cc50f2a0840773b6",
+    "ciphertextSha256": "d1bd3ed0000961764263d14e99fcdf48f070e2acdd685784c611379c23868884",
+    "expectedBrowserPlaintextHashMatched": true,
+    "aeadAuthenticatedLocally": true,
+    "balanceUnchanged": true,
+    "recoveryKeyStayedClientSide": true,
+    "checkpointUploadRequests": 0,
+    "runCreationRequests": 0,
+    "walletSubmissions": 0,
+    "providerRequests": 0
+  },
+  "limitations": [
+    "Application file checkpoints; CRIU/CUDA, Lifeline/Metabolism and off-host storage remain later work",
+    "NEAR remains disabled; strict Gateway TCB and reviewed policy readiness are unresolved",
+    "Public testnet funding and personal-wallet acceptance remain pending"
+  ]
+}

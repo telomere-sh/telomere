@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "checkedAtUtc": "2026-10-14T07:18:09Z",
+  "sourceCommit": "36a58032af3de17fc699f20f8f625064283f09f3",
+  "scope": "Local focused acceptance for mounted v2 verification, independent read-only CLI and bounded full CPU paid lifecycle; arbitrary GPU Cells optional",
+  "checks": {
+    "typecheck": "passed",
+    "build": "passed",
+    "gitDiffCheck": "passed",
+    "v2MainArchiveCoreIntegration": { "files": 4, "passed": 18, "failed": 0, "skipped": 0, "durationSeconds": 88.54 },
+    "v2SharedReaderAssetPinsRuntimeFinancial": { "files": 4, "passed": 43, "failed": 0, "skipped": 0, "durationSeconds": 207.33 },
+    "v2RouteBoundaries": { "files": 1, "passed": 6, "failed": 0, "skipped": 0 },
+    "readOnlyTransport": { "files": 1, "passed": 2, "failed": 0, "skipped": 0, "durationSeconds": 1.10 },
+    "paidLifecycleThreeSessionsTwoHops": { "files": 1, "passed": 1, "failed": 0, "skipped": 0, "durationSeconds": 72.66 },
+    "paidLifecycleAdjacentCheckpointHandoffVaultSdkMcp": { "files": 5, "passed": 21, "failed": 0, "skipped": 0 }
+  },
+  "previousFullNodeCheckpoint": { "sourceCommit": "ad9c72b", "filesPassed": 139, "filesSkipped": 5, "passed": 1987, "skipped": 54, "durationSeconds": 2737.37 },
+  "previousFullPythonCheckpoint": { "passed": 204, "skipped": 22, "subsequentPythonSourceChanges": false },
+  "newFullSuiteRun": false,
+  "functionalCoverage": {
+    "mandatoryMilestones": 9,
+    "lowerSum": 607,
+    "upperSum": 683,
+    "lowerPercent": 67.4,
+    "upperPercent": 75.9,
+    "midpointPercent": 71.7,
+    "reportedPercent": 72,
+    "independentlyReviewedDelta": { "M3": 1, "M5": 1 },
+    "publicLaunchReady": false
+  },
+  "liveAcceptance": {
+    "publicPaidProviderCalls": 0,
+    "fundedRobinhoodTransactions": 0,
+    "independentPhysicalHostLoss": false,
+    "realTdxCell": false,
+    "independentImmutableEvidenceCopies": false,
+    "v2RuntimeIssuance": false,
+    "newLinuxAcceptance": false,
+    "privateVpsReadOnlySshProbe": "connection timed out before authentication",
+    "remoteFilesOrServicesChanged": false
+  },
+  "limits": "Focused groups overlap and must not be summed into a new full-suite count. The CPU runner uses local-process HostKit fixtures, 120-second leases, 4096-byte application checkpoints and an externally durable wallet lookup contract. V2 verifies caller-presented committed evidence without proving independent publication, historical signing time, physical stream completeness or output correctness. Public release gates remain open."
+}

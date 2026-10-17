@@ -1,0 +1,318 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-15T20:41:05.037058+00:00",
+  "status": "Completed comparison of the supplied current capture set; no exhaustive browser-motion claim",
+  "provenance": {
+    "comparisonReportFile": "comparisons/comparison-report.json",
+    "comparisonReportSha256": "176238a34d49cd78b83fd14e149b691a086b5d8dea2e1b30679864fb16344a7f",
+    "helperFile": "compare-captures.py",
+    "helperSha256": "8bbb284c4dd91a984f0a1a74bb756433d1861256c98621002cc63df31a39186f",
+    "sourceScreenshots": "Retained locally; image bytes and private absolute paths are excluded from this compact metrics record",
+    "numpyVersion": "2.2.6"
+  },
+  "layoutComparisons": [
+    {
+      "capture": "desktop-layout.json",
+      "layoutFileSha256": "c29772f398d98be51e776b49106ebedb67cb756e556a329811149a25ba5c0a6a",
+      "cssViewports": {
+        "production": {
+          "dpr": 1,
+          "height": 900,
+          "width": 1440
+        },
+        "reference": {
+          "dpr": 1,
+          "height": 900,
+          "width": 1440
+        }
+      },
+      "headingCounts": {
+        "production": 48,
+        "reference": 48
+      },
+      "documentHeightsCssPixels": {
+        "production": 27404,
+        "reference": 27404
+      },
+      "headingTextAndTagsExactlyEqual": true,
+      "headingBoundingBoxesExactlyEqual": true,
+      "headingTypographyExactlyEqual": true,
+      "maxHeadingBoxCoordinateDeltaCssPixels": 0.0,
+      "entireRecordedLayoutExactlyEqual": true,
+      "recordedDifferenceCount": 0
+    },
+    {
+      "capture": "mobile-layout.json",
+      "layoutFileSha256": "25c12fe0ba24869c84faee245eedf7c1b952033c4506c6808f2fe192eb33cce0",
+      "cssViewports": {
+        "production": {
+          "dpr": 1,
+          "height": 844,
+          "width": 390
+        },
+        "reference": {
+          "dpr": 1,
+          "height": 844,
+          "width": 390
+        }
+      },
+      "headingCounts": {
+        "production": 48,
+        "reference": 48
+      },
+      "documentHeightsCssPixels": {
+        "production": 30463,
+        "reference": 30463
+      },
+      "headingTextAndTagsExactlyEqual": true,
+      "headingBoundingBoxesExactlyEqual": true,
+      "headingTypographyExactlyEqual": true,
+      "maxHeadingBoxCoordinateDeltaCssPixels": 0.0,
+      "entireRecordedLayoutExactlyEqual": true,
+      "recordedDifferenceCount": 0
+    },
+    {
+      "capture": "protocol-layout.json",
+      "layoutFileSha256": "967904bfd1729b6e42642c50ff4a63adfdce2c249ebce9f1dbe1b3e60abf4528",
+      "cssViewports": {
+        "production": {
+          "dpr": 1,
+          "height": 900,
+          "width": 1440
+        },
+        "reference": {
+          "dpr": 1,
+          "height": 900,
+          "width": 1440
+        }
+      },
+      "headingCounts": {
+        "production": 20,
+        "reference": 20
+      },
+      "documentHeightsCssPixels": {
+        "production": 7122,
+        "reference": 7122
+      },
+      "headingTextAndTagsExactlyEqual": true,
+      "headingBoundingBoxesExactlyEqual": true,
+      "headingTypographyExactlyEqual": true,
+      "maxHeadingBoxCoordinateDeltaCssPixels": 0.0,
+      "entireRecordedLayoutExactlyEqual": true,
+      "recordedDifferenceCount": 0
+    }
+  ],
+  "currentReferenceProductionPixelComparisons": [
+    {
+      "key": "desktop-final",
+      "sourceDimensions": {
+        "first": [
+          1425,
+          891
+        ],
+        "second": [
+          1425,
+          891
+        ]
+      },
+      "sourceCaptureSha256": {
+        "first": "08ce9f4597c406ae1872bab205945cc25474bcfcf6537e12d0d943b0b7622c9e",
+        "second": "44ea68919230bb2534e73c712ea40bf09d46353bec77bcb02ad857745c434ff9"
+      },
+      "rgbMae0To255": 5.685648689625298,
+      "rgbRmse0To255": 8.734159961852912,
+      "maximumChannelDelta": 39,
+      "threshold": 16,
+      "changedPixelsAboveThreshold": 122154,
+      "totalPixels": 1269675,
+      "fractionPixelsAnyChannelAboveThreshold": 0.09620887234922322
+    },
+    {
+      "key": "home-full",
+      "sourceDimensions": {
+        "first": [
+          1425,
+          27404
+        ],
+        "second": [
+          1425,
+          27404
+        ]
+      },
+      "sourceCaptureSha256": {
+        "first": "b299c876d57058b290673c7b9207f7e2cf26cdbfe81d5738fb2673ef23034716",
+        "second": "bf02605f0de72a7ea6d04c7487c8521cd5278dbe63bf1483d0538b2951da9bad"
+      },
+      "rgbMae0To255": 0.1595288432729759,
+      "rgbRmse0To255": 1.6297992274655304,
+      "maximumChannelDelta": 244,
+      "threshold": 16,
+      "changedPixelsAboveThreshold": 117632,
+      "totalPixels": 39050700,
+      "fractionPixelsAnyChannelAboveThreshold": 0.0030122891523071287
+    },
+    {
+      "key": "mobile-final",
+      "sourceDimensions": {
+        "first": [
+          375,
+          812
+        ],
+        "second": [
+          375,
+          812
+        ]
+      },
+      "sourceCaptureSha256": {
+        "first": "fc690c06c5e7f5260f4abb1c982a59aa5593015821a7cd4d258b07d63968a8dc",
+        "second": "d93db5cda264a7c5b2a0105794422b3fd7b927c8d32e3a3a68cce0ab54cee295"
+      },
+      "rgbMae0To255": 4.2754548440065685,
+      "rgbRmse0To255": 7.269573091952832,
+      "maximumChannelDelta": 35,
+      "threshold": 16,
+      "changedPixelsAboveThreshold": 16739,
+      "totalPixels": 304500,
+      "fractionPixelsAnyChannelAboveThreshold": 0.05497208538587849
+    },
+    {
+      "key": "mobile-full",
+      "sourceDimensions": {
+        "first": [
+          375,
+          30463
+        ],
+        "second": [
+          375,
+          30463
+        ]
+      },
+      "sourceCaptureSha256": {
+        "first": "854871e4863793ce8626147285c7d934737bdfa7181159c07183e58c9a064b8b",
+        "second": "ebd0e0c1856866d601b5111db6921f31568b6a5d8a3fce33a552d21a13911e5e"
+      },
+      "rgbMae0To255": 0.11940202869054263,
+      "rgbRmse0To255": 1.859636171153319,
+      "maximumChannelDelta": 251,
+      "threshold": 16,
+      "changedPixelsAboveThreshold": 15392,
+      "totalPixels": 11423625,
+      "fractionPixelsAnyChannelAboveThreshold": 0.001347383164275788
+    },
+    {
+      "key": "protocol-final",
+      "sourceDimensions": {
+        "first": [
+          1425,
+          891
+        ],
+        "second": [
+          1425,
+          891
+        ]
+      },
+      "sourceCaptureSha256": {
+        "first": "ad185b623ab4da590bb0eb9ac4bd4866894a990c0435d6e6e0a33e35682365a1",
+        "second": "ad185b623ab4da590bb0eb9ac4bd4866894a990c0435d6e6e0a33e35682365a1"
+      },
+      "rgbMae0To255": 0.0,
+      "rgbRmse0To255": 0.0,
+      "maximumChannelDelta": 0,
+      "threshold": 16,
+      "changedPixelsAboveThreshold": 0,
+      "totalPixels": 1269675,
+      "fractionPixelsAnyChannelAboveThreshold": 0.0
+    }
+  ],
+  "temporalFrameComparisons": [
+    {
+      "key": "temporal-proof-chain",
+      "sourceDimensions": {
+        "first": [
+          375,
+          812
+        ],
+        "second": [
+          375,
+          812
+        ]
+      },
+      "sourceCaptureSha256": {
+        "first": "61997b2ab0e33789fec3284855dfb2fd31d9d66039e86e840e8c9d28261e6a12",
+        "second": "b6de6c973dfd1c27f7b193b760192f4696d69023772853d754ccdb37e14dcc4c"
+      },
+      "rgbMae0To255": 0.14337383689107827,
+      "rgbRmse0To255": 3.8531943543439526,
+      "maximumChannelDelta": 234,
+      "threshold": 16,
+      "changedPixelsAboveThreshold": 848,
+      "totalPixels": 304500,
+      "fractionPixelsAnyChannelAboveThreshold": 0.002784893267651888
+    },
+    {
+      "key": "temporal-protocol",
+      "sourceDimensions": {
+        "first": [
+          1425,
+          891
+        ],
+        "second": [
+          1425,
+          891
+        ]
+      },
+      "sourceCaptureSha256": {
+        "first": "779f43e3a15c7039a16dd81ac3ee6b2e40a3506d038a14a90b8085f9b77c819d",
+        "second": "779f43e3a15c7039a16dd81ac3ee6b2e40a3506d038a14a90b8085f9b77c819d"
+      },
+      "rgbMae0To255": 0.0,
+      "rgbRmse0To255": 0.0,
+      "maximumChannelDelta": 0,
+      "threshold": 16,
+      "changedPixelsAboveThreshold": 0,
+      "totalPixels": 1269675,
+      "fractionPixelsAnyChannelAboveThreshold": 0.0
+    }
+  ],
+  "interpretation": {
+    "recordedLayoutsMatchAllThreeProfiles": true,
+    "protocolViewportDecodedPixelsExactlyEqual": true,
+    "proofChainTemporalCapturesHaveChangedPixels": true,
+    "protocolTemporalDifferenceCaptured": false,
+    "visualAccuracyPercentage": null,
+    "sourceUrlButtonDestinations": "Owner-approved production destination differences are outside these layout/pixel assertions; href values were not included in the supplied layout records",
+    "normalMotionAnimationLoopsVerified": false,
+    "temporalPixelChangesAreNotLoopEvidence": true
+  },
+  "method": {
+    "rawGrid": "Original decoded RGB screenshot grids; no resize, crop, alignment or region masking",
+    "thresholdDefinition": "A pixel is counted when ANY RGB channel absolute difference is strictly greater than16",
+    "cssVsPixelCoordinates": "Recorded CSS viewports and actual screenshot JPEG dimensions are separate coordinate grids",
+    "temporalMeaning": "Changed pixels establish a difference between captures only. Procedural noise, clock and reduced-motion/static states prevent inferring an animation loop. Protocol identical frames are compatible with the subsequently observed reduced-motion mode."
+  },
+  "limitations": [
+    "Unsynchronised animated canvases, clock/time text, procedural noise and JPEG compression remain included.",
+    "Full-page averages can dilute a local difference with large static regions; inspect the viewport heatmaps.",
+    "Recorded metric parity does not prove animation timing, reduced-motion behavior or exhaustive interaction coverage.",
+    "The browser subsequently reported prefers-reduced-motion:reduce. Normal-motion loops were not verified; the preference was not explicitly recorded at the original screenshot capture moments."
+  ],
+  "networkRequests": 0,
+  "browserActionsByThisHelper": 0,
+  "sourceAssetsEdited": false,
+  "browserPreferenceObservation": {
+    "prefersReducedMotionReduce": true,
+    "source": "Subsequent live browser matchMedia check reported by parent interactive verifier",
+    "measuredAtOriginalScreenshotCaptureMoment": false,
+    "scope": "Observed current global browser preference; parent reports source and production share it. It was not explicitly sampled at each original screenshot moment."
+  },
+  "separatelyReportedInteractiveChecks": {
+    "source": "Parent interactive browser verification; not performed by pixel helper",
+    "observations": [
+      "Hero WebGL background visibly changes and clock ticks",
+      "Home location pin is visible; menu opens and closes",
+      "Proof-chain button selection and aria state update",
+      "Relevant controls and links respond"
+    ],
+    "normalMotionLoopAcceptanceClaimed": false
+  }
+}

@@ -1,0 +1,27 @@
+// Read-only generator: prints one Nginx header directive; never writes files or starts the application.
+import { realpath } from 'node:fs/promises';
+import { resolve } from 'node:path';
+import { pathToFileURL } from 'node:url';
+
+const RELEASE = '/opt/telomere-mainnet-pilot/releases/ee6169d1007b11f037fbc409dc1f7575f15117c9';
+
+export function nginxCspDirective(policy) {
+  if (typeof policy !== 'string' || policy.length < 100 || policy.length > 65536
+    || /["\\$\r\n\u0000]/.test(policy) || !policy.startsWith("default-src 'self'; ")
+    || !policy.includes("script-src 'self' 'sha256-") || !policy.includes("worker-src 'self' blob:")
+    || !policy.includes("frame-ancestors 'none'")) throw new Error('Website CSP refused');
+  return 'add_header Content-Security-Policy "' + policy + '" always;\n';
+}
+
+async function main() {
+  if (process.platform !== 'linux' || process.argv.length !== 3 || process.argv[2] !== '--print'
+    || await realpath(RELEASE) !== RELEASE) throw new Error('Reviewed release required');
+  const { loadWebsite } = await import(pathToFileURL(RELEASE + '/dist/src/website.js').href);
+  const website = await loadWebsite(RELEASE + '/dist/website');
+  const policy = website.policyFor(new Request('https://telomere.sh/'));
+  process.stdout.write(nginxCspDirective(policy));
+}
+
+if (process.argv[1] && import.meta.url === pathToFileURL(await realpath(resolve(process.argv[1]))).href) {
+  await main();
+}

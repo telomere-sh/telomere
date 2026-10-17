@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "unit": "telomere-file-accept-20261015.service",
+  "namespace": "tlmr-file-accept-20261015",
+  "dataAndImagesDeleted": false,
+  "originalStagingUnitsChanged": false,
+  "protectedRegistryPreserved": true,
+  "status": "passed",
+  "ownedDaemonStopped": true,
+  "ownedNamespaceRemoved": true,
+  "ownedContainersRemaining": 0
+}

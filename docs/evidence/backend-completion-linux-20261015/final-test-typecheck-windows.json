@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "gitRevision": "36d8a7f877038e4a15e91d03c6f5ae71283a1263",
+  "observedAt": "2026-10-15T13:08:10.721019+00:00",
+  "command": [
+    "npx",
+    "tsc",
+    "--noEmit"
+  ],
+  "platform": "win32",
+  "exitCode": 0,
+  "resultSource": "Completed exec session55543 observed by parent; no stdout/stderr",
+  "scope": "Typecheck only; no runtime tests or Linux permission acceptance"
+}

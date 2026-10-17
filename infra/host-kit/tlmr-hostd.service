@@ -1,0 +1,25 @@
+[Unit]
+Description=Telomere Host Kit CPU agent
+After=docker.service
+Requires=docker.service
+
+[Service]
+Type=simple
+User=telomere-host
+Group=telomere-host
+SupplementaryGroups=docker
+WorkingDirectory=/opt/telomere-host/app
+EnvironmentFile=/etc/telomere-host/host.env
+ExecStart=/usr/bin/node /opt/telomere-host/app/dist/scripts/host-kit.js
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=30
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/var/lib/telomere-host
+
+[Install]
+WantedBy=multi-user.target

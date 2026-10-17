@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-15T04:09:37.703565+00:00",
+  "kind": "independent_static_attempt2_path_repair_review",
+  "result": "no_remaining_blocking_finding_for_reviewed_minimal_delta",
+  "files": [
+    {
+      "path": ".local/private-staging-rollout-attempt2-20261015/rollout.py",
+      "bytes": 37124,
+      "sha256": "6b1d4f4d1e427ed7e634569d54d6cfa8b3a9baaa5204149c44dd0825a5157135"
+    },
+    {
+      "path": ".local/private-staging-rollout-attempt2-20261015/clone-smoke.mjs",
+      "bytes": 19759,
+      "sha256": "43d37c51c7d50a1a9971b444367045a2c7e73b91239418d679460d1fb06176e5"
+    },
+    {
+      "path": ".local/private-staging-rollout-attempt2-20261015/README.md",
+      "bytes": 9792,
+      "sha256": "15bf729fe6c60e04adcbf126628602f1dcea986692dcb87c550047775de7580d"
+    },
+    {
+      "path": ".local/private-staging-rollout-attempt2-20261015/upload-launch.py",
+      "bytes": 18876,
+      "sha256": "f89bf90b8bbc2fb9b6e21ff353ef100a1d5e2a80c43c58ceb1cf51d77f135b83"
+    },
+    {
+      "path": ".local/private-staging-rollout-attempt2-20261015/upload-launch-usage.md",
+      "bytes": 4841,
+      "sha256": "74443c32f6cac184efa11be09816d3dcf255cecca6ea9eb950c72b48c05ce7b6"
+    }
+  ],
+  "priorAttempt": {
+    "run": "staging-354fe7af62ea-launch01",
+    "status": "snapshot_safely_failed_before_backup_directory_creation;no_cutover",
+    "evidence": "docs/private-staging-attempt01-2026-10-15.json",
+    "sha256": "c76804a90fd712d72c442badbff016ca5d110ca78d27ad30af9eabcd8dfa7b0e",
+    "reviewMissedConstraint": "Original static review missed privateBackupPath validation shared by backup creation and Cyst restoration. The repair is reviewed against the actual API and its active callers.",
+    "oldFiveFilesPreservedByteForByte": true,
+    "priorReview": "docs/private-staging-rollout-composed-review-2026-10-15.json",
+    "priorReviewSha256": "43448243a6e77ed1f628cf9192914477dc32b4d41378703ae5ba8b7aabf8f129"
+  },
+  "exactFunctionalDelta": [
+    {
+      "file": "rollout.py",
+      "change": "backup=work/'.local'/label for snapshot and cutover-snapshot",
+      "inverseByteEqualityWithPrior": true
+    },
+    {
+      "file": "clone-smoke.mjs",
+      "change": "Both restore destination and cloneEnv.CYSTS_DIR use join(cloneRoot,'.local','cysts')",
+      "replacements": 2,
+      "inverseByteEqualityWithPrior": true
+    }
+  ],
+  "apiContract": {
+    "source": "src/operator/backup.ts",
+    "guard": "privateBackupPath accepts a non-root descendant of Linux /opt/telomere-pilot/backups or an exact .local path component.",
+    "activeCallers": [
+      "backup-staging.ts:79 createBackupDirectory(output)",
+      "backup-staging.ts:85 -> captureCystSnapshot(output/cysts.snapshot.json) -> privateBackupPath",
+      "clone-smoke.mjs -> restoreCystSnapshot -> createBackupDirectory(destination)"
+    ],
+    "compatibility": [
+      "verifyBackup validates existing private files and adds no output directory restriction.",
+      "Both controller versions and Cyst fingerprints read the same new CYSTS_DIR.",
+      "ReadWritePaths=clone covers clone/.local/cysts; root restore precedes private clone chown.",
+      "Retired restore:acceptance/platform-restore CLIs are not invoked."
+    ],
+    "linuxProbe": {
+      "path": "docs/evidence/private-staging-backup-path-probe-20261015.json",
+      "sha256": "eae35831e6c41f20104ca00a6610e04dcf154d960bfec44e8fc6c8f442560b74",
+      "status": "passed",
+      "reviewedSource": "docs/evidence/verify-private-staging-backup-paths-20261015.mjs",
+      "servicesChanged": false,
+      "profileRead": false,
+      "apiFilesystemWrites": 0
+    },
+    "independentApiProbe": {
+      "platform": "win32",
+      "rejected": [
+        "work/snapshot",
+        "work/clone/cysts"
+      ],
+      "accepted": [
+        "work/.local/snapshot",
+        "work/.local/cutover-snapshot",
+        "work/clone/.local/cysts"
+      ],
+      "invoked": "Actual privateBackupPath only; no directory creation, restore or profile read."
+    }
+  },
+  "checks": {
+    "fiveFinalHashesMatch": true,
+    "pythonAstParseExit": 0,
+    "nodeSyntaxCheckExit": 0,
+    "actualSchema2Gate": "passed with12 evidence/archive inputs",
+    "transportDiff": "Only fresh run/remote/outer phase-unit identities and frozen hashes. Existing schema2/transport logic preserved.",
+    "newRun": "staging-354fe7af62ea-launch02",
+    "newRemote": "/opt/telomere-host-runtime/private-staging-operator-20261015-354fe7af62ea-attempt02",
+    "outerPhaseUnitPrefix": "telomere-private-staging-354fe7af62ea-launch02-",
+    "productionOrDependencyChange": false,
+    "composedGateSemanticsChanged": false
+  },
+  "unchangedEvidenceBoundary": {
+    "revision": "354fe7af62ea6701faafc3b04522abb1b4524d2d",
+    "archiveSha256": "86b5dc9f36dcf841963f0ffa8161023c126f1fae473c94909f5dddae3040fdce",
+    "initialFull": "FAILED2281passed1failed19skipped retained",
+    "correctedSelectionAndAdditive": "40+71passed; not a clean full run",
+    "gvisor": 16
+  },
+  "reviewerActions": {
+    "serverCommands": 0,
+    "sshOrScp": 0,
+    "serviceChanges": 0,
+    "profileOrKeyReads": 0,
+    "sourceEdits": 0,
+    "commits": 0,
+    "readinessScoreChanges": 0
+  },
+  "limits": [
+    "Attempt2 was not executed by the reviewer. Static review/pure path probes are not successful backup/clone/cutover evidence.",
+    "Root must verify each phase independently, preserve attempt01 and collect actual cleanup/identity/health reports.",
+    "Strict drift, exact owned cleanup, code-only rollback and no automatic data restore remain unchanged."
+  ]
+}

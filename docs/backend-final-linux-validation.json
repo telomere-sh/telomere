@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "checkedAtUtc": "2026-10-12T23:55:00Z",
+  "scope": "isolated private Linux VPS acceptance of committed backend source",
+  "commit": "503cc4fc5094f1610df8131ca361d5b2d5af50d7",
+  "sourceArchiveSha256": "a2932b6cc0a9cb7e7b381a258b7afb2685e7469f628896286bfe03b3e202db6f",
+  "trackedFilesByteMatchedAfterBuildAndTests": 606,
+  "trackedFilesMismatched": 0,
+  "normalBuild": "passed",
+  "tests": {
+    "files": 6,
+    "passed": 53,
+    "failed": 0,
+    "skipped": 0,
+    "suites": [
+      "tests/operator-platform-prepared.test.ts",
+      "tests/platform-deployment-plan.test.ts",
+      "tests/paid-session-checkpoint.test.ts",
+      "tests/gpu-admission.test.ts",
+      "tests/supplier-nosana.test.ts",
+      "tests/operator-watchdog.test.ts"
+    ]
+  },
+  "preexistingServicesActiveAfter": 6,
+  "watchdogHealthAfter": "ok",
+  "watchdogSequenceAfter": 21,
+  "temporaryBuildDirectoryRemoved": true,
+  "publicProviderOrChainTestCalls": 0,
+  "liveServiceMutationDuringAcceptance": false,
+  "limitations": "The tests use disposable local Anvil/process/network fixtures. The separate read-only Robinhood RPC preflight and unsigned CLI smoke are not funded acceptance. GPU and Nosana checks do not establish paid external GPU/supplier operation."
+}

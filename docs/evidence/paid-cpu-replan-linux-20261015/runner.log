@@ -1,0 +1,6 @@
+{"phase": "typecheck_complete", "exitCode": 0, "seconds": 103.078, "timedOut": false}
+{"phase": "build_complete", "exitCode": 0, "seconds": 140.133, "timedOut": false}
+{"phase": "crypto-probe_complete", "exitCode": 0, "seconds": 0.519, "timedOut": false}
+{"phase": "node_complete", "exitCode": 0, "seconds": 272.538, "timedOut": false}
+{"phase": "python_complete", "exitCode": 0, "seconds": 4.521, "timedOut": false}
+{"status": "accepted_focused_linux_cpu_replan", "success": true, "source": "/opt/telomere-host-runtime/paid-cpu-replan-20261015-9111430f5e27", "node": {"total": 54, "passed": 54, "failed": 0, "assertionStatuses": {"passed": 54}, "success": true, "unhandledErrors": 0, "files": [{"name": "paid-cpu-job-replan-runner.test.ts", "status": "passed", "cases": 42}, {"name": "paid-cpu-jobs.test.ts", "status": "passed", "cases": 1}, {"name": "paid-host-preemption.test.ts", "status": "passed", "cases": 10}, {"name": "paid-vault-preemption-handoff.test.ts", "status": "passed", "cases": 1}], "failures": [], "accepted": true}, "python": {"total": 71, "passed": 71, "statuses": {"ok": 71}, "skips": [], "completedOk": true, "accepted": true}, "failureType": null, "postflightFailureType": null}

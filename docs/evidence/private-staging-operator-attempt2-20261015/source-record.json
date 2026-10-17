@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "kind": "exact_reviewed_operator_bytes",
+  "files": [
+    {
+      "path": "docs/evidence/private-staging-operator-attempt2-20261015/rollout.py",
+      "sha256": "6b1d4f4d1e427ed7e634569d54d6cfa8b3a9baaa5204149c44dd0825a5157135",
+      "bytes": 37124
+    },
+    {
+      "path": "docs/evidence/private-staging-operator-attempt2-20261015/clone-smoke.mjs",
+      "sha256": "43d37c51c7d50a1a9971b444367045a2c7e73b91239418d679460d1fb06176e5",
+      "bytes": 19759
+    },
+    {
+      "path": "docs/evidence/private-staging-operator-attempt2-20261015/README.md",
+      "sha256": "15bf729fe6c60e04adcbf126628602f1dcea986692dcb87c550047775de7580d",
+      "bytes": 9792
+    },
+    {
+      "path": "docs/evidence/private-staging-operator-attempt2-20261015/upload-launch.py",
+      "sha256": "f89bf90b8bbc2fb9b6e21ff353ef100a1d5e2a80c43c58ceb1cf51d77f135b83",
+      "bytes": 18876
+    },
+    {
+      "path": "docs/evidence/private-staging-operator-attempt2-20261015/upload-launch-usage.md",
+      "sha256": "74443c32f6cac184efa11be09816d3dcf255cecca6ea9eb950c72b48c05ce7b6",
+      "bytes": 4841
+    }
+  ],
+  "review": "docs/private-staging-rollout-attempt2-review-2026-10-15.json",
+  "executionProofSeparate": true,
+  "containsProfileOrKeyContents": false
+}

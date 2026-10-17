@@ -1,0 +1,92 @@
+[
+  {
+    "path": ".env.example",
+    "bytes": 4176,
+    "sha256": "78879ce0f0fc77ebb714050f62f04308581b15da0293a7f910dcdeea69f35900"
+  },
+  {
+    "path": "package-lock.json",
+    "bytes": 124283,
+    "sha256": "e8549c057c2e4a8a3808ae2a2b386e9a20d20711c696836dd483d4c8bc7c533d"
+  },
+  {
+    "path": "package.json",
+    "bytes": 3134,
+    "sha256": "467fba75e97cc4902a047ef1f8eae63ac33186cd1f6a00afe77e77649434377d"
+  },
+  {
+    "path": "src/app.ts",
+    "bytes": 24857,
+    "sha256": "caed67755c4520ed99e82dbd9bb3160964888c73247b09872b93b030c27ee615"
+  },
+  {
+    "path": "src/config.ts",
+    "bytes": 11671,
+    "sha256": "827046034bbe7050fd6bf8cb941fe7ad0ecdc9e907185211214f635b3ffdd28d"
+  },
+  {
+    "path": "src/main.ts",
+    "bytes": 14889,
+    "sha256": "119d04da4e376dc75ebfa833c4ebde32139c7b56f50f3ae6d2836997d6aa1177"
+  },
+  {
+    "path": "src/treasury/base-credit.ts",
+    "bytes": 17535,
+    "sha256": "563ff8f6fd9b785dcfab8d2f0848eea69dc5a52f2b3780dd5c5c7cf23c8116ec"
+  },
+  {
+    "path": "src/treasury/configured.ts",
+    "bytes": 3396,
+    "sha256": "9c57cdb5b7c28165f0a56b98e699d79c1f77a677daab4f34adb175efdaa84c56"
+  },
+  {
+    "path": "src/treasury/ledger.ts",
+    "bytes": 7062,
+    "sha256": "2997c39837f05a11e9a9e719a7981bc5754f9946c63f343a64d0cc61dda1b3c7"
+  },
+  {
+    "path": "src/treasury/routes.ts",
+    "bytes": 3844,
+    "sha256": "b8e168a4b0ac8eb3355d1ac28d7a1e0380a4dc76e9588ff3b55603cbf40cdabf"
+  },
+  {
+    "path": "src/treasury/service.ts",
+    "bytes": 14000,
+    "sha256": "79568b61536b6383a0d5ebf09a846643236fd7f6a32e345a9be1a151c5b773ab"
+  },
+  {
+    "path": "src/treasury/signer-isolation.ts",
+    "bytes": 2055,
+    "sha256": "e88045bb8034ac359be8fe8dbd21a4b30c83050c482a10f1f60f1d99349550db"
+  },
+  {
+    "path": "src/treasury/solana-reader.ts",
+    "bytes": 10667,
+    "sha256": "7f2366ac8dfc6f281aee7d1ee819a5d7590a52898e0115b675a1b1c9e816a651"
+  },
+  {
+    "path": "src/treasury/types.ts",
+    "bytes": 5004,
+    "sha256": "9bc10a32ebcc8fbc047b5a20c5c4941238304a00d5f8c93cbc0dd380c406e740"
+  },
+  {
+    "path": "tests/fixtures/treasury-topups.ts",
+    "bytes": 6916,
+    "sha256": "1ce5090ee4663281246eec63a3b86643025a2a68aca66bc2e6142654fd5f0c16"
+  },
+  {
+    "path": "tests/treasury-solana-reader.test.ts",
+    "bytes": 4056,
+    "sha256": "29ebba328e0306d0ff25a1359a604533463d922377511e2f062a1c3fe287fffa"
+  },
+  {
+    "path": "tests/treasury-topup-main.test.ts",
+    "bytes": 11313,
+    "sha256": "35eb9dff9d62866258d52d6ee29cf1468d9b0fe56b761704c67896af9b35f43f"
+  },
+  {
+    "path": "tests/treasury-topups.test.ts",
+    "bytes": 16937,
+    "sha256": "d56fb98c6a24158c485aba3d4b3b7e1e2fcc0b8e93535d59eb9a7159558b15f9"
+  }
+]

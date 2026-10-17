@@ -1,0 +1,1304 @@
+{
+  "schemaVersion": 1,
+  "status": "accepted",
+  "success": true,
+  "recordedAtUtc": "2026-10-15T14:19:36.217767+00:00",
+  "generatorSourceSha256": "e87ff54a56f284c4e4d102950ea4088174255f194cfd441fe9fcd0ce6de42527",
+  "positiveCompleteGeneratorDryRunAccepted": true,
+  "positiveValidationPublished": false,
+  "faults": [
+    {
+      "fault": "mandatory_case_missing",
+      "refused": true,
+      "reason": "Missing required actual image/paid scenario",
+      "validationPublished": false
+    },
+    {
+      "fault": "mandatory_case_failed",
+      "refused": true,
+      "reason": "Vitest failed",
+      "validationPublished": false
+    },
+    {
+      "fault": "mandatory_case_skipped",
+      "refused": true,
+      "reason": "Focused assertions skipped",
+      "validationPublished": false
+    },
+    {
+      "fault": "production_blob_altered",
+      "refused": true,
+      "reason": "Git continuity bytes differ",
+      "validationPublished": false
+    },
+    {
+      "fault": "image_binding_mismatch",
+      "refused": true,
+      "reason": "Corrected Node/image source cutoffs differ",
+      "validationPublished": false
+    },
+    {
+      "fault": "baseline_unfinished",
+      "refused": true,
+      "reason": "Baseline full regressions incomplete/interrupted",
+      "validationPublished": false
+    },
+    {
+      "fault": "cleanup_failed",
+      "refused": true,
+      "reason": "Required acceptance failed or uncertain",
+      "validationPublished": false
+    },
+    {
+      "fault": "python_crypto_dependency_skipped",
+      "refused": true,
+      "reason": "Corrected Python summary differs",
+      "validationPublished": false
+    },
+    {
+      "fault": "native_additional_runtime_change",
+      "refused": true,
+      "reason": "Wrong native-reader production patch boundary",
+      "validationPublished": false
+    },
+    {
+      "fault": "native_cohort_skipped",
+      "refused": true,
+      "reason": "Focused assertions skipped",
+      "validationPublished": false
+    },
+    {
+      "fault": "native_unexplained_baseline_failure",
+      "refused": true,
+      "reason": "Native-reader baseline failure is not exact retained-SQL ENOENT setup failure",
+      "validationPublished": false
+    },
+    {
+      "fault": "native_fixture_blob_altered",
+      "refused": true,
+      "reason": "Native-reader supplement differs from committed Git fixtures",
+      "validationPublished": false
+    },
+    {
+      "fault": "native_root_identity",
+      "refused": true,
+      "reason": "Native-reader nonroot execution identity differs",
+      "validationPublished": false
+    },
+    {
+      "fault": "full_passed_file_omitted",
+      "refused": true,
+      "reason": "Historical complete Node file/case inventory differs",
+      "validationPublished": false
+    },
+    {
+      "fault": "final_fixture_additional_production_path",
+      "refused": true,
+      "reason": "Wrong final fixture correction boundary",
+      "validationPublished": false
+    },
+    {
+      "fault": "final_fixture_case_identity_missing",
+      "refused": true,
+      "reason": "Final fixture complete file/case identities differ",
+      "validationPublished": false
+    }
+  ],
+  "faultCount": 16,
+  "faultInjection": "deep_copied_parsed_json_in_memory_only",
+  "serverActions": 0,
+  "sourceEdits": false,
+  "historicalEvidenceEdits": false,
+  "inputs": [
+    {
+      "path": "docs/evidence/backend-completion-linux-20261015/cleanup-runner.py",
+      "bytes": 17996,
+      "sha256": "cc3d29f3711c9cad2b8d6690fc202fcd920f86ae3f7110e4f472df953ea2f170"
+    },
+    {
+      "path": "docs/evidence/backend-completion-linux-20261015/cleanup.json",
+      "bytes": 4309,
+      "sha256": "e07fd487a783091f767b05b2f5cc069fa8a3bd9fb46180d153430ab45211a753"
+    },
+    {
+      "path": "docs/evidence/backend-completion-linux-20261015/completion-gvisor-acceptance.json",
+      "bytes": 34534,
+      "sha256": "a2f220877528a38a28f9b18e6b7cb01455c556f9caa4eefdd03efb5645b32547"
+    },
+    {
+      "path": "docs/evidence/backend-completion-linux-20261015/completion-gvisor-initial-acceptance.json",
+      "bytes": 32190,
+      "sha256": "c868f4f2220f0e6a5904aed88a2000fff54fd2dacae7c62f0aa301a2b989ae3d"
+    },
+    {
+      "path": "docs/evidence/backend-completion-linux-20261015/completion-gvisor-initial.json",
+      "bytes": 68949,
+      "sha256": "c0fdc322504a40ee8f52a947253f2f4edaecc53ff9cbfce2542baf2b5fd8c3cb"
+    },
+    {
+      "path": "docs/evidence/backend-completion-linux-20261015/completion-gvisor.json",
+      "bytes": 66211,
+      "sha256": "4a45ff4527e440ff45bb598b4ab73934c8a38879be43e45dcd9014c943b1ed1d"
+    },
+    {
+      "path": "docs/evidence/backend-completion-linux-20261015/completion-gvisor.log",
+      "bytes": 131,
+      "sha256": "6657a67805f2d848a9617e476d70ea765021306c17726ffd1e3e112301b954b4"
+    },
+    {
+      "path": "docs/evidence/backend-completion-linux-20261015/composed-validation-generator.py",
+      "bytes": 89523,
+      "sha256": "e87ff54a56f284c4e4d102950ea4088174255f194cfd441fe9fcd0ce6de42527"
+    },
+    {
+      "path": "docs/evidence/backend-completion-linux-20261015/corrected-vitest.config.ts",
+      "bytes": 295,
+      "sha256": "b6f9fa222c03ca00609348eb5a8a95f9a67c277e55d709fecb6255c5b4c64bf5"
+    },
+    {
+      "path": "docs/evidence/backend-completion-linux-20261015/cpu-lanes-diagnostic-runner.py",
+      "bytes": 3037,
+      "sha256": "fe8b128c8756101c98ccd4e3dbffcebb9ba98e82f5ba21c22bb05bf3b840dc46"
+    },
+    {
+      "path": "docs/evidence/backend-completion-linux-20261015/cpu-lanes-diagnostic-source.json",
+      "bytes": 367,
+      "sha256": "ff216fedce0d265398aeba67e5445670f0057f2a294c31dc6f5d8bb1b9b8648d"
+    },
+    {
+      "path": "docs/evidence/backend-completion-linux-20261015/cpu-lanes-diagnostic.json",
+      "bytes": 1019,
+      "sha256": "9588c982b2888220bd801af50edcc6657f310680f8c0fbc3025f9168ac358d51"
+    },
+    {
+      "path": "docs/evidence/backend-completion-linux-20261015/cpu-lanes-gvisor-initial-acceptance.json",
+      "bytes": 6529,
+      "sha256": "8c6d6d4863867d81fc69d85d08eef502aee91b22eb184e0fd31d6650187a3a5b"
+    },
+    {
+      "path": "docs/evidence/backend-completion-linux-20261015/cpu-lanes-gvisor-initial.json",
+      "bytes": 8751,
+      "sha256": "b85107bddf622fd1293dc50eafb784ddb9ce4d8f8a64b9921d86e5417fe01ca8"
+    },
+    {
+      "path": "docs/evidence/backend-completion-linux-20261015/declared-registry-image-attempt02-corrected-freeze-20261015.json",
+      "bytes": 2108,
+      "sha256": "4c9f654687882f088aa1b18168f5f7dd07a715416b5ec253e950a98819a27a95"
+    },
+    {
+      "path": "docs/evidence/backend-completion-linux-20261015/declared-registry-image-attempt02-freeze-20261015.json",
+      "bytes": 1961,
+      "sha256": "acd50eb1cc8620bfd5b751a87645b96bc438514eaa19b23a86fda16a33164b5d"
+    },
+    {
+      "path": "docs/evidence/backend-completion-linux-20261015/declared-state-session-checkpoint-initial-20261015.json",
+      "bytes": 5367,
+      "sha256": "212ad9255190b72c57992dc40012d456f85f5af1b6d5e565e92b6b5f9e717f08"
+    },
+    {
+      "path": "docs/evidence/backend-completion-linux-20261015/declared-state-windows.json",
+      "bytes": 22220,
+      "sha256": "393869274e6c49d8fee299d42576c2c1a01910597c4c776c1a42fa4188a824e2"
+    },
+    {
+      "path": "docs/evidence/backend-completion-linux-20261015/final-gvisor-runner.py",
+      "bytes": 8293,
+      "sha256": "e166feff9a7f618332fe3c3e1cf0ddccb7941cd3cb9e71caa48fc0421702898f"
+    },
+    {
+      "path": "docs/evidence/backend-completion-linux-20261015/final-install-runner.py",
+      "bytes": 5341,
+      "sha256": "c3e2609aab467c13306f201b73a57818502ebeb6b2df83e3c197d357368c4897"
+    },
+    {
+      "path": "docs/evidence/backend-completion-linux-20261015/final-install.json",
+      "bytes": 1119,
+      "sha256": "375e630bff640ce4d266b4e4bba93c1f8194aa8e356a948249bd912b82317379"
+    },
+    {
+      "path": "docs/evidence/backend-completion-linux-20261015/final-test-only-source-continuity.json",
+      "bytes": 342734,
+      "sha256": "b4e464769e899ec4e6029926e19e42fccbf3b11dc2c60bb6e847802e2ba47494"
+    },
+    {
+      "path": "docs/evidence/backend-completion-linux-20261015/final-test-typecheck-windows.json",
+      "bytes": 413,
+      "sha256": "47da66ad66563ae214cafe30abcfdce3d6916c416050b22e5eb49d45699e2042"
+    },
+    {
+      "path": "docs/evidence/backend-completion-linux-20261015/full-acceptance.json",
+      "bytes": 137387,
+      "sha256": "e245c533d1da366eece0a8adf83c1e792ef3133f32ffe6cd0369d7b944876bfa"
+    },
+    {
+      "path": "docs/evidence/backend-completion-linux-20261015/full-node.json",
+      "bytes": 1084191,
+      "sha256": "3cf0f93ee928382bc09b3d85b41e751bed4d24a5f72151998ebb92e06071c110"
+    },
+    {
+      "path": "docs/evidence/backend-completion-linux-20261015/full-node.log",
+      "bytes": 1046,
+      "sha256": "fd165e3660580410df79943e0e496e88837745629656b5d9323cdbfbd424df16"
+    },
+    {
+      "path": "docs/evidence/backend-completion-linux-20261015/full-python.log",
+      "bytes": 48393,
+      "sha256": "39a783b3a6dbd6eeebd09de842eadc526300c1e1709d9988d9dfa07f21a18145"
+    },
+    {
+      "path": "docs/evidence/backend-completion-linux-20261015/full-regression-runner.py",
+      "bytes": 14183,
+      "sha256": "9cba7026c5ce21144ffa93becf2df42145cc702edd5dd45956d5621744616e70"
+    },
+    {
+      "path": "docs/evidence/backend-completion-linux-20261015/full-retainer.py",
+      "bytes": 2614,
+      "sha256": "069ddd816538f4921050765469769fedf1d3f0a799157a8836256323c29c579e"
+    },
+    {
+      "path": "docs/evidence/backend-completion-linux-20261015/full-retention.json",
+      "bytes": 918,
+      "sha256": "e59c896db5c47da6d118bfed6b77c326d8d79a731bc91e6b351b8a5b16b122e4"
+    },
+    {
+      "path": "docs/evidence/backend-completion-linux-20261015/full-source-manifest.json",
+      "bytes": 165123,
+      "sha256": "d6a7c41f3363ffd8683780a3dee1eb652e74f7b7b3130ae71e887a3a3609f946"
+    },
+    {
+      "path": "docs/evidence/backend-completion-linux-20261015/full-twofile-acceptance.json",
+      "bytes": 7425,
+      "sha256": "6fc61cb95d55f1f40348971353971c21e702fc73b7c0d5cf541085675b4f1431"
+    },
+    {
+      "path": "docs/evidence/backend-completion-linux-20261015/full-twofile-dependency-inventory.json",
+      "bytes": 4244461,
+      "sha256": "8e1255e6d331e8bcf68f8182ad8cfc03fd2f349b4987ca1e21e4e5674cd08080"
+    },
+    {
+      "path": "docs/evidence/backend-completion-linux-20261015/full-twofile-node.json",
+      "bytes": 27898,
+      "sha256": "fd3df5ca5ca6b3518f9d5934fdd7fe3f6bb0f10ede2255ce3bd3fa40def41b12"
+    },
+    {
+      "path": "docs/evidence/backend-completion-linux-20261015/full-twofile-node.log",
+      "bytes": 126,
+      "sha256": "0d5eb15d7be61a98284ad10af7b119dd8acc0111d3eed94927444e98f39004b6"
+    },
+    {
+      "path": "docs/evidence/backend-completion-linux-20261015/full-twofile-preparation.json",
+      "bytes": 1483,
+      "sha256": "a0733565f554cf35d42da80453c73fa64002fc4d91597ca49193571449e94055"
+    },
+    {
+      "path": "docs/evidence/backend-completion-linux-20261015/full-twofile-preparer.py",
+      "bytes": 9187,
+      "sha256": "d6774dbaafcb18574053d7d9f20649e558cabfc4471f3fe38c427edbc78190f4"
+    },
+    {
+      "path": "docs/evidence/backend-completion-linux-20261015/full-twofile-retention.json",
+      "bytes": 1853,
+      "sha256": "b118ab9cef4ad23634b9aa85e2155d0330b1fd4ff11acc3a062bc17f217412a8"
+    },
+    {
+      "path": "docs/evidence/backend-completion-linux-20261015/full-twofile-runner.py",
+      "bytes": 19446,
+      "sha256": "ce9ded47114bcb8edd3cde6334ba1bffd84656db682b305b4f806728b293a277"
+    },
+    {
+      "path": "docs/evidence/backend-completion-linux-20261015/full-twofile-source-continuity.json",
+      "bytes": 341922,
+      "sha256": "564bdf7d101306593b65324d942f8e63d96d1c6dd4a8a28dd366ef91570d05a9"
+    },
+    {
+      "path": "docs/evidence/backend-completion-linux-20261015/full-twofile-source-manifest.json",
+      "bytes": 166302,
+      "sha256": "cf30d67d4eecf88482fb64b0f84c4fb206912c83aeaaf343925a14a869ee107e"
+    },
+    {
+      "path": "docs/evidence/backend-completion-linux-20261015/full-twofile-typecheck.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/evidence/backend-completion-linux-20261015/full-twofile-vitest.config.ts",
+      "bytes": 289,
+      "sha256": "c86e021a4550040d1fee44c21627829f1731828e311045e471583e684b6edc5d"
+    },
+    {
+      "path": "docs/evidence/backend-completion-linux-20261015/image-build-attempt02-failed.json",
+      "bytes": 6621,
+      "sha256": "d7e7feb9d279bbb43b38ddbde02565cf0dce2b9f62f09f2b7b0103244a0ef440"
+    },
+    {
+      "path": "docs/evidence/backend-completion-linux-20261015/image-build-attempt03-failed.json",
+      "bytes": 7826,
+      "sha256": "9233cf4717682abf35c75be30cbfbbb7a817506844edafa1c9c7f5a03c7213af"
+    },
+    {
+      "path": "docs/evidence/backend-completion-linux-20261015/image-build-initial.json",
+      "bytes": 5238,
+      "sha256": "af6736c04d41c8a3c3366dea9297cd72fe08dbb466c29692037dd488e22cc150"
+    },
+    {
+      "path": "docs/evidence/backend-completion-linux-20261015/image-builder-attempt02-preflight-initial.py",
+      "bytes": 38686,
+      "sha256": "5c157b9c75048846d19081743f420102afecad53e79b8661d91d6a8f2de840d5"
+    },
+    {
+      "path": "docs/evidence/backend-completion-linux-20261015/image-builder-attempt02.py",
+      "bytes": 39400,
+      "sha256": "d2c1a7664c20be02ec2c29eb29d68f7da0eabce05de06784c2d9ba3445a2f270"
+    },
+    {
+      "path": "docs/evidence/backend-completion-linux-20261015/image-builder-attempt03-executed.py",
+      "bytes": 43379,
+      "sha256": "07a64947271d4af2277ce1e11e1e04ca7e36ca395dadbe32faac1a8f2e767859"
+    },
+    {
+      "path": "docs/evidence/backend-completion-linux-20261015/image-builder-initial.py",
+      "bytes": 25546,
+      "sha256": "b3a560ce165f6b1078389d7c6b210336c3d398bba773509c8759f902419a322c"
+    },
+    {
+      "path": "docs/evidence/backend-completion-linux-20261015/image-verification.json",
+      "bytes": 7533,
+      "sha256": "9fdc98fd160c1fbaa852805c3fc4480512531739e7fc5dfbbdd7c3a050503c14"
+    },
+    {
+      "path": "docs/evidence/backend-completion-linux-20261015/image-verifier-controls.json",
+      "bytes": 2204,
+      "sha256": "6c9d888b37d4da9948823f5d6e5a2b2b0ac96a25b33d2dfd838fd8ff42adb29c"
+    },
+    {
+      "path": "docs/evidence/backend-completion-linux-20261015/image-verifier-controls.py",
+      "bytes": 4192,
+      "sha256": "ff48f9c615a451187b5007927148f0a6874a3a08ac99966edb4d5be2757631d2"
+    },
+    {
+      "path": "docs/evidence/backend-completion-linux-20261015/image-verifier.py",
+      "bytes": 15927,
+      "sha256": "b766d3d897b886061801273254318aafe818ed0a52fde6d3f3af3c9d916ca2dc"
+    },
+    {
+      "path": "docs/evidence/backend-completion-linux-20261015/install.json",
+      "bytes": 940,
+      "sha256": "73d43e57e4e2beb9e4601af6c8438d4691c68349db6138de38eb80e83f026ffb"
+    },
+    {
+      "path": "docs/evidence/backend-completion-linux-20261015/new-modules-windows.json",
+      "bytes": 65474,
+      "sha256": "d28e8bb1bf204363cf4c91d9d055c964f3489f8a13f378637fcc44d305be22a6"
+    },
+    {
+      "path": "docs/evidence/backend-completion-linux-20261015/prepare-backend-completion-corrected-20261015.py",
+      "bytes": 5570,
+      "sha256": "10c33bfb726222d1b0eae0e93eeb1c3cd63bc4bb45aef02441214ecfdae4a578"
+    },
+    {
+      "path": "docs/evidence/backend-completion-linux-20261015/prepare-owned-daemon.py",
+      "bytes": 7523,
+      "sha256": "8a15c4f49ff69529d09fdf4f701697b594d4d0365347df5d73d7d32e1e77d562"
+    },
+    {
+      "path": "docs/evidence/backend-completion-linux-20261015/prepare.json",
+      "bytes": 2839,
+      "sha256": "0cf80591651395ca75425c4736d0b5b2e8888d96cc7a238722030c91bd6abd19"
+    },
+    {
+      "path": "docs/evidence/backend-completion-linux-20261015/registry-probe.json",
+      "bytes": 3078,
+      "sha256": "2bbd7a6c0754d31e27f4efa12fedaf8658b9daa879ee0f6a54189338246edd6b"
+    },
+    {
+      "path": "docs/evidence/backend-completion-linux-20261015/registry-probe.py",
+      "bytes": 4572,
+      "sha256": "1d66350888529e3d01a51149983286532c739e18b3e5f5be3fb2526206dfb25f"
+    },
+    {
+      "path": "docs/evidence/backend-completion-linux-20261015/reused-dependencies-before.json",
+      "bytes": 4244461,
+      "sha256": "8e1255e6d331e8bcf68f8182ad8cfc03fd2f349b4987ca1e21e4e5674cd08080"
+    },
+    {
+      "path": "docs/evidence/backend-completion-linux-20261015/run-backend-completion-gvisor-corrected-20261015.py",
+      "bytes": 17507,
+      "sha256": "9bf53212aa2a663ba862b00ebc7d3c8ffe3030d1b0ed7318046e545d61f4be17"
+    },
+    {
+      "path": "docs/evidence/backend-completion-linux-20261015/small-checkpoint-windows.json",
+      "bytes": 3588,
+      "sha256": "4454b9cc2f74bac5ec3a616858767273547884ede9c2dc82cc9a8911cfa0926f"
+    },
+    {
+      "path": "docs/evidence/backend-completion-linux-20261015/source-continuity.json",
+      "bytes": 415027,
+      "sha256": "0bfe268249efc74390a2e20f54bef3a66076e85d6fd97ebef83d69da0c20d162"
+    },
+    {
+      "path": "docs/evidence/backend-completion-linux-20261015/test-registry-binary-attempt02-controls-20261015.json",
+      "bytes": 4785,
+      "sha256": "459201cc5db720754d85b95afa581b5f86857ce14c9b16f87880d4ec38fd14c7"
+    },
+    {
+      "path": "docs/evidence/backend-completion-linux-20261015/test-registry-binary-attempt02-controls-20261015.py",
+      "bytes": 9442,
+      "sha256": "ba17e6809e1a2f92601e6fc414475dfd2691e482e727aa3f550387968920ab36"
+    },
+    {
+      "path": "docs/evidence/backend-completion-linux-20261015/test-registry-binary-attempt02-initial-controls-20261015.json",
+      "bytes": 4325,
+      "sha256": "0d420a77747b9b3ec3260fc07730e624cf2f2b145afdf9db4fe247eb6e2e4bbf"
+    },
+    {
+      "path": "docs/evidence/backend-completion-linux-20261015/test-registry-binary-attempt02-initial-controls-20261015.py",
+      "bytes": 8808,
+      "sha256": "21771966929b40371a9b7c00ad1a05d2e379a2300b11eda5fc6716ae680ed322"
+    },
+    {
+      "path": "docs/evidence/backend-completion-linux-20261015/test-registry-binary-attempt03-controls-20261015.json",
+      "bytes": 6169,
+      "sha256": "068007b264d15d13f4797e6b14355f845111bdd5ce7fc981e31d27b7b4ddac3f"
+    },
+    {
+      "path": "docs/evidence/backend-completion-linux-20261015/test-registry-binary-attempt03-controls-20261015.py",
+      "bytes": 11609,
+      "sha256": "05ad67ce2726d4a4506c36d7d46d613733030539142ebe141a81182d87dcb4fa"
+    },
+    {
+      "path": "docs/evidence/python-crypto-final-initial-20261015/crypto-probe.stdout",
+      "bytes": 1007,
+      "sha256": "05d7def7333a459e9c0b4b5c3e21ad4a01bf680c8d5c91ffdfe62e73666e0d3c"
+    },
+    {
+      "path": "docs/evidence/python-crypto-final-initial-20261015/pip-check.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/evidence/python-crypto-final-initial-20261015/pip-check.stdout",
+      "bytes": 30,
+      "sha256": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09"
+    },
+    {
+      "path": "docs/evidence/python-crypto-final-initial-20261015/pip-freeze.stdout",
+      "bytes": 423,
+      "sha256": "37140108d4a1ae6426f921afda46e7e73fe097d53cce37c03dd9d8bbc7f0d90b"
+    },
+    {
+      "path": "docs/evidence/python-crypto-final-initial-20261015/pip-install-report.json",
+      "bytes": 350453,
+      "sha256": "47cd426a0fdb2c0ae62159f69c8d6f9f42a3fdca0d7101ae91f73dec24398a55"
+    },
+    {
+      "path": "docs/evidence/python-crypto-final-initial-20261015/pip-install.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/evidence/python-crypto-final-initial-20261015/pip-install.stdout",
+      "bytes": 4930,
+      "sha256": "0bf6222b2541b4ff514a610897baf344fec38472e3c19aa207a5bdc7ce803444"
+    },
+    {
+      "path": "docs/evidence/python-crypto-final-initial-20261015/report.json",
+      "bytes": 13402,
+      "sha256": "67f67e86ce6e432f8742b260dd30e29432d821cd837bff1280f53b2deed2c67b"
+    },
+    {
+      "path": "docs/evidence/python-crypto-final-initial-20261015/retention.json",
+      "bytes": 2995,
+      "sha256": "7750684cd9e2409ca14e8597a4c6a70f74f8e3486ee24e38e077215248ef815e"
+    },
+    {
+      "path": "docs/evidence/python-crypto-final-initial-20261015/runner.py",
+      "bytes": 7975,
+      "sha256": "e72553d10e5a500665802b63de6280e96b487cbd254041ee2e664f0edaabe636"
+    },
+    {
+      "path": "docs/evidence/python-crypto-final-initial-20261015/source-after.json",
+      "bytes": 144817,
+      "sha256": "ecd764ce5aaa634358bebc2ad1aa2cd2aa1a0965f319585ed74e28e0d1371fe4"
+    },
+    {
+      "path": "docs/evidence/python-crypto-final-initial-20261015/source-before.json",
+      "bytes": 144817,
+      "sha256": "ecd764ce5aaa634358bebc2ad1aa2cd2aa1a0965f319585ed74e28e0d1371fe4"
+    },
+    {
+      "path": "docs/evidence/python-crypto-final-initial-20261015/unittest.stderr",
+      "bytes": 42375,
+      "sha256": "f094cd43efd20c3f2894267369ba683e35c99b27da3c5f01e4635030870a4e2e"
+    },
+    {
+      "path": "docs/evidence/python-crypto-final-initial-20261015/unittest.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/evidence/python-crypto-final-initial-20261015/venv-create.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/evidence/python-crypto-final-initial-20261015/venv-create.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/evidence/python-crypto-posix-first-correction-20261015/crypto-probe.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/evidence/python-crypto-posix-first-correction-20261015/crypto-probe.stdout",
+      "bytes": 1007,
+      "sha256": "05d7def7333a459e9c0b4b5c3e21ad4a01bf680c8d5c91ffdfe62e73666e0d3c"
+    },
+    {
+      "path": "docs/evidence/python-crypto-posix-first-correction-20261015/focused-journal.stderr",
+      "bytes": 5405,
+      "sha256": "6b5d7c2924ee4c7c6b3689f41cfedbe7397f02ecde817ca2452f746738737372"
+    },
+    {
+      "path": "docs/evidence/python-crypto-posix-first-correction-20261015/focused-journal.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/evidence/python-crypto-posix-first-correction-20261015/original-source-after.json",
+      "bytes": 144817,
+      "sha256": "ecd764ce5aaa634358bebc2ad1aa2cd2aa1a0965f319585ed74e28e0d1371fe4"
+    },
+    {
+      "path": "docs/evidence/python-crypto-posix-first-correction-20261015/original-source-before.json",
+      "bytes": 144817,
+      "sha256": "ecd764ce5aaa634358bebc2ad1aa2cd2aa1a0965f319585ed74e28e0d1371fe4"
+    },
+    {
+      "path": "docs/evidence/python-crypto-posix-first-correction-20261015/pip-check.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/evidence/python-crypto-posix-first-correction-20261015/pip-check.stdout",
+      "bytes": 30,
+      "sha256": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09"
+    },
+    {
+      "path": "docs/evidence/python-crypto-posix-first-correction-20261015/pip-freeze.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/evidence/python-crypto-posix-first-correction-20261015/pip-freeze.stdout",
+      "bytes": 423,
+      "sha256": "37140108d4a1ae6426f921afda46e7e73fe097d53cce37c03dd9d8bbc7f0d90b"
+    },
+    {
+      "path": "docs/evidence/python-crypto-posix-first-correction-20261015/progress.json",
+      "bytes": 70,
+      "sha256": "7cb3cd4f7d5e8e6044287c49999a5fe584d43cd015337e766a935e77a4faf95b"
+    },
+    {
+      "path": "docs/evidence/python-crypto-posix-first-correction-20261015/report.json",
+      "bytes": 15479,
+      "sha256": "7e45c0e858d4441ebc3907e7f2e29fce5d16170e42d29d2fb819f955b976dada"
+    },
+    {
+      "path": "docs/evidence/python-crypto-posix-first-correction-20261015/retention.json",
+      "bytes": 4190,
+      "sha256": "563872ebadf81075bfca9126291d0b42001764e0da7ecc5ddb26f85dcb2ede8e"
+    },
+    {
+      "path": "docs/evidence/python-crypto-posix-first-correction-20261015/runner.py",
+      "bytes": 14638,
+      "sha256": "1af87d9bf8bb679419dc918c3b3208543c4fdc9910f63f64a8ee322eb5c71fba"
+    },
+    {
+      "path": "docs/evidence/python-crypto-posix-first-correction-20261015/source-after.json",
+      "bytes": 144817,
+      "sha256": "de8371dd5aa9034fa1c953d2f9560349945d3c77fdf485088446046fe71a9203"
+    },
+    {
+      "path": "docs/evidence/python-crypto-posix-first-correction-20261015/source-before.json",
+      "bytes": 144817,
+      "sha256": "de8371dd5aa9034fa1c953d2f9560349945d3c77fdf485088446046fe71a9203"
+    },
+    {
+      "path": "docs/evidence/python-crypto-posix-first-correction-20261015/source-manifest.json",
+      "bytes": 166302,
+      "sha256": "7bfd15ca48554700e50d8bec7b4492befc3f9a647e6df0f810e6c5130017ec0a"
+    },
+    {
+      "path": "docs/evidence/python-crypto-posix-first-correction-20261015/typescript-dist-after.json",
+      "bytes": 84441,
+      "sha256": "dcfddb0d87e7040b635cac7bc5201d07da74358fd08a7676993340150281f36b"
+    },
+    {
+      "path": "docs/evidence/python-crypto-posix-first-correction-20261015/typescript-dist-before.json",
+      "bytes": 84441,
+      "sha256": "dcfddb0d87e7040b635cac7bc5201d07da74358fd08a7676993340150281f36b"
+    },
+    {
+      "path": "docs/evidence/python-crypto-posix-first-correction-20261015/unittest.stderr",
+      "bytes": 42270,
+      "sha256": "2dfa979f937be62e1d5de4bc1be7e13fb939f957467b82b1a0fba4ca829f3746"
+    },
+    {
+      "path": "docs/evidence/python-crypto-posix-first-correction-20261015/unittest.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/evidence/python-crypto-posix-first-correction-20261015/venv-after.json",
+      "bytes": 537999,
+      "sha256": "84dd7ba839030e8f15df28c73eebd1638165d0e9797df8b38680a65161e8469d"
+    },
+    {
+      "path": "docs/evidence/python-crypto-posix-first-correction-20261015/venv-before.json",
+      "bytes": 537999,
+      "sha256": "84dd7ba839030e8f15df28c73eebd1638165d0e9797df8b38680a65161e8469d"
+    },
+    {
+      "path": "docs/evidence/python-crypto-posix-corrected-20261015/crypto-probe.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/evidence/python-crypto-posix-corrected-20261015/crypto-probe.stdout",
+      "bytes": 1007,
+      "sha256": "05d7def7333a459e9c0b4b5c3e21ad4a01bf680c8d5c91ffdfe62e73666e0d3c"
+    },
+    {
+      "path": "docs/evidence/python-crypto-posix-corrected-20261015/focused-journal.stderr",
+      "bytes": 5405,
+      "sha256": "c5d32aa73f52198e438bdc89b6b45a8b25ac504216e99fde1be34f77b9c05548"
+    },
+    {
+      "path": "docs/evidence/python-crypto-posix-corrected-20261015/focused-journal.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/evidence/python-crypto-posix-corrected-20261015/original-source-after.json",
+      "bytes": 144817,
+      "sha256": "ecd764ce5aaa634358bebc2ad1aa2cd2aa1a0965f319585ed74e28e0d1371fe4"
+    },
+    {
+      "path": "docs/evidence/python-crypto-posix-corrected-20261015/original-source-before.json",
+      "bytes": 144817,
+      "sha256": "ecd764ce5aaa634358bebc2ad1aa2cd2aa1a0965f319585ed74e28e0d1371fe4"
+    },
+    {
+      "path": "docs/evidence/python-crypto-posix-corrected-20261015/pip-check.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/evidence/python-crypto-posix-corrected-20261015/pip-check.stdout",
+      "bytes": 30,
+      "sha256": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09"
+    },
+    {
+      "path": "docs/evidence/python-crypto-posix-corrected-20261015/pip-freeze.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/evidence/python-crypto-posix-corrected-20261015/pip-freeze.stdout",
+      "bytes": 423,
+      "sha256": "37140108d4a1ae6426f921afda46e7e73fe097d53cce37c03dd9d8bbc7f0d90b"
+    },
+    {
+      "path": "docs/evidence/python-crypto-posix-corrected-20261015/progress.json",
+      "bytes": 70,
+      "sha256": "504f16a0f214623deff11b6d9e3a066d6790441a1edde5f1017d3d859476629e"
+    },
+    {
+      "path": "docs/evidence/python-crypto-posix-corrected-20261015/report.json",
+      "bytes": 16356,
+      "sha256": "0de01bc9fff05902de8612ddd137fe9947024f36891612b678748fa359a494f5"
+    },
+    {
+      "path": "docs/evidence/python-crypto-posix-corrected-20261015/retention.json",
+      "bytes": 4845,
+      "sha256": "5b91c2449c3bb7aba0770ad46f51134358de11460365715e0650f92317941462"
+    },
+    {
+      "path": "docs/evidence/python-crypto-posix-corrected-20261015/runner.py",
+      "bytes": 16049,
+      "sha256": "0688e175efa9dc9aefa10eae70c327fb439fbe38a96b0cd27534709adfd9d50b"
+    },
+    {
+      "path": "docs/evidence/python-crypto-posix-corrected-20261015/source-after.json",
+      "bytes": 144817,
+      "sha256": "37f2f69e2262c63d17d4dd2e7668625b427eb705e2b7863ac1bda07776d83fb7"
+    },
+    {
+      "path": "docs/evidence/python-crypto-posix-corrected-20261015/source-before.json",
+      "bytes": 144817,
+      "sha256": "37f2f69e2262c63d17d4dd2e7668625b427eb705e2b7863ac1bda07776d83fb7"
+    },
+    {
+      "path": "docs/evidence/python-crypto-posix-corrected-20261015/source-manifest.json",
+      "bytes": 166302,
+      "sha256": "5021ef1d55eee54896117d12a06748efc759362d1f9c713cc263e4140b15909f"
+    },
+    {
+      "path": "docs/evidence/python-crypto-posix-corrected-20261015/typescript-dist-after.json",
+      "bytes": 84441,
+      "sha256": "dcfddb0d87e7040b635cac7bc5201d07da74358fd08a7676993340150281f36b"
+    },
+    {
+      "path": "docs/evidence/python-crypto-posix-corrected-20261015/typescript-dist-before.json",
+      "bytes": 84441,
+      "sha256": "dcfddb0d87e7040b635cac7bc5201d07da74358fd08a7676993340150281f36b"
+    },
+    {
+      "path": "docs/evidence/python-crypto-posix-corrected-20261015/unittest.stderr",
+      "bytes": 41434,
+      "sha256": "e42428f08584c1fdd3bd85db2da95ec562f681afc315a362227c5c4587598823"
+    },
+    {
+      "path": "docs/evidence/python-crypto-posix-corrected-20261015/unittest.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/evidence/python-crypto-posix-corrected-20261015/venv-after.json",
+      "bytes": 537999,
+      "sha256": "84dd7ba839030e8f15df28c73eebd1638165d0e9797df8b38680a65161e8469d"
+    },
+    {
+      "path": "docs/evidence/python-crypto-posix-corrected-20261015/venv-before.json",
+      "bytes": 537999,
+      "sha256": "84dd7ba839030e8f15df28c73eebd1638165d0e9797df8b38680a65161e8469d"
+    },
+    {
+      "path": "docs/evidence/golem-native-payment-doc-linux-20261015/acceptance.json",
+      "bytes": 17892,
+      "sha256": "f54facf14ddd55e09366e2edd186ce762e669befa7f1a5a13582fce1035427c1"
+    },
+    {
+      "path": "docs/evidence/golem-native-payment-doc-linux-20261015/dependency-inventory-after.json",
+      "bytes": 3881669,
+      "sha256": "2db68f8bea6f9ece793ed656769abcef4a4b19d237c4ea73ff6f1496a6f61d81"
+    },
+    {
+      "path": "docs/evidence/golem-native-payment-doc-linux-20261015/dependency-inventory-before.json",
+      "bytes": 3881669,
+      "sha256": "2db68f8bea6f9ece793ed656769abcef4a4b19d237c4ea73ff6f1496a6f61d81"
+    },
+    {
+      "path": "docs/evidence/golem-native-payment-doc-linux-20261015/diagnose-wal-phases.py",
+      "bytes": 5377,
+      "sha256": "44b3be79d90c28754074fe639e5c2928ede4ce1fdaedc7cd18f2d965796e111e"
+    },
+    {
+      "path": "docs/evidence/golem-native-payment-doc-linux-20261015/diagnose-wal.py",
+      "bytes": 4694,
+      "sha256": "9a2eab4294d76ff9d3fcc98e0f6d8539a4c046e495c7c3a465d195d1a4083987"
+    },
+    {
+      "path": "docs/evidence/golem-native-payment-doc-linux-20261015/expected-cases.json",
+      "bytes": 2625,
+      "sha256": "dc77f0f821154d6e44df4d7f3116dc9472d98235c21e8a7457233d40344790b9"
+    },
+    {
+      "path": "docs/evidence/golem-native-payment-doc-linux-20261015/identity.log",
+      "bytes": 42,
+      "sha256": "9fcf85a3a3e0a2852c86b0e51a1add5b667a9c1f44fae379865b9fec2e0fbc68"
+    },
+    {
+      "path": "docs/evidence/golem-native-payment-doc-linux-20261015/initial-linux/acceptance.json",
+      "bytes": 4930,
+      "sha256": "2cf6235a1c2926c96c35373fe1e8f2685389b5cee82ea955da6b0d463ebeb70f"
+    },
+    {
+      "path": "docs/evidence/golem-native-payment-doc-linux-20261015/initial-linux/dependency-inventory-after.json",
+      "bytes": 3881669,
+      "sha256": "2db68f8bea6f9ece793ed656769abcef4a4b19d237c4ea73ff6f1496a6f61d81"
+    },
+    {
+      "path": "docs/evidence/golem-native-payment-doc-linux-20261015/initial-linux/dependency-inventory-before.json",
+      "bytes": 3881669,
+      "sha256": "2db68f8bea6f9ece793ed656769abcef4a4b19d237c4ea73ff6f1496a6f61d81"
+    },
+    {
+      "path": "docs/evidence/golem-native-payment-doc-linux-20261015/initial-linux/expected-cases.json",
+      "bytes": 2625,
+      "sha256": "dc77f0f821154d6e44df4d7f3116dc9472d98235c21e8a7457233d40344790b9"
+    },
+    {
+      "path": "docs/evidence/golem-native-payment-doc-linux-20261015/initial-linux/original-source-manifest.json",
+      "bytes": 166302,
+      "sha256": "16b7ddcfb62c1d6fde5bd0f6c4a2b55013d0dbe508c62e4ff233efd896e69028"
+    },
+    {
+      "path": "docs/evidence/golem-native-payment-doc-linux-20261015/initial-linux/reader.log",
+      "bytes": 279,
+      "sha256": "bbadf498f8735057ba2819a971219df83b1dbd98e4b0b41a818797cbf6604357"
+    },
+    {
+      "path": "docs/evidence/golem-native-payment-doc-linux-20261015/initial-linux/source-dependency-inventory-after.json",
+      "bytes": 3881669,
+      "sha256": "2db68f8bea6f9ece793ed656769abcef4a4b19d237c4ea73ff6f1496a6f61d81"
+    },
+    {
+      "path": "docs/evidence/golem-native-payment-doc-linux-20261015/initial-linux/source-dependency-inventory-before.json",
+      "bytes": 3881669,
+      "sha256": "2db68f8bea6f9ece793ed656769abcef4a4b19d237c4ea73ff6f1496a6f61d81"
+    },
+    {
+      "path": "docs/evidence/golem-native-payment-doc-linux-20261015/initial-linux/source-manifest.json",
+      "bytes": 166302,
+      "sha256": "757a4b2ea257ea6d58b11ff377bec802c6583695b687758b567a6e6d92b6c095"
+    },
+    {
+      "path": "docs/evidence/golem-native-payment-doc-linux-20261015/initial-linux/typecheck.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/evidence/golem-native-payment-doc-linux-20261015/initial-linux/upstream-fixture-inventory-after.json",
+      "bytes": 59,
+      "sha256": "f8b33ce392eb4844179b16564eb8a953ea7ec4d84afa3fd65f076d54d1fc54f0"
+    },
+    {
+      "path": "docs/evidence/golem-native-payment-doc-linux-20261015/initial-linux/upstream-fixture-inventory-before.json",
+      "bytes": 59,
+      "sha256": "f8b33ce392eb4844179b16564eb8a953ea7ec4d84afa3fd65f076d54d1fc54f0"
+    },
+    {
+      "path": "docs/evidence/golem-native-payment-doc-linux-20261015/initial-linux/upstream-fixture-manifest.json",
+      "bytes": 3723,
+      "sha256": "af38fc632b14f30bb8d9414277e3cf76588a0b20e945490572624e3e95989ebe"
+    },
+    {
+      "path": "docs/evidence/golem-native-payment-doc-linux-20261015/initial-linux/vitest.json",
+      "bytes": 9163,
+      "sha256": "37d4032dc1bc8c6466f8ee19b3ddd26a42704171383dd99cb7a9373e533698de"
+    },
+    {
+      "path": "docs/evidence/golem-native-payment-doc-linux-20261015/initial-nonroot-identity/acceptance.json",
+      "bytes": 5469,
+      "sha256": "674a98d0b543dc9135624db89a843b1b17d15568375287d4ab44ab212bdaa4c8"
+    },
+    {
+      "path": "docs/evidence/golem-native-payment-doc-linux-20261015/initial-nonroot-identity/dependency-inventory-after.json",
+      "bytes": 3881669,
+      "sha256": "2db68f8bea6f9ece793ed656769abcef4a4b19d237c4ea73ff6f1496a6f61d81"
+    },
+    {
+      "path": "docs/evidence/golem-native-payment-doc-linux-20261015/initial-nonroot-identity/dependency-inventory-before.json",
+      "bytes": 3881669,
+      "sha256": "2db68f8bea6f9ece793ed656769abcef4a4b19d237c4ea73ff6f1496a6f61d81"
+    },
+    {
+      "path": "docs/evidence/golem-native-payment-doc-linux-20261015/initial-nonroot-identity/expected-cases.json",
+      "bytes": 2625,
+      "sha256": "dc77f0f821154d6e44df4d7f3116dc9472d98235c21e8a7457233d40344790b9"
+    },
+    {
+      "path": "docs/evidence/golem-native-payment-doc-linux-20261015/initial-nonroot-identity/identity.log",
+      "bytes": 42,
+      "sha256": "9fcf85a3a3e0a2852c86b0e51a1add5b667a9c1f44fae379865b9fec2e0fbc68"
+    },
+    {
+      "path": "docs/evidence/golem-native-payment-doc-linux-20261015/initial-nonroot-identity/original-source-manifest.json",
+      "bytes": 166302,
+      "sha256": "16b7ddcfb62c1d6fde5bd0f6c4a2b55013d0dbe508c62e4ff233efd896e69028"
+    },
+    {
+      "path": "docs/evidence/golem-native-payment-doc-linux-20261015/initial-nonroot-identity/run-linux-executed.py",
+      "bytes": 18621,
+      "sha256": "e9269f5a27abe46506269ad03fe3d6e5385b2fd93236116601eda821fd5eb351"
+    },
+    {
+      "path": "docs/evidence/golem-native-payment-doc-linux-20261015/initial-nonroot-identity/source-dependency-inventory-after.json",
+      "bytes": 3881669,
+      "sha256": "2db68f8bea6f9ece793ed656769abcef4a4b19d237c4ea73ff6f1496a6f61d81"
+    },
+    {
+      "path": "docs/evidence/golem-native-payment-doc-linux-20261015/initial-nonroot-identity/source-dependency-inventory-before.json",
+      "bytes": 3881669,
+      "sha256": "2db68f8bea6f9ece793ed656769abcef4a4b19d237c4ea73ff6f1496a6f61d81"
+    },
+    {
+      "path": "docs/evidence/golem-native-payment-doc-linux-20261015/initial-nonroot-identity/source-manifest.json",
+      "bytes": 166302,
+      "sha256": "757a4b2ea257ea6d58b11ff377bec802c6583695b687758b567a6e6d92b6c095"
+    },
+    {
+      "path": "docs/evidence/golem-native-payment-doc-linux-20261015/initial-nonroot-identity/upstream-fixture-inventory-after.json",
+      "bytes": 59,
+      "sha256": "f8b33ce392eb4844179b16564eb8a953ea7ec4d84afa3fd65f076d54d1fc54f0"
+    },
+    {
+      "path": "docs/evidence/golem-native-payment-doc-linux-20261015/initial-nonroot-identity/upstream-fixture-inventory-before.json",
+      "bytes": 59,
+      "sha256": "f8b33ce392eb4844179b16564eb8a953ea7ec4d84afa3fd65f076d54d1fc54f0"
+    },
+    {
+      "path": "docs/evidence/golem-native-payment-doc-linux-20261015/initial-nonroot-identity/upstream-fixture-manifest.json",
+      "bytes": 3723,
+      "sha256": "af38fc632b14f30bb8d9414277e3cf76588a0b20e945490572624e3e95989ebe"
+    },
+    {
+      "path": "docs/evidence/golem-native-payment-doc-linux-20261015/local-provenance.json",
+      "bytes": 1021,
+      "sha256": "c740da529f219147dda0e02f685fa7ad5f01ebbff80b165ac2977586b3675bac"
+    },
+    {
+      "path": "docs/evidence/golem-native-payment-doc-linux-20261015/original-source-manifest.json",
+      "bytes": 166302,
+      "sha256": "16b7ddcfb62c1d6fde5bd0f6c4a2b55013d0dbe508c62e4ff233efd896e69028"
+    },
+    {
+      "path": "docs/evidence/golem-native-payment-doc-linux-20261015/package-upstream-fixtures.py",
+      "bytes": 3317,
+      "sha256": "a12f50a300f19a3f66764d0083f8f767eafdd438ab20c414154ee1753e80efe2"
+    },
+    {
+      "path": "docs/evidence/golem-native-payment-doc-linux-20261015/reader.log",
+      "bytes": 284,
+      "sha256": "7be54c5a38de0f23f4818e61d61c1eeffb51307c4655560b311f88a292f2876f"
+    },
+    {
+      "path": "docs/evidence/golem-native-payment-doc-linux-20261015/retain-sqlite-upstream-reference.py",
+      "bytes": 1725,
+      "sha256": "5a24d0cde2a526455e8fa0fa400d49d71ed9324c834563eea9220e4164bede88"
+    },
+    {
+      "path": "docs/evidence/golem-native-payment-doc-linux-20261015/run-linux.py",
+      "bytes": 13916,
+      "sha256": "369d3a06df15f557f1cf128615ec81f5c37846d769cd017f18c1ee6fc8662e84"
+    },
+    {
+      "path": "docs/evidence/golem-native-payment-doc-linux-20261015/run-nonroot-linux.py",
+      "bytes": 18810,
+      "sha256": "3b642de182d4d373bdffad98a44bf7268df6def12287f19e7695cf4cc4657072"
+    },
+    {
+      "path": "docs/evidence/golem-native-payment-doc-linux-20261015/source-dependency-inventory-after.json",
+      "bytes": 3881669,
+      "sha256": "2db68f8bea6f9ece793ed656769abcef4a4b19d237c4ea73ff6f1496a6f61d81"
+    },
+    {
+      "path": "docs/evidence/golem-native-payment-doc-linux-20261015/source-dependency-inventory-before.json",
+      "bytes": 3881669,
+      "sha256": "2db68f8bea6f9ece793ed656769abcef4a4b19d237c4ea73ff6f1496a6f61d81"
+    },
+    {
+      "path": "docs/evidence/golem-native-payment-doc-linux-20261015/source-manifest.json",
+      "bytes": 166302,
+      "sha256": "757a4b2ea257ea6d58b11ff377bec802c6583695b687758b567a6e6d92b6c095"
+    },
+    {
+      "path": "docs/evidence/golem-native-payment-doc-linux-20261015/sqlite-upstream-reference.json",
+      "bytes": 728,
+      "sha256": "f909e52166bd35c65ca03d6b7c7feee4e99e5d3c9a8a6e3d4d65d1047745bea4"
+    },
+    {
+      "path": "docs/evidence/golem-native-payment-doc-linux-20261015/typecheck.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/evidence/golem-native-payment-doc-linux-20261015/upstream-fixture-inventory-after.json",
+      "bytes": 59,
+      "sha256": "f8b33ce392eb4844179b16564eb8a953ea7ec4d84afa3fd65f076d54d1fc54f0"
+    },
+    {
+      "path": "docs/evidence/golem-native-payment-doc-linux-20261015/upstream-fixture-inventory-before.json",
+      "bytes": 59,
+      "sha256": "f8b33ce392eb4844179b16564eb8a953ea7ec4d84afa3fd65f076d54d1fc54f0"
+    },
+    {
+      "path": "docs/evidence/golem-native-payment-doc-linux-20261015/upstream-fixture-manifest.json",
+      "bytes": 3723,
+      "sha256": "af38fc632b14f30bb8d9414277e3cf76588a0b20e945490572624e3e95989ebe"
+    },
+    {
+      "path": "docs/evidence/golem-native-payment-doc-linux-20261015/vitest.json",
+      "bytes": 8499,
+      "sha256": "be9014c2eddafb6a139e0f55bce4062f2378ca147369dd48695943b0e7167e2e"
+    },
+    {
+      "path": "docs/evidence/golem-native-payment-doc-linux-20261015/wal-phase-probe-provenance.json",
+      "bytes": 565,
+      "sha256": "2f00815879a836a75a1450aadb390de9df49f8500add872b229073d60809df83"
+    },
+    {
+      "path": "docs/evidence/golem-native-payment-doc-linux-20261015/wal-phase-probe.json",
+      "bytes": 3719,
+      "sha256": "71a712b07421ccf799bd32c1aac7879ebf2bcd206beb8ad2e97619ec6572a736"
+    },
+    {
+      "path": "docs/evidence/golem-native-payment-doc-linux-20261015/wal-phase-probe.stderr",
+      "bytes": 171,
+      "sha256": "45695e0f5587b61c1c22c8aa899d569cb3372f3f33304679290f4eb331733f22"
+    },
+    {
+      "path": "docs/evidence/golem-native-payment-doc-linux-20261015/wal-probe-provenance.json",
+      "bytes": 530,
+      "sha256": "e8daf8afe41aeaf3ee1ed2bb0a242eb20054f0827eba4b01d0bbfcbd355a7ad0"
+    },
+    {
+      "path": "docs/evidence/golem-native-payment-doc-linux-20261015/wal-probe.json",
+      "bytes": 4370,
+      "sha256": "889776a613742daf71c6aca7c1b9c8c4936da785b72ba99959245e0b71ab3c30"
+    },
+    {
+      "path": "docs/evidence/golem-native-payment-doc-linux-20261015/wal-probe.stderr",
+      "bytes": 171,
+      "sha256": "e188ce2592b2400eb5b1ace72ec2606f7f27b0df51827f754a88c89e67528a7f"
+    },
+    {
+      "path": "docs/evidence/golem-native-payment-doc-linux-20261015/windows-regression-after-guard.json",
+      "bytes": 8457,
+      "sha256": "427322821ae32cdfd996b304ee82473585edf45a971d77f7170db19af5ee99fd"
+    },
+    {
+      "path": "docs/evidence/golem-native-payment-doc-linux-20261015/windows-regression-before-guard.json",
+      "bytes": 10255,
+      "sha256": "0b743ed6a5fb0353f3b0ef68a7cae9708c7d2cc7d248cf0f07b3a1df5f09839c"
+    },
+    {
+      "path": "docs/evidence/golem-allocation-upstream-20261015/core/payment/migrations/2020-01-23-123456_init/up.sql",
+      "bytes": 7230,
+      "sha256": "a9a58a05e7948abd02d517362c32f769bb7dd75c87cc4dbc86877a62c03ddaaa"
+    },
+    {
+      "path": "docs/evidence/golem-allocation-upstream-20261015/core/payment/migrations/2024-08-12-171012_extended_order/up.sql",
+      "bytes": 9071,
+      "sha256": "a4033a0a6456a2ef1e614d2f9428de7f54b999d8f1ebd11fef4113bc6cceebef"
+    },
+    {
+      "path": "docs/evidence/golem-allocation-upstream-20261015/core/payment/src/api/allocations/mod.rs",
+      "bytes": 24875,
+      "sha256": "90c7ed0e3f0bf7a51b891d34c15d2ab4902ab85d0d6da99c235c1dcd319e5a0b"
+    },
+    {
+      "path": "docs/evidence/golem-allocation-upstream-20261015/core/payment/src/dao/allocation.rs",
+      "bytes": 14673,
+      "sha256": "627f2974c7c798bef2611482c15821c61c52813014d0c8705dadf67ad36ec0d3"
+    },
+    {
+      "path": "docs/evidence/golem-allocation-upstream-20261015/core/payment/src/dao/batch.rs",
+      "bytes": 59687,
+      "sha256": "6425abd2a3335bc6825faedfc98f51af904a35dd99b7e177feaae81025788246"
+    },
+    {
+      "path": "docs/evidence/golem-allocation-upstream-20261015/core/payment/src/dao/payment.rs",
+      "bytes": 13898,
+      "sha256": "b439d56632bef72dd3edfff4aa614955fffdb04a2ff3b874af3dff9b6e640830"
+    },
+    {
+      "path": "docs/evidence/golem-allocation-upstream-20261015/core/payment/src/models/batch.rs",
+      "bytes": 3473,
+      "sha256": "e207f1d50d64325a32fc21f6c7ec1423647bc67826d3b794e5c2994609589015"
+    },
+    {
+      "path": "docs/evidence/golem-allocation-upstream-20261015/core/payment/src/models/payment.rs",
+      "bytes": 5654,
+      "sha256": "efb71b7da8b6ccb4b3e7a69a36ac85f66e0a2dbd94b99f378ebf13f0ba379fca"
+    },
+    {
+      "path": "docs/evidence/golem-allocation-upstream-20261015/core/payment/src/processor.rs",
+      "bytes": 56191,
+      "sha256": "5cd7beb9fb275887d2d1df7d24695a4eb7333aabb19e01e688eaaeca437d9062"
+    },
+    {
+      "path": "docs/evidence/golem-allocation-upstream-20261015/core/payment/src/schema.rs",
+      "bytes": 6818,
+      "sha256": "529c33ff041e4e059f6d73cd539498edb2c9d3ec726cf379e350c6706da4d6f9"
+    },
+    {
+      "path": "docs/evidence/golem-allocation-upstream-20261015/LICENSE",
+      "bytes": 35149,
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+    },
+    {
+      "path": "docs/evidence/golem-allocation-upstream-20261015/manifest.json",
+      "bytes": 4536,
+      "sha256": "28b8bc20342420a2a4bf680343231092c57ab3b6c20b33d02d5d409f492e406c"
+    },
+    {
+      "path": "docs/cyst-native-aead-linux-validation-2026-10-15.json",
+      "bytes": 12059,
+      "sha256": "68d3f99aeb0c00cf120a450572d467b7c17864ec9b49222d44a4bdf4e6464d91"
+    },
+    {
+      "path": "docs/large-cyst-2g-stream-baseline-linux-validation-2026-10-15.json",
+      "bytes": 2780,
+      "sha256": "4e17fe5f881632041cca5c70c212add8dc05c989cc56b4e0e718707c13bfba13"
+    },
+    {
+      "path": "docs/evidence/cyst-native-aead-20261015/linux/benchmark/benchmark.mjs",
+      "bytes": 12807,
+      "sha256": "caea1a12af2bc8fc2c2142b51a2dc6095d3799a4accec3c43c0d30ea702d75bb"
+    },
+    {
+      "path": "docs/evidence/cyst-native-aead-20261015/linux/benchmark/progress.json",
+      "bytes": 77,
+      "sha256": "023ef0bb03f34adcfe61ec3698c80e2d942f0422d6258ed91a46547436d2d975"
+    },
+    {
+      "path": "docs/evidence/cyst-native-aead-20261015/linux/benchmark/result.json",
+      "bytes": 13849,
+      "sha256": "11693612131ae23241ea307bbf3ed0094f2132c5838a31a436d756bd33f63417"
+    },
+    {
+      "path": "docs/evidence/cyst-native-aead-20261015/linux/benchmark/stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/evidence/cyst-native-aead-20261015/linux/benchmark/stdout",
+      "bytes": 158,
+      "sha256": "bedb3edfbe46b8836f9bf62d19f97ad25d47217d8d36dfd2d9b40a9c1ead4381"
+    },
+    {
+      "path": "docs/evidence/cyst-native-aead-20261015/linux/download-manifest.json",
+      "bytes": 3006,
+      "sha256": "8613f58626770195a0a5d4b7861d4fcdfa1e5501d4f7981a88e1865f137de79a"
+    },
+    {
+      "path": "docs/evidence/cyst-native-aead-20261015/linux/library/acceptance.json",
+      "bytes": 1612,
+      "sha256": "ffee7b9f39e42c39643e00225b016f89a2127330b8d274f801789568d0a0e5ca"
+    },
+    {
+      "path": "docs/evidence/cyst-native-aead-20261015/linux/library/compile.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/evidence/cyst-native-aead-20261015/linux/library/compile.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/evidence/cyst-native-aead-20261015/linux/library/cyst-native-runner-20261015.py",
+      "bytes": 6230,
+      "sha256": "84722e1f0276d31a5260e9be5a6a7b2b2ea20ba5a80ee43fa2c5f69ef0399903"
+    },
+    {
+      "path": "docs/evidence/cyst-native-aead-20261015/linux/library/dependency-after.json",
+      "bytes": 3208043,
+      "sha256": "712204ab45aefdda70ea46b52b073a33925f98965d5c2a4ef9899ba1fe68f449"
+    },
+    {
+      "path": "docs/evidence/cyst-native-aead-20261015/linux/library/dependency-before.json",
+      "bytes": 3208043,
+      "sha256": "712204ab45aefdda70ea46b52b073a33925f98965d5c2a4ef9899ba1fe68f449"
+    },
+    {
+      "path": "docs/evidence/cyst-native-aead-20261015/linux/library/focused.json",
+      "bytes": 34552,
+      "sha256": "1ca79822d8c87bd2fe27384647fc2c0cf652b30e4c3e441e7ad5345c35becfe9"
+    },
+    {
+      "path": "docs/evidence/cyst-native-aead-20261015/linux/library/focused.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/evidence/cyst-native-aead-20261015/linux/library/focused.stdout",
+      "bytes": 109,
+      "sha256": "2b352a5a64a30bc6ebc14b9db91c8189ff54d7742149914ab03e3928674f228f"
+    },
+    {
+      "path": "docs/evidence/cyst-native-aead-20261015/linux/library/launch.json",
+      "bytes": 305,
+      "sha256": "cebe92dc26b4dfd852b998d58e7ee172fd7a4aa4d9ff3d45343fd177df97395d"
+    },
+    {
+      "path": "docs/evidence/cyst-native-aead-20261015/linux/library/runner.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/evidence/cyst-native-aead-20261015/linux/library/runner.stdout",
+      "bytes": 1498,
+      "sha256": "2cb81f556253dbfdde20f0b3a279828a7fd208071d00e63e07f1ac228b09def9"
+    },
+    {
+      "path": "docs/evidence/cyst-native-aead-20261015/linux/library/scope.json",
+      "bytes": 476,
+      "sha256": "91fe31b888383a408393348c1bdb16afd91f803ac286555e1ec5d92f2de33a73"
+    },
+    {
+      "path": "docs/evidence/cyst-native-aead-20261015/linux/library/source-after.json",
+      "bytes": 209330,
+      "sha256": "928a3b5f685a013bf70c164bcffce2d3f5e1e142048970ae19fdf489660ee42d"
+    },
+    {
+      "path": "docs/evidence/cyst-native-aead-20261015/linux/library/source-manifest.json",
+      "bytes": 214726,
+      "sha256": "304c3e7c3a1b76c4fc2592e083d69eea21673ec7d3fe77f895f0e5a3bb8eece9"
+    },
+    {
+      "path": "docs/evidence/cyst-native-aead-20261015/primary-source-facts.json",
+      "bytes": 2193,
+      "sha256": "6a73b5342ea78c105aa722ad9f8b1006f670a6cb65a689f54f4fa9c7281a65f9"
+    },
+    {
+      "path": "docs/evidence/cyst-native-aead-20261015/windows-crypto-initial.json",
+      "bytes": 7611,
+      "sha256": "c6d3f545b47dbac6e10592de2ad63e53af0cbe90000d2072aebc1f564293bce7"
+    },
+    {
+      "path": "docs/evidence/cyst-native-aead-20261015/windows-focused.json",
+      "bytes": 34458,
+      "sha256": "12f298193c18854c3087a0eccee6a9e3e091f1f9cb92512cc6573a91c4e09a23"
+    },
+    {
+      "path": "docs/evidence/cyst-native-aead-20261015/windows-source-after.json",
+      "bytes": 6944,
+      "sha256": "a42f4d975412a8d490da8521b736b9413f27636b992f2c07640cb504b739b81d"
+    },
+    {
+      "path": "docs/evidence/cyst-native-aead-20261015/windows-source-before.json",
+      "bytes": 6944,
+      "sha256": "a42f4d975412a8d490da8521b736b9413f27636b992f2c07640cb504b739b81d"
+    },
+    {
+      "path": "docs/evidence/cyst-native-aead-20261015/windows-typecheck.json",
+      "bytes": 627,
+      "sha256": "a776ceda170cd45ec89f8a8b1e63cb1525d5a17f1ef53bc355a1e366d773fba3"
+    },
+    {
+      "path": "docs/evidence/cyst-native-aead-20261015/windows-validation.json",
+      "bytes": 687,
+      "sha256": "38cf936c04aab0e58bfce006344724f4f20c590cbd57771ca3bcb69b7eeb8b3d"
+    },
+    {
+      "path": "docs/evidence/cyst-2g-stream-baseline-linux-20261015/result.json",
+      "bytes": 11871,
+      "sha256": "f5acc64fc1401f5356e67c978fd547fcad8b7f84edab6b358d4c2820dfb13a3b"
+    },
+    {
+      "path": "docs/evidence/cyst-2g-stream-baseline-linux-20261015/launch.json",
+      "bytes": 340,
+      "sha256": "b9bad8049b0bb33f7a301d269d4329a6631423958eee05fc02da8e4b48179f9a"
+    },
+    {
+      "path": "docs/evidence/cyst-2g-stream-baseline-linux-20261015/benchmark.mjs",
+      "bytes": 12345,
+      "sha256": "b273d0fd3f7f76da36c8f01aac7163a30ba535fe2927e81812ba37a21b376dea"
+    },
+    {
+      "path": "docs/evidence/cyst-2g-stream-baseline-linux-20261015/stdout",
+      "bytes": 158,
+      "sha256": "bb8eaff81dfae359bc042811b651d9f3b950b039cd4b12c7859ef11745be8d9c"
+    },
+    {
+      "path": "docs/evidence/cyst-2g-stream-baseline-linux-20261015/stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "date": "2026-10-14",
+  "command": ".local/langgraph-venv/Scripts/python.exe -m unittest discover -s python/tests -p test_platform*.py",
+  "testsPassed": 58,
+  "durationSeconds": 3.023,
+  "crypto": "eth-account0.13.7, actual EIP712 signatures and ABI encoding with unchanged v1 viem vectors",
+  "scope": [
+    "strict optional CPU resource profiles and quota policy parity",
+    "explicit positive ordered session prices with correct selected-price validation",
+    "CPU receipt marker/prepared version matching",
+    "independent constructor CPU-v2 requirement and observed protocol floor",
+    "economics-v2 domain and exact nested factory/implementation pins",
+    "mandatory locked admission discount DTO and conservative9percent ceiling",
+    "settlement fee9percent-minus-discount",
+    "terminal exact zero-charge controller never-dispatched observation"
+  ],
+  "sourceSha256": {
+    "python/src/telomere_sdk/platform.py": "b1553b0b9912e9e9be90b10c6aa51f269b668657df2141e92566fe0eff2fde23",
+    "python/tests/test_platform_profiles.py": "49deb34cf6146a3388ee0797a5194ad812fdbd77e4799ce33d2b6149309a2d20"
+  },
+  "notEstablished": [
+    "signed Ed25519 paid-session lease reader in Python",
+    "independent TEE or no-dispatch proof",
+    "public funded wallet or live provider acceptance"
+  ],
+  "paidPublicRequests": 0,
+  "publicTransactions": 0,
+  "finalValidation": {
+    "report": "docs/python-full-validation-2026-10-14.json",
+    "focusedPlatformTestsPassed": 60,
+    "fullSuiteCollected": 223,
+    "fullSuitePassed": 216,
+    "fullSuitePlatformSkips": 7,
+    "failures": 0,
+    "errors": 0,
+    "nativeDisposableAnvilPassed": true,
+    "invalidConfigCannotPromoteProtocolFloor": true,
+    "vaultEconomicFactoryPinsMustMatchBeforeHttp": true,
+    "sourceSha256": {
+      "python/src/telomere_sdk/platform.py": "8679b0221cdfc7cd62ccc72ad192990a736a1430f9fe95ec1c5af034c89a7f04",
+      "python/tests/test_platform_profiles.py": "f3b5c1128c464a99bcb1f70b947a4a710e7b9b1f3c3117eed8cf084f4a7eb59d"
+    }
+  }
+}

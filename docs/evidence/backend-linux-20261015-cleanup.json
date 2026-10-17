@@ -1,0 +1,97 @@
+{
+  "checkedAt": "2026-10-15T00:57:22.474197+00:00",
+  "scope": "Only temporary acceptance unit and its named network namespace; preserve all data/images/registry/snapshots",
+  "before": {
+    "services": {
+      "telomere-staging": {
+        "exitCode": 0,
+        "stdout": "active",
+        "stderr": ""
+      },
+      "telomere-staging-chain": {
+        "exitCode": 0,
+        "stdout": "active",
+        "stderr": ""
+      },
+      "telomere-staging-watchdog": {
+        "exitCode": 0,
+        "stdout": "active",
+        "stderr": ""
+      }
+    },
+    "http": {
+      "/health/live": {
+        "exitCode": 0,
+        "stdout": "200",
+        "stderr": ""
+      },
+      "/health/ready": {
+        "exitCode": 0,
+        "stdout": "200",
+        "stderr": ""
+      }
+    }
+  },
+  "runningDedicatedContainers": {
+    "exitCode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "stopUnit": {
+    "exitCode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "stoppedUnit": {
+    "exitCode": 0,
+    "stdout": "ExecMainPID=0\nActiveState=inactive\nSubState=dead",
+    "stderr": ""
+  },
+  "namespacePids": {
+    "exitCode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "deleteNamespace": {
+    "exitCode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "remainingNamespaces": {
+    "exitCode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "after": {
+    "services": {
+      "telomere-staging": {
+        "exitCode": 0,
+        "stdout": "active",
+        "stderr": ""
+      },
+      "telomere-staging-chain": {
+        "exitCode": 0,
+        "stdout": "active",
+        "stderr": ""
+      },
+      "telomere-staging-watchdog": {
+        "exitCode": 0,
+        "stdout": "active",
+        "stderr": ""
+      }
+    },
+    "http": {
+      "/health/live": {
+        "exitCode": 0,
+        "stdout": "200",
+        "stderr": ""
+      },
+      "/health/ready": {
+        "exitCode": 0,
+        "stdout": "200",
+        "stderr": ""
+      }
+    }
+  },
+  "successful": true
+}

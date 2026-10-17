@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "remoteAndLocalHashesMatch": true,
+  "status": "accepted_corrected_twofile_regressions",
+  "success": true,
+  "finishedAt": "2026-10-15T14:16:20.269046+00:00",
+  "files": [
+    {
+      "name": "unexpected-twofile-acceptance.json",
+      "present": true,
+      "bytes": 7425,
+      "sha256": "6fc61cb95d55f1f40348971353971c21e702fc73b7c0d5cf541085675b4f1431"
+    },
+    {
+      "name": "unexpected-twofile.json",
+      "present": true,
+      "bytes": 27898,
+      "sha256": "fd3df5ca5ca6b3518f9d5934fdd7fe3f6bb0f10ede2255ce3bd3fa40def41b12"
+    },
+    {
+      "name": "unexpected-twofile.log",
+      "present": true,
+      "bytes": 126,
+      "sha256": "0d5eb15d7be61a98284ad10af7b119dd8acc0111d3eed94927444e98f39004b6"
+    },
+    {
+      "name": "unexpected-twofile-typecheck.log",
+      "present": true,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "preparation.json",
+      "present": true,
+      "bytes": 1483,
+      "sha256": "a0733565f554cf35d42da80453c73fa64002fc4d91597ca49193571449e94055"
+    },
+    {
+      "name": "old-dependency-inventory.json",
+      "present": true,
+      "bytes": 4244461,
+      "sha256": "8e1255e6d331e8bcf68f8182ad8cfc03fd2f349b4987ca1e21e4e5674cd08080"
+    },
+    {
+      "name": "corrected-vitest.config.ts",
+      "present": true,
+      "bytes": 289,
+      "sha256": "c86e021a4550040d1fee44c21627829f1731828e311045e471583e684b6edc5d"
+    },
+    {
+      "name": "source-manifest.json",
+      "present": true,
+      "bytes": 166302,
+      "sha256": "cf30d67d4eecf88482fb64b0f84c4fb206912c83aeaaf343925a14a869ee107e"
+    },
+    {
+      "name": "source-continuity.json",
+      "present": true,
+      "bytes": 341922,
+      "sha256": "564bdf7d101306593b65324d942f8e63d96d1c6dd4a8a28dd366ef91570d05a9"
+    }
+  ]
+}

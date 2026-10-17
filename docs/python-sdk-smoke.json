@@ -1,0 +1,41 @@
+{
+  "capturedAt": "2026-10-08T17:21:58.874987+00:00",
+  "apiOrigin": "http://127.0.0.1:3281",
+  "mode": "demo",
+  "chainId": 31337,
+  "cpuMode": "docker",
+  "nearAvailable": false,
+  "demoAuthenticationExplicitlyEnabled": true,
+  "deploymentPinsMatched": true,
+  "authenticatedOwner": "0x8d45d09ecc6fcead1edd26dbdc09f60fac160734",
+  "balance": {
+    "available": "9998600",
+    "reserved": "0"
+  },
+  "leashCount": 5,
+  "runCount": 5,
+  "runStatuses": {
+    "completed": 5
+  },
+  "workerState": "idle",
+  "receiptChecks": [
+    {
+      "runId": "0x584e4bebf624a70a930f990c1c119ff886e9e84f7d19789abfdf77920c23e85d",
+      "receiptHash": "0xc5dd532bc8de7e49f8f635400d249c5c5f3bef9eb662f6ff9d09be4f33c3b08f",
+      "verification": {
+        "signature_verified": true,
+        "body_consistent": true,
+        "server_valid": true,
+        "server_anchored": true,
+        "onchain_verified": false
+      }
+    }
+  ],
+  "cystsAvailable": false,
+  "cystsApiScope": "not_tested; current API does not advertise Cysts",
+  "scope": "Read-only business state; demo session creation/logout and receipt verification POSTs only",
+  "runCreationRequests": 0,
+  "checkpointUploadRequests": 0,
+  "walletSubmissions": 0,
+  "providerRequests": 0
+}

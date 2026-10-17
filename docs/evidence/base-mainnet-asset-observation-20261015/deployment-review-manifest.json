@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-15T18:01:06.180190+00:00",
+  "originalAssetManifestUnchanged": true,
+  "files": [
+    {
+      "path": "docs/evidence/base-mainnet-asset-observation-20261015/manifest.json",
+      "size": 1395,
+      "sha256": "edbc0bb0b307323189e544d221d54eb5982edbdca1c5a14f3b20ca2a138c7c0e"
+    },
+    {
+      "path": "docs/evidence/base-mainnet-asset-observation-20261015/review-legacy-plan.mjs",
+      "size": 13819,
+      "sha256": "3caecde69ab3bf7fa195c668985c9e6ae58ffce501a8a9143d8112d6daa81b3b"
+    },
+    {
+      "path": "docs/evidence/base-mainnet-asset-observation-20261015/legacy-plan-runtime-cost-review.json",
+      "size": 567400,
+      "sha256": "cdfbc08a5bd5343c448e0f794437f3c53cff48ec7a652146e90ca7efb17518d8"
+    },
+    {
+      "path": "docs/evidence/base-mainnet-asset-observation-20261015/runtime-shortstring-review.json",
+      "size": 2301,
+      "sha256": "d73d614d761881308f9298eb6aecb25fc1b72b1dff42deb08e995d0693c6c631"
+    },
+    {
+      "path": "docs/evidence/base-mainnet-asset-observation-20261015/legacy-plan-review-summary.md",
+      "size": 3847,
+      "sha256": "d3439faeaa420f8c680108082cb853a52d209f5e4e4d771f715db51c56670143"
+    }
+  ],
+  "actualPlanSha256": "2be56662f572ae01c25a2950f9f010104f12e2e30afb3150f153b96993f15bf8",
+  "actualPlanUnchanged": true,
+  "scope": "Fresh in-memory compilation, independent public RPC creation simulation, resolved immutable review and full Base fee observation. No signing, broadcast or live activation.",
+  "publicTransactionsSent": 0,
+  "signaturesCreated": 0
+}

@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "observedAt": "2026-10-15T18:35:26.918676+00:00",
+  "scope": "Read-only historical systemd-manager restart messages only; no application logs or environments read",
+  "journalCommand": [
+    "journalctl",
+    "--unit=enclave-api.service",
+    "_PID=1",
+    "--since=2026-10-15 00:00:00 UTC",
+    "--until=2026-10-15 17:59:59 UTC",
+    "--grep=Scheduled restart job, restart counter is at",
+    "--lines=3",
+    "--output=json",
+    "--no-pager"
+  ],
+  "journalExitCode": 0,
+  "genericHistoricalEntriesBefore1800Utc": [
+    {
+      "timestampUtc": "2026-10-15T17:59:51.329527+00:00",
+      "restartCounter": 12866,
+      "message": "enclave-api.service: Scheduled restart job, restart counter is at 12866.",
+      "systemdManagerPid": "1"
+    },
+    {
+      "timestampUtc": "2026-10-15T17:59:42.575724+00:00",
+      "restartCounter": 12865,
+      "message": "enclave-api.service: Scheduled restart job, restart counter is at 12865.",
+      "systemdManagerPid": "1"
+    },
+    {
+      "timestampUtc": "2026-10-15T17:59:33.565861+00:00",
+      "restartCounter": 12864,
+      "message": "enclave-api.service: Scheduled restart job, restart counter is at 12864.",
+      "systemdManagerPid": "1"
+    }
+  ],
+  "currentService": {
+    "MainPID": "3918349",
+    "NRestarts": "13117",
+    "ExecMainStatus": "0",
+    "ActiveState": "active",
+    "SubState": "running"
+  },
+  "firstDaemonIncidentReferenceUtc": "2026-10-15T18:01:50+00:00",
+  "preexistingBeforeDaemonIncidentConfirmed": true,
+  "remoteMutations": 0,
+  "keysOrApplicationEnvironmentsRead": false
+}

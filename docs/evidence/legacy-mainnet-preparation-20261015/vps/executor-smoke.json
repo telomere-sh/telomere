@@ -1,0 +1,28 @@
+{
+  "status": "passed",
+  "uid": 995,
+  "executor": "actual DockerCpuExecutor",
+  "socket": "unix:///run/telomere-mainnet-docker/docker.sock",
+  "result": {
+    "output": "{\"sha256\":\"0c531369ef29539d1cccfed7b3911ecf1fe3115935c8eb5853d8123260d59866\"}",
+    "billableSeconds": 1,
+    "ticks": [
+      {
+        "runId": "prepare-mainnet-20261015",
+        "sequence": 0,
+        "timestamp": "2026-10-15T18:18:23.271Z",
+        "elapsedMs": 1608,
+        "billableSeconds": 1,
+        "state": "completed",
+        "previousHash": null,
+        "outputHash": "81fb6e11a2b1945f326f02d56e177c453091c07e70c1534afeb3e5435cfa2b72",
+        "hash": "a3b0b4a5fc6c4fcc7662bdcc97d08278ade5504b56e8703332937d8ef424ca4d"
+      }
+    ],
+    "exitCode": 0,
+    "status": "completed"
+  },
+  "chainCalls": 0,
+  "publicTransactionsSent": 0,
+  "ownedContainerCleanupConfirmed": true
+}

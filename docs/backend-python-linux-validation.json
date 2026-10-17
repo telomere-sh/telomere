@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "checkedAtUtc": "2026-10-13T05:39:05.049282+00:00",
+  "scope": "isolated exact committed backend source; direct Python RPC/private journal acceptance on Linux",
+  "commit": "60e1f5c2816b77af807d69e7f5fe59b0dc996f92",
+  "sourceArchiveSha256": "0c3d966fe159e3bcd4f5ade529199d0862f8881fc1fb7ed6566d907bcda2c019",
+  "trackedFilesByteMatchedAfterBuildAndTests": 626,
+  "trackedFilesMismatched": [],
+  "normalBuild": "passed",
+  "strictPythonFixtureTypecheck": "passed",
+  "typescript": {
+    "files": 3,
+    "passed": 26,
+    "failed": 0,
+    "skipped": 0
+  },
+  "python": {
+    "version": "3.11.2",
+    "ethAccountVersion": "0.13.7",
+    "total": 200,
+    "passed": 195,
+    "failed": 0,
+    "skipped": 5,
+    "durationSeconds": 67.369,
+    "directAnvilEnabled": true,
+    "resourceWarningsAreErrors": true
+  },
+  "preexistingServicesActiveBefore": 6,
+  "preexistingServicesActiveAfter": 6,
+  "watchdogActiveAlerts": 0,
+  "watchdogSequence": 353,
+  "publicProviderOrChainTestCalls": 0,
+  "liveServiceMutationDuringAcceptance": false,
+  "temporaryCheckoutAndVenvRemoved": true,
+  "typescriptSuites": ["tests/controller-platform.test.ts", "tests/platform-main.test.ts", "tests/selection-dataset.test.ts"],
+  "pythonSkips": "Five actual Windows ACL/junction/rename API tests; all passed in the separate Windows run. The Windows POSIX/symlink skips passed here.",
+  "rawEvidenceSha256": {
+    "evidence/backend-python-60e1f5c/backend-python-60e1f5c-result-python-tests.log": "744dce557fc28d1bc81e0f9b4fb893d24990f4379c68797e804dcb94361a6e7d",
+    "evidence/backend-python-60e1f5c/backend-python-60e1f5c-result-ts-report.json": "3da3f89edb4bf5fa1b826e0873eb4a39e13e23a1ea70820642d9adff9013e4eb"
+  },
+  "limitations": "Focused TypeScript regression plus complete crypto-enabled Python suite at this exact source checkpoint. Later Vault lifecycle/reputation publisher WIP was excluded. Disposable local contracts and HTTP/RPC fixtures only; proxy/facet branches use static RPC evidence. No Python live USDG proxy/facet, public wallet/provider, GPU/TEE or independent S3 acceptance."
+}

@@ -1,0 +1,22 @@
+{
+  "checkedAt": "2026-10-12T23:47:25.493Z",
+  "chainId": 46630,
+  "rpcUrl": "https://rpc.testnet.chain.robinhood.com",
+  "blockNumber": "133882534",
+  "blockHash": "0x45d0721385e0caded9ba8123638a5b9dafe77796bb1a13c32a1d53593eb20d31",
+  "token": {
+    "address": "0x7E955252E15c84f5768B83c41a71F9eba181802F",
+    "name": "Global Dollar",
+    "symbol": "USDG",
+    "decimals": 6,
+    "codeBytes": 170,
+    "codeHash": "0x864cc9ad53b338b82da1f7cab85ab0b3d5c8861acb422b6fec63cf36234f36a6",
+    "implementation": "0xF0863D7A29a55d0c4263c11bFac754312ff078DF",
+    "transferPaused": false
+  },
+  "sources": [
+    "https://docs.robinhood.com/chain/connecting/",
+    "https://docs.paxos.com/guides/stablecoin/usdg/testnet"
+  ],
+  "noTransactionsSubmitted": true
+}

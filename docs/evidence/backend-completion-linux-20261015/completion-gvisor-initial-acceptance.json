@@ -1,0 +1,746 @@
+{
+  "schemaVersion": 1,
+  "gitRevision": "d4481aec92179df44a533699897db2f523fbd0a2",
+  "archiveSha256": "090932a350a522ddfe2c056775edf194176060c3cca79a06d286e5d3f1989bd6",
+  "directory": "/opt/telomere-host-runtime/backend-completion-final-20261015-090932a350a5",
+  "sourceFiles": 708,
+  "imageRepoDigest": "127.0.0.1:15004/telomere-declared-state@sha256:db091765b34bac310fa2fa6284d59abe97f294e5d2a800946c38f46e46f31eea",
+  "derivedImageId": "sha256:5fbba0e35a485f0de44263330354a8325c84a2a39a64661c6bfc15239c16b58d",
+  "startedAt": "2026-10-15T12:51:19.260320+00:00",
+  "servicesBefore": {
+    "telomere-staging.service": "MainPID=1952406\nNRestarts=0\nWorkingDirectory=/opt/telomere-pilot/releases/354fe7af62ea6701faafc3b04522abb1b4524d2d-launch04\nActiveState=active\nSubState=running",
+    "telomere-staging-chain.service": "MainPID=1952401\nNRestarts=0\nWorkingDirectory=/opt/telomere-pilot/app\nActiveState=active\nSubState=running",
+    "telomere-staging-watchdog.service": "MainPID=1952410\nNRestarts=0\nWorkingDirectory=/opt/telomere-pilot/watchdog-app\nActiveState=active\nSubState=running"
+  },
+  "profileBeforeSha256": "a400feb3475b91168a5419d0a98c00ea804ba817c1c0ad34dea65d7d8808df8f",
+  "healthBefore": {
+    "live": {
+      "statusCode": 200,
+      "body": {
+        "status": "ok"
+      }
+    },
+    "ready": {
+      "statusCode": 200,
+      "body": {
+        "status": "ready",
+        "worker": "idle"
+      }
+    }
+  },
+  "protectedBeforeSha256": "6c078f8b7a3386663d9ab2f5682c317d82b54e86c54a93f67255bfa045a76079",
+  "sourceChangesBefore": [],
+  "publicTransactions": 0,
+  "paidProviderRequests": 0,
+  "serviceMutations": false,
+  "execution": {
+    "exitCode": 1,
+    "seconds": 433.185
+  },
+  "nodeTests": {
+    "numTotalTests": 167,
+    "numPassedTests": 165,
+    "numFailedTests": 2,
+    "numPendingTests": 0,
+    "success": false
+  },
+  "cases": [
+    {
+      "name": "matches the published draft-irtf-cfrg-xchacha-03 AppendixA.1 AEAD vector exactly",
+      "status": "passed"
+    },
+    {
+      "name": "preserves noble1.3 ciphertext/tag format bidirectionally for 0 plaintext bytes",
+      "status": "passed"
+    },
+    {
+      "name": "preserves noble1.3 ciphertext/tag format bidirectionally for 1 plaintext bytes",
+      "status": "passed"
+    },
+    {
+      "name": "preserves noble1.3 ciphertext/tag format bidirectionally for 15 plaintext bytes",
+      "status": "passed"
+    },
+    {
+      "name": "preserves noble1.3 ciphertext/tag format bidirectionally for 16 plaintext bytes",
+      "status": "passed"
+    },
+    {
+      "name": "preserves noble1.3 ciphertext/tag format bidirectionally for 17 plaintext bytes",
+      "status": "passed"
+    },
+    {
+      "name": "preserves noble1.3 ciphertext/tag format bidirectionally for 63 plaintext bytes",
+      "status": "passed"
+    },
+    {
+      "name": "preserves noble1.3 ciphertext/tag format bidirectionally for 64 plaintext bytes",
+      "status": "passed"
+    },
+    {
+      "name": "preserves noble1.3 ciphertext/tag format bidirectionally for 65 plaintext bytes",
+      "status": "passed"
+    },
+    {
+      "name": "preserves noble1.3 ciphertext/tag format bidirectionally for 65537 plaintext bytes",
+      "status": "passed"
+    },
+    {
+      "name": "preserves noble1.3 ciphertext/tag format bidirectionally for 4194304 plaintext bytes",
+      "status": "passed"
+    },
+    {
+      "name": "accepts nonzero-offset unaligned typed-array views and preserves every caller-owned input",
+      "status": "passed"
+    },
+    {
+      "name": "rejects key tampering without returning plaintext",
+      "status": "passed"
+    },
+    {
+      "name": "rejects nonce tampering without returning plaintext",
+      "status": "passed"
+    },
+    {
+      "name": "rejects aad tampering without returning plaintext",
+      "status": "passed"
+    },
+    {
+      "name": "rejects ciphertext tampering without returning plaintext",
+      "status": "passed"
+    },
+    {
+      "name": "rejects tag tampering without returning plaintext",
+      "status": "passed"
+    },
+    {
+      "name": "rejects truncated tampering without returning plaintext",
+      "status": "passed"
+    },
+    {
+      "name": "rejects appended tampering without returning plaintext",
+      "status": "passed"
+    },
+    {
+      "name": "uses the published HChaCha subkey and clears the exact native key/IV buffers after encryption",
+      "status": "passed"
+    },
+    {
+      "name": "clears the actual unauthenticated buffer emitted by native update when final rejects a bad tag",
+      "status": "passed"
+    },
+    {
+      "name": "refuses a native failure for valid ciphertext and clears derived material instead of silently retrying through noble",
+      "status": "passed"
+    },
+    {
+      "name": "selects the unchanged portable cipher only when native availability is absent before processing",
+      "status": "passed"
+    },
+    {
+      "name": "rejects invalid sizes/types, oversized chunks/AAD and shared mutable buffers before cipher construction",
+      "status": "passed"
+    },
+    {
+      "name": "client-only X25519/HKDF/XChaCha checkpoint key wrapping lets independently generated owner and agent identities recover the same unchanged key",
+      "status": "passed"
+    },
+    {
+      "name": "client-only X25519/HKDF/XChaCha checkpoint key wrapping restores the actual encrypted application file independently with either recipient key",
+      "status": "passed"
+    },
+    {
+      "name": "client-only X25519/HKDF/XChaCha checkpoint key wrapping uses fresh ephemeral agreements, salts and nonces for every wrap",
+      "status": "passed"
+    },
+    {
+      "name": "client-only X25519/HKDF/XChaCha checkpoint key wrapping rejects the other recipient, a forged recipient-public-key claim and an unrelated private key",
+      "status": "passed"
+    },
+    {
+      "name": "client-only X25519/HKDF/XChaCha checkpoint key wrapping binds the independently expected owner scope",
+      "status": "passed"
+    },
+    {
+      "name": "client-only X25519/HKDF/XChaCha checkpoint key wrapping binds the independently expected agent scope",
+      "status": "passed"
+    },
+    {
+      "name": "client-only X25519/HKDF/XChaCha checkpoint key wrapping binds the independently expected checkpointId scope",
+      "status": "passed"
+    },
+    {
+      "name": "client-only X25519/HKDF/XChaCha checkpoint key wrapping authenticates ephemeralPublicKey against tampering",
+      "status": "passed"
+    },
+    {
+      "name": "client-only X25519/HKDF/XChaCha checkpoint key wrapping authenticates salt against tampering",
+      "status": "passed"
+    },
+    {
+      "name": "client-only X25519/HKDF/XChaCha checkpoint key wrapping authenticates nonce against tampering",
+      "status": "passed"
+    },
+    {
+      "name": "client-only X25519/HKDF/XChaCha checkpoint key wrapping authenticates ciphertext against tampering",
+      "status": "passed"
+    },
+    {
+      "name": "client-only X25519/HKDF/XChaCha checkpoint key wrapping rejects low-order recipient keys, wrong key lengths, duplicate roles, unknown fields and oversized wire documents",
+      "status": "passed"
+    },
+    {
+      "name": "bounded declared directory capture for the existing encrypted Cyst file pipeline captures nested data and empty directories deterministically with per-file and complete hashes",
+      "status": "passed"
+    },
+    {
+      "name": "bounded declared directory capture for the existing encrypted Cyst file pipeline never overwrites an existing archive and removes only its new staging file after refusal",
+      "status": "passed"
+    },
+    {
+      "name": "bounded declared directory capture for the existing encrypted Cyst file pipeline refuses capture into its own source tree and a finite byte ceiling without publishing anything",
+      "status": "passed"
+    },
+    {
+      "name": "bounded declared directory capture for the existing encrypted Cyst file pipeline cancels a requested capture without publishing an archive",
+      "status": "passed"
+    },
+    {
+      "name": "bounded declared directory capture for the existing encrypted Cyst file pipeline refuses hardlinked state files rather than following another state identity",
+      "status": "passed"
+    },
+    {
+      "name": "bounded declared directory capture for the existing encrypted Cyst file pipeline removes only its published archive if cancellation arrives during the final directory fsync",
+      "status": "passed"
+    },
+    {
+      "name": "bounded declared directory capture for the existing encrypted Cyst file pipeline refuses symbolic state paths and executable data files",
+      "status": "passed"
+    },
+    {
+      "name": "bounded declared directory capture for the existing encrypted Cyst file pipeline refuses nonportable declared path ../escape",
+      "status": "passed"
+    },
+    {
+      "name": "bounded declared directory capture for the existing encrypted Cyst file pipeline refuses nonportable declared path /absolute",
+      "status": "passed"
+    },
+    {
+      "name": "bounded declared directory capture for the existing encrypted Cyst file pipeline refuses nonportable declared path C:/drive",
+      "status": "passed"
+    },
+    {
+      "name": "bounded declared directory capture for the existing encrypted Cyst file pipeline refuses nonportable declared path a\\b",
+      "status": "passed"
+    },
+    {
+      "name": "bounded declared directory capture for the existing encrypted Cyst file pipeline refuses nonportable declared path ./name",
+      "status": "passed"
+    },
+    {
+      "name": "bounded declared directory capture for the existing encrypted Cyst file pipeline refuses nonportable declared path a//b",
+      "status": "passed"
+    },
+    {
+      "name": "bounded declared directory capture for the existing encrypted Cyst file pipeline refuses nonportable declared path a/../b",
+      "status": "passed"
+    },
+    {
+      "name": "bounded declared directory capture for the existing encrypted Cyst file pipeline refuses nonportable declared path CON",
+      "status": "passed"
+    },
+    {
+      "name": "bounded declared directory capture for the existing encrypted Cyst file pipeline refuses nonportable declared path a/NUL.txt",
+      "status": "passed"
+    },
+    {
+      "name": "bounded declared directory capture for the existing encrypted Cyst file pipeline refuses nonportable declared path a.",
+      "status": "passed"
+    },
+    {
+      "name": "bounded declared directory capture for the existing encrypted Cyst file pipeline refuses nonportable declared path .telomere-declared-state.json",
+      "status": "passed"
+    },
+    {
+      "name": "bounded declared directory capture for the existing encrypted Cyst file pipeline refuses nonportable declared path a/.telomere-declared-state.json",
+      "status": "passed"
+    },
+    {
+      "name": "bounded declared directory capture for the existing encrypted Cyst file pipeline rejects duplicate/case aliases, file-parent collisions, undeclared parents and inconsistent manifest totals",
+      "status": "passed"
+    },
+    {
+      "name": "bounded declared state restore inside the application Cell restores nested files, zero-byte files and empty directories with private modes and a completion receipt last",
+      "status": "passed"
+    },
+    {
+      "name": "bounded declared state restore inside the application Cell accepts the read-only0444 input mount without requiring ownership of its source file",
+      "status": "passed"
+    },
+    {
+      "name": "bounded declared state restore inside the application Cell restores a declared file across multiple bounded streaming chunks without materializing the whole payload",
+      "status": "failed"
+    },
+    {
+      "name": "bounded declared state restore inside the application Cell refuses an existing destination even when empty or an exact earlier completed operation",
+      "status": "passed"
+    },
+    {
+      "name": "bounded declared state restore inside the application Cell publishes nothing for whole-hash corruption",
+      "status": "passed"
+    },
+    {
+      "name": "bounded declared state restore inside the application Cell publishes nothing for file-hash corruption",
+      "status": "passed"
+    },
+    {
+      "name": "bounded declared state restore inside the application Cell publishes nothing for magic corruption",
+      "status": "passed"
+    },
+    {
+      "name": "bounded declared state restore inside the application Cell publishes nothing for truncated corruption",
+      "status": "passed"
+    },
+    {
+      "name": "bounded declared state restore inside the application Cell publishes nothing for extra corruption",
+      "status": "passed"
+    },
+    {
+      "name": "bounded declared state restore inside the application Cell publishes nothing for manifest-length corruption",
+      "status": "passed"
+    },
+    {
+      "name": "bounded declared state restore inside the application Cell rejects untrusted state path ../outside before destination creation",
+      "status": "passed"
+    },
+    {
+      "name": "bounded declared state restore inside the application Cell rejects untrusted state path /absolute before destination creation",
+      "status": "passed"
+    },
+    {
+      "name": "bounded declared state restore inside the application Cell rejects untrusted state path C:/drive before destination creation",
+      "status": "passed"
+    },
+    {
+      "name": "bounded declared state restore inside the application Cell rejects untrusted state path nested\\escape before destination creation",
+      "status": "passed"
+    },
+    {
+      "name": "bounded declared state restore inside the application Cell rejects untrusted state path a/../../b before destination creation",
+      "status": "passed"
+    },
+    {
+      "name": "bounded declared state restore inside the application Cell rejects untrusted state path .telomere-declared-state.json before destination creation",
+      "status": "passed"
+    },
+    {
+      "name": "bounded declared state restore inside the application Cell rejects untrusted state path NUL.txt before destination creation",
+      "status": "passed"
+    },
+    {
+      "name": "bounded declared state restore inside the application Cell refuses duplicate/case aliases, file-parent conflicts, undeclared parents, negative sizes and executable metadata",
+      "status": "passed"
+    },
+    {
+      "name": "bounded declared state restore inside the application Cell requires canonical manifest JSON without duplicate keys, whitespace variants or unknown fields",
+      "status": "passed"
+    },
+    {
+      "name": "bounded declared state restore inside the application Cell enforces signed expected length, finite total size, and absolute source/destination paths",
+      "status": "passed"
+    },
+    {
+      "name": "bounded declared state restore inside the application Cell refuses a directory or hardlinked source without reading or changing it",
+      "status": "passed"
+    },
+    {
+      "name": "bounded declared state restore inside the application Cell refuses source/destination ancestor symlinks and exposed or executable POSIX entries",
+      "status": "passed"
+    },
+    {
+      "name": "bounded declared state restore inside the application Cell discards its exact partial tree on caller abort, including an abort during streamed payload reads",
+      "status": "passed"
+    },
+    {
+      "name": "bounded declared state restore inside the application Cell refuses a source rewritten with identical bytes while reading because its original inode metadata changed",
+      "status": "passed"
+    },
+    {
+      "name": "bounded declared state restore inside the application Cell never replaces a destination created by another actor after its initial absence check",
+      "status": "passed"
+    },
+    {
+      "name": "bounded declared state restore inside the application Cell does not overwrite or recursively clean a foreign child inserted between destination claim and publication",
+      "status": "passed"
+    },
+    {
+      "name": "bounded declared state restore inside the application Cell rechecks restored file hashes before completion when an owned stage file changes after source authentication",
+      "status": "passed"
+    },
+    {
+      "name": "bounded declared state restore inside the application Cell does not return success if cancellation arrives while the completion receipt is being fsynced",
+      "status": "passed"
+    },
+    {
+      "name": "Cell CLI refuses host extraction paths, changed/oversized stdin and extra receipt fields with sanitized output",
+      "status": "passed"
+    },
+    {
+      "name": "returns an existing-port checkpoint containing nested data/empty directories, restores it into a fresh directory",
+      "status": "passed"
+    },
+    {
+      "name": "overwrites the exact published scratch inode with zeros before unlinking it",
+      "status": "passed"
+    },
+    {
+      "name": "refuses a whole bundle above4096 bytes without changing its application or retaining scratch output",
+      "status": "passed"
+    },
+    {
+      "name": "refuses cancellation before capture and during the final wipe without returning success",
+      "status": "passed"
+    },
+    {
+      "name": "preserves a foreign file replacing the captured name during awaited close",
+      "status": "passed"
+    },
+    {
+      "name": "refuses completion markers and traversal-like names rather than silently filtering the captured tree",
+      "status": "passed"
+    },
+    {
+      "name": "refuses source/scratch symlinks and executable data",
+      "status": "passed"
+    },
+    {
+      "name": "rejects selectable CLI paths and malformed run/operation arguments before touching fixed Cell directories",
+      "status": "passed"
+    },
+    {
+      "name": "uses actual signed HTTP HostKit commands and encrypted Cyst upload, replaying the original tree after source cleanup (real gVisor)",
+      "status": "passed"
+    },
+    {
+      "name": "agent-side checked manifest fetch accepts only a bounded, scoped, valid manifest and treats only 404 as absent",
+      "status": "passed"
+    },
+    {
+      "name": "agent-side checked manifest fetch checks exact ciphertext part length, digest and transport headers",
+      "status": "passed"
+    },
+    {
+      "name": "agent-side checked manifest fetch bounds and independently checks the current locator against manifest and canonical registry",
+      "status": "passed"
+    },
+    {
+      "name": "agent-side checked manifest fetch publishes a restored current file only after a fresh canonical revision check",
+      "status": "passed"
+    },
+    {
+      "name": "large encrypted file checkpoint multipart store streams a real multi-part payload, persists ciphertext only, and restores byte-for-byte after restart",
+      "status": "passed"
+    },
+    {
+      "name": "large encrypted file checkpoint multipart store resumes after an interrupted multipart write without rewriting the immutable first part",
+      "status": "passed"
+    },
+    {
+      "name": "large encrypted file checkpoint multipart store rejects a changed source on resume and does not publish a mixed checkpoint",
+      "status": "passed"
+    },
+    {
+      "name": "large encrypted file checkpoint multipart store rejects tampered ciphertext and leaves no published or temporary plaintext output",
+      "status": "passed"
+    },
+    {
+      "name": "large encrypted file checkpoint multipart store authenticates key, scope and manifest, and never overwrites an existing destination",
+      "status": "passed"
+    },
+    {
+      "name": "large encrypted file checkpoint multipart store persists the owner and agent wraps inside the registry-bound manifest across restart",
+      "status": "passed"
+    },
+    {
+      "name": "large encrypted file checkpoint multipart store rejects a wrap for another key or agent before beginning an upload",
+      "status": "passed"
+    },
+    {
+      "name": "large encrypted file checkpoint multipart store rejects over-limit sparse input before reading gigabytes",
+      "status": "passed"
+    },
+    {
+      "name": "large encrypted file checkpoint multipart store holds a single-writer directory lock and recovers only an explicitly identified dead lock",
+      "status": "passed"
+    },
+    {
+      "name": "large encrypted file checkpoint multipart store serializes concurrent owner reservations so their physical ciphertext stays within the cap",
+      "status": "passed"
+    },
+    {
+      "name": "large encrypted file checkpoint multipart store rejects a symlinked source file",
+      "status": "passed"
+    },
+    {
+      "name": "large encrypted file checkpoint multipart store refuses a public or linked storage directory and linked ciphertext part",
+      "status": "passed"
+    },
+    {
+      "name": "durable large Cyst current-checkpoint catalog resolves only after an onchain match and survives the short-lived job plan expiring",
+      "status": "passed"
+    },
+    {
+      "name": "durable large Cyst current-checkpoint catalog fails closed on missing, altered, or reorged catalog and manifest evidence",
+      "status": "passed"
+    },
+    {
+      "name": "bounded durable large Cyst publication admits only the original agent wallet, serializes audits, and keeps idempotent jobs private",
+      "status": "passed"
+    },
+    {
+      "name": "bounded durable large Cyst publication aborts an active scan on cancellation and requeues a crash-left unsigned job on restart",
+      "status": "passed"
+    },
+    {
+      "name": "bounded durable large Cyst publication drops completed calldata when the canonical registry revision changes",
+      "status": "passed"
+    },
+    {
+      "name": "bounded durable large Cyst publication bounds the durable queue and records a deadline without leaving the audit running",
+      "status": "passed"
+    },
+    {
+      "name": "bounded durable large Cyst publication bounds submissions waiting on authentication before they reach the durable queue",
+      "status": "passed"
+    },
+    {
+      "name": "bounded durable large Cyst publication bounds concurrent agent manifest GETs before registry reads and releases slots on success or failure",
+      "status": "passed"
+    },
+    {
+      "name": "bounded durable large Cyst publication serves only the original agent a digest-checked ciphertext part",
+      "status": "passed"
+    },
+    {
+      "name": "bounded durable large Cyst publication holds at most four part transfers and rejects a changed canonical binding",
+      "status": "passed"
+    },
+    {
+      "name": "bounded durable large Cyst publication releases the part slot at the read deadline even when a store ignores abort",
+      "status": "passed"
+    },
+    {
+      "name": "bounded durable large Cyst publication releases a large HTTP part transfer slot when the agent cancels the stream",
+      "status": "passed"
+    },
+    {
+      "name": "bounded durable large Cyst publication exposes a small authenticated asynchronous HTTP boundary",
+      "status": "passed"
+    },
+    {
+      "name": "large Cyst two-destination persistence and recovery acknowledges a committed checkpoint only after both destinations verify it",
+      "status": "passed"
+    },
+    {
+      "name": "large Cyst two-destination persistence and recovery repairs a partial part write on owner retry after both stores restart",
+      "status": "passed"
+    },
+    {
+      "name": "large Cyst two-destination persistence and recovery restores from one digest-verified copy and never overwrites a present corrupt copy",
+      "status": "passed"
+    },
+    {
+      "name": "large Cyst two-destination persistence and recovery does not interpret an unknown destination outage as a missing object",
+      "status": "passed"
+    },
+    {
+      "name": "large Cyst two-destination persistence and recovery passes through the real owner-authenticated API and returns 503 for an unreplicated commit",
+      "status": "passed"
+    },
+    {
+      "name": "S3 large Cyst immutable object adapter probes one stable immutable canary with signed conditional PUT and exact GET on restart",
+      "status": "passed"
+    },
+    {
+      "name": "S3 large Cyst immutable object adapter supports a permanently read-only operator audit without PUT on success or failure",
+      "status": "passed"
+    },
+    {
+      "name": "S3 large Cyst immutable object adapter cannot race read-only initialization into a live conditional PUT",
+      "status": "passed"
+    },
+    {
+      "name": "S3 large Cyst immutable object adapter rejects a provider that ignores the immutable PUT precondition",
+      "status": "passed"
+    },
+    {
+      "name": "S3 large Cyst immutable object adapter fails startup on bad credentials, wrong bucket and unreachable endpoint",
+      "status": "passed"
+    },
+    {
+      "name": "S3 large Cyst immutable object adapter fails closed on a tampered canary and retries the same key after recovery",
+      "status": "passed"
+    },
+    {
+      "name": "S3 large Cyst immutable object adapter refuses canary write/read outages and can retry after an unknown PUT outcome",
+      "status": "passed"
+    },
+    {
+      "name": "S3 large Cyst immutable object adapter writes each scoped object conditionally and reads it back before acknowledging commit",
+      "status": "passed"
+    },
+    {
+      "name": "S3 large Cyst immutable object adapter propagates publication cancellation into an in-flight signed GET body",
+      "status": "passed"
+    },
+    {
+      "name": "S3 large Cyst immutable object adapter allows exact 412 retries after restart but rejects conflicting immutable content",
+      "status": "passed"
+    },
+    {
+      "name": "S3 large Cyst immutable object adapter never commits an absent or digest-mismatched part",
+      "status": "passed"
+    },
+    {
+      "name": "S3 large Cyst immutable object adapter rejects noncanonical JSON even when the remote metadata matches those bytes",
+      "status": "passed"
+    },
+    {
+      "name": "S3 large Cyst immutable object adapter rejects a noncanonical manifest and an altered committed part",
+      "status": "passed"
+    },
+    {
+      "name": "S3 large Cyst immutable object adapter bounds a full 4 MiB + 40 part, rejects extra chunked bytes and tampered metadata",
+      "status": "passed"
+    },
+    {
+      "name": "S3 large Cyst immutable object adapter rejects truncated objects, remote errors and redirects without a second request",
+      "status": "passed"
+    },
+    {
+      "name": "S3 large Cyst immutable object adapter times out both response headers and a stalled response body",
+      "status": "passed"
+    },
+    {
+      "name": "S3 large Cyst immutable object adapter keeps credentials out of errors and serialization and rejects unreviewed destinations",
+      "status": "passed"
+    },
+    {
+      "name": "runs a paid CPU job across two offers on one physical source and a separately funded standard target",
+      "status": "failed"
+    },
+    {
+      "name": "agent private prepared-file expiry after process restart deletes expired authenticated plaintext before a changed-registry rejection, with no wallet or CPU calls",
+      "status": "passed"
+    },
+    {
+      "name": "declared multi-chunk current Cyst into an actual locally paid CPU application restores file state through encrypted multi-chunk Cyst, real Vault payment and one application command",
+      "status": "passed"
+    },
+    {
+      "name": "declared multi-chunk current Cyst into an actual locally paid CPU application restores declared-directory state through encrypted multi-chunk Cyst, real Vault payment and one application command",
+      "status": "passed"
+    },
+    {
+      "name": "reviewed CPU lane offers share one physical host keeps omitted single-lane configuration and old financial workload hashes unchanged",
+      "status": "passed"
+    },
+    {
+      "name": "reviewed CPU lane offers share one physical host resolves exact lane/profile rates without duplicating or modifying physical metadata",
+      "status": "passed"
+    },
+    {
+      "name": "reviewed CPU lane offers share one physical host rejects ambiguous or unsupported reviewed catalogue missing_base",
+      "status": "passed"
+    },
+    {
+      "name": "reviewed CPU lane offers share one physical host rejects ambiguous or unsupported reviewed catalogue changed_base",
+      "status": "passed"
+    },
+    {
+      "name": "reviewed CPU lane offers share one physical host rejects ambiguous or unsupported reviewed catalogue base_profile",
+      "status": "passed"
+    },
+    {
+      "name": "reviewed CPU lane offers share one physical host rejects ambiguous or unsupported reviewed catalogue not_session",
+      "status": "passed"
+    },
+    {
+      "name": "reviewed CPU lane offers share one physical host rejects ambiguous or unsupported reviewed catalogue duplicate",
+      "status": "passed"
+    },
+    {
+      "name": "reviewed CPU lane offers share one physical host rejects ambiguous or unsupported reviewed catalogue zero",
+      "status": "passed"
+    },
+    {
+      "name": "reviewed CPU lane offers share one physical host rejects ambiguous or unsupported reviewed catalogue missing_capability",
+      "status": "passed"
+    },
+    {
+      "name": "reviewed CPU lane offers share one physical host rejects ambiguous or unsupported reviewed catalogue wrong_full",
+      "status": "passed"
+    },
+    {
+      "name": "reviewed CPU lane offers share one physical host rejects ambiguous or unsupported reviewed catalogue extra_field",
+      "status": "passed"
+    },
+    {
+      "name": "reviewed CPU lane offers share one physical host never inherits another lane profile when a reviewed offer omits reduced-quota prices",
+      "status": "passed"
+    },
+    {
+      "name": "reviewed CPU lane offers share one physical host requires original signed lane consent rather than a caller-supplied offer catalogue",
+      "status": "passed"
+    },
+    {
+      "name": "Node SDK independently verifies non-base lane prices over actual local HTTP checks exact signed lane/profile and unsigned payment calldata, vault=false",
+      "status": "passed"
+    },
+    {
+      "name": "Node SDK independently verifies non-base lane prices over actual local HTTP checks exact signed lane/profile and unsigned payment calldata, vault=true",
+      "status": "passed"
+    },
+    {
+      "name": "Node SDK independently verifies non-base lane prices over actual local HTTP refuses a retained signed plan after its exact offered rate is withdrawn",
+      "status": "passed"
+    },
+    {
+      "name": "Node SDK independently verifies non-base lane prices over actual local HTTP rejects duplicated physical hosts even when their nested offers and prices differ",
+      "status": "passed"
+    },
+    {
+      "name": "Node SDK independently verifies non-base lane prices over actual local HTTP refuses a real signed EOA interruptible plan whose legacy host omits preemption capability",
+      "status": "passed"
+    }
+  ],
+  "failureType": "AssertionError",
+  "sourceChangesAfter": [],
+  "servicesAfter": {
+    "telomere-staging.service": "MainPID=1952406\nNRestarts=0\nWorkingDirectory=/opt/telomere-pilot/releases/354fe7af62ea6701faafc3b04522abb1b4524d2d-launch04\nActiveState=active\nSubState=running",
+    "telomere-staging-chain.service": "MainPID=1952401\nNRestarts=0\nWorkingDirectory=/opt/telomere-pilot/app\nActiveState=active\nSubState=running",
+    "telomere-staging-watchdog.service": "MainPID=1952410\nNRestarts=0\nWorkingDirectory=/opt/telomere-pilot/watchdog-app\nActiveState=active\nSubState=running"
+  },
+  "profileAfterSha256": "a400feb3475b91168a5419d0a98c00ea804ba817c1c0ad34dea65d7d8808df8f",
+  "healthAfter": {
+    "live": {
+      "statusCode": 200,
+      "body": {
+        "status": "ok"
+      }
+    },
+    "ready": {
+      "statusCode": 200,
+      "body": {
+        "status": "ready",
+        "worker": "idle"
+      }
+    }
+  },
+  "protectedAfterSha256": "6c078f8b7a3386663d9ab2f5682c317d82b54e86c54a93f67255bfa045a76079",
+  "remainingContainers": [
+    "1d7ecc9b94866b9617df656ad7e2251916a9b7ceafef9a488ef6e85540076c5e"
+  ],
+  "success": false,
+  "finishedAt": "2026-10-15T12:58:32.886543+00:00"
+}

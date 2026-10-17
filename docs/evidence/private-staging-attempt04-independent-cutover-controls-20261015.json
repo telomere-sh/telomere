@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "status": "passed",
+  "runnerSha256": "f9d9b264e9b5b447894ff982239b96c4be2973fe4d94daa23a14d4ed63943d32",
+  "actualCutoverFunctionAstSha256": "366a0a469a31d1ff0fd2ed5db56f7e4ce8f69ba7af47a2242e8d72d2774f4d83",
+  "sourceUnchanged": true,
+  "cases": [
+    {
+      "case": "success",
+      "passed": true,
+      "reason": null,
+      "activationPublished": true,
+      "recoveryCalls": 0,
+      "signalsRestored": true,
+      "operationDeadlineRestored": true
+    },
+    {
+      "case": "term",
+      "passed": true,
+      "reason": "held_maintenance_interrupted",
+      "activationPublished": false,
+      "recoveryCalls": 1,
+      "signalsRestored": true,
+      "operationDeadlineRestored": true
+    },
+    {
+      "case": "alarm",
+      "passed": true,
+      "reason": "held_maintenance_interrupted",
+      "activationPublished": false,
+      "recoveryCalls": 1,
+      "signalsRestored": true,
+      "operationDeadlineRestored": true
+    },
+    {
+      "case": "deadline",
+      "passed": true,
+      "reason": "maintenance_deadline",
+      "activationPublished": false,
+      "recoveryCalls": 1,
+      "signalsRestored": true,
+      "operationDeadlineRestored": true
+    },
+    {
+      "case": "raw_drift",
+      "passed": true,
+      "reason": "fresh_snapshot_drift_no_activation",
+      "activationPublished": false,
+      "recoveryCalls": 1,
+      "signalsRestored": true,
+      "operationDeadlineRestored": true
+    },
+    {
+      "case": "originals_resumed",
+      "passed": true,
+      "reason": "held_original_units_not_inactive",
+      "activationPublished": false,
+      "recoveryCalls": 1,
+      "signalsRestored": true,
+      "operationDeadlineRestored": true
+    },
+    {
+      "case": "activation_start_failure",
+      "passed": true,
+      "reason": "injected_start_failure",
+      "activationPublished": true,
+      "recoveryCalls": 1,
+      "signalsRestored": true,
+      "operationDeadlineRestored": true
+    }
+  ],
+  "actualSignals": 0,
+  "actualExternalProcesses": 0,
+  "actualFileOrServiceMutations": 0,
+  "actualSshCalls": 0,
+  "actualDockerCalls": 0,
+  "profileOrKeyReads": false,
+  "recoveryBoundaryMocked": "recover_held independently reviewed by owner_loop_review"
+}

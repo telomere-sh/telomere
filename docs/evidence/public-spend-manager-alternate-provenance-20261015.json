@@ -1,0 +1,156 @@
+{
+  "checkedAt": "2026-10-15T01:26:26.820Z",
+  "scope": "Bounded alternate artifact lookup, no tokens or retry polling",
+  "attempts": [
+    {
+      "chainId": 8453,
+      "provider": "Sourcify full_match repository",
+      "url": "https://repo.sourcify.dev/contracts/full_match/8453/0xf85210B21cC50302F477BA56686d2019dC9b67Ad/metadata.json",
+      "httpStatus": 404,
+      "finalUrl": "https://sourcify.dev/server/repository/contracts/full_match/8453/0xf85210B21cC50302F477BA56686d2019dC9b67Ad/metadata.json",
+      "bytes": 1131,
+      "sha256": "54a61cd60b962988a522293bbd54961b194b66ee10026191595d68f32a83c211",
+      "embeddedIpfsSha256": "1bbeb3272166953d2a5eb88d3845fc62e4d6b2898d0c1e326c1117e93e325e28",
+      "contentHashMatches": false,
+      "failureBodyPrefix": "{\n  \"type\": \"https://sourcify.dev/server/api-docs/\",\n  \"title\": \"API v1 is removed\",\n  \"status\": 404,\n  \"detail\": \"This path was part of the Sourcify API v1. API v1 is removed. Use API v2.\",\n  \"replacements\": {\n    \"/files/..., /repository/contracts/...\": \"GET /v2/contract/{chainId}/{address}?fields"
+    },
+    {
+      "chainId": 84532,
+      "provider": "Sourcify full_match repository",
+      "url": "https://repo.sourcify.dev/contracts/full_match/84532/0xf85210B21cC50302F477BA56686d2019dC9b67Ad/metadata.json",
+      "httpStatus": 404,
+      "finalUrl": "https://sourcify.dev/server/repository/contracts/full_match/84532/0xf85210B21cC50302F477BA56686d2019dC9b67Ad/metadata.json",
+      "bytes": 1131,
+      "sha256": "54a61cd60b962988a522293bbd54961b194b66ee10026191595d68f32a83c211",
+      "embeddedIpfsSha256": "1bbeb3272166953d2a5eb88d3845fc62e4d6b2898d0c1e326c1117e93e325e28",
+      "contentHashMatches": false,
+      "failureBodyPrefix": "{\n  \"type\": \"https://sourcify.dev/server/api-docs/\",\n  \"title\": \"API v1 is removed\",\n  \"status\": 404,\n  \"detail\": \"This path was part of the Sourcify API v1. API v1 is removed. Use API v2.\",\n  \"replacements\": {\n    \"/files/..., /repository/contracts/...\": \"GET /v2/contract/{chainId}/{address}?fields"
+    },
+    {
+      "chainId": 8453,
+      "provider": "Sourcify APIv2 documented replacement",
+      "url": "https://sourcify.dev/server/v2/contract/8453/0xf85210B21cC50302F477BA56686d2019dC9b67Ad?fields=metadata,sources,compilation",
+      "httpStatus": 200,
+      "bytes": 712782,
+      "sha256": "32c6206bd4cc7e91a7e9526cd1eb46ddaeb103b753e485094df2f27dad02cf24",
+      "savedAs": ".local/public-spend-manager-sourcify-v2-8453-20261015.json",
+      "keys": [
+        "metadata",
+        "sources",
+        "compilation",
+        "matchId",
+        "creationMatch",
+        "runtimeMatch",
+        "verifiedAt",
+        "match",
+        "chainId",
+        "address"
+      ],
+      "summary": {
+        "match": "exact_match",
+        "runtimeMatch": "exact_match",
+        "compilation": {
+          "language": "Solidity",
+          "compiler": "solc",
+          "compilerVersion": "0.8.28+commit.7893614a",
+          "compilerSettings": {
+            "metadata": {
+              "bytecodeHash": "ipfs"
+            },
+            "libraries": {},
+            "optimizer": {
+              "runs": 999999,
+              "enabled": true
+            },
+            "evmVersion": "cancun",
+            "remappings": [
+              ":@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/",
+              ":@openzeppelin/contracts/security/=lib/magic-spend/lib/openzeppelin-contracts/contracts/utils/",
+              ":FreshCryptoLib/=lib/webauthn-sol/lib/FreshCryptoLib/solidity/src/",
+              ":account-abstraction/=lib/account-abstraction/contracts/",
+              ":ds-test/=lib/webauthn-sol/lib/forge-std/lib/ds-test/src/",
+              ":erc4626-tests/=lib/openzeppelin-contracts/lib/erc4626-tests/",
+              ":forge-std/=lib/forge-std/src/",
+              ":fuzzlib/=lib/magic-spend/lib/fuzzlib/src/",
+              ":halmos-cheatcodes/=lib/openzeppelin-contracts/lib/halmos-cheatcodes/src/",
+              ":magic-spend/=lib/magic-spend/src/",
+              ":openzeppelin-contracts/=lib/openzeppelin-contracts/",
+              ":p256-verifier/=lib/smart-wallet/lib/p256-verifier/",
+              ":safe-singleton-deployer-sol/=lib/smart-wallet/lib/safe-singleton-deployer-sol/",
+              ":smart-wallet/=lib/smart-wallet/src/",
+              ":solady/=lib/solady/src/",
+              ":webauthn-sol/=lib/webauthn-sol/src/"
+            ]
+          },
+          "name": "SpendPermissionManager",
+          "fullyQualifiedName": "src/SpendPermissionManager.sol:SpendPermissionManager"
+        },
+        "sourceCount": 66,
+        "metadataType": "object"
+      }
+    },
+    {
+      "chainId": 84532,
+      "provider": "Sourcify APIv2 documented replacement",
+      "url": "https://sourcify.dev/server/v2/contract/84532/0xf85210B21cC50302F477BA56686d2019dC9b67Ad?fields=metadata,sources,compilation",
+      "httpStatus": 200,
+      "bytes": 712784,
+      "sha256": "01f58e6a08f81e181a9d354cab74fe89aa19f5ac90a2988d306396a3d06c8b1a",
+      "savedAs": ".local/public-spend-manager-sourcify-v2-84532-20261015.json",
+      "keys": [
+        "metadata",
+        "sources",
+        "compilation",
+        "matchId",
+        "creationMatch",
+        "runtimeMatch",
+        "verifiedAt",
+        "match",
+        "chainId",
+        "address"
+      ],
+      "summary": {
+        "match": "exact_match",
+        "runtimeMatch": "exact_match",
+        "compilation": {
+          "language": "Solidity",
+          "compiler": "solc",
+          "compilerVersion": "0.8.28+commit.7893614a",
+          "compilerSettings": {
+            "metadata": {
+              "bytecodeHash": "ipfs"
+            },
+            "libraries": {},
+            "optimizer": {
+              "runs": 999999,
+              "enabled": true
+            },
+            "evmVersion": "cancun",
+            "remappings": [
+              ":@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/",
+              ":@openzeppelin/contracts/security/=lib/magic-spend/lib/openzeppelin-contracts/contracts/utils/",
+              ":FreshCryptoLib/=lib/webauthn-sol/lib/FreshCryptoLib/solidity/src/",
+              ":account-abstraction/=lib/account-abstraction/contracts/",
+              ":ds-test/=lib/webauthn-sol/lib/forge-std/lib/ds-test/src/",
+              ":erc4626-tests/=lib/openzeppelin-contracts/lib/erc4626-tests/",
+              ":forge-std/=lib/forge-std/src/",
+              ":fuzzlib/=lib/magic-spend/lib/fuzzlib/src/",
+              ":halmos-cheatcodes/=lib/openzeppelin-contracts/lib/halmos-cheatcodes/src/",
+              ":magic-spend/=lib/magic-spend/src/",
+              ":openzeppelin-contracts/=lib/openzeppelin-contracts/",
+              ":p256-verifier/=lib/smart-wallet/lib/p256-verifier/",
+              ":safe-singleton-deployer-sol/=lib/smart-wallet/lib/safe-singleton-deployer-sol/",
+              ":smart-wallet/=lib/smart-wallet/src/",
+              ":solady/=lib/solady/src/",
+              ":webauthn-sol/=lib/webauthn-sol/src/"
+            ]
+          },
+          "name": "SpendPermissionManager",
+          "fullyQualifiedName": "src/SpendPermissionManager.sol:SpendPermissionManager"
+        },
+        "sourceCount": 66,
+        "metadataType": "object"
+      }
+    }
+  ]
+}

@@ -1,0 +1,388 @@
+{
+  "schema": 1,
+  "status": "passed",
+  "startedAtUtc": "2026-10-15T11:51:02.583Z",
+  "finishedAtUtc": "2026-10-15T11:52:57.109Z",
+  "libraryRevision": "5b31957bce5c2dabc50a2ca23d43906a1612fc13",
+  "libraryBase": "/opt/telomere-host-runtime/golem-protocol-20261015-dfad08e3322c",
+  "work": "/opt/telomere-host-runtime/cyst-2g-stream-20261015-97e037bd6fcf25e1b9fafc51",
+  "runtime": {
+    "node": "v22.23.3",
+    "openssl": "3.5.8",
+    "cpuModels": [
+      "AMD Ryzen 9 9950X 16-Core Processor"
+    ],
+    "logicalCpus": 8,
+    "totalMemoryBytes": 16768536576
+  },
+  "sourceBytes": 2147221504,
+  "restoredBytes": 2147221504,
+  "chunkBytes": 4194304,
+  "partCount": 512,
+  "sourceAllocatedBytes": 2147225600,
+  "restoredAllocatedBytes": 2147225600,
+  "cipherBytes": 2147297276,
+  "cipherAllocatedBytes": 2149380096,
+  "sourceGeneration": "Every byte written; perchunk SHA256(namespace:index)32-byte pattern fills4MiBbuffer; no truncate/sparse generation.",
+  "phases": [
+    {
+      "name": "generate-full-regular-source",
+      "durationMs": 5620.948198,
+      "cpuUserMicros": 1684618,
+      "cpuSystemMicros": 2195821,
+      "before": {
+        "stage": "generate-full-regular-source-before",
+        "freeDiskBytes": 197560168448,
+        "freeMemoryBytes": 15544520704,
+        "rssBytes": 60858368,
+        "maxRssBytes": 60858368,
+        "cpu": {
+          "user": 84669,
+          "system": 18313
+        }
+      },
+      "after": {
+        "stage": "generate-full-regular-source-after",
+        "freeDiskBytes": 195412942848,
+        "freeMemoryBytes": 15541723136,
+        "rssBytes": 68251648,
+        "maxRssBytes": 68251648,
+        "cpu": {
+          "user": 1769287,
+          "system": 2214378
+        }
+      }
+    },
+    {
+      "name": "save-encrypted-large-cyst",
+      "durationMs": 73787.991874,
+      "cpuUserMicros": 45141873,
+      "cpuSystemMicros": 11397895,
+      "before": {
+        "stage": "save-encrypted-large-cyst-before",
+        "freeDiskBytes": 195412942848,
+        "freeMemoryBytes": 15541723136,
+        "rssBytes": 68251648,
+        "maxRssBytes": 68251648,
+        "cpu": {
+          "user": 1770268,
+          "system": 2215771
+        }
+      },
+      "after": {
+        "stage": "save-encrypted-large-cyst-after",
+        "freeDiskBytes": 193263509504,
+        "freeMemoryBytes": 15402991616,
+        "rssBytes": 166068224,
+        "maxRssBytes": 182206464,
+        "cpu": {
+          "user": 46911905,
+          "system": 13613666
+        }
+      }
+    },
+    {
+      "name": "close-store",
+      "durationMs": 1.8563649999996414,
+      "cpuUserMicros": 870,
+      "cpuSystemMicros": 0,
+      "before": {
+        "stage": "close-store-before",
+        "freeDiskBytes": 193263509504,
+        "freeMemoryBytes": 15402991616,
+        "rssBytes": 166068224,
+        "maxRssBytes": 182206464,
+        "cpu": {
+          "user": 46912899,
+          "system": 13613666
+        }
+      },
+      "after": {
+        "stage": "close-store-after",
+        "freeDiskBytes": 193263513600,
+        "freeMemoryBytes": 15402733568,
+        "rssBytes": 166068224,
+        "maxRssBytes": 182206464,
+        "cpu": {
+          "user": 46913722,
+          "system": 13613666
+        }
+      }
+    },
+    {
+      "name": "reopen-and-check-manifest",
+      "durationMs": 21.520607999991626,
+      "cpuUserMicros": 16715,
+      "cpuSystemMicros": 1996,
+      "before": {
+        "stage": "reopen-and-check-manifest-before",
+        "freeDiskBytes": 193263513600,
+        "freeMemoryBytes": 15402733568,
+        "rssBytes": 166068224,
+        "maxRssBytes": 182206464,
+        "cpu": {
+          "user": 46914411,
+          "system": 13613666
+        }
+      },
+      "after": {
+        "stage": "reopen-and-check-manifest-after",
+        "freeDiskBytes": 193263509504,
+        "freeMemoryBytes": 15391764480,
+        "rssBytes": 166068224,
+        "maxRssBytes": 182206464,
+        "cpu": {
+          "user": 46931175,
+          "system": 13615715
+        }
+      }
+    },
+    {
+      "name": "restore-authenticated-large-cyst",
+      "durationMs": 29475.997332000014,
+      "cpuUserMicros": 17820574,
+      "cpuSystemMicros": 5822750,
+      "before": {
+        "stage": "restore-authenticated-large-cyst-before",
+        "freeDiskBytes": 193263509504,
+        "freeMemoryBytes": 15391764480,
+        "rssBytes": 166068224,
+        "maxRssBytes": 182206464,
+        "cpu": {
+          "user": 46931907,
+          "system": 13615927
+        }
+      },
+      "after": {
+        "stage": "restore-authenticated-large-cyst-after",
+        "freeDiskBytes": 191116275712,
+        "freeMemoryBytes": 15296360448,
+        "rssBytes": 170123264,
+        "maxRssBytes": 182206464,
+        "cpu": {
+          "user": 64752365,
+          "system": 19438840
+        }
+      }
+    },
+    {
+      "name": "independent-byte-and-sha256-verification",
+      "durationMs": 5566.750442000004,
+      "cpuUserMicros": 2636549,
+      "cpuSystemMicros": 1894785,
+      "before": {
+        "stage": "independent-byte-and-sha256-verification-before",
+        "freeDiskBytes": 191116275712,
+        "freeMemoryBytes": 15296360448,
+        "rssBytes": 170123264,
+        "maxRssBytes": 182206464,
+        "cpu": {
+          "user": 64752365,
+          "system": 19439839
+        }
+      },
+      "after": {
+        "stage": "independent-byte-and-sha256-verification-after",
+        "freeDiskBytes": 191116296192,
+        "freeMemoryBytes": 15400697856,
+        "rssBytes": 168468480,
+        "maxRssBytes": 182206464,
+        "cpu": {
+          "user": 67389184,
+          "system": 21334580
+        }
+      }
+    },
+    {
+      "name": "final-store-close",
+      "durationMs": 4.399472000004607,
+      "cpuUserMicros": 0,
+      "cpuSystemMicros": 1435,
+      "before": {
+        "stage": "final-store-close-before",
+        "freeDiskBytes": 191116296192,
+        "freeMemoryBytes": 15400693760,
+        "rssBytes": 168468480,
+        "maxRssBytes": 182206464,
+        "cpu": {
+          "user": 67389184,
+          "system": 21336484
+        }
+      },
+      "after": {
+        "stage": "final-store-close-after",
+        "freeDiskBytes": 191116300288,
+        "freeMemoryBytes": 15403048960,
+        "rssBytes": 168468480,
+        "maxRssBytes": 182206464,
+        "cpu": {
+          "user": 67389184,
+          "system": 21338013
+        }
+      }
+    }
+  ],
+  "generationSha256": "dd4aef2b53b96215feb8dd12dac791a262bff899b3a36869bfe8bd474a417d24",
+  "sourceSha256": "dd4aef2b53b96215feb8dd12dac791a262bff899b3a36869bfe8bd474a417d24",
+  "restoredSha256": "dd4aef2b53b96215feb8dd12dac791a262bff899b3a36869bfe8bd474a417d24",
+  "everyByteCompared": true,
+  "inventoryBefore": [
+    {
+      "path": "src/cysts/large-checkpoints.ts",
+      "bytes": 41167,
+      "sha256": "8b72749fb55fb1903aa284ae89bcf241e9565d8fb1146e23f8954cbf5cd643bc"
+    },
+    {
+      "path": "dist/src/cysts/large-checkpoints.js",
+      "bytes": 43240,
+      "sha256": "05b3710f25ab1911301bf3a7fa341edbdd0cebaad15ab76190bbf1921bf5c973"
+    },
+    {
+      "path": "src/sdk/cyst-key-wrap.ts",
+      "bytes": 7032,
+      "sha256": "dd692a6cb37a3e5c45ecc55c9598735ad33e53cc1d56dc9ccbf99b36c8b3769f"
+    },
+    {
+      "path": "dist/src/sdk/cyst-key-wrap.js",
+      "bytes": 6678,
+      "sha256": "7fc4901319822759e56a9dab237b8af3274ba95c4e82dc284ca2404f441359e0"
+    },
+    {
+      "path": "src/cysts/types.ts",
+      "bytes": 2480,
+      "sha256": "066f2aea2bd49463017d4664366d55271e0dea2137555bfb2f5f47eddf25783b"
+    },
+    {
+      "path": "dist/src/cysts/types.js",
+      "bytes": 2266,
+      "sha256": "af5e1a1fa84fa6c93fe92f1811eca445698172d6f879964ee8b05cb8bd1a20d5"
+    },
+    {
+      "path": "package-lock.json",
+      "bytes": 124283,
+      "sha256": "e8549c057c2e4a8a3808ae2a2b386e9a20d20711c696836dd483d4c8bc7c533d"
+    },
+    {
+      "path": "node_modules/@noble/ciphers/package.json",
+      "bytes": 4463,
+      "sha256": "d4fd92770dc4d2af454902aaea3e16f053e6f8b48ad2d95c016c662a5f1be2d4"
+    },
+    {
+      "path": "node_modules/@noble/ciphers/chacha.js",
+      "bytes": 12586,
+      "sha256": "3aa105b14d6de3cde52544811b89ba09c27e4ce5843e0a3d382eb377dcfd7a01"
+    },
+    {
+      "path": "node_modules/@noble/ciphers/_arx.js",
+      "bytes": 7178,
+      "sha256": "c480cb9fbadfd9b7fc93cc9f11db3c2b4082630deba79181dc2d675dd71ae57c"
+    },
+    {
+      "path": "node_modules/@noble/ciphers/_poly1305.js",
+      "bytes": 10535,
+      "sha256": "06020ef6c5656c8a5f16d11ac00b5c37a5f066a5b5141e7267b12f34a335bc6d"
+    },
+    {
+      "path": "node_modules/@noble/ciphers/utils.js",
+      "bytes": 13473,
+      "sha256": "1d85b5a40c73aaed280ab7a47b297de0f128e8bf5140641b5541d6e8fd12f1e6"
+    }
+  ],
+  "inventoryAfter": [
+    {
+      "path": "src/cysts/large-checkpoints.ts",
+      "bytes": 41167,
+      "sha256": "8b72749fb55fb1903aa284ae89bcf241e9565d8fb1146e23f8954cbf5cd643bc"
+    },
+    {
+      "path": "dist/src/cysts/large-checkpoints.js",
+      "bytes": 43240,
+      "sha256": "05b3710f25ab1911301bf3a7fa341edbdd0cebaad15ab76190bbf1921bf5c973"
+    },
+    {
+      "path": "src/sdk/cyst-key-wrap.ts",
+      "bytes": 7032,
+      "sha256": "dd692a6cb37a3e5c45ecc55c9598735ad33e53cc1d56dc9ccbf99b36c8b3769f"
+    },
+    {
+      "path": "dist/src/sdk/cyst-key-wrap.js",
+      "bytes": 6678,
+      "sha256": "7fc4901319822759e56a9dab237b8af3274ba95c4e82dc284ca2404f441359e0"
+    },
+    {
+      "path": "src/cysts/types.ts",
+      "bytes": 2480,
+      "sha256": "066f2aea2bd49463017d4664366d55271e0dea2137555bfb2f5f47eddf25783b"
+    },
+    {
+      "path": "dist/src/cysts/types.js",
+      "bytes": 2266,
+      "sha256": "af5e1a1fa84fa6c93fe92f1811eca445698172d6f879964ee8b05cb8bd1a20d5"
+    },
+    {
+      "path": "package-lock.json",
+      "bytes": 124283,
+      "sha256": "e8549c057c2e4a8a3808ae2a2b386e9a20d20711c696836dd483d4c8bc7c533d"
+    },
+    {
+      "path": "node_modules/@noble/ciphers/package.json",
+      "bytes": 4463,
+      "sha256": "d4fd92770dc4d2af454902aaea3e16f053e6f8b48ad2d95c016c662a5f1be2d4"
+    },
+    {
+      "path": "node_modules/@noble/ciphers/chacha.js",
+      "bytes": 12586,
+      "sha256": "3aa105b14d6de3cde52544811b89ba09c27e4ce5843e0a3d382eb377dcfd7a01"
+    },
+    {
+      "path": "node_modules/@noble/ciphers/_arx.js",
+      "bytes": 7178,
+      "sha256": "c480cb9fbadfd9b7fc93cc9f11db3c2b4082630deba79181dc2d675dd71ae57c"
+    },
+    {
+      "path": "node_modules/@noble/ciphers/_poly1305.js",
+      "bytes": 10535,
+      "sha256": "06020ef6c5656c8a5f16d11ac00b5c37a5f066a5b5141e7267b12f34a335bc6d"
+    },
+    {
+      "path": "node_modules/@noble/ciphers/utils.js",
+      "bytes": 13473,
+      "sha256": "1d85b5a40c73aaed280ab7a47b297de0f128e8bf5140641b5541d6e8fd12f1e6"
+    }
+  ],
+  "sourceChangedDuringRun": false,
+  "resourceBefore": {
+    "stage": "before",
+    "freeDiskBytes": 197560180736,
+    "freeMemoryBytes": 15544520704,
+    "rssBytes": 60858368,
+    "maxRssBytes": 60858368,
+    "cpu": {
+      "user": 84669,
+      "system": 16406
+    }
+  },
+  "resourceAfter": {
+    "stage": "after",
+    "freeDiskBytes": 191116300288,
+    "freeMemoryBytes": 15403044864,
+    "rssBytes": 168845312,
+    "maxRssBytes": 182206464,
+    "cpu": {
+      "user": 67390853,
+      "system": 21352449
+    }
+  },
+  "peakRssBytes": 182206464,
+  "minFreeMemoryBytes": 15206744064,
+  "minFreeDiskBytes": 191115563008,
+  "totalMs": 114525.95307999999,
+  "limits": [
+    "Local private-store encrypted streaming only; no HTTP/S3/provider/registry/paid admission/Cell restore/writable filesystem claim.",
+    "Existing ordinary Cell bundle/scratch caps unchanged; not2GiB Cell writable-tree acceptance.",
+    "Shared VPS; concurrent unrelated workloads/cold-cache effects not controlled.",
+    "Resource checks every16parts included in measured restore.",
+    "Ephemeral benchmark recovery key only in process memory and cleared; never logged/saved."
+  ],
+  "ownedFilesPreserved": true
+}

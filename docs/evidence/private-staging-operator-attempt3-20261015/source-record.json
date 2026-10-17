@@ -1,0 +1,114 @@
+{
+  "boundary": {
+    "archiveCopiesOnly": true,
+    "doNotExecuteLauncherFromArchivedLocation": true,
+    "executionBundleRemains": ".local/private-staging-rollout-attempt3-20261015",
+    "noNewRuntimeEvidenceGenerated": true,
+    "parentOwnsAllExplicitRuntimePhases": true,
+    "privateProfilesBackupsDatabasesKeysOrImageArchiveRetained": false,
+    "runtimeCloneOrCutoverAcceptanceClaimed": false,
+    "serverActionsDuringRetention": 0,
+    "sourceCodeChanges": 0
+  },
+  "closedIndependentReview": {
+    "path": "docs/private-staging-rollout-attempt3-review-2026-10-15.json",
+    "sha256": "9b2d707e0ef353a77f27e663460460ce2479fb463ce68ccf71faa88c53fea9bd",
+    "status": "review_complete_no_blocking_issue_found_at_frozen_cutoff"
+  },
+  "files": [
+    {
+      "bytes": 51144,
+      "path": "docs/evidence/private-staging-operator-attempt3-20261015/rollout.py",
+      "role": "frozen_operator_bundle",
+      "sha256": "26e580f34daa0db39710ff4114315809979686ceeaca656fb4cf59de715a15cb",
+      "source": ".local/private-staging-rollout-attempt3-20261015/rollout.py"
+    },
+    {
+      "bytes": 19759,
+      "path": "docs/evidence/private-staging-operator-attempt3-20261015/clone-smoke.mjs",
+      "role": "frozen_operator_bundle",
+      "sha256": "43d37c51c7d50a1a9971b444367045a2c7e73b91239418d679460d1fb06176e5",
+      "source": ".local/private-staging-rollout-attempt3-20261015/clone-smoke.mjs"
+    },
+    {
+      "bytes": 10707,
+      "path": "docs/evidence/private-staging-operator-attempt3-20261015/README.md",
+      "role": "frozen_operator_bundle",
+      "sha256": "6c0792998957eddf5cb51f22e92478433fc6cc1fc83b2117c27417a33012e2cf",
+      "source": ".local/private-staging-rollout-attempt3-20261015/README.md"
+    },
+    {
+      "bytes": 18876,
+      "path": "docs/evidence/private-staging-operator-attempt3-20261015/upload-launch.py",
+      "role": "frozen_operator_bundle",
+      "sha256": "deb1467b2b85814005ca9cceb4141ef2934cbe06c2ba88e48585007be65ee712",
+      "source": ".local/private-staging-rollout-attempt3-20261015/upload-launch.py"
+    },
+    {
+      "bytes": 5196,
+      "path": "docs/evidence/private-staging-operator-attempt3-20261015/upload-launch-usage.md",
+      "role": "frozen_operator_bundle",
+      "sha256": "e808f1707bed73a3ad3e321da9651ca6af4e7bdb27904836ab04ae368a09a9c4",
+      "source": ".local/private-staging-rollout-attempt3-20261015/upload-launch-usage.md"
+    },
+    {
+      "bytes": 10775,
+      "path": "docs/evidence/private-staging-operator-attempt3-20261015/test-image-identity-offline.py",
+      "role": "safe_author_validation_helper_or_evidence",
+      "sha256": "219380080482263fff48f62ad2fcb912c723a2be6a41e14106ae9872f874014c",
+      "source": ".local/private-staging-rollout-attempt3-20261015/test-image-identity-offline.py"
+    },
+    {
+      "bytes": 3422,
+      "path": "docs/evidence/private-staging-operator-attempt3-20261015/image-identity-offline-results.json",
+      "role": "safe_author_validation_helper_or_evidence",
+      "sha256": "c28634004ef949f12bfddebe1cf614e7be68cb8b99d0966d84195b422acc3809",
+      "source": ".local/private-staging-rollout-attempt3-20261015/image-identity-offline-results.json"
+    },
+    {
+      "bytes": 3315,
+      "path": "docs/evidence/private-staging-operator-attempt3-20261015/verify-existing-export-readonly.py",
+      "role": "safe_author_validation_helper_or_evidence",
+      "sha256": "c67af4ebb8b0d389120f579e3eb9c45708c2ecebb033b5936fb82c4503a35697",
+      "source": ".local/private-staging-rollout-attempt3-20261015/verify-existing-export-readonly.py"
+    },
+    {
+      "bytes": 12708,
+      "path": "docs/evidence/private-staging-operator-attempt3-20261015/existing-export-probe.stdin.py",
+      "role": "safe_author_validation_helper_or_evidence",
+      "sha256": "10215acb200563a5f0d01c57d48241423457223ef9f7e908804833721683d082",
+      "source": ".local/private-staging-rollout-attempt3-20261015/existing-export-probe.stdin.py"
+    },
+    {
+      "bytes": 3275,
+      "path": "docs/evidence/private-staging-operator-attempt3-20261015/existing-export-readonly-proof.json",
+      "role": "safe_author_validation_helper_or_evidence",
+      "sha256": "5a568e0182d679ba004201641764f3febf44b658affd89054decdf8eeb99ed8a",
+      "source": ".local/private-staging-rollout-attempt3-20261015/existing-export-readonly-proof.json"
+    },
+    {
+      "bytes": 1028,
+      "path": "docs/evidence/private-staging-operator-attempt3-20261015/attempt03-local-freeze.json",
+      "role": "safe_author_validation_helper_or_evidence",
+      "sha256": "512144efa9381dfeb5435285b60bbc956cfc4e995d08bb7108bb2fbdc27c2cb6",
+      "source": ".local/private-staging-rollout-attempt3-20261015/attempt03-local-freeze.json"
+    }
+  ],
+  "fiveFrozenFilesMatchClosedReview": true,
+  "kind": "immutable_archival_copy_of_reviewed_private_staging_attempt03",
+  "operatorPath": "/opt/telomere-host-runtime/private-staging-operator-20261015-354fe7af62ea-attempt03",
+  "originalAttempt01And02AllTenFilesStillMatch": true,
+  "retainedAt": "2026-10-15T04:33:27.569853+00:00",
+  "run": "staging-354fe7af62ea-launch03",
+  "schemaVersion": 1,
+  "sourceAndArchiveCopiesAllBytesEqual": true,
+  "sourceArchiveSha256": "86b5dc9f36dcf841963f0ffa8161023c126f1fae473c94909f5dddae3040fdce",
+  "sourceRevision": "354fe7af62ea6701faafc3b04522abb1b4524d2d",
+  "verification": {
+    "actualExistingExportProbeSha256Verified": true,
+    "actualExistingExportReadOnlyProof": "existing-export-readonly-proof.json",
+    "authorOfflineCasesPassed": 29,
+    "authorOfflineDockerCalls": 0,
+    "authorOfflineTransportCalls": 0
+  }
+}

@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-15",
+  "checkedAt": "2026-10-15T01:28:32.996Z",
+  "scope": "Bounded source-artifact follow-up, authenticated metadata and exact offline full-runtime reproduction at the previously recorded canonical public snapshots. No runtime approval or configuration enablement.",
+  "priorSnapshotReport": "docs/base-spend-permission-public-readonly-validation-2026-10-15.json",
+  "metadata": {
+    "cid": "QmQCxNbuPnt54vEekdmU3A513RiDiYYGn1Tu16r2vV7wTV",
+    "canonicalBytes": 48002,
+    "authenticatedBothChains": true,
+    "multihashHex": "12201bbeb3272166953d2a5eb88d3845fc62e4d6b2898d0c1e326c1117e93e325e28",
+    "directFileSha256": "b427a895b88bcc431261739b641ed0c0d911c47b7c6f5fbe031345cf569bd1ee",
+    "algorithm": "Solidity0.8.28 IPFS UnixFS single-chunk DAG-PB protobuf SHA256; NOT direct file SHA256",
+    "source": "Sourcify APIv2 metadata field, independently authenticated to on-chain embedded CID",
+    "sameMetadataBothChains": true,
+    "requiredSources": 36,
+    "unusedOrAliasBundlePaths": 30,
+    "allRequiredSourceKeccak256Authenticated": true,
+    "sameRequiredContentsBothChains": true
+  },
+  "networkAttempts": {
+    "legacySourcifyRepositoryUrls": "404 APIv1 removed; migration response retained",
+    "documentedV2": "One HTTP200 lookup per chain with metadata,sources,compilation fields; no polling",
+    "ipfsGatewayRetried": false,
+    "explorerNeeded": false,
+    "keysTokensOrPaidRequests": false
+  },
+  "compiler": {
+    "version": "0.8.28+commit.7893614a.Emscripten.clang",
+    "evmVersion": "cancun",
+    "optimizerEnabled": true,
+    "optimizerRuns": 999999,
+    "metadataBytecodeHash": "ipfs",
+    "sourceRemappings": "Authenticated original compiler settings, including lib/magic-spend and original aliases; retained in standard input",
+    "metadataOutputExactlyMatchesAuthenticated": true
+  },
+  "pinnedSourceComparison": {
+    "pinnedInput": "tests/fixtures/spend-permissions/reference-input.json",
+    "exactTextMatches": 0,
+    "lineEndingNormalizedMatches": 35,
+    "total": 36,
+    "oneRemainingFile": "src/SpendPermissionManager.sol",
+    "remainingDiff": "Only magicspend versus magic-spend in its import path and documentation URL; full unified diff retained. Resolved dependency text matches after line-ending normalization.",
+    "originalPublicManagerMatchesOfficialReleaseTagExactly": {
+      "tag": "v1.0.0",
+      "commit": "54e99c7e73846418c9b5d2b4139c17d415a27d41",
+      "exactByteMatch": true,
+      "sourceSha256": "5d03f32798f47aa1606c2d88c87c23044be9bda280cca7a8ec95ff9ef4326909"
+    },
+    "localFixtureUnchanged": true,
+    "localFixtureRuntimeBytes": 9981,
+    "localFixtureOptimizerRuns": 200
+  },
+  "exactRuntime": {
+    "bytes": 12610,
+    "allSevenImmutableDeclarationsAndTenLocationsVerified": true,
+    "includesSolidityMetadataTrailer": true,
+    "networks": [
+      {
+        "chainId": 8453,
+        "observedRuntimeKeccak256": "0x2e9e272aa2f685632aae292aaf8bca67f22e4494ec831959bc6e9ff071378bea",
+        "reproducedRuntimeKeccak256": "0x2e9e272aa2f685632aae292aaf8bca67f22e4494ec831959bc6e9ff071378bea",
+        "exactFullRuntimeMatch": true
+      },
+      {
+        "chainId": 84532,
+        "observedRuntimeKeccak256": "0x52485746e0e69bdb943d424484c356c7d3eb97599374f38b29e87dda34c521ee",
+        "reproducedRuntimeKeccak256": "0x52485746e0e69bdb943d424484c356c7d3eb97599374f38b29e87dda34c521ee",
+        "exactFullRuntimeMatch": true
+      }
+    ]
+  },
+  "reproduction": {
+    "command": "node docs/evidence/reproduce-public-spend-manager-20261015.mjs",
+    "exitCode": 0,
+    "networkRequests": 0,
+    "boundary": "Reads retained evidence and installed pinned solc; checks metadata CID and required source hashes before compiling, substitutes independently expected immutables, asserts full-runtime identity, writes .local reproduction outputs."
+  },
+  "evidence": [
+    {
+      "path": "docs/evidence/public-spend-manager-alternate-provenance-20261015.json",
+      "sha256": "2f014044a13147729134aded8a2e68e17ef3a9fdc1c929e1423c0668d7b6101d",
+      "bytes": 7282
+    },
+    {
+      "path": "docs/evidence/public-spend-manager-sourcify-v2-8453-20261015.json",
+      "sha256": "32c6206bd4cc7e91a7e9526cd1eb46ddaeb103b753e485094df2f27dad02cf24",
+      "bytes": 712782
+    },
+    {
+      "path": "docs/evidence/public-spend-manager-sourcify-v2-84532-20261015.json",
+      "sha256": "01f58e6a08f81e181a9d354cab74fe89aa19f5ac90a2988d306396a3d06c8b1a",
+      "bytes": 712784
+    },
+    {
+      "path": "docs/evidence/public-spend-manager-authenticated-metadata-20261015.json",
+      "sha256": "b427a895b88bcc431261739b641ed0c0d911c47b7c6f5fbe031345cf569bd1ee",
+      "bytes": 48002
+    },
+    {
+      "path": "docs/evidence/public-spend-manager-authenticated-standard-input-20261015.json",
+      "sha256": "9d7a016bfaffcdd9e1ebd30f7739571fbf8fc2a9953afd83cfe033c072fd403d",
+      "bytes": 363828
+    },
+    {
+      "path": "docs/evidence/public-spend-manager-exact-rebuild-20261015.json",
+      "sha256": "50137ba7d32aa8067dfb177bd6f3c56454e6811a355b77e5f824ed82718d37d0",
+      "bytes": 24423
+    },
+    {
+      "path": "docs/evidence/public-spend-manager-metadata-authentication-20261015.json",
+      "sha256": "d2f003262bf475000c9f7154d2d4cf55eb8f7a8e569cda3f7b9c30f0ca3912d2",
+      "bytes": 1197
+    },
+    {
+      "path": "docs/evidence/public-spend-manager-source-diff-20261015.diff",
+      "sha256": "547d33ba5db725f42973f70bf3357e6275dbe8181d3cc5a234b851cffc9eb447",
+      "bytes": 394
+    },
+    {
+      "path": "docs/evidence/reproduce-public-spend-manager-20261015.mjs",
+      "sha256": "6c926ddb9e8ee313cd09dc259a4110156d957e9f316e697c05a1e5e261296c84",
+      "bytes": 5522
+    }
+  ],
+  "limits": [
+    "No automatic public runtime-pin approval",
+    "No original deployment transaction/creation-bytecode or constructor-argument proof",
+    "No funded public Base transaction or real account approval/spend/settlement acceptance",
+    "No Base Account/AA/ERC6492/MagicSpend workflow acceptance",
+    "No treasury/core deployment/configuration enablement or production/test source changes",
+    "No completion-percentage credit from documentation or provenance alone"
+  ],
+  "publicTransactions": 0,
+  "paidPublicRequests": 0,
+  "productionOrTestSourceEdits": false,
+  "configEnabled": false
+}

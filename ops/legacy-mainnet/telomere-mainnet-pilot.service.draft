@@ -1,0 +1,39 @@
+[Unit]
+Description=Telomere closed Base mainnet pilot, owner activation required
+After=network-online.target telomere-mainnet-docker.service
+Requires=telomere-mainnet-docker.service
+ConditionPathExists=/opt/telomere-mainnet-pilot/private/activation.json
+
+[Service]
+Type=simple
+User=telomere-mainnet
+Group=telomere-mainnet
+WorkingDirectory=/opt/telomere-mainnet-pilot/app
+EnvironmentFile=/opt/telomere-mainnet-pilot/private/mainnet.env
+Environment=DOCKER_HOST=unix:///run/telomere-mainnet-docker/docker.sock
+UnsetEnvironment=DOCKER_CONTEXT DOCKER_TLS_VERIFY DOCKER_CERT_PATH DEPLOYER_PRIVATE_KEY DEMO_PRIVATE_KEY
+ExecStartPre=+/opt/node-v22.23.3-linux-x64/bin/node /opt/telomere-mainnet-pilot/operator/preflight.mjs --verify-activation
+ExecStart=/opt/node-v22.23.3-linux-x64/bin/node dist/src/main.js
+Restart=no
+TimeoutStartSec=90
+TimeoutStopSec=35
+CPUQuota=100%
+MemoryMax=768M
+TasksMax=128
+NoNewPrivileges=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectSystem=strict
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+LockPersonality=true
+CapabilityBoundingSet=
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+ReadWritePaths=/opt/telomere-mainnet-pilot/data
+UMask=0077
+
+# Draft only. Do not install or start until reviewed activation.json exists.
+# No SupplementaryGroups=docker, no [Install], no staging unit dependency.

@@ -1,0 +1,11 @@
+{
+  "diagnosticOnly": true,
+  "instrumentedWorker": true,
+  "exitCode": 0,
+  "sourceGitRevision": "079bb31fa76217df9d3d3d0e309293bf4f58e89c",
+  "workerOriginalSha256": "0e07056bae0ea1230d02d8ec813338dee080938e32ea47b16b75e221c61470fa",
+  "workerInstrumentedSha256": "f291d04bead6224325c627b9d3a544e614fe8ac379995393a815f77a191de5f3",
+  "helperSha256": "9a2eab4294d76ff9d3fcc98e0f6d8539a4c046e495c7c3a465d195d1a4083987",
+  "directory": "/opt/telomere-host-runtime/yagna-native-doc-wal-probe-20261015",
+  "attempts": 3
+}

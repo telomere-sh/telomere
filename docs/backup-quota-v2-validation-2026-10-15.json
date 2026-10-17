@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "checkedAtUtc": "2026-10-15T00:49:09.2092986Z",
+  "kind": "explicit_cyst_quota_backup_verification",
+  "status": "passed",
+  "command": "npx vitest run tests/cyst-backup.test.ts tests/platform-backup.test.ts tests/platform-backup-quota-v2.test.ts tests/operator.test.ts --reporter=json --outputFile=.local/backup-quota-final-20261015.json",
+  "tests": {
+    "passed": 47,
+    "failed": 0,
+    "skipped": 2,
+    "total": 49,
+    "files": 4,
+    "skippedCases": []
+  },
+  "typecheck": {
+    "command": "npm run typecheck",
+    "exitCode": 0
+  },
+  "diffCheck": {
+    "exitCode": 0
+  },
+  "evidence": {
+    "localRestoreEncryptedCheckpoints": 513,
+    "paidReplicaEncryptedCheckpoints": 513,
+    "paidSuccessfulGetRequests": 1026,
+    "databaseMode": "PGlite PostgreSQL repeatable read read only",
+    "defaultOwnerCheckpoints": 512,
+    "reviewedOwnerCheckpoints": 4096,
+    "ownerBytes": 33554432,
+    "schemaAndMetadataUnchanged": true,
+    "pendingStatesPreserved": true,
+    "missingOrMalformedPolicyRejected": true,
+    "replicaCorruptionRejected": true,
+    "remoteRepairRequests": 0,
+    "servicesModified": 0,
+    "publicTransactionsSent": 0
+  },
+  "limitations": [
+    "Local PGlite and HTTP replica fixtures; no new deployed PostgreSQL archive or public remote-storage acceptance was performed",
+    "Two POSIX permission/symlink checks are skipped on Windows"
+  ],
+  "initialFailure": {
+    "report": ".local/paid-backup-quota-v2-20261015.json",
+    "cause": "New fixture omitted required demo owner key",
+    "repair": "Added deterministic fixture-only demo key; production source unchanged by repair",
+    "retryReport": ".local/paid-backup-quota-v2-fixed-20261015.json",
+    "passed": 1,
+    "failed": 0
+  },
+  "rawReport": {
+    "path": "docs/evidence/backup-quota-v2-final-20261015.json",
+    "bytes": 19720,
+    "sha256": "e816ddd663ebaca557a322233689a038433e92f4f6d3e04eee10f14974b6705f"
+  },
+  "sources": [
+    {
+      "path": "src/operator/backup.ts",
+      "bytes": 26897,
+      "sha256": "73dfac921c3c6037cf4655d69953393d0112cd147fd0fa9152eca0667debeff4"
+    },
+    {
+      "path": "src/operator/platform-backup.ts",
+      "bytes": 40350,
+      "sha256": "42877ef2df7219e84466331c38e698917d776c0d4ae4fd3b0b77f45ecdca9c36"
+    },
+    {
+      "path": "scripts/restore-acceptance.ts",
+      "bytes": 14747,
+      "sha256": "c7ced2454b013cb712f89e0bd65e88edddf8eba7c056b564855789afced26906"
+    },
+    {
+      "path": "scripts/verify-platform-restore.ts",
+      "bytes": 12717,
+      "sha256": "58be14a78b44f981f163a919f4d2c7be1f9bf4719e843b6077f81374e90900e5"
+    },
+    {
+      "path": "scripts/backup-platform.ts",
+      "bytes": 12813,
+      "sha256": "4f1c564595fc03683d634ccb6bd82f6ca4075a8f796342d7a7a9522b699de17b"
+    },
+    {
+      "path": "tests/cyst-backup.test.ts",
+      "bytes": 33204,
+      "sha256": "e126cbe593c9dbc076d017076426cf8e4c68002f6b4f03a7bd54308f7ab4527d"
+    },
+    {
+      "path": "tests/platform-backup.test.ts",
+      "bytes": 14902,
+      "sha256": "ae28bd1fb635d4b5a9fc1d2603d3fd4563e5459142f82e548eb47938d9f99d49"
+    },
+    {
+      "path": "tests/platform-backup-quota-v2.test.ts",
+      "bytes": 7866,
+      "sha256": "b617cd56579d63d831d87c7df25ea13e7035d1c4c4412e900289b764b7f10cdd"
+    }
+  ]
+}

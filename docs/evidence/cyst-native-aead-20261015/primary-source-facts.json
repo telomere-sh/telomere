@@ -1,0 +1,56 @@
+{
+  "schema": 1,
+  "recordedAtUtc": "2026-10-15T12:08:44.977849+00:00",
+  "sources": [
+    {
+      "url": "https://nodejs.org/download/release/v22.23.3/docs/api/crypto.html",
+      "version": "Node22.23.3",
+      "sections": [
+        "crypto.createCipheriv",
+        "crypto.createDecipheriv",
+        "cipher.setAAD",
+        "cipher.getAuthTag",
+        "decipher.setAuthTag",
+        "decipher.final",
+        "crypto.getCiphers"
+      ],
+      "facts": [
+        "IETF ChaCha20-Poly1305 is available through native cipher/decipher with a16byte tag.",
+        "AAD precedes update; encryption tag is read after final.",
+        "Authenticated decryption may emit unauthenticated bytes from update; final must authenticate before publication.",
+        "Runtime support varies with the Node/OpenSSL build."
+      ]
+    },
+    {
+      "url": "https://github.com/paulmillr/noble-ciphers/blob/1.3.0/src/chacha.ts",
+      "version": "@noble/ciphers1.3.0",
+      "sections": [
+        "hchacha",
+        "xchacha20poly1305"
+      ],
+      "facts": [
+        "Existing pinned HChaCha routine accepts sigma/key/nonce/output Uint32Array words.",
+        "Existing XChaCha AEAD ciphertext contains a16byte appended authentication tag."
+      ]
+    },
+    {
+      "url": "https://datatracker.ietf.org/doc/html/draft-irtf-cfrg-xchacha-03",
+      "version": "draft-irtf-cfrg-xchacha-03",
+      "sections": [
+        "2.2.1",
+        "2.3",
+        "AppendixA.1"
+      ],
+      "facts": [
+        "Derive a32byte subkey using HChaCha with the first16nonce bytes.",
+        "The IETF ChaCha20-Poly1305 nonce is four zero bytes followed by the final eight original nonce bytes.",
+        "Public HChaCha and AEAD test vectors are implemented as exact byte interoperability checks."
+      ]
+    }
+  ],
+  "limitations": [
+    "No claim that this expired Internet-Draft is a new finalized standard.",
+    "No change to the existing Large Cyst format, AAD, random24byte nonce prefix, HMAC, wrapping or recovery keys.",
+    "Buffer wiping covers retained JavaScript buffers; no guarantee about copies internal to OpenSSL or the garbage collector."
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "kind": "retained_exact_root_postactivation_readonly_proofs",
+  "checkedAt": "2026-10-15T05:03:45.720335+00:00",
+  "status": "passed",
+  "run": "staging-354fe7af62ea-launch04",
+  "sourceFilesVerified": 685,
+  "runtimeFilesVerified": 564,
+  "actualOriginalSevenTablesUnchanged": true,
+  "actualCystCount": 1,
+  "actualCystBytes": 93,
+  "actualCanonicalHeadNumber": "23",
+  "privateProfilesKeysBackupsOrRawRowsRetained": false,
+  "evidence": [
+    {
+      "path": "docs/evidence/private-staging-root-postactivation-20261015/inspect-private-staging-attempt04-20261015.py",
+      "sha256": "202dba65bababddd27c254102695700869edcdda5a1743340ef4897b32934326",
+      "bytes": 3080,
+      "source": ".local/inspect-private-staging-attempt04-20261015.py"
+    },
+    {
+      "path": "docs/evidence/private-staging-root-postactivation-20261015/status.json",
+      "sha256": "e2b589733ac2dc9d342a592cbb29174e62ee12d3716344f14233c6f75927681c",
+      "bytes": 2618,
+      "source": ".local/private-staging-postactivation-20261015/status.json"
+    },
+    {
+      "path": "docs/evidence/private-staging-root-postactivation-20261015/verify-private-staging-final-runtime-20261015.py",
+      "sha256": "a44c122c0ae34a7afb781b4e24c81705e23b2dfb4b4533c95761a0cab6ba94de",
+      "bytes": 6571,
+      "source": ".local/verify-private-staging-final-runtime-20261015.py"
+    },
+    {
+      "path": "docs/evidence/private-staging-root-postactivation-20261015/runtime.json",
+      "sha256": "7c19fba3a76cb7ddea2d45c0d27dbff01e7d8be006cb9f09f9072554dcee9003",
+      "bytes": 1099,
+      "source": ".local/private-staging-postactivation-20261015/runtime.json"
+    },
+    {
+      "path": "docs/evidence/private-staging-root-postactivation-20261015/verify-postactivation-original-state-20261015.mjs",
+      "sha256": "61bf8382fd5f5a7cfcdf7fd299a04ee62fb685223773b9952bd3e8dab62e363a",
+      "bytes": 11251,
+      "source": ".local/verify-postactivation-original-state-20261015.mjs"
+    },
+    {
+      "path": "docs/evidence/private-staging-root-postactivation-20261015/original-data.json",
+      "sha256": "e7ba1200c4b7302a4c60664f727ee6fefea6641fc65111ef59d8461166a8fb20",
+      "bytes": 1758,
+      "source": ".local/private-staging-postactivation-20261015/original-data.json"
+    },
+    {
+      "path": "docs/evidence/private-staging-root-postactivation-20261015/collection.json",
+      "sha256": "b7368dbde08ec73986e23742885e231022fab6e160d4b46fba75b5c0216b1960",
+      "bytes": 8533,
+      "source": ".local/private-staging-postactivation-20261015/collection.json"
+    },
+    {
+      "path": "docs/evidence/private-staging-root-postactivation-20261015/build-postactivation-audit-20261015.py",
+      "sha256": "03fab0e3074dc2ee3eac7812774546c42d73dab56e7be7a3c9e76b8c8b6a40fa",
+      "bytes": 6122,
+      "source": ".local/build-postactivation-audit-20261015.py"
+    },
+    {
+      "path": "docs/evidence/private-staging-root-postactivation-20261015/collect-private-staging-postactivation-20261015.py",
+      "sha256": "e6a6d3720db1c0ad2f1a431272f3e55f0ca0cd8155badd15dabe1d081661fa6e",
+      "bytes": 2133,
+      "source": ".local/collect-private-staging-postactivation-20261015.py"
+    }
+  ],
+  "note": "Independent checker boundaries are explicit: current head/hash/stateRoot are re-read; clone stateSha256 is retained evidence. Resource check covers exact scoped containers/netns/helper/daemon units, not an independent process scan."
+}

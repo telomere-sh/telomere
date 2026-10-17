@@ -1,0 +1,15 @@
+[Unit]
+Description=Verify and preserve the Telomere mainnet owned Docker bridge
+After=network-pre.target
+Before=telomere-mainnet-docker.service
+
+[Service]
+Type=oneshot
+User=root
+Group=telomere-mainnet
+ExecStart=/usr/bin/python3 /opt/telomere-mainnet-pilot/operator/prepare-network.py --ensure
+RemainAfterExit=yes
+UMask=0077
+
+# There is deliberately no ExecStop: stopping the daemon must never delete a bridge.
+# Draft only. No [Install] target; the dedicated daemon requires this unit explicitly.

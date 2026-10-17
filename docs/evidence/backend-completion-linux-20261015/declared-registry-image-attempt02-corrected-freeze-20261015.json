@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "status": "corrected_source_frozen_independently_reviewed_not_retried",
+  "helperSha256": "d2c1a7664c20be02ec2c29eb29d68f7da0eabce05de06784c2d9ba3445a2f270",
+  "helperBytes": 39400,
+  "reviewer": "/root/final_readiness_review",
+  "priorExecutedHelperSha256": "5c157b9c75048846d19081743f420102afecad53e79b8661d91d6a8f2de840d5",
+  "onlyChangedFunction": "registry_unit_properties",
+  "inverseEqualsHistoricalSource": true,
+  "cause": "never_loaded_unit_omits_ExecStart",
+  "actualReadOnlyObservation": {
+    "systemctlExitCode": 0,
+    "returnedPropertyCount": 12,
+    "missingOnly": [
+      "ExecStart"
+    ],
+    "notFound": true,
+    "inactive": true,
+    "zeroPid": true,
+    "emptyCgroup": true,
+    "attempt02ArtifactsAbsent": true
+  },
+  "offlineActualFunctionControls": 46,
+  "syntax": "pass",
+  "oldBuilderBytesUnchanged": true,
+  "actualRetryByAuthor": false,
+  "artifacts": [
+    {
+      "path": ".local/build-declared-state-cell-image-attempt02-20261015.py",
+      "bytes": 39400,
+      "sha256": "d2c1a7664c20be02ec2c29eb29d68f7da0eabce05de06784c2d9ba3445a2f270"
+    },
+    {
+      "path": ".local/build-declared-state-cell-image-attempt02-initial-20261015.py",
+      "bytes": 38686,
+      "sha256": "5c157b9c75048846d19081743f420102afecad53e79b8661d91d6a8f2de840d5"
+    },
+    {
+      "path": ".local/test-registry-binary-attempt02-controls-20261015.py",
+      "bytes": 9442,
+      "sha256": "ba17e6809e1a2f92601e6fc414475dfd2691e482e727aa3f550387968920ab36"
+    },
+    {
+      "path": ".local/test-registry-binary-attempt02-controls-20261015.json",
+      "bytes": 4785,
+      "sha256": "459201cc5db720754d85b95afa581b5f86857ce14c9b16f87880d4ec38fd14c7"
+    },
+    {
+      "path": ".local/test-registry-binary-attempt02-initial-controls-20261015.py",
+      "bytes": 8808,
+      "sha256": "21771966929b40371a9b7c00ad1a05d2e379a2300b11eda5fc6716ae680ed322"
+    },
+    {
+      "path": ".local/test-registry-binary-attempt02-initial-controls-20261015.json",
+      "bytes": 4325,
+      "sha256": "0d420a77747b9b3ec3260fc07730e624cf2f2b145afdf9db4fe247eb6e2e4bbf"
+    }
+  ]
+}

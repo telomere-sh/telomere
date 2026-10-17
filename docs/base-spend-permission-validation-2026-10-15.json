@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-15",
+  "profile": "base_spend_permission_v1",
+  "quoteDomainVersion": "3",
+  "scope": "Separate smart funding account, explicitly approved EOA refund beneficiary, bounded CPU receipt-v1 admission",
+  "upstreamReference": {
+    "repository": "https://github.com/coinbase/spend-permissions",
+    "commit": "e0004e63edc4e17de7aa978293800ac7a16892e5",
+    "managerCompiler": "0.8.28+commit.7893614a.Emscripten.clang",
+    "managerEvmVersion": "cancun",
+    "exactCompilerInputSources": 36,
+    "sourceDigestsVerifiedDuringAcceptance": true,
+    "creationRuntimeAbiAndCompilerReproducedDuringAcceptance": true,
+    "compilerInput": "tests/fixtures/spend-permissions/reference-input.json",
+    "compilerInputSha256": "5a2825705245373c5d57a56f77acf406c6c09f924e44bef8b168876ba6e01128",
+    "artifact": "tests/fixtures/spend-permissions/SpendPermissionManager.compiled.json",
+    "artifactSha256": "022c5929bf1caadf8a3b88ade69d11aeb6fd1639d1410068e24b6e293f77c7a0",
+    "fixtureBoundary": "Actual official Manager bytecode and its token/allowance/period logic; minimal local account executor. Unused ERC6492 validator and MagicSpend constructor addresses are zero only in this local direct-approval fixture. No Base Account/AA/public Manager verification claim."
+  },
+  "contract": {
+    "name": "PlatformSpendPermissionEscrowV1",
+    "runtimeBytes": 22528,
+    "eip170LimitBytes": 24576,
+    "legacyContractSourcesUnchanged": [
+      "PlatformRunEscrow.sol",
+      "PlatformRunEscrowEconomicsV2.sol"
+    ]
+  },
+  "finalFocusedAcceptance": {
+    "command": "node node_modules/vitest/vitest.mjs run tests/platform-spend-permission.test.ts --reporter=json --outputFile=.local/platform-spend-permission-asset-final-20261015.json",
+    "passed": 2,
+    "failed": 0,
+    "skipped": 0,
+    "successful": true,
+    "rawResult": "docs/evidence/platform-spend-permission-asset-final-20261015.json",
+    "rawResultSha256": "edc2f401e34c323a6ad97fa730900be82a065d44abab505c7eab2e98ab78b368",
+    "sourceManifest": "docs/evidence/platform-spend-permission-asset-final-source-20261015.json",
+    "sourceFilesComparedBeforeAndAfter": 16,
+    "sourceUnchangedAfterRun": true,
+    "currentCapturedSourcesStillMatch": true,
+    "notIncludedInPreRunInventory": [
+      "src/platform-runtime/configured.ts",
+      "src/sdk/index.ts"
+    ],
+    "sourceBoundary": "Frozen focused core/test/reference cohort. Configured-main startup and SDK export declarations have post-review implementation only and were not exercised by this focused run. Other backend work continued outside this captured source cohort; this is not a whole-backend frozen regression.",
+    "checkedAt": "2026-10-15T01:16:53.874301+00:00"
+  },
+  "established": [
+    "Undeposited EOA escrow cannot use balance quoting; explicitly approved separate smart-account permission can quote without fictitious escrow credit",
+    "Exact API/SDK funding review exposes funding account, EOA refund beneficiary, permission hash, conservative ceiling and Manager",
+    "Actual domain3 transaction is invalid under old quote domains1/2",
+    "Official Manager pulls the full2725-unit conservative reservation, then actual HTTP HostKit child-process CPU executes exactly once",
+    "Actual signed meter and local Anvil receipt settlement charge positive confirmed work and conserve charge plus refund",
+    "Unused funds are withdrawn only by the approved EOA; funding account is not silently reimbursed or its period allowance replenished",
+    "Expected funded preparation rejects an ordinary balance opening, and expected ordinary preparation rejects a permission-funded opening without extra CPU dispatch",
+    "Actual Manager revocation, time bounds, period exhaustion/reset and exact original Leash/refund-beneficiary binding are enforced",
+    "Wrong quote signature, changed Leash terms, insufficient allowance, hourly Leash cap and global escrow cap revert token movement and Manager spend atomically",
+    "Independent historical reader verifies exact funded calldata, original permission, RunOpened, historical run fields, Manager event and USDC conservation",
+    "Standalone planning and historical-opening readers independently enforce the canonical pinned asset implementation/stability checks; both reject a wrong USDC runtime code pin against the real valid opened run"
+  ],
+  "legacyRegression": {
+    "files": [
+      "tests/platform-client.test.ts",
+      "tests/platform-runtime.test.ts"
+    ],
+    "passed": 72,
+    "failed": 0,
+    "skipped": 0,
+    "rawResult": "docs/evidence/spend-permission-legacy-regression-20261015.json",
+    "rawResultSha256": "7df0edd7fd374e48e8280a66b1da37376ee25925d865a75ba109541761c87d02",
+    "sourceBoundary": "Focused preceding run over shared source. It did not capture a before/after inventory and is not the final complete backend regression."
+  },
+  "earlierAttempt": {
+    "rawResult": "docs/evidence/platform-spend-permission-initial-20261015.json",
+    "status": "failed and retained",
+    "passed": 0,
+    "failed": 2,
+    "correction": "Test fixture normalized deployed receipt addresses to checksum and used the complete test artifact ABI for deposit; no production financial assertion was relaxed."
+  },
+  "unsupportedAndRejected": [
+    "Vault payer/runtime",
+    "CPU receipt-v2 issuance",
+    "economics-v2 profile combination",
+    "NEAR/inference task funding",
+    "contract payer or undeployed/EOA funding account"
+  ],
+  "notEstablished": [
+    "funded public Base acceptance",
+    "verified public Manager runtime hash",
+    "Base Account smart-wallet authentication/passkeys/ERC4337/ERC6492",
+    "MagicSpend",
+    "Python support for the new profile; old strict clients reject it",
+    "new immutable deployment approval or public source verification",
+    "Docker/gVisor isolation in this child-process fixture",
+    "whole-backend frozen acceptance"
+  ],
+  "publicTransactions": 0,
+  "paidPublicRequests": 0,
+  "precedingFocusedAcceptance": {
+    "command": "node node_modules/vitest/vitest.mjs run tests/platform-spend-permission.test.ts --reporter=json --outputFile=.local/platform-spend-permission-final-20261015.json",
+    "passed": 2,
+    "failed": 0,
+    "skipped": 0,
+    "successful": true,
+    "rawResult": "docs/evidence/platform-spend-permission-20261015.json",
+    "rawResultSha256": "79413f9009b4cf0f60d050482cd7e1e61512eeecf9707af589d7a24c1fe831aa",
+    "sourceManifest": "docs/evidence/platform-spend-permission-source-20261015.json",
+    "sourceFilesComparedBeforeAndAfter": 16,
+    "sourceUnchangedAfterRun": true,
+    "status": "Retained historical pass before standalone asset verification hardening; superseded by finalFocusedAcceptance for current source."
+  },
+  "currentFocusedSourceFreeze": {
+    "sourceUnchangedAfterRun": true,
+    "currentCapturedSourcesStillMatch": true,
+    "sourceFiles": 16,
+    "productionFrozenAfter": "Standalone historical/planning asset proof hardening",
+    "broaderCohortPending": "Root-controlled exact-source Linux and backend acceptance; not established by these focused tests."
+  }
+}

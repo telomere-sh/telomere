@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "observedAt": "2026-10-15T18:26:50.836533+00:00",
+  "selectedDaemonSettings": {
+    "data-root": "/opt/telomere-mainnet-pilot/docker-data",
+    "exec-root": "/run/telomere-mainnet-docker/exec",
+    "hosts": [
+      "unix:///run/telomere-mainnet-docker/docker.sock"
+    ],
+    "containerd-namespace": "telomere-mainnet-cpu",
+    "containerd-plugins-namespace": "telomere-mainnet-plugins",
+    "default-runtime": "runsc",
+    "bridge": "tlmr-mainnet0",
+    "iptables": false,
+    "ip6tables": false,
+    "ip-forward": false,
+    "ip-masq": false
+  },
+  "daemonInfo": [
+    {
+      "endpoint": "unix:///var/run/docker.sock",
+      "selectedInfo": {
+        "DockerRootDir": {
+          "exitCode": 0,
+          "value": "/var/lib/docker"
+        },
+        "DefaultRuntime": {
+          "exitCode": 0,
+          "value": "runc"
+        },
+        "Containerd": {
+          "exitCode": 0,
+          "value": {
+            "Address": "/run/containerd/containerd.sock",
+            "Namespaces": {
+              "Containers": "moby",
+              "Plugins": "plugins.moby"
+            }
+          }
+        }
+      }
+    },
+    {
+      "endpoint": "unix:///run/telomere-mainnet-docker/docker.sock",
+      "selectedInfo": {
+        "DockerRootDir": {
+          "exitCode": 0,
+          "value": "/opt/telomere-mainnet-pilot/docker-data"
+        },
+        "DefaultRuntime": {
+          "exitCode": 0,
+          "value": "runsc"
+        },
+        "Containerd": {
+          "exitCode": 0,
+          "value": {
+            "Address": "/run/containerd/containerd.sock",
+            "Namespaces": {
+              "Containers": "telomere-mainnet-cpu",
+              "Plugins": "plugins.moby"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "containerdNamespaces": [
+    "moby",
+    "telomere-host",
+    "telomere-mainnet-cpu",
+    "telomere-paid-acceptance-20261013",
+    "tlmr-accept-20261014",
+    "tlmr-declared-accept-20261015",
+    "tlmr-file-accept-20261015",
+    "tlmr-roll-6f1420071c84",
+    "tlmr-roll-87b79e1aa092",
+    "tlmr-twohost-20261013"
+  ],
+  "scope": "Separate Docker data/exec roots, sockets and containerd namespaces; shared containerd service and kernel. Read-only metadata, no cleanup or service mutation.",
+  "publicTransactionsSent": 0
+}

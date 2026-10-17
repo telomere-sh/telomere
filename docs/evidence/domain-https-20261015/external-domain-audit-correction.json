@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-15T20:12:31.569776+00:00",
+  "rawAuditPath": "external-domain-audit.json",
+  "rawAuditSha256": "b0acdb7c3980fe167f48f44ec4628815b8f997d6cd7158ff096ba34b0b434bfb",
+  "scope": "Correction of one auditor expected-route mapping using already captured public responses and original deployment manifest; no refetch or deployment change",
+  "route": "/dashboard",
+  "originalIncorrectExpectedSource": "page.html",
+  "correctExpectedSource": "dashboard/index.html",
+  "observedStatus": 200,
+  "observedSha256": "77a5d0ac5869c50d0c176966147fa6f937d200075f2f7a24b3374995ad2bb369",
+  "correctExpectedSha256": "77a5d0ac5869c50d0c176966147fa6f937d200075f2f7a24b3374995ad2bb369",
+  "correctedRoutePassed": true,
+  "all312StaticHashesAndSizesPassed": true,
+  "allHtmlFiniteInlineScriptHashesPassed": true,
+  "remainingConfirmedIssue": {
+    "path": "/assets/audio/telomere-motion.wav",
+    "contentType": "application/octet-stream",
+    "expectedType": [
+      "audio/wav",
+      "audio/x-wav"
+    ],
+    "sourceBytesAndRangeChecksPassed": true
+  },
+  "remoteMutations": 0,
+  "authenticatedRequests": 0,
+  "walletRequests": 0,
+  "financialRequests": 0
+}

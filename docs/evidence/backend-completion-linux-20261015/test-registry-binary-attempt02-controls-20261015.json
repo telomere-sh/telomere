@@ -1,0 +1,242 @@
+{
+  "schemaVersion": 1,
+  "helperSha256": "d2c1a7664c20be02ec2c29eb29d68f7da0eabce05de06784c2d9ba3445a2f270",
+  "sourceStable": true,
+  "passed": 46,
+  "failed": 0,
+  "actualDockerCalls": 0,
+  "actualSSHCalls": 0,
+  "actualServiceCalls": 0,
+  "cases": [
+    {
+      "name": "static-ELF64-amd64",
+      "passed": true,
+      "result": "accepted"
+    },
+    {
+      "name": "dynamic",
+      "passed": true,
+      "result": "refused"
+    },
+    {
+      "name": "interpreter",
+      "passed": true,
+      "result": "refused"
+    },
+    {
+      "name": "other-machine",
+      "passed": true,
+      "result": "refused"
+    },
+    {
+      "name": "short",
+      "passed": true,
+      "result": "refused"
+    },
+    {
+      "name": "wrong-magic",
+      "passed": true,
+      "result": "refused"
+    },
+    {
+      "name": "ELF-table-bounds",
+      "passed": true,
+      "result": "refused"
+    },
+    {
+      "name": "two-cli-context-exact",
+      "passed": true,
+      "result": "accepted"
+    },
+    {
+      "name": "old-context-name",
+      "passed": true,
+      "result": "refused"
+    },
+    {
+      "name": "foreign-context-parent",
+      "passed": true,
+      "result": "refused"
+    },
+    {
+      "name": "extra-context-file",
+      "passed": true,
+      "result": "refused"
+    },
+    {
+      "name": "missing-capture-cli",
+      "passed": true,
+      "result": "refused"
+    },
+    {
+      "name": "capture-not-sealed",
+      "passed": true,
+      "result": "refused"
+    },
+    {
+      "name": "capture-hash-tamper",
+      "passed": true,
+      "result": "refused"
+    },
+    {
+      "name": "restore-hash-tamper",
+      "passed": true,
+      "result": "refused"
+    },
+    {
+      "name": "Dockerfile-tamper",
+      "passed": true,
+      "result": "refused"
+    },
+    {
+      "name": "exact-service-identity",
+      "passed": true,
+      "result": "accepted"
+    },
+    {
+      "name": "wrong-live-namespace",
+      "passed": true,
+      "result": "refused"
+    },
+    {
+      "name": "exact-own-cleanup-despite-wrong-namespace",
+      "passed": true,
+      "result": "accepted"
+    },
+    {
+      "name": "reject-Description",
+      "passed": true,
+      "result": "refused"
+    },
+    {
+      "name": "reject-User",
+      "passed": true,
+      "result": "refused"
+    },
+    {
+      "name": "reject-Group",
+      "passed": true,
+      "result": "refused"
+    },
+    {
+      "name": "reject-NetworkNamespacePath",
+      "passed": true,
+      "result": "refused"
+    },
+    {
+      "name": "reject-FragmentPath",
+      "passed": true,
+      "result": "refused"
+    },
+    {
+      "name": "reject-ExecStart",
+      "passed": true,
+      "result": "refused"
+    },
+    {
+      "name": "reject-ControlGroup",
+      "passed": true,
+      "result": "refused"
+    },
+    {
+      "name": "reject-NoNewPrivileges",
+      "passed": true,
+      "result": "refused"
+    },
+    {
+      "name": "reject-KillMode",
+      "passed": true,
+      "result": "refused"
+    },
+    {
+      "name": "reject-MainPID",
+      "passed": true,
+      "result": "refused"
+    },
+    {
+      "name": "stopped-unit-identity",
+      "passed": true,
+      "result": "accepted"
+    },
+    {
+      "name": "stopped-not-live-proof",
+      "passed": true,
+      "result": "refused"
+    },
+    {
+      "name": "absent-cleanup",
+      "passed": true,
+      "result": "accepted"
+    },
+    {
+      "name": "absent-start-refused",
+      "passed": true,
+      "result": "refused"
+    },
+    {
+      "name": "actual-never-loaded-12-field-exit-zero",
+      "passed": true,
+      "result": "accepted"
+    },
+    {
+      "name": "garbage-collected-12-field-exit-one",
+      "passed": true,
+      "result": "accepted"
+    },
+    {
+      "name": "missing-exec-with-foreign-identity-refused",
+      "passed": true,
+      "result": "refused"
+    },
+    {
+      "name": "loaded-missing-exec-refused",
+      "passed": true,
+      "result": "refused"
+    },
+    {
+      "name": "loaded-exit-one-refused",
+      "passed": true,
+      "result": "refused"
+    },
+    {
+      "name": "binary-hash-drift",
+      "passed": true,
+      "result": "refused"
+    },
+    {
+      "name": "config-hash-drift",
+      "passed": true,
+      "result": "refused"
+    },
+    {
+      "name": "foreign-live-argv",
+      "passed": true,
+      "result": "refused"
+    },
+    {
+      "name": "cleanup-absent",
+      "passed": true,
+      "result": "accepted"
+    },
+    {
+      "name": "cleanup-normal",
+      "passed": true,
+      "result": "accepted"
+    },
+    {
+      "name": "cleanup-stop-timeout",
+      "passed": true,
+      "result": "accepted"
+    },
+    {
+      "name": "cleanup-changed",
+      "passed": true,
+      "result": "refused"
+    },
+    {
+      "name": "cleanup-never-stops",
+      "passed": true,
+      "result": "refused"
+    }
+  ]
+}

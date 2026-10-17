@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "assessedOn": "2026-10-12",
+  "baseCommit": "f136f9f",
+  "scope": "Actual optional income endpoint startup, authentication and streamed HTTP boundaries; public PlatformSelection dataset integration",
+  "command": "npx vitest run tests/selection-income-endpoints-main.test.ts --reporter=json --outputFile=.local/selection-income-endpoints-main-vitest.json",
+  "result": {
+    "total": 4,
+    "passed": 4,
+    "failed": 0,
+    "skipped": 0,
+    "durationMs": 37139.335205078125
+  },
+  "typecheck": {
+    "command": "npm run typecheck",
+    "exitCode": 0,
+    "scope": "Final main/config/store/endpoint source and cross-block test"
+  },
+  "evidence": [
+    "Actual compiled PlatformSelectionRegistry/PlatformAgentVault, disposable Anvil, real startPilot, persistent PGlite and EIP191 authenticated owner/agent/outsider sessions",
+    "Owner-only mutations, authenticated configuration, foreign Origin refusal and no external endpoint GET until explicit verify",
+    "Actual endpoint GET carrying only nonce, no cookies/authorization/payment headers; registered-agent proof and separately matching x402 terms",
+    "After verified endpoint, actual indexed public PlatformSelection dataset reports income 0 and subsidy 1000000, and hides owner/Vault addresses",
+    "Actual chunked HTTP accepts exactly 8192 bytes, rejects 8193 and enforces five-second absolute deadline on unfinished trickling body; subsequent readiness remains available",
+    "Malformed JSON, wrong registry code hash and wrong asset each reject actual startup, close actual database exactly once, leave no listener and permit reopen",
+    "Valid restart retains durable declarations and existing session; omitted optional profile disables endpoint routes and normal shutdown releases port",
+    "No controller transaction journal entry or owner transaction nonce increment from endpoint verification"
+  ],
+  "limitations": [
+    "Actual probes were disposable loopback HTTP; live public DNS/TLS interoperability was not exercised",
+    "No income classification, token transaction, earned-revenue proof or payment capability claim",
+    "No public Robinhood deployment or paid provider request",
+    "Focused main suite, not full repository acceptance; separate config/component/Linux evidence applies"
+  ],
+  "sourceSha256": {
+    "src/app.ts": "5277110e0813c9411e30fdce8e644869e8dce1ab38f6fe4407b4f674d643ef35",
+    "src/config.ts": "58f64027eb2cf88423a8356ffc7365deda3ece05ae10d4c6fad506a2ee6c495f",
+    "src/main.ts": "7a64aa0703fb9e5e5f32fb4f4ad1e2279cfbe9130f877fb95bbd33d733dfe734",
+    "src/store.ts": "510633a539d43c9dcdd4aff452dcc0095052c8ba8c915bc092cddbcd50f08bd1",
+    "src/selection/income-endpoints/configured.ts": "239b10aa3692c8066b8adfbf68b4e3f7fab654149b58bdbbbbb49dc9f4187f1c",
+    "tests/selection-income-endpoints-main.test.ts": "d2bb053ec9466aa419f2bdd76a2d0af3f893395c06fbccea43c44f1db38c7b8e",
+    "tests/selection-income-endpoints-config.test.ts": "1b6eef4a72ac734d49f80a402b3edbc4e5b0b68b59522e75bdbd60dd0dc07600"
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "schema": 1,
+  "capturedAtUtc": "2026-10-15T11:31:54.329444+00:00",
+  "repository": "https://github.com/golemfactory/yagna",
+  "revision": "c256fce68c50c141a51d4bd2ca18292e4b006f15",
+  "purpose": "Exact native SQLite allocation attribution source and original DDL; not a deployed daemon/payment/provider/finality claim.",
+  "files": [
+    {
+      "path": "LICENSE",
+      "url": "https://raw.githubusercontent.com/golemfactory/yagna/c256fce68c50c141a51d4bd2ca18292e4b006f15/LICENSE",
+      "bytes": 35149,
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+    },
+    {
+      "path": "core/payment/src/dao/batch.rs",
+      "url": "https://raw.githubusercontent.com/golemfactory/yagna/c256fce68c50c141a51d4bd2ca18292e4b006f15/core/payment/src/dao/batch.rs",
+      "bytes": 59687,
+      "sha256": "6425abd2a3335bc6825faedfc98f51af904a35dd99b7e177feaae81025788246"
+    },
+    {
+      "path": "core/payment/src/models/batch.rs",
+      "url": "https://raw.githubusercontent.com/golemfactory/yagna/c256fce68c50c141a51d4bd2ca18292e4b006f15/core/payment/src/models/batch.rs",
+      "bytes": 3473,
+      "sha256": "e207f1d50d64325a32fc21f6c7ec1423647bc67826d3b794e5c2994609589015"
+    },
+    {
+      "path": "core/payment/src/schema.rs",
+      "url": "https://raw.githubusercontent.com/golemfactory/yagna/c256fce68c50c141a51d4bd2ca18292e4b006f15/core/payment/src/schema.rs",
+      "bytes": 6818,
+      "sha256": "529c33ff041e4e059f6d73cd539498edb2c9d3ec726cf379e350c6706da4d6f9"
+    },
+    {
+      "path": "core/payment/src/dao/payment.rs",
+      "url": "https://raw.githubusercontent.com/golemfactory/yagna/c256fce68c50c141a51d4bd2ca18292e4b006f15/core/payment/src/dao/payment.rs",
+      "bytes": 13898,
+      "sha256": "b439d56632bef72dd3edfff4aa614955fffdb04a2ff3b874af3dff9b6e640830"
+    },
+    {
+      "path": "core/payment/src/dao/allocation.rs",
+      "url": "https://raw.githubusercontent.com/golemfactory/yagna/c256fce68c50c141a51d4bd2ca18292e4b006f15/core/payment/src/dao/allocation.rs",
+      "bytes": 14673,
+      "sha256": "627f2974c7c798bef2611482c15821c61c52813014d0c8705dadf67ad36ec0d3"
+    },
+    {
+      "path": "core/payment/src/models/payment.rs",
+      "url": "https://raw.githubusercontent.com/golemfactory/yagna/c256fce68c50c141a51d4bd2ca18292e4b006f15/core/payment/src/models/payment.rs",
+      "bytes": 5654,
+      "sha256": "efb71b7da8b6ccb4b3e7a69a36ac85f66e0a2dbd94b99f378ebf13f0ba379fca"
+    },
+    {
+      "path": "core/payment/src/processor.rs",
+      "url": "https://raw.githubusercontent.com/golemfactory/yagna/c256fce68c50c141a51d4bd2ca18292e4b006f15/core/payment/src/processor.rs",
+      "bytes": 56191,
+      "sha256": "5cd7beb9fb275887d2d1df7d24695a4eb7333aabb19e01e688eaaeca437d9062"
+    },
+    {
+      "path": "core/payment/src/api/allocations/mod.rs",
+      "url": "https://raw.githubusercontent.com/golemfactory/yagna/c256fce68c50c141a51d4bd2ca18292e4b006f15/core/payment/src/api/allocations/mod.rs",
+      "bytes": 24875,
+      "sha256": "90c7ed0e3f0bf7a51b891d34c15d2ab4902ab85d0d6da99c235c1dcd319e5a0b"
+    },
+    {
+      "path": "core/payment/migrations/2020-01-23-123456_init/up.sql",
+      "url": "https://raw.githubusercontent.com/golemfactory/yagna/c256fce68c50c141a51d4bd2ca18292e4b006f15/core/payment/migrations/2020-01-23-123456_init/up.sql",
+      "bytes": 7230,
+      "sha256": "a9a58a05e7948abd02d517362c32f769bb7dd75c87cc4dbc86877a62c03ddaaa"
+    },
+    {
+      "path": "core/payment/migrations/2024-08-12-171012_extended_order/up.sql",
+      "url": "https://raw.githubusercontent.com/golemfactory/yagna/c256fce68c50c141a51d4bd2ca18292e4b006f15/core/payment/migrations/2024-08-12-171012_extended_order/up.sql",
+      "bytes": 9071,
+      "sha256": "a4033a0a6456a2ef1e614d2f9428de7f54b999d8f1ebd11fef4113bc6cceebef"
+    }
+  ],
+  "facts": [
+    "Public get_batch_items returns DbAgreementBatchOrderItem WITHOUT paymentId/payer/platform; orders HTTP alone cannot attribute a transfer.",
+    "Native pay_batch_order_item.payment_id is joined to order/document/allocation rows on exact owner/order/payee/allocation composite keys. Processor uses that mapping to create API payment; API mapper discards allocation IDs.",
+    "Erratum to earlier protocol-only410 discussion: AllocationDao.get filters released=false before matching Gone; retained c256 released allocation can return404. Neither404 nor nominal410 alone is authoritative physical stop/on-chain refund proof."
+  ]
+}

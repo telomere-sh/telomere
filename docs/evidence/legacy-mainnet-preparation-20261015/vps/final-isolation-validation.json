@@ -1,0 +1,73 @@
+{
+  "status": "final infrastructure guards installed and guarded restart passed",
+  "preflightSha256": "347c99c62d57980cdb1fcde364a6e8232b3d542419aa6bed21e49ca6aa84e52e",
+  "expectedManifestSha256": "1f18b9da1dc3425e3cf517158a87e07575ee266836c308c096c6a33d1e257b4e",
+  "dockerConfigurationSha256": "8c016088338d6bd889b079a47bbfa0d5dc61f59679b1110e8557ea09fcbf5173",
+  "containerd": {
+    "Address": "/run/containerd/containerd.sock",
+    "Namespaces": {
+      "Containers": "telomere-mainnet-cpu",
+      "Plugins": "telomere-mainnet-plugins"
+    }
+  },
+  "legacyInterfaceSnapshotsMatched": true,
+  "stagingBefore": {
+    "telomere-staging.service": [
+      "MainPID=3888942",
+      "NRestarts=104",
+      "ActiveState=active",
+      "SubState=running"
+    ],
+    "telomere-staging-chain.service": [
+      "MainPID=1952401",
+      "NRestarts=0",
+      "ActiveState=active",
+      "SubState=running"
+    ],
+    "telomere-staging-watchdog.service": [
+      "MainPID=1952410",
+      "NRestarts=0",
+      "ActiveState=active",
+      "SubState=running"
+    ]
+  },
+  "stagingAfter": {
+    "telomere-staging.service": [
+      "MainPID=3888942",
+      "NRestarts=104",
+      "ActiveState=active",
+      "SubState=running"
+    ],
+    "telomere-staging-chain.service": [
+      "MainPID=1952401",
+      "NRestarts=0",
+      "ActiveState=active",
+      "SubState=running"
+    ],
+    "telomere-staging-watchdog.service": [
+      "MainPID=1952410",
+      "NRestarts=0",
+      "ActiveState=active",
+      "SubState=running"
+    ]
+  },
+  "stagingReadiness": {
+    "status": "ready",
+    "worker": "idle"
+  },
+  "configurationPreflight": {
+    "readOnly": true,
+    "configurationValid": true,
+    "chainId": 8453,
+    "operator": "0x87599dBF6f720DE7751E8CB2d36d4Ea96A4A1d38",
+    "verifiedRuntimePins": 906,
+    "unsignedPlanBound": true,
+    "bootstrapOwnershipVerified": true,
+    "dockerIsolationVerified": true,
+    "controllerStarted": false,
+    "onChainCalls": false
+  },
+  "activationRecordAbsent": true,
+  "controllerStarted": false,
+  "publicTransactionsSent": 0
+}

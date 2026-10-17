@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "bootstrapOwnership": {
+    "operation": "telomere-mainnet-prepare-20261015",
+    "id": "f1f1fa857fb34ae9adb708ecf6af7166",
+    "base": "/opt/telomere-mainnet-pilot",
+    "uid": 995,
+    "gid": 993,
+    "owner": "0xa67c6a174409b9b44e67d24cdd386a31d44edb1d",
+    "controllerStarted": false,
+    "transactionsSent": 0
+  },
+  "releaseDirectory": "/opt/telomere-mainnet-pilot/releases/ee6169d1007b11f037fbc409dc1f7575f15117c9",
+  "sourceCommit": "ee6169d1007b11f037fbc409dc1f7575f15117c9",
+  "nodeBinary": "/opt/node-v22.23.3-linux-x64/bin/node",
+  "nodeSha256": "fde6a4bf8d0562f7751d1a2d6cb9b417c4cfe107bbcb0aa3e9a24e125e348f48",
+  "runtimeUid": 995,
+  "runtimeGid": 993,
+  "publicOrigin": "http://127.0.0.1:3282",
+  "operatorAddress": "0x87599dBF6f720DE7751E8CB2d36d4Ea96A4A1d38",
+  "deployerAddress": "0xa67c6a174409b9b44e67d24cdd386a31d44edb1d",
+  "treasuryAddress": "0xa67c6a174409b9b44e67d24cdd386a31d44edb1d",
+  "allowedOwners": [
+    "0xa67c6a174409b9b44e67d24cdd386a31d44edb1d"
+  ],
+  "forbiddenSignerAddresses": [
+    "0x7D1686Bc8b611Adc1426FD2a3f0ca03a3A063cc5"
+  ],
+  "profileSha256": "8cc56fe11956df8b74725528f713fa9fb0bc1fee69f7f8485935d45499dfd7cd",
+  "deploymentPlanPath": "/opt/telomere-mainnet-pilot/private/deployment-plan-base-mainnet.json",
+  "deploymentPlanSha256": "2be56662f572ae01c25a2950f9f010104f12e2e30afb3150f153b96993f15bf8",
+  "deploymentReviewDigest": "0xc9d585926f2489d5d3745ec996eac8fc8eab0fc2d217c9b352c5f6c627f00e2f",
+  "deploymentCreationCodeHash": "0x1d589d5abd07f90fed9e2c56710acba9b1ae9d5347032b413ef4e02607dc0b05",
+  "deploymentNonce": 0,
+  "deploymentEscrowAddress": "0x27c1e35F563Aa4f57a68B192d88a76c25e68e0db",
+  "expectedEscrowRuntimeBytes": 12573,
+  "expectedEscrowRuntimeKeccak256": "0xd2ce03e0de4dc334d671294ae5f900eee12ff05cebc6f6484455103f0b204ed5",
+  "dockerConfigurationSha256": "8c016088338d6bd889b079a47bbfa0d5dc61f59679b1110e8557ea09fcbf5173",
+  "networkGuardSha256": "ab9832d987bf3d1c0086b356e10e7f07dbc281d6628d725df8cff906496c7eef",
+  "networkUnitSha256": "1a9e5740510b96711c41cac20d636e8046f21a2267a6f794236604692b843d0e",
+  "dockerUnitSha256": "286f0c8ef13d25f55a0e0f1d2e29551bd147f044bc4f38bf3d7aad915e160bea",
+  "runtimePinsVerified": 906
+}

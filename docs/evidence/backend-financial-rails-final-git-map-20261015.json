@@ -1,0 +1,19 @@
+{
+  "commit": "1ac43b1616c01d085a401bb985c6e01a1b24264a",
+  "archiveSha256": "31f5cb0cd767e4c336d33e405271b2ebdfb9eccc28915c65c64b58e8d7312c92",
+  "files": 647,
+  "exactMatches": 639,
+  "lineEndingOnly": [
+    "public/styles.css",
+    "src/agents/paid-lifecycle-vault-v3.ts",
+    "src/cysts/configured.ts",
+    "src/cysts/quota-types.ts",
+    "src/cysts/quota.ts",
+    "src/cysts/routes.ts",
+    "src/cysts/service.ts",
+    "tests/fixtures/spend-permissions/REFERENCE_LICENSES.txt"
+  ],
+  "otherDifferences": [],
+  "comparedArchiveToGitBlobs": true,
+  "workingTreeUsedForSourceComparison": false
+}

@@ -1,0 +1,114 @@
+{
+  "archiveSha256": "3e901e235bb9e50ff4c8dea8312aa05da7364f4865aa3c46014cb5a806122a49",
+  "gitRevision": "b042c1bc3119754e06f6b662f2e46c108a63db36",
+  "directory": "/opt/telomere-host-runtime/backend-current-20261015-3e901e235bb9",
+  "sourceFiles": 677,
+  "startedAt": "2026-10-15T02:51:32.229874+00:00",
+  "publicTransactions": 0,
+  "paidProviderRequests": 0,
+  "stagingServiceMutations": false,
+  "dedicatedAcceptanceDaemonAlreadyProvisioned": true,
+  "gvisorSocket": "/run/telomere-file-accept-20261015/docker.sock",
+  "image": "127.0.0.1:15002/telomere-cpu@sha256:6839949540d11906cbdbc614867ac3a825fa0e6f8cbed90c79773979517b4bbe",
+  "servicesBefore": {
+    "telomere-staging.service": "NRestarts=0\nActiveState=active\nSubState=running",
+    "telomere-staging-chain.service": "NRestarts=0\nActiveState=active\nSubState=running",
+    "telomere-staging-watchdog.service": "NRestarts=0\nActiveState=active\nSubState=running"
+  },
+  "healthBefore": {
+    "live": {
+      "statusCode": 200,
+      "body": {
+        "status": "ok"
+      }
+    },
+    "ready": {
+      "statusCode": 200,
+      "body": {
+        "status": "ready",
+        "worker": "idle"
+      }
+    }
+  },
+  "protectedContainerBefore": {
+    "id": "1d7ecc9b94866b9617df656ad7e2251916a9b7ceafef9a488ef6e85540076c5e",
+    "name": "/telomere-hostkit-registry",
+    "imageId": "sha256:b16ad6cc19df5d687ed2e5b4ba6fa51a38bfbb4687ecc11bf54e0899638c0ee2",
+    "status": "exited",
+    "labels": {},
+    "metadataSha256": "6c078f8b7a3386663d9ab2f5682c317d82b54e86c54a93f67255bfa045a76079"
+  },
+  "imageId": "sha256:680cc0ec7dfa626d4105c3c26834289687e0abed785240e5bb814bac7cd55355",
+  "npm-ci": {
+    "exitCode": 0,
+    "seconds": 3.733
+  },
+  "build": {
+    "exitCode": 0,
+    "seconds": 68.193
+  },
+  "paid-file-gvisor": {
+    "exitCode": 0,
+    "seconds": 54.912
+  },
+  "tests": {
+    "numTotalTests": 16,
+    "numPassedTests": 16,
+    "numFailedTests": 0,
+    "numPendingTests": 0,
+    "success": true
+  },
+  "node-full": {
+    "exitCode": 1,
+    "seconds": 3113.179
+  },
+  "nodeTests": {
+    "numTotalTests": 2301,
+    "numPassedTests": 2281,
+    "numFailedTests": 1,
+    "numPendingTests": 19,
+    "numTotalTestSuites": 377,
+    "success": false
+  },
+  "nodeFailures": [
+    {
+      "file": "selection-contracts.test.ts",
+      "tests": [
+        "Selection vaults and fixed-supply utility staking on an actual disposable EVM records inference-only burn and zero-charge settlement accurately without fabricating paid work"
+      ],
+      "message": ""
+    }
+  ],
+  "sourceChangedAfter": [],
+  "healthAfter": {
+    "live": {
+      "statusCode": 200,
+      "body": {
+        "status": "ok"
+      }
+    },
+    "ready": {
+      "statusCode": 200,
+      "body": {
+        "status": "ready",
+        "worker": "idle"
+      }
+    }
+  },
+  "servicesAfter": {
+    "telomere-staging.service": "NRestarts=0\nActiveState=active\nSubState=running",
+    "telomere-staging-chain.service": "NRestarts=0\nActiveState=active\nSubState=running",
+    "telomere-staging-watchdog.service": "NRestarts=0\nActiveState=active\nSubState=running"
+  },
+  "protectedContainerAfter": {
+    "id": "1d7ecc9b94866b9617df656ad7e2251916a9b7ceafef9a488ef6e85540076c5e",
+    "name": "/telomere-hostkit-registry",
+    "imageId": "sha256:b16ad6cc19df5d687ed2e5b4ba6fa51a38bfbb4687ecc11bf54e0899638c0ee2",
+    "status": "exited",
+    "labels": {},
+    "metadataSha256": "6c078f8b7a3386663d9ab2f5682c317d82b54e86c54a93f67255bfa045a76079"
+  },
+  "ownedSessionContainersAfter": "",
+  "success": false,
+  "finishedAt": "2026-10-15T03:45:32.409329+00:00"
+}

@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "checkedAtUtc": "2026-10-13T08:21:35.938214+00:00",
+  "scope": "exact final publisher readiness and agent manifest acceptance; isolated Anvil and loopback S3",
+  "commit": "e956db161c38559284528eefd004486568f7d554",
+  "sourceArchiveSha256": "d598900381762722e10f2f34b9d944a752810735c25aabfa90acc07f4943dd5f",
+  "trackedFilesByteMatchedAfterBuildAndTests": 667,
+  "trackedFilesMismatched": [],
+  "normalBuild": "passed",
+  "tests": {
+    "files": 15,
+    "passed": 122,
+    "failed": 0,
+    "skipped": 0,
+    "durationSeconds": 328.2022126464844
+  },
+  "preexistingServicesActiveBefore": 6,
+  "preexistingServicesActiveAfter": 6,
+  "watchdogStateKeys": [
+    "active",
+    "checkedAt",
+    "schemaVersion",
+    "sequence"
+  ],
+  "publicProviderOrChainTestCalls": 0,
+  "liveServiceMutationDuringAcceptance": false
+}

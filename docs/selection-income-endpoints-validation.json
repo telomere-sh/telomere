@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "recordedAtUtc": "2026-10-12T11:17:43Z",
+  "scope": "Selection income endpoint declarations and read-only endpoint control/offer verification",
+  "sourceFreeze": true,
+  "localAcceptance": {
+    "command": "npx vitest run tests/selection-income-endpoints.test.ts --reporter=dot",
+    "files": 1,
+    "tests": 49,
+    "passed": 49,
+    "failed": 0,
+    "skipped": 0,
+    "durationSeconds": 90.59,
+    "testDurationSeconds": 88.78,
+    "previousTestOnlyFailure": "An earlier hardened run passed 48/49: a test expected rejection of a bare trailing '?' that Node/Hono normalizes to no query. Removed only that extra assertion; nonempty query rejection and bare ?/# declaration URL rejection remain. Production source was unchanged; final 49/49 passed.",
+    "actualComponents": [
+      "disposable Anvil chain 31337",
+      "PlatformSelectionRegistry",
+      "PlatformAgentVault",
+      "HTTP endpoint GET",
+      "Hono authenticated cookie routes",
+      "filesystem PGlite reopen"
+    ],
+    "typecheck": {
+      "command": "npm run typecheck",
+      "exitCode": 0
+    }
+  },
+  "covered": [
+    "owner-only declaration/challenge/verify/revoke; owner/agent reads",
+    "actual registered-agent EIP191 proof with complete chain/registry/agent/owner/vault/URL/revision/nonce/expiry binding",
+    "separate declared/controlVerified/termsMatchReviewedProfile states",
+    "durable operation keys, CAS revisions, replay, consume/replace challenge, revoke/redeclare",
+    "actual canonical reorg, confirmation and deployment/token/clone binding refusals",
+    "frozen/dormant/dead lifecycle policy",
+    "request JSON/UTF8/duplicates/query/key/collection bounds",
+    "actual redirect/oversize/invalid UTF8/duplicate body and payment header/stalled response refusal",
+    "private-address filtering and actual localhost DNS refusal before connection",
+    "no cookie/authorization/payment/signature forwarded in probe",
+    "no balance/nonce or financial transaction journal changes"
+  ],
+  "boundaries": {
+    "walletRequired": false,
+    "publicChainTransactions": false,
+    "publicEndpointRequests": false,
+    "paidProviderRequests": false,
+    "livePublicHttpsAcceptance": false,
+    "incomeCredit": "none",
+    "paymentCapabilityVerified": false,
+    "mainApplicationAcceptance": "selection-income-endpoints-main-validation.json",
+    "privateProfileLoaderAcceptance": "Windows: 23 passed plus 2 explicit capability skips, 25 total; typecheck exit 0; see main-validation source hashes and Linux acceptance for structured results",
+    "linuxAcceptance": "selection-income-endpoints-linux-validation.json"
+  },
+  "limits": {
+    "requestBodyBytes": 8192,
+    "requestBodyDeadlineMs": 5000,
+    "probeDeadlineMs": 5000,
+    "probeHeaderBytes": 8192,
+    "probeCombinedResponseBytes": 32768,
+    "allowedOrigins": 32,
+    "declarationsPerAgentIncludingRevoked": 16,
+    "totalDeclarations": 10000,
+    "durableOperationEntries": 20000,
+    "defaultChallengeSeconds": 300,
+    "defaultVerificationSeconds": 900,
+    "verificationExpiry": "min(observation + verification TTL, signed challenge expiry)"
+  },
+  "sourceHashes": [
+    {
+      "path": "src/selection/income-endpoints/types.ts",
+      "sha256": "39a617beec1cc57004f07e17cddc46bb52865299305b22b43db270ff3ce0f0b1"
+    },
+    {
+      "path": "src/selection/income-endpoints/schema.ts",
+      "sha256": "b4e0d2f074a779c1b2a816dcb481b880c163ac6af3287fde35d40c9b30718701"
+    },
+    {
+      "path": "src/selection/income-endpoints/json.ts",
+      "sha256": "0e21a07ec7b5d108050ca9a7906c12840d29cfc39a22a3d52eda2511ba53bd2a"
+    },
+    {
+      "path": "src/selection/income-endpoints/reader.ts",
+      "sha256": "a19cdb94f4b2f60fec139f2b273ff3e5d02707c7c0ed587fe0a016247b224000"
+    },
+    {
+      "path": "src/selection/income-endpoints/http.ts",
+      "sha256": "791fe931ca6002ab46865373da53e192384d7dc481c0c67c23a78748eb00198e"
+    },
+    {
+      "path": "src/selection/income-endpoints/service.ts",
+      "sha256": "ee79ad1b5f76c41b7d1a5e1503c855e8e15c73eec146120802f8de8d1e00fe9b"
+    },
+    {
+      "path": "src/selection/income-endpoints/routes.ts",
+      "sha256": "02321519a8b3910d7878871e5f791916e422bc5bc9a42c6a975337484c50c806"
+    },
+    {
+      "path": "src/selection/income-endpoints/index.ts",
+      "sha256": "b3816bb9a06b10c7c86868f28d2dcb0be1854f086345e4f98ccdeb2d1f89eebe"
+    },
+    {
+      "path": "tests/selection-income-endpoints.test.ts",
+      "sha256": "a9889a681ffd1c7e2c6f22851afac183dd9747e89c73e030c355403a7839cd45"
+    }
+  ]
+}

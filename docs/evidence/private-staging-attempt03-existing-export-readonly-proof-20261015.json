@@ -1,0 +1,73 @@
+{
+  "probeSha256": "10215acb200563a5f0d01c57d48241423457223ef9f7e908804833721683d082",
+  "proof": {
+    "allPresentBlobHashesVerified": true,
+    "archiveMembers": 16,
+    "archiveSha256": "c886630f02cc691a8dc81d49497a8974e1cda4bc08bdb33b591367a30ef21dda",
+    "archiveStat": {
+      "bytes": 61116416,
+      "device": 65026,
+      "inode": 2958636,
+      "mtimeNs": 1792037534854361895
+    },
+    "auxiliaryProvenanceClaimsVerified": false,
+    "configDigest": "sha256:7c3b093add7c43400ee83b815ab2cda98794a10045bcf76ce9bb2f89b97cbc5c",
+    "expandedBytes": 169914880,
+    "expandedLayerBytes": [
+      8704000,
+      155819008,
+      5388288,
+      3584
+    ],
+    "kind": "bounded_installed_oci_index_to_classic_config_identity",
+    "missingDescriptorsFetched": false,
+    "missingNonselectedDescriptors": [
+      "sha256:099ba81786a642d2e5570f8a1825f4e932c94653273a3f2f5dcb42ea2d306435",
+      "sha256:aadfeb52300e90e2bc712b48eafffd7ea958a515cc017c7fb583742615b6068a",
+      "sha256:38dd72a9bee3a91cc8e2d71268087100a8498fdfee219f173cb92a39bea07408",
+      "sha256:48a5d042ed44645ca03163d63a3432b56b6b1813b331401323480189be76697a",
+      "sha256:85cdd100016a2e09927c0776bb7ebebcfefce5cd0af49893ada91cbc4d78ee22",
+      "sha256:de9b939f1cbd1569a55f07223e20ef913f448bf0be409593b87d11e380c02ee8",
+      "sha256:107048f9dab733710ce9cd53395ea7a1f7b019faba8243b2e02656acb94ce764",
+      "sha256:45aff9fd4cb2bb7e9fa1733f1785688343955db61ada99390ee1dd61b7e1cae4"
+    ],
+    "orderedDiffIds": [
+      "sha256:74d97c428c51a828f9051a7a40a53ff1fc99e54fc30323ce36760701b0b7f711",
+      "sha256:ba3263475f993ce3855e4edf69b59a64716f9b4f4b43c369113a33f0c6a1b114",
+      "sha256:50a35fcbb91b0a6dd3821fb8ee87c3e44743f5f57c4337c1721280ff811f2d2a",
+      "sha256:ff5db628aec4eaf74f091c36d7fc5f855481dfa4de3cb6c0b05b0684bfcea637"
+    ],
+    "orderedLayerDigests": [
+      "sha256:e2de96513ba9eb53b431787ec8a65cdde380ac4772a3e4c4b714dcfde2a102b5",
+      "sha256:f7f2d304681aaa935c9cfd180850cf616ae843efce7682873d6521ded7268937",
+      "sha256:e554276b05e6306c5ad33cd85bfa7f0693083e21f6114db5abf60a20fb413039",
+      "sha256:d39db1cf9caa4f49c5a2e67111fbe6e0d5eea8ede550cb82f3dc2b79712688d6"
+    ],
+    "platform": {
+      "architecture": "amd64",
+      "os": "linux"
+    },
+    "presentBlobs": 11,
+    "schemaVersion": 1,
+    "selectedLayerDiffIdsIndependentlyVerified": true,
+    "selectedManifestDigest": "sha256:2c752226d477b4a886378baa95b9af252be59301b725fdb0b7e15208131505a8",
+    "sourceIndexDigest": "sha256:0a7108bf6c7bf5de370ffb1a3ed6be93d405b43ff159f681a8d18c0e2bc2e402"
+  },
+  "remoteReadOnly": true,
+  "result": "verified",
+  "sourceIdentity": {
+    "Architecture": "amd64",
+    "Id": "sha256:0a7108bf6c7bf5de370ffb1a3ed6be93d405b43ff159f681a8d18c0e2bc2e402",
+    "Os": "linux",
+    "RootFS": {
+      "Layers": [
+        "sha256:74d97c428c51a828f9051a7a40a53ff1fc99e54fc30323ce36760701b0b7f711",
+        "sha256:ba3263475f993ce3855e4edf69b59a64716f9b4f4b43c369113a33f0c6a1b114",
+        "sha256:50a35fcbb91b0a6dd3821fb8ee87c3e44743f5f57c4337c1721280ff811f2d2a",
+        "sha256:ff5db628aec4eaf74f091c36d7fc5f855481dfa4de3cb6c0b05b0684bfcea637"
+      ],
+      "Type": "layers"
+    }
+  },
+  "validatorSourceSha256": "26e580f34daa0db39710ff4114315809979686ceeaca656fb4cf59de715a15cb"
+}

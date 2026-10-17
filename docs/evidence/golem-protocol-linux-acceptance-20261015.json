@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "gitRevision": "5b31957bce5c2dabc50a2ca23d43906a1612fc13",
+  "archiveSha256": "dfad08e3322cfa457b387d321173d7aac2ef3085bdcbdb427aafecad43129248",
+  "sourceFiles": 689,
+  "directory": "/opt/telomere-host-runtime/golem-protocol-20261015-dfad08e3322c",
+  "startedAt": "2026-10-15T10:41:40.310467+00:00",
+  "serviceMutations": false,
+  "publicTransactions": 0,
+  "paidProviderRequests": 0,
+  "actualDisposableAnvil": true,
+  "productionYagna": false,
+  "hardwareAttestation": false,
+  "testFiles": [
+    "tests/golem-finance-http.test.ts",
+    "tests/golem-finance.test.ts",
+    "tests/golem-payment-chain.test.ts",
+    "tests/supplier-akash-close.test.ts",
+    "tests/supplier-akash-escrow-observation.test.ts",
+    "tests/supplier-akash-exact-bid.test.ts",
+    "tests/supplier-akash-lease.test.ts",
+    "tests/supplier-akash-signed-binding.test.ts",
+    "tests/supplier-akash.test.ts",
+    "tests/supplier-golem-stats.test.ts",
+    "tests/supplier-nosana.test.ts",
+    "tests/supplier-private-journal.test.ts",
+    "tests/supplier-shared-reserve.test.ts"
+  ],
+  "healthBefore": {
+    "live": {
+      "statusCode": 200,
+      "body": {
+        "status": "ok"
+      }
+    },
+    "ready": {
+      "statusCode": 200,
+      "body": {
+        "status": "ready",
+        "worker": "idle"
+      }
+    }
+  },
+  "servicesBefore": {
+    "telomere-staging.service": "MainPID=1952406\nNRestarts=0\nWorkingDirectory=/opt/telomere-pilot/releases/354fe7af62ea6701faafc3b04522abb1b4524d2d-launch04\nActiveState=active\nSubState=running",
+    "telomere-staging-chain.service": "MainPID=1952401\nNRestarts=0\nWorkingDirectory=/opt/telomere-pilot/app\nActiveState=active\nSubState=running",
+    "telomere-staging-watchdog.service": "MainPID=1952410\nNRestarts=0\nWorkingDirectory=/opt/telomere-pilot/watchdog-app\nActiveState=active\nSubState=running"
+  },
+  "protectedProfileBeforeSha256": "a400feb3475b91168a5419d0a98c00ea804ba817c1c0ad34dea65d7d8808df8f",
+  "nodeVersion": "v22.23.3",
+  "npm-ci": {
+    "exitCode": 0,
+    "seconds": 10.759
+  },
+  "build": {
+    "exitCode": 0,
+    "seconds": 103.129
+  },
+  "golem-protocol": {
+    "exitCode": 0,
+    "seconds": 36.895
+  },
+  "nodeTests": {
+    "numTotalTests": 181,
+    "numPassedTests": 181,
+    "numFailedTests": 0,
+    "numPendingTests": 0,
+    "numTotalTestSuites": 31,
+    "success": true
+  },
+  "breakdown": {
+    "golem-finance-http.test.ts": 44,
+    "golem-finance.test.ts": 21,
+    "golem-payment-chain.test.ts": 10,
+    "supplier-akash-close.test.ts": 5,
+    "supplier-akash-escrow-observation.test.ts": 5,
+    "supplier-akash-exact-bid.test.ts": 5,
+    "supplier-akash-lease.test.ts": 9,
+    "supplier-akash-signed-binding.test.ts": 2,
+    "supplier-akash.test.ts": 17,
+    "supplier-golem-stats.test.ts": 6,
+    "supplier-nosana.test.ts": 17,
+    "supplier-private-journal.test.ts": 32,
+    "supplier-shared-reserve.test.ts": 8
+  },
+  "sourceAfter": {
+    "unchanged": true,
+    "changed": []
+  },
+  "healthAfter": {
+    "live": {
+      "statusCode": 200,
+      "body": {
+        "status": "ok"
+      }
+    },
+    "ready": {
+      "statusCode": 200,
+      "body": {
+        "status": "ready",
+        "worker": "idle"
+      }
+    }
+  },
+  "servicesAfter": {
+    "telomere-staging.service": "MainPID=1952406\nNRestarts=0\nWorkingDirectory=/opt/telomere-pilot/releases/354fe7af62ea6701faafc3b04522abb1b4524d2d-launch04\nActiveState=active\nSubState=running",
+    "telomere-staging-chain.service": "MainPID=1952401\nNRestarts=0\nWorkingDirectory=/opt/telomere-pilot/app\nActiveState=active\nSubState=running",
+    "telomere-staging-watchdog.service": "MainPID=1952410\nNRestarts=0\nWorkingDirectory=/opt/telomere-pilot/watchdog-app\nActiveState=active\nSubState=running"
+  },
+  "protectedProfileAfterSha256": "a400feb3475b91168a5419d0a98c00ea804ba817c1c0ad34dea65d7d8808df8f",
+  "ownedAnvilProcessesRemaining": [],
+  "success": true,
+  "finishedAt": "2026-10-15T10:44:11.218950+00:00"
+}

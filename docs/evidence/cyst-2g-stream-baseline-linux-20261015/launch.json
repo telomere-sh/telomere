@@ -1,0 +1,10 @@
+{
+  "schema": 1,
+  "work": "/opt/telomere-host-runtime/cyst-2g-stream-20261015-97e037bd6fcf25e1b9fafc51",
+  "pid": 2955105,
+  "processStartTicks": "7059412",
+  "scriptSha256": "b273d0fd3f7f76da36c8f01aac7163a30ba535fe2927e81812ba37a21b376dea",
+  "createdAtUnix": 1792065062.4829464,
+  "timeoutSeconds": 900,
+  "ownedFilesPreserved": true
+}

@@ -1,0 +1,135 @@
+{
+  "status": "Enclave temporarily stopped at explicit user request",
+  "unitsBefore": {
+    "enclave-api.service": [
+      "MainPID=0",
+      "NRestarts=13805",
+      "ActiveState=activating",
+      "SubState=auto-restart"
+    ],
+    "enclave-worker.service": [
+      "MainPID=1845",
+      "NRestarts=0",
+      "ActiveState=active",
+      "SubState=running"
+    ],
+    "enclave-web.service": [
+      "MainPID=526",
+      "NRestarts=0",
+      "ActiveState=active",
+      "SubState=running"
+    ],
+    "enclave-infra.service": [
+      "MainPID=0",
+      "NRestarts=0",
+      "ActiveState=active",
+      "SubState=exited"
+    ]
+  },
+  "unitsAfter": {
+    "enclave-api.service": [
+      "MainPID=0",
+      "NRestarts=13805",
+      "ActiveState=inactive",
+      "SubState=dead"
+    ],
+    "enclave-worker.service": [
+      "MainPID=0",
+      "NRestarts=0",
+      "ActiveState=inactive",
+      "SubState=dead"
+    ],
+    "enclave-web.service": [
+      "MainPID=0",
+      "NRestarts=0",
+      "ActiveState=inactive",
+      "SubState=dead"
+    ],
+    "enclave-infra.service": [
+      "MainPID=0",
+      "NRestarts=0",
+      "ActiveState=inactive",
+      "SubState=dead"
+    ]
+  },
+  "containers": [
+    {
+      "id": "d243b013df7caf1e539d25bb0f1a5f0d39ca53b8263818a4a1c1eca6dab73da4",
+      "status": "exited",
+      "volumesRetained": [
+        "enclave-full-demo_demo_redis"
+      ]
+    },
+    {
+      "id": "61959d4214ab6b1cb3f30b2015c86481c75a0af2bdfe09348e3b5c434a34a8a7",
+      "status": "exited",
+      "volumesRetained": [
+        "enclave-full-demo_demo_pg"
+      ]
+    },
+    {
+      "id": "df23a9ac9a64ddb9065bf9df8500368cb470c5f6e5cc3648e9f9efa46d970ab3",
+      "status": "exited",
+      "volumesRetained": [
+        "enclave-full-demo_demo_anvil"
+      ]
+    }
+  ],
+  "preservedServices": {
+    "nginx.service": [
+      "MainPID=540",
+      "NRestarts=0",
+      "ActiveState=active",
+      "SubState=running"
+    ],
+    "docker.service": [
+      "MainPID=570",
+      "NRestarts=0",
+      "ActiveState=active",
+      "SubState=running"
+    ],
+    "containerd.service": [
+      "MainPID=536",
+      "NRestarts=0",
+      "ActiveState=active",
+      "SubState=running"
+    ],
+    "enclave-cert-renew.timer": [
+      "ActiveState=active",
+      "SubState=waiting"
+    ],
+    "telomere-staging.service": [
+      "MainPID=3888942",
+      "NRestarts=104",
+      "ActiveState=active",
+      "SubState=running"
+    ],
+    "telomere-mainnet-docker.service": [
+      "MainPID=3911563",
+      "NRestarts=0",
+      "ActiveState=active",
+      "SubState=running"
+    ],
+    "telomere-mainnet-postgres.service": [
+      "MainPID=3911671",
+      "NRestarts=0",
+      "ActiveState=active",
+      "SubState=running"
+    ],
+    "telomere-owner-review-https.service": [
+      "MainPID=4103781",
+      "NRestarts=0",
+      "ActiveState=active",
+      "SubState=running"
+    ],
+    "telomere-mainnet-pilot.service": [
+      "MainPID=0",
+      "NRestarts=0",
+      "ActiveState=inactive",
+      "SubState=dead"
+    ]
+  },
+  "dataDeleted": false,
+  "persistentEnablementChanged": false,
+  "publicTransactionsSent": 0
+}

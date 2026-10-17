@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "checkedOn": "2026-10-11",
+  "timezone": "Europe/Moscow",
+  "scope": "Backend only: delegated PlatformAgentVault financial CPU runtime and separate Node/Python clients",
+  "source": {
+    "parentCommit": "92d6ea9",
+    "implementationCommit": "423c7b6",
+    "implementation": "Committed together with this report; TypeScript sources stayed fixed throughout the complete regression"
+  },
+  "completeWindowsRegression": {
+    "command": "npm test",
+    "exitCode": 0,
+    "suitesPassed": 49,
+    "testsTotal": 811,
+    "testsPassed": 807,
+    "explicitPosixSkips": 4,
+    "failures": 0,
+    "durationSeconds": 977.11
+  },
+  "targetedAcceptance": {
+    "platformVaultBridge": 14,
+    "platformVaultHttpAndNodeClient": 36,
+    "platformVaultRuntime": 12,
+    "platformMainApplication": 7,
+    "includedInCompleteRegression": true,
+    "evidence": [
+      "Disposable Anvil contracts with actual generated-account payment, full financial hourly receipt, canonical settlement and fee-inclusive Vault burn",
+      "Real authenticated owner/agent HTTP sessions, reviewed clone/factory pins, exact outer payRun admission and independent payer/agent roles",
+      "Real local CPU child execution, freeze/kill zero-work settlement, original-lease recovery and no automatic redispatch",
+      "Durable sync retry, canonical third-party finalization and snapshot/revert replay using original signed transaction bytes",
+      "Paid-before-HTTP-admission timeout refund and Vault finalization after database reopen",
+      "Transient pre-dispatch RPC failure leaves the original paid intent queued",
+      "Actual main-app streamed body deadline, Origin rejection and failed-startup database release"
+    ]
+  },
+  "python": {
+    "cryptoEnabledCommand": "python/.venv/Scripts/python.exe -m unittest discover -s python/tests -v",
+    "cryptoEnabled": { "total": 77, "passed": 77, "skipped": 0, "failures": 0 },
+    "dependencyFree": { "total": 77, "passed": 44, "explicitOptionalSkips": 33, "failures": 0 },
+    "interoperability": "Real viem EIP-712 digest/signature/calldata vectors plus independent eth_abi encoding at 0, 1 and 64 proof siblings; oversized proofs rejected",
+    "fixtureSha256": "96f65658475d0c0a2398a5dc4efe43ee812edce5dfeb175ecf1ae5fec7ca008e",
+    "fixtureRegeneratedAfterBuildWithoutChanges": true,
+    "independentSourceAndEncodingReview": "No critical findings reported; read-only review with actual signature and ABI verification"
+  },
+  "typecheck": { "command": "npm run typecheck", "exitCode": 0 },
+  "build": { "command": "npm run build", "exitCode": 0 },
+  "productionDependencyAudit": { "command": "npm audit --omit=dev --json", "exitCode": 0, "knownVulnerabilities": 0 },
+  "limits": [
+    "Four allowlisted CPU algorithms, at most 120 seconds, curated capacity and bounded recovery/history; no generic cell.exec or GPU jobs",
+    "No new Linux/gVisor Vault acceptance; previous dated isolated-host evidence remains separate",
+    "No public deployment, personal-wallet transaction or paid provider request in this iteration",
+    "At checkpoint 423c7b6, full financial MCP remained separate work; its subsequent local acceptance is recorded in platform-mcp-validation.json. Generic lifecycle, suppliers, admitted sealed hosts, gated keys and independent-region storage remain separate backend work",
+    "The 54% functional estimate in schedule-progress.json retains its explicit pre-Vault commit 92d6ea9 cutoff; this iteration is not rescored"
+  ]
+}

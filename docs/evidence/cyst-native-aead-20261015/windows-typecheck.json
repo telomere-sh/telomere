@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "command": "npm run typecheck",
+  "exitCode": 0,
+  "toolSession": 43405,
+  "sourceCommit": "c87824f698020aa561ffb9df6d6c6874e4b644ba",
+  "initialAttempt": {
+    "exitCode": 1,
+    "toolSession": 96357,
+    "diagnostics": [
+      "Native ChaCha setAAD Node typings require second options argument; explicit correct plaintextLength added.",
+      "Real native update test spy used BinaryLike including string; narrowed to actual ArrayBufferView used by helper."
+    ]
+  },
+  "scope": "Global TypeScript noEmit validation after the three narrow typing corrections; no global test-pass claim."
+}

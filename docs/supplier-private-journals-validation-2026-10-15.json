@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-15",
+  "capturedAtUtc": "2026-10-15T02:30:15.4169276+00:00",
+  "baseCommit": "a89eddb01f76c1d7249dcc8e9ae2702c92e1daf5",
+  "sourceCutoff": "Supplier production and test source frozen after peer-generation and owned-lock identity corrections. Manifest captured immediately after the successful post-generation focused run; no automated before/after comparison. Parent is independently packaging combined Linux acceptance.",
+  "scope": "Private local Akash/Nosana supplier reservation journals and shared admission control only; no production mount, supplier POST, network execution or spending authority added.",
+  "finalFocusedAcceptance": {
+    "command": "npm exec -- vitest run tests/supplier-private-journal.test.ts tests/supplier-akash.test.ts tests/supplier-akash-lease.test.ts tests/supplier-akash-close.test.ts tests/supplier-akash-signed-binding.test.ts tests/supplier-nosana.test.ts tests/supplier-shared-reserve.test.ts tests/supplier-akash-exact-bid.test.ts tests/supplier-akash-escrow-observation.test.ts tests/supplier-golem-stats.test.ts --reporter=json --outputFile=.local/supplier-private-final-20261015.json",
+    "files": 10,
+    "passed": 104,
+    "failed": 0,
+    "skipped": 2,
+    "successful": true,
+    "rawResult": "docs/evidence/supplier-private-journals-final-20261015.json",
+    "rawResultSha256": "e866df320b973fa5ca91117595dc941844e99c87183ccbcaa99a9a81acb53e29",
+    "sourceManifest": "docs/evidence/supplier-private-journals-source-20261015.json",
+    "sourceManifestSha256": "c87c54a94ff1268564ae1adcfc956d7f93bbfc68d9555482c18056283f77abc6",
+    "sourceFiles": 31,
+    "wholeBackendRegression": false,
+    "platform": "Windows; POSIX symlink/ownership/mode cases skipped (2), Linux acceptance pending"
+  },
+  "checks": [
+    {
+      "command": "npm run typecheck",
+      "exitCode": 0,
+      "scope": "Global TypeScript after final generation change"
+    },
+    {
+      "command": "git diff --check -- owned supplier source/tests/docs",
+      "exitCode": 0
+    }
+  ],
+  "established": [
+    "Explicit initializeFresh only with both journal and marker absent; normal reads/mutations never reset storage. Existing and half-created unmarked stores reject without automatic import.",
+    "Each marker binds absolute kind/path/binding identity and random initialization generation. Retained shared state pins both peer generations and exact original paths/ceiling.",
+    "Bounded stable file reads reject symlink/hardlink/exposed storage and ambiguous or oversized JSON; Linux directory fsync errors propagate. Windows ACLs remain operator responsibility.",
+    "Writer locks are exclusive and exact-inode/token checked after asynchronous mutation and before rename. Original rows survive failed in-memory mutation, replacement and ambiguous directory durability.",
+    "Changed or unreadable shared callback outcomes retain the shared lock and original financial hold. Known unchanged local validation refusals permit retry.",
+    "Actual local filesystem tests delete each ledger/marker, reinitialize whole peer pairs against retained shared state, corrupt records, race writers and replace lock/data inodes. Existing supplier planning/closure/signed-binding/reserve cohorts remain green.",
+    "Original version-1 financial record schemas, IDs, 128-record bounds and canceled-unsubmitted reserve release semantics remain unchanged."
+  ],
+  "limits": [
+    "Local storage is not rollback-proof. Deleting or rolling back all journals/markers/shared anchors together cannot be detected locally and requires independently reviewed external inventory/accounting.",
+    "No legacy migration/import or automatic stale-lock recovery was implemented. Stop all writers and reconcile original pending external identities/liabilities before operator recovery.",
+    "read() remains independent diagnostic file state and does not resolve a held lock or establish final external settlement.",
+    "This local fixture/filesystem cohort is not live Akash/Nosana execution, production custody acceptance or whole-backend/Linux regression. No new M6 execution completion credit is claimed."
+  ],
+  "documentation": "docs/supplier-private-journals-v1.md"
+}

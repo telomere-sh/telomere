@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "status": "passed",
+  "checkedAt": "2026-10-08T15:38:04.518Z",
+  "deployment": "isolated_robinhood_testnet_fork",
+  "chainId": 46630,
+  "source": {
+    "rpc": "https://rpc.testnet.chain.robinhood.com",
+    "blockNumber": "131164806",
+    "blockHash": "0x6fd3847a8754f826d190dba1e0a2af7850fbd318fb940b8e06eeedcea9580beb"
+  },
+  "token": {
+    "address": "0x7E955252E15c84f5768B83c41a71F9eba181802F",
+    "name": "Global Dollar",
+    "symbol": "USDG",
+    "decimals": 6,
+    "proxyCodeHash": "0x864cc9ad53b338b82da1f7cab85ab0b3d5c8861acb422b6fec63cf36234f36a6",
+    "proxyCodeBytes": 170,
+    "implementation": "0xF0863D7A29a55d0c4263c11bFac754312ff078DF",
+    "implementationCodeHash": "0x72f197ff5ab8dcedf1244113dd91f245af65ae2c3354456d8bbfb6a3939ecd18",
+    "transferPaused": false,
+    "owner": "0x3a5B30D74e90E08F0E576CF9f6F2457E44AF38B3",
+    "defaultAdmin": "0x3a5B30D74e90E08F0E576CF9f6F2457E44AF38B3",
+    "supplyControl": "0x4549bb98c667aAb626627C118102c28065E8f54C",
+    "upgradeable": true
+  },
+  "funding": {
+    "mode": "fork_only_existing_holder_impersonation",
+    "holder": "0x545FA0D7993929FEf64158F68799E6fAdfbEb983",
+    "sourceHolderBalance": "29199500000000",
+    "transferredUnits": "5000000",
+    "issuerMintCalled": false,
+    "sourcePinnedStateUnchanged": true,
+    "transactionHashOnLocalFork": "0xacb255cf863aada6eab27632f3fb3600eede496245cdfcff85b2e09b809eb81c"
+  },
+  "escrow": {
+    "addressOnLocalFork": "0x76bab63A2b9966d945F25AF295c12BA62593aB38",
+    "compiler": "0.8.28+commit.7893614a.Emscripten.clang",
+    "creationBytecodeHash": "0xb1897ce1b905e50309b20cccad1290431d9eb3d2def4d129966222755ae80548",
+    "owner": "0x4680F8d60A55133688dccbD99b6677c8E865aF80",
+    "quoteAndReceiptSigner": "0x2E4a64cF8A54c3842fa773D408513b55733EE119",
+    "treasury": "0xfe55D3f1586EDC4437aEe0874840813Dc85D5363",
+    "relayerAndAgent": "0x548D8552D3021F48b0226E6103220fD0615c9f28"
+  },
+  "checks": {
+    "exactProxyAndImplementationBytecode": true,
+    "depositedActualIssuerToken": true,
+    "withdrewActualIssuerToken": true,
+    "delegatedOpen": true,
+    "signedSettlementRelayed": true,
+    "unusedCeilingReturned": true,
+    "stopCutoffRejectedExcess": true,
+    "earlyRefundRejected": true,
+    "permissionlessTimeoutRefund": true,
+    "finalConservation": true
+  },
+  "billing": {
+    "quotedCeiling": "11000",
+    "billableSeconds": 3,
+    "simulatedFixedInferenceCharge": "10000",
+    "actualProviderRequests": 0,
+    "settlementCharge": "10300",
+    "unusedCeilingReturned": "700",
+    "finalOwnerUnits": "4989700",
+    "finalTreasuryUnits": "10300",
+    "finalEscrowUnits": "0"
+  },
+  "publicTransactionsSent": 0,
+  "personalWalletUsed": false,
+  "existingPilotKeysUsed": false,
+  "liveStagingModified": false,
+  "paidNearPosts": 0,
+  "cleanup": {
+    "ownedAnvilStopped": true,
+    "forkStateDiscarded": true
+  }
+}

@@ -1,0 +1,158 @@
+{
+  "isolatedPath": "/opt/telomere-host-runtime/selection-income-check-Tjqrjcxx",
+  "checkedAtUtc": "2026-10-12T11:20:03.683050+00:00",
+  "packageMetadataSha256": "cc91c4e683cfc000362f1a651ff069125dd342aa0138e86fe457484fce94364a",
+  "package": {
+    "expectedSourceFiles": 284,
+    "expectedBuildAssets": 4,
+    "expectedTests": 114,
+    "expectedTestFiles": {
+      "selection-income-endpoints.test.ts": 49,
+      "selection-income-endpoints-config.test.ts": 25,
+      "selection-income-endpoints-main.test.ts": 4,
+      "selection-dataset.test.ts": 9,
+      "selection-rpc.test.ts": 12,
+      "selection-indexer.test.ts": 9,
+      "controller-platform.test.ts": 6
+    },
+    "source": {
+      "archive": "selection-income-endpoints-source.tar",
+      "manifest": "selection-income-endpoints-source-sha256.txt",
+      "archiveSha256": "5dbdf6d008df1a3970f10993bdfa4b293c0f37e35ffa4ca02188c44588a4d276",
+      "manifestSha256": "db85f1a7d100c170f67ad5ef22d68bb6ff0e483951da9fdfe50d344c3decaa66",
+      "archiveBytes": 3348480,
+      "files": 284
+    },
+    "build-assets": {
+      "archive": "selection-income-endpoints-build-assets.tar",
+      "manifest": "selection-income-endpoints-build-assets-sha256.txt",
+      "archiveSha256": "f079ccfdf3bf99a5cdd1de7bceec8a0ec356c097315959055c4ebea5ec26b138",
+      "manifestSha256": "e7bab231aad576014f733737754f06845e0917b796ce95e30931485dc405d73c",
+      "archiveBytes": 112640,
+      "files": 4
+    }
+  },
+  "publicChainOrProviderCalls": false,
+  "serviceMutations": false,
+  "posixProfilePermissionsAndSymlinkBranches": true,
+  "healthBefore": {
+    "status": "ready",
+    "worker": "idle"
+  },
+  "servicesBefore": {
+    "telomere-staging.service": "active",
+    "telomere-staging-chain.service": "active",
+    "enclave-api.service": "active",
+    "enclave-worker.service": "active",
+    "enclave-web.service": "active"
+  },
+  "sourceMatchesBefore": 284,
+  "buildAssetsMatchesBefore": 4,
+  "nodeVersion": "v22.23.3",
+  "buildOwnedProcessGroupCleanup": false,
+  "buildElapsedSeconds": 41.651,
+  "buildExitCode": 0,
+  "sourceMatchesAfterBuild": 284,
+  "buildAssetsMatchesAfterBuild": 4,
+  "testsOwnedProcessGroupCleanup": false,
+  "testsElapsedSeconds": 174.493,
+  "testsExitCode": 0,
+  "tests": {
+    "numTotalTestSuites": 15,
+    "numPassedTestSuites": 15,
+    "numFailedTestSuites": 0,
+    "numTotalTests": 114,
+    "numPassedTests": 114,
+    "numFailedTests": 0,
+    "numPendingTests": 0,
+    "success": true
+  },
+  "testFiles": [
+    {
+      "name": "controller-platform.test.ts",
+      "status": "passed",
+      "tests": 6,
+      "passed": 6,
+      "skipped": 0
+    },
+    {
+      "name": "selection-dataset.test.ts",
+      "status": "passed",
+      "tests": 9,
+      "passed": 9,
+      "skipped": 0
+    },
+    {
+      "name": "selection-income-endpoints-config.test.ts",
+      "status": "passed",
+      "tests": 25,
+      "passed": 25,
+      "skipped": 0
+    },
+    {
+      "name": "selection-income-endpoints-main.test.ts",
+      "status": "passed",
+      "tests": 4,
+      "passed": 4,
+      "skipped": 0
+    },
+    {
+      "name": "selection-income-endpoints.test.ts",
+      "status": "passed",
+      "tests": 49,
+      "passed": 49,
+      "skipped": 0
+    },
+    {
+      "name": "selection-indexer.test.ts",
+      "status": "passed",
+      "tests": 9,
+      "passed": 9,
+      "skipped": 0
+    },
+    {
+      "name": "selection-rpc.test.ts",
+      "status": "passed",
+      "tests": 12,
+      "passed": 12,
+      "skipped": 0
+    }
+  ],
+  "sourceMatchesAfter": 284,
+  "buildAssetsMatchesAfter": 4,
+  "newFixtureDirectoriesRemaining": 0,
+  "healthAfter": {
+    "status": "ready",
+    "worker": "idle"
+  },
+  "servicesAfter": {
+    "telomere-staging.service": "active",
+    "telomere-staging-chain.service": "active",
+    "enclave-api.service": "active",
+    "enclave-worker.service": "active",
+    "enclave-web.service": "active"
+  },
+  "success": true,
+  "ownedCheckoutProcessesRemaining": 0,
+  "schemaVersion": 1,
+  "scope": "Isolated Linux build and focused Selection income endpoint, dataset, RPC, indexer and controller migration acceptance",
+  "manifestArtifacts": [
+    "selection-income-endpoints-source-sha256.txt",
+    "selection-income-endpoints-build-assets-sha256.txt"
+  ],
+  "preflightReadinessDiscovery": [
+    {
+      "attemptedLoopbackPort": 3281,
+      "result": "connection-refused",
+      "correctedLoopbackPort": 13280,
+      "serviceMutations": false,
+      "reason": "Initial task summary contained the local UI port; parent corrected it to the established VPS readiness port before isolated run"
+    }
+  ],
+  "limitations": [
+    "Focused seven-file acceptance, not the entire repository test suite",
+    "Disposable Anvil and loopback endpoint fixtures; no live public DNS/TLS endpoint validation",
+    "No public Robinhood transaction, paid provider request or existing service configuration change",
+    "Income endpoint control and reviewed offer matching do not prove revenue or payment capability"
+  ]
+}

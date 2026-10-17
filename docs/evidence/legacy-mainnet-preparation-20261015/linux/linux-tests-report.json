@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "startedAt": "2026-10-15T18:20:42.190402+00:00",
+  "finishedAt": "2026-10-15T18:24:22.148344+00:00",
+  "release": "/opt/telomere-mainnet-pilot/releases/ee6169d1007b11f037fbc409dc1f7575f15117c9",
+  "nodeVersion": "v22.23.3",
+  "tests": [
+    "tests/contracts.test.ts",
+    "tests/bridge-circle-usdc.test.ts",
+    "tests/service.test.ts",
+    "tests/worker.test.ts",
+    "tests/cysts.test.ts"
+  ],
+  "command": [
+    "/opt/node-v22.23.3-linux-x64/bin/node",
+    "/opt/telomere-mainnet-pilot/releases/ee6169d1007b11f037fbc409dc1f7575f15117c9/node_modules/vitest/vitest.mjs",
+    "run",
+    "tests/contracts.test.ts",
+    "tests/bridge-circle-usdc.test.ts",
+    "tests/service.test.ts",
+    "tests/worker.test.ts",
+    "tests/cysts.test.ts",
+    "--config",
+    "/tmp/telomere-mainnet-linux-focused-20261015-sw5cd63a/vitest.config.mjs",
+    "--no-cache",
+    "--reporter=json",
+    "--outputFile=/tmp/telomere-mainnet-linux-focused-20261015-sw5cd63a/node.json"
+  ],
+  "environmentKeys": [
+    "CI",
+    "DOCKER_HOST",
+    "LANG",
+    "LC_ALL",
+    "NODE_ENV",
+    "NO_COLOR",
+    "PATH",
+    "TMPDIR"
+  ],
+  "freshEnvironment": true,
+  "privateEnvFilesRead": 0,
+  "publicTransactionsSent": 0,
+  "nodeExitCode": 0,
+  "timedOut": false,
+  "summary": {
+    "success": true,
+    "numTotalTestSuites": 10,
+    "numPassedTestSuites": 10,
+    "numFailedTestSuites": 0,
+    "numTotalTests": 72,
+    "numPassedTests": 72,
+    "numFailedTests": 0,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "files": [
+      {
+        "file": "bridge-circle-usdc.test.ts",
+        "status": "passed",
+        "passed": 6,
+        "failed": 0,
+        "pending": 0
+      },
+      {
+        "file": "contracts.test.ts",
+        "status": "passed",
+        "passed": 16,
+        "failed": 0,
+        "pending": 0
+      },
+      {
+        "file": "cysts.test.ts",
+        "status": "passed",
+        "passed": 25,
+        "failed": 0,
+        "pending": 0
+      },
+      {
+        "file": "service.test.ts",
+        "status": "passed",
+        "passed": 6,
+        "failed": 0,
+        "pending": 0
+      },
+      {
+        "file": "worker.test.ts",
+        "status": "passed",
+        "passed": 19,
+        "failed": 0,
+        "pending": 0
+      }
+    ]
+  },
+  "sourceFileCount": 617,
+  "sourceChangedPaths": [],
+  "ownedProcessGroup": 3883553,
+  "ownedProcessesTerminatedAfterExit": [],
+  "ownedProcessesRemaining": [],
+  "generatedContractArtifactsExcludedFromSourceInventory": true,
+  "isolatedVitestCache": "/tmp/telomere-mainnet-linux-focused-20261015-sw5cd63a/vite-cache",
+  "files": [
+    {
+      "name": "manifest-after.json",
+      "size": 88446,
+      "sha256": "eb5c425536c43b78fcd440332a98c2e8083e4fd4d6ae27330441d24a429c593a"
+    },
+    {
+      "name": "manifest-before.json",
+      "size": 88446,
+      "sha256": "eb5c425536c43b78fcd440332a98c2e8083e4fd4d6ae27330441d24a429c593a"
+    },
+    {
+      "name": "node.json",
+      "size": 28736,
+      "sha256": "f9655f352845c4dc96933c25fafbce834e5ed97bcdda9e9deef7d66481e2a3d6"
+    },
+    {
+      "name": "node.stderr",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "node.stdout",
+      "size": 87,
+      "sha256": "d8558bc019140a1fc8f514028e93d02cd80b0105c26ab35bca8e1bbd30f83412"
+    },
+    {
+      "name": "vitest.config.mjs",
+      "size": 450,
+      "sha256": "42006161c57f342cedd637e5c60260a883a8075dbe8531908101b1bf42fa0d65"
+    }
+  ]
+}

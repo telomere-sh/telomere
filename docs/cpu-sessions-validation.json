@@ -1,0 +1,197 @@
+{
+  "recordedAtUtc": "2026-10-12T12:57:02.438818+00:00",
+  "scope": "Internal bounded persistent CPU-session primitive only; not a paid public Cell API or production metering/reattachment/migration.",
+  "linux": {
+    "isolatedPath": "/opt/telomere-host-runtime/session-runtime-check-umBOpZqd",
+    "checkedAtUtc": "2026-10-12T12:54:21.524306+00:00",
+    "packageMetadataSha256": "632daf58fc35161b500f391bd4696f4cb46410a3a61eed8786ffc7c4f14f4c99",
+    "package": {
+      "expectedSourceFiles": 305,
+      "expectedBuildAssets": 4,
+      "expectedTests": 27,
+      "expectedTestFiles": {
+        "session-runtime.test.ts": 20,
+        "session-runtime-docker.test.ts": 7
+      },
+      "snapshotAtUtc": "2026-10-12T12:53:30.002451+00:00",
+      "gitHeadAtSnapshot": "c4f71bfbf524b666ddd1809471d108f2c5f9b268",
+      "excludedWip": [
+        "src/sdk/vault-income/client.ts",
+        "src/sdk/vault-income/http.ts",
+        "src/sdk/vault-income/integrity.ts",
+        "src/sdk/vault-income/reader.ts",
+        "src/sdk/vault-income/types.ts"
+      ],
+      "commitComparison": "Tracked runtime matches HEAD through Git clean-filter; eight new session files separately SHA256-pinned",
+      "reviewedFreeze": {
+        "src/host-kit/sessions/backends.ts": "a651bcce60a2b9f3c2eac54de39ae1ec705d3785c5703cedd31e05c1c80c4f70",
+        "src/host-kit/sessions/index.ts": "625a22c5f806506b530f795d191b662d6922d9380be976180ef47f17c3e4e3b2",
+        "src/host-kit/sessions/init-program.ts": "a3ae6abce67ab8fdae24ef0a42f89de2e03b746fa17086d2f7eaaea6266c0bfb",
+        "src/host-kit/sessions/journal.ts": "221106b5aab37b1a7a95dadf63fcbf942f454897b6488eacc3c413eb86ff4f11",
+        "src/host-kit/sessions/runtime.ts": "4056f2033001c3111adfb0cf581fed08440986127177268fe0ce63db59d20ebf",
+        "src/host-kit/sessions/types.ts": "362da30e8bd72e7013b5a34dd85ca1cc5692fb96ad5a8362a64a9c0223a73df9",
+        "tests/session-runtime-docker.test.ts": "42b60c45d239dacabf6c4570b0f83c08f8b41d75a675c09bcd7bf69146a0db86",
+        "tests/session-runtime.test.ts": "aa00600dd585070f86249e75b9b0efe473babaa2ed2a26586412173ff2a55784"
+      },
+      "source": {
+        "archive": "session-runtime-source.tar",
+        "manifest": "session-runtime-source-sha256.txt",
+        "archiveSha256": "943ef3c9b352f00200f67a61af8213b8ce96b2a62849570ad3671a0118b47a3e",
+        "manifestSha256": "11a40a2ba1857150a5efa66b6ad770cd88d5545a537c1dea3db7dfc6f6ac35ff",
+        "archiveBytes": 3686400,
+        "files": 305
+      },
+      "build-assets": {
+        "archive": "session-runtime-build-assets.tar",
+        "manifest": "session-runtime-build-assets-sha256.txt",
+        "archiveSha256": "f079ccfdf3bf99a5cdd1de7bceec8a0ec356c097315959055c4ebea5ec26b138",
+        "manifestSha256": "e7bab231aad576014f733737754f06845e0917b796ce95e30931485dc405d73c",
+        "archiveBytes": 112640,
+        "files": 4
+      }
+    },
+    "publicChainOrProviderCalls": false,
+    "serviceMutations": false,
+    "posixProfilePermissionsAndSymlinkBranches": true,
+    "healthBefore": {
+      "status": "ready",
+      "worker": "idle"
+    },
+    "servicesBefore": {
+      "telomere-staging.service": "active",
+      "telomere-staging-chain.service": "active",
+      "enclave-api.service": "active",
+      "enclave-worker.service": "active",
+      "enclave-web.service": "active"
+    },
+    "sourceMatchesBefore": 305,
+    "buildAssetsMatchesBefore": 4,
+    "nodeVersion": "v22.23.3",
+    "buildOwnedProcessGroupCleanup": false,
+    "buildElapsedSeconds": 44.414,
+    "buildExitCode": 0,
+    "sourceMatchesAfterBuild": 305,
+    "buildAssetsMatchesAfterBuild": 4,
+    "testsOwnedProcessGroupCleanup": false,
+    "testsElapsedSeconds": 26.52,
+    "testsExitCode": 0,
+    "tests": {
+      "numTotalTestSuites": 4,
+      "numPassedTestSuites": 4,
+      "numFailedTestSuites": 0,
+      "numTotalTests": 27,
+      "numPassedTests": 27,
+      "numFailedTests": 0,
+      "numPendingTests": 0,
+      "success": true
+    },
+    "testFiles": [
+      {
+        "name": "session-runtime-docker.test.ts",
+        "status": "passed",
+        "tests": 7,
+        "passed": 7,
+        "skipped": 0
+      },
+      {
+        "name": "session-runtime.test.ts",
+        "status": "passed",
+        "tests": 20,
+        "passed": 20,
+        "skipped": 0
+      }
+    ],
+    "sourceMatchesAfter": 305,
+    "buildAssetsMatchesAfter": 4,
+    "newFixtureDirectoriesRemaining": 0,
+    "healthAfter": {
+      "status": "ready",
+      "worker": "idle"
+    },
+    "servicesAfter": {
+      "telomere-staging.service": "active",
+      "telomere-staging-chain.service": "active",
+      "enclave-api.service": "active",
+      "enclave-worker.service": "active",
+      "enclave-web.service": "active"
+    },
+    "newSessionContainersRemaining": 0,
+    "newSessionDirectoriesRemaining": 0,
+    "ownedCheckoutProcessesRemaining": 0,
+    "success": true
+  },
+  "rawLinuxVitestSha256": "6fc463d94135b9605b39b7ecf5c19c807c3c1fb98955843bb1d1e4dfced0b849",
+  "rawLinuxResultSha256": "f3748a94c6ecb6375ef55b6805799b67503222c2527c8255c8d25190d115a8de",
+  "windows": {
+    "command": "npx vitest run tests/session-runtime.test.ts tests/session-runtime-docker.test.ts --reporter=json --outputFile=.local/session-runtime-root-durable-windows.json",
+    "exitCode": 0,
+    "total": 27,
+    "passed": 20,
+    "failed": 0,
+    "skipped": 7,
+    "skipReason": "Explicit Linux gVisor acceptance opt-in is unavailable on Windows; all seven ran and passed on Linux.",
+    "rawVitestSha256": "fd553f96e69a12f7df2e4cc12106858ad47f64c55b33ea74e871eba57f8d32a2",
+    "localCaseElapsedMs": 8063.135986328125
+  },
+  "strictTypeScript": {
+    "command": "npx tsc --noEmit",
+    "exitCode": 0,
+    "boundary": "Root Windows run after both durability fixes; Linux full normal build independently covers exact frozen source."
+  },
+  "harnessSha256": {
+    "session-runtime-linux-package.py": "d5126d335dbd44aa433f900fa847c689ab1aab17f4ba519914f95f50dfb6b48a",
+    "session-runtime-linux-runner.py": "5bc2cedf0f7e4073f8ef75d67e190276b87949f93b350925572ced10381a1e92"
+  },
+  "history": [
+    {
+      "isolatedPath": "/opt/telomere-host-runtime/session-runtime-check-Y4uUDK1W",
+      "checkedAtUtc": "2026-10-12T12:38:15.568390+00:00",
+      "success": false,
+      "tests": {
+        "numTotalTestSuites": 4,
+        "numPassedTestSuites": 2,
+        "numFailedTestSuites": 2,
+        "numTotalTests": 24,
+        "numPassedTests": 23,
+        "numFailedTests": 1,
+        "numPendingTests": 0,
+        "success": false
+      },
+      "packageMetadataSha256": "2926fedf6060aba93c673dc09b7a92952453597f63c682264143fb62fa95138d",
+      "sourceManifestSha256": "0f9555e637487c4db2cc5ee9dd6aa21d880f29bbe48b3b279f7cc1cdb44ac7f7",
+      "rawVitestSha256": "6f7a2f757fd87a156f19a5bb691526c3e0684d922f5a746acc0123ec22046268",
+      "resultSha256": "82b2ad544fc20c46cfff09a8dc412430ed25f28ef855593a45ef10108bd04bef",
+      "explanation": "One expiry fixture incorrectly assumed a detached background process kept the parent docker-exec stream open. The parent had already exited normally; the corrected fixture keeps the active parent alive while retaining a background descendant. No runtime policy was weakened."
+    },
+    {
+      "isolatedPath": "/opt/telomere-host-runtime/session-runtime-check-zbayrVVe",
+      "checkedAtUtc": "2026-10-12T12:44:07.440564+00:00",
+      "success": true,
+      "tests": {
+        "numTotalTestSuites": 4,
+        "numPassedTestSuites": 4,
+        "numFailedTestSuites": 0,
+        "numTotalTests": 25,
+        "numPassedTests": 25,
+        "numFailedTests": 0,
+        "numPendingTests": 0,
+        "success": true
+      },
+      "packageMetadataSha256": "21ee1ed1fa28bd46518f19109edfb536e094498d909312745edc481f614ce243",
+      "sourceManifestSha256": "2d1e2e2542cf22fc31bfbd60fe7a10bac8fd6abbb7f13958eaa881ec98dee1f3",
+      "rawVitestSha256": "584cd42a242c704db7f99a41e5ce071fb9258dba4efdde42833d2d9683a35932",
+      "resultSha256": "ae43895fdf3bd8ae2594eecf49486d3e85f6cee9788d09ed7308699dbb82df36",
+      "explanation": "Intermediate 25/25 acceptance before independent review found pending-write event publication and terminal exact-retry persistence gaps. Final source adds durable publication snapshots, sticky journal failure refusal and two real-process/file-journal regressions."
+    }
+  ],
+  "limitations": [
+    "Lifetime remains bounded to 1\u2013120 seconds including startup.",
+    "No paid/signed interactive session authority or shared one-shot admission gate.",
+    "No financial meter/receipt-root integration, controller process reattachment, checkpoint migration or attested key release.",
+    "Kata construction is present but acceptance used actual gVisor only.",
+    "Local fixture is actual process behavior, not tenant isolation.",
+    "File journal is private plaintext host storage; Windows ACL provisioning remains the caller responsibility; stale locks require reviewed administrative recovery.",
+    "No full-snapshot rollback defense, automatic journal retention or secure memory erasure claim.",
+    "No public chain transactions, paid-provider requests or existing service mutations. Dated completion estimate is unchanged."
+  ]
+}

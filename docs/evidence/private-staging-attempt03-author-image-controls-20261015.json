@@ -1,0 +1,151 @@
+{
+  "cases": 29,
+  "dockerCalls": 0,
+  "result": "passed",
+  "results": [
+    {
+      "case": "valid_dual_identity",
+      "result": "passed"
+    },
+    {
+      "case": "plain_tar_layer",
+      "result": "passed"
+    },
+    {
+      "case": "concatenated_gzip_layer",
+      "result": "passed"
+    },
+    {
+      "case": "blob_content_hash",
+      "refusal": "image_blob_digest",
+      "result": "passed"
+    },
+    {
+      "case": "descriptor_size",
+      "refusal": "image_descriptor_size",
+      "result": "passed"
+    },
+    {
+      "case": "duplicate_tar_name",
+      "refusal": "image_tar_members",
+      "result": "passed"
+    },
+    {
+      "case": "symlink_tar",
+      "refusal": "image_tar_type",
+      "result": "passed"
+    },
+    {
+      "case": "traversal_tar",
+      "refusal": "image_tar_path",
+      "result": "passed"
+    },
+    {
+      "case": "duplicate_json",
+      "refusal": "image_json_duplicate",
+      "result": "passed"
+    },
+    {
+      "case": "json_nan",
+      "refusal": "image_json_constant",
+      "result": "passed"
+    },
+    {
+      "case": "ambiguous_runnable",
+      "refusal": "image_ambiguous_platform",
+      "result": "passed"
+    },
+    {
+      "case": "wrong_config_os",
+      "refusal": "image_config_platform",
+      "result": "passed"
+    },
+    {
+      "case": "wrong_config_arch",
+      "refusal": "image_config_platform",
+      "result": "passed"
+    },
+    {
+      "case": "reordered_diff_ids",
+      "refusal": "image_config_rootfs",
+      "result": "passed"
+    },
+    {
+      "case": "legacy_config_substitution",
+      "refusal": "image_compatibility_binding",
+      "result": "passed"
+    },
+    {
+      "case": "legacy_layer_reorder",
+      "refusal": "image_compatibility_binding",
+      "result": "passed"
+    },
+    {
+      "case": "missing_selected_layer",
+      "refusal": "image_selected_blob_missing",
+      "result": "passed"
+    },
+    {
+      "case": "unsupported_layer_media",
+      "refusal": "image_layer_media",
+      "result": "passed"
+    },
+    {
+      "case": "trailing_gzip",
+      "refusal": "image_layer_stream_invalid",
+      "result": "passed"
+    },
+    {
+      "case": "gzip_crc",
+      "refusal": "image_layer_stream_invalid",
+      "result": "passed"
+    },
+    {
+      "case": "external_descriptor_url",
+      "refusal": "image_descriptor_external",
+      "result": "passed"
+    },
+    {
+      "case": "inline_descriptor_data",
+      "refusal": "image_descriptor_external",
+      "result": "passed"
+    },
+    {
+      "case": "expanded_layer_limit",
+      "refusal": "image_expanded_bound",
+      "result": "passed"
+    },
+    {
+      "case": "wrong_root_pin",
+      "refusal": "image_source_pin",
+      "result": "passed"
+    },
+    {
+      "case": "loaded_exact_config_and_rootfs",
+      "result": "passed"
+    },
+    {
+      "case": "loaded_index_not_config",
+      "refusal": "image_loaded_config_id",
+      "result": "passed"
+    },
+    {
+      "case": "loaded_rootfs_order",
+      "refusal": "image_loaded_rootfs",
+      "result": "passed"
+    },
+    {
+      "case": "source_postload_drift",
+      "refusal": "image_source_changed",
+      "result": "passed"
+    },
+    {
+      "case": "archive_postproof_change",
+      "refusal": "image_archive_changed",
+      "result": "passed"
+    }
+  ],
+  "schemaVersion": 1,
+  "transportCalls": 0,
+  "validatorSourceSha256": "26e580f34daa0db39710ff4114315809979686ceeaca656fb4cf59de715a15cb"
+}

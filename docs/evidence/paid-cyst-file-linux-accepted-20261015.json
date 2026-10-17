@@ -1,0 +1,93 @@
+{
+  "archiveSha256": "407ca6d444dcc28616e56c504715fcbf053b11d9a6f935f1b4f74c768e690517",
+  "gitRevision": "abf941bef4688fa3f81eb986523fa16037cc3abc",
+  "directory": "/opt/telomere-host-runtime/compute-restore-corrected-20261015-407ca6d444dc",
+  "sourceFiles": 672,
+  "startedAt": "2026-10-15T02:39:32.745121+00:00",
+  "publicTransactions": 0,
+  "paidProviderRequests": 0,
+  "stagingServiceMutations": false,
+  "dedicatedAcceptanceDaemonAlreadyProvisioned": true,
+  "gvisorSocket": "/run/telomere-file-accept-20261015/docker.sock",
+  "image": "127.0.0.1:15002/telomere-cpu@sha256:6839949540d11906cbdbc614867ac3a825fa0e6f8cbed90c79773979517b4bbe",
+  "servicesBefore": {
+    "telomere-staging.service": "NRestarts=0\nActiveState=active\nSubState=running",
+    "telomere-staging-chain.service": "NRestarts=0\nActiveState=active\nSubState=running",
+    "telomere-staging-watchdog.service": "NRestarts=0\nActiveState=active\nSubState=running"
+  },
+  "healthBefore": {
+    "live": {
+      "statusCode": 200,
+      "body": {
+        "status": "ok"
+      }
+    },
+    "ready": {
+      "statusCode": 200,
+      "body": {
+        "status": "ready",
+        "worker": "idle"
+      }
+    }
+  },
+  "protectedContainerBefore": {
+    "id": "1d7ecc9b94866b9617df656ad7e2251916a9b7ceafef9a488ef6e85540076c5e",
+    "name": "/telomere-hostkit-registry",
+    "imageId": "sha256:b16ad6cc19df5d687ed2e5b4ba6fa51a38bfbb4687ecc11bf54e0899638c0ee2",
+    "status": "exited",
+    "labels": {},
+    "metadataSha256": "6c078f8b7a3386663d9ab2f5682c317d82b54e86c54a93f67255bfa045a76079"
+  },
+  "imageId": "sha256:680cc0ec7dfa626d4105c3c26834289687e0abed785240e5bb814bac7cd55355",
+  "npm-ci": {
+    "exitCode": 0,
+    "seconds": 4.058
+  },
+  "build": {
+    "exitCode": 0,
+    "seconds": 70.667
+  },
+  "paid-file-gvisor": {
+    "exitCode": 0,
+    "seconds": 55.668
+  },
+  "tests": {
+    "numTotalTests": 15,
+    "numPassedTests": 15,
+    "numFailedTests": 0,
+    "numPendingTests": 0,
+    "success": true
+  },
+  "sourceChangedAfter": [],
+  "healthAfter": {
+    "live": {
+      "statusCode": 200,
+      "body": {
+        "status": "ok"
+      }
+    },
+    "ready": {
+      "statusCode": 200,
+      "body": {
+        "status": "ready",
+        "worker": "idle"
+      }
+    }
+  },
+  "servicesAfter": {
+    "telomere-staging.service": "NRestarts=0\nActiveState=active\nSubState=running",
+    "telomere-staging-chain.service": "NRestarts=0\nActiveState=active\nSubState=running",
+    "telomere-staging-watchdog.service": "NRestarts=0\nActiveState=active\nSubState=running"
+  },
+  "protectedContainerAfter": {
+    "id": "1d7ecc9b94866b9617df656ad7e2251916a9b7ceafef9a488ef6e85540076c5e",
+    "name": "/telomere-hostkit-registry",
+    "imageId": "sha256:b16ad6cc19df5d687ed2e5b4ba6fa51a38bfbb4687ecc11bf54e0899638c0ee2",
+    "status": "exited",
+    "labels": {},
+    "metadataSha256": "6c078f8b7a3386663d9ab2f5682c317d82b54e86c54a93f67255bfa045a76079"
+  },
+  "ownedSessionContainersAfter": "",
+  "success": true,
+  "finishedAt": "2026-10-15T02:41:43.341010+00:00"
+}

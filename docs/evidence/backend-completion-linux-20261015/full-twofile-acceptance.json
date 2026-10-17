@@ -1,0 +1,216 @@
+{
+  "schemaVersion": 1,
+  "status": "accepted_corrected_twofile_regressions",
+  "startedAt": "2026-10-15T14:08:27.484148+00:00",
+  "sourceDirectory": "/opt/telomere-host-runtime/full-twofile-corrected-20261015-3ed17e69fc55",
+  "gitRevision": "bc3ca04617c2ec6b0fec32ee59aa34af97ba867d",
+  "archiveSha256": "3ed17e69fc55c944999ca0449a3384beba7c0ef8753589d502463fa55a332ee2",
+  "sourceManifestSha256": "cf30d67d4eecf88482fb64b0f84c4fb206912c83aeaaf343925a14a869ee107e",
+  "originalFailedReportSha256": "e245c533d1da366eece0a8adf83c1e792ef3133f32ffe6cd0369d7b944876bfa",
+  "reviewedFixtureHashes": {
+    "tests/platform-runtime.test.ts": "e35a8b4a9a02da60b3e70a73d01ca1fa31fb64faea4891c29db484d175a87906",
+    "tests/selection-reputation-publisher.test.ts": "f6405b9f6c38a28e32ab9fdf3dfe47eb6d8509db54a0c00a67bfbfd1e911688c"
+  },
+  "sourceFiles": 708,
+  "baselineRevision": "079bb31fa76217df9d3d3d0e309293bf4f58e89c",
+  "changedRuntimePaths": [
+    "tests/platform-runtime.test.ts",
+    "tests/selection-reputation-publisher.test.ts"
+  ],
+  "productionChangedPaths": [],
+  "sourceContinuitySha256": "564bdf7d101306593b65324d942f8e63d96d1c6dd4a8a28dd366ef91570d05a9",
+  "preparationSha256": "a0733565f554cf35d42da80453c73fa64002fc4d91597ca49193571449e94055",
+  "preparerSha256": "d6774dbaafcb18574053d7d9f20649e558cabfc4471f3fe38c427edbc78190f4",
+  "sourceBefore": {
+    "unchanged": true,
+    "verified": 708,
+    "changed": []
+  },
+  "oldSourceBefore": {
+    "unchanged": true,
+    "verified": 708,
+    "changed": []
+  },
+  "baselineFullSourceBefore": {
+    "unchanged": true,
+    "verified": 703,
+    "changed": []
+  },
+  "oldManifestSha256": "16b7ddcfb62c1d6fde5bd0f6c4a2b55013d0dbe508c62e4ff233efd896e69028",
+  "originalFullNodeSha256": "3cf0f93ee928382bc09b3d85b41e751bed4d24a5f72151998ebb92e06071c110",
+  "originalDependencyInventoryBeforeSha256": "32de7e843d515b97df59a60661d758f78d8cf1632733b32af64cc40d448d4272",
+  "copiedDependencyInventoryBeforeSha256": "32de7e843d515b97df59a60661d758f78d8cf1632733b32af64cc40d448d4272",
+  "dependencyEntries": {
+    "node_modules": 21050,
+    "dist": 585
+  },
+  "servicesBefore": {
+    "telomere-staging.service": {
+      "MainPID": "1952406",
+      "NRestarts": "0",
+      "WorkingDirectory": "/opt/telomere-pilot/releases/354fe7af62ea6701faafc3b04522abb1b4524d2d-launch04",
+      "ActiveState": "active",
+      "SubState": "running"
+    },
+    "telomere-staging-chain.service": {
+      "MainPID": "1952401",
+      "NRestarts": "0",
+      "WorkingDirectory": "/opt/telomere-pilot/app",
+      "ActiveState": "active",
+      "SubState": "running"
+    },
+    "telomere-staging-watchdog.service": {
+      "MainPID": "1952410",
+      "NRestarts": "0",
+      "WorkingDirectory": "/opt/telomere-pilot/watchdog-app",
+      "ActiveState": "active",
+      "SubState": "running"
+    }
+  },
+  "profileSha256": "a400feb3475b91168a5419d0a98c00ea804ba817c1c0ad34dea65d7d8808df8f",
+  "healthBefore": {
+    "live": {
+      "statusCode": 200,
+      "body": {
+        "status": "ok"
+      }
+    },
+    "ready": {
+      "statusCode": 200,
+      "body": {
+        "status": "ready",
+        "worker": "idle"
+      }
+    }
+  },
+  "scope": "59 cases in two complete corrected fixture files after the actual failed complete baseline; no final full-suite acceptance.",
+  "timeoutSeconds": 1200,
+  "paidProviderRequests": 0,
+  "publicTransactions": 0,
+  "serviceMutations": false,
+  "dockerOptInEnabled": false,
+  "dependencyOrSourceMutations": false,
+  "dependenciesCopiedToOwnedDirectory": true,
+  "reinstallPerformed": false,
+  "rebuildPerformed": false,
+  "testRunnerConfig": {
+    "cacheEnabled": false,
+    "configLoader": "runner",
+    "cacheDir": "/opt/telomere-host-runtime/full-twofile-corrected-20261015-3ed17e69fc55/.local/vite-cache",
+    "sourceConfigSha256": "3741089250fe103f72282c9cf12105e10c0435059ca4448b396040391852842b",
+    "derivedConfigSha256": "c86e021a4550040d1fee44c21627829f1731828e311045e471583e684b6edc5d"
+  },
+  "typecheck": {
+    "exitCode": 0,
+    "seconds": 90.482,
+    "timedOut": false
+  },
+  "node": {
+    "exitCode": 0,
+    "seconds": 380.262,
+    "timedOut": false,
+    "logLimitExceeded": false
+  },
+  "caseIdentitiesEqualOriginalFullSubsets": true,
+  "baselineCaseIdentitySha256": "33f4d922c93372396eb0e28ffe077b81a202d606a73b8d2fdb7c9ff884116ce1",
+  "actualCaseIdentitySha256": "33f4d922c93372396eb0e28ffe077b81a202d606a73b8d2fdb7c9ff884116ce1",
+  "nodeTests": {
+    "success": true,
+    "numTotalTests": 59,
+    "numPassedTests": 59,
+    "numFailedTests": 0,
+    "numPendingTests": 0,
+    "actualAssertionStatuses": {
+      "passed": 59
+    },
+    "files": [
+      {
+        "name": "tests/platform-runtime.test.ts",
+        "status": "passed",
+        "assertions": 29
+      },
+      {
+        "name": "tests/selection-reputation-publisher.test.ts",
+        "status": "passed",
+        "assertions": 30
+      }
+    ],
+    "failures": []
+  },
+  "clockLagRegression": {
+    "testFileSha256": "e35a8b4a9a02da60b3e70a73d01ca1fa31fb64faea4891c29db484d175a87906",
+    "case": "full platform controller CPU admission, full financial proof and fee settlement never repeats a paid ambiguous POST, settles CPU at zero inference charge, and frees the receipt hour",
+    "status": "passed",
+    "proofKind": "reviewed_git_pinned_case_assertions_with_real_local_subprocess_and_Anvil",
+    "assertions": [
+      "original_endedAt_gt_canonical_head",
+      "canSeal_false_before_and_after_reopen",
+      "canonical_advance_only_to_original_endedAt",
+      "original_settlement_unchanged",
+      "receipt_recorded",
+      "paid_callback_once",
+      "closed_hour_canSeal_true_before_final_drain",
+      "final_completed"
+    ]
+  },
+  "sourceAfter": {
+    "unchanged": true,
+    "verified": 708,
+    "changed": []
+  },
+  "oldSourceAfter": {
+    "unchanged": true,
+    "verified": 708,
+    "changed": []
+  },
+  "baselineFullSourceAfter": {
+    "unchanged": true,
+    "verified": 703,
+    "changed": []
+  },
+  "originalDependencyInventoryAfterSha256": "32de7e843d515b97df59a60661d758f78d8cf1632733b32af64cc40d448d4272",
+  "copiedDependencyInventoryAfterSha256": "32de7e843d515b97df59a60661d758f78d8cf1632733b32af64cc40d448d4272",
+  "servicesAfter": {
+    "telomere-staging.service": {
+      "MainPID": "1952406",
+      "NRestarts": "0",
+      "WorkingDirectory": "/opt/telomere-pilot/releases/354fe7af62ea6701faafc3b04522abb1b4524d2d-launch04",
+      "ActiveState": "active",
+      "SubState": "running"
+    },
+    "telomere-staging-chain.service": {
+      "MainPID": "1952401",
+      "NRestarts": "0",
+      "WorkingDirectory": "/opt/telomere-pilot/app",
+      "ActiveState": "active",
+      "SubState": "running"
+    },
+    "telomere-staging-watchdog.service": {
+      "MainPID": "1952410",
+      "NRestarts": "0",
+      "WorkingDirectory": "/opt/telomere-pilot/watchdog-app",
+      "ActiveState": "active",
+      "SubState": "running"
+    }
+  },
+  "healthAfter": {
+    "live": {
+      "statusCode": 200,
+      "body": {
+        "status": "ok"
+      }
+    },
+    "ready": {
+      "statusCode": 200,
+      "body": {
+        "status": "ready",
+        "worker": "idle"
+      }
+    }
+  },
+  "profileBeforeSha256": "a400feb3475b91168a5419d0a98c00ea804ba817c1c0ad34dea65d7d8808df8f",
+  "profileAfterSha256": "a400feb3475b91168a5419d0a98c00ea804ba817c1c0ad34dea65d7d8808df8f",
+  "ownedAnvilProcessesRemaining": [],
+  "success": true,
+  "finishedAt": "2026-10-15T14:16:20.269046+00:00"
+}

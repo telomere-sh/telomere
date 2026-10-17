@@ -1,0 +1,81 @@
+{
+  "gitRevision": "079bb31fa76217df9d3d3d0e309293bf4f58e89c",
+  "source": "committed_git_blobs_only",
+  "workingTreeIncluded": false,
+  "upstreamRevision": "c256fce68c50c141a51d4bd2ca18292e4b006f15",
+  "archiveSha256": "9c5ee79bce8865be777bf4de425b13a0dc13965839e652284103387c6023ad20",
+  "files": [
+    {
+      "path": "docs/evidence/golem-allocation-upstream-20261015/LICENSE",
+      "gitBlob": "f288702d2fa16d3cdf0035b15a9fcbc552cd88e7",
+      "bytes": 35149,
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+    },
+    {
+      "path": "docs/evidence/golem-allocation-upstream-20261015/core/payment/migrations/2020-01-23-123456_init/up.sql",
+      "gitBlob": "fddf45d3a16de48bb6c5994c7bd453024e2881ad",
+      "bytes": 7230,
+      "sha256": "a9a58a05e7948abd02d517362c32f769bb7dd75c87cc4dbc86877a62c03ddaaa"
+    },
+    {
+      "path": "docs/evidence/golem-allocation-upstream-20261015/core/payment/migrations/2024-08-12-171012_extended_order/up.sql",
+      "gitBlob": "b7596b912159f492f7799bc4e1d3189e68be01eb",
+      "bytes": 9071,
+      "sha256": "a4033a0a6456a2ef1e614d2f9428de7f54b999d8f1ebd11fef4113bc6cceebef"
+    },
+    {
+      "path": "docs/evidence/golem-allocation-upstream-20261015/core/payment/src/api/allocations/mod.rs",
+      "gitBlob": "9463511234b4e8f0dd4140b8e8dbc27d5fff385b",
+      "bytes": 24875,
+      "sha256": "90c7ed0e3f0bf7a51b891d34c15d2ab4902ab85d0d6da99c235c1dcd319e5a0b"
+    },
+    {
+      "path": "docs/evidence/golem-allocation-upstream-20261015/core/payment/src/dao/allocation.rs",
+      "gitBlob": "872fabb997d9f1ff6bf875e7b57921d325a41577",
+      "bytes": 14673,
+      "sha256": "627f2974c7c798bef2611482c15821c61c52813014d0c8705dadf67ad36ec0d3"
+    },
+    {
+      "path": "docs/evidence/golem-allocation-upstream-20261015/core/payment/src/dao/batch.rs",
+      "gitBlob": "337e75b0f9149cd555be96cd210e62de44b7c4c5",
+      "bytes": 59687,
+      "sha256": "6425abd2a3335bc6825faedfc98f51af904a35dd99b7e177feaae81025788246"
+    },
+    {
+      "path": "docs/evidence/golem-allocation-upstream-20261015/core/payment/src/dao/payment.rs",
+      "gitBlob": "a5c634737ca518bc65cb3f2bc9739286b1a4147b",
+      "bytes": 13898,
+      "sha256": "b439d56632bef72dd3edfff4aa614955fffdb04a2ff3b874af3dff9b6e640830"
+    },
+    {
+      "path": "docs/evidence/golem-allocation-upstream-20261015/core/payment/src/models/batch.rs",
+      "gitBlob": "a15a244204918bf1723cb094dd0d103d57994b97",
+      "bytes": 3473,
+      "sha256": "e207f1d50d64325a32fc21f6c7ec1423647bc67826d3b794e5c2994609589015"
+    },
+    {
+      "path": "docs/evidence/golem-allocation-upstream-20261015/core/payment/src/models/payment.rs",
+      "gitBlob": "e7a40d442971639bd4f9305e926d7fb480c1f927",
+      "bytes": 5654,
+      "sha256": "efb71b7da8b6ccb4b3e7a69a36ac85f66e0a2dbd94b99f378ebf13f0ba379fca"
+    },
+    {
+      "path": "docs/evidence/golem-allocation-upstream-20261015/core/payment/src/processor.rs",
+      "gitBlob": "dfcefb2732e5e30f1cbb6f0c470f0b7271e1381e",
+      "bytes": 56191,
+      "sha256": "5cd7beb9fb275887d2d1df7d24695a4eb7333aabb19e01e688eaaeca437d9062"
+    },
+    {
+      "path": "docs/evidence/golem-allocation-upstream-20261015/core/payment/src/schema.rs",
+      "gitBlob": "fec81e9f6c5a213a68bdb4c225d199b722078439",
+      "bytes": 6818,
+      "sha256": "529c33ff041e4e059f6d73cd539498edb2c9d3ec726cf379e350c6706da4d6f9"
+    },
+    {
+      "path": "docs/evidence/golem-allocation-upstream-20261015/manifest.json",
+      "gitBlob": "3f319ca573deed9ac65c72d3cbe6566487131d74",
+      "bytes": 4536,
+      "sha256": "28b8bc20342420a2a4bf680343231092c57ab3b6c20b33d02d5d409f492e406c"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "checkedAtUtc": "2026-10-13T07:41:51.629755+00:00",
+  "scope": "isolated exact committed ERC-8004 publisher and bounded large-Cyst publication on private Linux VPS; disposable Anvil/filesystem fixtures",
+  "commit": "e1c3ee92b7b985362b2fed8dbbda714ee2a2c328",
+  "sourceArchiveSha256": "b530071009301337819751545b789af8b5f9643aa65980bef742424ed7a857da",
+  "trackedFilesByteMatchedAfterBuildAndTests": 660,
+  "trackedFilesMismatched": [],
+  "normalBuild": "passed",
+  "tests": {
+    "files": 13,
+    "passed": 118,
+    "failed": 0,
+    "skipped": 0,
+    "durationSeconds": 288.4067412109375
+  },
+  "preexistingServicesActiveBefore": 6,
+  "preexistingServicesActiveAfter": 6,
+  "watchdogStateKeys": [
+    "active",
+    "checkedAt",
+    "schemaVersion",
+    "sequence"
+  ],
+  "publicProviderOrChainTestCalls": 0,
+  "liveServiceMutationDuringAcceptance": false
+}

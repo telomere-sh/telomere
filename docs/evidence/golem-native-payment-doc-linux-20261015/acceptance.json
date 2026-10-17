@@ -1,0 +1,624 @@
+{
+  "schemaVersion": 1,
+  "gitRevision": "079bb31fa76217df9d3d3d0e309293bf4f58e89c",
+  "baselineRevision": "2298f3f99c9d0d1e22ac8928f71bff7d06ec0135",
+  "archiveSha256": "74e8a76b12bcbb17aaca41881d4294d59620330bd3ede6829213d1a70d853460",
+  "sourceFiles": 708,
+  "directory": "/tmp/telomere-yagna-native-doc-nonroot-20261015-74e8a76b12bc-attempt02",
+  "changedRuntimePaths": [
+    "src/suppliers/golem-allocation-attribution.ts",
+    "tests/golem-allocation-attribution.test.ts"
+  ],
+  "upstreamFixtures": {
+    "files": 12,
+    "archiveSha256": "9c5ee79bce8865be777bf4de425b13a0dc13965839e652284103387c6023ad20",
+    "upstreamRevision": "c256fce68c50c141a51d4bd2ca18292e4b006f15"
+  },
+  "startedAt": "2026-10-15T13:39:22.430339+00:00",
+  "serviceMutations": false,
+  "publicTransactions": 0,
+  "paidProviderRequests": 0,
+  "productionYagna": false,
+  "hardwareAttestation": false,
+  "executionProfile": "existing_nonroot_uid_65534_same_fixture_owner",
+  "nonrootProcessesBefore": [],
+  "originalGitRevision": "d4481aec92179df44a533699897db2f523fbd0a2",
+  "originalSourceManifestSha256": "16b7ddcfb62c1d6fde5bd0f6c4a2b55013d0dbe508c62e4ff233efd896e69028",
+  "servicesBefore": {
+    "telomere-staging.service": {
+      "MainPID": "1952406",
+      "NRestarts": "0",
+      "WorkingDirectory": "/opt/telomere-pilot/releases/354fe7af62ea6701faafc3b04522abb1b4524d2d-launch04",
+      "ActiveState": "active",
+      "SubState": "running"
+    },
+    "telomere-staging-chain.service": {
+      "MainPID": "1952401",
+      "NRestarts": "0",
+      "WorkingDirectory": "/opt/telomere-pilot/app",
+      "ActiveState": "active",
+      "SubState": "running"
+    },
+    "telomere-staging-watchdog.service": {
+      "MainPID": "1952410",
+      "NRestarts": "0",
+      "WorkingDirectory": "/opt/telomere-pilot/watchdog-app",
+      "ActiveState": "active",
+      "SubState": "running"
+    }
+  },
+  "healthBefore": {
+    "live": {
+      "statusCode": 200,
+      "body": {
+        "status": "ok"
+      }
+    },
+    "ready": {
+      "statusCode": 200,
+      "body": {
+        "status": "ready",
+        "worker": "idle"
+      }
+    }
+  },
+  "profileBeforeSha256": "a400feb3475b91168a5419d0a98c00ea804ba817c1c0ad34dea65d7d8808df8f",
+  "nodeVersion": "v22.23.3",
+  "sourceBefore": {
+    "unchanged": true,
+    "verified": 708,
+    "changed": []
+  },
+  "supplementBefore": {
+    "unchanged": true,
+    "verified": 12,
+    "changed": []
+  },
+  "originalSourceBefore": {
+    "unchanged": true,
+    "verified": 708,
+    "changed": []
+  },
+  "supplementBeforeSha256": "f8b33ce392eb4844179b16564eb8a953ea7ec4d84afa3fd65f076d54d1fc54f0",
+  "sourceDependencyInventoryBeforeSha256": "2db68f8bea6f9ece793ed656769abcef4a4b19d237c4ea73ff6f1496a6f61d81",
+  "dependencyInventoryBeforeSha256": "2db68f8bea6f9ece793ed656769abcef4a4b19d237c4ea73ff6f1496a6f61d81",
+  "sourceTreeOwnershipBefore": {
+    "scope": "every_preexisting_private_copy_path_including_runtime_fixtures_dependencies_and_directories",
+    "uid": 65534,
+    "gid": 65534,
+    "verified": 23537,
+    "unexpected": [],
+    "unchanged": true
+  },
+  "identity": {
+    "exitCode": 0,
+    "seconds": 0.154,
+    "command": [
+      "node",
+      "-e",
+      "process.stdout.write(JSON.stringify({uid:process.getuid(),gid:process.getgid(),groups:process.getgroups()}))"
+    ]
+  },
+  "nodeIdentity": {
+    "uid": 65534,
+    "gid": 65534,
+    "groups": [
+      65534
+    ]
+  },
+  "typecheck": {
+    "exitCode": 0,
+    "seconds": 88.051,
+    "command": [
+      "node",
+      "node_modules/typescript/bin/tsc",
+      "--noEmit"
+    ]
+  },
+  "reader": {
+    "exitCode": 0,
+    "seconds": 43.451,
+    "command": [
+      "node",
+      "node_modules/vitest/vitest.mjs",
+      "run",
+      "tests/golem-allocation-attribution.test.ts",
+      "--no-cache",
+      "--reporter=json",
+      "--outputFile=.local/vitest.json"
+    ]
+  },
+  "nodeTests": {
+    "numTotalTests": 27,
+    "numPassedTests": 27,
+    "numFailedTests": 0,
+    "numPendingTests": 0,
+    "numTodoTests": 0,
+    "success": true
+  },
+  "caseNames": [
+    "attributes an agreement share and rejects duplicate NULL-activity document rows permitted by native composite keys",
+    "bounds a worker and honors already-aborted or in-flight cancellation without a main-loop SQLite call",
+    "feeds normal authenticated missing-allocation HTTP payments into the existing financial lifecycle without weakening strict transport or inventing finality",
+    "limits concurrent native readers and refuses a third worker without creating an unbounded local queue",
+    "pins source file/directory identity, rejects links/unsafe limits and never creates a missing source",
+    "reads a real existing WAL snapshot without changing DB/WAL bytes and refuses WAL over the reviewed bound",
+    "reconstructs omitted allocation only from the actual native payment\u2192order\u2192document join and preserves the database bytes",
+    "refuses an actual filesystem symlink instead of following a reviewed database name",
+    "refuses exact native attribution mismatch: agreement-peer",
+    "refuses exact native attribution mismatch: deposit",
+    "refuses exact native attribution mismatch: document-total",
+    "refuses exact native attribution mismatch: foreign-activity",
+    "refuses exact native attribution mismatch: item-total",
+    "refuses exact native attribution mismatch: native-payment-share",
+    "refuses exact native attribution mismatch: order-payer",
+    "refuses exact native attribution mismatch: order-platform",
+    "refuses exact native attribution mismatch: orphan-allocation",
+    "refuses exact native attribution mismatch: orphan-order",
+    "refuses exact native attribution mismatch: oversized-native-field",
+    "refuses exact native attribution mismatch: oversized-native-proof",
+    "refuses exact native attribution mismatch: payment-details",
+    "refuses exact native attribution mismatch: payment-id",
+    "refuses exact native attribution mismatch: payment-role",
+    "refuses exact native attribution mismatch: unpaid",
+    "refuses populated native payment-document debit_note_id for activity and agreement shares",
+    "refuses populated native payment-document invoice_id for activity and agreement shares",
+    "rejects mixed allocations, duplicate native documents and schema changes rather than allocating by amount"
+  ],
+  "posixSymlinkExercised": true,
+  "fixtureOwnershipObservations": {
+    ".local/tmp/telomere-native-yagna-fboY60": {
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o700",
+      "kind": "directory"
+    },
+    ".local/tmp/telomere-native-yagna-fboY60/payment.db": {
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o600",
+      "kind": "file"
+    },
+    ".local/tmp/telomere-native-yagna-PcmC2A": {
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o700",
+      "kind": "directory"
+    },
+    ".local/tmp/telomere-native-yagna-PcmC2A/payment.db": {
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o600",
+      "kind": "file"
+    },
+    ".local/tmp/telomere-native-yagna-PcmC2A/payment.db-wal": {
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o600",
+      "kind": "file"
+    },
+    ".local/tmp/telomere-native-yagna-PcmC2A/payment.db-shm": {
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o600",
+      "kind": "file"
+    },
+    ".local/tmp/telomere-native-yagna-BEFLiX": {
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o700",
+      "kind": "directory"
+    },
+    ".local/tmp/telomere-native-yagna-BEFLiX/payment.db": {
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o600",
+      "kind": "file"
+    },
+    ".local/tmp/telomere-native-yagna-jR3kYv": {
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o700",
+      "kind": "directory"
+    },
+    ".local/tmp/telomere-native-yagna-jR3kYv/payment.db": {
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o600",
+      "kind": "file"
+    },
+    ".local/tmp/telomere-native-yagna-1UOcpL": {
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o700",
+      "kind": "directory"
+    },
+    ".local/tmp/telomere-native-yagna-1UOcpL/payment.db": {
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o600",
+      "kind": "file"
+    },
+    ".local/tmp/telomere-native-yagna-HJopLR": {
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o700",
+      "kind": "directory"
+    },
+    ".local/tmp/telomere-native-yagna-HJopLR/payment.db": {
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o600",
+      "kind": "file"
+    },
+    ".local/tmp/telomere-native-yagna-H0aNbQ": {
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o700",
+      "kind": "directory"
+    },
+    ".local/tmp/telomere-native-yagna-H0aNbQ/payment.db": {
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o600",
+      "kind": "file"
+    },
+    ".local/tmp/telomere-native-yagna-2QVsXk": {
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o700",
+      "kind": "directory"
+    },
+    ".local/tmp/telomere-native-yagna-2QVsXk/payment.db": {
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o600",
+      "kind": "file"
+    },
+    ".local/tmp/telomere-native-yagna-iPyPca": {
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o700",
+      "kind": "directory"
+    },
+    ".local/tmp/telomere-native-yagna-iPyPca/payment.db": {
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o600",
+      "kind": "file"
+    },
+    ".local/tmp/telomere-native-yagna-LNz5N6": {
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o700",
+      "kind": "directory"
+    },
+    ".local/tmp/telomere-native-yagna-LNz5N6/payment.db": {
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o600",
+      "kind": "file"
+    },
+    ".local/tmp/telomere-native-yagna-e0m38f": {
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o700",
+      "kind": "directory"
+    },
+    ".local/tmp/telomere-native-yagna-e0m38f/payment.db": {
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o600",
+      "kind": "file"
+    },
+    ".local/tmp/telomere-native-yagna-Nyj33L": {
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o700",
+      "kind": "directory"
+    },
+    ".local/tmp/telomere-native-yagna-Nyj33L/payment.db": {
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o600",
+      "kind": "file"
+    },
+    ".local/tmp/telomere-native-yagna-mFEHHZ": {
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o700",
+      "kind": "directory"
+    },
+    ".local/tmp/telomere-native-yagna-mFEHHZ/payment.db": {
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o600",
+      "kind": "file"
+    },
+    ".local/tmp/telomere-native-yagna-w9G31G": {
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o700",
+      "kind": "directory"
+    },
+    ".local/tmp/telomere-native-yagna-w9G31G/payment.db": {
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o600",
+      "kind": "file"
+    },
+    ".local/tmp/telomere-native-yagna-0Cenp9": {
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o700",
+      "kind": "directory"
+    },
+    ".local/tmp/telomere-native-yagna-0Cenp9/payment.db": {
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o600",
+      "kind": "file"
+    },
+    ".local/tmp/telomere-native-yagna-eR1prW": {
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o700",
+      "kind": "directory"
+    },
+    ".local/tmp/telomere-native-yagna-eR1prW/payment.db": {
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o600",
+      "kind": "file"
+    },
+    ".local/tmp/telomere-native-yagna-0BHd3R": {
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o700",
+      "kind": "directory"
+    },
+    ".local/tmp/telomere-native-yagna-0BHd3R/payment.db": {
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o600",
+      "kind": "file"
+    },
+    ".local/tmp/telomere-native-yagna-1UJjEO": {
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o700",
+      "kind": "directory"
+    },
+    ".local/tmp/telomere-native-yagna-1UJjEO/payment.db": {
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o600",
+      "kind": "file"
+    },
+    ".local/tmp/telomere-native-yagna-lmLFBm": {
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o700",
+      "kind": "directory"
+    },
+    ".local/tmp/telomere-native-yagna-lmLFBm/payment.db": {
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o600",
+      "kind": "file"
+    },
+    ".local/tmp/telomere-native-yagna-CVdef2": {
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o700",
+      "kind": "directory"
+    },
+    ".local/tmp/telomere-native-yagna-CVdef2/payment.db": {
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o600",
+      "kind": "file"
+    },
+    ".local/tmp/telomere-native-yagna-MpgQL6": {
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o700",
+      "kind": "directory"
+    },
+    ".local/tmp/telomere-native-yagna-MpgQL6/payment.db": {
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o600",
+      "kind": "file"
+    },
+    ".local/tmp/telomere-native-yagna-4XBIki": {
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o700",
+      "kind": "directory"
+    },
+    ".local/tmp/telomere-native-yagna-4XBIki/payment.db": {
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o600",
+      "kind": "file"
+    },
+    ".local/tmp/telomere-native-yagna-UOWQQT": {
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o700",
+      "kind": "directory"
+    },
+    ".local/tmp/telomere-native-yagna-UOWQQT/payment.db": {
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o600",
+      "kind": "file"
+    },
+    ".local/tmp/telomere-native-yagna-4Rgle3": {
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o700",
+      "kind": "directory"
+    },
+    ".local/tmp/telomere-native-yagna-4Rgle3/payment.db": {
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o600",
+      "kind": "file"
+    },
+    ".local/tmp/telomere-native-yagna-vBpPwc": {
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o700",
+      "kind": "directory"
+    },
+    ".local/tmp/telomere-native-yagna-vBpPwc/payment.db": {
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o600",
+      "kind": "file"
+    },
+    ".local/tmp/telomere-native-yagna-8ffKPa": {
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o700",
+      "kind": "directory"
+    },
+    ".local/tmp/telomere-native-yagna-8ffKPa/payment.db": {
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o600",
+      "kind": "file"
+    },
+    ".local/tmp/telomere-native-yagna-LZ9D0q": {
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o700",
+      "kind": "directory"
+    },
+    ".local/tmp/telomere-native-yagna-LZ9D0q/payment.db": {
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o600",
+      "kind": "file"
+    },
+    ".local/tmp/telomere-native-yagna-FVCv9R": {
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o700",
+      "kind": "directory"
+    },
+    ".local/tmp/telomere-native-yagna-FVCv9R/payment.db": {
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o777",
+      "kind": "symlink"
+    },
+    ".local/tmp/telomere-native-yagna-ElVK0s": {
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o700",
+      "kind": "directory"
+    },
+    ".local/tmp/telomere-native-yagna-ElVK0s/payment.db": {
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o600",
+      "kind": "file"
+    },
+    ".local/tmp/telomere-native-yagna-4qiIFo": {
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o700",
+      "kind": "directory"
+    },
+    ".local/tmp/telomere-native-yagna-4qiIFo/payment.db": {
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o600",
+      "kind": "file"
+    },
+    ".local/tmp/telomere-native-yagna-zY0A6x": {
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o700",
+      "kind": "directory"
+    },
+    ".local/tmp/telomere-native-yagna-zY0A6x/payment.db": {
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o600",
+      "kind": "file"
+    }
+  },
+  "sourceAfter": {
+    "unchanged": true,
+    "verified": 708,
+    "changed": []
+  },
+  "supplementAfter": {
+    "unchanged": true,
+    "verified": 12,
+    "changed": []
+  },
+  "originalSourceAfter": {
+    "unchanged": true,
+    "verified": 708,
+    "changed": []
+  },
+  "sourceTreeOwnershipAfter": {
+    "scope": "every_preexisting_private_copy_path_including_runtime_fixtures_dependencies_and_directories",
+    "uid": 65534,
+    "gid": 65534,
+    "verified": 23537,
+    "unexpected": [],
+    "unchanged": true
+  },
+  "supplementAfterSha256": "f8b33ce392eb4844179b16564eb8a953ea7ec4d84afa3fd65f076d54d1fc54f0",
+  "servicesAfter": {
+    "telomere-staging.service": {
+      "MainPID": "1952406",
+      "NRestarts": "0",
+      "WorkingDirectory": "/opt/telomere-pilot/releases/354fe7af62ea6701faafc3b04522abb1b4524d2d-launch04",
+      "ActiveState": "active",
+      "SubState": "running"
+    },
+    "telomere-staging-chain.service": {
+      "MainPID": "1952401",
+      "NRestarts": "0",
+      "WorkingDirectory": "/opt/telomere-pilot/app",
+      "ActiveState": "active",
+      "SubState": "running"
+    },
+    "telomere-staging-watchdog.service": {
+      "MainPID": "1952410",
+      "NRestarts": "0",
+      "WorkingDirectory": "/opt/telomere-pilot/watchdog-app",
+      "ActiveState": "active",
+      "SubState": "running"
+    }
+  },
+  "healthAfter": {
+    "live": {
+      "statusCode": 200,
+      "body": {
+        "status": "ok"
+      }
+    },
+    "ready": {
+      "statusCode": 200,
+      "body": {
+        "status": "ready",
+        "worker": "idle"
+      }
+    }
+  },
+  "profileAfterSha256": "a400feb3475b91168a5419d0a98c00ea804ba817c1c0ad34dea65d7d8808df8f",
+  "sourceDependencyInventoryAfterSha256": "2db68f8bea6f9ece793ed656769abcef4a4b19d237c4ea73ff6f1496a6f61d81",
+  "dependencyInventoryAfterSha256": "2db68f8bea6f9ece793ed656769abcef4a4b19d237c4ea73ff6f1496a6f61d81",
+  "dependenciesUnchanged": true,
+  "nonrootProcessesAfter": [],
+  "success": true,
+  "finishedAt": "2026-10-15T13:41:39.714676+00:00"
+}

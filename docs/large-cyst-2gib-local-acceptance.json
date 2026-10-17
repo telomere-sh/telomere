@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "completedAtUtc": "2026-10-13T16:44:56Z",
+  "source": {
+    "commit": "86a411b7192f99f27a0b23250fcaf25cc0403e05",
+    "gitArchiveSha256": "441596db9f8d22db30e1ec7e48ddcad84c0a5ca6cffb3faa9a13cc7eb8c85a05",
+    "acceptanceDriverSha256": "3102e4ac196653b9dc4f9d7d90eca4f194c24371e5eb659c1020448ad815b43c",
+    "verifiedGitBlobs": {
+      "src/cysts/large-checkpoints.ts": "8ab101e71ef7c21cc29297667f70d355f9e30158",
+      "src/cysts/types.ts": "a8ede8a5332b7f99ab8a5ac6c04e64691ec6d54e",
+      "src/sdk/cyst-key-wrap.ts": "251ff0f5c5157c5bbd98a271e89428585fd8746a",
+      "package-lock.json": "4d38f6ff461fcd5bf7f8754bade30498b1d85c07"
+    }
+  },
+  "environment": {
+    "os": "Windows NT 10.0.26100.0",
+    "node": "v22.22.2",
+    "storage": "single disposable local filesystem directory",
+    "externalS3": false,
+    "publicChain": false,
+    "liveServicesTouched": false
+  },
+  "method": {
+    "source": "sparse zero-filled file with a distinct deterministic SHA-256 marker in every 4 MiB chunk",
+    "publish": "saveLargeCystFile to LargeCystPrivateStore at the exact 2 GiB package quota",
+    "restart": "close and reopen private store, compare committed manifest",
+    "restore": "restoreLargeCystFile to a separate private destination",
+    "verification": "compare every source and restored byte in 4 MiB chunks and independently compute both whole-file SHA-256 digests"
+  },
+  "result": {
+    "status": "passed",
+    "sourceBytes": 2147221504,
+    "restoredBytes": 2147221504,
+    "partCount": 512,
+    "packageBytes": 2147297254,
+    "packageLimitBytes": 2147483648,
+    "byteForByteCompared": true,
+    "originalSha256": "786918d9331a48be90d208e7762f6d1fc9ec0ed1bbfc1aebc662b4e1a12728e0",
+    "restoredSha256": "786918d9331a48be90d208e7762f6d1fc9ec0ed1bbfc1aebc662b4e1a12728e0",
+    "publishMs": 63074,
+    "reopenMs": 76,
+    "restoreMs": 23248,
+    "compareMs": 2723,
+    "totalMs": 89973,
+    "driverReportedPeakRssBytes": 165875712,
+    "initialFreeMemoryBytes": 6274174976,
+    "minFreeMemoryBytes": 4331180032,
+    "initialFreeDiskBytes": 138967097344,
+    "minFreeDiskBytes": 132528291840
+  },
+  "limits": [
+    "No HTTP transfer, S3 provider, independent region, or chain transaction was used.",
+    "The source is sparse but every byte was read, encrypted, stored, decrypted, restored, and compared.",
+    "The 20-second performance target was not met: local publish alone took 63 seconds.",
+    "The driver-reported RSS is not a production memory bound; an unattributed concurrent OS snapshot showed a Node process with a larger working set."
+  ]
+}

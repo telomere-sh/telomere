@@ -1,0 +1,321 @@
+{
+  "schemaVersion": 1,
+  "scope": "mainnet preparation only; no wallet signatures or public transactions",
+  "applicationCommit": "ee6169d1007b11f037fbc409dc1f7575f15117c9",
+  "ownerReviewCommit": "8f5f41e9e0fd94c95c37992ff910f098bf7908b4",
+  "frozenOverlayGitSourcesVerified": 16,
+  "privateFilesIncluded": 0,
+  "publicTransactionsSent": 0,
+  "files": [
+    {
+      "path": "docs/evidence/legacy-mainnet-preparation-20261015/archive-preflight.stdout.txt",
+      "bytes": 741,
+      "sha256": "32a445cc854065803a1cf106fb3586b6a3c5370b1c30f9d7748e98c5e9e3cfed"
+    },
+    {
+      "path": "docs/evidence/legacy-mainnet-preparation-20261015/deployment-prepare.stdout.txt",
+      "bytes": 612,
+      "sha256": "f663a9d21cf53dea05a1afeda973c82be8c085a69f2ceb827701296e5204261d"
+    },
+    {
+      "path": "docs/evidence/legacy-mainnet-preparation-20261015/final-runtime-audit.json",
+      "bytes": 10419,
+      "sha256": "964e898167c110431808e0455c601d5dc3a93297846c8e758dff690399b15c70"
+    },
+    {
+      "path": "docs/evidence/legacy-mainnet-preparation-20261015/guard-node-initial-location-failure.stdout.txt",
+      "bytes": 1562,
+      "sha256": "d3003fbf56950a3855d4ef72d260cc74894a3af1f723a0d5bdea38e6b2127e4a"
+    },
+    {
+      "path": "docs/evidence/legacy-mainnet-preparation-20261015/guard-node-second-location-failure.stdout.txt",
+      "bytes": 10761,
+      "sha256": "fefd79a21e0f0dc2f1d58c8d6afff76ec70186cc5288327445e307dade89c097"
+    },
+    {
+      "path": "docs/evidence/legacy-mainnet-preparation-20261015/guard-node.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/evidence/legacy-mainnet-preparation-20261015/guard-node.stdout.txt",
+      "bytes": 10604,
+      "sha256": "2f6c052bc81b330fc80a738503f15ce10b4063e51996f11cd3092e5de799f76e"
+    },
+    {
+      "path": "docs/evidence/legacy-mainnet-preparation-20261015/guard-python.stderr.txt",
+      "bytes": 111,
+      "sha256": "9f19866c8af7bd0425354480972b9749c259e92bd47393c4d7e76dcf44f46db3"
+    },
+    {
+      "path": "docs/evidence/legacy-mainnet-preparation-20261015/guard-python.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/evidence/legacy-mainnet-preparation-20261015/guard-tests.json",
+      "bytes": 1235,
+      "sha256": "b9e94074e2c0cf6ce3bdad17828be0b6ac4fefee70463dd2fb102d8224e2a162"
+    },
+    {
+      "path": "docs/evidence/legacy-mainnet-preparation-20261015/linux/linux-tests-docker-isolation.json",
+      "bytes": 2287,
+      "sha256": "c3263c4100b577c30ddda47b6c63d71dce864e25ff4dc79e964e50f926783e92"
+    },
+    {
+      "path": "docs/evidence/legacy-mainnet-preparation-20261015/linux/linux-tests-docker-plugin-source.json",
+      "bytes": 1879,
+      "sha256": "81aae4acdd73cd0fb4cf2bd3112cc4175c7558fc927a265a9341cf79fb69a463"
+    },
+    {
+      "path": "docs/evidence/legacy-mainnet-preparation-20261015/linux/linux-tests-docker-plugin-workaround.json",
+      "bytes": 4187,
+      "sha256": "f6348282661180faf88d472256e0616555c3a8dcf2fc2ed1aed91ca20c53fa27"
+    },
+    {
+      "path": "docs/evidence/legacy-mainnet-preparation-20261015/linux/linux-tests-manifest-after.json",
+      "bytes": 88446,
+      "sha256": "eb5c425536c43b78fcd440332a98c2e8083e4fd4d6ae27330441d24a429c593a"
+    },
+    {
+      "path": "docs/evidence/legacy-mainnet-preparation-20261015/linux/linux-tests-manifest-before.json",
+      "bytes": 88446,
+      "sha256": "eb5c425536c43b78fcd440332a98c2e8083e4fd4d6ae27330441d24a429c593a"
+    },
+    {
+      "path": "docs/evidence/legacy-mainnet-preparation-20261015/linux/linux-tests-node.json",
+      "bytes": 28736,
+      "sha256": "f9655f352845c4dc96933c25fafbce834e5ed97bcdda9e9deef7d66481e2a3d6"
+    },
+    {
+      "path": "docs/evidence/legacy-mainnet-preparation-20261015/linux/linux-tests-node.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/evidence/legacy-mainnet-preparation-20261015/linux/linux-tests-node.stdout",
+      "bytes": 87,
+      "sha256": "d8558bc019140a1fc8f514028e93d02cd80b0105c26ab35bca8e1bbd30f83412"
+    },
+    {
+      "path": "docs/evidence/legacy-mainnet-preparation-20261015/linux/linux-tests-report.json",
+      "bytes": 3488,
+      "sha256": "7ab00dd0fcdb140b63cadaf9b5669b3d73ec45f9635cb139a625df6167f9aa40"
+    },
+    {
+      "path": "docs/evidence/legacy-mainnet-preparation-20261015/linux/linux-tests-retention.json",
+      "bytes": 1685,
+      "sha256": "ad9a823d9ca08d890a2076d1a5a5d86a7ee74ce39ec56bcfb3296a1c4bcd6945"
+    },
+    {
+      "path": "docs/evidence/legacy-mainnet-preparation-20261015/linux/linux-tests-runner.py",
+      "bytes": 7235,
+      "sha256": "9d38f8aa03046d01c256728e3ec9398b7e6b64c0f0438540763fffff28897887"
+    },
+    {
+      "path": "docs/evidence/legacy-mainnet-preparation-20261015/linux/linux-tests-vitest.config.mjs",
+      "bytes": 450,
+      "sha256": "42006161c57f342cedd637e5c60260a883a8075dbe8531908101b1bf42fa0d65"
+    },
+    {
+      "path": "docs/evidence/legacy-mainnet-preparation-20261015/operator-helper-8f5f41e.tar.gz",
+      "bytes": 69408,
+      "sha256": "bc171f311ef6228266ff5747a04ec4361209f8967a4132c485f1c837905569ff"
+    },
+    {
+      "path": "docs/evidence/legacy-mainnet-preparation-20261015/operator-helper-package.json",
+      "bytes": 470,
+      "sha256": "200e0b4f972f076225cce2ca0e4abc888ea68c6ea916ddd3cfaa3b2be62e77b4"
+    },
+    {
+      "path": "docs/evidence/legacy-mainnet-preparation-20261015/preexisting-service-observation.json",
+      "bytes": 1625,
+      "sha256": "bb8dd87e47a139dee08fac67be7fe31766363bd3918e9eb01842e615484dcb85"
+    },
+    {
+      "path": "docs/evidence/legacy-mainnet-preparation-20261015/README.md",
+      "bytes": 3938,
+      "sha256": "b3114e2ebf26eb041e4d8b12af8782bf2cde32bc6db9162a71e14471f9898697"
+    },
+    {
+      "path": "docs/evidence/legacy-mainnet-preparation-20261015/vps/activation-boundary-validation.json",
+      "bytes": 260,
+      "sha256": "b8114227d8f77b2fbb647ac4ff3e2efdd431684c4f6e66a5d03202820e157b78"
+    },
+    {
+      "path": "docs/evidence/legacy-mainnet-preparation-20261015/vps/build-validation.json",
+      "bytes": 633,
+      "sha256": "75bd8ec542e08cda8df0b9d9215eb901b0aad33b7ab7851745f77223250bc150"
+    },
+    {
+      "path": "docs/evidence/legacy-mainnet-preparation-20261015/vps/controller-preparation.json",
+      "bytes": 1095,
+      "sha256": "a1f79c6ca8cd960c9fa629375435eccea7a663c9f265a6b4380e4aa3265fbccd"
+    },
+    {
+      "path": "docs/evidence/legacy-mainnet-preparation-20261015/vps/cpu-smoke.json",
+      "bytes": 440,
+      "sha256": "972f92c3d8cdc408bb4a71bd002637a52afd4a41dbd9eb62c1fcca39c5e57102"
+    },
+    {
+      "path": "docs/evidence/legacy-mainnet-preparation-20261015/vps/database-schema-validation.json",
+      "bytes": 777,
+      "sha256": "c915ffd2a67ea16dc32fae22764aa1c736a6b4200056d87cbafc55d9410cbcb7"
+    },
+    {
+      "path": "docs/evidence/legacy-mainnet-preparation-20261015/vps/deployment-plan-base-mainnet.json",
+      "bytes": 29895,
+      "sha256": "2be56662f572ae01c25a2950f9f010104f12e2e30afb3150f153b96993f15bf8"
+    },
+    {
+      "path": "docs/evidence/legacy-mainnet-preparation-20261015/vps/executor-smoke.json",
+      "bytes": 870,
+      "sha256": "bdf632d435d0f60942711db66b34190c4c0d7a24442ef054659d2cecfb3c14b1"
+    },
+    {
+      "path": "docs/evidence/legacy-mainnet-preparation-20261015/vps/expected-public-summary.json",
+      "bytes": 2225,
+      "sha256": "459aa6dee3f08fdd733d505663291ff1883fc6fa3912ac7c87c3e93a3c1e55e1"
+    },
+    {
+      "path": "docs/evidence/legacy-mainnet-preparation-20261015/vps/final-isolation-validation.json",
+      "bytes": 2058,
+      "sha256": "84db15481740f88cc42045474aa594fc2af350e773daa85476e753420953ce18"
+    },
+    {
+      "path": "docs/evidence/legacy-mainnet-preparation-20261015/vps/image-validation.json",
+      "bytes": 290,
+      "sha256": "38515db144b76fea5886d957f432ffeb6592d18bdc4848891beecd937d9457e9"
+    },
+    {
+      "path": "docs/evidence/legacy-mainnet-preparation-20261015/vps/network-repair.json",
+      "bytes": 1226,
+      "sha256": "2e55ec26d2a30ea091967f3306e51b5cdbed78048b6c234b2b9a88aeda3259b2"
+    },
+    {
+      "path": "docs/evidence/legacy-mainnet-preparation-20261015/vps/owned-bridge-validation.json",
+      "bytes": 1015,
+      "sha256": "93a5340b3755b34fe6e6285b44a14fe2d737a2829cd1e477e1528f525c82b101"
+    },
+    {
+      "path": "docs/evidence/legacy-mainnet-preparation-20261015/vps/owner-review-preparation.json",
+      "bytes": 32008,
+      "sha256": "e07d97c7b52d2aa9f9cfc718c9728d80abc21a245c26d030b6b6419b02c87ef3"
+    },
+    {
+      "path": "docs/evidence/legacy-mainnet-preparation-20261015/vps/postgres-validation.json",
+      "bytes": 468,
+      "sha256": "03fb636c87a06465b0c842bfdcdea7440a74ea7b5a8eaba8ceb7c679a88e689d"
+    },
+    {
+      "path": "docs/evidence/legacy-mainnet-preparation-20261015/vps/runtime-identities.json",
+      "bytes": 638,
+      "sha256": "c449578a5e04461dd9baee1d2e17d0f9674cfc504048c1310fb756ca0a5709b3"
+    },
+    {
+      "path": "docs/evidence/legacy-mainnet-preparation-20261015/vps/staging-public-signer.json",
+      "bytes": 275,
+      "sha256": "1b576a5060e7ee31a795201acf19adeced8e687ca2caf6b30fd9ed4f7f7e0dc5"
+    },
+    {
+      "path": "docs/evidence/legacy-mainnet-preparation-20261015/vps/vps-source-record.json",
+      "bytes": 370768,
+      "sha256": "d3cd89f763943cc276c2e744dfe5869a7505373785cc246a516bf03aefc53779"
+    },
+    {
+      "path": "docs/evidence/legacy-mainnet-preparation-20261015/website-byte-verification.json",
+      "bytes": 172,
+      "sha256": "fd7f3560d43bd8edaf586279ab94160901cc9b88d2e95a83abce6984c8195790"
+    },
+    {
+      "path": "ops/legacy-mainnet/activation.json.template",
+      "bytes": 815,
+      "sha256": "79208a8a12c1d3ef568413664798f90371f6763d2dfd801b9a6e56715990d672"
+    },
+    {
+      "path": "ops/legacy-mainnet/docker-daemon.json.draft",
+      "bytes": 686,
+      "sha256": "8c016088338d6bd889b079a47bbfa0d5dc61f59679b1110e8557ea09fcbf5173"
+    },
+    {
+      "path": "ops/legacy-mainnet/expected.json.template",
+      "bytes": 2981,
+      "sha256": "11ad786581e9486f8f61f0b05d26f9d5128766c0bb7aacc5dd27dc0662ae529d"
+    },
+    {
+      "path": "ops/legacy-mainnet/mainnet.env.template",
+      "bytes": 1413,
+      "sha256": "ee92c342a40c0553a7fbaab8e47626cb008dfa9d629b73ea22dd3d6e569d47ca"
+    },
+    {
+      "path": "ops/legacy-mainnet/network-fixture.test.py",
+      "bytes": 3099,
+      "sha256": "e9449c0b9522b007bad4c647d5021a6617d0ab7728e56b377c30a54e5c3a47a4"
+    },
+    {
+      "path": "ops/legacy-mainnet/open-owner-review.ps1",
+      "bytes": 1218,
+      "sha256": "54d2c12ab0fe3178ece8ac555c15294a79070f8ce7d53aa0e73a7f3676988ce4"
+    },
+    {
+      "path": "ops/legacy-mainnet/OPERATOR-PLAN.md",
+      "bytes": 14666,
+      "sha256": "b1a8509966e2b24deba9cc6d67a33026bf4f4571e2b70f1baf8e78ba20ff5121"
+    },
+    {
+      "path": "ops/legacy-mainnet/owner-review/PACKAGE-MANIFEST.json",
+      "bytes": 6337,
+      "sha256": "fca399b17e90f7193266d5be89489ec6acdfe061f7374539678fa5122db2ce58"
+    },
+    {
+      "path": "ops/legacy-mainnet/owner-review/run-review.sh",
+      "bytes": 1135,
+      "sha256": "fc6443ea7930d7b9186a3226706e3c007a6cd20d8c1c622fb6528ea36fc1f64d"
+    },
+    {
+      "path": "ops/legacy-mainnet/owner-review/runtime/preflight.mjs",
+      "bytes": 4654,
+      "sha256": "8a8a1107c5012934e62d564f8b932bb3194d49e7b97fc1ee9022cd8fc30286c9"
+    },
+    {
+      "path": "ops/legacy-mainnet/owner-review/START-REVIEW.md",
+      "bytes": 5936,
+      "sha256": "eb7533f5001a52b972209a14064a8f0d7e0079866e9921242c5cafa057afe621"
+    },
+    {
+      "path": "ops/legacy-mainnet/owner-review/telomere-owner-review.service.draft",
+      "bytes": 1307,
+      "sha256": "f094df5b1e7c039d5220c7ca1d8b0955197067ca920d266fe22c15e98255d526"
+    },
+    {
+      "path": "ops/legacy-mainnet/preflight-fixture.test.mjs",
+      "bytes": 9225,
+      "sha256": "2325a77a18a2072eaa39ba57ddff0fa92f1ca8dbf3377c7fbcf583c81ef6127c"
+    },
+    {
+      "path": "ops/legacy-mainnet/preflight.mjs",
+      "bytes": 19505,
+      "sha256": "347c99c62d57980cdb1fcde364a6e8232b3d542419aa6bed21e49ca6aa84e52e"
+    },
+    {
+      "path": "ops/legacy-mainnet/prepare-network.py",
+      "bytes": 7063,
+      "sha256": "ab9832d987bf3d1c0086b356e10e7f07dbc281d6628d725df8cff906496c7eef"
+    },
+    {
+      "path": "ops/legacy-mainnet/telomere-mainnet-docker.service.draft",
+      "bytes": 918,
+      "sha256": "286f0c8ef13d25f55a0e0f1d2e29551bd147f044bc4f38bf3d7aad915e160bea"
+    },
+    {
+      "path": "ops/legacy-mainnet/telomere-mainnet-network.service.draft",
+      "bytes": 497,
+      "sha256": "1a9e5740510b96711c41cac20d636e8046f21a2267a6f794236604692b843d0e"
+    },
+    {
+      "path": "ops/legacy-mainnet/telomere-mainnet-pilot.service.draft",
+      "bytes": 1391,
+      "sha256": "01ff6a09cd3a9e3918b42b7c9a546733f775d088a7ecf0715e0b7e144206eb64"
+    }
+  ]
+}

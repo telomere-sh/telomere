@@ -1,0 +1,29 @@
+{
+  "observedAt": "2026-10-15T20:34:29.850799+00:00",
+  "change": "user-approved Telegram and X social destinations; original styling retained",
+  "originalRoot": "/var/www/telomere-public/ee6169d1007b11f037fbc409dc1f7575f15117c9",
+  "publicRoot": "/var/www/telomere-public/20261015-social-859669b4",
+  "fileCount": 312,
+  "unchangedFileCount": 311,
+  "changedFiles": [
+    "site.js"
+  ],
+  "originalSiteJs": {
+    "sha256": "9e8eb19cf38c72cccdd3765e9b498b9924cb851d5c4b222cfca00e64c0c434e6",
+    "bytes": 43961
+  },
+  "currentSiteJs": {
+    "sha256": "859669b4db1c9ba2061823769cbd80e1c38fc30be0bcbf71d4245318ab5e29ce",
+    "bytes": 44283
+  },
+  "vhostBeforeSha256": "1d62089da137aa3e10e68833ec11c58054559e2c303b2d7073456595525abadc",
+  "vhostAfterSha256": "be4f6079c68d212fe2da5c207a134b79a8fb2294aae7993bd761fe8552917c43",
+  "marketingCspSha256": "201329ed30f78ce89881a5213f095979756e6c6b7b4bd79634da87eb1192090c",
+  "ownerReviewUnchangedSha256": "7246164cdb5ccbec1cfb6a4b4bb4c362a0cdadce55cc26d6fcc782060c980958",
+  "mainnetControllerPid": 0,
+  "nginxTest": "nginx: the configuration file /etc/nginx/nginx.conf syntax is ok\nnginx: configuration file /etc/nginx/nginx.conf test is successful",
+  "telegram": "https://t.me/telomereonchain",
+  "x": "https://x.com/telomere_base?s=11",
+  "frontendDesignChanged": false,
+  "githubUploads": 0
+}

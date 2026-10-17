@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-14",
+  "phase": "M5 explicit storage capacity, following earlier backend cutoff",
+  "quotaPolicy": {
+    "version": 2,
+    "kind": "telomere-cyst-quota-v2",
+    "maxOwnerCheckpoints": 4096,
+    "maxOwnerBytes": 33554432
+  },
+  "defaultPreserved": {
+    "operatorPolicyAbsent": 512,
+    "clientProfileAbsent": 512,
+    "envelopeVersion": 1,
+    "maximumOwnerBytes": 33554432
+  },
+  "negotiation": {
+    "header": "X-Telomere-Cyst-Quota",
+    "explicitValue": "2",
+    "node": "new CystClient(transport,{quotaVersion:2})",
+    "python": "TelomereClient(origin,cyst_quota_version=2)"
+  },
+  "migration": "Named SQL count CHECK changed512-to4096 inside one transaction only under explicit operator policy",
+  "retention": "No checkpoint deletion. Legacy full usage above512 returns409 profile-required; known original checkpoints remain downloadable. Both count and32MiB bounds apply.",
+  "tests": {
+    "passed": 2,
+    "failed": 0,
+    "skipped": 0,
+    "successful": true,
+    "cases": [
+      {
+        "title": "negotiates an explicitly reviewed quota, retains 960 actual HTTP checkpoints, and atomically fences count/byte exhaustion",
+        "status": "passed",
+        "durationSeconds": 13.478
+      },
+      {
+        "title": "reads only an exact hash-pinned private operator policy and rejects unreviewed policy fields",
+        "status": "passed",
+        "durationSeconds": 0.01
+      }
+    ]
+  },
+  "actualHttpCheckpoints": 960,
+  "sameOriginalRetryDoesNotReserveAgain": true,
+  "firstMiddleLatestRestorePassed": true,
+  "concurrentFinalSlotOnlyOneReservation": true,
+  "pythonCystTests": {
+    "passed": 56,
+    "failed": 0,
+    "skipped": 0,
+    "durationSeconds": 4.006
+  },
+  "browserBundlePassed": true,
+  "sourceSha256": {
+    "src/cysts/quota.ts": "690d53cfb6f70abbfc81ac8bdf61f956c298d00c348ffcd9ebcb6d0f30f2c483",
+    "src/cysts/quota-types.ts": "a02dc52126a74813baace5ac2a7c061689bbd9b554c71e2d924d30d4a9c2f561",
+    "src/cysts/schema.ts": "02229f653857494f56f7c675c377bdf8d30d36a652e37866c64dc22b3cfe02a5",
+    "src/cysts/service.ts": "7d942eceb4c6c95c7bfa8065f2c137215dbade24b6d28e3b52a2ecb80a062796",
+    "src/cysts/routes.ts": "de2036fc20203cbe242afca7f95e822af148d4fb5761876ecdcb09d50f9a189f",
+    "src/cysts/configured.ts": "cf45f9a3f91aaba65f6b0a81b23a4692676311cdbe0a831cbcc9cc9146c05293",
+    "src/sdk/cysts.ts": "c90f2dc164e5b88e3df6bb6058215379e228973bd451240d028845031266cc8d",
+    "src/sdk/transport.ts": "11ee75f202b98665ca376d05191e4b1af4aa69c311710f280c0bbf6b84e5e1d0",
+    "python/src/telomere_sdk/cysts.py": "cdbae5ebc3d9ffb7ad7933508578a4be9a9654608bc3bab304675b64724b94ed",
+    "python/src/telomere_sdk/transport.py": "47294745fd7048364970f10e199247630f573e069bcad1dfde29d7c54655ede9",
+    "python/src/telomere_sdk/client.py": "333c8733f919e6b75d0f6a7cf056811d750833f97cf8a1e5da9e40bfdfad9999",
+    "tests/cyst-quota-v2.test.ts": "79dc8a249228834302f6830fe77da4c86b663ce29be87f8a7a0cd7ff97268370",
+    "python/tests/test_cyst_quota_v2.py": "131fc9d656fedf95afffac11d171eadd23d52040bb1939b426379c8fdbb9e693"
+  },
+  "publicTransactions": 0,
+  "paidPublicRequests": 0,
+  "notEstablished": [
+    "arbitrarily large checkpoint state",
+    "unlimited history retention",
+    "public funded launch acceptance"
+  ]
+}

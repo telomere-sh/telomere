@@ -1,0 +1,12 @@
+{
+  "diagnosticOnly": true,
+  "instrumentedWorker": true,
+  "exitCode": 0,
+  "sourceGitRevision": "079bb31fa76217df9d3d3d0e309293bf4f58e89c",
+  "workerOriginalSha256": "0e07056bae0ea1230d02d8ec813338dee080938e32ea47b16b75e221c61470fa",
+  "workerInstrumentedSha256": "6b324af7af27da8f976932f314785448faf3a8278709fe4cde8675d8290056c7",
+  "helperSha256": "44b3be79d90c28754074fe639e5c2928ede4ce1fdaedc7cd18f2d965796e111e",
+  "directory": "/opt/telomere-host-runtime/yagna-native-doc-wal-phase-probe-20261015",
+  "attempts": 3,
+  "straceInstalled": false
+}

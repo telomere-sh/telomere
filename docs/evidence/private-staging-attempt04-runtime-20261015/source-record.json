@@ -1,0 +1,113 @@
+{
+  "boundary": {
+    "exactProofBytesPreserved": true,
+    "masterOperationReportCreated": false,
+    "privateProfilesOptionsLogsKeysDumpsRawChainOrInventoryNamesRetained": false,
+    "rawStateFilesRetained": false,
+    "receiptReportsCollectedNotNewReceiptExecution": true,
+    "serverWritesOrPhases": 0,
+    "stateStatusIsExplicitlySanitized": true
+  },
+  "collectedAt": "2026-10-15T05:07:24.794947+00:00",
+  "collector": {
+    "bytes": 14682,
+    "path": "collect-runtime-readonly.py",
+    "sha256": "e001efdea4fbfe3c846708ea6a17073b1d7a570c75733fce55041f5521e34672"
+  },
+  "files": [
+    {
+      "alias": "rehearsal/clone/latest-acceptance.json",
+      "bytes": 6621,
+      "path": "rehearsal/clone/latest-acceptance.json",
+      "sha256": "68baae093718567967b8e930def50d3b701b2fc8db319d4e719b6af76b8c01a3",
+      "source": "/opt/telomere-pilot/rollout/staging-354fe7af62ea-launch04/clone/latest-acceptance.json"
+    },
+    {
+      "alias": "rehearsal/clone/old-acceptance.json",
+      "bytes": 6619,
+      "path": "rehearsal/clone/old-acceptance.json",
+      "sha256": "3d7b34bc2fc89fb8545c113f0071fa2494e79c43f8602c33f623f2483f291a47",
+      "source": "/opt/telomere-pilot/rollout/staging-354fe7af62ea-launch04/clone/old-acceptance.json"
+    },
+    {
+      "alias": "rehearsal/clone-cleanup.json",
+      "bytes": 137,
+      "path": "rehearsal/clone-cleanup.json",
+      "sha256": "516da5e28e7c2179fa11b688acbac5cb4168cf605b0f132cfb8ae1c4b5b565a2",
+      "source": "/opt/telomere-pilot/rollout/staging-354fe7af62ea-launch04/clone-cleanup.json"
+    },
+    {
+      "alias": "rehearsal/image-equivalence.json",
+      "bytes": 3576,
+      "path": "rehearsal/image-equivalence.json",
+      "sha256": "b03110defcf4dfb659eb709658ea1ddbd10368a2385e8e57ed878862d17ecaca",
+      "source": "/opt/telomere-pilot/rollout/staging-354fe7af62ea-launch04/image-equivalence.json"
+    },
+    {
+      "alias": "rehearsal/snapshot-fingerprint.json",
+      "bytes": 3205,
+      "path": "rehearsal/snapshot-fingerprint.json",
+      "sha256": "942af5f662fe4cb68bdf2ba7f6da09f0b331260d8321311f614e72f69507a4c4",
+      "source": "/opt/telomere-pilot/rollout/staging-354fe7af62ea-launch04/snapshot-fingerprint.json"
+    },
+    {
+      "alias": "fresh-final/clone/latest-acceptance.json",
+      "bytes": 6621,
+      "path": "fresh-final/clone/latest-acceptance.json",
+      "sha256": "68baae093718567967b8e930def50d3b701b2fc8db319d4e719b6af76b8c01a3",
+      "source": "/opt/telomere-pilot/rollout/staging-354fe7af62ea-final04/clone/latest-acceptance.json"
+    },
+    {
+      "alias": "fresh-final/clone/old-acceptance.json",
+      "bytes": 6619,
+      "path": "fresh-final/clone/old-acceptance.json",
+      "sha256": "3d7b34bc2fc89fb8545c113f0071fa2494e79c43f8602c33f623f2483f291a47",
+      "source": "/opt/telomere-pilot/rollout/staging-354fe7af62ea-final04/clone/old-acceptance.json"
+    },
+    {
+      "alias": "fresh-final/clone-cleanup.json",
+      "bytes": 137,
+      "path": "fresh-final/clone-cleanup.json",
+      "sha256": "516da5e28e7c2179fa11b688acbac5cb4168cf605b0f132cfb8ae1c4b5b565a2",
+      "source": "/opt/telomere-pilot/rollout/staging-354fe7af62ea-final04/clone-cleanup.json"
+    },
+    {
+      "alias": "fresh-final/image-equivalence.json",
+      "bytes": 3576,
+      "path": "fresh-final/image-equivalence.json",
+      "sha256": "e170f216d365948ba32d7b7f7a2aabdb721760be1fbfe38572e0d600265c7fe3",
+      "source": "/opt/telomere-pilot/rollout/staging-354fe7af62ea-final04/image-equivalence.json"
+    },
+    {
+      "alias": "fresh-final/snapshot-fingerprint.json",
+      "bytes": 3205,
+      "path": "fresh-final/snapshot-fingerprint.json",
+      "sha256": "04ece5b612115bb71f515b819d150da58c97a1446e6bb39914d1c7338cd4526f",
+      "source": "/opt/telomere-pilot/rollout/staging-354fe7af62ea-final04/snapshot-fingerprint.json"
+    },
+    {
+      "alias": "fresh-final/preactivation-fingerprint.json",
+      "bytes": 3205,
+      "path": "fresh-final/preactivation-fingerprint.json",
+      "sha256": "04ece5b612115bb71f515b819d150da58c97a1446e6bb39914d1c7338cd4526f",
+      "source": "/opt/telomere-pilot/rollout/staging-354fe7af62ea-final04/preactivation-fingerprint.json"
+    }
+  ],
+  "kind": "exact_safe_runtime_proof_retention",
+  "sanitizedStateStatus": {
+    "bytes": 3868,
+    "path": "sanitized-state-status.json",
+    "sha256": "7d84da58b7327157c6edb0678df5a57f54e1ffc29c197a2ec1b0e7b9d2d9dcc9"
+  },
+  "schemaVersion": 1,
+  "verification": {
+    "allFourActualAcceptanceReportsPassed": true,
+    "allTenCleanupFlagsTrue": true,
+    "childMarkerBoundary": "Child held=true is the exact historical preactivation clone record accepted by parent hash; parent activated/held=false is authoritative.",
+    "cystCiphertextBytes": 93,
+    "cystCount": 1,
+    "freshFullFingerprintExact": true,
+    "originalReceiptCount": 5,
+    "originalTableCount": 7
+  }
+}

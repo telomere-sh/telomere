@@ -1,0 +1,41 @@
+{
+  "identity": {
+    "database": "telomere_mainnet",
+    "role": "telomere_mainnet",
+    "address": "127.0.0.1/32",
+    "port": 15435
+  },
+  "role": {
+    "rolsuper": false,
+    "rolcreatedb": false,
+    "rolcreaterole": false,
+    "rolreplication": false
+  },
+  "schemaTables": 43,
+  "populatedTables": [
+    {
+      "table": "platform_receipt_lock",
+      "count": 1
+    },
+    {
+      "table": "platform_signer_lock",
+      "count": 1
+    },
+    {
+      "table": "receipt_hour_lock",
+      "count": 1
+    },
+    {
+      "table": "selection_income_endpoint_lock",
+      "count": 1
+    },
+    {
+      "table": "x402_lock",
+      "count": 1
+    }
+  ],
+  "onlyMigrationLocksPopulated": true,
+  "controllerChainBindingEmpty": true,
+  "financialRecords": 0,
+  "readOnly": true
+}

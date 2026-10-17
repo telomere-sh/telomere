@@ -1,0 +1,204 @@
+{
+  "schemaVersion": 1,
+  "status": "private_staging_update_accepted_after_fresh_held_clone_and_independent_postactivation_checks",
+  "rootPostactivationCutoff": "2026-10-15T05:03:45.669Z",
+  "independentPostoperationReview": {
+    "path": "docs/private-staging-postoperation-independent-review-2026-10-15.json",
+    "sha256": "9d50e76c0875cb9c83c8e8052b624acc9531da631a2d11c0e796724aee4be4ef",
+    "bytes": 6240
+  },
+  "scope": {
+    "backendOnly": true,
+    "mode": "demo",
+    "chainId": 31337,
+    "publicTarget": "Base/native Circle USDC",
+    "publicBaseDeployment": false,
+    "existingLegacyProfileUnchanged": true,
+    "newOptionalProfilesEnabled": false
+  },
+  "source": {
+    "gitRevision": "354fe7af62ea6701faafc3b04522abb1b4524d2d",
+    "archiveSha256": "86b5dc9f36dcf841963f0ffa8161023c126f1fae473c94909f5dddae3040fdce",
+    "sourceFiles": 685,
+    "generatedRuntimeFiles": 564,
+    "release": "/opt/telomere-pilot/releases/354fe7af62ea6701faafc3b04522abb1b4524d2d-launch04",
+    "operatorRunnerSha256": "f9d9b264e9b5b447894ff982239b96c4be2973fe4d94daa23a14d4ed63943d32",
+    "helperSha256": "43d37c51c7d50a1a9971b444367045a2c7e73b91239418d679460d1fb06176e5",
+    "releasePinsSha256": "6a85f84aefd0a6adceb5caca7678a869211d6a3c350f313c7967884185203e7a",
+    "controllerDropinSha256": "aecd3b49ef32d8ea3e352b5dabe288abc62f3e8b64848a94da51f33fadef0572"
+  },
+  "softwareAcceptance": {
+    "path": "docs/backend-composed-linux-validation-2026-10-15.json",
+    "sha256": "1689a21f8d87b5558ead024ca01352043e59ee2de813e349ba0593d54642cb3e",
+    "bytes": 7483
+  },
+  "operation": {
+    "run": "staging-354fe7af62ea-launch04",
+    "finalRun": "staging-354fe7af62ea-final04",
+    "activatedAt": "2026-10-15T05:03:01.938875+00:00",
+    "rehearsalSnapshotMaintenanceSeconds": 7.471,
+    "heldFinalCutoverMaintenanceSeconds": 27.662,
+    "maintenanceIntervalsAreSeparate": true,
+    "consistentBackupVersion": 2,
+    "rehearsalAndFreshFinalCloneRestores": 2,
+    "oldAndNewControllerStartCloseChecksPerClone": 2,
+    "historicalReceiptsPerControllerCheck": 5,
+    "actualCpuExecutorChecks": 2,
+    "freshCompleteFingerprintUnchangedBeforeActivation": true,
+    "rawChainIncluded": true,
+    "historicalBlocksTimestampsTransactionsDiscarded": false,
+    "threeOriginalServicesActive": true,
+    "automaticRestarts": 0,
+    "liveHttpStatus": 200,
+    "readyHttpStatus": 200,
+    "chainAndWatchdogCodeSelectionUnchanged": true,
+    "oldAppAndConsistentBackupsRetained": true,
+    "originalDatabaseChainOrCystBackupRestored": false,
+    "liveForcedFailureOrRollbackPerformed": false,
+    "oldCodeRollbackCompatibilityActuallyTestedInMigratedClones": true
+  },
+  "postactivation": {
+    "sourceAndDistBytesAndOwnershipVerified": true,
+    "actualNodeExecutableCwdArgvVerified": true,
+    "actualMigrationsAppliedSchemaTableCount": 43,
+    "originalSevenTablesAndAllOriginalColumnsUnchanged": true,
+    "originalTableCounts": {
+      "auth_nonces": 0,
+      "auth_sessions": 28,
+      "cyst_owners": 1,
+      "cysts": 1,
+      "jobs": 5,
+      "leash_refs": 6,
+      "transaction_journal": 5
+    },
+    "cysts": {
+      "count": 1,
+      "bytes": 93,
+      "blobSha256": "d1bd3ed0000961764263d14e99fcdf48f070e2acdd685784c611379c23868884",
+      "metadataSha256": "67c9b3738ea030a4044e6182d5fdb567994d40f9e390e9a5acaf1cf630dcd49c",
+      "counterMismatches": 0
+    },
+    "freshlyVerifiedCanonicalHead": {
+      "number": "23",
+      "hash": "0xdbf9dfcd25294ccce4fd0847e1d6939c113890808f20a379b293ce91e672607e",
+      "stateRoot": "0xc8823e14a0f2388825f59a3b96e5db9e57ab4d7dc883d146ad3a5fc7a290a763"
+    },
+    "retainedCloneStateSha256": "23cec63b1ac35b2ca75331436d89dcdc06754660b1c3c6e9c989e75e8123f229",
+    "scopedCloneContainersNamespacesHelperDaemonUnitsRemaining": 0,
+    "independentAnvilPidCgroupObservation": "see independent postoperation review"
+  },
+  "stateMarkerBoundary": {
+    "authoritativeParentStage": "activated",
+    "authoritativeParentHeldActive": false,
+    "historicalChildStage": "clone_accepted",
+    "historicalChildHeldActive": true,
+    "effectiveHeldActive": false,
+    "parentPinsExactHistoricalChild": true,
+    "note": "The immutable child is the accepted preactivation clone record, not a live outage marker."
+  },
+  "operatorPreparationControls": {
+    "independentCommandCleanupCutoverCases": 34,
+    "independentRecoveryAndReleaseByteCases": 41,
+    "authorCutoverLauncherCases": 16,
+    "actualLinuxServiceUidPermissionRegression": "passed",
+    "originalNonNullNonceRows": 5,
+    "boundary": "Local extracted-function controls overlap; they are not live failure injection or additional functional coverage."
+  },
+  "functionalReadiness": {
+    "mandatoryScopePercent": 76.2222,
+    "engineeringRangePercent": [
+      72.4444,
+      80.0
+    ],
+    "gpuCellsOptionalExcluded": true,
+    "functionalScoreIncreaseForThisOperation": 0,
+    "publicLaunchReady": false,
+    "remaining": [
+      "Production supplier workload/metering and authenticated treasury/finality, debt/refund and fault-reserve integration.",
+      "Actual admitted hardware-attested CPU Cyst restore and independent physical-host recovery.",
+      "Current approved managed-inference policy/TCB admission.",
+      "Owner-funded public Base/USDC acceptance, verification, independent audits and operational controls."
+    ]
+  },
+  "publicTransactionsSent": 0,
+  "paidProviderRequestsSent": 0,
+  "evidence": [
+    {
+      "path": "docs/evidence/private-staging-attempt04-runtime-20261015/source-record.json",
+      "sha256": "2ea4d3e9c7a2c381f09f3b4a5691d40d4db4048ab56f302d12d87cd145286ebb",
+      "bytes": 4854
+    },
+    {
+      "path": "docs/evidence/private-staging-attempt04-runtime-20261015/sanitized-state-status.json",
+      "sha256": "7d84da58b7327157c6edb0678df5a57f54e1ffc29c197a2ec1b0e7b9d2d9dcc9",
+      "bytes": 3868
+    },
+    {
+      "path": "docs/evidence/private-staging-root-postactivation-20261015/source-record.json",
+      "sha256": "00a3122fdd1860520b0b7e12eb487f1ff5cef067bea0d673c962bc3fe37c5ef0",
+      "bytes": 3440
+    },
+    {
+      "path": "docs/evidence/private-staging-root-postactivation-20261015/status.json",
+      "sha256": "e2b589733ac2dc9d342a592cbb29174e62ee12d3716344f14233c6f75927681c",
+      "bytes": 2618
+    },
+    {
+      "path": "docs/evidence/private-staging-root-postactivation-20261015/runtime.json",
+      "sha256": "7c19fba3a76cb7ddea2d45c0d27dbff01e7d8be006cb9f09f9072554dcee9003",
+      "bytes": 1099
+    },
+    {
+      "path": "docs/evidence/private-staging-root-postactivation-20261015/original-data.json",
+      "sha256": "e7ba1200c4b7302a4c60664f727ee6fefea6641fc65111ef59d8461166a8fb20",
+      "bytes": 1758
+    },
+    {
+      "path": "docs/evidence/private-staging-attempt04-runtime-20261015/rehearsal/clone/latest-acceptance.json",
+      "sha256": "68baae093718567967b8e930def50d3b701b2fc8db319d4e719b6af76b8c01a3",
+      "bytes": 6621
+    },
+    {
+      "path": "docs/evidence/private-staging-attempt04-runtime-20261015/rehearsal/clone/old-acceptance.json",
+      "sha256": "3d7b34bc2fc89fb8545c113f0071fa2494e79c43f8602c33f623f2483f291a47",
+      "bytes": 6619
+    },
+    {
+      "path": "docs/evidence/private-staging-attempt04-runtime-20261015/fresh-final/clone/latest-acceptance.json",
+      "sha256": "68baae093718567967b8e930def50d3b701b2fc8db319d4e719b6af76b8c01a3",
+      "bytes": 6621
+    },
+    {
+      "path": "docs/evidence/private-staging-attempt04-runtime-20261015/fresh-final/clone/old-acceptance.json",
+      "sha256": "3d7b34bc2fc89fb8545c113f0071fa2494e79c43f8602c33f623f2483f291a47",
+      "bytes": 6619
+    },
+    {
+      "path": "docs/evidence/private-staging-attempt04-runtime-20261015/fresh-final/snapshot-fingerprint.json",
+      "sha256": "04ece5b612115bb71f515b819d150da58c97a1446e6bb39914d1c7338cd4526f",
+      "bytes": 3205
+    },
+    {
+      "path": "docs/evidence/private-staging-attempt04-runtime-20261015/fresh-final/preactivation-fingerprint.json",
+      "sha256": "04ece5b612115bb71f515b819d150da58c97a1446e6bb39914d1c7338cd4526f",
+      "bytes": 3205
+    }
+  ],
+  "preservedEarlierFailures": [
+    "docs/private-staging-attempt01-2026-10-15.json",
+    "docs/private-staging-attempt02-2026-10-15.json",
+    "docs/private-staging-attempt03-2026-10-15.json"
+  ],
+  "operatorReviews": [
+    {
+      "path": "docs/private-staging-rollout-attempt4-review-2026-10-15.json",
+      "sha256": "1f075f183f9dcd7e23bd7b9139abceeabeb45ad342df41a619a95d961623dfef",
+      "bytes": 6588
+    },
+    {
+      "path": "docs/private-staging-recovery-independent-review-2026-10-15.json",
+      "sha256": "d319c843b8c4d396792e730b1a8034d781f63533261b15f4e0d254dce6fe2b91",
+      "bytes": 6073
+    }
+  ]
+}

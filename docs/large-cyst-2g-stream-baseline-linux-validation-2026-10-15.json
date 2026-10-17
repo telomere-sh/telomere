@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "recordedAtUtc": "2026-10-15T11:55:02.154405+00:00",
+  "status": "INTEGRITY_ACCEPTED_PERFORMANCE_TARGET_NOT_MET",
+  "libraryRevision": "5b31957bce5c2dabc50a2ca23d43906a1612fc13",
+  "sourceBytes": 2147221504,
+  "encryptedPackageBytes": 2147297276,
+  "partCount": 512,
+  "restoreMs": 29475.997332000014,
+  "restoreTargetMs": 20000,
+  "targetMet": false,
+  "peakRssBytes": 182206464,
+  "sourceSha256": "dd4aef2b53b96215feb8dd12dac791a262bff899b3a36869bfe8bd474a417d24",
+  "restoredSha256": "dd4aef2b53b96215feb8dd12dac791a262bff899b3a36869bfe8bd474a417d24",
+  "sourceAllocatedBytes": 2147225600,
+  "restoredAllocatedBytes": 2147225600,
+  "allCapturedModuleBytesUnchanged": true,
+  "capturedModuleFiles": 12,
+  "evidence": [
+    {
+      "path": "docs/evidence/cyst-2g-stream-baseline-linux-20261015/result.json",
+      "bytes": 11871,
+      "sha256": "f5acc64fc1401f5356e67c978fd547fcad8b7f84edab6b358d4c2820dfb13a3b"
+    },
+    {
+      "path": "docs/evidence/cyst-2g-stream-baseline-linux-20261015/launch.json",
+      "bytes": 340,
+      "sha256": "b9bad8049b0bb33f7a301d269d4329a6631423958eee05fc02da8e4b48179f9a"
+    },
+    {
+      "path": "docs/evidence/cyst-2g-stream-baseline-linux-20261015/benchmark.mjs",
+      "bytes": 12345,
+      "sha256": "b273d0fd3f7f76da36c8f01aac7163a30ba535fe2927e81812ba37a21b376dea"
+    },
+    {
+      "path": "docs/evidence/cyst-2g-stream-baseline-linux-20261015/stdout",
+      "bytes": 158,
+      "sha256": "bb8eaff81dfae359bc042811b651d9f3b950b039cd4b12c7859ef11745be8d9c"
+    },
+    {
+      "path": "docs/evidence/cyst-2g-stream-baseline-linux-20261015/stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "limits": [
+    "Local private-store encrypted streaming only; no HTTP/S3/provider/registry/paid admission/Cell restore/writable filesystem claim.",
+    "Existing ordinary Cell bundle/scratch caps unchanged; not2GiB Cell writable-tree acceptance.",
+    "Shared VPS; concurrent unrelated workloads/cold-cache effects not controlled.",
+    "Resource checks every16parts included in measured restore.",
+    "Ephemeral benchmark recovery key only in process memory and cleared; never logged/saved."
+  ],
+  "remoteOwnedWork": "/opt/telomere-host-runtime/cyst-2g-stream-20261015-97e037bd6fcf25e1b9fafc51",
+  "ownedFilesPreserved": true,
+  "noCleanupPerformed": true,
+  "sourceProductionEdits": false,
+  "noServiceOrPaidProviderMutation": true,
+  "interpretation": "Fullregular max-supported plaintext direct private encrypted-store SDK save/reopen/restore, not a paidCell or fullfilesystem migration acceptance. Shared-VPS single sample with resource checks; not a universal latency guarantee."
+}

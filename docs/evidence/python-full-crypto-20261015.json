@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-15T00:45:47.287445+00:00",
+  "scope": "Full current Python suite, actual eth-account and opt-in disposable native Anvil acceptance",
+  "runner": "unittest discovery",
+  "pythonVersion": "3.13.5",
+  "platform": "Windows",
+  "nativeAcceptanceEnabled": true,
+  "cryptoAdapter": {
+    "package": "eth-account",
+    "version": "0.13.7"
+  },
+  "collected": 231,
+  "passed": 224,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 7,
+  "expectedFailures": 0,
+  "unexpectedSuccesses": 0,
+  "durationSeconds": 135.068,
+  "successful": true,
+  "skips": [
+    {
+      "test": "test_vault_income_journal.FileVaultIncomeJournalTests.test_posix_directory_replacement_is_detected",
+      "reason": "Windows intentionally denies moving open directories"
+    },
+    {
+      "test": "test_vault_income_journal.FileVaultIncomeJournalTests.test_posix_existing_nonprivate_leaf_is_not_repaired",
+      "reason": "POSIX permissions and directory descriptor"
+    },
+    {
+      "test": "test_vault_income_journal.FileVaultIncomeJournalTests.test_posix_fork_cannot_reuse_inherited_owner",
+      "reason": "Actual POSIX fork ownership"
+    },
+    {
+      "test": "test_vault_income_journal.FileVaultIncomeJournalTests.test_posix_nonprivate_state_is_not_repaired",
+      "reason": "POSIX permissions and directory descriptor"
+    },
+    {
+      "test": "test_vault_income_journal.FileVaultIncomeJournalTests.test_posix_replaced_owner_is_detected",
+      "reason": "Windows owner file handle denies replacement"
+    },
+    {
+      "test": "test_vault_income_journal.FileVaultIncomeJournalTests.test_symlinked_ancestor_rejected",
+      "reason": "Host does not permit disposable symlinks: 22"
+    },
+    {
+      "test": "test_vault_income_journal.FileVaultIncomeJournalTests.test_symlinked_state_rejected",
+      "reason": "Host does not permit disposable symlinks: 22"
+    }
+  ],
+  "failedTests": [],
+  "nativeAcceptancePassed": [
+    "test_vault_income_acceptance.NativeVaultAcceptance.test_real_native_income_subsidy_lost_ack_restart_and_reorg"
+  ],
+  "privateLog": "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-08\\new-chat\\outputs\\telomere\\.local\\python-full-crypto-20261015T004332Z\\unittest.log",
+  "sourceSha256": {
+    "python/examples/langgraph_paid_cpu.py": "e83a25e9993f2b1d424fd7f010edf01c4f1b889de9d7cbeafcc6dff35a225901",
+    "python/src/telomere_sdk/__init__.py": "4b372567a7b90976be6e6e8704cf47ac227e1f72dbbc767550a286ca0554601e",
+    "python/src/telomere_sdk/chains.py": "2e83553896f3e35385aafc06c40534a521afdfe2bc8cbd5706ece771143248a4",
+    "python/src/telomere_sdk/client.py": "333c8733f919e6b75d0f6a7cf056811d750833f97cf8a1e5da9e40bfdfad9999",
+    "python/src/telomere_sdk/crypto.py": "f05ca3de58fa4a7f774713eb51466453e3d507e0155caf344131ba8475d8f0e4",
+    "python/src/telomere_sdk/cyst_registry.py": "6ce5c5c49132e5a9989d95e14af3ac4d74d7ed2826b0c7f4dd4cbd4072166b37",
+    "python/src/telomere_sdk/cysts.py": "cdbae5ebc3d9ffb7ad7933508578a4be9a9654608bc3bab304675b64724b94ed",
+    "python/src/telomere_sdk/platform.py": "aaa710fa140426c5677958de340f525314e3738586bb2c6e3919a31f98b009e8",
+    "python/src/telomere_sdk/transport.py": "47294745fd7048364970f10e199247630f573e069bcad1dfde29d7c54655ede9",
+    "python/src/telomere_sdk/vault_income.py": "c75aff81092a04d71582b03642efe3c38d1bafa7d70fd034dfc64b14add68b97",
+    "python/src/telomere_sdk/vault_income_journal.py": "d65d14d5e19457eb89f224642d2a8c2e42633af5d46e75cd4f1acfedcbdb0fdc",
+    "python/src/telomere_sdk/vault_income_rpc.py": "20e6a2518a7e0213afa1e53fe0686da55721300460c4b32b327171a166e02e2e",
+    "python/tests/test_cyst_quota_v2.py": "131fc9d656fedf95afffac11d171eadd23d52040bb1939b426379c8fdbb9e693",
+    "python/tests/test_cyst_registry.py": "0536aa250264f22b1b599f5406f30374a51bb9565b19c946a781fbbf1a53d881",
+    "python/tests/test_cysts.py": "b44e7b174588e02b7252385a5a027ed598d95db9caf1f229717a18a25220b1b9",
+    "python/tests/test_platform.py": "a04166ba427dfcf3f15eba42131136829b8d2bcc53be7d810768b0ea25f68b2a",
+    "python/tests/test_platform_cpu_jobs.py": "61aabefa920129256f519eab99c4b6b52ede68498e3abe4e0ec5b4bc2d4e7f74",
+    "python/tests/test_platform_profiles.py": "f3b5c1128c464a99bcb1f70b947a4a710e7b9b1f3c3117eed8cf084f4a7eb59d",
+    "python/tests/test_sdk.py": "8b53a82441c28416c38adc6ede4603991c66b7ddc4cdfaa7c4c3344933aa0839",
+    "python/tests/test_vault_income.py": "da70ae4001cb885946f2b431ebce620017449523835b73bc768044edc8aa154c",
+    "python/tests/test_vault_income_acceptance.py": "5dc2432f3e1707370cd8d9b12100a24dd8b2f001e99a7e42e2421031ce32a38a",
+    "python/tests/test_vault_income_journal.py": "209a486072deff1d2cd1e409bcbc7322cb8c6af1531c494b66273d95c7bb3b09",
+    "python/tests/test_vault_income_rpc.py": "9525ea499b8ace3cf3c8f87304ccc6c72976ef93ff7cc5e0a58740e7b8168f34"
+  },
+  "sourceUnchangedAfterRun": true,
+  "changedSourcesDuringRun": [],
+  "publicTransactions": 0,
+  "paidPublicRequests": 0
+}

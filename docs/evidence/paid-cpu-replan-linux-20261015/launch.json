@@ -1,0 +1,16 @@
+{
+  "gitRevision": "e01b776bd86a9cdc27a3e80f987930ed8116c508",
+  "archiveSha256": "9111430f5e2713183e4f7823ca24380cb6afde5c31acff9a4ed751e21bfd4206",
+  "sourceFiles": 710,
+  "sourceDirectory": "/opt/telomere-host-runtime/paid-cpu-replan-20261015-9111430f5e27",
+  "runnerSha256": "29af080e37be9fe6205a365f69beb55d5b0805ca902b892e689c30b79445aedb",
+  "controllerSha256": "8e686044083bff3f4f9fcd9fe95c54488890f5de6e512d4f6f05ad78568e28cd",
+  "command": [
+    "python3",
+    "/tmp/run-paid-cpu-replan-linux-20261015-29af080e37be.py",
+    "/tmp/telomere-paid-cpu-replan-20261015.tar.gz",
+    "/tmp/telomere-paid-cpu-replan-20261015.tar.gz.manifest.json",
+    "e01b776bd86a9cdc27a3e80f987930ed8116c508",
+    "9111430f5e2713183e4f7823ca24380cb6afde5c31acff9a4ed751e21bfd4206"
+  ]
+}

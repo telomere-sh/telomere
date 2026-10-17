@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "success": true,
+  "scope": "Single clean isolated Linux full build and 12-file shared CPU admission acceptance from exact committed Git blobs",
+  "committedRevision": "3c6900d8a568c0c239d6299ade81fe69ed8c66db",
+  "snapshotAtUtc": "2026-10-12T16:34:13.300713+00:00",
+  "runStartedAtUtc": "2026-10-12T16:37:51.301530+00:00",
+  "isolatedPath": "/opt/telomere-host-runtime/host-kit-admission-check-wYUsZhFr",
+  "nodeVersion": "v22.23.3",
+  "sourceSnapshot": {
+    "method": "Exact HEAD Git blob bytes, excluding uncommitted working-tree changes",
+    "sourceFiles": 325,
+    "buildAssets": 5,
+    "taskRunnerPackagedFromStart": true,
+    "packageMetadataSha256": "e24c255a5bef5c383000faf20991ba613cde7acfa22d0b27c64aee7facede399",
+    "sourceArchiveSha256": "de253d0557dd2603169854017be768564350cd378eff764dfe20e4a138ab0d4a",
+    "sourceManifestSha256": "c0bd8120aafcb98df5386f5d850db2bcd023e9b94dad33c55d9e9f101955a8fa",
+    "assetsArchiveSha256": "dbb52624881878844097b995f11c73aaa9f8f4ea7286503816b8686298b1a19b",
+    "assetsManifestSha256": "4157eb6c3bf361de0e7b42b1f7358c12615cb65ca2c4c24dbfe86e935a888d9f",
+    "sourceAndAssetHashesMatchedBeforeAfter": true,
+    "independentGitBlobComparison": true
+  },
+  "fullBuild": { "exitCode": 0, "elapsedSeconds": 57.55 },
+  "tests": {
+    "collected": 209,
+    "passed": 209,
+    "failed": 0,
+    "skipped": 0,
+    "singleCleanRun": true,
+    "elapsedSeconds": 327.437,
+    "files": {
+      "host-kit-admission.test.ts": 29,
+      "host-kit-inventory.test.ts": 46,
+      "host-kit-create-fence.test.ts": 13,
+      "host-kit-admission-docker.test.ts": 5,
+      "host-kit.test.ts": 31,
+      "host-kit-command.test.ts": 17,
+      "controller-host-kit.test.ts": 8,
+      "host-kit-timing.test.ts": 16,
+      "host-kit-startup-docker.test.ts": 4,
+      "host-kit-cleanup.test.ts": 13,
+      "session-runtime.test.ts": 20,
+      "session-runtime-docker.test.ts": 7
+    },
+    "actualGvisorCases": 16,
+    "runtime": "runsc",
+    "reviewedImage": "127.0.0.1:15002/telomere-cpu@sha256:6839949540d11906cbdbc614867ac3a825fa0e6f8cbed90c79773979517b4bbe",
+    "fallback": false,
+    "rawCollectedSha256": "89efc386267967f11a2b9b0e2d6dc6a0845e6673c439aebd29a3585f027a67ff",
+    "rawVitestSha256": "bfd530a63f9dee76898dec19f960973f02daa1fe74454fc8c0a624530bab4e89"
+  },
+  "isolation": {
+    "publicChainOrProviderCalls": false,
+    "existingServiceMutations": false,
+    "healthBeforeAfter": { "status": "ready", "worker": "idle" },
+    "existingServicesActiveBeforeAfter": 5,
+    "newFixtureDirectoriesRemaining": 0,
+    "newOwnedContainersRemaining": 0,
+    "newHostFixtureDirectoriesRemaining": 0,
+    "ownedCheckoutProcessesRemaining": 0,
+    "postRunIndependentHealth": { "status": "ready", "worker": "idle" },
+    "postRunIndependentHostKitAndSessionContainers": 0
+  },
+  "privateEvidence": {
+    "runnerResultSha256": "f656d79250b97462c8022c8907a58ec6869e38585a9018073da10db0cdfd3cfb",
+    "runnerResultPath": ".local/host-kit-admission-linux-result.json",
+    "rawVitestPath": ".local/host-kit-admission-vitest.json",
+    "rawCollectedPath": ".local/host-kit-admission-collected.json"
+  },
+  "limitations": [
+    "Shared admission is integrated with the private HostKit CLI, but not a public paid interactive-session API or financial session meter.",
+    "The tested runtime is gVisor on a single isolated Linux host; Kata, multi-host placement and production migration remain untested."
+  ]
+}

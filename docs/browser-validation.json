@@ -1,0 +1,91 @@
+{
+  "profile": "Local demo: Anvil 31337 + PGlite + CPU child process",
+  "browser": "Installed Chrome, fresh headless context, Playwright",
+  "passed": [
+    "demo sign-in",
+    "real authenticated worker status",
+    "configured provider checks shown as disabled",
+    "fund balance",
+    "create budget leash",
+    "bounded hash-chain quote",
+    "wallet transaction via local demo signer",
+    "positive CPU metering",
+    "completed signed settlement",
+    "unused reservation refund",
+    "onchain receipt anchor",
+    "receipt download",
+    "stop run",
+    "cancelled signed settlement",
+    "withdraw 0.1 TEST",
+    "deposit 0.05 TEST",
+    "375px mobile reflow"
+  ],
+  "operations": {
+    "initial": {
+      "worker": {
+        "state": "idle"
+      },
+      "counts": {
+        "completed": 1
+      },
+      "near": {
+        "configured": false,
+        "verification": "disabled"
+      },
+      "cpu": {
+        "mode": "demo"
+      }
+    },
+    "final": {
+      "worker": {
+        "state": "idle"
+      },
+      "counts": {
+        "cancelled": 1,
+        "completed": 2
+      },
+      "near": {
+        "configured": false,
+        "verification": "disabled"
+      },
+      "cpu": {
+        "mode": "demo"
+      }
+    },
+    "mocked": false
+  },
+  "completed": {
+    "id": "0x0be007bfcf5fe46c5f07fe61934e418c15b6fe45f5ba265976fcc9c8810431fc",
+    "status": "completed",
+    "ceiling": "2000",
+    "charged": "300",
+    "refund": "1700",
+    "billableSeconds": 3,
+    "iterations": 2000000
+  },
+  "stopped": {
+    "id": "0xdcb8b781bfdb69ee9beda108dbb8a780661467f87eccfa939c305e2dcb643d59",
+    "status": "cancelled",
+    "ceiling": "2000",
+    "charged": "0",
+    "refund": "2000",
+    "billableSeconds": 0
+  },
+  "verification": "Signature verified · 0x5BB621…25535a2f · Onchain receipt matched · Operator-signed CPU metering; NEAR evidence is recorded separately.",
+  "additionalPreviouslyPassed": [
+    "SHA-256 result",
+    "Escape closes dialog",
+    "kill leash",
+    "excess decimal validation",
+    "error clears on edit",
+    "320px reflow",
+    "keyboard focus path"
+  ],
+  "notRun": [
+    "Robinhood testnet transactions",
+    "live NEAR inference",
+    "hardware TEE attestation",
+    "expired refund UI transaction"
+  ],
+  "uncaughtBrowserErrors": []
+}

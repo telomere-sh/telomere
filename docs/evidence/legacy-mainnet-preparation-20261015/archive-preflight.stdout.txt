@@ -1,0 +1,5 @@
+
+> telomere-pilot@0.1.0 preflight:usdc-archive
+> tsx scripts/usdc-archive-preflight.ts --network base-mainnet --public-profile .local/mainnet-prepare-20261015/base-mainnet-archive.json
+
+{"ready":true,"chainId":8453,"asset":"0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913","proxyCodeHash":"0xa6705a10bb756b5dea144591118be77d7af0c3eee3bf2dfe2583dcb0364fefab","implementation":{"address":"0x2ce6311ddae708829bc0784c967b7d77d19fd779","codeHash":"0x11b75a237997ab8328f65b2d5a55c10f0346d0a175741ed42ddf4f2c66b9e873"},"archiveAnchor":{"number":"52626513","hash":"0xb0115e6a264a5f9fdbac013cfbb7d63de311e76e83e7cdfcda6f5d46e89570d8","timestamp":"1792042373"},"historicalState":true,"checkedAt":"2026-10-15T17:54:35.817Z","publicTransactionsSent":0}

@@ -1,0 +1,78 @@
+"""Public DNS/RDAP read-only observation. No registrar session, contacts or credentials."""
+import concurrent.futures
+import datetime
+import hashlib
+import json
+import shutil
+import socket
+import subprocess
+import urllib.error
+import urllib.request
+
+
+def now():
+    return datetime.datetime.now(datetime.timezone.utc).isoformat()
+
+
+servers = ['dns1.registrar-servers.com', 'dns2.registrar-servers.com', 'a0.nic.sh', 'a2.nic.sh']
+addresses = {}
+for server in servers:
+    try:
+        addresses[server] = sorted(set(item[4][0] for item in socket.getaddrinfo(server, 53, socket.AF_INET, socket.SOCK_DGRAM)))
+    except socket.gaierror as error:
+        addresses[server] = {'errorType': type(error).__name__}
+started = now()
+jobs = []
+for server in servers:
+    queries = [('telomere.sh', 'A'), ('review.telomere.sh', 'A'), ('telomere.sh', 'NS')]
+    if server.startswith('dns'):
+        queries += [('telomere.sh', 'SOA'), ('review.telomere.sh', 'CNAME')]
+    for name, kind in queries:
+        for protocol in ['UDP', 'TCP']:
+            jobs.append((server, name, kind, protocol))
+
+
+def query(job):
+    server, name, kind, protocol = job
+    args = ['/usr/bin/dig', '@' + server, name, kind, '+norecurse', '+time=3', '+tries=1', '+nocmd']
+    if protocol == 'TCP':
+        args.append('+tcp')
+    stamp = now()
+    result = subprocess.run(args, capture_output=True, text=True, timeout=8)
+    return {'server': server, 'name': name, 'type': kind, 'protocol': protocol,
+            'observedAt': stamp, 'command': args, 'exitCode': result.returncode,
+            'stdout': result.stdout, 'stderr': result.stderr}
+
+
+with concurrent.futures.ThreadPoolExecutor(max_workers=8) as pool:
+    records = list(pool.map(query, jobs))
+
+rdap = {'scope': 'IANA bootstrap and non-contact domain status/events/nameservers only',
+        'bootstrapUrl': 'https://data.iana.org/rdap/dns.json'}
+try:
+    response = urllib.request.urlopen(rdap['bootstrapUrl'], timeout=15)
+    raw = response.read(2000000)
+    bootstrap = json.loads(raw)
+    services = [item for item in bootstrap['services'] if 'sh' in item[0]]
+    rdap.update({'bootstrapStatus': response.status, 'bootstrapSha256': hashlib.sha256(raw).hexdigest(),
+                 'bootstrapPublication': bootstrap.get('publication'), 'matchingServices': services})
+    for service in services[:1]:
+        url = service[1][0].rstrip('/') + '/domain/telomere.sh'
+        rdap['domainUrl'] = url
+        try:
+            response = urllib.request.urlopen(urllib.request.Request(url, headers={'Accept': 'application/rdap+json'}), timeout=15)
+            domain = json.loads(response.read(2000000))
+            rdap.update({'domainHttpStatus': response.status, 'ldhName': domain.get('ldhName'),
+                         'status': domain.get('status'),
+                         'events': [{key: item.get(key) for key in ['eventAction', 'eventDate']} for item in domain.get('events', [])],
+                         'nameservers': [item.get('ldhName') for item in domain.get('nameservers', [])],
+                         'contactsDiscarded': True})
+        except urllib.error.HTTPError as error:
+            rdap['domainHttpStatus'] = error.code
+except Exception as error:
+    rdap['errorType'] = type(error).__name__
+
+print(json.dumps({'schemaVersion': 1, 'domain': 'telomere.sh', 'startedAt': started, 'finishedAt': now(),
+                  'scope': 'Direct authoritative DNS over UDP/TCP plus official IANA-bootstrapped RDAP, all read-only',
+                  'resolvedServerIpv4': addresses, 'queries': records, 'rdap': rdap,
+                  'registrarAccountAccess': False, 'dnsChanges': 0, 'externalMessages': 0}, indent=2))

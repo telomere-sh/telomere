@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-10-15T03:13:11.478003+00:00",
+  "status": "owner_authenticated_v3_focused_accepted; no_hardware_or_public_runtime_acceptance",
+  "source": {
+    "path": "docs/evidence/sealed-handoff-v3-final-source-20261015.json",
+    "sha256": "ada75ccdb6c855140b25c3153a65e9d7a17f44d91022316156bab56c710e8cfc",
+    "files": 21,
+    "allPrePostAndCurrentMatch": true,
+    "baseGitRevision": "ad9dd8ffb497b1ee966498d71c7172b9a5cfeee5"
+  },
+  "final": {
+    "path": "docs/evidence/sealed-handoff-v3-final-20261015.json",
+    "sha256": "dbb014baf4ee706210ce3cb9bbdb7302fbb28cffd941f9c9661642e86f9bafc2",
+    "passed": 54,
+    "failed": 0,
+    "skipped": 0
+  },
+  "historicalAttempts": [
+    {
+      "path": "docs/evidence/sealed-handoff-v3-initial-20261015.json",
+      "sha256": "ff27c1b660362024ccc27ebe1a40ce78f190701dc3bfc05c30daac03db8676ab",
+      "passed": 50,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "path": "docs/evidence/sealed-handoff-v3-expanded-20261015.json",
+      "sha256": "7f1cfe6dce2515723cd0788fe8d3435de1791f3d98c617bee546672a7bbf37d0",
+      "passed": 52,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "path": "docs/evidence/sealed-handoff-v3-complete-20261015.json",
+      "sha256": "245d3186ef374b75005c820039392db0474ca60675551e1ddb5fd24e091355f0",
+      "passed": 54,
+      "failed": 0,
+      "skipped": 0
+    }
+  ],
+  "cases": {
+    "newVersion3": 13,
+    "unchangedVersion2AndSignedAppraiser": 41,
+    "total": 54
+  },
+  "globalTypecheck": "separate combined freeze check owned by root; not claimed in this evidence",
+  "independentReview": "owner_loop_review final read-only pass; no unresolved findings after source-vault ordering, exact metadata, durable floor and authority-lock checks, expiry/abort wipe and per-run/boot key isolation corrections",
+  "tested": [
+    "Two actual EIP712 owner signatures covering immutable intent then full ciphertext",
+    "Real encrypted CystCheckpointFileVault untouched before valid intent; exact real checkpoint restored",
+    "Synthetic signed Ed25519 appraiser replies with real X25519 HKDF XChaCha20-Poly1305",
+    "Actual encrypted private file journals, restart, consumed replay and wrong master-key refusal",
+    "Zero source-vault callbacks for unsigned/wrong intent and quote-pending policy rotation",
+    "No ECDH on wrong owner/context/v2 packet or post-consume policy rotation",
+    "Actual derived32byte key zeroed on cancellation and expiry after final authorization commit",
+    "Exact prepared ciphertext replay, no recollection/rekey after uncertain preparing state",
+    "Canonical Cyst descriptor/revision/owner/Vault checks using controlled registry fixtures",
+    "Per-run fences, distinct boot/run key isolation, retired recipient/appraiser state, policy/write/byte/inventory bounds"
+  ],
+  "limits": [
+    "Quote bytes and registry responses in this focused cohort are synthetic fixtures",
+    "No real TDX Cell, DCAP quote acceptance, sealed lease, guest transport or per-boot receipt path",
+    "Direct recoverable EOA signatures only; no ERC1271",
+    "Classic CPU Cyst up to2MiB; no GPU/file snapshot extension",
+    "No new public route, wallet/key storage, transaction, production activation or public RPC call",
+    "No old v2 API/source or existing payment/runtime edits",
+    "Local marker/generation is not rollback-proof; independent current policy/boot/lease/registry trust anchors required",
+    "No completion percentage or production-launch claim"
+  ]
+}

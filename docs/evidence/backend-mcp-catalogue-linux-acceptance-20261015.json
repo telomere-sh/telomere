@@ -1,0 +1,18 @@
+{
+  "archiveSha256": "051912170a29061989d8e13e580b4f474eb1d9d991e35ede8b81fec0fcb2bc50",
+  "parentArchiveSha256": "556e200a6afe81c50b080d20b220cb24bd25651dce04a4ef76e93cc466e964e9",
+  "changedFromParent": [
+    "tests/platform-main.test.ts"
+  ],
+  "directory": "/opt/telomere-host-runtime/financial-rails-mcp-fixed-20261015-051912170a29",
+  "npm-ci": {
+    "exitCode": 0,
+    "seconds": 3.88
+  },
+  "mcp-catalogue": {
+    "exitCode": 0,
+    "seconds": 12.705
+  },
+  "sourceChangedAfter": [],
+  "success": true
+}

@@ -1,0 +1,7 @@
+# Build the bundled scripts/declared-state-cell.ts into declared-state-cell.cjs
+# in a private build context, then extend an explicitly reviewed CPU image.
+# The reviewed builder must set both context CJS modes to 0444 before COPY.
+ARG BASE_IMAGE
+FROM ${BASE_IMAGE}
+COPY --chown=0:0 declared-state-cell.cjs /opt/telomere/declared-state-cell.cjs
+COPY --chown=0:0 declared-state-cell-capture.cjs /opt/telomere/declared-state-cell-capture.cjs

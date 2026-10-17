@@ -1,0 +1,6 @@
+{
+  "version": 2,
+  "kind": "telomere-cyst-quota-v2",
+  "maxOwnerCheckpoints": 4096,
+  "maxOwnerBytes": 33554432
+}

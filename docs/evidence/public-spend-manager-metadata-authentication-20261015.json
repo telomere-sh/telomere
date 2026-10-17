@@ -1,0 +1,25 @@
+{
+  "checkedAt": "2026-10-15T01:27:47.031Z",
+  "hashAlgorithmReference": "https://github.com/ethereum/solidity/blob/v0.8.28/libsolutil/IpfsHash.cpp",
+  "boundary": "Single 48002-byte metadata file, below solc256KiB chunk threshold. CID uses UnixFS DAG-PB SHA256, not direct file SHA256.",
+  "networks": [
+    {
+      "chainId": 8453,
+      "metadataBytes": 48002,
+      "directFileSha256": "b427a895b88bcc431261739b641ed0c0d911c47b7c6f5fbe031345cf569bd1ee",
+      "expectedIpfsDigest": "1bbeb3272166953d2a5eb88d3845fc62e4d6b2898d0c1e326c1117e93e325e28",
+      "computedIpfsDigest": "1bbeb3272166953d2a5eb88d3845fc62e4d6b2898d0c1e326c1117e93e325e28",
+      "cid": "QmQCxNbuPnt54vEekdmU3A513RiDiYYGn1Tu16r2vV7wTV",
+      "authenticated": true
+    },
+    {
+      "chainId": 84532,
+      "metadataBytes": 48002,
+      "directFileSha256": "b427a895b88bcc431261739b641ed0c0d911c47b7c6f5fbe031345cf569bd1ee",
+      "expectedIpfsDigest": "1bbeb3272166953d2a5eb88d3845fc62e4d6b2898d0c1e326c1117e93e325e28",
+      "computedIpfsDigest": "1bbeb3272166953d2a5eb88d3845fc62e4d6b2898d0c1e326c1117e93e325e28",
+      "cid": "QmQCxNbuPnt54vEekdmU3A513RiDiYYGn1Tu16r2vV7wTV",
+      "authenticated": true
+    }
+  ]
+}

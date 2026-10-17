@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "checkedAtUtc": "2026-10-12T12:26:55.361735+00:00",
+  "scope": "Bounded private operator profile/key file reader, actual Windows filesystem and ACL acceptance",
+  "nodeVersion": "v22.22.2",
+  "command": "node node_modules/vitest/vitest.mjs run tests/vault-income-private-file.test.ts --reporter=json --outputFile=.local/vault-income-private-file-vitest-final4.json",
+  "passed": 15,
+  "failed": 0,
+  "skipped": 3,
+  "total": 18,
+  "testIntervalSeconds": 9.524,
+  "strictTypecheck": {
+    "command": "npm run typecheck",
+    "exitCode": 0
+  },
+  "sourceSha256": {
+    "src/payments/vault-income-private-file.ts": "c1d89d21870025ba3ea4e497ffa2f3ee3af6b92090826d9c598a8a66616b3a98",
+    "tests/vault-income-private-file.test.ts": "68ae7631d61c8f7c9a96b46b1f04432edaa580ccc0fbeb1066f3af666390af1c"
+  },
+  "finalRawReportSha256": "693135b8fa279838ead7032fecf851cedf39df38c316e29fd92c4fd4f0c3029f",
+  "failureHistory": [
+    {
+      "report": "vault-income-private-file-vitest.json",
+      "sha256": "1143a95f17abd47c1c887d03883232d81f0497ed4e5272b8fa3214e959d522be",
+      "passed": 0,
+      "failed": 15,
+      "skipped": 3,
+      "cause": "Windows PowerShell could not autoload the Security module from the inherited PowerShell7 module path",
+      "kind": "fixture_setup"
+    },
+    {
+      "report": "vault-income-private-file-vitest-final.json",
+      "sha256": "a41038df1a65ff5ee5c135e1ec236628a4b122050ce92c1d0d1ce1570f9248d2",
+      "passed": 0,
+      "failed": 15,
+      "skipped": 3,
+      "cause": "Case-insensitive duplicate child environment keys and module progress stderr still prevented fixture setup",
+      "kind": "fixture_setup"
+    },
+    {
+      "report": "vault-income-private-file-vitest-final2.json",
+      "sha256": "281704edb840c3ce5164fb674578f206b54ba9328ff1286140145b66fdedb868",
+      "passed": 14,
+      "failed": 1,
+      "skipped": 3,
+      "cause": "Protected ACL re-persistence in the negative fixture required unavailable SeSecurityPrivilege; 14 actual helper cases passed",
+      "kind": "fixture_setup"
+    },
+    {
+      "report": "vault-income-private-file-vitest-final3.json",
+      "sha256": "715a8a56219509acc23b13bc26368461f1145833daf9d15608b56080ef1191b0",
+      "passed": 14,
+      "failed": 1,
+      "skipped": 3,
+      "cause": "Reusing the existing ACL did not remove the same fixture privilege requirement; 14 actual helper cases passed",
+      "kind": "fixture_setup"
+    }
+  ],
+  "fixtureResolution": "Normalize child environment keys case-insensitively, use only the OS WindowsPowerShell module path, suppress module progress, and create each reviewed fixture ACL once",
+  "diagnosticRuns": "Two focused failing fixture diagnostics were retained locally; one temporary diagnostic exceeded the 64-byte stdout cap while identifying SeSecurityPrivilege. Final test and production diagnostics use fixed tokens only.",
+  "evidence": [
+    "Actual private current-user/SYSTEM/Administrators Windows ACL accepted; actual fresh Everyone Allow ACE refused",
+    "Exact bounded Unicode text and BOM preserved for strict caller parsing; invalid/incomplete UTF-8 and NUL refused",
+    "Actual hardlink/nonregular files, invalid paths and byte bounds refused with fixed path/content-free error",
+    "Pre-open, opened and post-read file identities checked; production never changes ACLs or permissions"
+  ],
+  "limitations": [
+    "POSIX exact0600/effective-owner and symlink cases are explicit Windows skips; fresh isolated Linux acceptance is pending",
+    "Assumes an operator-controlled filesystem and OS installation; no file encryption, backup, key rotation or filesystem anti-rollback guarantee",
+    "Caller must apply the reviewed strict JSON and exact hexadecimal key schema; text is not silently repaired"
+  ],
+  "publicCalls": false,
+  "serviceMutations": false,
+  "success": true
+}

@@ -1,0 +1,80 @@
+{
+  "archiveSha256": "31f5cb0cd767e4c336d33e405271b2ebdfb9eccc28915c65c64b58e8d7312c92",
+  "directory": "/opt/telomere-host-runtime/financial-rails-20261015-31f5cb0cd767",
+  "sourceFiles": 647,
+  "startedAt": "2026-10-15T02:12:18.605899+00:00",
+  "serviceMutations": false,
+  "publicTransactions": 0,
+  "paidProviderRequests": 0,
+  "dockerOptIn": false,
+  "capacityOptIn": false,
+  "langgraphOptIn": false,
+  "healthBefore": {
+    "live": {
+      "statusCode": 200,
+      "body": {
+        "status": "ok"
+      }
+    },
+    "ready": {
+      "statusCode": 200,
+      "body": {
+        "status": "ready",
+        "worker": "idle"
+      }
+    }
+  },
+  "servicesBefore": {
+    "telomere-staging.service": "NRestarts=0\nActiveState=active\nSubState=running",
+    "telomere-staging-chain.service": "NRestarts=0\nActiveState=active\nSubState=running",
+    "telomere-staging-watchdog.service": "NRestarts=0\nActiveState=active\nSubState=running"
+  },
+  "nodeVersion": "v22.23.3",
+  "npm-ci": {
+    "exitCode": 0,
+    "seconds": 3.593
+  },
+  "build": {
+    "exitCode": 0,
+    "seconds": 57.833
+  },
+  "node-full": {
+    "exitCode": 0,
+    "seconds": 2808.514
+  },
+  "nodeTests": {
+    "numTotalTests": 2236,
+    "numPassedTests": 2217,
+    "numFailedTests": 0,
+    "numPendingTests": 19,
+    "numTotalTestSuites": 358,
+    "success": true
+  },
+  "nodeFailures": [],
+  "sourceAfter": {
+    "unchanged": true,
+    "changed": []
+  },
+  "healthAfter": {
+    "live": {
+      "statusCode": 200,
+      "body": {
+        "status": "ok"
+      }
+    },
+    "ready": {
+      "statusCode": 200,
+      "body": {
+        "status": "ready",
+        "worker": "idle"
+      }
+    }
+  },
+  "servicesAfter": {
+    "telomere-staging.service": "NRestarts=0\nActiveState=active\nSubState=running",
+    "telomere-staging-chain.service": "NRestarts=0\nActiveState=active\nSubState=running",
+    "telomere-staging-watchdog.service": "NRestarts=0\nActiveState=active\nSubState=running"
+  },
+  "success": true,
+  "finishedAt": "2026-10-15T03:00:08.629923+00:00"
+}

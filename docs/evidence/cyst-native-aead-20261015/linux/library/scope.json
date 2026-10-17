@@ -1,0 +1,9 @@
+{
+  "revision": "c87824f698020aa561ffb9df6d6c6874e4b644ba",
+  "base": "/opt/telomere-host-runtime/cyst-native-20261015-1565b1dcfd542dd7c139e790",
+  "work": "/opt/telomere-host-runtime/cyst-2g-stream-native-20261015-1565b1dcfd542dd7c139e790",
+  "archiveSha256": "18208d0650d2bc0741b33f32d9ba64a7364b817bc1a54bb783ccc8f01bd9d5eb",
+  "archiveBytes": 6756263,
+  "sourceFiles": 1349,
+  "benchmarkSha256": "4c93e8f8fc10891bb2d32c615992fbfe02dcc3802b7832077a7df430a9e11b89"
+}

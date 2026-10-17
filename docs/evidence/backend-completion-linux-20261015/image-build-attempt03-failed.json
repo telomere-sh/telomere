@@ -1,0 +1,157 @@
+{
+  "schemaVersion": 1,
+  "status": "failed",
+  "startedAt": "2026-10-15T12:40:17.239917+00:00",
+  "gitRevision": "d4481aec92179df44a533699897db2f523fbd0a2",
+  "archiveSha256": "090932a350a522ddfe2c056775edf194176060c3cca79a06d286e5d3f1989bd6",
+  "sourceDirectory": "/opt/telomere-host-runtime/backend-completion-final-20261015-090932a350a5",
+  "sourceManifestSha256": "16b7ddcfb62c1d6fde5bd0f6c4a2b55013d0dbe508c62e4ff233efd896e69028",
+  "sourceFilesVerified": 708,
+  "cjsSha256": "cfa48859ee1bbd45d01213670e95d10edf7df877298002eaf0dfe7f694fbff59",
+  "cjsBytes": 221231,
+  "captureCjsSha256": "25156597bb08017a689a152fde97e0d9324a07e9ffb5cd74c44305da78876aad",
+  "captureCjsBytes": 141313,
+  "dockerfileSha256": "1567cd5eef7ac9625cf0648c519a16568dc2b482b149bd31dee020e53d339870",
+  "prepareSha256": "0cf80591651395ca75425c4736d0b5b2e8888d96cc7a238722030c91bd6abd19",
+  "baseImage": "127.0.0.1:15002/telomere-cpu@sha256:6839949540d11906cbdbc614867ac3a825fa0e6f8cbed90c79773979517b4bbe",
+  "baseImageId": "sha256:680cc0ec7dfa626d4105c3c26834289687e0abed785240e5bb814bac7cd55355",
+  "registryImage": "registry@sha256:ddf754342cfc8acc51a56d5d0ab6af06826461864460636d8bd5c546dab2a7b8",
+  "registryImageId": "sha256:b16ad6cc19df5d687ed2e5b4ba6fa51a38bfbb4687ecc11bf54e0899638c0ee2",
+  "servicesBefore": {
+    "telomere-staging.service": "MainPID=1952406\nNRestarts=0\nWorkingDirectory=/opt/telomere-pilot/releases/354fe7af62ea6701faafc3b04522abb1b4524d2d-launch04\nActiveState=active\nSubState=running",
+    "telomere-staging-chain.service": "MainPID=1952401\nNRestarts=0\nWorkingDirectory=/opt/telomere-pilot/app\nActiveState=active\nSubState=running",
+    "telomere-staging-watchdog.service": "MainPID=1952410\nNRestarts=0\nWorkingDirectory=/opt/telomere-pilot/watchdog-app\nActiveState=active\nSubState=running"
+  },
+  "profileBeforeSha256": "a400feb3475b91168a5419d0a98c00ea804ba817c1c0ad34dea65d7d8808df8f",
+  "protectedBeforeSha256": "6c078f8b7a3386663d9ab2f5682c317d82b54e86c54a93f67255bfa045a76079",
+  "ownedContainersBefore": [
+    "1d7ecc9b94866b9617df656ad7e2251916a9b7ceafef9a488ef6e85540076c5e"
+  ],
+  "globalContainersBefore": [
+    "61959d4214ab6b1cb3f30b2015c86481c75a0af2bdfe09348e3b5c434a34a8a7",
+    "6beae4c8e84877f0094e97beeb57ce9ae70e659804b5ac0f0f1a26ba05b7bbd4",
+    "d243b013df7caf1e539d25bb0f1a5f0d39ca53b8263818a4a1c1eca6dab73da4",
+    "df23a9ac9a64ddb9065bf9df8500368cb470c5f6e5cc3648e9f9efa46d970ab3"
+  ],
+  "daemonBefore": {
+    "pid": 2960501,
+    "argvSha256": "5ae3b80c47fb1310d84d73c46efb03ed183c5968bdffe825ba86887052aaaae8",
+    "namespaceInode": "4026532292"
+  },
+  "stagingServiceMutations": false,
+  "ownedRegistryServiceRequested": true,
+  "ownedRegistryServiceCreated": true,
+  "publicNetworkRequests": 0,
+  "publicTransactions": 0,
+  "paidProviderRequests": 0,
+  "productionProfileEnabled": false,
+  "acceptanceImageOnly": true,
+  "attempt": 3,
+  "initialBuilderSha256": "b3a560ce165f6b1078389d7c6b210336c3d398bba773509c8759f902419a322c",
+  "priorAttempt02ReportSha256": "d7e7feb9d279bbb43b38ddbde02565cf0dce2b9f62f09f2b7b0103244a0ef440",
+  "priorAttempt02BuilderSha256": "d2c1a7664c20be02ec2c29eb29d68f7da0eabce05de06784c2d9ba3445a2f270",
+  "priorAttempt02FailureClassification": "systemd_USER_217_missing_nss_uid_10001",
+  "priorFailureClassificationSource": "operator_readonly_systemd_diagnostic",
+  "registryAccountPin": {
+    "user": "nobody",
+    "group": "nogroup",
+    "uid": 65534,
+    "gid": 65534
+  },
+  "registryUidBefore": {
+    "matchingProcesses": 0,
+    "unreadableStatuses": 0
+  },
+  "registryIdentityScope": "disposable_public_image_service_not_production_user_isolation",
+  "initialFailureReportSha256": "af6736c04d41c8a3c3366dea9297cd72fe08dbb466c29692037dd488e22cc150",
+  "namespaceProbeSha256": "2bbd7a6c0754d31e27f4efa12fedaf8658b9daa879ee0f6a54189338246edd6b",
+  "registryMode": "pinned_static_binary_owned_network_namespace",
+  "registryUnit": "telomere-declared-registry-attempt03-20261015.service",
+  "registryRoot": "/opt/telomere-host-runtime/declared-state-registry-attempt03-20261015",
+  "healthBefore": {
+    "live": {
+      "statusCode": 200,
+      "body": {
+        "status": "ok"
+      }
+    },
+    "ready": {
+      "statusCode": 200,
+      "body": {
+        "status": "ready",
+        "worker": "idle"
+      }
+    }
+  },
+  "registryName": "telomere-declared-extract-attempt03-d4481aec9217-6270bc92",
+  "registryLabels": {
+    "telomere.acceptance.owner": "declared-state-20261015",
+    "telomere.acceptance.token": "6270bc92ebbf4d8f888ac446e40d5c50",
+    "telomere.acceptance.revision": "d4481aec92179df44a533699897db2f523fbd0a2"
+  },
+  "failureStage": "image_push",
+  "contextCjsMode": "0444",
+  "captureContextCjsMode": "0444",
+  "registryId": "792d9467de18a71adb93452b551aec6ec44d9541f281c5548b9e521690e5e34f",
+  "registryBinarySha256": "7f9e0df42bd028efb1a11eb7f92ef494156bf308770303a256d3acdcadb378cd",
+  "registryBinaryBytes": 55808162,
+  "registryImageConfigSha256": "6b1f91acca97fdfb8e3d74df04cc154bc973fc920ab0782599e4321a53460ab0",
+  "registryImageConfigBytes": 475,
+  "extractionContainerCleanupConfirmed": true,
+  "registryConfigSha256": "892adbd31fe25466c932339514bcb4f1139be3d87cc3519044b09756c129ba63",
+  "registryServiceDescription": "Telomere declared registry attempt03 6270bc92ebbf4d8f888ac446e40d5c50",
+  "registryServicePid": 3075652,
+  "registryNamespaceMatches": true,
+  "imageId": "sha256:5fbba0e35a485f0de44263330354a8325c84a2a39a64661c6bfc15239c16b58d",
+  "image": "127.0.0.1:15004/telomere-declared-state@sha256:db091765b34bac310fa2fa6284d59abe97f294e5d2a800946c38f46e46f31eea",
+  "manifestDigest": "sha256:db091765b34bac310fa2fa6284d59abe97f294e5d2a800946c38f46e46f31eea",
+  "failureType": "Refusal",
+  "registryServiceCleanupConfirmed": true,
+  "registryCleanupConfirmed": true,
+  "registryServiceStartLogSha256": "77dd236f1c662fa84c19d7408942e7455de557e7f1899746faf8408c85360bc0",
+  "servicesAfter": {
+    "telomere-staging.service": "MainPID=1952406\nNRestarts=0\nWorkingDirectory=/opt/telomere-pilot/releases/354fe7af62ea6701faafc3b04522abb1b4524d2d-launch04\nActiveState=active\nSubState=running",
+    "telomere-staging-chain.service": "MainPID=1952401\nNRestarts=0\nWorkingDirectory=/opt/telomere-pilot/app\nActiveState=active\nSubState=running",
+    "telomere-staging-watchdog.service": "MainPID=1952410\nNRestarts=0\nWorkingDirectory=/opt/telomere-pilot/watchdog-app\nActiveState=active\nSubState=running"
+  },
+  "profileAfterSha256": "a400feb3475b91168a5419d0a98c00ea804ba817c1c0ad34dea65d7d8808df8f",
+  "protectedAfterSha256": "6c078f8b7a3386663d9ab2f5682c317d82b54e86c54a93f67255bfa045a76079",
+  "ownedContainersAfter": [
+    "1d7ecc9b94866b9617df656ad7e2251916a9b7ceafef9a488ef6e85540076c5e"
+  ],
+  "globalContainersAfter": [
+    "61959d4214ab6b1cb3f30b2015c86481c75a0af2bdfe09348e3b5c434a34a8a7",
+    "6beae4c8e84877f0094e97beeb57ce9ae70e659804b5ac0f0f1a26ba05b7bbd4",
+    "d243b013df7caf1e539d25bb0f1a5f0d39ca53b8263818a4a1c1eca6dab73da4",
+    "df23a9ac9a64ddb9065bf9df8500368cb470c5f6e5cc3648e9f9efa46d970ab3"
+  ],
+  "daemonAfter": {
+    "pid": 2960501,
+    "argvSha256": "5ae3b80c47fb1310d84d73c46efb03ed183c5968bdffe825ba86887052aaaae8",
+    "namespaceInode": "4026532292"
+  },
+  "healthAfter": {
+    "live": {
+      "statusCode": 200,
+      "body": {
+        "status": "ok"
+      }
+    },
+    "ready": {
+      "statusCode": 200,
+      "body": {
+        "status": "ready",
+        "worker": "idle"
+      }
+    }
+  },
+  "registryUidAfter": {
+    "matchingProcesses": 0,
+    "unreadableStatuses": 0
+  },
+  "sourceFilesVerifiedAfter": 708,
+  "baseImageAfterId": "sha256:680cc0ec7dfa626d4105c3c26834289687e0abed785240e5bb814bac7cd55355",
+  "registryImageAfterId": "sha256:b16ad6cc19df5d687ed2e5b4ba6fa51a38bfbb4687ecc11bf54e0899638c0ee2",
+  "success": false,
+  "finishedAt": "2026-10-15T12:40:35.274707+00:00"
+}

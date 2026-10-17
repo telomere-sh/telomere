@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-13",
+  "decision": "UNAPPROVED",
+  "liveAdmission": false,
+  "nearReportGets": 1,
+  "paidInferencePosts": 0,
+  "walletTransactions": 0,
+  "enclaveApi": {
+    "healthHttpStatus": 200,
+    "inferenceBackend": "near-verified",
+    "teeMode": "managed-near",
+    "inferenceKeyPresent": true
+  },
+  "telomereLocalReadiness": {
+    "state": "unavailable",
+    "reasonCode": "POLICY_EXPIRED",
+    "checkedAt": "2026-10-13T10:08:03.833Z",
+    "policyExpiresAt": "2026-10-08T14:29:11.000Z",
+    "reportGets": 0,
+    "paidPosts": 0
+  },
+  "cloudPacket": {
+    "checkedAt": "2026-10-13T10:03:55.001Z",
+    "model": "z-ai/glm-5.3-flash",
+    "gatewayReports": 1,
+    "modelCandidates": 1,
+    "responseBytes": 319594,
+    "responseSha256": "0xb3343d747fd0b7ba7f80533bd95c7eedf73e974a4b8476caa0b6477fba59b5bd",
+    "privateDirectory": "/opt/telomere-pilot/work/near-cloud-candidate-2026-10-13T10-03-54Z"
+  },
+  "gatewayAppraisal": {
+    "checkedAt": "2026-10-13T10:04:14.183510+00:00",
+    "strictTcbAccepted": false,
+    "classification": "PLATFORM_TCB_OUT_OF_DATE",
+    "overall": "OutOfDate",
+    "quotingEnclave": "UpToDate",
+    "platform": "OutOfDate",
+    "advisoryIds": ["INTEL-SA-01192", "INTEL-SA-01245", "INTEL-SA-01312", "INTEL-SA-01313"],
+    "allBindingChecksPassed": true,
+    "offlineReplayMatches": true,
+    "privateArchive": "/opt/telomere-pilot/work/near-gateway-appraisal-2026-10-13T10-04-13Z"
+  },
+  "modelAppraisal": {
+    "status": "MODEL_HARDWARE_VERIFIED",
+    "approval": "UNAPPROVED",
+    "gatewayAppraisedByModelTool": false,
+    "model": "z-ai/glm-5.3-flash",
+    "gpuCount": 8,
+    "managerActions": 186,
+    "composeManagerActionsSha256": "f903bd0f836f7720580c6bb94534c2399e7800956d5bb8011a3b1432bbd54733",
+    "previous175ActionsExactPrefix": true,
+    "newActions": 11,
+    "newNearReportGets": 0,
+    "paidInferencePosts": 0
+  },
+  "remaining": [
+    "strict Gateway Intel TCB acceptance",
+    "independent review of new Gateway/model measurements, manager history and image provenance",
+    "new bounded exact-byte approved policy",
+    "fresh live admission and signed bounded completion",
+    "separate GPU Cell and Cell-bound sealed-key acceptance"
+  ]
+}

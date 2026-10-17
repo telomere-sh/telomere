@@ -1,0 +1,34 @@
+{
+  "checkedAt": "2026-10-15T01:10:42.295800+00:00",
+  "exitCode": 0,
+  "command": [
+    "node",
+    "node_modules/vitest/vitest.mjs",
+    "run",
+    "tests/platform-spend-permission.test.ts",
+    "--reporter=json",
+    "--outputFile=C:\\Users\\Administrator\\Documents\\Codex\\2026-10-08\\new-chat\\outputs\\telomere\\.local\\platform-spend-permission-final-20261015.json"
+  ],
+  "sourceSha256": {
+    "tests/platform-spend-permission.test.ts": "e76a6a61926ad14ca3c8d61a5c250f8b01e76d3f258774a9c78d37490adc6caa",
+    "tests/fixtures/platform-spend-permission.ts": "a02547f26534f4fb71e04a36fa0ecf9da2b41315ee117fea3f0b5d8b257fae51",
+    "tests/fixtures/spend-permissions/TestSpendFundingAccount.sol": "bd350414c3db308f869d093413b8749e43a400452a919636bad7dee354bfc439",
+    "tests/fixtures/spend-permissions/SpendPermissionManager.compiled.json": "022c5929bf1caadf8a3b88ade69d11aeb6fd1639d1410068e24b6e293f77c7a0",
+    "tests/fixtures/spend-permissions/reference-input.json": "5a2825705245373c5d57a56f77acf406c6c09f924e44bef8b168876ba6e01128",
+    "tests/fixtures/spend-permissions/provenance.json": "ce0f0d4dd619a9a19431d89cc6fc3f35ee3063a1eaf37425b777c048921e0d25",
+    "contracts/PlatformSpendPermissionEscrowV1.sol": "26c97a481151f50300544cc851f8240718470e31e95219edf6f014b9fad5be53",
+    "src/payments/spend-permissions.ts": "3cdb661994b48507685b5d83912ca99ce13e4a2b2d3d12760087463137f515ed",
+    "src/platform-runtime/types.ts": "4a673d8d2efcd0ff1d20b36d9ed12a9a7b780f57af354584d2e74d769fb8f27b",
+    "src/platform-runtime/bridge.ts": "94c0b16bdddabdd00bd80ef16288f5ae22b93b9a7c16afadb905fb378d7d49f4",
+    "src/platform-runtime/client.ts": "ff43ffefdd2911bf35b881e6bdc7e34bbdf238d5c7783396236a02141d2342bb",
+    "src/platform-runtime/service.ts": "0f93fdb0dbb194f8be47875c3c2afd2ae2712e5a62e96e1cd24ed91d2810f966",
+    "src/platform-runtime/read-only.ts": "289995747b7fb554cfa723a54683d155573ddac84ef2e54fe1ec0052a18ee368",
+    "src/platform-runtime/vault-client.ts": "4d2c1a202b2aecbee1b9d4a8e77f3d8aef2c3d8a70a8bd7869014f82eb0c1e94",
+    "src/config.ts": "827046034bbe7050fd6bf8cb941fe7ad0ecdc9e907185211214f635b3ffdd28d",
+    "package-lock.json": "e8549c057c2e4a8a3808ae2a2b386e9a20d20711c696836dd483d4c8bc7c533d"
+  },
+  "sourceUnchangedAfterRun": true,
+  "changedDuringRun": [],
+  "rawResult": ".local/platform-spend-permission-final-20261015.json",
+  "rawResultSha256": "79413f9009b4cf0f60d050482cd7e1e61512eeecf9707af589d7a24c1fe831aa"
+}

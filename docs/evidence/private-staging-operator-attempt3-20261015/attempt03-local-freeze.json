@@ -1,0 +1,21 @@
+{
+  "authorizedExistingExportReadOnlyProof": "existing-export-readonly-proof.json",
+  "cloneSmokeUnchangedFromAttempt02": true,
+  "files": {
+    "README.md": "6c0792998957eddf5cb51f22e92478433fc6cc1fc83b2117c27417a33012e2cf",
+    "clone-smoke.mjs": "43d37c51c7d50a1a9971b444367045a2c7e73b91239418d679460d1fb06176e5",
+    "rollout.py": "26e580f34daa0db39710ff4114315809979686ceeaca656fb4cf59de715a15cb",
+    "upload-launch-usage.md": "e808f1707bed73a3ad3e321da9651ca6af4e7bdb27904836ab04ae368a09a9c4",
+    "upload-launch.py": "deb1467b2b85814005ca9cceb4141ef2934cbe06c2ba88e48585007be65ee712"
+  },
+  "kind": "private_staging_attempt03_local_preparation",
+  "offlineCases": 29,
+  "offlineControls": "image-identity-offline-results.json",
+  "oldAttempt01And02Unchanged": true,
+  "operatorPath": "/opt/telomere-host-runtime/private-staging-operator-20261015-354fe7af62ea-attempt03",
+  "remoteMutationCalls": 0,
+  "result": "prepared",
+  "rolloutPhasesExecuted": 0,
+  "runId": "staging-354fe7af62ea-launch03",
+  "schemaVersion": 1
+}

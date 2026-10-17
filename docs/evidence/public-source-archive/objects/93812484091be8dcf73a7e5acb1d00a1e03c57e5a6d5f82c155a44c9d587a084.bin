@@ -1,0 +1,64 @@
+"""Verify retained Git bytes and managed SHA-256 references from a clean checkout.
+
+Run: python docs/verify-evidence.py
+This reads local files and Git only; it never reruns acceptance or changes files.
+"""
+import hashlib
+import json
+import pathlib
+import subprocess
+
+root = pathlib.Path(__file__).resolve().parents[1]
+tracked = set(subprocess.check_output(['git', 'ls-files', '-z', '--', 'docs', 'website'], cwd=root).decode().split('\0'))
+names = sorted(name for name in tracked if name.startswith('docs/') and (name.startswith('docs/evidence/') or name.endswith('.json')))
+different = []
+for name in names:
+    committed = subprocess.check_output(['git', 'show', 'HEAD:' + name], cwd=root)
+    if committed != (root / name).read_bytes():
+        different.append(name)
+print(json.dumps({'checkedRawRecords': len(names), 'gitWorkingBytesDiffer': different}))
+assert not different
+
+references = 0
+mismatches = []
+untracked = []
+
+def walk(value, document):
+    global references
+    if isinstance(value, dict):
+        name, digest = value.get('path'), value.get('sha256')
+        target = None
+        if isinstance(name, str) and isinstance(digest, str):
+            relative = pathlib.PurePosixPath(name)
+            if document == 'docs/evidence/website-handoff-import-20261015.json':
+                # Handoff entries are relative to importedRoot=website, including its own docs/ directory.
+                assert not relative.is_absolute() and '..' not in relative.parts and ':' not in name and '\\' not in name
+                target = root / 'website' / relative
+            elif name.startswith('docs/'):
+                assert not relative.is_absolute() and '..' not in relative.parts and ':' not in name and '\\' not in name
+                target = root / name
+            elif document.startswith('docs/evidence/') and (
+                pathlib.PurePosixPath(document).name == 'source-record.json'
+                or document in ('docs/evidence/golem-protocol-upstream-20261015/manifest.json',
+                                'docs/evidence/golem-allocation-upstream-20261015/manifest.json')
+            ):
+                assert not relative.is_absolute() and '..' not in relative.parts and ':' not in name and '\\' not in name
+                target = (root / document).parent / relative
+        if target is not None:
+            references += 1
+            if target.relative_to(root).as_posix() not in tracked:
+                untracked.append({'document': document, 'reference': name})
+            if not target.is_file() or hashlib.sha256(target.read_bytes()).hexdigest() != digest:
+                mismatches.append({'document': document, 'reference': name})
+        for item in value.values():
+            walk(item, document)
+    elif isinstance(value, list):
+        for item in value:
+            walk(item, document)
+
+for name in names:
+    if name.endswith('.json'):
+        walk(json.loads((root / name).read_bytes()), name)
+print(json.dumps({'checkedEvidenceReferences': references, 'mismatches': mismatches,
+                  'untrackedEvidenceReferences': untracked}))
+assert not mismatches and not untracked

@@ -1,0 +1,28 @@
+{
+  "commit": "1b6fcf5209a622b14b4002d1481bac56d5fc44bf",
+  "archiveSha256": "9a8c3bf935e9684bb212bb357253972f7123d67edd1e623069fba53322e2c78a",
+  "sourceFiles": 582,
+  "nodeVersion": "v22.23.3",
+  "testsRequested": [
+    "tests/operator-platform-journal.test.ts",
+    "tests/platform-runtime.test.ts",
+    "tests/platform-exec-runtime.test.ts",
+    "tests/platform-selection.test.ts",
+    "tests/vault-income.test.ts"
+  ],
+  "buildExitCode": 0,
+  "tests": { "total": 112, "passed": 112, "failed": 0, "pending": 0 },
+  "sourceMatchesAfter": 582,
+  "publicChainOrProviderCalls": false,
+  "serviceMutations": false,
+  "healthBeforeAndAfter": { "status": "ready", "worker": "idle" },
+  "servicesBeforeAndAfter": {
+    "telomere-staging.service": "active",
+    "telomere-staging-chain.service": "active",
+    "enclave-api.service": "active",
+    "enclave-worker.service": "active",
+    "enclave-web.service": "active"
+  },
+  "temporaryDirectoryRemoved": true,
+  "success": true
+}

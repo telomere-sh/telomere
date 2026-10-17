@@ -1,0 +1,26 @@
+{
+  "status": "isolated HTTP ACME vhost ready",
+  "probes": [
+    {
+      "host": "telomere.sh",
+      "challengeStatus": 200,
+      "redirectStatus": 308
+    },
+    {
+      "host": "review.telomere.sh",
+      "challengeStatus": 200,
+      "redirectStatus": 308
+    }
+  ],
+  "nginxConfigurationPassed": true,
+  "preexistingVhostHttpStatuses": {
+    "2.27.12.39": 200,
+    "enclaveagent.tech": 200
+  },
+  "preexistingVhostFilesNotWritten": true,
+  "reloadObservation": "initial immediate probe raced worker reload; post-reload bounded check passed",
+  "vhostSha256": "29403dcba89f719db98dc005968f551fcbec2f88dc7e0393e28c02443c50eab4",
+  "webroot": "/var/www/telomere-acme",
+  "controllerStarted": false,
+  "publicTransactionsSent": 0
+}

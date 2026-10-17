@@ -1,0 +1,240 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-15",
+  "finishedAt": "2026-10-15T03:00:04.824402+00:00",
+  "decision": "UNAPPROVED; strict_live_inference_unavailable",
+  "sourceGitRevision": "b042c1bc3119754e06f6b662f2e46c108a63db36",
+  "sourceArchiveSha256": "3e901e235bb9e50ff4c8dea8312aa05da7364f4865aa3c46014cb5a806122a49",
+  "readOnly": true,
+  "nearReportGets": 2,
+  "paidInferencePosts": 0,
+  "walletTransactions": 0,
+  "policyChanges": 0,
+  "serviceChanges": 0,
+  "privatePacketDirectory": "/opt/telomere-host-runtime/near-readonly-20261015-0300",
+  "policy": {
+    "sha256": "75abdd6f7e2a075863b71afa68a7e7dddb43115f3834b6428ace33a228d89ffa",
+    "validUntil": "2026-10-08T14:29:11Z",
+    "unchanged": true,
+    "validation": "POLICY_EXPIRED",
+    "directProfileComparison": [
+      {
+        "profileIndex": 0,
+        "measurementDifferences": [
+          "rt_mr3"
+        ],
+        "actionsHashMatches": false
+      },
+      {
+        "profileIndex": 1,
+        "measurementDifferences": [
+          "mr_config_id",
+          "rt_mr3"
+        ],
+        "actionsHashMatches": false
+      },
+      {
+        "profileIndex": 2,
+        "measurementDifferences": [
+          "mr_config_id",
+          "rt_mr3"
+        ],
+        "actionsHashMatches": false
+      },
+      {
+        "profileIndex": 3,
+        "measurementDifferences": [
+          "mr_config_id",
+          "rt_mr3"
+        ],
+        "actionsHashMatches": false
+      }
+    ]
+  },
+  "captures": {
+    "cloud": {
+      "exitCode": 0,
+      "summary": {
+        "schemaVersion": 1,
+        "status": "captured",
+        "reasonCode": "CANDIDATE_CAPTURED",
+        "checkedAt": "2026-10-15T02:59:36.549Z",
+        "endpoint": "https://cloud-api.near.ai",
+        "model": "z-ai/glm-5.3-flash",
+        "approval": "UNAPPROVED",
+        "hardwareVerified": false,
+        "reportGets": 1,
+        "paidPosts": 0,
+        "inventory": {
+          "gatewayReports": 1,
+          "modelCandidates": 1,
+          "manifests": 2,
+          "immutableImageClaims": 1
+        },
+        "pendingChecks": [
+          "Intel quote/collateral, accepted TCB/advisories and debug rejection",
+          "Verified quote nonce/signer binding and RTMR3 event-log replay",
+          "Raw app-compose hash versus verified MRCONFIGID",
+          "NVIDIA evidence for every model candidate",
+          "Gateway TLS SPKI binding on the captured connection",
+          "Cryptographic image provenance, subject digests, publisher/build/source identities",
+          "Independent measured-workload review and separately approved bounded Cloud policy",
+          "Fresh live admission and one separately authorized bounded completion/signature acceptance",
+          "Shared model-key and incomplete model/Gateway/response binding limitations"
+        ],
+        "httpStatus": 200,
+        "response": {
+          "sha256": "0xe6338372b2a0f0e1e34b53e6350a821cc3fd1a860192b5de1435a3e3a949e848",
+          "bytes": 298730
+        }
+      }
+    },
+    "direct": {
+      "exitCode": 0,
+      "summary": {
+        "schemaVersion": 1,
+        "status": "captured",
+        "reasonCode": "CANDIDATE_CAPTURED",
+        "checkedAt": "2026-10-15T02:59:37.460Z",
+        "endpoint": "https://glm-5-3-flash.completions.near.ai",
+        "model": "z-ai/glm-5.3-flash",
+        "approval": "UNAPPROVED",
+        "hardwareVerified": false,
+        "reportGets": 1,
+        "paidPosts": 0,
+        "httpStatus": 200,
+        "response": {
+          "sha256": "0x9c2e72ec9d5dac867a5a189a6db43f3b49fc8b2d9da599cafcfcd5befda199a4",
+          "bytes": 394794
+        }
+      }
+    }
+  },
+  "hardwareAppraisal": {
+    "approval": "UNAPPROVED",
+    "scope": "captured_evidence_hardware_only",
+    "policyChanged": false,
+    "paidInferencePosts": 0,
+    "newNearReportGets": 0,
+    "nativeArtifactHashesMatch": true,
+    "appraisals": {
+      "gateway": {
+        "status": "rejected",
+        "reasonCode": "CPU_TCB_REJECTED"
+      },
+      "cloud-model-0": {
+        "status": "hardware_checked",
+        "workloadApproved": false,
+        "cpuStatus": "UpToDate",
+        "gpuCount": 8,
+        "gpuModels": [
+          "GH100 A01 GSP BROM"
+        ],
+        "appComposeSha256": "c82b1a2eaf6996154a5f39ae621643f034b082d5e51edd3d2ba6009273881d86",
+        "composeManagerActionsSha256": "4c6eb48f299c533df1ed2b79d098333a0d694bbfe6c8b23b71da882689ea177b"
+      },
+      "direct-model": {
+        "status": "hardware_checked",
+        "workloadApproved": false,
+        "cpuStatus": "UpToDate",
+        "gpuCount": 8,
+        "gpuModels": [
+          "GH100 A01 GSP BROM"
+        ],
+        "appComposeSha256": "55db164f4f8c6a837c2217c601c21bba4758f908536a6cd5b2978550205a9179",
+        "composeManagerActionsSha256": "f903bd0f836f7720580c6bb94534c2399e7800956d5bb8011a3b1432bbd54733"
+      }
+    },
+    "cpuResults": {
+      "326a65c60c16d09ebc2f59837e9e284c300364eea4a58c949009e7e7ef649e44": {
+        "status": "UpToDate",
+        "advisory_ids": [],
+        "qe_status": {
+          "status": "UpToDate",
+          "advisory_ids": []
+        },
+        "platform_status": {
+          "status": "UpToDate",
+          "advisory_ids": []
+        }
+      },
+      "9cabaa076c9de533750eabdf7fcf5119981a746fcd0960b9696b0ac0694b4cd0": {
+        "status": "UpToDate",
+        "advisory_ids": [],
+        "qe_status": {
+          "status": "UpToDate",
+          "advisory_ids": []
+        },
+        "platform_status": {
+          "status": "UpToDate",
+          "advisory_ids": []
+        }
+      },
+      "5b606bfac1a9d6167b9fe4901873ec0618909660365a3a9e7c052a20858ac603": {
+        "status": "OutOfDate",
+        "advisory_ids": [
+          "INTEL-SA-01192",
+          "INTEL-SA-01245",
+          "INTEL-SA-01312",
+          "INTEL-SA-01313"
+        ],
+        "qe_status": {
+          "status": "UpToDate",
+          "advisory_ids": []
+        },
+        "platform_status": {
+          "status": "OutOfDate",
+          "advisory_ids": [
+            "INTEL-SA-01192",
+            "INTEL-SA-01245",
+            "INTEL-SA-01312",
+            "INTEL-SA-01313"
+          ]
+        }
+      },
+      "217f6976460fbdecffc8773e54316b4d0ebdde02da2c73d9c19c7fbf0134ea73": {
+        "status": "UpToDate",
+        "advisory_ids": [],
+        "qe_status": {
+          "status": "UpToDate",
+          "advisory_ids": []
+        },
+        "platform_status": {
+          "status": "UpToDate",
+          "advisory_ids": []
+        }
+      },
+      "79c32170260cb6e956fd3f3cee30f2ffa61ede8688a7b9a7b5b63b8c6455fa3d": {
+        "status": "UpToDate",
+        "advisory_ids": [],
+        "qe_status": {
+          "status": "UpToDate",
+          "advisory_ids": []
+        },
+        "platform_status": {
+          "status": "UpToDate",
+          "advisory_ids": []
+        }
+      }
+    },
+    "checkedAtEpoch": 1792033204
+  },
+  "evidence": [
+    {
+      "path": "docs/evidence/near-readonly-acceptance-20261015.json",
+      "sha256": "0753e0711574be425cd21eed526eef8b1c328eb8c796866aaea241b61168390c",
+      "bytes": 6028
+    },
+    {
+      "path": "docs/evidence/near-readonly-policy-comparison-20261015.json",
+      "sha256": "05a7b8296ffd8ebea867e6154ff2c32dbfb474dfe7385282c9f426f5493a19ad",
+      "bytes": 1028
+    }
+  ],
+  "limits": [
+    "Native hardware facts apply to these saved fresh packets only, never future inference or Cell key release.",
+    "Gateway strict TCB rejection remains enforced; no advisory exception or policy renewal was made.",
+    "No completion, response-signature acceptance, public settlement or GPU Cell was tested.",
+    "Raw reports, collateral and API key remain private on the VPS; summaries contain no credentials."
+  ]
+}

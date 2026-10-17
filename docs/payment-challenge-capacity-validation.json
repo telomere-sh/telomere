@@ -1,0 +1,36 @@
+{
+  "checkedOn": "2026-10-12",
+  "baselineCommit": "41ede4f",
+  "scope": "Atomic durable challenge count limit in the existing payment service",
+  "sources": ["src/payments/service.ts", "tests/x402-payments.test.ts"],
+  "windows": {
+    "command": "npx vitest run tests/x402-payments.test.ts --reporter=json --outputFile=.local/payment-challenge-capacity.json",
+    "exitCode": 0,
+    "total": 44,
+    "passed": 44,
+    "failed": 0,
+    "skipped": 0,
+    "elapsedSeconds": 62.325,
+    "report": ".local/payment-challenge-capacity.json"
+  },
+  "actualNewCases": [
+    "Two independent service instances concurrently issue three challenges against a cap of two: exactly two are saved, no journal or transaction is created by issuance, and an issued authorization remains verifiable and payable at capacity",
+    "A cap of one remains full after disk reopen and challenge expiry; the original pending signed transaction still settles once with the same raw bytes, hash and operator nonce"
+  ],
+  "behavior": {
+    "defaultMaximum": 10000,
+    "allowedMaximumRange": [1, 10000],
+    "atomicSharedSettlementLock": true,
+    "expiredAndConsumedRowsCount": true,
+    "automaticEvidenceDeletion": false,
+    "existingPaymentRecoveryAtCapacity": true
+  },
+  "strictTypeScriptExitCode": 0,
+  "independentReadOnlyReview": "No actionable finding; durable count plus insert share paymentLock and existing payment recovery remains available at capacity",
+  "limitations": [
+    "This focused run extends and overlaps the 42-case finality run; counts must not be added together",
+    "The prior 241-case Linux snapshot is anchored to 41ede4f and predates this change",
+    "A separately reviewed retention/archive policy is required before continuous public operation",
+    "No public transaction, public asset capability enablement, personal wallet or paid-provider request"
+  ]
+}

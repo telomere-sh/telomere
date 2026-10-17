@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "checkedAtUtc": "2026-10-13T15:30:00Z",
+  "scope": "Exact committed agent current-Cyst to local Vault-funded CPU Cell restore acceptance in an isolated private Linux checkout",
+  "commit": "cccada2e34b1e6fe74306d526b85415c10070214",
+  "sourceArchiveSha256": "df5d6f3f040627a5408fdd3d5f582090fd56df09b58e58d091f47c94ebd71a38",
+  "normalBuild": "passed",
+  "tests": {
+    "files": 2,
+    "passed": 7,
+    "failed": 0,
+    "skipped": 0,
+    "durationSeconds": 115.19
+  },
+  "trackedFilesComparedWithArchiveAfterBuildAndTests": 713,
+  "trackedFilesMismatched": [],
+  "existingServicesActiveAfter": [
+    "enclave-api",
+    "enclave-web",
+    "enclave-worker",
+    "telomere-host-docker-v3",
+    "telomere-host-kit",
+    "telomere-staging-chain",
+    "telomere-staging-watchdog",
+    "telomere-staging"
+  ],
+  "ownedRemoteCheckoutRemoved": true,
+  "publicProviderOrChainTestCalls": 0,
+  "liveServiceMutationDuringAcceptance": false,
+  "limits": "Composite local acceptance: one suite mounts signed Cyst HTTP with two loopback S3 stores and mocks the paid command; the second exercises a real Vault-funded Host Kit command with fixture locator. No single public-wallet/gVisor/independent-region/NEAR GPU end-to-end claim."
+}

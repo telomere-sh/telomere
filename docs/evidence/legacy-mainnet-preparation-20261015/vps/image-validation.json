@@ -1,0 +1,7 @@
+{
+  "socket": "unix:///run/telomere-mainnet-docker/docker.sock",
+  "status": "reviewed digests resolved after archive load lost digest aliases",
+  "scope": "new daemon only; anonymous public registry; no old credential config",
+  "publicTransactionsSent": 0,
+  "controllerStarted": false
+}

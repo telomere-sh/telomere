@@ -1,0 +1,70 @@
+{
+  "repository": "https://github.com/coinbase/spend-permissions",
+  "commit": "e0004e63edc4e17de7aa978293800ac7a16892e5",
+  "compiler": "0.8.28+commit.7893614a.Emscripten.clang",
+  "settings": {
+    "optimizer": {
+      "enabled": true,
+      "runs": 200
+    },
+    "evmVersion": "cancun",
+    "remappings": [
+      "openzeppelin-contracts/=lib/openzeppelin-contracts/",
+      "@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/",
+      "solady/=lib/solady/src/",
+      "smart-wallet/=lib/smart-wallet/src/",
+      "magicspend/=lib/magicspend/src/",
+      "account-abstraction/=lib/account-abstraction/contracts/",
+      "webauthn-sol/=lib/webauthn-sol/src/",
+      "FreshCryptoLib/=lib/webauthn-sol/lib/FreshCryptoLib/solidity/src/"
+    ],
+    "outputSelection": {
+      "*": {
+        "*": [
+          "abi",
+          "evm.bytecode.object",
+          "evm.deployedBytecode.object"
+        ]
+      }
+    }
+  },
+  "files": {
+    "src/SpendPermissionManager.sol": "56bcf35cba65897ab2d82fd146c334dcfba74de506fbae2cfa0b4a0b77aa14cb",
+    "lib/magicspend/src/MagicSpend.sol": "bde6d7812ca35b18fbea0389ce0ebf4e4fb7fd5e7073cb95976876872d8f0a2d",
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC1271.sol": "f47d6ae49fb85ad0c6acd9dda517d724b34d8548730dcd7cb9011363224a593b",
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC165.sol": "158be97391f8e3ab4cf981cd3c17db0d912d78815c608a7d8496a677a5c489e4",
+    "lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol": "f5440f82ecdda78f1860529ffd9d385018b9a7902c3c4f1403a6980241a94225",
+    "lib/openzeppelin-contracts/contracts/token/ERC20/utils/SafeERC20.sol": "df05665598d7b2239495ae9dda18e882e399e11f4b98a59fd515737f0a36d93f",
+    "lib/openzeppelin-contracts/contracts/token/ERC721/IERC721.sol": "2f277deede00a6c27896cd8359bc99da7f0acf048bc706d1487f2fbdc8e5d4f3",
+    "lib/openzeppelin-contracts/contracts/utils/introspection/ERC165Checker.sol": "99bc83c8d258444f4bcaa497b7780d54fa933192a9d0b26bbe1993d047636d34",
+    "lib/smart-wallet/src/CoinbaseSmartWallet.sol": "058e64e54e27e51a42ef76088723f2408b2939c0a7a64cfc436d391f5c3f31d2",
+    "lib/solady/src/utils/EIP712.sol": "16f1d5d79de228fd06bc1946a22e7db141a9f482eddb00e09c674a59cfad9e76",
+    "lib/solady/src/utils/SafeTransferLib.sol": "381785ea37dd9d532613c49d677dc06852ec8f647136c69de50aff48418e0faa",
+    "src/PublicERC6492Validator.sol": "b95c00882fb00f94012b75c314ae0569639b330b605158427aea3d2c05a6d359",
+    "lib/solady/src/auth/Ownable.sol": "f1031d443c0e4f8cb7faf6e94d6b522ed01cae035e5c50dc4ee6dafb58f78b7c",
+    "lib/solady/src/utils/SignatureCheckerLib.sol": "2737b62f533e33ce4ea1c0ab2924fc16832219e230540e2d690b241d682bab37",
+    "lib/account-abstraction/contracts/interfaces/UserOperation.sol": "b8b33c56fe760ff1cd1d407d268a74c49e4cd30fb399c106d099ab83a6d047d6",
+    "lib/account-abstraction/contracts/interfaces/IPaymaster.sol": "d0e804f0e872a9ccf8edf8eb2418ef6dabe51d8ea11356cb42610d927878a384",
+    "lib/account-abstraction/contracts/interfaces/IEntryPoint.sol": "ab331fd8059e480642c2a9f2774f86ff35166b6a19c9aed2a14a0b007ba64be1",
+    "lib/openzeppelin-contracts/contracts/utils/introspection/IERC165.sol": "2ed2ec4814c4c33d95031c5aeb7845641ef3cac0d9d1b1456217ca5cc7bf9659",
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC1363.sol": "b880bb8f4dceb9aeae24b16a7c2272df1034c8bfe319b7b80bd6e3049d8c03fb",
+    "lib/openzeppelin-contracts/contracts/utils/Address.sol": "cae6fb3e8a6746e00d36edb9dce9b2d9c3037246dff3811fb45aecefdaf46a29",
+    "lib/account-abstraction/contracts/interfaces/IAccount.sol": "272d8b1c12e09cfd359a89e3b6e861bcbf35b759450df3f98effa13a9e42bb50",
+    "lib/solady/src/accounts/Receiver.sol": "0f674d0f467b207fa1dbde5e94161da447bc870f1e48d0d1827bb5a7f292b4ec",
+    "lib/solady/src/utils/UUPSUpgradeable.sol": "34a7b03b9b1a4899c123647a4a8ce35c639641cb2249314a37672a88f4e60feb",
+    "lib/webauthn-sol/src/WebAuthn.sol": "b80a12e69017ab666706e52c38134339b042507662f4a2acfeb7d5b8ba569d1c",
+    "lib/smart-wallet/src/ERC1271.sol": "c4288834b00ccd9069f72fc585806dd94c1f155b86ae34d320a14b61e85ac160",
+    "lib/smart-wallet/src/MultiOwnable.sol": "4ba7b3e780b6b19fb43c339ca87985520cb9176386888505473d425096c4963d",
+    "lib/account-abstraction/contracts/interfaces/IStakeManager.sol": "642321663dd50b1ccef865ff232663d5fb8403258f0e19375d4d4b3c3aa5d378",
+    "lib/account-abstraction/contracts/interfaces/IAggregator.sol": "53a275704dd41404eedc4b7579a7422c933baeb99025486e661181e6c421fbcb",
+    "lib/account-abstraction/contracts/interfaces/INonceManager.sol": "7f4a132da7fb97c3158f2da6f64cac7cd514ebf3dc2c69dabb9857cf35d5c3c2",
+    "lib/account-abstraction/contracts/core/Helpers.sol": "75403fa7cbe19c4f7f778a82d72561bf04a3b491fc8e1ed7a4f63b2d49333770",
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC20.sol": "1b298d33bd01918bce360fcbd55e838da316465b23404e07a6c89adfe9c9efa3",
+    "lib/openzeppelin-contracts/contracts/utils/Errors.sol": "7fc3482c7133adec1df43c68acb55108e5b57c6830599064606e042ca698aa5e",
+    "lib/webauthn-sol/lib/FreshCryptoLib/solidity/src/FCL_ecdsa.sol": "facc3489504e8c35dfe42606ccde0f889a50139bf0ed241eeb934c62784fcdbd",
+    "lib/webauthn-sol/lib/FreshCryptoLib/solidity/src/FCL_elliptic.sol": "a19a73a34a2ac603b4cb7dbd52086b9c90a33264e8cc5920631cce1f503137c6",
+    "lib/openzeppelin-contracts/contracts/utils/Base64.sol": "acab866d41da0bd7f6a361c9cd52f0c90e398d41fbccef0cd058c3c80b71c19a",
+    "lib/solady/src/utils/LibString.sol": "cfa7851050fadc54b2e778264308fbf343ef4ae33692a3c36f0d8990f2f57b16"
+  },
+  "note": "Unmodified official Manager and resolved pinned upstream imports. Runtime constructor immutables are installed by real local deployment. This is not a verified public Base deployment."
+}

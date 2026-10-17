@@ -1,0 +1,164 @@
+{
+  "schemaVersion": 1,
+  "checkedOn": "2026-10-12",
+  "timezone": "Europe/Moscow",
+  "scope": "Backend only: reviewed one-shot CPU commands through financial EOA/Vault APIs, Node/Python clients and existing financial MCP tools",
+  "sourceParentCommit": "bc83fa9",
+  "completeWindowsRegression": {
+    "command": "npx vitest run --reporter=dot --reporter=json --outputFile=.local/platform-exec-full-regression.json",
+    "exitCode": 0,
+    "filesPassed": 54,
+    "testsPassed": 888,
+    "explicitPosixSkips": 4,
+    "testsTotal": 892,
+    "failures": 0,
+    "durationSeconds": 1055.59,
+    "runtimeAndTestSourcesStayedFixedDuringRun": true,
+    "beforeFinalRemovedHostStopFix": true,
+    "notASingleCompleteRunOfFinal893CaseRepository": true
+  },
+  "finalFocusedRegression": {
+    "command": "npx vitest run tests/platform-runtime.test.ts tests/platform-vault-runtime.test.ts tests/platform-exec-runtime.test.ts tests/platform-main.test.ts tests/platform-readiness.test.ts tests/platform-configured.test.ts --reporter=dot --reporter=json --outputFile=.local/platform-exec-final-focused.json",
+    "exitCode": 0,
+    "filesPassed": 6,
+    "testsPassed": 57,
+    "explicitPosixSkips": 1,
+    "testsTotal": 58,
+    "failures": 0,
+    "durationSeconds": 332.81,
+    "runtimeAndTestSourcesStayedFixedDuringRun": true,
+    "afterFinalRemovedHostStopFix": true,
+    "overlapsCompleteRegression": true,
+    "casesByFile": {
+      "platform-runtime.test.ts": { "passed": 7, "skipped": 0 },
+      "platform-vault-runtime.test.ts": { "passed": 12, "skipped": 0 },
+      "platform-exec-runtime.test.ts": { "passed": 11, "skipped": 0 },
+      "platform-main.test.ts": { "passed": 9, "skipped": 0 },
+      "platform-readiness.test.ts": { "passed": 6, "skipped": 0 },
+      "platform-configured.test.ts": { "passed": 12, "skipped": 1 }
+    },
+    "removedHostActualStopAndFullRefundPassed": true,
+    "missingOriginalHostRefusedBeforeClaimPassed": true
+  },
+  "earlierAffectedHostKitRegression": {
+    "filesPassed": 3,
+    "testsPassed": 56,
+    "skipped": 0,
+    "durationSeconds": 133.97,
+    "overlapsCompleteRegression": true
+  },
+  "newSuiteCases": {
+    "host-kit-command.test.ts": 17,
+    "platform-exec-client.test.ts": 34,
+    "platform-exec-runtime.test.ts": 11,
+    "notDisjointFromRegressionCounts": true
+  },
+  "python": {
+    "cryptoEnabled": {
+      "command": "python/.venv/Scripts/python.exe -m unittest discover -s python/tests -q",
+      "exitCode": 0,
+      "passed": 87,
+      "skipped": 0,
+      "durationSeconds": 4.108
+    },
+    "withoutOptionalDependencies": {
+      "command": "python -m unittest discover -s python/tests -q",
+      "exitCode": 0,
+      "passed": 48,
+      "explicitOptionalSkips": 39,
+      "total": 87,
+      "durationSeconds": 2.324
+    },
+    "sourcesUnchangedAfterTheseChecks": true,
+    "viemFixtureRegeneratedAfterFinalBuild": true,
+    "fixtureSha256": "773ac6beb4c372ecab7c7bdb95730636f670622a91707078db5420dd8980b088",
+    "all13PreviousFixtureFieldsUnchanged": true,
+    "newCommandVectorFieldsAppended": 5
+  },
+  "typecheck": { "command": "npm run typecheck", "exitCode": 0, "afterFinalFix": true },
+  "finalBuild": { "command": "npm run build", "exitCode": 0, "afterFinalFix": true },
+  "dependenciesChanged": false,
+  "linuxFinancialAcceptance": {
+    "command": "node --import tsx scripts/platform-runtime-acceptance.ts --exec",
+    "exitCode": 0,
+    "report": "platform-exec-acceptance.json",
+    "checkedAt": "2026-10-12T09:11:40.522Z",
+    "afterFinalFix": true,
+    "chainId": 31337,
+    "payer": "EOA",
+    "isolation": "gvisor",
+    "actualMainApplicationSdkAndHttp": true,
+    "independentlyVerifiedHashChainAndUnicodeStdin": true,
+    "billableSeconds": 4,
+    "signedHostTicks": 3,
+    "signedControlAcknowledgments": 3,
+    "reservation": "3270",
+    "hostAmount": "400",
+    "platformFee": "36",
+    "charged": "436",
+    "refund": "2834",
+    "canonicalFullFinancialLeafAndSettlementVerified": true,
+    "sameDatabaseRestartWithoutRedispatch": true,
+    "existingHostKitDaemonBinaryUnchanged": true,
+    "disposableControllerAndChainStopped": true
+  },
+  "linuxTextAcceptance": {
+    "command": "node --import tsx scripts/host-text-acceptance.ts",
+    "exitCode": 0,
+    "report": "host-text-acceptance.json",
+    "checkedAt": "2026-10-12T08:53:06.275Z",
+    "isolation": "gvisor",
+    "freshIsolatedHostIdentityAndUpdatedDockerRuntime": true,
+    "casesPassed": 4,
+    "splitUtf8PreservedAndInitialBomNormalized": true,
+    "nulAndIncompleteUtf8RejectedDurably": true,
+    "followingValidCommandCompleted": true,
+    "signedTerminalEvidenceCleanupAndJournalReopenVerified": true,
+    "existingHostKitDaemonUnchanged": true,
+    "hostKitSourcesUnchangedAfterThisAcceptance": true
+  },
+  "linuxPosixRegression": {
+    "command": "npx vitest run tests/operator.test.ts tests/cysts.test.ts tests/cyst-backup.test.ts tests/platform-configured.test.ts --testNamePattern=\"POSIX|public permissions|symlinked source\" --reporter=dot --reporter=json --outputFile=.local/exec-posix-regression.json",
+    "exitCode": 0,
+    "files": 4,
+    "passed": 4,
+    "otherCasesFilteredOut": 74,
+    "total": 78,
+    "durationSeconds": 10.47,
+    "exactFullNamesMatchAllFourWindowsSkips": true,
+    "alsoCoversFinalFocusedWindowsSkip": true,
+    "permissionCodeUnchangedAfterThisRun": true
+  },
+  "sourceManifest": {
+    "file": "platform-exec-source-sha256.txt",
+    "runtimeContractAndAcceptanceDriverFiles": 144,
+    "allLocalHashesMatch": true,
+    "allFinalPrivateVpsHashesMatch": true
+  },
+  "postAcceptanceHealth": {
+    "stagingControllerChainAndHostKitServicesActive": true,
+    "controller": "ready",
+    "worker": "idle",
+    "managedCellsRemaining": 0
+  },
+  "fixedFindings": [
+    "EOA configuration cache could hide command capability revocation; financial plans now check fresh capacity",
+    "Undefined optional stdin must hash identically to omission; EOA clients now reuse the shared canonical encoder",
+    "Split UTF-8, NUL and incomplete bytes require bounded terminal decoding and a persistable failed result; initial BOM is normalized before hashing",
+    "An ACK response can reveal a final signed tick after the iteration snapshot; the shared executor drains newly revealed ticks before terminal return",
+    "Removing the original host could block an already stopped zero-work reservation; capacity lookup now applies only to runnable work before claim"
+  ],
+  "independentReview": "Final runtime admission/stop/recovery and HostKit output/evidence paths reviewed; removed-host defect fixed and regression passed; documentation and manifest independently checked",
+  "publicTransactions": 0,
+  "paidProviderRequests": 0,
+  "privateKeysIncluded": false,
+  "limits": [
+    "One command per reservation for at most 120 seconds, stdout text only and reviewed Node-capable images; no persistent Cells, repeated cell.exec or streaming",
+    "The complete 892-case run precedes the final removed-host stop fix; the final six-file 58-case run includes it and overlaps the complete run",
+    "Delegated Vault command payment, burn and recovery are covered by local Anvil/real-child tests, not a new live gVisor Vault acceptance",
+    "The new Docker text runtime was exercised under a separate host identity; the existing running HostKit daemon and staging services were not upgraded",
+    "Long-lived leases, GPU/probes, external suppliers, admitted sealed-host key release, CystRegistry and independent-region storage/migration remain backend work",
+    "No public Robinhood deployment, personal-wallet submission or paid-provider acceptance",
+    "The approximately 54% assessment retains its pre-Vault 92d6ea9 cutoff; this iteration has not been rescored"
+  ]
+}

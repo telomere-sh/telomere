@@ -1,0 +1,81 @@
+{
+  "archiveSha256": "45cdb729cb9ccf3aa5e9a063940c0d732ba2bcad59e612d5e1e3f3a9058164c4",
+  "directory": "/opt/telomere-host-runtime/finance-keys-20261015-45cdb729cb9c",
+  "sourceFiles": 685,
+  "gitRevision": "8d848f20c8dc4a2b3d672013777e1c630ecd233e",
+  "startedAt": "2026-10-15T03:24:10.282241+00:00",
+  "serviceMutations": false,
+  "publicTransactions": 0,
+  "paidProviderRequests": 0,
+  "dockerOptIn": false,
+  "capacityOptIn": false,
+  "langgraphOptIn": false,
+  "healthBefore": {
+    "live": {
+      "statusCode": 200,
+      "body": {
+        "status": "ok"
+      }
+    },
+    "ready": {
+      "statusCode": 200,
+      "body": {
+        "status": "ready",
+        "worker": "idle"
+      }
+    }
+  },
+  "servicesBefore": {
+    "telomere-staging.service": "NRestarts=0\nActiveState=active\nSubState=running",
+    "telomere-staging-chain.service": "NRestarts=0\nActiveState=active\nSubState=running",
+    "telomere-staging-watchdog.service": "NRestarts=0\nActiveState=active\nSubState=running"
+  },
+  "nodeVersion": "v22.23.3",
+  "npm-ci": {
+    "exitCode": 0,
+    "seconds": 4.196
+  },
+  "build": {
+    "exitCode": 0,
+    "seconds": 73.784
+  },
+  "finance-keys": {
+    "exitCode": 0,
+    "seconds": 10.407
+  },
+  "nodeTests": {
+    "numTotalTests": 71,
+    "numPassedTests": 71,
+    "numFailedTests": 0,
+    "numPendingTests": 0,
+    "numTotalTestSuites": 7,
+    "success": true
+  },
+  "nodeFailures": [],
+  "sourceAfter": {
+    "unchanged": true,
+    "changed": []
+  },
+  "healthAfter": {
+    "live": {
+      "statusCode": 200,
+      "body": {
+        "status": "ok"
+      }
+    },
+    "ready": {
+      "statusCode": 200,
+      "body": {
+        "status": "ready",
+        "worker": "idle"
+      }
+    }
+  },
+  "servicesAfter": {
+    "telomere-staging.service": "NRestarts=0\nActiveState=active\nSubState=running",
+    "telomere-staging-chain.service": "NRestarts=0\nActiveState=active\nSubState=running",
+    "telomere-staging-watchdog.service": "NRestarts=0\nActiveState=active\nSubState=running"
+  },
+  "success": true,
+  "finishedAt": "2026-10-15T03:25:38.749044+00:00"
+}

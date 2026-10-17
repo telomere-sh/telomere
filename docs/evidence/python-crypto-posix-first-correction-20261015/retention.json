@@ -1,0 +1,135 @@
+{
+  "schema": 1,
+  "kind": "IMMUTABLE_FIRST_CORRECTION_FAILED_PYTHON_CRYPTO_EVIDENCE",
+  "retainedAtUtc": "2026-10-15T13:11:11.926295+00:00",
+  "gitRevision": "777b861f355cfd8da07b3fd0bbb2a03c8f0197be",
+  "archiveSha256": "5f85ffae99e72d1165ee346770bf06ae1d62299c10534a264072687b27bd88eb",
+  "status": "failed",
+  "focusedJournal": {
+    "testsRun": 32,
+    "skipped": 5,
+    "completedOk": true
+  },
+  "unittest": {
+    "testsRun": 236,
+    "failures": 1,
+    "skipped": 20,
+    "completedOk": false
+  },
+  "failureCase": "test_posix_replaced_owner_is_detected",
+  "failureReason": "Expected close ownership refusal after restoration may be absent when rapid rename/restore shares the same ctime tick.",
+  "sourceRuntimeInventoriesUnchanged": true,
+  "originalFilesCopiedWithoutModification": true,
+  "files": [
+    {
+      "path": "crypto-probe.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "crypto-probe.stdout",
+      "bytes": 1007,
+      "sha256": "05d7def7333a459e9c0b4b5c3e21ad4a01bf680c8d5c91ffdfe62e73666e0d3c"
+    },
+    {
+      "path": "focused-journal.stderr",
+      "bytes": 5405,
+      "sha256": "6b5d7c2924ee4c7c6b3689f41cfedbe7397f02ecde817ca2452f746738737372"
+    },
+    {
+      "path": "focused-journal.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "original-source-after.json",
+      "bytes": 144817,
+      "sha256": "ecd764ce5aaa634358bebc2ad1aa2cd2aa1a0965f319585ed74e28e0d1371fe4"
+    },
+    {
+      "path": "original-source-before.json",
+      "bytes": 144817,
+      "sha256": "ecd764ce5aaa634358bebc2ad1aa2cd2aa1a0965f319585ed74e28e0d1371fe4"
+    },
+    {
+      "path": "pip-check.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "pip-check.stdout",
+      "bytes": 30,
+      "sha256": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09"
+    },
+    {
+      "path": "pip-freeze.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "pip-freeze.stdout",
+      "bytes": 423,
+      "sha256": "37140108d4a1ae6426f921afda46e7e73fe097d53cce37c03dd9d8bbc7f0d90b"
+    },
+    {
+      "path": "progress.json",
+      "bytes": 70,
+      "sha256": "7cb3cd4f7d5e8e6044287c49999a5fe584d43cd015337e766a935e77a4faf95b"
+    },
+    {
+      "path": "report.json",
+      "bytes": 15479,
+      "sha256": "7e45c0e858d4441ebc3907e7f2e29fce5d16170e42d29d2fb819f955b976dada"
+    },
+    {
+      "path": "runner.py",
+      "bytes": 14638,
+      "sha256": "1af87d9bf8bb679419dc918c3b3208543c4fdc9910f63f64a8ee322eb5c71fba"
+    },
+    {
+      "path": "source-after.json",
+      "bytes": 144817,
+      "sha256": "de8371dd5aa9034fa1c953d2f9560349945d3c77fdf485088446046fe71a9203"
+    },
+    {
+      "path": "source-before.json",
+      "bytes": 144817,
+      "sha256": "de8371dd5aa9034fa1c953d2f9560349945d3c77fdf485088446046fe71a9203"
+    },
+    {
+      "path": "source-manifest.json",
+      "bytes": 166302,
+      "sha256": "7bfd15ca48554700e50d8bec7b4492befc3f9a647e6df0f810e6c5130017ec0a"
+    },
+    {
+      "path": "typescript-dist-after.json",
+      "bytes": 84441,
+      "sha256": "dcfddb0d87e7040b635cac7bc5201d07da74358fd08a7676993340150281f36b"
+    },
+    {
+      "path": "typescript-dist-before.json",
+      "bytes": 84441,
+      "sha256": "dcfddb0d87e7040b635cac7bc5201d07da74358fd08a7676993340150281f36b"
+    },
+    {
+      "path": "unittest.stderr",
+      "bytes": 42270,
+      "sha256": "2dfa979f937be62e1d5de4bc1be7e13fb939f957467b82b1a0fba4ca829f3746"
+    },
+    {
+      "path": "unittest.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "venv-after.json",
+      "bytes": 537999,
+      "sha256": "84dd7ba839030e8f15df28c73eebd1638165d0e9797df8b38680a65161e8469d"
+    },
+    {
+      "path": "venv-before.json",
+      "bytes": 537999,
+      "sha256": "84dd7ba839030e8f15df28c73eebd1638165d0e9797df8b38680a65161e8469d"
+    }
+  ]
+}

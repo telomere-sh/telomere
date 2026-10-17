@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 2,
+  "checkedAt": "2026-10-13T05:31:17Z",
+  "scope": "Windows current-worktree Python native Vault payer, concrete read-only RPC reader, private filesystem journal and direct disposable Anvil acceptance; not public-chain launch acceptance",
+  "repositoryBaseCommit": "7b7b3285a9f07bca32f42f3d17e960e6ca0e5cfd",
+  "journalImplementationCommit": "d0a1af1",
+  "runtime": { "python": "3.13.5", "platform": "Windows" },
+  "fullCryptoEnabledSuite": {
+    "command": "$env:TELOMERE_PYTHON_NATIVE_ACCEPTANCE='1'; python/.venv/Scripts/python.exe -W error::ResourceWarning -m unittest discover -s python/tests",
+    "collected": 200,
+    "passed": 193,
+    "skipped": 7,
+    "failed": 0,
+    "elapsedSeconds": 79.487,
+    "focusedNativePayerAndPublicTransportTests": 24,
+    "privateJournalTests": 32,
+    "directRpcAndEnvelopeFacetTests": 19,
+    "directPythonAnvilPayerRecoveryScenarios": 1,
+    "skipReasons": { "posixJournalOnly": 5, "windowsHostSymlinkUnavailable": 2 }
+  },
+  "strictTypeScriptFixtureCheck": {
+    "command": "node node_modules/typescript/bin/tsc --noEmit --target ES2022 --module NodeNext --moduleResolution NodeNext --strict --noUncheckedIndexedAccess --exactOptionalPropertyTypes --noImplicitReturns --noFallthroughCasesInSwitch --noUnusedLocals --noUnusedParameters --esModuleInterop --skipLibCheck scripts/solc.d.ts python/tests/native-vault-harness.ts",
+    "passed": true
+  },
+  "sourceSha256": {
+    "python/src/telomere_sdk/vault_income.py": "d69e12700f52d566bb735a2e5e51427650c9c855e5eb81f874d4e9f3db5e012a",
+    "python/src/telomere_sdk/vault_income_rpc.py": "e0bff2185244e28d920a378660332465085a7d84cad69e9b470429b0fe75a04a",
+    "python/src/telomere_sdk/vault_income_journal.py": "d65d14d5e19457eb89f224642d2a8c2e42633af5d46e75cd4f1acfedcbdb0fdc",
+    "python/src/telomere_sdk/__init__.py": "4b372567a7b90976be6e6e8704cf47ac227e1f72dbbc767550a286ca0554601e",
+    "python/tests/test_vault_income.py": "51ae939845be5c79bcd781c1c8dad546d3f7b904be58201d286bbfb1cbcb3fdf",
+    "python/tests/test_vault_income_journal.py": "209a486072deff1d2cd1e409bcbc7322cb8c6af1531c494b66273d95c7bb3b09",
+    "python/tests/test_vault_income_rpc.py": "aae51925db588eccb0e6f8bc79612836891134e43ffa5a1f0bb57ae54422fcfe",
+    "python/tests/test_vault_income_acceptance.py": "5dc2432f3e1707370cd8d9b12100a24dd8b2f001e99a7e42e2421031ce32a38a",
+    "python/tests/native-vault-harness.ts": "7db17c34f2ace42b1b07867d93a884deb100cc4e890ebdd7f68df5fad6d60d9d"
+  },
+  "realAcceptance": {
+    "deployedActualNativeContractsOnDisposableAnvil": true,
+    "actualIntakeMain": true,
+    "independentEvidence": "Python RpcVaultIncomeReader directly against Anvil JSON-RPC; Node fixture exposes no evidence-check endpoint",
+    "exportedPrivateFilesystemJournal": true,
+    "pythonActualPublicHttpTransport": true,
+    "callerJournalFlushAndOrderlyReopen": true,
+    "nodePythonPublicProfileDigestMatched": true,
+    "externalIncome": { "gross": "101", "fee": "2", "net": "99" },
+    "originalOwnerSubsidy": { "gross": "101", "fee": "0", "net": "101" },
+    "lostPaidHttpResponseRecoveryAfterMainRestart": true,
+    "recoveryRetainedExactSignedHeader": true,
+    "singleDebitAndFacilitatorTransactionAfterLostResponse": true,
+    "actualRpcFailureDurablyWithdrawsPreviousSuccess": true,
+    "actualReorganizationWithdrawsSuccess": true,
+    "reorganizationRecoveryRetainsOriginalTransactionHash": true,
+    "sameBlockPaymentBeforeFamilyBirthPreservesIncome": true,
+    "relatedUnknownAndWrongIdentityTuplesRejected": true,
+    "historicalAndCurrentPinsMarkersTransfersFeesAndCanonicalDepthTamperingRejected": true,
+    "type2ExplicitUnsupportedFallbackAndAllMissingAlteredFieldsChecked": true
+  },
+  "additionalLocalValidation": {
+    "genuineSignedRawEnvelopeVectors": ["eip155-legacy", "eip2930", "eip1559"],
+    "minimalLeadingZeroSignatureScalarReconstruction": true,
+    "staticRpcProxyImplementationSlotAndCode": true,
+    "staticRpcAllThreeFacetRoutesAndCode": true,
+    "staticRpcParentFacetAndSameBlockUpgradeRefusal": true,
+    "actualWindowsAclCreationAndBroadAclRejection": true,
+    "actualWindowsHardlinkJunctionAncestorAndRenameDefenses": true,
+    "actualCrossProcessOwnerExclusionCrashLockPersistence": true,
+    "journalFailureAndEscapedTransactionChecks": true,
+    "independentSourceReview": "Separate journal and RPC audit; concrete journal lifecycle/fork/Windows metadata defects fixed; log-position Birth replay reviewed"
+  },
+  "boundaries": {
+    "concretePythonRpcReaderImplemented": true,
+    "privateFilesystemJournalAdapterImplemented": true,
+    "python311SeparatelyExecutedHere": false,
+    "linuxExecutionPerformedHere": false,
+    "realUsdgProxyFacetAcceptancePerformedHere": false,
+    "publicChainCalled": false,
+    "personalWalletUsed": false,
+    "realSupplierCalled": false,
+    "computeTaskExecutedByIncomeIntake": false,
+    "powerLossDurabilityEstablished": false,
+    "automaticStaleOwnerRecovery": false,
+    "productionLaunchReady": false
+  }
+}

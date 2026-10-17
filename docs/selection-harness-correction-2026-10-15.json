@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "initial_harness_rejected;corrected_fresh_attempt_accepted_separately",
+  "initialIssue": "The harness wrote selection-composed.json but read finance-keys.json. Its inherited exception path did not clear a prior command success flag.",
+  "originalReportPreservedIncludingLegacySuccessTrue": true,
+  "reportNotAcceptedAsPassingEvidence": true,
+  "rejectionEvidence": {
+    "failureType": "FileNotFoundError",
+    "nodeSummaryAbsent": true
+  },
+  "response": "Root preserved the incomplete report and repeated fresh install, build and111 cases in a new private directory with the correct output path.",
+  "acceptedResult": "backend-composed-linux-validation-2026-10-15.json",
+  "gateRequirement": "Reject presence of failureType, postflightFailureType, timeout flags or missing summaries regardless of success:true.",
+  "sourceCodeChanged": false,
+  "serverServiceMutations": false,
+  "paidOperations": 0,
+  "evidence": [
+    {
+      "path": "docs/evidence/selection-incomplete-harness-acceptance-20261015.json",
+      "sha256": "64531d9259d42fc4f4a97bb2f46524a91fab59e4fd9424f8bb32978844313669",
+      "bytes": 1935
+    },
+    {
+      "path": "docs/evidence/selection-incomplete-harness-tests-20261015.json",
+      "sha256": "eb15ca3444d5afe9c92eee0fad38db28af684af69951cd7eeee99f65d2c0d5dd",
+      "bytes": 49844
+    },
+    {
+      "path": "docs/evidence/run-selection-incomplete-harness-20261015.py",
+      "sha256": "cae5eb235d6bc834185a7553360e98374d915f55425c2e853cb1d01cfc1b808a",
+      "bytes": 6658
+    },
+    {
+      "path": "docs/evidence/backend-current-acceptance-daemon-cleanup-20261015.json",
+      "sha256": "d9ba9980e1adc5a8c27241c5eeaecc842c6327f8893fa1fc1d99e8a1fc7146bc",
+      "bytes": 349
+    },
+    {
+      "path": "docs/evidence/stop-file-acceptance-daemon-20261015.py",
+      "sha256": "fa1267f1bc4f93758615234d8206ebb42bfb08d3a08c05501688786f70a89afe",
+      "bytes": 1909
+    }
+  ]
+}

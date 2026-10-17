@@ -1,0 +1,26 @@
+{
+  "runId": "0xf4ac16669705d41f559a967cde2f08623575151b9652ee95c69bf4684147bd8c",
+  "receiptHash": "0xeee6ccf9dd2deb847f2be3b6d9b0aea3a2580ee68bea04c5ec7af7503770792e",
+  "settlementTxHash": "0x3dfc69c17e0ecca8f8147986fd2de2241f665fe2f24585909de6a8046e3145e9",
+  "charged": "200",
+  "refund": "2800",
+  "checkedAt": "2026-10-08T00:57:25.320Z",
+  "deployment": "private_vps_staging",
+  "chainId": 31337,
+  "cpuMode": "docker",
+  "database": "dedicated_postgresql",
+  "realFunds": false,
+  "paidNearPosts": 0,
+  "owner": "0x8d45d09ecc6FceaD1edd26dBDc09F60FaC160734",
+  "status": "completed",
+  "billableSeconds": 2,
+  "ceiling": "3000",
+  "signatureValid": true,
+  "anchored": true,
+  "restartVerifiedAt": "2026-10-08T01:05:18.804Z",
+  "recovery": {
+    "unchangedRunAndSettlement": true,
+    "signatureValid": true,
+    "anchored": true
+  }
+}

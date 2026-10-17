@@ -1,0 +1,24 @@
+{
+  "status": "certificate issued",
+  "exitCode": 0,
+  "seconds": 9.32,
+  "certificateName": "review.telomere.sh",
+  "domains": [
+    "telomere.sh",
+    "review.telomere.sh"
+  ],
+  "method": "webroot",
+  "existingAcmeAccountReused": true,
+  "nginxStopped": false,
+  "stdoutSha256": "7b1d8b5bfe3db1dfe6814b01fb5ff9c128fe294bdfddceb1b5bd08939bec1961",
+  "stderrSha256": "bc6aa1236ac17388ffc238005945db08a5f97632c41250fc7660203e0009d1f5",
+  "publicTransactionsSent": 0,
+  "publicCertificate": [
+    "notBefore=Oct 15 19:01:47 2026 GMT",
+    "notAfter=Jan 13 19:01:46 2027 GMT",
+    "X509v3 Subject Alternative Name: ",
+    "    DNS:review.telomere.sh, DNS:telomere.sh",
+    "sha256 Fingerprint=B8:B8:69:86:89:10:D8:4F:5D:94:53:89:19:AC:23:D4:42:61:A2:36:97:FB:20:18:14:EC:3F:27:C6:88:30:2E"
+  ],
+  "certificateSha256": "245dda3dd39b68ca2730542043b3650ac327fb525bb962bd65a3cb172fe219e1"
+}

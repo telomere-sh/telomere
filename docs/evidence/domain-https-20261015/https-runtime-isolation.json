@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 1,
+  "auditedAtUtc": "2026-10-15T20:04:20.846561+00:00",
+  "status": "https_owner_review_isolation_pass",
+  "readOnlyAudit": true,
+  "service": "telomere-owner-review-https.service",
+  "properties": {
+    "MainPID": "4103781",
+    "ExecMainStatus": "0",
+    "User": "telomere-owner-review-https",
+    "DynamicUser": "yes",
+    "SupplementaryGroups": "telomere-mainnet",
+    "InaccessiblePaths": "/opt/telomere-mainnet-pilot/private /opt/telomere-mainnet-pilot/data -/opt/telomere-pilot -/run/telomere-mainnet-docker -/var/run/docker.sock -/run/docker.sock -/etc/letsencrypt -/etc/nginx/telomere-owner-review.htpasswd",
+    "ProtectHome": "yes",
+    "ProtectSystem": "strict",
+    "NoNewPrivileges": "yes",
+    "ActiveState": "active",
+    "SubState": "running"
+  },
+  "process": {
+    "Name": "node",
+    "Uid": "64497\t64497\t64497\t64497",
+    "Gid": "64497\t64497\t64497\t64497",
+    "Groups": "993 64497",
+    "NoNewPrivs": "1"
+  },
+  "namespaceAccess": {
+    "denied": [
+      {
+        "path": "/opt/telomere-mainnet-pilot/private",
+        "read": false,
+        "write": false,
+        "traverse": false
+      },
+      {
+        "path": "/opt/telomere-mainnet-pilot/data",
+        "read": false,
+        "write": false,
+        "traverse": false
+      },
+      {
+        "path": "/opt/telomere-pilot",
+        "read": false,
+        "write": false,
+        "traverse": false
+      },
+      {
+        "path": "/run/telomere-mainnet-docker",
+        "read": false,
+        "write": false,
+        "traverse": false
+      },
+      {
+        "path": "/run/telomere-mainnet-docker/docker.sock",
+        "read": false,
+        "write": false,
+        "traverse": false
+      },
+      {
+        "path": "/var/run/docker.sock",
+        "read": false,
+        "write": false,
+        "traverse": false
+      },
+      {
+        "path": "/run/docker.sock",
+        "read": false,
+        "write": false,
+        "traverse": false
+      },
+      {
+        "path": "/etc/letsencrypt",
+        "read": false,
+        "write": false,
+        "traverse": false
+      },
+      {
+        "path": "/etc/nginx/telomere-owner-review.htpasswd",
+        "read": false,
+        "write": false,
+        "traverse": false
+      }
+    ],
+    "overlayWritable": false,
+    "httpsConfigWritable": false,
+    "publicManifestReadable": true
+  },
+  "listener": "127.0.0.1:3284",
+  "upstreamHostChecks": [
+    {
+      "host": "127.0.0.1:3284",
+      "httpStatus": 400
+    },
+    {
+      "host": "review.telomere.sh:443",
+      "httpStatus": 400
+    },
+    {
+      "host": "review.telomere.sh",
+      "httpStatus": 200
+    }
+  ],
+  "unauthenticatedHttpsChecks": [
+    {
+      "path": "/",
+      "httpStatus": 401,
+      "tlsVerifyResult": 0,
+      "remoteIp": "127.0.0.1"
+    },
+    {
+      "path": "/deployment.js",
+      "httpStatus": 401,
+      "tlsVerifyResult": 0,
+      "remoteIp": "127.0.0.1"
+    },
+    {
+      "path": "/api/plan",
+      "httpStatus": 401,
+      "tlsVerifyResult": 0,
+      "remoteIp": "127.0.0.1"
+    },
+    {
+      "path": "/api/review",
+      "httpStatus": 401,
+      "tlsVerifyResult": 0,
+      "remoteIp": "127.0.0.1"
+    }
+  ],
+  "tlsProbe": "local loopback connection with actual hostname SNI and system certificate validation; no credential supplied",
+  "oldLoopbackService": {
+    "MainPID": "0",
+    "ActiveState": "inactive"
+  },
+  "mainnetController": {
+    "MainPID": "0",
+    "ActiveState": "inactive"
+  },
+  "frozenOverlayManifestSha256": "fca399b17e90f7193266d5be89489ec6acdfe061f7374539678fa5122db2ce58",
+  "credentialContentRead": false,
+  "privateSignerRead": false,
+  "walletCalls": 0,
+  "financialRequests": 0,
+  "authenticatedRequests": 0,
+  "vpsMutations": 0
+}

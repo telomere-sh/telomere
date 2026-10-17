@@ -1,0 +1,58 @@
+{
+  "directory": "/opt/telomere-host-runtime/declared-state-gvisor-20261015/registry-probe-265228598df643f6af835c4c51fdadf8",
+  "servicesBefore": {
+    "telomere-staging.service": "MainPID=1952406\nNRestarts=0\nWorkingDirectory=/opt/telomere-pilot/releases/354fe7af62ea6701faafc3b04522abb1b4524d2d-launch04\nActiveState=active\nSubState=running",
+    "telomere-staging-chain.service": "MainPID=1952401\nNRestarts=0\nWorkingDirectory=/opt/telomere-pilot/app\nActiveState=active\nSubState=running",
+    "telomere-staging-watchdog.service": "MainPID=1952410\nNRestarts=0\nWorkingDirectory=/opt/telomere-pilot/watchdog-app\nActiveState=active\nSubState=running"
+  },
+  "profileBeforeSha256": "a400feb3475b91168a5419d0a98c00ea804ba817c1c0ad34dea65d7d8808df8f",
+  "protectedBeforeSha256": "6c078f8b7a3386663d9ab2f5682c317d82b54e86c54a93f67255bfa045a76079",
+  "daemonBefore": {
+    "pid": 2960501,
+    "argvSha256": "5ae3b80c47fb1310d84d73c46efb03ed183c5968bdffe825ba86887052aaaae8",
+    "namespaceInode": "4026532292"
+  },
+  "globalBefore": [
+    "61959d4214ab6b1cb3f30b2015c86481c75a0af2bdfe09348e3b5c434a34a8a7",
+    "6beae4c8e84877f0094e97beeb57ce9ae70e659804b5ac0f0f1a26ba05b7bbd4",
+    "d243b013df7caf1e539d25bb0f1a5f0d39ca53b8263818a4a1c1eca6dab73da4",
+    "df23a9ac9a64ddb9065bf9df8500368cb470c5f6e5cc3648e9f9efa46d970ab3"
+  ],
+  "ownedBefore": [
+    "1d7ecc9b94866b9617df656ad7e2251916a9b7ceafef9a488ef6e85540076c5e"
+  ],
+  "publicTransactions": 0,
+  "paidProviderRequests": 0,
+  "registryId": "af9b053415dca4b790a92dbc49481235c4ad9c930797e249f908da5e30954be7",
+  "state": {
+    "Status": "running",
+    "Running": true,
+    "Pid": 2986870,
+    "ExitCode": 0,
+    "OOMKilled": false
+  },
+  "registryNamespaceMatches": false,
+  "namespaceInodes": {
+    "registry": 4026531840,
+    "expected": 4026532292
+  },
+  "privateLogsSha256": "ed348d336ef4c39affd557e958c6fe8664daae6cc5c11c99960dc2b3dd005d8b",
+  "cleanupConfirmed": true,
+  "servicesAfter": {
+    "telomere-staging.service": "MainPID=1952406\nNRestarts=0\nWorkingDirectory=/opt/telomere-pilot/releases/354fe7af62ea6701faafc3b04522abb1b4524d2d-launch04\nActiveState=active\nSubState=running",
+    "telomere-staging-chain.service": "MainPID=1952401\nNRestarts=0\nWorkingDirectory=/opt/telomere-pilot/app\nActiveState=active\nSubState=running",
+    "telomere-staging-watchdog.service": "MainPID=1952410\nNRestarts=0\nWorkingDirectory=/opt/telomere-pilot/watchdog-app\nActiveState=active\nSubState=running"
+  },
+  "profileAfterSha256": "a400feb3475b91168a5419d0a98c00ea804ba817c1c0ad34dea65d7d8808df8f",
+  "protectedAfterSha256": "6c078f8b7a3386663d9ab2f5682c317d82b54e86c54a93f67255bfa045a76079",
+  "globalAfter": [
+    "61959d4214ab6b1cb3f30b2015c86481c75a0af2bdfe09348e3b5c434a34a8a7",
+    "6beae4c8e84877f0094e97beeb57ce9ae70e659804b5ac0f0f1a26ba05b7bbd4",
+    "d243b013df7caf1e539d25bb0f1a5f0d39ca53b8263818a4a1c1eca6dab73da4",
+    "df23a9ac9a64ddb9065bf9df8500368cb470c5f6e5cc3648e9f9efa46d970ab3"
+  ],
+  "ownedAfter": [
+    "1d7ecc9b94866b9617df656ad7e2251916a9b7ceafef9a488ef6e85540076c5e"
+  ],
+  "unchanged": true
+}

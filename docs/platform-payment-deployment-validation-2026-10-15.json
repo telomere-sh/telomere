@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-10-15T02:49:43.943417+00:00",
+  "status": "version3_unsigned_launch_planner_focused_accepted; public_deployment_not_performed",
+  "sourceBoundary": {
+    "baseGitRevision": "abf941bef4688fa3f81eb986523fa16037cc3abc",
+    "kind": "new separate working-tree batch",
+    "files": 83,
+    "allBeforeAfterAndCurrentHashesEqual": true,
+    "manifest": {
+      "path": "docs/evidence/platform-payment-deployment-final-source-20261015.json",
+      "sha256": "4ed1aea8d253fc0824c6e15bccd77afad6005075bb808d56fdc6bb5e28221796",
+      "bytes": 29058
+    }
+  },
+  "acceptance": {
+    "passed": 8,
+    "failed": 0,
+    "skipped": 0,
+    "raw": {
+      "path": "docs/evidence/platform-payment-deployment-final-20261015.json",
+      "sha256": "b521ff2a84a5ede5bc4006395da0c1ec414d0cb2b718004a0225ea7b62cd62a9",
+      "bytes": 3963
+    },
+    "breakdown": {
+      "realAnvilAllFivePlannedStepsBothProfiles": 2,
+      "pureHostileProfileArtifactLimits": 1,
+      "syntheticPublicRpcFinalityAssetUpstreamNonceOccupiedPlanMutation": 2,
+      "actualCliFailBeforeRpcAndSanitizedOutput": 1,
+      "unchangedHistoricalPlannerRegression": 2
+    },
+    "typecheck": {
+      "exitCode": 0,
+      "evidence": {
+        "path": "docs/evidence/platform-payment-deployment-typecheck-retry-20261015.json",
+        "sha256": "5fe7b994831ee111e70bdfb4c4ff48fd70d71ce6585c8f2a36b7fcf66b37a417"
+      },
+      "boundary": "current combined tree; selected83files unchanged since focused cohort"
+    },
+    "diffCheckExitCode": 0,
+    "initialManifestAcceptedFalseReason": "Focused8 passed and83source hashes stable. Initial combined-tree tsc failed only in concurrent M5 test paid-cyst-file-cache-expiry.test.ts:71 Hex typing; owner fixed that separate file and the global retry passed. Original manifest remains unmodified."
+  },
+  "profiles": [
+    {
+      "kind": "base_spend_permission_v1",
+      "contract": "PlatformSpendPermissionEscrowV1",
+      "quoteDomainVersion": "3"
+    },
+    {
+      "kind": "x402_cpu_v1",
+      "contract": "PlatformX402EscrowV1",
+      "quoteDomainVersion": "4"
+    }
+  ],
+  "preservedCompatibility": [
+    "Historical schemaVersion2 builder/CLI/API unchanged",
+    "Exact common first4 unsigned CREATE transactions unchanged",
+    "No misleading PlatformRunEscrow alias in new plan",
+    "Frozen M3/M5 payment/runtime/contract sources unchanged by this batch"
+  ],
+  "review": "Independent final_readiness_review found no actionable issue after artifact-bound reconstruction, canonical finalized advancement, nonce bound and every-step initcode-size fixes.",
+  "history": [
+    {
+      "path": "docs/evidence/platform-payment-deployment-initial-20261015.json",
+      "sha256": "2dd3c3ab86c1f0f4c6ace2892e6f2641782136b62d7ec64bc850c804486d8994",
+      "bytes": 3548,
+      "passed": 2,
+      "failed": 0,
+      "pending": 3,
+      "classification": "historical; superseded by exact final source cohort"
+    },
+    {
+      "path": "docs/evidence/platform-payment-deployment-retry-20261015.json",
+      "sha256": "3b4e1edf8e2f87d6292b027dd72558d9abed3f7ce47f0ff0fcd8335cda4d5b98",
+      "bytes": 5548,
+      "passed": 3,
+      "failed": 2,
+      "pending": 0,
+      "classification": "historical; superseded by exact final source cohort"
+    },
+    {
+      "path": "docs/evidence/platform-payment-deployment-expanded-20261015.json",
+      "sha256": "4f2e273e133359a6e78b9e2b40e8b045845595058512e2cfa3d05132a268fefa",
+      "bytes": 4628,
+      "passed": 5,
+      "failed": 2,
+      "pending": 0,
+      "classification": "historical; superseded by exact final source cohort"
+    },
+    {
+      "path": "docs/evidence/platform-payment-deployment-candidate-20261015.json",
+      "sha256": "8ee89195f09b52cf775d5cc3f17f263ac4dcfb8993a19869727d1034a294cbcd",
+      "bytes": 3615,
+      "passed": 7,
+      "failed": 0,
+      "pending": 0,
+      "classification": "historical; superseded by exact final source cohort"
+    },
+    {
+      "path": "docs/evidence/platform-payment-deployment-hardened-20261015.json",
+      "sha256": "9158ff60c7567050cdf153c48fc7572be99be0fe52e19d76a0e089a7dfb33295",
+      "bytes": 3617,
+      "passed": 7,
+      "failed": 0,
+      "pending": 0,
+      "classification": "historical; superseded by exact final source cohort"
+    }
+  ],
+  "limits": [
+    "No public RPC/provider call or public transaction by acceptance",
+    "No signing key, wallet signing, payment or relayer introduced",
+    "Public dependency/USDC implementation pins remain explicitly operator reviewed; no automatic provenance approval",
+    "Anvil uses retained official dependencies plus explicit local token fixtures, not public USDC",
+    "Synthetic public-RPC vectors are not funded-public acceptance",
+    "No full-backend/full-Linux/production-launch/completion-percentage claim"
+  ]
+}

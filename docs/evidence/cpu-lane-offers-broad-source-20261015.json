@@ -1,0 +1,385 @@
+{
+  "schemaVersion": 1,
+  "startedAt": "2026-10-15T11:38:14.182122+00:00",
+  "finishedAt": "2026-10-15T11:42:09.490318+00:00",
+  "durationSeconds": 235.305,
+  "nodeCommandExitCode": 0,
+  "nodeTests": [
+    "tests/platform-cpu-offers.test.ts",
+    "tests/paid-cpu-jobs.test.ts",
+    "tests/paid-cpu-reliability.test.ts",
+    "tests/scheduling-price-bands.test.ts",
+    "tests/platform-client.test.ts",
+    "tests/platform-vault-client.test.ts",
+    "tests/platform-exec-client.test.ts",
+    "tests/platform-spend-permission.test.ts",
+    "tests/platform-x402-cpu.test.ts",
+    "tests/mcp-platform.test.ts"
+  ],
+  "pythonTests": 69,
+  "pythonFailures": 0,
+  "pythonErrors": 0,
+  "pythonSkipped": 0,
+  "pythonSuccessful": true,
+  "sourceFileCount": 35,
+  "sourceBefore": [
+    {
+      "path": "src/scheduling/cpu-offers.ts",
+      "bytes": 3465,
+      "sha256": "41d8e926b492cd7f81bc4b466b59489d2abb38d7560c5c83326d1dc938c2b07f"
+    },
+    {
+      "path": "src/platform-runtime/types.ts",
+      "bytes": 19793,
+      "sha256": "e26d22b637e3e2e31788d49c766aced2cde8eb5587a8a270900d671d604b4da5"
+    },
+    {
+      "path": "src/platform-runtime/service.ts",
+      "bytes": 109982,
+      "sha256": "f485268c79e710b700f4825639c3ac2bcf90a5f80eeea5d9bd96bcdfb3b87f4a"
+    },
+    {
+      "path": "src/platform-runtime/client.ts",
+      "bytes": 19880,
+      "sha256": "0f6c2ac21139f23a2741bd6425b92d9407434c43b98badd51c0c8da41b47322c"
+    },
+    {
+      "path": "src/platform-runtime/vault-client.ts",
+      "bytes": 34195,
+      "sha256": "501799f3381c6bdc593897460028c3af1119436dcf886b3d7e4f13c463d051a6"
+    },
+    {
+      "path": "tests/platform-cpu-offers.test.ts",
+      "bytes": 10987,
+      "sha256": "2eaa7abc17f35bdecedd0f7f350cedc5d3172f19f961a6ba7f57a108387b0136"
+    },
+    {
+      "path": "tests/paid-cpu-jobs.test.ts",
+      "bytes": 36483,
+      "sha256": "358d3c6a801350d684db220bd606a7c54abe39a652a6dc2e402465ec52b98d2e"
+    },
+    {
+      "path": "python/src/telomere_sdk/platform.py",
+      "bytes": 65780,
+      "sha256": "9a5132d28afd21de1a2c59c6060a2a73ef0cbfa77e7ce810e2b496aafaff8c1d"
+    },
+    {
+      "path": "python/tests/test_platform_cpu_offers.py",
+      "bytes": 6034,
+      "sha256": "3eeb944eeee7b3d03e2073b467bbb1fea2c2b18dad27672057504f18cf62670a"
+    },
+    {
+      "path": "src/platform-runtime/host-executor.ts",
+      "bytes": 32099,
+      "sha256": "8e2bba94e924475c6ffa1c83d893e6d2a1fe46877c8fba930cef818af9a65649"
+    },
+    {
+      "path": "src/platform-runtime/configured.ts",
+      "bytes": 6675,
+      "sha256": "3e11a0de07e1bf64cbd7f72528a0418870bcb7574f8139d930fd59076a7d579e"
+    },
+    {
+      "path": "src/platform-runtime/bridge.ts",
+      "bytes": 18328,
+      "sha256": "a49c735a62e6d92c38aaaea8ac29502c1deb1edfc6cc816accfae77f13641f4f"
+    },
+    {
+      "path": "src/scheduling/paid-jobs.ts",
+      "bytes": 16583,
+      "sha256": "929edcaa164200b421c82e1d9ffb63a1f384cdf387db7e2276b448e823a107ac"
+    },
+    {
+      "path": "src/scheduling/paid-lanes.ts",
+      "bytes": 1576,
+      "sha256": "a8aaaf1cc0cbeb2297c06bf11cbfd5fa9a21bd21e5b41267ad0bdd2039d5dfdb"
+    },
+    {
+      "path": "src/scheduling/planner.ts",
+      "bytes": 7176,
+      "sha256": "ffc7a4af3bee4a7389358b51f7a45805a48967d203bcfe35a90e98d6237db94c"
+    },
+    {
+      "path": "src/payments/spend-permission-types.ts",
+      "bytes": 1731,
+      "sha256": "4f715ccca1e5cd0a34df1226bdac13d8ba975a310b8d25a07c7731c3173de67c"
+    },
+    {
+      "path": "src/payments/spend-permissions.ts",
+      "bytes": 19321,
+      "sha256": "7a1143c6d34167f02c4a860511885b1b3b1a32166db1a82a2c4dc25ba8613ed3"
+    },
+    {
+      "path": "src/payments/cpu-reservation-types.ts",
+      "bytes": 2288,
+      "sha256": "2118975ac6c9fda341e7a72466c41ab432582683afa29144372ed25de63ffb64"
+    },
+    {
+      "path": "src/payments/cpu-reservations.ts",
+      "bytes": 24836,
+      "sha256": "873d7cafbfd4c1c8c6d80d771c344a089dcad10e4e32154888031521906dd218"
+    },
+    {
+      "path": "contracts/PlatformRunEscrow.sol",
+      "bytes": 22033,
+      "sha256": "3b192e083a4c15e2aeaefb1deb9f11fcfa5fa5698b2fecd8593aaa5cd981b777"
+    },
+    {
+      "path": "contracts/PlatformSpendPermissionEscrowV1.sol",
+      "bytes": 26684,
+      "sha256": "26c97a481151f50300544cc851f8240718470e31e95219edf6f014b9fad5be53"
+    },
+    {
+      "path": "contracts/PlatformX402EscrowV1.sol",
+      "bytes": 30537,
+      "sha256": "bf8d6962a710520155a6be5e7caa51979d6b9eb0e97a9f283370ab27acc4538e"
+    },
+    {
+      "path": "src/host-kit/sessions/paid-protocol.ts",
+      "bytes": 4610,
+      "sha256": "364ef7fe271e8f9795306b5e2890614f601abe24926a06e8bde3413f5d143db2"
+    },
+    {
+      "path": "src/host-kit/sessions/paid-preemption.ts",
+      "bytes": 18049,
+      "sha256": "b37a92677028460be923743d54043d03dad28dadcccbecfca9ed93d633443594"
+    },
+    {
+      "path": "tests/paid-cpu-reliability.test.ts",
+      "bytes": 4005,
+      "sha256": "7672f296754e550e878540182bdadda41af9a95f4cb42d91acb6a3061f670bb9"
+    },
+    {
+      "path": "tests/scheduling-price-bands.test.ts",
+      "bytes": 11850,
+      "sha256": "a34b749872c6099443de7158d3e65939a518cc867bb1928c9f517b57c2ec19e3"
+    },
+    {
+      "path": "tests/platform-client.test.ts",
+      "bytes": 28195,
+      "sha256": "8e4389754f3adb4add311a880c99e19063de3c144a457722f396ccf49b90a0cd"
+    },
+    {
+      "path": "tests/platform-vault-client.test.ts",
+      "bytes": 22285,
+      "sha256": "2a8228fa65a6b6414e243b0cd571dfef2bb8f46de448d5a7af44cecc8eacc9a1"
+    },
+    {
+      "path": "tests/platform-exec-client.test.ts",
+      "bytes": 17668,
+      "sha256": "a43c969e5bc7f2f057687c866358130ea68ade995f3df8c7e49c1aeae5547e55"
+    },
+    {
+      "path": "tests/platform-spend-permission.test.ts",
+      "bytes": 25920,
+      "sha256": "3e40034c962427e55eadf93e5306116ae9402b778633e2c55c4b9f0d6ff50eb7"
+    },
+    {
+      "path": "tests/platform-x402-cpu.test.ts",
+      "bytes": 25715,
+      "sha256": "dd689ad9009095e350c335160938da2d450d44e4e5c442a0a5a5d75409546e9a"
+    },
+    {
+      "path": "tests/mcp-platform.test.ts",
+      "bytes": 28262,
+      "sha256": "0cf07144ee46a2a1d5dcc39d2f03ff1fddeb5643a600e9275e2f6b07723b73f8"
+    },
+    {
+      "path": "python/tests/test_platform.py",
+      "bytes": 63770,
+      "sha256": "a04166ba427dfcf3f15eba42131136829b8d2bcc53be7d810768b0ea25f68b2a"
+    },
+    {
+      "path": "python/tests/test_platform_cpu_jobs.py",
+      "bytes": 7747,
+      "sha256": "61aabefa920129256f519eab99c4b6b52ede68498e3abe4e0ec5b4bc2d4e7f74"
+    },
+    {
+      "path": "python/tests/test_platform_profiles.py",
+      "bytes": 21135,
+      "sha256": "f3b5c1128c464a99bcb1f70b947a4a710e7b9b1f3c3117eed8cf084f4a7eb59d"
+    }
+  ],
+  "sourceAfter": [
+    {
+      "path": "src/scheduling/cpu-offers.ts",
+      "bytes": 3465,
+      "sha256": "41d8e926b492cd7f81bc4b466b59489d2abb38d7560c5c83326d1dc938c2b07f"
+    },
+    {
+      "path": "src/platform-runtime/types.ts",
+      "bytes": 19793,
+      "sha256": "e26d22b637e3e2e31788d49c766aced2cde8eb5587a8a270900d671d604b4da5"
+    },
+    {
+      "path": "src/platform-runtime/service.ts",
+      "bytes": 109982,
+      "sha256": "f485268c79e710b700f4825639c3ac2bcf90a5f80eeea5d9bd96bcdfb3b87f4a"
+    },
+    {
+      "path": "src/platform-runtime/client.ts",
+      "bytes": 19880,
+      "sha256": "0f6c2ac21139f23a2741bd6425b92d9407434c43b98badd51c0c8da41b47322c"
+    },
+    {
+      "path": "src/platform-runtime/vault-client.ts",
+      "bytes": 34195,
+      "sha256": "501799f3381c6bdc593897460028c3af1119436dcf886b3d7e4f13c463d051a6"
+    },
+    {
+      "path": "tests/platform-cpu-offers.test.ts",
+      "bytes": 10987,
+      "sha256": "2eaa7abc17f35bdecedd0f7f350cedc5d3172f19f961a6ba7f57a108387b0136"
+    },
+    {
+      "path": "tests/paid-cpu-jobs.test.ts",
+      "bytes": 36483,
+      "sha256": "358d3c6a801350d684db220bd606a7c54abe39a652a6dc2e402465ec52b98d2e"
+    },
+    {
+      "path": "python/src/telomere_sdk/platform.py",
+      "bytes": 65780,
+      "sha256": "9a5132d28afd21de1a2c59c6060a2a73ef0cbfa77e7ce810e2b496aafaff8c1d"
+    },
+    {
+      "path": "python/tests/test_platform_cpu_offers.py",
+      "bytes": 6034,
+      "sha256": "3eeb944eeee7b3d03e2073b467bbb1fea2c2b18dad27672057504f18cf62670a"
+    },
+    {
+      "path": "src/platform-runtime/host-executor.ts",
+      "bytes": 32099,
+      "sha256": "8e2bba94e924475c6ffa1c83d893e6d2a1fe46877c8fba930cef818af9a65649"
+    },
+    {
+      "path": "src/platform-runtime/configured.ts",
+      "bytes": 6675,
+      "sha256": "3e11a0de07e1bf64cbd7f72528a0418870bcb7574f8139d930fd59076a7d579e"
+    },
+    {
+      "path": "src/platform-runtime/bridge.ts",
+      "bytes": 18328,
+      "sha256": "a49c735a62e6d92c38aaaea8ac29502c1deb1edfc6cc816accfae77f13641f4f"
+    },
+    {
+      "path": "src/scheduling/paid-jobs.ts",
+      "bytes": 16583,
+      "sha256": "929edcaa164200b421c82e1d9ffb63a1f384cdf387db7e2276b448e823a107ac"
+    },
+    {
+      "path": "src/scheduling/paid-lanes.ts",
+      "bytes": 1576,
+      "sha256": "a8aaaf1cc0cbeb2297c06bf11cbfd5fa9a21bd21e5b41267ad0bdd2039d5dfdb"
+    },
+    {
+      "path": "src/scheduling/planner.ts",
+      "bytes": 7176,
+      "sha256": "ffc7a4af3bee4a7389358b51f7a45805a48967d203bcfe35a90e98d6237db94c"
+    },
+    {
+      "path": "src/payments/spend-permission-types.ts",
+      "bytes": 1731,
+      "sha256": "4f715ccca1e5cd0a34df1226bdac13d8ba975a310b8d25a07c7731c3173de67c"
+    },
+    {
+      "path": "src/payments/spend-permissions.ts",
+      "bytes": 19321,
+      "sha256": "7a1143c6d34167f02c4a860511885b1b3b1a32166db1a82a2c4dc25ba8613ed3"
+    },
+    {
+      "path": "src/payments/cpu-reservation-types.ts",
+      "bytes": 2288,
+      "sha256": "2118975ac6c9fda341e7a72466c41ab432582683afa29144372ed25de63ffb64"
+    },
+    {
+      "path": "src/payments/cpu-reservations.ts",
+      "bytes": 24836,
+      "sha256": "873d7cafbfd4c1c8c6d80d771c344a089dcad10e4e32154888031521906dd218"
+    },
+    {
+      "path": "contracts/PlatformRunEscrow.sol",
+      "bytes": 22033,
+      "sha256": "3b192e083a4c15e2aeaefb1deb9f11fcfa5fa5698b2fecd8593aaa5cd981b777"
+    },
+    {
+      "path": "contracts/PlatformSpendPermissionEscrowV1.sol",
+      "bytes": 26684,
+      "sha256": "26c97a481151f50300544cc851f8240718470e31e95219edf6f014b9fad5be53"
+    },
+    {
+      "path": "contracts/PlatformX402EscrowV1.sol",
+      "bytes": 30537,
+      "sha256": "bf8d6962a710520155a6be5e7caa51979d6b9eb0e97a9f283370ab27acc4538e"
+    },
+    {
+      "path": "src/host-kit/sessions/paid-protocol.ts",
+      "bytes": 4610,
+      "sha256": "364ef7fe271e8f9795306b5e2890614f601abe24926a06e8bde3413f5d143db2"
+    },
+    {
+      "path": "src/host-kit/sessions/paid-preemption.ts",
+      "bytes": 18049,
+      "sha256": "b37a92677028460be923743d54043d03dad28dadcccbecfca9ed93d633443594"
+    },
+    {
+      "path": "tests/paid-cpu-reliability.test.ts",
+      "bytes": 4005,
+      "sha256": "7672f296754e550e878540182bdadda41af9a95f4cb42d91acb6a3061f670bb9"
+    },
+    {
+      "path": "tests/scheduling-price-bands.test.ts",
+      "bytes": 11850,
+      "sha256": "a34b749872c6099443de7158d3e65939a518cc867bb1928c9f517b57c2ec19e3"
+    },
+    {
+      "path": "tests/platform-client.test.ts",
+      "bytes": 28195,
+      "sha256": "8e4389754f3adb4add311a880c99e19063de3c144a457722f396ccf49b90a0cd"
+    },
+    {
+      "path": "tests/platform-vault-client.test.ts",
+      "bytes": 22285,
+      "sha256": "2a8228fa65a6b6414e243b0cd571dfef2bb8f46de448d5a7af44cecc8eacc9a1"
+    },
+    {
+      "path": "tests/platform-exec-client.test.ts",
+      "bytes": 17668,
+      "sha256": "a43c969e5bc7f2f057687c866358130ea68ade995f3df8c7e49c1aeae5547e55"
+    },
+    {
+      "path": "tests/platform-spend-permission.test.ts",
+      "bytes": 25920,
+      "sha256": "3e40034c962427e55eadf93e5306116ae9402b778633e2c55c4b9f0d6ff50eb7"
+    },
+    {
+      "path": "tests/platform-x402-cpu.test.ts",
+      "bytes": 25715,
+      "sha256": "dd689ad9009095e350c335160938da2d450d44e4e5c442a0a5a5d75409546e9a"
+    },
+    {
+      "path": "tests/mcp-platform.test.ts",
+      "bytes": 28262,
+      "sha256": "0cf07144ee46a2a1d5dcc39d2f03ff1fddeb5643a600e9275e2f6b07723b73f8"
+    },
+    {
+      "path": "python/tests/test_platform.py",
+      "bytes": 63770,
+      "sha256": "a04166ba427dfcf3f15eba42131136829b8d2bcc53be7d810768b0ea25f68b2a"
+    },
+    {
+      "path": "python/tests/test_platform_cpu_jobs.py",
+      "bytes": 7747,
+      "sha256": "61aabefa920129256f519eab99c4b6b52ede68498e3abe4e0ec5b4bc2d4e7f74"
+    },
+    {
+      "path": "python/tests/test_platform_profiles.py",
+      "bytes": 21135,
+      "sha256": "f3b5c1128c464a99bcb1f70b947a4a710e7b9b1f3c3117eed8cf084f4a7eb59d"
+    }
+  ],
+  "sourceUnchanged": true,
+  "scope": "M8 owned hooks plus selected critical runtime/payment compatibility inputs; not a whole-backend release inventory",
+  "externalTransactions": 0,
+  "externalPaidRequests": 0,
+  "serverChanges": 0,
+  "pythonFailedTests": []
+}

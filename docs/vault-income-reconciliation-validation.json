@@ -1,0 +1,43 @@
+{
+  "checkedAtUtc": "2026-10-12T13:11:21.995867+00:00",
+  "scope": "Fresh canonical reconciliation after an own native Vault transaction reverted and its still-valid EIP3009 authorization was consumed later.",
+  "changes": [
+    "Pin the latest token/domain/proxy and Selection/Vault deployment before current marker reads.",
+    "Read token authorizationState and Vault usedIncomeAuthorization at the same canonical block hash.",
+    "Recheck latest/receipt hashes, head and chain before returning definitive reverted; refuse consumed authorization as reconciliation_required.",
+    "Retain the original signed raw bytes/hash and never adopt another relay transaction or return cached failed-payment evidence."
+  ],
+  "windows": {
+    "command": "npx vitest run tests/vault-income.test.ts --reporter=json --outputFile=.local/vault-income-later-consumption-windows.json",
+    "exitCode": 0,
+    "total": 52,
+    "passed": 52,
+    "failed": 0,
+    "skipped": 0,
+    "elapsedMs": 52659.4189453125,
+    "rawVitestSha256": "5089e078d0d265aee5e86747a3e053a8e5a95e1d16552c85309c8d06e1d0fee4"
+  },
+  "regressions": [
+    "Actual own low-gas canonical revert followed by direct-token consumption of the original still-valid signature.",
+    "Actual own low-gas canonical revert followed by successful alternate-relay native Vault ingress with original-payer income classification.",
+    "Both cases exercise cached reverted X402PaymentService retries and prove reconciliation refusal with the original journal/hash unchanged."
+  ],
+  "sourceSha256": {
+    "src/payments/vault-income-chain.ts": "818d24b94876610624edeb1010b21f118d5dc074cdffa52a87e4e1926872b23d",
+    "tests/vault-income.test.ts": "dfc8f76d300222f8b5573eb753344afd25efa241539839e559b02102951f41ae"
+  },
+  "strictTypeScript": {
+    "command": "npx tsc --noEmit",
+    "exitCode": 0
+  },
+  "review": "Separate read-only component review found no further actionable issue in the native diff; this is not an independent external security audit.",
+  "linux": {
+    "status": "Not claimed by this Windows evidence; a subsequent exact-commit SDK/native Linux acceptance is recorded separately."
+  },
+  "limitations": [
+    "A reverted outer transaction does not revoke an unconsumed still-valid EIP3009 bearer authorization.",
+    "The existing 50-case native and c4f71bf 190-case Linux acceptances retain their historical source boundaries.",
+    "No public deployment, public USDG capability, personal-wallet transaction or paid-provider request.",
+    "No change to the dated d44edd3 completion estimate."
+  ]
+}

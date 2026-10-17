@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "recordedDate": "2026-10-15",
+  "status": "read_only_restart_history_drift_classified_no_equivalence_authorization",
+  "scope": "Compare the stopped attempt03 snapshot with the original Anvil state file after the old service resumed. This is a filesystem diagnostic, not a clone, migration, cutover, chain replay, financial acceptance or rollout approval.",
+  "privateAttempt": "staging-354fe7af62ea-launch03",
+  "execution": {
+    "transport": "Existing SSH identity with BatchMode=yes and StrictHostKeyChecking=yes; Python helper supplied on stdin",
+    "remoteWrites": false,
+    "serviceMutations": false,
+    "databaseOpened": false,
+    "startPilotInvoked": false,
+    "profileOrEnvironmentContentsRead": false,
+    "privateKeyContentsRead": false,
+    "publicTransactions": 0,
+    "paidProviderRequests": 0,
+    "anvilRpcRequests": 0,
+    "rawChainCopied": false,
+    "output": "Only sizes, hashes, bounded shape/count metadata and classification booleans. No account-state values, raw blocks, transaction bodies, receipts, traces or logs are retained."
+  },
+  "inputs": {
+    "snapshotFingerprint": "/opt/telomere-pilot/rollout/staging-354fe7af62ea-launch03/snapshot-fingerprint.json",
+    "backupSelection": "The original attempt03 state.json backup path, required to remain inside that attempt directory",
+    "snapshotChain": "The selected immutable backup's chain.json",
+    "currentChain": "/opt/telomere-pilot/data/chain.json",
+    "fileBoundary": "Regular single-link files, at most32MiB each, with device/inode/size/mtime checked unchanged across each read",
+    "topLevelBoundary": "Exact six-field set: accounts, best_block_number, block, blocks, historical_states, transactions. Unknown or absent top-level fields reject comparison."
+  },
+  "observations": {
+    "snapshotFingerprintSha256": "098bed091f227e310e99e446574a7b27e5999d348fece22ac1dfd4ba6dc0687e",
+    "snapshotChain": {
+      "bytes": 334055,
+      "sha256": "060033c4f59257d27fe793b50d028735f9f3a7128d0e731a9320e92ffef0906c",
+      "matchesStoppedFingerprint": true
+    },
+    "currentChain": {
+      "bytes": 335674,
+      "sha256": "cf5cc45ca4ca9608cff17c7c65d0324dd8cafa368540be457ded09b5879071c3",
+      "stableDuringRead": true
+    },
+    "rawBytesEqual": false,
+    "completeJsonEqual": false,
+    "completeUnchangedFields": [
+      "accounts, including all nested account data",
+      "best_block_number",
+      "block, including all nine original fields",
+      "historical_states"
+    ],
+    "transactions": {
+      "snapshotEntries": 23,
+      "currentEntries": 23,
+      "completeDuplicatePreservingMultisetEqual": true,
+      "multisetSha256": "2c75a919758fc8dc6fae5692a16ba23e1b9f3b20e6528937def2d87f1f1d0ed7",
+      "coverage": "Each complete JSON transaction object, including its receipt, traces, logs and every other field; no selected-field projection. Only array order differs."
+    },
+    "blocks": {
+      "snapshotEntries": 35,
+      "currentEntries": 36,
+      "allOriginalCompleteEntriesRetained": true,
+      "removedOrChangedOriginalEntries": 0,
+      "extraEntries": 1,
+      "extraCompleteBlockSha256": "d4d8ea1528e59a5b227d97b5a2cec01ed6f14f0df49ebb743e3942807a710b76",
+      "coverage": "Duplicate-preserving multisets of complete block JSON objects, with all headers and non-header fields retained."
+    },
+    "extraBlock": {
+      "classification": "An additional empty default-genesis record, consistent with the intervening Anvil restart; no execution trace of startup was collected.",
+      "headerFields": 21,
+      "headerNumberType": "string",
+      "headerNumberValueSha256": "900238c4b70206173dcafad0d497ed0bebd778006f3b81be8c97a5f117295fb3",
+      "transactionsValueSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "ommersValueSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "withdrawalsValueSha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "originalSameHeightTemplateEntries": 12,
+      "onlyDifferingPathAgainstEveryOriginalSameHeightTemplate": "header.timestamp",
+      "allOtherHeaderAndNonHeaderFieldsExact": true,
+      "nonTimestampTemplateSha256": "c3d118916dad7dce7296d2aaa209bf2529d3da254699537ff13d1c2274776e76",
+      "newTimestampValueSha256": "7d108e00398f6189a400f266afd4a7818e2495ec6d69a249e98333eda60bc6c0",
+      "timestampExclusionPurpose": "Diagnostic comparison only. The complete original block hashes and the extra full block hash remain retained; no block or timestamp is discarded from acceptance authority."
+    }
+  },
+  "decision": {
+    "stateEquivalenceAuthorized": false,
+    "rawFingerprintGateRelaxed": false,
+    "lossyNormalizationAuthorized": false,
+    "reason": "This is not solely serialization order: one complete historical block record was added. Matching account/head/transaction data does not make the full persisted state identical.",
+    "recommendedOperation": "Take a fresh stopped snapshot; validate the complete new and old clone against that snapshot while the original chain/controller stay stopped; compare the complete raw fingerprint again before activation; do not resume the old chain between snapshot and activation.",
+    "operationStatus": "The parent approved redesign around a fresh held stopped snapshot. This report does not claim that redesigned operation has run or passed."
+  },
+  "evidence": [
+    {
+      "path": "docs/evidence/compare-private-staging-anvil-restart-drift-20261015.py",
+      "bytes": 3541,
+      "sha256": "1f645f1f3885bc89fe7c30a712957257a5a8026b29bf551340dddee24bd98021",
+      "description": "Exact retained final safe comparison helper, read-only and stdout-only; it performs no equivalence authorization."
+    },
+    {
+      "path": "docs/evidence/private-staging-anvil-restart-drift-proof-20261015.json",
+      "bytes": 3818,
+      "sha256": "e64db8005cbc54f0834d556a1de4100d4b251e5a592d5ce66473b2fe3a570087",
+      "description": "Complete safe stdout from re-executing the retained helper against the fixed attempt03 snapshot and current state. UTF-8/LF JSON retains all emitted fields."
+    }
+  ],
+  "limits": [
+    "The multiset comparison uses SHA-256 of complete canonical JSON values and preserves duplicate counts; it does not verify Ethereum execution or consensus.",
+    "Per-file stability checks do not make separate filesystem reads a globally atomic chain snapshot. Reuse requires a new original stopped-state boundary.",
+    "The helper is fixed to attempt03 and is diagnostic only, not a general migration or cutover verifier.",
+    "No original data was restored or overwritten, no production source/configuration changed, and no rollout, M6/M7 or functional-percentage credit is awarded."
+  ]
+}

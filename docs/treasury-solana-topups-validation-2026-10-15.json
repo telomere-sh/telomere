@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-15",
+  "capturedAtUtc": "2026-10-15T01:21:55.3851473+00:00",
+  "profile": "telomere-solana-usdc-topups-v1",
+  "baseCommit": "b6f345e646f80d0d6d1d8189b5642a22d947e4f1",
+  "sourceCutoff": "Treasury production/test source frozen after the managedExposure-capacity refusal change and retained disabled-signer startup fix. Manifest captured immediately after this successful combined run; no automated before/after manifest comparison was performed. Other backend work continued outside the captured cohort.",
+  "scope": "Optional owner-scoped finite treasury inventory credits from reviewed finalized Solana USDC observations into canonical Base Vault Subsidy. No bridge, source signing, automatic swap, consensus proof or automatic source refund.",
+  "supportedPublicPair": "Solana mainnet native USDC -> Base mainnet 8453 native USDC. Base Sepolia is deliberately rejected. Local tests explicitly use loopback Solana RPC fixtures and disposable Anvil chain 31337.",
+  "finalFocusedAcceptance": {
+    "command": "npx vitest run tests/treasury-solana-reader.test.ts tests/treasury-topups.test.ts tests/treasury-topup-main.test.ts --reporter=json --outputFile=.local/treasury-topups-combined-frozen-20261015.json",
+    "files": [
+      "tests/treasury-solana-reader.test.ts",
+      "tests/treasury-topup-main.test.ts",
+      "tests/treasury-topups.test.ts"
+    ],
+    "passed": 12,
+    "failed": 0,
+    "skipped": 0,
+    "successful": true,
+    "rawResult": "docs/evidence/treasury-solana-topups-final-20261015.json",
+    "rawResultSha256": "a22cd98701f635a3fc6a400ecc1713e5cbb290b4b22b411e79cf9c825b0037c5",
+    "sourceManifest": "docs/evidence/treasury-solana-topups-source-20261015.json",
+    "sourceManifestSha256": "ef74f05c56b0ef3a5ba1b089108c9830b83e45b0f6c0bafebcd7b9ba764e2e45",
+    "sourceFiles": 18,
+    "wholeBackendRegression": false
+  },
+  "checks": [
+    {
+      "command": "npm run typecheck",
+      "exitCode": 0,
+      "scope": "Global TypeScript after final capacity change"
+    },
+    {
+      "command": "git diff --check",
+      "exitCode": 0,
+      "scope": "Working-tree diff whitespace"
+    },
+    {
+      "command": "npm ls @noble/curves --depth=0",
+      "exitCode": 0,
+      "scope": "Direct 1.9.1 metadata matches already-installed transitive dependency"
+    }
+  ],
+  "established": [
+    "Startup and invoice readiness verify pinned Solana genesis and the existing initialized classic-SPL treasury ATA before returning a payment URL.",
+    "Strict local RPC fixtures cover finalized exact TransferChecked/ref/amount/mint/delta, wrong cluster and ATA, unfinalized or late payment, writable/additional references and global source nonce scope.",
+    "Actual Anvil contracts execute real signed EIP-3009 treasury funding once and exact Selection Subsidy; lifetime earned Income remains unchanged and owner withdrawal does not reset source replay protection.",
+    "Invoice creation checks actual current/confirmed treasury inventory, cumulative first-initialized finite inventory, unresolved holds and canonical current/confirmed managedExposure capacity before returning a URL.",
+    "Real Anvil full Vault cap refuses a new invoice with unchanged journal records. An initially empty treasury refuses journal initialization without creating a zero-budget marker.",
+    "Private retained policy/journal/marker binding, concurrency limits, expired holds, restart replay, original source/signature/raw hash/nonce and lost delivery before/after broadcast are enforced.",
+    "Original-byte explicit rebroadcast recovers the pre-broadcast crash without a renewed authorization, fee or nonce. Real EVM reorg clears credited anchors and retains unresolved capacity.",
+    "Exact signed-gas simulation rejects under-gassed actual Vault execution before retaining a relay claim. Wrong treasury signature, destination, controller relay and contradictory source reuse fail closed.",
+    "Actual direct token consumption sends money to the intended Vault but lacks required classification; it is held as consumed/unclassified and cannot produce a false credit or new authorization.",
+    "Actual configured controller startup/HTTP exercises private hash pins, authenticated human owner, Origin, duplicate JSON, 8 KiB limit and the full five-second streamed-body deadline without moving funds.",
+    "Startup excludes senders retained by disabled x402, Platform and legacy transaction modules before a separate inventory journal is created; retained sender/raw inventories have a 4096-entry bound."
+  ],
+  "limits": [
+    "The source RPC is a reviewed observation provider, not a consensus verifier or Solana light client. No live Solana payment or public funded Base credit was submitted.",
+    "Only narrow legacy classic-SPL TransferChecked transfers with a pre-existing treasury ATA are supported; incompatible wallets, versioned transactions, CPI-only payments and oversized blocks require explicit operator handling.",
+    "A source transfer and Base credit are not atomic. Late, ambiguous, unsupported, expired-policy or reverted outcomes retain state and can require separately authorized manual reconciliation or source refund.",
+    "Historical Vault uses TransferWithAuthorization and has the documented ERC-3009 wrapper front-running workflow limitation. A prevention requires a separately reviewed ReceiveWithAuthorization Vault version; no historical Vault bytecode was changed.",
+    "External EOA treasury and dedicated relayer signatures are required. This module contains no signing key, transaction fee renewal, Safe-signature port or automatic replacement transaction.",
+    "The private journal is bounded crash/concurrency storage, not rollback-proof storage. Retain journal, initialized marker and policy separately from the controller database backup; a stale crash lock needs confirmed operator recovery.",
+    "Supplier registration/discovery, network-token inventory/rebalancing, executable external leases, supplier metering and production custody/availability acceptance remain separate M6 work.",
+    "This focused report is not whole-backend or Linux acceptance and does not establish a project-wide completion percentage."
+  ],
+  "priorFailure": {
+    "raw": ".local/treasury-topups-initial-20261015.json",
+    "cause": "Four source tests passed and five Anvil cases failed because a fixture faucet had not reached the existing confirmation depth. The fixture now mines confirmations+1 before initialization; production finality depth was unchanged.",
+    "supersededBy": "docs/evidence/treasury-solana-topups-final-20261015.json"
+  },
+  "primaryReferences": [
+    "https://developers.circle.com/stablecoins/usdc-contract-addresses",
+    "https://docs.solanapay.com/spec",
+    "https://solana.com/docs/rpc/http/gettransaction",
+    "https://solana.com/docs/rpc/http/getsignaturestatuses",
+    "https://solana.com/docs/rpc/http/getgenesishash",
+    "https://solana.com/docs/rpc/http/getblock",
+    "https://eips.ethereum.org/EIPS/eip-3009#security-considerations"
+  ]
+}

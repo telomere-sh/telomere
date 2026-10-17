@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-10-15T04:57:59.774708+00:00",
+  "kind": "independent_attempt04_static_and_offline_review",
+  "status": "closed_no_remaining_confirmed_issue_in_reviewed_scope",
+  "bundle": ".local/private-staging-rollout-attempt4-20261015",
+  "parentRun": "staging-354fe7af62ea-launch04",
+  "freshFinalRun": "staging-354fe7af62ea-final04",
+  "revision": "354fe7af62ea6701faafc3b04522abb1b4524d2d",
+  "archiveSha256": "86b5dc9f36dcf841963f0ffa8161023c126f1fae473c94909f5dddae3040fdce",
+  "files": {
+    "rollout.py": "f9d9b264e9b5b447894ff982239b96c4be2973fe4d94daa23a14d4ed63943d32",
+    "clone-smoke.mjs": "43d37c51c7d50a1a9971b444367045a2c7e73b91239418d679460d1fb06176e5",
+    "README.md": "5bd0e8957d30b43c7077c0dfc8834a1b3eb13dcf19b07c0f29f1cb2542731c9d",
+    "upload-launch.py": "247ed20abdc173e4b7b172d6cc558c5fddf94cf5b2cbf1256be13bc8564ab198",
+    "upload-launch-usage.md": "afbcca59e9a5112d299822c500922a78194485d03478624f195fc491b5d894ec"
+  },
+  "continuity": {
+    "allFifteenPriorBundleFilesUnchanged": true,
+    "nodeHelperUnchangedFromAttempts02And03": true,
+    "fiveImageIdentityFunctionAstBodiesUnchanged": true,
+    "composedAcceptanceGateImplementationUnchanged": true,
+    "productionSourceDependencyAndProfileEdits": false
+  },
+  "resolvedFindings": [
+    "Explicit0750 fixes root:telomere work and root:docker clone/run under umask077; fresh final work also sets0750. Helper options/profile/baseline/Cyst remain0600 and private directories0700.",
+    "Actual UID/account groups union docker preflight checks traversal, executable, input reads and socket access before either helper; no broad chmod.",
+    "Anvil restart adds a real bootstrap block. A separate fresh stopped final bundle is fully cloned while originals stay inactive, then the complete fresh fingerprint including raw chain bytes is rechecked. No lossy normalization.",
+    "Durable held-stop/resource intents precede stop/create. Controlled TERM/ALRM, scoped durable resource cleanup, exact code/drop-in recovery and a separate ExecStopPost guard cover bounded failure paths.",
+    "Unique retained atomic marker temporaries avoid stale state.json.next collisions. Invalid process metadata and foreign cgroups refuse; failed cleanup stays nonterminal."
+  ],
+  "deadlines": {
+    "activationSeconds": 120,
+    "independentCloneCleanupSeconds": 45,
+    "recoverySeconds": 150,
+    "outerCutoverRuntimeMaxSeconds": 150,
+    "outerCutoverTimeoutStopSeconds": 180,
+    "claim": "Bounded attempts; no absolute downtime, host-loss or systemd-failure guarantee."
+  },
+  "finalChecks": {
+    "frozenFiveHashesStable": true,
+    "pythonAstSyntax": "passed",
+    "nodeCheckSyntax": "passed",
+    "actualLocalSchema2EvidenceCheck": "passed",
+    "independentActualFunctionMocks": {
+      "command": 8,
+      "cleanup": 19,
+      "cutoverSignalDeadlineFlow": 7,
+      "total": 34,
+      "passed": 34,
+      "sourceStable": true
+    },
+    "externalBoundaryNote": "No real signals, subprocesses, Docker, SSH or service actions. Actual cutover nested handlers executed against mocks; actual recover_held tested separately by owner_loop_review.",
+    "actualLinuxPermissionRegression": "Author evidence: both0700 refuse; work-only0750 still refuses; both0750 all12 checks pass without controller start/socket connection.",
+    "legacyNonceConcernClosed": "Actual read-only schema int4;5 total/5 nonnull/0 null. Journal validation unchanged."
+  },
+  "recoveryAndReleaseReview": {
+    "path": "docs/private-staging-recovery-independent-review-2026-10-15.json",
+    "sha256": "d319c843b8c4d396792e730b1a8034d781f63533261b15f4e0d254dce6fe2b91",
+    "sameFrozenRunner": true,
+    "cases": 41
+  },
+  "evidence": [
+    {
+      "path": "docs/evidence/private-staging-attempt04-independent-command-controls-20261015.py",
+      "sha256": "021a499a36257c4c6ebd11bd6aa5e0a727cd66723d27e48e068245627b4ae116",
+      "bytes": 4113
+    },
+    {
+      "path": "docs/evidence/private-staging-attempt04-independent-command-controls-20261015.json",
+      "sha256": "b948604723be68782f128badae892aca3e8f977665a4531e38234c3d61714262",
+      "bytes": 2114
+    },
+    {
+      "path": "docs/evidence/private-staging-attempt04-independent-cleanup-controls-20261015.py",
+      "sha256": "b907136cc1a89d4b33263e0b91cf55f07c74c29ba20c661e639239d45e6da688",
+      "bytes": 10437
+    },
+    {
+      "path": "docs/evidence/private-staging-attempt04-independent-cleanup-controls-20261015.json",
+      "sha256": "253530025ad5d03ae865289af0a14d991ba47888378a33c2c0221890b3e133ed",
+      "bytes": 5957
+    },
+    {
+      "path": "docs/evidence/private-staging-attempt04-independent-cutover-controls-20261015.py",
+      "sha256": "d18b8a0d5edd2602edb11cd18fa27911963d5fd6a6b6d08c0a362686bb6ae3d8",
+      "bytes": 8860
+    },
+    {
+      "path": "docs/evidence/private-staging-attempt04-independent-cutover-controls-20261015.json",
+      "sha256": "6b807d2934a16139df4fca6bee992bc6d3dee7bf9b11b4824be036b2f3ef16af",
+      "bytes": 2219
+    }
+  ],
+  "requiredActualCompletionProof": [
+    "Separate primary phase=cutover/status=passed record; passed recover-held last line is insufficient.",
+    "Parent stage=activated/heldStop.active=false, exact final04 child reports and complete fresh snapshot/preactivation fingerprint equality.",
+    "Exact release/drop-in/controller process, inherited old unit/code pins, all three units active with unchanged restart counters and live/ready200.",
+    "All exact owned resources cleaned and original global Docker inventory unchanged; actual unit LoadState/Result/ExecMainStatus, not missing-unit default success."
+  ],
+  "officialPrimarySources": [
+    "https://raw.githubusercontent.com/systemd/systemd/main/man/systemd.service.xml",
+    "https://raw.githubusercontent.com/systemd/systemd/main/man/systemd.kill.xml"
+  ],
+  "boundaries": {
+    "attempt04TransportOrRuntimeExecutedAtReviewCutoff": false,
+    "reviewerServerCalls": 0,
+    "reviewerProfileOrSecretReads": false,
+    "successfulCloneOrCutoverClaimed": false,
+    "actualKernelTerminationRecoveryTestClaimed": false,
+    "hostCrashRecoveryGuaranteed": false,
+    "publicBaseLaunchClaimed": false,
+    "cleanFullSuiteClaimed": false,
+    "initialFullFailurePreserved": true,
+    "readinessScoreChanged": false,
+    "databaseChainOrCystRestoreAdded": false,
+    "sourceCommitPerformed": false
+  },
+  "preservedPriorReviews": [
+    "private-staging-rollout-composed-review-2026-10-15.json",
+    "private-staging-rollout-attempt2-review-2026-10-15.json",
+    "private-staging-rollout-attempt3-review-2026-10-15.json"
+  ]
+}

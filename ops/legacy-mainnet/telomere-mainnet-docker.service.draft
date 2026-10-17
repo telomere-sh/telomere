@@ -1,0 +1,27 @@
+[Unit]
+Description=Telomere isolated mainnet pilot Docker daemon
+After=network-online.target telomere-mainnet-network.service
+Wants=network-online.target
+Requires=telomere-mainnet-network.service
+
+[Service]
+Type=notify
+User=root
+Group=telomere-mainnet
+ExecStartPre=/usr/bin/python3 /opt/telomere-mainnet-pilot/operator/prepare-network.py --before-daemon
+ExecStart=/usr/bin/dockerd --config-file=/opt/telomere-mainnet-pilot/private/docker-daemon.json --containerd-plugins-namespace=telomere-mainnet-plugins
+ExecStartPost=/usr/bin/python3 /opt/telomere-mainnet-pilot/operator/prepare-network.py --after-daemon
+ExecReload=/bin/kill -s HUP $MAINPID
+RuntimeDirectory=telomere-mainnet-docker
+RuntimeDirectoryMode=0710
+Delegate=yes
+KillMode=process
+Restart=on-failure
+RestartSec=5
+TimeoutStartSec=90
+TimeoutStopSec=60
+LimitNOFILE=65536
+TasksMax=512
+UMask=0077
+
+# Draft only. No [Install] target; do not enable automatically.

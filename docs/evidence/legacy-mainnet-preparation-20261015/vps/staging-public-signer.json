@@ -1,0 +1,7 @@
+{
+  "chainId": 31337,
+  "escrowAddress": "0xcc29b19b5ecac380688d02bd14c131e13a2a74dc",
+  "receiptSigner": "0x7D1686Bc8b611Adc1426FD2a3f0ca03a3A063cc5",
+  "quoteSigner": "0x7D1686Bc8b611Adc1426FD2a3f0ca03a3A063cc5",
+  "observation": "read-only local staging chain contract"
+}

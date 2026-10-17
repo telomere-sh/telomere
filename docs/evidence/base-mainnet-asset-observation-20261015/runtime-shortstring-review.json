@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-15T17:59:50.465344+00:00",
+  "input": {
+    "path": "docs/evidence/base-mainnet-asset-observation-20261015/legacy-plan-runtime-cost-review.json",
+    "sha256": "cdfbc08a5bd5343c448e0f794437f3c53cff48ec7a652146e90ca7efb17518d8"
+  },
+  "packing": "OpenZeppelin ShortStrings: UTF-8 string bytes padded to 31 bytes, final byte is length (strings <=31 bytes)",
+  "library": {
+    "path": "node_modules/@openzeppelin/contracts/utils/ShortStrings.sol",
+    "sha256": "542d5dfe5e4375d83f2e3b5246b2d0d7507406a4b582844dbc73bd31ed2faa83"
+  },
+  "checks": [
+    {
+      "endpoint": "https://mainnet.base.org",
+      "runtimeHash": "0xd2ce03e0de4dc334d671294ae5f900eee12ff05cebc6f6484455103f0b204ed5",
+      "name": "_name",
+      "expectedShortStringBytes32": "0x54656c6f6d65726552756e457363726f77000000000000000000000000000011",
+      "actualShortStringBytes32": "0x54656c6f6d65726552756e457363726f77000000000000000000000000000011",
+      "match": true
+    },
+    {
+      "endpoint": "https://mainnet.base.org",
+      "runtimeHash": "0xd2ce03e0de4dc334d671294ae5f900eee12ff05cebc6f6484455103f0b204ed5",
+      "name": "_version",
+      "expectedShortStringBytes32": "0x3100000000000000000000000000000000000000000000000000000000000001",
+      "actualShortStringBytes32": "0x3100000000000000000000000000000000000000000000000000000000000001",
+      "match": true
+    },
+    {
+      "endpoint": "https://base-rpc.publicnode.com",
+      "runtimeHash": "0xd2ce03e0de4dc334d671294ae5f900eee12ff05cebc6f6484455103f0b204ed5",
+      "name": "_name",
+      "expectedShortStringBytes32": "0x54656c6f6d65726552756e457363726f77000000000000000000000000000011",
+      "actualShortStringBytes32": "0x54656c6f6d65726552756e457363726f77000000000000000000000000000011",
+      "match": true
+    },
+    {
+      "endpoint": "https://base-rpc.publicnode.com",
+      "runtimeHash": "0xd2ce03e0de4dc334d671294ae5f900eee12ff05cebc6f6484455103f0b204ed5",
+      "name": "_version",
+      "expectedShortStringBytes32": "0x3100000000000000000000000000000000000000000000000000000000000001",
+      "actualShortStringBytes32": "0x3100000000000000000000000000000000000000000000000000000000000001",
+      "match": true
+    }
+  ],
+  "allElevenRuntimeImmutablesSemanticallyCheckedAcrossPacket": true
+}

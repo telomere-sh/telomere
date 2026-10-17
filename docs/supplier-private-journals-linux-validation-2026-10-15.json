@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 1,
+  "capturedAtUtc": "2026-10-15T02:39:09.453892+00:00",
+  "status": "accepted_focused_linux_supplier_journal_regression",
+  "gitRevision": "c2ed573f700ce2313a405395e2b94443afb3c79f",
+  "archiveSha256": "c1412023c81538ddbab00b92f7d074d97e42f9239e6dc9ca51f6080f27944582",
+  "source": {
+    "files": 671,
+    "committedGitBlobsOnly": true,
+    "workingTreeIncluded": false,
+    "allSourceBytesAndHashesMatchBeforeAndAfter": true,
+    "changedFiles": []
+  },
+  "environment": {
+    "directory": "/opt/telomere-host-runtime/supplier-journals-20261015-c1412023c815",
+    "nodeVersion": "v22.23.3",
+    "npmVersion": "10.9.9",
+    "platform": "Linux 6.1.0-45-amd64 x86_64",
+    "startedAt": "2026-10-15T02:36:26.433590+00:00",
+    "finishedAt": "2026-10-15T02:37:48.850256+00:00"
+  },
+  "commands": {
+    "npm-ci": {
+      "command": [
+        "npm",
+        "ci",
+        "--ignore-scripts",
+        "--no-audit",
+        "--no-fund"
+      ],
+      "exitCode": 0,
+      "seconds": 4.578
+    },
+    "build": {
+      "command": [
+        "npm",
+        "run",
+        "build"
+      ],
+      "exitCode": 0,
+      "seconds": 69.966
+    },
+    "supplier-focused": {
+      "command": [
+        "node",
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "tests/supplier-private-journal.test.ts",
+        "tests/supplier-akash.test.ts",
+        "tests/supplier-akash-lease.test.ts",
+        "tests/supplier-akash-close.test.ts",
+        "tests/supplier-akash-signed-binding.test.ts",
+        "tests/supplier-nosana.test.ts",
+        "tests/supplier-shared-reserve.test.ts",
+        "tests/supplier-akash-exact-bid.test.ts",
+        "tests/supplier-akash-escrow-observation.test.ts",
+        "tests/supplier-golem-stats.test.ts",
+        "--reporter=json",
+        "--outputFile=.local/supplier-focused.json"
+      ],
+      "exitCode": 0,
+      "seconds": 7.706
+    }
+  },
+  "acceptance": {
+    "testFiles": 10,
+    "passed": 106,
+    "failed": 0,
+    "skipped": 0,
+    "successful": true,
+    "posixSpecificCasesPassed": [
+      "akash private supplier journal filesystem rejects a symlinked journal, marker, parent and exposed POSIX storage",
+      "nosana private supplier journal filesystem rejects a symlinked journal, marker, parent and exposed POSIX storage"
+    ]
+  },
+  "staging": {
+    "servicesAndRestartCountsUnchanged": true,
+    "allThreeActiveWithZeroRestarts": true,
+    "liveBefore": 200,
+    "readyBefore": 200,
+    "liveAfter": 200,
+    "readyAfter": 200
+  },
+  "mutations": {
+    "productionServices": false,
+    "existingSnapshots": false,
+    "dockerOptIn": false,
+    "publicTransactions": 0,
+    "paidSupplierRequests": 0
+  },
+  "scope": "Private supplier local storage and protocol-fixture regression only. Fresh isolated install/build and ten focused files; not full backend acceptance.",
+  "limits": [
+    "No Akash/Nosana/Golem execution or provider final-accounting acceptance.",
+    "No new M6 functionality credit, funded external treasury or adapter-revenue fault reserve.",
+    "The unrelated full-regression snapshots and root-owned gVisor infrastructure were left unchanged.",
+    "The original Windows result and earlier failed/full reports remain retained separately."
+  ],
+  "artifacts": [
+    {
+      "path": "docs/evidence/supplier-journals-linux-acceptance-20261015.json",
+      "bytes": 3390,
+      "sha256": "1a7d9dbc26622776f40f5886c0fb97195db11789346a141534ddae8d9e844be3"
+    },
+    {
+      "path": "docs/evidence/supplier-journals-linux-tests-20261015.json",
+      "bytes": 41804,
+      "sha256": "4fd3d687126766d43a3567e69482d349d1c934ae581fc79237edc92e71f0e213"
+    },
+    {
+      "path": "docs/evidence/supplier-journals-linux-source-before-20261015.json",
+      "bytes": 97496,
+      "sha256": "e2deca191f8d0ca5fecff694f913e61ecb5acb2a64b2f156367757e1d3d23797"
+    },
+    {
+      "path": "docs/evidence/supplier-journals-linux-source-after-20261015.json",
+      "bytes": 97496,
+      "sha256": "e2deca191f8d0ca5fecff694f913e61ecb5acb2a64b2f156367757e1d3d23797"
+    },
+    {
+      "path": "docs/evidence/supplier-journals-linux-source-manifest-20261015.json",
+      "bytes": 153426,
+      "sha256": "ccf948bb1b810df8edef8b627db007e0ed8555970035bcbbc2a6ff8354a215ce"
+    },
+    {
+      "path": "docs/evidence/supplier-journals-linux-npm-ci-20261015.txt",
+      "bytes": 26,
+      "sha256": "3786d69968d138ab56050bd24d5f753c0c791a8168f41617c71340c97563d152"
+    },
+    {
+      "path": "docs/evidence/supplier-journals-linux-build-20261015.txt",
+      "bytes": 6591,
+      "sha256": "d4908b4c995675d4cd3c1a7de882ef59e6648e692edc5aed17337b56c529d927"
+    },
+    {
+      "path": "docs/evidence/supplier-journals-linux-tests-20261015.txt",
+      "bytes": 119,
+      "sha256": "d7b870d946bc92fbbd7dfc6360d26d906ba19e418b5998f470613810ca88b88b"
+    },
+    {
+      "path": "docs/evidence/run-supplier-journals-linux-20261015.py",
+      "bytes": 8622,
+      "sha256": "ede4046e9f5dc20958db5f3b5bceb3edcabb5fa2b3f4adec92d6f32c09d851a5"
+    }
+  ]
+}

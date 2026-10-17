@@ -1,0 +1,145 @@
+{
+  "allFifteenPreviousBundleFilesStillExact": true,
+  "boundaries": {
+    "archivalCopiesOnly": true,
+    "doNotExecuteLauncherFromArchivedLocation": true,
+    "executionBundleRemains": ".local/private-staging-rollout-attempt4-20261015",
+    "historicalAuthorFreezeReviewPendingFlagSupersededByLinkedClosedReviews": true,
+    "initialFailedAuthorHarnessFixturesRemainLocalOnly": true,
+    "initialHarnessFailureClaimedAsNegativeBaseline": false,
+    "parentOwnsAllServerPhases": true,
+    "privateEnvContentsKeysDatabasesBackupsRawLogsOrImageArchivesRetained": false,
+    "runtimePrepareSnapshotHeldCloneCutoverOrRecoveryAcceptanceClaimedByThisRecord": false,
+    "serverActionsDuringRetention": 0,
+    "sourceCodeChanges": 0
+  },
+  "closedReviews": [
+    {
+      "path": "docs/private-staging-rollout-attempt4-review-2026-10-15.json",
+      "sha256": "1f075f183f9dcd7e23bd7b9139abceeabeb45ad342df41a619a95d961623dfef"
+    },
+    {
+      "path": "docs/private-staging-recovery-independent-review-2026-10-15.json",
+      "sha256": "d319c843b8c4d396792e730b1a8034d781f63533261b15f4e0d254dce6fe2b91"
+    }
+  ],
+  "files": [
+    {
+      "bytes": 73606,
+      "path": "docs/evidence/private-staging-operator-attempt4-20261015/rollout.py",
+      "role": "frozen_operator_bundle",
+      "sha256": "f9d9b264e9b5b447894ff982239b96c4be2973fe4d94daa23a14d4ed63943d32",
+      "source": ".local/private-staging-rollout-attempt4-20261015/rollout.py"
+    },
+    {
+      "bytes": 19759,
+      "path": "docs/evidence/private-staging-operator-attempt4-20261015/clone-smoke.mjs",
+      "role": "frozen_operator_bundle",
+      "sha256": "43d37c51c7d50a1a9971b444367045a2c7e73b91239418d679460d1fb06176e5",
+      "source": ".local/private-staging-rollout-attempt4-20261015/clone-smoke.mjs"
+    },
+    {
+      "bytes": 12264,
+      "path": "docs/evidence/private-staging-operator-attempt4-20261015/README.md",
+      "role": "frozen_operator_bundle",
+      "sha256": "5bd0e8957d30b43c7077c0dfc8834a1b3eb13dcf19b07c0f29f1cb2542731c9d",
+      "source": ".local/private-staging-rollout-attempt4-20261015/README.md"
+    },
+    {
+      "bytes": 19110,
+      "path": "docs/evidence/private-staging-operator-attempt4-20261015/upload-launch.py",
+      "role": "frozen_operator_bundle",
+      "sha256": "247ed20abdc173e4b7b172d6cc558c5fddf94cf5b2cbf1256be13bc8564ab198",
+      "source": ".local/private-staging-rollout-attempt4-20261015/upload-launch.py"
+    },
+    {
+      "bytes": 5728,
+      "path": "docs/evidence/private-staging-operator-attempt4-20261015/upload-launch-usage.md",
+      "role": "frozen_operator_bundle",
+      "sha256": "afbcca59e9a5112d299822c500922a78194485d03478624f195fc491b5d894ec",
+      "source": ".local/private-staging-rollout-attempt4-20261015/upload-launch-usage.md"
+    },
+    {
+      "bytes": 11322,
+      "path": "docs/evidence/private-staging-operator-attempt4-20261015/test-held-cutover-offline.py",
+      "role": "safe_author_helper_or_final_validation_evidence",
+      "sha256": "1716834f32e0fb02c1f8fabeae3a855c62bea78f8b622f73e77637be308fe04c",
+      "source": ".local/private-staging-rollout-attempt4-20261015/test-held-cutover-offline.py"
+    },
+    {
+      "bytes": 5877,
+      "path": "docs/evidence/private-staging-operator-attempt4-20261015/held-cutover-offline-results.json",
+      "role": "safe_author_helper_or_final_validation_evidence",
+      "sha256": "c4a47f60535f81a164ca3dd0cfa2c89f2a16d3382bc001dbcfad61b364dfc49c",
+      "source": ".local/private-staging-rollout-attempt4-20261015/held-cutover-offline-results.json"
+    },
+    {
+      "bytes": 6084,
+      "path": "docs/evidence/private-staging-operator-attempt4-20261015/test-work-permissions-linux.py",
+      "role": "safe_author_helper_or_final_validation_evidence",
+      "sha256": "cb6ed25711f766cfe3f9c2d713d853c46feec05ae37054248873ffeea3401984",
+      "source": ".local/private-staging-rollout-attempt4-20261015/test-work-permissions-linux.py"
+    },
+    {
+      "bytes": 1101,
+      "path": "docs/evidence/private-staging-operator-attempt4-20261015/work-permissions-linux-results.json",
+      "role": "safe_author_helper_or_final_validation_evidence",
+      "sha256": "4824b87a4a39cbd479e8b8da2fc2ba78482426e3d055004d1b885be302c8fc54",
+      "source": ".local/private-staging-rollout-attempt4-20261015/work-permissions-linux-results.json"
+    },
+    {
+      "bytes": 1647,
+      "path": "docs/evidence/private-staging-operator-attempt4-20261015/verify-attempt03-access-readonly.py",
+      "role": "safe_author_helper_or_final_validation_evidence",
+      "sha256": "84271128376c6bbacef2d6d5f24e5233b8c181ac20adc6a3bea0eb778baaeb6e",
+      "source": ".local/private-staging-rollout-attempt4-20261015/verify-attempt03-access-readonly.py"
+    },
+    {
+      "bytes": 668,
+      "path": "docs/evidence/private-staging-operator-attempt4-20261015/attempt03-access-readonly.json",
+      "role": "safe_author_helper_or_final_validation_evidence",
+      "sha256": "bc36477f81090eb8a06ddd5e321a2857dd5a5b0bb10f3a538e643895ad1977f0",
+      "source": ".local/private-staging-rollout-attempt4-20261015/attempt03-access-readonly.json"
+    },
+    {
+      "bytes": 1898,
+      "path": "docs/evidence/private-staging-operator-attempt4-20261015/verify-legacy-nonce-aggregate-readonly.mjs",
+      "role": "safe_author_helper_or_final_validation_evidence",
+      "sha256": "198104a482c526c9bb0626df9ffb6a78f214c02340d0a4bb5b1bcfa98fb704d9",
+      "source": ".local/private-staging-rollout-attempt4-20261015/verify-legacy-nonce-aggregate-readonly.mjs"
+    },
+    {
+      "bytes": 403,
+      "path": "docs/evidence/private-staging-operator-attempt4-20261015/legacy-nonce-aggregate-readonly.json",
+      "role": "safe_author_helper_or_final_validation_evidence",
+      "sha256": "2a36571a494ce3b067498840da3ccd22d3a52967c6d4289c0c4e24475e056ecf",
+      "source": ".local/private-staging-rollout-attempt4-20261015/legacy-nonce-aggregate-readonly.json"
+    },
+    {
+      "bytes": 2162,
+      "path": "docs/evidence/private-staging-operator-attempt4-20261015/attempt04-local-freeze.json",
+      "role": "safe_author_helper_or_final_validation_evidence",
+      "sha256": "66393306da530441a2fc44a8c8dae56d9cdce868d78f279230d4550c390e0f3c",
+      "source": ".local/private-staging-rollout-attempt4-20261015/attempt04-local-freeze.json"
+    }
+  ],
+  "fiveFrozenFilesMatchClosedMasterReview": true,
+  "freshFinalRun": "staging-354fe7af62ea-final04",
+  "kind": "immutable_archival_copy_of_closed_reviewed_private_staging_attempt04",
+  "parentRun": "staging-354fe7af62ea-launch04",
+  "retainedAt": "2026-10-15T04:59:45.606793+00:00",
+  "retainedCopiesByteIdenticalToSources": true,
+  "schemaVersion": 1,
+  "sourceArchiveSha256": "86b5dc9f36dcf841963f0ffa8161023c126f1fae473c94909f5dddae3040fdce",
+  "sourceRevision": "354fe7af62ea6701faafc3b04522abb1b4524d2d",
+  "verification": {
+    "actualReadonlyLegacyNonces": {
+      "nonNull": 5,
+      "null": 0,
+      "total": 5
+    },
+    "authorActualDisposableLinuxPermissionRegression": "passed",
+    "finalAuthorActualAstCutoverAndLauncherCases": 16,
+    "probeHelpersMatchRetainedProofHashes": true
+  }
+}

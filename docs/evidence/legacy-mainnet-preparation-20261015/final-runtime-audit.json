@@ -1,0 +1,384 @@
+{
+  "activationFileExists": false,
+  "applicationBodiesRetained": false,
+  "databaseProbes": [
+    {
+      "connected": true,
+      "port": 15433,
+      "replyAscii": "N"
+    },
+    {
+      "connected": true,
+      "port": 15434,
+      "replyAscii": "N"
+    },
+    {
+      "connected": true,
+      "port": 15435,
+      "replyAscii": "N"
+    }
+  ],
+  "docker": [
+    {
+      "info": {
+        "Containerd": {
+          "Address": "/run/containerd/containerd.sock",
+          "Namespaces": {
+            "Containers": "moby",
+            "Plugins": "plugins.moby"
+          }
+        },
+        "DefaultRuntime": "runc",
+        "DockerRootDir": "/var/lib/docker",
+        "ServerVersion": "29.8.1"
+      },
+      "socket": "/var/run/docker.sock",
+      "status": 200
+    },
+    {
+      "info": {
+        "Containerd": {
+          "Address": "/run/containerd/containerd.sock",
+          "Namespaces": {
+            "Containers": "telomere-mainnet-cpu",
+            "Plugins": "telomere-mainnet-plugins"
+          }
+        },
+        "DefaultRuntime": "runsc",
+        "DockerRootDir": "/opt/telomere-mainnet-pilot/docker-data",
+        "ServerVersion": "29.8.1"
+      },
+      "socket": "/run/telomere-mainnet-docker/docker.sock",
+      "status": 200
+    }
+  ],
+  "finishedAt": "2026-10-15T18:34:35.076071+00:00",
+  "http": [
+    {
+      "bodyRetained": false,
+      "contentType": "text/html; charset=utf-8",
+      "responseBytes": 2173,
+      "status": 200,
+      "url": "http://127.0.0.1:3283/"
+    },
+    {
+      "bodyRetained": false,
+      "contentType": "application/json; charset=utf-8",
+      "jsonKeys": [
+        "plan",
+        "reviewToken",
+        "trust"
+      ],
+      "publicFields": {
+        "plan.chainId": 8453,
+        "plan.estimate.mode": "unmodified RPC estimate",
+        "plan.mode": "unsigned-base-usdc-legacy-escrow",
+        "plan.predictedEscrowAddress": "0x27c1e35F563Aa4f57a68B192d88a76c25e68e0db",
+        "plan.status": "prepared; no transaction submitted",
+        "plan.transaction.nonce": 0
+      },
+      "responseBytes": 30172,
+      "status": 200,
+      "url": "http://127.0.0.1:3283/api/plan"
+    },
+    {
+      "bodyRetained": false,
+      "contentType": "application/json",
+      "jsonKeys": [
+        "status"
+      ],
+      "publicFields": {
+        "status": "ok"
+      },
+      "responseBytes": 15,
+      "status": 200,
+      "url": "http://127.0.0.1:13280/health/live"
+    },
+    {
+      "bodyRetained": false,
+      "contentType": "application/json",
+      "jsonKeys": [
+        "status",
+        "worker"
+      ],
+      "publicFields": {
+        "status": "ready"
+      },
+      "responseBytes": 34,
+      "status": 200,
+      "url": "http://127.0.0.1:13280/health/ready"
+    },
+    {
+      "bodyRetained": false,
+      "contentType": "text/html; charset=utf-8",
+      "responseBytes": 431121,
+      "status": 200,
+      "url": "http://127.0.0.1:3000/"
+    }
+  ],
+  "keysOrApplicationEnvironmentsRead": false,
+  "listeners": [
+    {
+      "localAddress": "127.0.0.1:3000",
+      "peerAddress": "0.0.0.0:*",
+      "process": "users:((\"node\",pid=526,fd=21))"
+    },
+    {
+      "localAddress": "127.0.0.1:3283",
+      "peerAddress": "0.0.0.0:*",
+      "process": "users:((\"node\",pid=3900797,fd=30))"
+    },
+    {
+      "localAddress": "127.0.0.1:16379",
+      "peerAddress": "0.0.0.0:*",
+      "process": "users:((\"docker-proxy\",pid=1234,fd=8))"
+    },
+    {
+      "localAddress": "127.0.0.1:15433",
+      "peerAddress": "0.0.0.0:*",
+      "process": "users:((\"docker-proxy\",pid=1264,fd=8))"
+    },
+    {
+      "localAddress": "127.0.0.1:15434",
+      "peerAddress": "0.0.0.0:*",
+      "process": "users:((\"docker-proxy\",pid=1164,fd=8))"
+    },
+    {
+      "localAddress": "127.0.0.1:15435",
+      "peerAddress": "0.0.0.0:*",
+      "process": "users:((\"postgres\",pid=3911729,fd=6))"
+    },
+    {
+      "localAddress": "127.0.0.1:13280",
+      "peerAddress": "0.0.0.0:*",
+      "process": "users:((\"node\",pid=3888942,fd=25))"
+    }
+  ],
+  "networks": [
+    {
+      "addr_info": [
+        {
+          "family": "inet",
+          "label": "docker0",
+          "local": "172.17.0.1",
+          "preferred_life_time": 4294967295,
+          "prefixlen": 16,
+          "scope": "global",
+          "valid_life_time": 4294967295
+        },
+        {
+          "family": "inet6",
+          "local": "fe80::1055:8ff:fee6:d995",
+          "preferred_life_time": 4294967295,
+          "prefixlen": 64,
+          "scope": "link",
+          "valid_life_time": 4294967295
+        }
+      ],
+      "address": "12:55:08:e6:d9:95",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "ifalias": null,
+      "ifindex": 3136,
+      "ifname": "docker0",
+      "master": null,
+      "mtu": 1500
+    },
+    {
+      "addr_info": [
+        {
+          "family": "inet",
+          "label": "tlmr-mainnet0",
+          "local": "172.31.254.1",
+          "preferred_life_time": 4294967295,
+          "prefixlen": 24,
+          "scope": "global",
+          "valid_life_time": 4294967295
+        }
+      ],
+      "address": "2a:ed:ce:93:be:09",
+      "flags": [
+        "NO-CARRIER",
+        "BROADCAST",
+        "MULTICAST",
+        "UP"
+      ],
+      "ifalias": "telomere-mainnet-prepare-20261015:f1f1fa857fb34ae9adb708ecf6af7166",
+      "ifindex": 3141,
+      "ifname": "tlmr-mainnet0",
+      "master": null,
+      "mtu": 1500
+    }
+  ],
+  "publicTransactionsSent": 0,
+  "redisProbe": {
+    "connected": true,
+    "port": 16379,
+    "replyAscii": "+PONG\r\n"
+  },
+  "remoteChanges": 0,
+  "schemaVersion": 1,
+  "scope": "Independent read-only final runtime health snapshot; no wallet or controller activation",
+  "services": {
+    "enclave-api.service": {
+      "ActiveEnterTimestamp": "Thu 2026-10-15 20:34:28 CEST",
+      "ActiveState": "activating",
+      "DynamicUser": "no",
+      "ExecMainStatus": "1",
+      "Group": "enclave",
+      "Id": "enclave-api.service",
+      "LoadState": "loaded",
+      "MainPID": "0",
+      "NRestarts": "13110",
+      "SubState": "auto-restart",
+      "User": "enclave",
+      "queryExit": 0
+    },
+    "enclave-web.service": {
+      "ActiveEnterTimestamp": "Wed 2026-10-14 18:14:33 CEST",
+      "ActiveState": "active",
+      "DynamicUser": "no",
+      "ExecMainStatus": "0",
+      "Group": "enclave",
+      "Id": "enclave-web.service",
+      "LoadState": "loaded",
+      "MainPID": "526",
+      "NRestarts": "0",
+      "SubState": "running",
+      "User": "enclave",
+      "queryExit": 0
+    },
+    "enclave-worker.service": {
+      "ActiveEnterTimestamp": "Wed 2026-10-14 18:14:39 CEST",
+      "ActiveState": "active",
+      "DynamicUser": "no",
+      "ExecMainStatus": "0",
+      "Group": "enclave",
+      "Id": "enclave-worker.service",
+      "LoadState": "loaded",
+      "MainPID": "1845",
+      "NRestarts": "0",
+      "SubState": "running",
+      "User": "enclave",
+      "queryExit": 0
+    },
+    "telomere-mainnet-docker.service": {
+      "ActiveEnterTimestamp": "Thu 2026-10-15 20:32:36 CEST",
+      "ActiveState": "active",
+      "DynamicUser": "no",
+      "ExecMainStatus": "0",
+      "Group": "telomere-mainnet",
+      "Id": "telomere-mainnet-docker.service",
+      "LoadState": "loaded",
+      "MainPID": "3911563",
+      "NRestarts": "0",
+      "SubState": "running",
+      "User": "root",
+      "queryExit": 0
+    },
+    "telomere-mainnet-network.service": {
+      "ActiveEnterTimestamp": "Thu 2026-10-15 20:32:36 CEST",
+      "ActiveState": "active",
+      "DynamicUser": "no",
+      "ExecMainStatus": "0",
+      "Group": "telomere-mainnet",
+      "Id": "telomere-mainnet-network.service",
+      "LoadState": "loaded",
+      "MainPID": "0",
+      "NRestarts": "0",
+      "SubState": "exited",
+      "User": "root",
+      "queryExit": 0
+    },
+    "telomere-mainnet-pilot.service": {
+      "ActiveEnterTimestamp": "",
+      "ActiveState": "inactive",
+      "DynamicUser": "no",
+      "ExecMainStatus": "0",
+      "Group": "telomere-mainnet",
+      "Id": "telomere-mainnet-pilot.service",
+      "LoadState": "loaded",
+      "MainPID": "0",
+      "NRestarts": "0",
+      "SubState": "dead",
+      "User": "telomere-mainnet",
+      "queryExit": 0
+    },
+    "telomere-mainnet-postgres.service": {
+      "ActiveEnterTimestamp": "Thu 2026-10-15 20:32:37 CEST",
+      "ActiveState": "active",
+      "DynamicUser": "no",
+      "ExecMainStatus": "0",
+      "Group": "",
+      "Id": "telomere-mainnet-postgres.service",
+      "LoadState": "loaded",
+      "MainPID": "3911671",
+      "NRestarts": "0",
+      "SubState": "running",
+      "User": "root",
+      "queryExit": 0
+    },
+    "telomere-owner-review.service": {
+      "ActiveEnterTimestamp": "Thu 2026-10-15 20:28:02 CEST",
+      "ActiveState": "active",
+      "DynamicUser": "yes",
+      "ExecMainStatus": "0",
+      "Group": "telomere-owner-review",
+      "Id": "telomere-owner-review.service",
+      "LoadState": "loaded",
+      "MainPID": "3900797",
+      "NRestarts": "0",
+      "SubState": "running",
+      "User": "telomere-owner-review",
+      "queryExit": 0
+    },
+    "telomere-staging-chain.service": {
+      "ActiveEnterTimestamp": "Thu 2026-10-15 07:02:57 CEST",
+      "ActiveState": "active",
+      "DynamicUser": "no",
+      "ExecMainStatus": "0",
+      "Group": "telomere",
+      "Id": "telomere-staging-chain.service",
+      "LoadState": "loaded",
+      "MainPID": "1952401",
+      "NRestarts": "0",
+      "SubState": "running",
+      "User": "telomere",
+      "queryExit": 0
+    },
+    "telomere-staging-watchdog.service": {
+      "ActiveEnterTimestamp": "Thu 2026-10-15 07:02:57 CEST",
+      "ActiveState": "active",
+      "DynamicUser": "no",
+      "ExecMainStatus": "0",
+      "Group": "telomere",
+      "Id": "telomere-staging-watchdog.service",
+      "LoadState": "loaded",
+      "MainPID": "1952410",
+      "NRestarts": "0",
+      "SubState": "running",
+      "User": "telomere",
+      "queryExit": 0
+    },
+    "telomere-staging.service": {
+      "ActiveEnterTimestamp": "Thu 2026-10-15 20:23:03 CEST",
+      "ActiveState": "active",
+      "DynamicUser": "no",
+      "ExecMainStatus": "0",
+      "Group": "telomere",
+      "Id": "telomere-staging.service",
+      "LoadState": "loaded",
+      "MainPID": "3888942",
+      "NRestarts": "104",
+      "SubState": "running",
+      "User": "telomere",
+      "queryExit": 0
+    }
+  },
+  "startedAt": "2026-10-15T18:34:34.761362+00:00",
+  "walletRequests": 0
+}

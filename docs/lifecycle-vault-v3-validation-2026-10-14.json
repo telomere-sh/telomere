@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-14",
+  "phase": "M5 opt-in private lifecycle journal v3",
+  "policy": {
+    "version": 3,
+    "buckets": 64,
+    "maxRecordsPerBucket": 512,
+    "maxEncodedRecordBytes": 32768,
+    "maxJournalBytes": 1073741824
+  },
+  "capacity": {
+    "maximumImmutableRecords": 32768,
+    "budgetAccounting": "encrypted record files only, excluding fixed control/identity/lock files and filesystem overhead",
+    "scopeDirectoriesMaximum": 67
+  },
+  "retention": "All original records retained. Full partitions fail closed; no key deletion, automatic eviction, cap expansion or migration of in-flight v1 operations.",
+  "concurrency": "One fixed durable operation-lock scope; claims use one deterministic bucket lock and exact encrypted readback; original scope and reviewed policy immutable.",
+  "defaultTests": {
+    "passed": 1,
+    "failed": 0,
+    "skipped": 1,
+    "successful": true,
+    "cases": [
+      {
+        "title": "keeps original v1 records, binds v3 claims after restart and serializes distinct stop operations with one durable lock",
+        "status": "passed",
+        "durationSeconds": 1.227
+      },
+      {
+        "title": "retains 960 logical hops and more than twenty thousand actual encrypted immutable records across restarts without deleting history",
+        "status": "skipped",
+        "durationSeconds": 0.0
+      }
+    ]
+  },
+  "heavyAcceptance": {
+    "status": "passed",
+    "snapshot": "/opt/telomere-host-runtime/backend-m5-vault-20261014-a35656a99902",
+    "requestedLogicalHops": 960,
+    "claimsPerHop": 20,
+    "checkpointIndexesPerHop": 2,
+    "totalExpectedImmutableRecords": 21120,
+    "sourceSha256": {
+      "src/agents/paid-lifecycle-vault-v3.ts": "8715a9e185b777ba8842b5548ed6139293e04afb6b56bfc8cffc15ef2c1e7527",
+      "src/sdk/cysts.ts": "c90f2dc164e5b88e3df6bb6058215379e228973bd451240d028845031266cc8d",
+      "src/sdk/transport.ts": "11ee75f202b98665ca376d05191e4b1af4aa69c311710f280c0bbf6b84e5e1d0",
+      "src/cysts/quota-types.ts": "a02dc52126a74813baace5ac2a7c061689bbd9b554c71e2d924d30d4a9c2f561",
+      "tests/paid-lifecycle-vault-v3.test.ts": "7c817ed586a6bda83823bc56255d35aec586b4fee16320c4e1f1308d4ad494b6"
+    },
+    "verifiedAt": "2026-10-15T00:44:31.336717+00:00",
+    "platform": "Linux",
+    "passed": 2,
+    "failed": 0,
+    "skipped": 0,
+    "cases": [
+      {
+        "title": "keeps original v1 records, binds v3 claims after restart and serializes distinct stop operations with one durable lock",
+        "status": "passed",
+        "durationSeconds": 1.085
+      },
+      {
+        "title": "retains 960 logical hops and more than twenty thousand actual encrypted immutable records across restarts without deleting history",
+        "status": "passed",
+        "durationSeconds": 1117.646
+      }
+    ],
+    "rawResult": "docs/evidence/lifecycle-vault-v3-linux-capacity-20261014.json",
+    "rawResultSha256": "05cce44169b1d855c683ef55095743e9128438d7d29e73f0a4aea4a5c9c20c9a",
+    "sourceManifestSha256": "77ec6e38f0f02b851b4f7bc477d1a50986a0833018c0a0dbd4c65dd367b0c9f2",
+    "currentSourceComparison": {
+      "src/agents/paid-lifecycle-vault-v3.ts": {
+        "testedSha256": "8715a9e185b777ba8842b5548ed6139293e04afb6b56bfc8cffc15ef2c1e7527",
+        "currentSha256": "8715a9e185b777ba8842b5548ed6139293e04afb6b56bfc8cffc15ef2c1e7527",
+        "matches": true
+      },
+      "src/sdk/cysts.ts": {
+        "testedSha256": "c90f2dc164e5b88e3df6bb6058215379e228973bd451240d028845031266cc8d",
+        "currentSha256": "6c047b959c5ef79ffe3cb47b522e8f5493dac9fdd1dd62483f1e0e4c7bf36d4f",
+        "matches": false
+      },
+      "src/sdk/transport.ts": {
+        "testedSha256": "11ee75f202b98665ca376d05191e4b1af4aa69c311710f280c0bbf6b84e5e1d0",
+        "currentSha256": "11ee75f202b98665ca376d05191e4b1af4aa69c311710f280c0bbf6b84e5e1d0",
+        "matches": true
+      },
+      "src/cysts/quota-types.ts": {
+        "testedSha256": "a02dc52126a74813baace5ac2a7c061689bbd9b554c71e2d924d30d4a9c2f561",
+        "currentSha256": "a02dc52126a74813baace5ac2a7c061689bbd9b554c71e2d924d30d4a9c2f561",
+        "matches": true
+      },
+      "tests/paid-lifecycle-vault-v3.test.ts": {
+        "testedSha256": "7c817ed586a6bda83823bc56255d35aec586b4fee16320c4e1f1308d4ad494b6",
+        "currentSha256": "7c817ed586a6bda83823bc56255d35aec586b4fee16320c4e1f1308d4ad494b6",
+        "matches": true
+      }
+    },
+    "sourceBoundaryNote": "Vault v3 and capacity test remain byte-identical. The sole changed listed file is src/sdk/cysts.ts: quotaVersion is now public readonly instead of private readonly; encryption/decryption and emitted runtime behavior are unchanged. This records a tested source cutoff, not a test of every later backend change.",
+    "dependenciesUnchanged": {
+      "src/agents/paid-lifecycle-runner.ts": "37add2d0361b81a3cbb54f15574b6588f2cd3324d15b41d3f297f484e5bd8de4",
+      "src/sdk/cyst-checkpoints-file-vault.ts": "831867ee6b08b4b83e36e2b7a702280018d4d7d42830f150e97bc304309b4f7f",
+      "src/sdk/cyst-checkpoints.ts": "b86551e04c23dd5534d94b294c0d0387b3c299882e07040f112c66592ee3cddd"
+    }
+  },
+  "interruptedRuns": [
+    {
+      "platform": "Windows",
+      "status": "interrupted, not passed",
+      "temporaryDirectory": "C:/Users/Administrator/AppData/Local/Temp/telomere-vault-v3-FcGlt3",
+      "cleanup": "automatic approval rejected removal with blocked-by-policy reason; left unchanged"
+    },
+    {
+      "platform": "Linux",
+      "snapshot": "/opt/telomere-host-runtime/backend-m5-vault-20261014-eb85515569b7",
+      "status": "interrupted before completion, not passed",
+      "reason": "replaced by optimized single-bucket-lock implementation"
+    }
+  ],
+  "sourceSha256": {
+    "src/agents/paid-lifecycle-vault-v3.ts": "8715a9e185b777ba8842b5548ed6139293e04afb6b56bfc8cffc15ef2c1e7527",
+    "tests/paid-lifecycle-vault-v3.test.ts": "7c817ed586a6bda83823bc56255d35aec586b4fee16320c4e1f1308d4ad494b6"
+  },
+  "publicTransactions": 0,
+  "paidPublicRequests": 0,
+  "notEstablished": [
+    "24-hour wall-clock soak",
+    "large2GiB restore",
+    "public funded reservation acceptance",
+    "hard filesystem disk quota",
+    "unlimited retention"
+  ]
+}

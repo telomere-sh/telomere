@@ -1,0 +1,8 @@
+--- retained-e0004e63-line-endings-normalized.sol
++++ authenticated-public-source.sol
+@@ -4 +4 @@
+-import {MagicSpend} from "magicspend/MagicSpend.sol";
++import {MagicSpend} from "magic-spend/MagicSpend.sol";
+@@ -111 +111 @@
+-    /// @notice MagicSpend singleton (https://github.com/coinbase/magicspend).
++    /// @notice MagicSpend singleton (https://github.com/coinbase/magic-spend).

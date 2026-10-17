@@ -1,0 +1,136 @@
+{
+  "schema": 1,
+  "recordedAtUtc": "2026-10-15T11:44:42.841790+00:00",
+  "status": "FOCUSED_LOCAL_ACCEPTED_WITH_WINDOWS_POSIX_SKIP",
+  "scope": "Unmounted original local Yagna SQLite allocation attribution + authenticated native HTTP + existing financial lifecycle.",
+  "command": "npx vitest run tests/golem-allocation-attribution.test.ts --reporter=json --outputFile=.local/golem-allocation-attribution-reviewed-20261015.json",
+  "counts": {
+    "numTotalTests": 25,
+    "numPassedTests": 24,
+    "numFailedTests": 0,
+    "numPendingTests": 1
+  },
+  "raw": {
+    "path": "docs/evidence/golem-allocation-attribution-local-20261015.json",
+    "sha256": "362b4cf98bff0d779ed86647eda6b86cc296d1c27f00fd6b9f31a5d79268b12f"
+  },
+  "independentReview": {
+    "reviewer": "final_readiness_review",
+    "result": "No remaining concrete blocker after in-worker bounded snapshot validation and close-before-post fixes.",
+    "testExecution": "Reviewer did not duplicate this cohort."
+  },
+  "sourceInventoryAtCompletion": [
+    {
+      "path": "src/suppliers/golem-allocation-attribution.ts",
+      "bytes": 13526,
+      "sha256": "e5605e0ec0a08dba39a1abe82a8e38aaa4c29ce8686ca6db71cbab0e3d1c5f77"
+    },
+    {
+      "path": "src/suppliers/golem-allocation-attribution-worker.ts",
+      "bytes": 7409,
+      "sha256": "0e07056bae0ea1230d02d8ec813338dee080938e32ea47b16b75e221c61470fa"
+    },
+    {
+      "path": "src/suppliers/golem-allocation-attribution-worker-loader.ts",
+      "bytes": 427,
+      "sha256": "3e680e7de3ca6bdbce2dbaacabdd00224bf1b300c8e3a1e71e31fa4bb7e56445"
+    },
+    {
+      "path": "src/suppliers/golem-finance-http.ts",
+      "bytes": 13530,
+      "sha256": "75ea9be5afd01d8b145f55b7cca64584c9661b8bc104bd3f72c8e8388743a907"
+    },
+    {
+      "path": "src/suppliers/golem-finance-types.ts",
+      "bytes": 8473,
+      "sha256": "139dc3c4a6016ae6e58e2152f8b53ef1c006c76c96a3d15afd9d80f397bc1e0b"
+    },
+    {
+      "path": "src/suppliers/golem-finance.ts",
+      "bytes": 30466,
+      "sha256": "c399cee12177cbf13d41323ae59cf1c90bf0532803dc8c7bbd6f479645fa2816"
+    },
+    {
+      "path": "src/suppliers/golem-finance-ledger.ts",
+      "bytes": 9229,
+      "sha256": "5a6ece738fbb4a94e6511ace6d2920407cedf0d7c151487c7a9a9c47a45c396d"
+    },
+    {
+      "path": "src/suppliers/private-journal.ts",
+      "bytes": 12387,
+      "sha256": "2da9e88d512cf5e39f592c3eb61435999f2a71136057265034347a4276bbd1b5"
+    },
+    {
+      "path": "src/suppliers/golem-stats.ts",
+      "bytes": 5330,
+      "sha256": "6db8be9c8bce6ef21b7eb3646df78f40b014c6090e1200885c2808927b0f2954"
+    },
+    {
+      "path": "src/common.ts",
+      "bytes": 3206,
+      "sha256": "1036bf5ec02c7c1d7ec273aa065dd08cd5cafe40a0eb017f9a427cf9bb091fba"
+    },
+    {
+      "path": "src/runtime/types.ts",
+      "bytes": 1636,
+      "sha256": "982f8bb24f1ef477e8d0a30765ef2713d606e357739334b9ef1f60d7be2d2205"
+    },
+    {
+      "path": "src/selection/income-endpoints/json.ts",
+      "bytes": 2180,
+      "sha256": "0e21a07ec7b5d108050ca9a7906c12840d29cfc39a22a3d52eda2511ba53bd2a"
+    },
+    {
+      "path": "tests/golem-allocation-attribution.test.ts",
+      "bytes": 20096,
+      "sha256": "a426bf859b97b4a89a66c947cfa57ca2c9b196933015f2f4e39a995b6142e175"
+    },
+    {
+      "path": "package.json",
+      "bytes": 3228,
+      "sha256": "632c193486a5614ee2498eed76826fbb29e68d81fbe025878e48a4180de16fcc"
+    },
+    {
+      "path": "package-lock.json",
+      "bytes": 124283,
+      "sha256": "e8549c057c2e4a8a3808ae2a2b386e9a20d20711c696836dd483d4c8bc7c533d"
+    },
+    {
+      "path": "tsconfig.json",
+      "bytes": 625,
+      "sha256": "885374721d3e8f41811b511166a22796f2e50ebcf70fc6a94c64083582761e90"
+    },
+    {
+      "path": "docs/evidence/golem-allocation-upstream-20261015/manifest.json",
+      "bytes": 4536,
+      "sha256": "28b8bc20342420a2a4bf680343231092c57ab3b6c20b33d02d5d409f492e406c"
+    }
+  ],
+  "inventoryBoundary": "Completion inventory only, not a before/after full-source freeze claim. Parent owns final global typecheck and controlled Linux source acceptance.",
+  "developmentAttemptsPreserved": [
+    ".local/golem-allocation-attribution-initial-20261015.json",
+    ".local/golem-allocation-attribution-retry-20261015.json",
+    ".local/golem-allocation-attribution-corrected-20261015.json",
+    ".local/golem-allocation-attribution-final-candidate-20261015.json"
+  ],
+  "tested": [
+    "Exact native payment/order/document/allocation/agreement/activity mapping reconstructs missing allocation without API inference.",
+    "Actual rollback-journal and existing WAL SQLite reads preserve DB/WAL bytes.",
+    "Identity, link, absent source, bounds, cancellation, max2concurrentworkers and scope/economic/proof mismatch refusals.",
+    "Native duplicate NULL-activity document and mixed-allocation refusal.",
+    "Worker-side rejection before IPC for oversized native fields/proof.",
+    "Existing strict HTTPpayment still refuses unattributed wire; composed native HTTP+SQLite path reconciles through existing durable financial controller.",
+    "Original accept intent exists before actual local POST; reopen/reconcile does not repeat POST; changed native authority refuses."
+  ],
+  "explicitLimits": [
+    "One provider, one conserved activity OR agreement share, one allocation; deposits and mixed allocation batches unsupported.",
+    "Installed operator-local requestor accounting trust only, not provider signature/chain consensus/physical-stop proof.",
+    "Chain finality in lifecycle test is explicitly a fixture; no public Polygon/Yagna daemon/provider acceptance.",
+    "Windows ACLs operator-installed; real filesystem symlink negative explicitly skipped on Windows, not claimed passed.",
+    "Native SHM read-lock metadata may change; byte preservation claim covers DB/WAL.",
+    "No main/profile/staging mount, paid request, public transaction, resource allocation or new dependency.",
+    "No full regression/build/typecheck claim from this focused report."
+  ],
+  "upstreamManifest": "docs/evidence/golem-allocation-upstream-20261015/manifest.json",
+  "documentation": "docs/golem-allocation-attribution-v1.md"
+}

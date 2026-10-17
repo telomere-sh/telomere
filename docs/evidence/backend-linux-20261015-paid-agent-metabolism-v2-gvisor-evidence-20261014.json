@@ -1,0 +1,51 @@
+{
+  "protocol": "telomere-paid-lifecycle-v2-gvisor-acceptance-v1",
+  "observedAt": "2026-10-15T00:51:32.107Z",
+  "dockerSocket": "/run/telomere-accept-20261014/docker.sock",
+  "image": "127.0.0.1:15002/telomere-cpu@sha256:6839949540d11906cbdbc614867ac3a825fa0e6f8cbed90c79773979517b4bbe",
+  "guestNode": "/usr/local/bin/node",
+  "quotaEvidence": [
+    {
+      "runId": "0x14eecf7a01e64b426d2f8a4fa42f8e196cc22d1c0e3269e310986b152b85bdc9",
+      "nanoCpus": 1000000000,
+      "runtime": "runsc",
+      "memory": 268435456,
+      "memorySwap": 268435456,
+      "networkMode": "none",
+      "readonlyRootfs": true,
+      "pidsLimit": 64,
+      "running": true
+    },
+    {
+      "runId": "0x50a405d6ab19d7b8d6d8427799ba31602932ce945e3f90e335cf9ccaab53b77c",
+      "nanoCpus": 500000000,
+      "runtime": "runsc",
+      "memory": 268435456,
+      "memorySwap": 268435456,
+      "networkMode": "none",
+      "readonlyRootfs": true,
+      "pidsLimit": 64,
+      "running": true
+    },
+    {
+      "runId": "0xf6cb87b6a9e24fc06066e8c5015abb3bab77fe455d02cdbe6269277610675f59",
+      "nanoCpus": 250000000,
+      "runtime": "runsc",
+      "memory": 268435456,
+      "memorySwap": 268435456,
+      "networkMode": "none",
+      "readonlyRootfs": true,
+      "pidsLimit": 64,
+      "running": true
+    }
+  ],
+  "stopSubmissions": 3,
+  "restoredStateBytes": 34,
+  "sameHostMigration": true,
+  "sleepWakeVerified": true,
+  "responseLossRecoveryVerified": true,
+  "financialCeilingsConserved": true,
+  "metabolismVersion": 2,
+  "gpuCells": false,
+  "teeClaim": false
+}

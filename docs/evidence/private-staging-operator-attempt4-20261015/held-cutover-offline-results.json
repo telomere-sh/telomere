@@ -1,0 +1,213 @@
+{
+  "actualFunctionsAstExtracted": true,
+  "cases": 16,
+  "controllerOrServiceStarted": false,
+  "launcherSha256": "247ed20abdc173e4b7b172d6cc558c5fddf94cf5b2cbf1256be13bc8564ab198",
+  "result": "passed",
+  "results": [
+    {
+      "case": "old-acceptance.json",
+      "events": [
+        "old_code_pins",
+        "release_pins",
+        "durable_held_intent",
+        "stop_originals_after_durable_intent",
+        "check_originals_inactive",
+        "full_latest_then_old_clone",
+        "check_originals_inactive",
+        "full_fresh_fingerprint",
+        "check_originals_inactive",
+        "old_code_pins",
+        "release_pins",
+        "systemd-analyze:verify",
+        "systemctl:daemon-reload",
+        "activate_only_after_full_fresh_clone",
+        "systemctl:show"
+      ],
+      "expectedRefusal": null,
+      "result": "passed"
+    },
+    {
+      "case": "old-acceptance.json",
+      "events": [
+        "old_code_pins",
+        "release_pins",
+        "durable_held_intent",
+        "stop_originals_after_durable_intent",
+        "authorized_old_code_recovery"
+      ],
+      "expectedRefusal": "backup_failed",
+      "result": "passed"
+    },
+    {
+      "case": "old-acceptance.json",
+      "events": [
+        "old_code_pins",
+        "release_pins",
+        "durable_held_intent",
+        "stop_originals_after_durable_intent",
+        "check_originals_inactive",
+        "full_latest_then_old_clone",
+        "authorized_old_code_recovery"
+      ],
+      "expectedRefusal": "clone_incomplete",
+      "result": "passed"
+    },
+    {
+      "case": "old-acceptance.json",
+      "events": [
+        "old_code_pins",
+        "release_pins",
+        "durable_held_intent",
+        "stop_originals_after_durable_intent",
+        "check_originals_inactive",
+        "full_latest_then_old_clone",
+        "check_originals_inactive",
+        "full_fresh_fingerprint",
+        "authorized_old_code_recovery"
+      ],
+      "expectedRefusal": "fresh_snapshot_drift_no_activation",
+      "result": "passed"
+    },
+    {
+      "case": "old-acceptance.json",
+      "events": [
+        "old_code_pins",
+        "release_pins",
+        "durable_held_intent",
+        "stop_originals_after_durable_intent",
+        "check_originals_inactive",
+        "full_latest_then_old_clone",
+        "check_originals_inactive",
+        "full_fresh_fingerprint",
+        "check_originals_inactive",
+        "old_code_pins",
+        "release_pins",
+        "authorized_old_code_recovery"
+      ],
+      "expectedRefusal": "release_runtime_changed",
+      "result": "passed"
+    },
+    {
+      "case": "old-acceptance.json",
+      "events": [
+        "old_code_pins",
+        "release_pins",
+        "durable_held_intent",
+        "stop_originals_after_durable_intent",
+        "check_originals_inactive",
+        "full_latest_then_old_clone",
+        "check_originals_inactive",
+        "authorized_old_code_recovery"
+      ],
+      "expectedRefusal": "held_original_units_not_inactive",
+      "result": "passed"
+    },
+    {
+      "case": "old-acceptance.json",
+      "events": [
+        "old_code_pins",
+        "release_pins",
+        "durable_held_intent",
+        "stop_originals_after_durable_intent",
+        "check_originals_inactive",
+        "full_latest_then_old_clone",
+        "authorized_old_code_recovery"
+      ],
+      "expectedRefusal": "held_maintenance_interrupted",
+      "result": "passed"
+    },
+    {
+      "case": "old-acceptance.json",
+      "events": [
+        "old_code_pins",
+        "release_pins",
+        "durable_held_intent",
+        "stop_originals_after_durable_intent",
+        "check_originals_inactive",
+        "full_latest_then_old_clone",
+        "authorized_old_code_recovery"
+      ],
+      "expectedRefusal": "held_maintenance_interrupted",
+      "result": "passed"
+    },
+    {
+      "case": "old-acceptance.json",
+      "events": [
+        "old_code_pins",
+        "release_pins",
+        "durable_held_intent",
+        "stop_originals_after_durable_intent",
+        "check_originals_inactive",
+        "full_latest_then_old_clone",
+        "check_originals_inactive",
+        "full_fresh_fingerprint",
+        "check_originals_inactive",
+        "old_code_pins",
+        "release_pins",
+        "authorized_old_code_recovery"
+      ],
+      "expectedRefusal": "maintenance_deadline",
+      "result": "passed"
+    },
+    {
+      "case": "old-acceptance.json",
+      "events": [
+        "old_code_pins",
+        "release_pins",
+        "durable_held_intent",
+        "stop_originals_after_durable_intent",
+        "check_originals_inactive",
+        "full_latest_then_old_clone",
+        "check_originals_inactive",
+        "full_fresh_fingerprint",
+        "check_originals_inactive",
+        "old_code_pins",
+        "release_pins",
+        "systemd-analyze:verify",
+        "systemctl:daemon-reload",
+        "activate_only_after_full_fresh_clone",
+        "authorized_old_code_recovery"
+      ],
+      "expectedRefusal": "not_ready",
+      "result": "passed"
+    },
+    {
+      "case": "old-acceptance.json",
+      "events": [
+        "old_code_pins",
+        "release_pins"
+      ],
+      "expectedRefusal": "final_work_exists",
+      "result": "passed"
+    },
+    {
+      "case": "old-acceptance.json",
+      "events": [
+        "old_code_pins",
+        "release_pins"
+      ],
+      "expectedRefusal": "held_parent_process_identity",
+      "result": "passed"
+    },
+    {
+      "case": "actual_launcher_prepare",
+      "result": "passed"
+    },
+    {
+      "case": "actual_launcher_snapshot",
+      "result": "passed"
+    },
+    {
+      "case": "actual_launcher_validate-clone",
+      "result": "passed"
+    },
+    {
+      "case": "actual_launcher_cutover",
+      "result": "passed"
+    }
+  ],
+  "runnerSha256": "f9d9b264e9b5b447894ff982239b96c4be2973fe4d94daa23a14d4ed63943d32",
+  "schemaVersion": 1,
+  "systemdDockerSshCalls": 0
+}

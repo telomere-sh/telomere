@@ -1,0 +1,4372 @@
+{
+  "schemaVersion": 1,
+  "approval": "UNAPPROVED",
+  "rawPacketsCopied": false,
+  "newReportGets": 0,
+  "paidPosts": 0,
+  "policySha256": "75abdd6f7e2a075863b71afa68a7e7dddb43115f3834b6428ace33a228d89ffa",
+  "policyUnchanged": true,
+  "packetSha256": "853b979047e981ce7effee19e33d26c6636d707064dec8415eb36158616c0cf9",
+  "responseSha256": "9c2e72ec9d5dac867a5a189a6db43f3b49fc8b2d9da599cafcfcd5befda199a4",
+  "actionsCount": 186,
+  "actionsSha256": "f903bd0f836f7720580c6bb94534c2399e7800956d5bb8011a3b1432bbd54733",
+  "actionTypes": {
+    "compose_manager_started": 4,
+    "compose_up": 131,
+    "compose_stage": 5,
+    "compose_down": 45,
+    "docker_clean": 1
+  },
+  "approvedPrefixMatches": [
+    {
+      "profileIndex": 0,
+      "count": 135,
+      "sha256": "00ac037cde28499ca5ee97b3fda1cd168d174bcd24f3a52adfa09f64047f6013"
+    }
+  ],
+  "claims": [
+    {
+      "index": 0,
+      "action": "compose_manager_started",
+      "actionSha256": "64334764830b03b5cd36532bf0b74c47f3d13ff6e80da293926b1a13dab71ea1",
+      "keys": [
+        "action",
+        "container",
+        "image",
+        "timestamp"
+      ],
+      "image": "nearaidev/compose-manager@sha256:6e035c8fb99c1d31f41760d25af178683a658cca4afd73cd0d366fbb5bf884be",
+      "timestamp": "2026-09-11T20:20:00.991877328+00:00"
+    },
+    {
+      "index": 1,
+      "action": "compose_up",
+      "actionSha256": "f29b203b34dec00d0405e90a3da1462318eda8b955e249a951998d8f8eed63da",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "d3d9e554cdadf8d3641486276c6ef417b208ec57",
+      "file_sha256": "e778257b40b4f5056ce006d2e6a58997e11fd4ff31b8a3fd5777cc24be46fb0c",
+      "timestamp": "2026-09-11T20:55:16.600476763+00:00",
+      "services": [
+        "download-glm53-fp8"
+      ]
+    },
+    {
+      "index": 2,
+      "action": "compose_stage",
+      "actionSha256": "91fe2b406996a51ce9dc1ab917ded741cf9974cab81d9b5f884543f93819f629",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "d3d9e554cdadf8d3641486276c6ef417b208ec57",
+      "file_sha256": "e778257b40b4f5056ce006d2e6a58997e11fd4ff31b8a3fd5777cc24be46fb0c",
+      "timestamp": "2026-09-11T20:55:44.530848858+00:00",
+      "services": [
+        "model-vllm-glm53-fp8-tp8"
+      ]
+    },
+    {
+      "index": 3,
+      "action": "compose_down",
+      "actionSha256": "a786cf3541dc2fa401e39ada6b24567365179c57ca9d5717cf7d80d1b6b6613f",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "d3d9e554cdadf8d3641486276c6ef417b208ec57",
+      "timestamp": "2026-09-11T21:01:17.995283668+00:00",
+      "services": [
+        "download-glm53-fp8"
+      ]
+    },
+    {
+      "index": 4,
+      "action": "compose_down",
+      "actionSha256": "edb5bb5e5dee4c8fdbdf5fe29034698b7e03fbba61f5639a08734d81751327b8",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "3ddf2bb3946bee9f3503f90d87c48207e0c5d571",
+      "timestamp": "2026-09-11T21:04:16.228793483+00:00"
+    },
+    {
+      "index": 5,
+      "action": "compose_up",
+      "actionSha256": "0cf4e00cdbb25d3ab1a2ab577ecf1ea27c9f51cc76f751002dcdf9f38871b2bf",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "3ddf2bb3946bee9f3503f90d87c48207e0c5d571",
+      "file_sha256": "9d5f74658a7a25cbe4110286f848767d2117a11dc1f5472b5a876edcf245a0c7",
+      "timestamp": "2026-09-11T21:04:42.496525475+00:00",
+      "services": [
+        "download-glm53-nvfp4",
+        "dcgm-glm53-gpu03-bench",
+        "otelcol-contrib"
+      ]
+    },
+    {
+      "index": 6,
+      "action": "compose_stage",
+      "actionSha256": "f552c71f5db0aeb333bee3db5b9926f043a2816d8bada3cba795fa4682639071",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "3ddf2bb3946bee9f3503f90d87c48207e0c5d571",
+      "file_sha256": "9d5f74658a7a25cbe4110286f848767d2117a11dc1f5472b5a876edcf245a0c7",
+      "timestamp": "2026-09-11T21:05:00.313283052+00:00",
+      "services": [
+        "model-vllm-glm53-nvfp4-tp4"
+      ]
+    },
+    {
+      "index": 7,
+      "action": "compose_down",
+      "actionSha256": "62c2169370a6f18374e9ee6e7de0c4ed31c911e66659ac821e1c88785dbc7f6e",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "3ddf2bb3946bee9f3503f90d87c48207e0c5d571",
+      "timestamp": "2026-09-11T21:21:00.075731792+00:00",
+      "services": [
+        "download-glm53-nvfp4"
+      ]
+    },
+    {
+      "index": 8,
+      "action": "compose_up",
+      "actionSha256": "7f34b546a8d0ecbd682c6824f99b2c47d2d3e07cb2e886586a819ae8d20b73d9",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "3ddf2bb3946bee9f3503f90d87c48207e0c5d571",
+      "file_sha256": "9d5f74658a7a25cbe4110286f848767d2117a11dc1f5472b5a876edcf245a0c7",
+      "timestamp": "2026-09-11T21:21:23.030899392+00:00",
+      "services": [
+        "download-glm53-fp8"
+      ]
+    },
+    {
+      "index": 9,
+      "action": "compose_stage",
+      "actionSha256": "d436a29092f79d7324f9ba1db8a90fe837098c42b912283956d4cc440930e9dc",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "3ddf2bb3946bee9f3503f90d87c48207e0c5d571",
+      "file_sha256": "9d5f74658a7a25cbe4110286f848767d2117a11dc1f5472b5a876edcf245a0c7",
+      "timestamp": "2026-09-11T21:21:32.855873343+00:00",
+      "services": [
+        "model-vllm-glm53-fp8-tp8"
+      ]
+    },
+    {
+      "index": 10,
+      "action": "compose_up",
+      "actionSha256": "db90ac502edaecc90e97d6beb048183f7553ac013b8f727e9c361723f8c72ee7",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "e0485c0ee11dce2275c6df70db530f40f725b187",
+      "file_sha256": "c6d6f917f1fdb9d082741b7bd554ee4a9b23fc7619c092732426270de00f1458",
+      "timestamp": "2026-09-11T22:17:56.548807167+00:00",
+      "services": [
+        "model-vllm-glm53-fp8-tp8",
+        "dcgm-glm53-gpu03-bench",
+        "otelcol-contrib"
+      ]
+    },
+    {
+      "index": 11,
+      "action": "compose_up",
+      "actionSha256": "e77a70644fde09b2c2bc34ca49a75b2798d0eb3fa435cff69483fae5a0749b3c",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "6c864c5ee8c610f53d6bc85d7fbf8d631a90d1a6",
+      "file_sha256": "a09005c18ed9778afd4fc93e3d70dbb410f435c2f33a7e8816ae4a90cad703eb",
+      "timestamp": "2026-09-11T22:23:18.029158860+00:00",
+      "services": [
+        "model-vllm-glm53-fp8-tp8",
+        "otelcol-contrib"
+      ]
+    },
+    {
+      "index": 12,
+      "action": "compose_down",
+      "actionSha256": "0a3a017a42ed9b46a3717d9b1e8c6fc52563995b39ac296558571e2a0b344728",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "6c864c5ee8c610f53d6bc85d7fbf8d631a90d1a6",
+      "timestamp": "2026-09-11T23:04:06.988040967+00:00"
+    },
+    {
+      "index": 13,
+      "action": "compose_up",
+      "actionSha256": "5163fc9669da0645198dae9cca77bbc20b494fde72d9f1197d94bfcb58bd8b34",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "d1a72bf122962f1582d8ba9ae38f56c3dfdfb139",
+      "file_sha256": "e063942a0d88eeff6d085beaceb43c0d4c2d2426bc81003aa9fb42839ad39eab",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-11T23:17:31.712841027+00:00",
+      "services": [
+        "model-downloader"
+      ]
+    },
+    {
+      "index": 14,
+      "action": "compose_up",
+      "actionSha256": "c7ea3d9082c8be815989d98e3b9d53824ac88b96f14783b71484328961abb35d",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "1f0543890e83a348409f2d859d3afd5e4a6caabe",
+      "file_sha256": "a224ffc84a6419dac26ad66f3a6dce3977be1ef91ffae7a223a56d3648b0fa00",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-11T23:22:23.859361835+00:00",
+      "services": [
+        "hicache-hcc-probe"
+      ]
+    },
+    {
+      "index": 15,
+      "action": "compose_up",
+      "actionSha256": "99520080c8c383abfef3c25d2dee152e1cb84c6c73d6effff11267fba77c2002",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "a5c7dee0e61ebccfd9d464751a5ed7a54d6e656c",
+      "file_sha256": "fd2b0d062106701351700d89a9423dae489d7cdbae25eb1bca2183c293e7d6b1",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-11T23:48:04.352702935+00:00",
+      "services": [
+        "hicache-hcc-probe"
+      ]
+    },
+    {
+      "index": 16,
+      "action": "compose_up",
+      "actionSha256": "1d83a4863606190b8d9ebd03d6521f2b9d23d993d2d25d4e616fe25e80d9a049",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "6da46ed6de87c4f1d87f69be2e25f0fbb961d032",
+      "file_sha256": "c783beeb372557159a4d1c229752a2e89edb0bd8a6126affa8cf5e3c5e843230",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-11T23:51:26.513338680+00:00",
+      "services": [
+        "hicache-hcc-probe"
+      ]
+    },
+    {
+      "index": 17,
+      "action": "compose_down",
+      "actionSha256": "685701db2b66b86b2d86e471785088474b348e15d39e41bf3f8907f45bb8023e",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "72a7616d4424487eb56864df6390d9e78d9624ac",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-11T23:52:52.240555594+00:00"
+    },
+    {
+      "index": 18,
+      "action": "compose_up",
+      "actionSha256": "f142492beac232de7fbebe18c08b32ba63218ffdac1616b2f29e2adf98b2b634",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "72a7616d4424487eb56864df6390d9e78d9624ac",
+      "file_sha256": "c783beeb372557159a4d1c229752a2e89edb0bd8a6126affa8cf5e3c5e843230",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-11T23:53:03.359778255+00:00",
+      "services": [
+        "model-downloader"
+      ]
+    },
+    {
+      "index": 19,
+      "action": "compose_up",
+      "actionSha256": "03b784e4c271ec702150310fb15ec1d2afd78edd9ed95c4d9b1332b7a3dc1460",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "72a7616d4424487eb56864df6390d9e78d9624ac",
+      "file_sha256": "c783beeb372557159a4d1c229752a2e89edb0bd8a6126affa8cf5e3c5e843230",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-11T23:53:21.144728181+00:00",
+      "services": [
+        "dcgm-glm53",
+        "otelcol-contrib"
+      ]
+    },
+    {
+      "index": 20,
+      "action": "compose_up",
+      "actionSha256": "1009083c62f838cf6d0fe77033bf0d70b9d8c4cecdb48a0c2bae49f1ac47e949",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "bd68b9191db2854694d49f859674fb6d2fc776d9",
+      "file_sha256": "f2168df3ef28735b7c90c674a24b34bd4a1a9c87a2be88a7197c547e0532c12a",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-12T00:28:00.837831927+00:00",
+      "services": [
+        "model-sg-glm53-fp8-tp4-r1",
+        "dcgm-glm53",
+        "otelcol-contrib",
+        "glm53-soak-relay"
+      ]
+    },
+    {
+      "index": 21,
+      "action": "compose_up",
+      "actionSha256": "2c6ab8c4652d97256e2fc3275dcb49948238f54214b1decad02e5b3a50b71e8f",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "bd68b9191db2854694d49f859674fb6d2fc776d9",
+      "file_sha256": "f2168df3ef28735b7c90c674a24b34bd4a1a9c87a2be88a7197c547e0532c12a",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-12T00:58:45.120481015+00:00",
+      "services": [
+        "model-sg-glm53-fp8-tp4-r1",
+        "model-sg-glm53-fp8-tp4-r2",
+        "dcgm-glm53",
+        "otelcol-contrib",
+        "glm53-soak-relay"
+      ]
+    },
+    {
+      "index": 22,
+      "action": "compose_up",
+      "actionSha256": "ce41d51d2b76264c78c2538fceba7a7bc4fcc862423eb17c9bee0de91fd7e0e8",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "bd68b9191db2854694d49f859674fb6d2fc776d9",
+      "file_sha256": "f2168df3ef28735b7c90c674a24b34bd4a1a9c87a2be88a7197c547e0532c12a",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-12T01:19:22.784798769+00:00",
+      "services": [
+        "model-sg-glm53-fp8-tp4-r1"
+      ]
+    },
+    {
+      "index": 23,
+      "action": "compose_up",
+      "actionSha256": "d20a16cc6d52c0b79d1a5174f280a64a2702c2675c3eab944cb65d0da476e140",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "d0379076f97c2619bc0e93f815fc698c13be73a9",
+      "file_sha256": "7c12e355b7f285ac2032a7e436827f44cdc848e144d6797862fa2e73e3a4602b",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-12T01:22:01.305592952+00:00",
+      "services": [
+        "hicache-hcc-probe"
+      ]
+    },
+    {
+      "index": 24,
+      "action": "compose_up",
+      "actionSha256": "66c2326ccf6ac069f5e900bf8502102da0d940e2f1d19819443fc67d40ac58a0",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "85f52ffb255417a47cb75d22fa7f6da3f2beae58",
+      "file_sha256": "69102f4c684c2864beb56f6d572699165848dabed1b94ce19015c7c4f7d86f04",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-12T01:40:04.143660629+00:00",
+      "services": [
+        "model-sg-glm53-fp8-tp4-r1"
+      ]
+    },
+    {
+      "index": 25,
+      "action": "compose_up",
+      "actionSha256": "e38f716ae742199dcf601d70853c2e75f87e23b51d37ae990a7764c7b98884e7",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "31cfffadf5e08c3b400f19cfb1e272fbf70e3df1",
+      "file_sha256": "d1f8d2b05e3281e450a33f34d3359bc30bc61098b62903ea26d0845325db02e2",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-12T02:47:03.237499427+00:00",
+      "services": [
+        "model-sg-glm53-fp8-tp4-r1"
+      ]
+    },
+    {
+      "index": 26,
+      "action": "compose_up",
+      "actionSha256": "3ab634218712ba2fd5dcaee69550ea1de51ea120ce2cd065e38c5686f91fcdf3",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "2cc328eed23c7c18e49acc798e671db57ec64580",
+      "file_sha256": "80dbd5fc325b65087e5154beecb9ec0c1007f20b282a462106f92a82c84cb123",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-12T03:16:50.803909015+00:00",
+      "services": [
+        "hicache-hostalloc-probe"
+      ]
+    },
+    {
+      "index": 27,
+      "action": "compose_stage",
+      "actionSha256": "b643f0a344591038c73bd43bfedb077c7b037ca8761e208d20ac2f36142f9dd9",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "85cea5e8d6c2292afdccbcba893438618f04ce90",
+      "file_sha256": "c9b20839a11ddd06c2138f19d21be01a2af1775e014bd3da330b617bdca602fc",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-12T04:10:23.357349131+00:00",
+      "services": [
+        "model-sg-glm53-fp8-tp4-r1"
+      ]
+    },
+    {
+      "index": 28,
+      "action": "compose_down",
+      "actionSha256": "2de6e23f1b05d89bf8d9be901898f805d0aad245e4fcb9258b726e330afcc617",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "85cea5e8d6c2292afdccbcba893438618f04ce90",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-12T04:33:06.424449068+00:00",
+      "services": [
+        "model-sg-glm53-fp8-tp4-r1"
+      ]
+    },
+    {
+      "index": 29,
+      "action": "compose_up",
+      "actionSha256": "5c6f656a4de5aa2e160654fe02474af6c693694f98038322421bc53b7e0010fb",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "85cea5e8d6c2292afdccbcba893438618f04ce90",
+      "file_sha256": "c9b20839a11ddd06c2138f19d21be01a2af1775e014bd3da330b617bdca602fc",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-12T04:33:41.350701567+00:00",
+      "services": [
+        "model-sg-glm53-fp8-tp4-r1"
+      ]
+    },
+    {
+      "index": 30,
+      "action": "compose_down",
+      "actionSha256": "dfbef779e0a851e387a2b1fd8f1e0a03b18572220183d3c065a36951b610f3a1",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "85cea5e8d6c2292afdccbcba893438618f04ce90",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-12T04:59:43.762232568+00:00",
+      "services": [
+        "model-sg-glm53-fp8-tp4-r1"
+      ]
+    },
+    {
+      "index": 31,
+      "action": "compose_up",
+      "actionSha256": "be1d52355fec6cca95a21d49fc6553cf737517a067591a19d0e863cc2f1db0bb",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "e56f3d2d736195d3c6425de2765ab2aece34104e",
+      "file_sha256": "2b940307e83baceb8b5a7e85c422f9a2006461af103b8673fc60c1bbeaa62e65",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-12T05:00:20.511514605+00:00",
+      "services": [
+        "model-sg-glm53-fp8-tp4-r1"
+      ]
+    },
+    {
+      "index": 32,
+      "action": "compose_down",
+      "actionSha256": "4d74410f9add443e79b69e3eb5acabeb02aab14fe3b2b35307a29eb9182f3471",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "e56f3d2d736195d3c6425de2765ab2aece34104e",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-12T05:21:43.474545114+00:00",
+      "services": [
+        "model-sg-glm53-fp8-tp4-r2"
+      ]
+    },
+    {
+      "index": 33,
+      "action": "compose_up",
+      "actionSha256": "382499110c03488361a6c16c63af511a9f0ab1d1dd292922212a9d462e9e0d78",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "e56f3d2d736195d3c6425de2765ab2aece34104e",
+      "file_sha256": "2b940307e83baceb8b5a7e85c422f9a2006461af103b8673fc60c1bbeaa62e65",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-12T05:22:15.004064311+00:00",
+      "services": [
+        "model-sg-glm53-fp8-tp4-r2"
+      ]
+    },
+    {
+      "index": 34,
+      "action": "compose_up",
+      "actionSha256": "463233b4de178eadd9c4af0e877bf25b61ce7ea002c9c60b55b6e761d34f72df",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "f87823ed3013b06797d5bc97955dbbb862277ee6",
+      "file_sha256": "e6b93ebc23824722e607719dea69046c20c696f750c5e750470cad395df2e391",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-12T05:54:43.735535727+00:00",
+      "services": [
+        "otelcol-contrib"
+      ]
+    },
+    {
+      "index": 35,
+      "action": "compose_stage",
+      "actionSha256": "dc240a585050447eeb3ac98ce6e8ec53844c0cd5d411e78928039d818488e3e8",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "094a49651dbdbc6120bc2335c087607f77c6a9cf",
+      "file_sha256": "4d0a1a6f2879147dde3827a53bb21851af12d4231f0435e70bb73fdb7c24b124",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-12T17:46:46.991695897+00:00",
+      "services": [
+        "model-vllm-glm53-fp8-tp4-r2"
+      ]
+    },
+    {
+      "index": 36,
+      "action": "compose_down",
+      "actionSha256": "d62defd96605780d988ba2950389c2ff847c9ed28e76b7a1abdb32342520df58",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "f87823ed3013b06797d5bc97955dbbb862277ee6",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-12T17:54:19.261874596+00:00",
+      "services": [
+        "model-sg-glm53-fp8-tp4-r2"
+      ]
+    },
+    {
+      "index": 37,
+      "action": "compose_up",
+      "actionSha256": "18d106f8faa2ccec841d2b4e0a79c6ce0a53d4ab09f0dbf28c72fcdeda52ba84",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "094a49651dbdbc6120bc2335c087607f77c6a9cf",
+      "file_sha256": "4d0a1a6f2879147dde3827a53bb21851af12d4231f0435e70bb73fdb7c24b124",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-12T17:54:50.366234026+00:00",
+      "services": [
+        "model-vllm-glm53-fp8-tp4-r2"
+      ]
+    },
+    {
+      "index": 38,
+      "action": "compose_up",
+      "actionSha256": "42a4ffd6482edaefdad32d4922857512101010df61a0df440822854e2eb86d05",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "094a49651dbdbc6120bc2335c087607f77c6a9cf",
+      "file_sha256": "4d0a1a6f2879147dde3827a53bb21851af12d4231f0435e70bb73fdb7c24b124",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-12T17:57:00.135637199+00:00",
+      "services": [
+        "glm53-soak-relay",
+        "otelcol-contrib"
+      ]
+    },
+    {
+      "index": 39,
+      "action": "compose_up",
+      "actionSha256": "7feb7cb8f5bffd5f35b2a644a7ba899815ce3580e0dd973fc0c736930e3c43f5",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "00921657197842a557bc1d12fde98ef164a056b7",
+      "file_sha256": "4d1b4f73bd301ac043c22b930042686790490bd13fb9affb7da48920285e6eee",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-12T18:15:39.105161983+00:00",
+      "services": [
+        "model-vllm-glm53-fp8-tp4-r2"
+      ]
+    },
+    {
+      "index": 40,
+      "action": "compose_up",
+      "actionSha256": "32934e2b3cca5e823ad770a93f4c857f52c5ac1754ff1543e7131dd8931b8e8c",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "c5c6e46191cb600a2497d755943ad9c6db5bcada",
+      "file_sha256": "31b1f00904a447bc672b3434d725f2815d0bc1683632afc8e4f05b4b305b7a02",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-12T18:46:35.759899147+00:00",
+      "services": [
+        "model-vllm-glm53-fp8-tp4-r2"
+      ]
+    },
+    {
+      "index": 41,
+      "action": "compose_up",
+      "actionSha256": "e741f23f5978805dc7c047288d1b117dcf9ba0a0e1acf473a7f66d23aef58059",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "76e1d1d2103f7260e78f9592bce2bbf3204dd6cf",
+      "file_sha256": "83704c4726138d094dfafb88f15bba7b2fcb58f300012a009a3df40fc0f4ff23",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-12T19:10:21.742752710+00:00",
+      "services": [
+        "model-vllm-glm53-fp8-tp4-r2"
+      ]
+    },
+    {
+      "index": 42,
+      "action": "compose_up",
+      "actionSha256": "15ee9193aea23d4cb1451683a8e3ea7adf82ebd839fe8e00e83dadace763ff13",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "0feb6d29eb28086c212962edc533e045d4d8a7ee",
+      "file_sha256": "603ff2193dc4a6d61c3f5cd962283a954f5d95521dc2f564ee293b27cd20c271",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-12T19:12:02.710474778+00:00",
+      "services": [
+        "model-vllm-glm53-fp8-tp4-r2"
+      ]
+    },
+    {
+      "index": 43,
+      "action": "compose_up",
+      "actionSha256": "fae8ddd0d876efb54c51bb466feef226500018befffdc8e1d2ecb16cd3603c7f",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "e87aed26be59d857cc370cbbf6039d32f9581fa2",
+      "file_sha256": "57de80ee1327d2829cdc6e37fb35f909d5db383a9b507a183ea41a64eb38c2e3",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-12T19:28:39.731212997+00:00",
+      "services": [
+        "model-vllm-glm53-fp8-tp4-r2"
+      ]
+    },
+    {
+      "index": 44,
+      "action": "compose_up",
+      "actionSha256": "8125637bc2be508ca6c1dfe1bcdbaf1d8f3fba36d2314863676dbb56d04addfe",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "46a9722826273856571096342dd70dd9ecd27705",
+      "file_sha256": "97ecad06edeeae1414130a1e62b5a08bcb8f23dcf00eb874705deb59f27e0923",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-12T20:01:16.189497551+00:00",
+      "services": [
+        "model-vllm-glm53-fp8-tp4-r2"
+      ]
+    },
+    {
+      "index": 45,
+      "action": "compose_up",
+      "actionSha256": "c7da2696f5879454c59a2b53711ab588407d9f4da0707b09af83969100d940ee",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "46a9722826273856571096342dd70dd9ecd27705",
+      "file_sha256": "97ecad06edeeae1414130a1e62b5a08bcb8f23dcf00eb874705deb59f27e0923",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-12T20:09:22.683283608+00:00",
+      "services": [
+        "model-vllm-glm53-fp8-tp4-r2"
+      ]
+    },
+    {
+      "index": 46,
+      "action": "compose_up",
+      "actionSha256": "dfda7856eeea11d7381f0303ae20f8354cb88dafa403f9d9af1a9e8934e427a4",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "1a53fcd398e31b0af3f4f855bdb31b00338fddc8",
+      "file_sha256": "6d001e2b250658ddd140361111eb93faa0cdae59e730bade792e3cc2adce69a4",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-12T20:21:25.956809146+00:00",
+      "services": [
+        "model-vllm-glm53-fp8-tp4-r2"
+      ]
+    },
+    {
+      "index": 47,
+      "action": "compose_up",
+      "actionSha256": "2897ad5d8d527741cd0948726d0393bcc6fadd4679e6a57f0ed568f1ee6e0d9f",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "89908f652269b5bbaae2731a6bf69b68b37337a5",
+      "file_sha256": "d8a2ce0597ff19d8b93a047fe32a581778abf434e9bcf84ca0345e1c5ebe622e",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-12T20:35:13.042863612+00:00",
+      "services": [
+        "model-vllm-glm53-fp8-tp4-r2"
+      ]
+    },
+    {
+      "index": 48,
+      "action": "compose_up",
+      "actionSha256": "3d0439457fe25a383b57d5bd26c60e8ca334412022763f27d5759318a22da220",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "217e2da883f4f45ce4429dfd57e4644af7d4caa0",
+      "file_sha256": "8b623833dc002b74d94c5457c279ef7cef6bf42b30dd2d09879d471fce569d05",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-12T20:49:51.710750883+00:00",
+      "services": [
+        "model-vllm-glm53-fp8-tp4-r2"
+      ]
+    },
+    {
+      "index": 49,
+      "action": "compose_up",
+      "actionSha256": "7a71d9ac98978a3ba9c6fc6c3b78f7297f701604f2682dc7ce47e2d0c0a6b775",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "ddaccacd0b88dece6031d533c8b2af705f1584e6",
+      "file_sha256": "64987b452cf5bb5d2342e489469b7a2deca1ac5fddd2dde3e593b8f2fe6198d0",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-12T20:53:43.653686459+00:00",
+      "services": [
+        "model-vllm-glm53-fp8-tp4-r2"
+      ]
+    },
+    {
+      "index": 50,
+      "action": "compose_up",
+      "actionSha256": "d33447367b4e12c0923a04dacd9ae9476664f9499d0a20314a1c5ebdf6cc9ff1",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "ddaccacd0b88dece6031d533c8b2af705f1584e6",
+      "file_sha256": "64987b452cf5bb5d2342e489469b7a2deca1ac5fddd2dde3e593b8f2fe6198d0",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-12T20:59:24.049755396+00:00",
+      "services": [
+        "model-vllm-glm53-fp8-tp4-r2"
+      ]
+    },
+    {
+      "index": 51,
+      "action": "compose_up",
+      "actionSha256": "dc8933050499da543b8fd66a7ea0889771747909976b1c6d31e74abf9facb920",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "651562ea04d924e34c1641c9de404123891c2ca2",
+      "file_sha256": "0158e8cfdf6ada338f1ee67d8d7d45f74c331a10e6fd32a65986a3aff91037e2",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-12T21:08:49.326834941+00:00",
+      "services": [
+        "model-vllm-glm53-fp8-tp4-r2"
+      ]
+    },
+    {
+      "index": 52,
+      "action": "compose_up",
+      "actionSha256": "1e23726c0d0d2e9faea96b3a6a22b9d7b873b3823efcd6ac775f444f32068c87",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "38aeaaaea13d31a944a0e997f937843f7a3a17cc",
+      "file_sha256": "4eb9f7eac64429d5d2c0be44d1089f956c6d70eeb08dc3f8506ac38e940a1b4f",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-12T21:17:27.382850616+00:00",
+      "services": [
+        "model-vllm-glm53-fp8-tp4-r2"
+      ]
+    },
+    {
+      "index": 53,
+      "action": "compose_up",
+      "actionSha256": "1d58987995191c066948d3aeee0895cce83b7b0d27af69d4099ee0694854d09f",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "f7261c62751db08626cd1a850b6e88dda8eb2aed",
+      "file_sha256": "7968dd9f51d4f2a9db2a245e258410186fd80651c318f2e7c6d8f1e406bf508a",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-12T21:30:00.115197155+00:00",
+      "services": [
+        "model-vllm-glm53-fp8-tp4-r2"
+      ]
+    },
+    {
+      "index": 54,
+      "action": "compose_up",
+      "actionSha256": "0325fa36ab204ce99eef159cff0f00eae7e45f9b28a2e78f77bd2e60214b4d1e",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "a56875666c4c4bf8bfbaf47aaaa7070393e2bbb7",
+      "file_sha256": "458b50951bfb2c18247be0a9d4b1838eba211f462728e5587472d6a425dd233f",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-12T21:39:58.993568192+00:00",
+      "services": [
+        "model-vllm-glm53-fp8-tp4-r2"
+      ]
+    },
+    {
+      "index": 55,
+      "action": "compose_up",
+      "actionSha256": "8f5dacbf2607a2af6d443ace130a43baebb405d0325f1face76f00a74b876b82",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "234c44d234338ba939d5fe21cf6f0ca1df3c3f13",
+      "file_sha256": "a5077df239b9e20ca06ff488612b092efb08f1b04b394477fc8495ac34af2704",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-12T21:47:57.612725946+00:00",
+      "services": [
+        "model-vllm-glm53-fp8-tp4-r2"
+      ]
+    },
+    {
+      "index": 56,
+      "action": "compose_up",
+      "actionSha256": "c7a659efe777557e6b53ce42e7d5ccddef2a11715685e1066c2ff38c5df5d207",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "234c44d234338ba939d5fe21cf6f0ca1df3c3f13",
+      "file_sha256": "a5077df239b9e20ca06ff488612b092efb08f1b04b394477fc8495ac34af2704",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-12T21:49:42.530720369+00:00",
+      "services": [
+        "model-vllm-glm53-fp8-tp4-r2"
+      ]
+    },
+    {
+      "index": 57,
+      "action": "compose_down",
+      "actionSha256": "5b2231633d2e7fb7133d524c168e8658ae91e9cecbd62d5839c162a6d63177b0",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "8ca96cf5da08da72b4c4b80e4b84a438ceb4eb4a",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-12T21:58:30.024835612+00:00",
+      "services": [
+        "model-sg-glm53-fp8-tp4-r1",
+        "model-vllm-glm53-fp8-tp4-r2"
+      ]
+    },
+    {
+      "index": 58,
+      "action": "compose_up",
+      "actionSha256": "731eec788090872d2e6216aa5157c19e022c9f9ec8334b7db911c39e05dff00e",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "8ca96cf5da08da72b4c4b80e4b84a438ceb4eb4a",
+      "file_sha256": "d021637b365b1a8c625775ea5eeb486967722b1ba4e54076a4db07698dedbe05",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-12T21:59:20.703326142+00:00",
+      "services": [
+        "model-vllm-glm53-fp8-tp4-r2"
+      ]
+    },
+    {
+      "index": 59,
+      "action": "compose_down",
+      "actionSha256": "407dcdc136c9df93c4ef6e21e659409cc534222d7439ddfb6d29f76f3a249898",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "8ca96cf5da08da72b4c4b80e4b84a438ceb4eb4a",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-12T22:06:11.007542019+00:00",
+      "services": [
+        "model-vllm-glm53-fp8-tp4-r2"
+      ]
+    },
+    {
+      "index": 60,
+      "action": "compose_up",
+      "actionSha256": "1b3ea66d1d1f33b22f1ef83ac59b90f2d6c986f4fe966a0f87f5600dd72f68ec",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "89908f652269b5bbaae2731a6bf69b68b37337a5",
+      "file_sha256": "d8a2ce0597ff19d8b93a047fe32a581778abf434e9bcf84ca0345e1c5ebe622e",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-12T22:07:00.539788759+00:00",
+      "services": [
+        "model-sg-glm53-fp8-tp4-r1",
+        "model-vllm-glm53-fp8-tp4-r2"
+      ]
+    },
+    {
+      "index": 61,
+      "action": "compose_up",
+      "actionSha256": "bf9dd8f3c2b88124c658a23550c8e05b608f0f99a1e9f7e76e7d77b0e02b90b2",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "2998acffb6f024fb85bb6ab69e288a775f907484",
+      "file_sha256": "434913ff0a4366929dee38efe3d556ffdb50a259bcca84292deada6c8a815c00",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-12T22:18:05.432579857+00:00",
+      "services": [
+        "model-vllm-glm53-fp8-tp4-r2"
+      ]
+    },
+    {
+      "index": 62,
+      "action": "compose_up",
+      "actionSha256": "c22c5d104fa401b38b4c0ed9e9841a391a5e6341c401d2b459e24edbeb59e358",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "870cbc215f3d30fd2cc6ea09d17246a821f7b019",
+      "file_sha256": "f600cda7ed3d12f929de7acbec9f55e4d62f614c05e838f3f27b86aa5b481ced",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-12T22:28:32.130493404+00:00",
+      "services": [
+        "model-vllm-glm53-fp8-tp4-r2"
+      ]
+    },
+    {
+      "index": 63,
+      "action": "compose_up",
+      "actionSha256": "9314af11cebae9ee6097a8d953718ebd1a8be7809acccd6950538a2c67ded2fa",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "8bb674778eacc805459a1ff65c92b24550ddf782",
+      "file_sha256": "02a021024308f0ca2ab6c7041ea53523d6fe42abb3b70aebacdc93c59ad3b203",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-12T22:43:22.406884503+00:00",
+      "services": [
+        "model-vllm-glm53-fp8-tp4-r2"
+      ]
+    },
+    {
+      "index": 64,
+      "action": "compose_up",
+      "actionSha256": "6204639e0c64d948d836c2299e95dd4894a42189b648ee540d923e28e7147507",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "ce7c02304a9a5ebcd4f3ecd3660d88365d8d1e7e",
+      "file_sha256": "dbd5bdb1fe74d38632b9f5886f1b54d91e134283f58256f064d686367491f7fc",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-12T22:56:58.285347107+00:00",
+      "services": [
+        "model-vllm-glm53-fp8-tp4-r2"
+      ]
+    },
+    {
+      "index": 65,
+      "action": "compose_up",
+      "actionSha256": "341d1b522c3aa77e96a75db76b233f94c081e755faebf18454141b231ec9ae68",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "5017cbace31a4823f3ced92af689b382932fb6b5",
+      "file_sha256": "dbb7df287e922f854d0b2c768715fa97d8f5dbf3d2e7f372da295d3f247b3f10",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-12T23:10:13.800630430+00:00",
+      "services": [
+        "model-vllm-glm53-fp8-tp4-r2"
+      ]
+    },
+    {
+      "index": 66,
+      "action": "compose_up",
+      "actionSha256": "7b008a60b519db1b403430b560aab7790f92ab99e9968c8602cf4e8a300527cb",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "cfea175361fa759adbab5e06974117aef8ea7deb",
+      "file_sha256": "ded3d1a6fe79d9bf668a30c19295e1d6b6e7613e5d536b3d4fa7820cf7f7cc6a",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-12T23:21:56.692501648+00:00",
+      "services": [
+        "model-vllm-glm53-fp8-tp4-r2"
+      ]
+    },
+    {
+      "index": 67,
+      "action": "compose_down",
+      "actionSha256": "1c8c56b43b5d662c81acb7a2bc7654c5beeffeab758aa4f80086d4b0a123873c",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "93b30e759be0fc48a67f5f8f7a5bfe9df20b5295",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-12T23:37:04.466397016+00:00",
+      "services": [
+        "model-sg-glm53-fp8-tp4-r1"
+      ]
+    },
+    {
+      "index": 68,
+      "action": "compose_up",
+      "actionSha256": "4f169113728104d9a3ced11882bc630582bd6ca0604de89f799d02f311a08fa5",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "93b30e759be0fc48a67f5f8f7a5bfe9df20b5295",
+      "file_sha256": "546f7d31b08c44b38ab585fb13f7984e114fc59d942a094aff69561e82d3db0a",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-12T23:37:32.958417787+00:00",
+      "services": [
+        "model-vllm-glm53-fp8-tp4-r2"
+      ]
+    },
+    {
+      "index": 69,
+      "action": "compose_down",
+      "actionSha256": "8a0bcabb1cd2c3f7a82694cef7efabb1ff0a7a596e01586c2d566ea7b6cf7b73",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "93b30e759be0fc48a67f5f8f7a5bfe9df20b5295",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-12T23:46:34.113787457+00:00",
+      "services": [
+        "model-vllm-glm53-fp8-tp4-r2"
+      ]
+    },
+    {
+      "index": 70,
+      "action": "compose_up",
+      "actionSha256": "2561f7149f5f423d35edf097f565a63a5c500b028c519ac86aaef1f1d4144bda",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "93b30e759be0fc48a67f5f8f7a5bfe9df20b5295",
+      "file_sha256": "546f7d31b08c44b38ab585fb13f7984e114fc59d942a094aff69561e82d3db0a",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-12T23:46:43.391913943+00:00",
+      "services": [
+        "model-sg-glm53-fp8-tp4-r1"
+      ]
+    },
+    {
+      "index": 71,
+      "action": "compose_up",
+      "actionSha256": "247d597f42e2bca70225864996ef70b394348dc72b8668f40aa6e27fcca34860",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "3a69c7eb85aa1dec95923668827db67f3c166ccd",
+      "file_sha256": "0715afe979aafaff2e3157cc75e8bdd4621e3d165d981301520d10cef66afdc6",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-12T23:57:40.950610275+00:00",
+      "services": [
+        "model-vllm-glm53-fp8-tp4-r2"
+      ]
+    },
+    {
+      "index": 72,
+      "action": "compose_down",
+      "actionSha256": "c90742459822559b2b1ace45e10f5c3c61894e09a4505a955b9134182b794bbd",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "3a69c7eb85aa1dec95923668827db67f3c166ccd",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-13T00:02:12.411440311+00:00",
+      "services": [
+        "model-vllm-glm53-fp8-tp4-r2"
+      ]
+    },
+    {
+      "index": 73,
+      "action": "compose_down",
+      "actionSha256": "6b652e6f97babf10ad25e1387fc58c888262e4af04545dd5c7a5b00cd9b0e370",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "3a69c7eb85aa1dec95923668827db67f3c166ccd",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-13T00:02:57.874608852+00:00",
+      "services": [
+        "model-vllm-glm53-fp8-tp4-r2"
+      ]
+    },
+    {
+      "index": 74,
+      "action": "compose_up",
+      "actionSha256": "8a4b5dd80877b92da372515303ff477f56b6ec6f28df9459cb149dce6e3c1b73",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "d75577a8c616044cf5f6b775660dfef0f48487cb",
+      "file_sha256": "7a4f2c270ab5f04b27ddd86dd600ec19adda55450df9a1a770e8793f2b04cb3b",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-13T00:03:19.348364052+00:00",
+      "services": [
+        "model-vllm-glm53-fp8-tp4-r2"
+      ]
+    },
+    {
+      "index": 75,
+      "action": "compose_down",
+      "actionSha256": "03853cfd95572833116b4b3fd04a397ec87fcd97a54c2c0b154581255a8ea6e9",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "d75577a8c616044cf5f6b775660dfef0f48487cb",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-13T00:13:34.108527059+00:00",
+      "services": [
+        "model-vllm-glm53-fp8-tp4-r2"
+      ]
+    },
+    {
+      "index": 76,
+      "action": "compose_up",
+      "actionSha256": "93c6f95249f401bc4a1f1f020dfd651a180e38c82604560182bf719c3f6d198a",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "434c1a5fc3e614c7ee5387ff2e8caa936d5befa3",
+      "file_sha256": "0d95194b320affd6c22b3a716eb76e9a2670ad998c1573be613eef07bb190631",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-13T00:14:03.890394009+00:00",
+      "services": [
+        "model-vllm-glm53-fp8-tp4-r2"
+      ]
+    },
+    {
+      "index": 77,
+      "action": "compose_up",
+      "actionSha256": "5e4d08ec905b4c680aee134e4dcb1a7c0860a5ce28d80d47e53df323b288c281",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "854b246e0982355adf3f7725f91d4e0b82d3e5c3",
+      "file_sha256": "1b3624048648694bee0268256eed27e83b4e0d2462692f7dbdc2ff813c7ce4f3",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-13T00:28:22.566539507+00:00",
+      "services": [
+        "model-vllm-glm53-fp8-tp4-r2"
+      ]
+    },
+    {
+      "index": 78,
+      "action": "compose_up",
+      "actionSha256": "fd874a0842e8d4b5af351ec6b8b992e7e4a51a69b7bb14778fa757e4e352f08f",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "558f103154abaff0b6f087bbfa9eadce676ea803",
+      "file_sha256": "f83314a37d6ad8d80fb16a68e4713dc51cc09e1aacde960b80881625166ef0f8",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-13T00:42:16.847261398+00:00",
+      "services": [
+        "model-vllm-glm53-fp8-tp4-r2"
+      ]
+    },
+    {
+      "index": 79,
+      "action": "compose_up",
+      "actionSha256": "517e39bea5005e30b0b04639a49fe1414a27929e0ff3aca1067dc6a1bfef4910",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "240799623a0619bbb8ca5342df98d09f67fc8e22",
+      "file_sha256": "69165b2c007a4d4a10794728be90384fa41b6aa8e7f7acbbb47865eb08ca0fd6",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-13T00:56:30.622643368+00:00",
+      "services": [
+        "model-vllm-glm53-fp8-tp4-r2"
+      ]
+    },
+    {
+      "index": 80,
+      "action": "compose_up",
+      "actionSha256": "f9922d74c93a879b830153e41190a5b662fe438a79e3162fea4dd03557b25a55",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "5ce07ad7da0d5432d9c13aa2851aca7bcc2e9478",
+      "file_sha256": "51cf1f377421030e234da042552cee704bd49e20eb22b6ee3ed07da92600e03d",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-13T01:08:02.723636564+00:00",
+      "services": [
+        "model-vllm-glm53-fp8-tp4-r2"
+      ]
+    },
+    {
+      "index": 81,
+      "action": "compose_down",
+      "actionSha256": "81c77988aaa44c36f1c742a639aeb90d857a0c47dbd82a19b5d377a614511a77",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "5ce07ad7da0d5432d9c13aa2851aca7bcc2e9478",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-13T01:18:40.230878733+00:00",
+      "services": [
+        "model-sg-glm53-fp8-tp4-r1"
+      ]
+    },
+    {
+      "index": 82,
+      "action": "compose_up",
+      "actionSha256": "b12dbf6fd57111a568213d6a8aa0d81457e86c0557b337829d4661bab97fb969",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "c3a5a0547c8f0b5c6cc38cae0eaef382897fe6e6",
+      "file_sha256": "9beb023d6882dbc4eb3104e56428a2a5042d2b9b64c1775bcfc560950620e39e",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-13T01:19:32.123380184+00:00",
+      "services": [
+        "model-vllm-glm53-fp8-tp4-r2"
+      ]
+    },
+    {
+      "index": 83,
+      "action": "compose_down",
+      "actionSha256": "c509174c4e63b1bf68076f44b22de7d62dbdc37577742b89c5fd455ff2112ad2",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "c3a5a0547c8f0b5c6cc38cae0eaef382897fe6e6",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-13T01:31:25.861501664+00:00",
+      "services": [
+        "model-vllm-glm53-fp8-tp4-r2"
+      ]
+    },
+    {
+      "index": 84,
+      "action": "compose_up",
+      "actionSha256": "76433cf294ffbb52eb0ef8ec8ec5e7bd4058bcf7731a32cc1fedbb1091610f72",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "c3a5a0547c8f0b5c6cc38cae0eaef382897fe6e6",
+      "file_sha256": "9beb023d6882dbc4eb3104e56428a2a5042d2b9b64c1775bcfc560950620e39e",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-13T01:31:49.087482314+00:00",
+      "services": [
+        "model-sg-glm53-fp8-tp4-r1"
+      ]
+    },
+    {
+      "index": 85,
+      "action": "compose_up",
+      "actionSha256": "e031e92459f5a6292317d82460397774692c1e6ae602e53fb724a8949bbe00a7",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "7e215e6ff45c20d2739f06a144ad88284f2dec4f",
+      "file_sha256": "10a244616ff672237b175b1e59f415569eada2fdbacb2b049a69b5c7f7399467",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-13T01:32:54.076173676+00:00",
+      "services": [
+        "model-vllm-glm53-fp8-tp4-r2"
+      ]
+    },
+    {
+      "index": 86,
+      "action": "compose_up",
+      "actionSha256": "0092db2935ab60e6e6cda6c689b5157aef4127d634edf3c89b59671eb5b58485",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "d649b079baddcc6e06bb643b706a2ce73f6cf5a7",
+      "file_sha256": "4afd39283ef5f9df4db7f12aa41f32efe7391b9fff5a669349a918689db18e04",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-13T01:35:02.790846781+00:00",
+      "services": [
+        "model-vllm-glm53-fp8-tp4-r2"
+      ]
+    },
+    {
+      "index": 87,
+      "action": "compose_down",
+      "actionSha256": "205c2ae4339f3effe3fd0aaa888df971909f2ebd1648ca347ad876a57b122bdc",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "d649b079baddcc6e06bb643b706a2ce73f6cf5a7",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-13T01:42:46.613036171+00:00",
+      "services": [
+        "model-vllm-glm53-fp8-tp4-r2"
+      ]
+    },
+    {
+      "index": 88,
+      "action": "compose_up",
+      "actionSha256": "af129b4db11d05807db60ec117f1655420f538e65aa3f36b1b33840db2f86b38",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "5ce07ad7da0d5432d9c13aa2851aca7bcc2e9478",
+      "file_sha256": "51cf1f377421030e234da042552cee704bd49e20eb22b6ee3ed07da92600e03d",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-13T01:43:21.472446566+00:00",
+      "services": [
+        "model-vllm-glm53-fp8-tp4-r2"
+      ]
+    },
+    {
+      "index": 89,
+      "action": "compose_down",
+      "actionSha256": "40e3a32e7dbb93912f9b4fe76d72d4f5776a887d6e22273e46239553907f031d",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "5ce07ad7da0d5432d9c13aa2851aca7bcc2e9478",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-13T02:22:12.701573943+00:00",
+      "services": [
+        "model-vllm-glm53-fp8-tp4-r2"
+      ]
+    },
+    {
+      "index": 90,
+      "action": "compose_up",
+      "actionSha256": "b84c042209941c568ae2c9aef0512e4f3690e4bc887b616a3795fb0bf02725b9",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "018dd378077e15fa14a3ed3e101c029c105588ae",
+      "file_sha256": "f77b43ed8970ebb34b048206dad488652ea01f755e7daef1a4d0853e6c3efa8c",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-13T02:22:47.596556487+00:00",
+      "services": [
+        "model-sg-glm53-prod-control-r2",
+        "glm53-soak-relay",
+        "otelcol-contrib",
+        "proxy-glm53"
+      ]
+    },
+    {
+      "index": 91,
+      "action": "compose_up",
+      "actionSha256": "c8f2810cf6f890590f8c0149bcb4af96c96f38555262797cadf686d59b126634",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "a1182fd5017a5aa6fe61619ee256ca1b93db1c86",
+      "file_sha256": "223d989886b8b92e288b53ab827807fa20bc6e985e31db3241675fae637fa2e5",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4-HiCache.yaml",
+      "timestamp": "2026-09-15T05:58:59.899140703+00:00",
+      "services": [
+        "model-downloader"
+      ]
+    },
+    {
+      "index": 92,
+      "action": "compose_up",
+      "actionSha256": "b4cc32db9f12d287ec9c6ba5e3437fa6722bf52f65e397aa267d1fcf17d79f41",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "a1182fd5017a5aa6fe61619ee256ca1b93db1c86",
+      "file_sha256": "223d989886b8b92e288b53ab827807fa20bc6e985e31db3241675fae637fa2e5",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4-HiCache.yaml",
+      "timestamp": "2026-09-15T06:22:35.464781375+00:00"
+    },
+    {
+      "index": 93,
+      "action": "compose_up",
+      "actionSha256": "8fd443a1479d73327cf23afe838e4749d7d6d73a8d1264caab5abafc08a6a353",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "e14107901d202215ab44eb027eb4792047d5ec83",
+      "file_sha256": "2878b9c4c6db512a7538dc4e8981fd5acae72cdaace7794509f48161bcce08e3",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-15T06:44:28.364318356+00:00",
+      "services": [
+        "model-proxy-registrar"
+      ]
+    },
+    {
+      "index": 94,
+      "action": "compose_down",
+      "actionSha256": "044e8ca79db43074c5ca356e13ff3505bba53daed86a7335b50fc06f415c701e",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "e14107901d202215ab44eb027eb4792047d5ec83",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-15T06:48:42.365584543+00:00",
+      "services": [
+        "model-proxy-registrar"
+      ]
+    },
+    {
+      "index": 95,
+      "action": "compose_up",
+      "actionSha256": "098df56f4a2b9411f672db68beb25f4784d44e906bc377c40571f3385f0c41ad",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "e14107901d202215ab44eb027eb4792047d5ec83",
+      "file_sha256": "2878b9c4c6db512a7538dc4e8981fd5acae72cdaace7794509f48161bcce08e3",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-15T07:02:20.306043121+00:00",
+      "services": [
+        "model-proxy-registrar"
+      ]
+    },
+    {
+      "index": 96,
+      "action": "compose_up",
+      "actionSha256": "c4babed8636a364882d88c1be1258ec91ea6f5945aa4b2ea86d924db03b0d98d",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "e14107901d202215ab44eb027eb4792047d5ec83",
+      "file_sha256": "2878b9c4c6db512a7538dc4e8981fd5acae72cdaace7794509f48161bcce08e3",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-15T07:17:40.830530127+00:00",
+      "services": [
+        "glm53-perception-check"
+      ]
+    },
+    {
+      "index": 97,
+      "action": "compose_down",
+      "actionSha256": "a036b405e4b754187ca6a988f5a9e8598f847c88161ebeb5052cce1f295bef1b",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "e14107901d202215ab44eb027eb4792047d5ec83",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-15T07:26:21.373426416+00:00",
+      "services": [
+        "glm53-soak-relay"
+      ]
+    },
+    {
+      "index": 98,
+      "action": "compose_up",
+      "actionSha256": "c0a917d6b46245acee2a9f2bb4029aff487a3cfb447560a12996c5ff6d3834c4",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "8f97e8f22db8a32b915b7b59702fc09635a8ac24",
+      "file_sha256": "c3d1a5b6aad000fce81f08fdb22c24f5a5c6b17c44e8d6009f4dde1d7143eeee",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4-HiCache.yaml",
+      "timestamp": "2026-09-15T20:09:07.415374227+00:00",
+      "services": [
+        "nginx",
+        "proxy-glm53"
+      ]
+    },
+    {
+      "index": 99,
+      "action": "compose_up",
+      "actionSha256": "aab7d064134127e12ab8715a71a5e25b66a4381602ddf4a4baedc511d97c03f4",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "8f97e8f22db8a32b915b7b59702fc09635a8ac24",
+      "file_sha256": "dac8e7bd277ba8f6dbf51201a859374f956e92d2546637e17c73608911e65bf4",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-15T20:10:30.682156782+00:00",
+      "services": [
+        "model-proxy-registrar"
+      ]
+    },
+    {
+      "index": 100,
+      "action": "compose_down",
+      "actionSha256": "42a96dae47865ca97853139e15abfe9ac17f882d59052f728cbc934e9755e645",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "065340e05635b885dfb238fe9f3601ad351d68a8",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4-HiCache.yaml",
+      "timestamp": "2026-09-16T02:16:30.331677833+00:00",
+      "services": [
+        "model-sg-glm53-fp8-tp4-r1"
+      ]
+    },
+    {
+      "index": 101,
+      "action": "compose_up",
+      "actionSha256": "0d4d0554e16a5c18879dd34f8f5a1dd258115071be7c1fe8f83c77c121594cc8",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "065340e05635b885dfb238fe9f3601ad351d68a8",
+      "file_sha256": "e207fecf556ac8790723c3edfc40bfd844cd9c491d54979622350e9f3d3b38ea",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4-HiCache.yaml",
+      "timestamp": "2026-09-16T02:18:17.558827179+00:00",
+      "services": [
+        "model-sg-glm53-fp8-tp4-r1"
+      ]
+    },
+    {
+      "index": 102,
+      "action": "compose_up",
+      "actionSha256": "15ce0cef238cd07c055f21b4a5f2d79f164ce6a9bd56e115375c42505cc4fd05",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "065340e05635b885dfb238fe9f3601ad351d68a8",
+      "file_sha256": "e207fecf556ac8790723c3edfc40bfd844cd9c491d54979622350e9f3d3b38ea",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4-HiCache.yaml",
+      "timestamp": "2026-09-16T02:33:15.576913179+00:00",
+      "services": [
+        "glm53-perception-check"
+      ]
+    },
+    {
+      "index": 103,
+      "action": "compose_down",
+      "actionSha256": "1ed95c011918eb40b6ef21209c8123546fc48290b1cbe0b6fa72c27efbfa80b0",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "065340e05635b885dfb238fe9f3601ad351d68a8",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4-HiCache.yaml",
+      "timestamp": "2026-09-16T02:36:59.041195902+00:00",
+      "services": [
+        "model-sg-glm53-fp8-tp4-r2"
+      ]
+    },
+    {
+      "index": 104,
+      "action": "compose_up",
+      "actionSha256": "417d39f31c06cdaafd950a010978c6b3541a137cb94996b05a267c319527091e",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "065340e05635b885dfb238fe9f3601ad351d68a8",
+      "file_sha256": "e207fecf556ac8790723c3edfc40bfd844cd9c491d54979622350e9f3d3b38ea",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4-HiCache.yaml",
+      "timestamp": "2026-09-16T02:39:46.405486380+00:00",
+      "services": [
+        "model-sg-glm53-fp8-tp4-r2"
+      ]
+    },
+    {
+      "index": 105,
+      "action": "compose_up",
+      "actionSha256": "6a0b4fa1454a6ce9dcc712d8765da1b2cc9e27a711459e37b3a55fc7188bfbdc",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "065340e05635b885dfb238fe9f3601ad351d68a8",
+      "file_sha256": "e207fecf556ac8790723c3edfc40bfd844cd9c491d54979622350e9f3d3b38ea",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4-HiCache.yaml",
+      "timestamp": "2026-09-16T03:04:31.334420379+00:00",
+      "services": [
+        "glm53-perception-check"
+      ]
+    },
+    {
+      "index": 106,
+      "action": "docker_clean",
+      "actionSha256": "cf5bcda0f9075e413643572db7ebda9dc977756660fec3b2641d560171379b91",
+      "keys": [
+        "action",
+        "timestamp"
+      ],
+      "timestamp": "2026-09-17T05:54:16.877689103+00:00"
+    },
+    {
+      "index": 107,
+      "action": "compose_down",
+      "actionSha256": "9d66c6b57a1ccede4a2432976f794ca04a684041b80e54e39816dad98ac0b648",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "d1a72bf122962f1582d8ba9ae38f56c3dfdfb139",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-17T06:02:19.469294125+00:00"
+    },
+    {
+      "index": 108,
+      "action": "compose_down",
+      "actionSha256": "c9aad6adab0bb23bc372e7bda8d9f703331469d11a75fea45618b3a02fe8b9ce",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "065340e05635b885dfb238fe9f3601ad351d68a8",
+      "file": "prod/GLM-5.2-W4AFP8-vLLM-TP8.yaml",
+      "timestamp": "2026-09-17T06:07:11.271500478+00:00"
+    },
+    {
+      "index": 109,
+      "action": "compose_down",
+      "actionSha256": "e3e051b93c1532a2194b2c1a26ee3781fb4e20aef8fda6d4a33cceacab0ac781",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "065340e05635b885dfb238fe9f3601ad351d68a8",
+      "file": "prod/small-models.yaml",
+      "timestamp": "2026-09-17T06:07:25.201183703+00:00"
+    },
+    {
+      "index": 110,
+      "action": "compose_down",
+      "actionSha256": "ff23b63333a006fc25d955b4fd0af068d5d7ab377b30197ef44e861bf937ec1d",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "065340e05635b885dfb238fe9f3601ad351d68a8",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-17T06:07:34.533629115+00:00"
+    },
+    {
+      "index": 111,
+      "action": "compose_down",
+      "actionSha256": "da6df9e2b833ea6ab6b7fa14f10b94fd08c7832f7c34882133e5c577ca175b5b",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "065340e05635b885dfb238fe9f3601ad351d68a8",
+      "file": "prod/GLM-5.2-W4AFP8-vLLM-TP8.yaml",
+      "timestamp": "2026-09-17T06:08:23.413428158+00:00"
+    },
+    {
+      "index": 112,
+      "action": "compose_up",
+      "actionSha256": "7b551f55c8ddb17afb48d17dee1092238b07f7bb8d0408c2111ff06bce757d2a",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "065340e05635b885dfb238fe9f3601ad351d68a8",
+      "file_sha256": "e207fecf556ac8790723c3edfc40bfd844cd9c491d54979622350e9f3d3b38ea",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4-HiCache.yaml",
+      "timestamp": "2026-09-17T16:35:30.572585397+00:00",
+      "services": [
+        "glm53-soak-relay"
+      ]
+    },
+    {
+      "index": 113,
+      "action": "compose_down",
+      "actionSha256": "c9cbdc065c4defa11b89e94fe0069db06110b01d0b14dca4ab727c9d356b0cb0",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "065340e05635b885dfb238fe9f3601ad351d68a8",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4-HiCache.yaml",
+      "timestamp": "2026-09-17T16:40:26.844822662+00:00",
+      "services": [
+        "glm53-soak-relay"
+      ]
+    },
+    {
+      "index": 114,
+      "action": "compose_up",
+      "actionSha256": "74ccc9ee9b281d79ba5844e1e26ba703ba614ca64b97d84d06f458feb37e224a",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "5ba5a5bb92b7b1bbbe72fe9b7a8fbaec729627a1",
+      "file_sha256": "9fbc74afdb7020125399bf52b8c20863575fe8c474bd2bb8c7056b27cdbef63f",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4-HiCache.yaml",
+      "timestamp": "2026-09-18T00:25:24.506119479+00:00",
+      "services": [
+        "model-proxy-registrar"
+      ]
+    },
+    {
+      "index": 115,
+      "action": "compose_up",
+      "actionSha256": "b26f7f0e12e1a1ff27ae7484a5e87703b853f3902674991fcd5b1ba753de9ff4",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "0a51138ef3ec104706c40a53dab0c3bcea75d7b3",
+      "file_sha256": "b2d8b87cf185ff809f662ce276c2487da852e9903fe5fe0f0dbc3980af49f4ba",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-23T22:18:29.432139138+00:00",
+      "services": [
+        "model-downloader"
+      ]
+    },
+    {
+      "index": 116,
+      "action": "compose_up",
+      "actionSha256": "59c1bd26ed836312e9cd43045ec3b2be6fab584f39a31e84c08c52871e7c1bf3",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "0a51138ef3ec104706c40a53dab0c3bcea75d7b3",
+      "file_sha256": "b2d8b87cf185ff809f662ce276c2487da852e9903fe5fe0f0dbc3980af49f4ba",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-23T22:42:02.750769528+00:00",
+      "services": [
+        "hf-cleanup"
+      ]
+    },
+    {
+      "index": 117,
+      "action": "compose_down",
+      "actionSha256": "dfbb9464902006d71d9912f872bf8688a695b5e6267d9b98054af08fc4fa5219",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "0a51138ef3ec104706c40a53dab0c3bcea75d7b3",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-23T22:42:57.062539312+00:00",
+      "services": [
+        "model-proxy-registrar"
+      ]
+    },
+    {
+      "index": 118,
+      "action": "compose_down",
+      "actionSha256": "952380146998de3b7e35deff3932d4f483f3c5c8fcf12fe37495ac2e9ba1e90c",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "0a51138ef3ec104706c40a53dab0c3bcea75d7b3",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-23T22:58:36.222526157+00:00",
+      "services": [
+        "model-sg-glm53-fp8-tp4-r1",
+        "model-sg-glm53-fp8-tp4-r2"
+      ]
+    },
+    {
+      "index": 119,
+      "action": "compose_down",
+      "actionSha256": "39c7c8fb7898f17a6775adc70fe818a9d3f707b63d3526dba13aab2c7a84ba61",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "0a51138ef3ec104706c40a53dab0c3bcea75d7b3",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "timestamp": "2026-09-23T23:04:17.152652264+00:00",
+      "services": [
+        "model-sg-glm53-fp8-tp4-r1",
+        "model-sg-glm53-fp8-tp4-r2"
+      ]
+    },
+    {
+      "index": 120,
+      "action": "compose_up",
+      "actionSha256": "7859391550633ffb4f2affd928291a3f854ec2c152fa517257034678b2ec7ae3",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "0a51138ef3ec104706c40a53dab0c3bcea75d7b3",
+      "file_sha256": "bcd313cf7117b82f0f850f9b93da06a4129a3073ae4a58c017a3723eb30a7255",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4-W4AFP8.yaml",
+      "timestamp": "2026-09-23T23:04:39.093138156+00:00",
+      "services": [
+        "model-sg-glm53-w4afp8-tp4-r1",
+        "model-sg-glm53-w4afp8-tp4-r2",
+        "proxy-glm53",
+        "otelcol-contrib",
+        "dcgm-glm53"
+      ]
+    },
+    {
+      "index": 121,
+      "action": "compose_up",
+      "actionSha256": "0d996759ea6369788a19cd974ef451fb413cf1dfb093f9fe72783db5d57ee474",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "0a51138ef3ec104706c40a53dab0c3bcea75d7b3",
+      "file_sha256": "bcd313cf7117b82f0f850f9b93da06a4129a3073ae4a58c017a3723eb30a7255",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4-W4AFP8.yaml",
+      "timestamp": "2026-09-23T23:21:00.508051179+00:00",
+      "services": [
+        "glm53-soak-relay"
+      ]
+    },
+    {
+      "index": 122,
+      "action": "compose_up",
+      "actionSha256": "74f901beb12a01daa2f8bb42ab8f89df6a8300c9f3c0039db52c763a65e187cc",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "0a51138ef3ec104706c40a53dab0c3bcea75d7b3",
+      "file_sha256": "bcd313cf7117b82f0f850f9b93da06a4129a3073ae4a58c017a3723eb30a7255",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4-W4AFP8.yaml",
+      "timestamp": "2026-09-23T23:21:28.004912236+00:00",
+      "services": [
+        "glm53-perception-check"
+      ]
+    },
+    {
+      "index": 123,
+      "action": "compose_down",
+      "actionSha256": "7cf730d1b84bea61c88baf14a0f40807e71577b0277c069dd1442ec025b3ddf3",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "0a51138ef3ec104706c40a53dab0c3bcea75d7b3",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4-W4AFP8.yaml",
+      "timestamp": "2026-09-23T23:23:26.777721612+00:00",
+      "services": [
+        "glm53-soak-relay",
+        "glm53-perception-check"
+      ]
+    },
+    {
+      "index": 124,
+      "action": "compose_up",
+      "actionSha256": "020d40134c13bd9d64ba0f8f35ce87f9f4b404a2b014b23a6bd34794293295d2",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "0a51138ef3ec104706c40a53dab0c3bcea75d7b3",
+      "file_sha256": "bcd313cf7117b82f0f850f9b93da06a4129a3073ae4a58c017a3723eb30a7255",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4-W4AFP8.yaml",
+      "timestamp": "2026-09-23T23:23:30.627459033+00:00",
+      "services": [
+        "model-proxy-registrar"
+      ]
+    },
+    {
+      "index": 125,
+      "action": "compose_up",
+      "actionSha256": "ad8b75d01fb3e5d5c848a383837b00d3b8dc54d36273729a00809597da5d136f",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "0a51138ef3ec104706c40a53dab0c3bcea75d7b3",
+      "file_sha256": "bcd313cf7117b82f0f850f9b93da06a4129a3073ae4a58c017a3723eb30a7255",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4-W4AFP8.yaml",
+      "timestamp": "2026-09-24T02:06:24.824476655+00:00",
+      "services": [
+        "otelcol-contrib"
+      ]
+    },
+    {
+      "index": 126,
+      "action": "compose_up",
+      "actionSha256": "4b2ba682f7a3803739bc7170171172985582d4280c9a1dc693444a2db5bbda71",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "0a51138ef3ec104706c40a53dab0c3bcea75d7b3",
+      "file_sha256": "bcd313cf7117b82f0f850f9b93da06a4129a3073ae4a58c017a3723eb30a7255",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4-W4AFP8.yaml",
+      "timestamp": "2026-09-25T20:38:52.447550811+00:00",
+      "services": [
+        "model-proxy-registrar"
+      ]
+    },
+    {
+      "index": 127,
+      "action": "compose_manager_started",
+      "actionSha256": "cb64483b13eb839682ddd13c8ef955c3d77c3276862011714ebd554468c58bbf",
+      "keys": [
+        "action",
+        "container",
+        "image",
+        "timestamp"
+      ],
+      "image": "nearaidev/compose-manager@sha256:bc44e44e619dc003b3b5bcf53420b759a0ea058d0b81cf0caffc063a9d733193",
+      "timestamp": "2026-09-25T20:59:18.394423801+00:00"
+    },
+    {
+      "index": 128,
+      "action": "compose_manager_started",
+      "actionSha256": "9706541b5761ef2249ae0cb5f07b638905b65fd6aa3004df6db4668c1da7b7c5",
+      "keys": [
+        "action",
+        "container",
+        "image",
+        "timestamp"
+      ],
+      "image": "nearaidev/compose-manager@sha256:6e035c8fb99c1d31f41760d25af178683a658cca4afd73cd0d366fbb5bf884be",
+      "timestamp": "2026-09-25T21:34:43.125583249+00:00"
+    },
+    {
+      "index": 129,
+      "action": "compose_up",
+      "actionSha256": "15df40b80e2dbe92fe6452a5a6802acf6ca174f34d824d45e7de0e27e22a5c21",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "b996e382492b0b19e801d70b8d357e2c9d8160d1",
+      "file_sha256": "1528ba57ffeda148f400dd8b512f4f72ce1641068ca2d8bdcd4f69e73cd43386",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4-W4AFP8.yaml",
+      "timestamp": "2026-09-26T06:11:37.312800419+00:00",
+      "services": [
+        "proxy-glm53"
+      ]
+    },
+    {
+      "index": 130,
+      "action": "compose_up",
+      "actionSha256": "790a87de5d9441914c204714b4ba874523f3ae2ebc051f6cc991e2e0620c4cbc",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "81ea8f03871957a0ed9e13eb4d526b06e2d62fb8",
+      "file_sha256": "4247dec8b67eea29b93d687b6c975617964519e2585611baf194128c7088aa63",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4-W4AFP8.yaml",
+      "timestamp": "2026-09-28T14:59:30.324529399+00:00",
+      "services": [
+        "nginx"
+      ]
+    },
+    {
+      "index": 131,
+      "action": "compose_up",
+      "actionSha256": "9a89bc88760bd61178ec394e911cfedd6c7f9f5dadc274a2b10c5181060c67bd",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "3c2f033b2a44d08832ffec32417dc35a95cdbe2c",
+      "file_sha256": "0d1263e5169ebacdb1da157857aafff9a5bb5645aabbd921b3bd7e18d60a8ee2",
+      "file": "prod/rotate-compose-manager-token.yaml",
+      "timestamp": "2026-09-29T05:45:35.460583585+00:00",
+      "services": [
+        "rotate-token"
+      ]
+    },
+    {
+      "index": 132,
+      "action": "compose_manager_started",
+      "actionSha256": "9bbbf3a3be683823b3f27fbd5569f4825cee5fec45201302fd87737364b30fb5",
+      "keys": [
+        "action",
+        "container",
+        "image",
+        "timestamp"
+      ],
+      "image": "nearaidev/compose-manager@sha256:6e035c8fb99c1d31f41760d25af178683a658cca4afd73cd0d366fbb5bf884be",
+      "timestamp": "2026-09-29T05:46:09.183177099+00:00"
+    },
+    {
+      "index": 133,
+      "action": "compose_up",
+      "actionSha256": "4d2d512dbba4f84942bc5e0cb1694531cfa1f5bb5699ef51ae49635e2f1dbe7a",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "e7a3faba30c43b3a4081f03f93322754de60d63b",
+      "file_sha256": "dec66aa4f0d712d55dcb235e7421dcbb1c54d6caaec17ca3f07ecc84fbf60b55",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4-W4AFP8.yaml",
+      "timestamp": "2026-09-29T16:12:34.421350013+00:00",
+      "services": [
+        "nginx",
+        "proxy-glm53"
+      ]
+    },
+    {
+      "index": 134,
+      "action": "compose_up",
+      "actionSha256": "b7e8cabd1f1ebfa244f78499e53958c0ec449957d862215e12b0a3658e6df880",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "b177e78bc2e79664d76e9f59a64edfdf27cc1021",
+      "file_sha256": "dec66aa4f0d712d55dcb235e7421dcbb1c54d6caaec17ca3f07ecc84fbf60b55",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4-W4AFP8.yaml",
+      "timestamp": "2026-09-30T21:17:46.292884874+00:00",
+      "services": [
+        "otelcol-contrib"
+      ]
+    },
+    {
+      "index": 135,
+      "action": "compose_up",
+      "actionSha256": "3b4eaecd437e07715f0a78ddc987786889e5603e69b38c33ffd1e51f2091264b",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "ddec8d8c4f637d16884ca949e43c51582d8ed858",
+      "file_sha256": "5745db6b0d3e4a4f1ff6872acbf90da254ef83ca834c0bfd4cffb86f540ff781",
+      "file": "prod/GLM-5.3-Flash-SGL-TP2x4-W4AFP8.yaml",
+      "timestamp": "2026-10-02T03:38:44.587010715+00:00"
+    },
+    {
+      "index": 136,
+      "action": "compose_up",
+      "actionSha256": "1339bad043052215343c75cb570ea01d0f10214f6cb3bbe554a615e3a7228f44",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "ddec8d8c4f637d16884ca949e43c51582d8ed858",
+      "file_sha256": "5745db6b0d3e4a4f1ff6872acbf90da254ef83ca834c0bfd4cffb86f540ff781",
+      "file": "prod/GLM-5.3-Flash-SGL-TP2x4-W4AFP8.yaml",
+      "timestamp": "2026-10-02T03:47:10.633219622+00:00"
+    },
+    {
+      "index": 137,
+      "action": "compose_down",
+      "actionSha256": "0f79409c8f76b2c48882e6ba7536b79aac680914e7ae11eb8667096b4c04c8f6",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "88103a2b6551a16896562b05face6aba22be534f",
+      "file": "prod/GLM-5.3-Flash-SGL-TP2x4-W4AFP8.yaml",
+      "timestamp": "2026-10-02T04:48:48.430527355+00:00"
+    },
+    {
+      "index": 138,
+      "action": "compose_up",
+      "actionSha256": "b7c15f1fadab3e9e5d649f547814acf9644ee59c036c5b70f7d891cd0bad3cff",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "ddec8d8c4f637d16884ca949e43c51582d8ed858",
+      "file_sha256": "71d005a45c5be89ab60b1b8f6142903b9a504e3ad67e80db3db8b737db7c9651",
+      "file": "prod/GLM-5.2-W4AFP8-SGL-2xTP4.yaml",
+      "timestamp": "2026-10-02T04:50:46.497660934+00:00"
+    },
+    {
+      "index": 139,
+      "action": "compose_up",
+      "actionSha256": "fc135b2d188f13227ceb6acbf33253aa82d4b51852e1e6c892ca4f007036618d",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "ddec8d8c4f637d16884ca949e43c51582d8ed858",
+      "file_sha256": "5745db6b0d3e4a4f1ff6872acbf90da254ef83ca834c0bfd4cffb86f540ff781",
+      "file": "prod/GLM-5.3-Flash-SGL-TP2x4-W4AFP8.yaml",
+      "timestamp": "2026-10-02T04:52:36.303439757+00:00"
+    },
+    {
+      "index": 140,
+      "action": "compose_up",
+      "actionSha256": "289f97a7fb8119f63ea40158ee461eef8206529da0fb8c7b8a28486b5a3b651b",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "93aa1121f736406acd10730fa9f8caf2fe045aa3",
+      "file_sha256": "e3c487c72189010f5afadc486c8c04ffb3a49a4d485827844e7c8fd105729359",
+      "file": "prod/GLM-5.3-Flash-SGL-TP2x4-W4AFP8.yaml",
+      "timestamp": "2026-10-03T02:18:48.631328850+00:00",
+      "services": [
+        "model-sg-glm53-w4afp8-tp2-r1"
+      ]
+    },
+    {
+      "index": 141,
+      "action": "compose_up",
+      "actionSha256": "897210a5e3d7c1013a3c147ca9a7e422cce36e84e409e031787224303465c400",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "93aa1121f736406acd10730fa9f8caf2fe045aa3",
+      "file_sha256": "e3c487c72189010f5afadc486c8c04ffb3a49a4d485827844e7c8fd105729359",
+      "file": "prod/GLM-5.3-Flash-SGL-TP2x4-W4AFP8.yaml",
+      "timestamp": "2026-10-03T02:26:12.353563334+00:00",
+      "services": [
+        "model-sg-glm53-w4afp8-tp2-r1"
+      ]
+    },
+    {
+      "index": 142,
+      "action": "compose_up",
+      "actionSha256": "dbdcc09c64257eb9c3173743931b8d5d2178aeb51c58d10a3a176809c9b42ede",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "93aa1121f736406acd10730fa9f8caf2fe045aa3",
+      "file_sha256": "e3c487c72189010f5afadc486c8c04ffb3a49a4d485827844e7c8fd105729359",
+      "file": "prod/GLM-5.3-Flash-SGL-TP2x4-W4AFP8.yaml",
+      "timestamp": "2026-10-03T03:23:48.503909151+00:00",
+      "services": [
+        "model-sg-glm53-w4afp8-tp2-r2"
+      ]
+    },
+    {
+      "index": 143,
+      "action": "compose_up",
+      "actionSha256": "2cad93c9b9127becda154975cbc6f12f72968971594c70774866de6524fcc829",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "93aa1121f736406acd10730fa9f8caf2fe045aa3",
+      "file_sha256": "e3c487c72189010f5afadc486c8c04ffb3a49a4d485827844e7c8fd105729359",
+      "file": "prod/GLM-5.3-Flash-SGL-TP2x4-W4AFP8.yaml",
+      "timestamp": "2026-10-03T03:29:19.526521587+00:00",
+      "services": [
+        "model-sg-glm53-w4afp8-tp2-r3"
+      ]
+    },
+    {
+      "index": 144,
+      "action": "compose_up",
+      "actionSha256": "ac43857b4120c9d524c5dfb2cedfa66c00da01d1b65ffc841d3efc62c35ffa39",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "93aa1121f736406acd10730fa9f8caf2fe045aa3",
+      "file_sha256": "e3c487c72189010f5afadc486c8c04ffb3a49a4d485827844e7c8fd105729359",
+      "file": "prod/GLM-5.3-Flash-SGL-TP2x4-W4AFP8.yaml",
+      "timestamp": "2026-10-03T03:32:03.538221538+00:00",
+      "services": [
+        "model-sg-glm53-w4afp8-tp2-r2"
+      ]
+    },
+    {
+      "index": 145,
+      "action": "compose_up",
+      "actionSha256": "ff2c304537256489b28f5f9bd504c1b67b745d2cc7173180c223d2ce793ac9eb",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "93aa1121f736406acd10730fa9f8caf2fe045aa3",
+      "file_sha256": "e3c487c72189010f5afadc486c8c04ffb3a49a4d485827844e7c8fd105729359",
+      "file": "prod/GLM-5.3-Flash-SGL-TP2x4-W4AFP8.yaml",
+      "timestamp": "2026-10-03T03:54:08.891677525+00:00",
+      "services": [
+        "model-sg-glm53-w4afp8-tp2-r4"
+      ]
+    },
+    {
+      "index": 146,
+      "action": "compose_down",
+      "actionSha256": "95f94bd74d82b21f928196e0964c768eb76ec8e6598a6586e0d1af7792c92386",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "93aa1121f736406acd10730fa9f8caf2fe045aa3",
+      "file": "prod/GLM-5.3-Flash-SGL-TP2x4-W4AFP8.yaml",
+      "timestamp": "2026-10-06T06:20:10.999788892+00:00",
+      "services": [
+        "model-proxy-registrar"
+      ]
+    },
+    {
+      "index": 147,
+      "action": "compose_down",
+      "actionSha256": "c4023a5828e2efc7d0e5fc5d437f2e2021689af1aa02d3fe4a88f60b0d954b6e",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "93aa1121f736406acd10730fa9f8caf2fe045aa3",
+      "file": "prod/GLM-5.3-Flash-SGL-TP2x4-W4AFP8.yaml",
+      "timestamp": "2026-10-06T06:30:23.856048133+00:00",
+      "services": [
+        "proxy-glm53",
+        "nginx"
+      ]
+    },
+    {
+      "index": 148,
+      "action": "compose_down",
+      "actionSha256": "f8bf8a48c7310669df836b67d8f6528a09e9f74ad414a0ba7ecc51caa3055d37",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "93aa1121f736406acd10730fa9f8caf2fe045aa3",
+      "file": "prod/GLM-5.3-Flash-SGL-TP2x4-W4AFP8.yaml",
+      "timestamp": "2026-10-06T06:33:06.290480656+00:00",
+      "services": [
+        "model-sg-glm53-w4afp8-tp2-r1",
+        "model-sg-glm53-w4afp8-tp2-r2",
+        "model-sg-glm53-w4afp8-tp2-r3",
+        "model-sg-glm53-w4afp8-tp2-r4"
+      ]
+    },
+    {
+      "index": 149,
+      "action": "compose_up",
+      "actionSha256": "ee9a2e09e9aa70c8ecafdd434333cba5a4f5518d42b866eea7636b937232ae64",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "bf4bc29a20b64517cab173f0386642e7643bc1f0",
+      "file_sha256": "41bf814e09339726b4f7e2933214a878570574f2b843577add8a2e43b61aa592",
+      "file": "prod/GLM-5.3-Flash-SGL-PD-W4AFP8.yaml",
+      "timestamp": "2026-10-06T07:37:45.329088555+00:00",
+      "services": [
+        "model-sg-glm53-w4afp8-tp2-pf-r1",
+        "model-sg-glm53-w4afp8-tp2-pf-r2",
+        "model-sg-glm53-w4afp8-tp2-pf-r3",
+        "model-sg-glm53-w4afp8-tp2-dc-r4",
+        "pd-router-3p1d",
+        "glm53-pd-relay",
+        "otelcol-contrib",
+        "dcgm-glm53"
+      ]
+    },
+    {
+      "index": 150,
+      "action": "compose_up",
+      "actionSha256": "aebf5e71e2149b26e89cf266177beea99454691d2df7621ff32cd71cb97d46e3",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "e3219fb00d4fd0d9a989ca7c065fec953f63836c",
+      "file_sha256": "5d0c19d9f2ac14d704607575408582b56350e3154201e64a837762474eaf85d3",
+      "file": "prod/GLM-5.3-Flash-SGL-PD-W4AFP8.yaml",
+      "timestamp": "2026-10-06T07:57:37.565018073+00:00",
+      "services": [
+        "model-sg-glm53-w4afp8-tp2-pf-r1",
+        "model-sg-glm53-w4afp8-tp2-pf-r2",
+        "model-sg-glm53-w4afp8-tp2-pf-r3",
+        "model-sg-glm53-w4afp8-tp2-dc-r4",
+        "pd-router-3p1d",
+        "glm53-pd-relay",
+        "otelcol-contrib",
+        "dcgm-glm53"
+      ]
+    },
+    {
+      "index": 151,
+      "action": "compose_up",
+      "actionSha256": "bd89ab2530b1002ce4f586dbe0317b9e4a667aeae705eb62e9f82411e00b6486",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "68d6e93aa308818d92a6b39398cf8cbb8884e617",
+      "file_sha256": "1229cea053163a5e524690135232765de384ba00076b7675044a3f5470937569",
+      "file": "prod/GLM-5.3-Flash-SGL-PD-W4AFP8.yaml",
+      "timestamp": "2026-10-06T08:08:54.415640815+00:00",
+      "services": [
+        "model-sg-glm53-w4afp8-tp2-pf-r1",
+        "model-sg-glm53-w4afp8-tp2-pf-r2",
+        "model-sg-glm53-w4afp8-tp2-pf-r3",
+        "model-sg-glm53-w4afp8-tp2-dc-r4",
+        "pd-router-3p1d",
+        "glm53-pd-relay",
+        "otelcol-contrib",
+        "dcgm-glm53"
+      ]
+    },
+    {
+      "index": 152,
+      "action": "compose_up",
+      "actionSha256": "17d202539a179b89e36c2b24060e2a458e05e4dc773c3d306ec9ccc035207e60",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "ec6b2a68d7d951f497c6d419ea7928cfaa8a971a",
+      "file_sha256": "c28905d4fd9c06b7a0940f0ad754c23fa8d3f3e955643bd639d5c76e236d069a",
+      "file": "prod/GLM-5.3-Flash-SGL-PD-W4AFP8.yaml",
+      "timestamp": "2026-10-06T08:34:43.726010889+00:00",
+      "services": [
+        "model-sg-glm53-w4afp8-tp2-pf-r1",
+        "model-sg-glm53-w4afp8-tp2-pf-r2",
+        "model-sg-glm53-w4afp8-tp2-pf-r3",
+        "model-sg-glm53-w4afp8-tp2-dc-r4",
+        "pd-router-3p1d-1",
+        "pd-router-3p1d-2",
+        "pd-router-3p1d-3",
+        "glm53-pd-relay",
+        "otelcol-contrib",
+        "dcgm-glm53"
+      ]
+    },
+    {
+      "index": 153,
+      "action": "compose_up",
+      "actionSha256": "eaa2fb0e5c799f5f13cb8ad845f107ed4d18e5d7f707453a84007a843a38b3db",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "ec6b2a68d7d951f497c6d419ea7928cfaa8a971a",
+      "file_sha256": "c28905d4fd9c06b7a0940f0ad754c23fa8d3f3e955643bd639d5c76e236d069a",
+      "file": "prod/GLM-5.3-Flash-SGL-PD-W4AFP8.yaml",
+      "timestamp": "2026-10-06T08:35:12.586544866+00:00",
+      "services": [
+        "glm53-pd-relay"
+      ]
+    },
+    {
+      "index": 154,
+      "action": "compose_down",
+      "actionSha256": "376b888c247ad291d09a35e9c50666f7b1d651a2ce5a4c462ca0e2923dc7e4aa",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "0aac69060e3cfce0af54952e6e598fc55911e56c",
+      "file": "prod/GLM-5.3-Flash-SGL-PD-W4AFP8.yaml",
+      "timestamp": "2026-10-06T10:15:59.930408265+00:00",
+      "services": [
+        "model-sg-glm53-w4afp8-tp2-pf-r2",
+        "model-sg-glm53-w4afp8-tp2-pf-r3",
+        "pd-router-3p1d-1",
+        "pd-router-3p1d-2",
+        "pd-router-3p1d-3"
+      ]
+    },
+    {
+      "index": 155,
+      "action": "compose_up",
+      "actionSha256": "aa17969cc60f143e230cd0996cc53c825f197c11c8a93d83d32419a2a2d558ef",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "0aac69060e3cfce0af54952e6e598fc55911e56c",
+      "file_sha256": "7da6fb45825efb39d32fd4bd5ecb9ad04eca1603e815de788caec904f30819b6",
+      "file": "prod/GLM-5.3-Flash-SGL-PD-W4AFP8.yaml",
+      "timestamp": "2026-10-06T10:16:50.102428683+00:00",
+      "services": [
+        "model-sg-glm53-w4afp8-tp2-pf-r1",
+        "model-sg-glm53-w4afp8-tp2-dc-r2",
+        "model-sg-glm53-w4afp8-tp2-dc-r3",
+        "model-sg-glm53-w4afp8-tp2-dc-r4",
+        "pd-router-1p3d-1"
+      ]
+    },
+    {
+      "index": 156,
+      "action": "compose_down",
+      "actionSha256": "9dccaba7247f61b02cbf920b2dc00736e5db519d11ec428e03026f3b79f45c57",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "0aac69060e3cfce0af54952e6e598fc55911e56c",
+      "file": "prod/GLM-5.3-Flash-SGL-PD-W4AFP8.yaml",
+      "timestamp": "2026-10-06T13:38:45.916630086+00:00",
+      "services": [
+        "model-sg-glm53-w4afp8-tp2-dc-r2",
+        "model-sg-glm53-w4afp8-tp2-dc-r3",
+        "pd-router-1p3d-1"
+      ]
+    },
+    {
+      "index": 157,
+      "action": "compose_up",
+      "actionSha256": "fa6b4736363ad62a6e5a8fdf14d64c9043cc761c4580426fe2554a3b0da3ccf7",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "0aac69060e3cfce0af54952e6e598fc55911e56c",
+      "file_sha256": "7da6fb45825efb39d32fd4bd5ecb9ad04eca1603e815de788caec904f30819b6",
+      "file": "prod/GLM-5.3-Flash-SGL-PD-W4AFP8.yaml",
+      "timestamp": "2026-10-06T13:39:09.521665745+00:00",
+      "services": [
+        "model-sg-glm53-w4afp8-tp2-pf-r1",
+        "model-sg-glm53-w4afp8-tp2-pf-r2",
+        "model-sg-glm53-w4afp8-tp2-pf-r3",
+        "model-sg-glm53-w4afp8-tp2-dc-r4",
+        "pd-router-3p1d-1",
+        "pd-router-3p1d-2",
+        "pd-router-3p1d-3"
+      ]
+    },
+    {
+      "index": 158,
+      "action": "compose_up",
+      "actionSha256": "77237ee5d41b533a97200af7f4e4ae6ce1d5950c3ab21c06051133fba774423a",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "0aac69060e3cfce0af54952e6e598fc55911e56c",
+      "file_sha256": "7da6fb45825efb39d32fd4bd5ecb9ad04eca1603e815de788caec904f30819b6",
+      "file": "prod/GLM-5.3-Flash-SGL-PD-W4AFP8.yaml",
+      "timestamp": "2026-10-06T14:36:59.319666373+00:00",
+      "services": [
+        "model-sg-glm53-w4afp8-tp2-pf-r3",
+        "pd-router-3p1d-3"
+      ]
+    },
+    {
+      "index": 159,
+      "action": "compose_down",
+      "actionSha256": "76774de98f1b6a1b233862df5df8891b040125600fe051752044f878599137df",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "0aac69060e3cfce0af54952e6e598fc55911e56c",
+      "file": "prod/GLM-5.3-Flash-SGL-PD-W4AFP8.yaml",
+      "timestamp": "2026-10-06T15:32:26.763440610+00:00",
+      "services": [
+        "model-sg-glm53-w4afp8-tp2-pf-r1",
+        "model-sg-glm53-w4afp8-tp2-pf-r2",
+        "model-sg-glm53-w4afp8-tp2-pf-r3",
+        "model-sg-glm53-w4afp8-tp2-dc-r4",
+        "pd-router-3p1d-1",
+        "pd-router-3p1d-2",
+        "pd-router-3p1d-3",
+        "glm53-pd-relay"
+      ]
+    },
+    {
+      "index": 160,
+      "action": "compose_up",
+      "actionSha256": "540e20febbd1f9ea5f927dbd9958e5a9ac0ebd58021bd8b15f694bf2e14443bd",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "93aa1121f736406acd10730fa9f8caf2fe045aa3",
+      "file_sha256": "e3c487c72189010f5afadc486c8c04ffb3a49a4d485827844e7c8fd105729359",
+      "file": "prod/GLM-5.3-Flash-SGL-TP2x4-W4AFP8.yaml",
+      "timestamp": "2026-10-06T15:33:26.090717494+00:00",
+      "services": [
+        "model-downloader",
+        "model-sg-glm53-w4afp8-tp2-r1",
+        "model-sg-glm53-w4afp8-tp2-r2",
+        "model-sg-glm53-w4afp8-tp2-r3",
+        "model-sg-glm53-w4afp8-tp2-r4",
+        "proxy-glm53",
+        "nginx",
+        "model-proxy-registrar",
+        "dcgm-glm53",
+        "otelcol-contrib"
+      ]
+    },
+    {
+      "index": 161,
+      "action": "compose_down",
+      "actionSha256": "16cdeb4391cce5fd3da044fe517d12d6a63dce8502b956569530dec4d8d6ee79",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "93aa1121f736406acd10730fa9f8caf2fe045aa3",
+      "file": "prod/GLM-5.3-Flash-SGL-TP2x4-W4AFP8.yaml",
+      "timestamp": "2026-10-06T16:19:57.902713194+00:00",
+      "services": [
+        "model-sg-glm53-w4afp8-tp2-r3",
+        "model-sg-glm53-w4afp8-tp2-r4"
+      ]
+    },
+    {
+      "index": 162,
+      "action": "compose_up",
+      "actionSha256": "0f673412afebfc68ec22c312e3904ca3c5e75bf6d119eb3a67db7c246cd10307",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "8c9938be32f0a40fa4ea29f3b6913b0fe758b77b",
+      "file_sha256": "89391908174a1dfdb9da6025b2ce0d008bb6b87461abc2735f5208973331463b",
+      "file": "prod/GLM-5.3-Flash-SGL-TP2x4-W4AFP8.yaml",
+      "timestamp": "2026-10-06T16:24:10.029532815+00:00",
+      "services": [
+        "model-sg-glm53-w4afp8-tp2-r3",
+        "model-sg-glm53-w4afp8-tp2-r4"
+      ]
+    },
+    {
+      "index": 163,
+      "action": "compose_up",
+      "actionSha256": "d486e67dc3153a51799a782e3015eff1aa9f736b049aa9fd89abe49c5017024f",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "8c9938be32f0a40fa4ea29f3b6913b0fe758b77b",
+      "file_sha256": "89391908174a1dfdb9da6025b2ce0d008bb6b87461abc2735f5208973331463b",
+      "file": "prod/GLM-5.3-Flash-SGL-TP2x4-W4AFP8.yaml",
+      "timestamp": "2026-10-06T16:24:35.216486049+00:00",
+      "services": [
+        "otelcol-contrib"
+      ]
+    },
+    {
+      "index": 164,
+      "action": "compose_down",
+      "actionSha256": "93ab8f6d1edc0575fe1085dcc46ab896ffe0cb0d8c07c513d9c229ae280267b1",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "8c9938be32f0a40fa4ea29f3b6913b0fe758b77b",
+      "file": "prod/GLM-5.3-Flash-SGL-TP2x4-W4AFP8.yaml",
+      "timestamp": "2026-10-06T17:43:57.473402553+00:00",
+      "services": [
+        "model-sg-glm53-w4afp8-tp2-r1"
+      ]
+    },
+    {
+      "index": 165,
+      "action": "compose_down",
+      "actionSha256": "a74b4acbe1e66ccf41e1c52a42e88a4de9cb1c1640d122327a6edcdad0a758da",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "8c9938be32f0a40fa4ea29f3b6913b0fe758b77b",
+      "file": "prod/GLM-5.3-Flash-SGL-TP2x4-W4AFP8.yaml",
+      "timestamp": "2026-10-06T17:45:02.407743987+00:00",
+      "services": [
+        "model-sg-glm53-w4afp8-tp2-r1",
+        "model-sg-glm53-w4afp8-tp2-r2"
+      ]
+    },
+    {
+      "index": 166,
+      "action": "compose_up",
+      "actionSha256": "f00f83748b05c6ec48b5f7d825d096ae8b0af5266301e4ec00b856617b286b1a",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "678a6b5ee3e4e7b83340f810c76530958eecc499",
+      "file_sha256": "a7914625ab8aa0dc1c12efd83b1bd43d92029d8d1202739f156f224b02a20bbc",
+      "file": "prod/GLM-5.3-Flash-SGL-TP2x4-W4AFP8.yaml",
+      "timestamp": "2026-10-06T17:49:00.428746891+00:00",
+      "services": [
+        "model-sg-glm53-w4afp8-tp2-r1",
+        "model-sg-glm53-w4afp8-tp2-r2"
+      ]
+    },
+    {
+      "index": 167,
+      "action": "compose_up",
+      "actionSha256": "d9b085f0775ae34288f1c5bc9e970f6bccadb288f5849cb4fd21f26b5a879784",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "678a6b5ee3e4e7b83340f810c76530958eecc499",
+      "file_sha256": "a7914625ab8aa0dc1c12efd83b1bd43d92029d8d1202739f156f224b02a20bbc",
+      "file": "prod/GLM-5.3-Flash-SGL-TP2x4-W4AFP8.yaml",
+      "timestamp": "2026-10-06T19:05:11.807596686+00:00",
+      "services": [
+        "otelcol-contrib"
+      ]
+    },
+    {
+      "index": 168,
+      "action": "compose_down",
+      "actionSha256": "6aeee2f461dab19b4d504142df18b3da98e4a21411d3463abe7e1b5e70d33b28",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "678a6b5ee3e4e7b83340f810c76530958eecc499",
+      "file": "prod/GLM-5.3-Flash-SGL-TP2x4-W4AFP8.yaml",
+      "timestamp": "2026-10-06T21:50:08.335421252+00:00",
+      "services": [
+        "model-sg-glm53-w4afp8-tp2-r3",
+        "model-sg-glm53-w4afp8-tp2-r4"
+      ]
+    },
+    {
+      "index": 169,
+      "action": "compose_up",
+      "actionSha256": "3bb4d551746b43b485bce205fc8698a19969d378d1797ea270d30b9608928e07",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "9bbcef0e013464ec42862e3ed9069afbd2942b4b",
+      "file_sha256": "c4f85d87abb9cf8384428b47dddd8fb22b1672389aea5c6626c81e084f62ff39",
+      "file": "prod/GLM-5.3-Flash-SGL-TP2x4-W4AFP8.yaml",
+      "timestamp": "2026-10-06T21:51:59.602229969+00:00",
+      "services": [
+        "otelcol-contrib"
+      ]
+    },
+    {
+      "index": 170,
+      "action": "compose_up",
+      "actionSha256": "568828a265789c412519d615f67c7e83537dc0187bfdfa84713bdca12eaafcc4",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "9bbcef0e013464ec42862e3ed9069afbd2942b4b",
+      "file_sha256": "c4f85d87abb9cf8384428b47dddd8fb22b1672389aea5c6626c81e084f62ff39",
+      "file": "prod/GLM-5.3-Flash-SGL-TP2x4-W4AFP8.yaml",
+      "timestamp": "2026-10-06T21:52:17.653402240+00:00",
+      "services": [
+        "glm53-ghost-aggregator",
+        "model-sg-glm53-w4afp8-tp2-r4"
+      ]
+    },
+    {
+      "index": 171,
+      "action": "compose_up",
+      "actionSha256": "599439842d9103b87e84aad7b2d7d8561b4332ee7407866c2cf3e6aa1555c140",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "9bbcef0e013464ec42862e3ed9069afbd2942b4b",
+      "file_sha256": "c4f85d87abb9cf8384428b47dddd8fb22b1672389aea5c6626c81e084f62ff39",
+      "file": "prod/GLM-5.3-Flash-SGL-TP2x4-W4AFP8.yaml",
+      "timestamp": "2026-10-06T22:10:01.430129294+00:00",
+      "services": [
+        "model-sg-glm53-w4afp8-tp2-r3"
+      ]
+    },
+    {
+      "index": 172,
+      "action": "compose_up",
+      "actionSha256": "3ad240db386bfa2adf915c45438254c2daed65e54fbc1d189ac03623c96113df",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "652bf62441fcf8067170a683959a49d6193fd74f",
+      "file_sha256": "52e24a0b27c9acf56260ac91497ae698858c3f9546ad3a8adcf1a9888d52310c",
+      "file": "prod/GLM-5.3-Flash-SGL-TP2x4-W4AFP8-V7Canary.yaml",
+      "timestamp": "2026-10-08T00:12:55.491418395+00:00",
+      "services": [
+        "model-sg-glm53-w4afp8-tp2-r4"
+      ]
+    },
+    {
+      "index": 173,
+      "action": "compose_up",
+      "actionSha256": "13946d2cc6a3977f8ed7ccae868b772440fa8db8084cb5478d67515269122d35",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "652bf62441fcf8067170a683959a49d6193fd74f",
+      "file_sha256": "52e24a0b27c9acf56260ac91497ae698858c3f9546ad3a8adcf1a9888d52310c",
+      "file": "prod/GLM-5.3-Flash-SGL-TP2x4-W4AFP8-V7Canary.yaml",
+      "timestamp": "2026-10-08T00:36:32.088705953+00:00",
+      "services": [
+        "otelcol-contrib"
+      ]
+    },
+    {
+      "index": 174,
+      "action": "compose_up",
+      "actionSha256": "d59d94bca04a863831801efaeca433b53d093001d58f82f0cb4b2fd9abe26ac7",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "87b48f1fb122aeb2390b1966c5f07d45e14283ce",
+      "file_sha256": "b13fc8be413e86715c3427d986cc161226f88ea98c79ed7c6cf776a380c8c120",
+      "file": "prod/GLM-5.3-Flash-SGL-TP2x4-W4AFP8-V7-HiCacheOff-r3.yaml",
+      "timestamp": "2026-10-08T03:27:32.344069809+00:00",
+      "services": [
+        "model-sg-glm53-w4afp8-tp2-r3"
+      ]
+    },
+    {
+      "index": 175,
+      "action": "compose_up",
+      "actionSha256": "ea58ff9dce34196a0563a55af1fb93db4c5973019ca87bb38fa4449a0d2697cf",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "1121ee56851dcec7dc89e60099d7be28fc51a73e",
+      "file_sha256": "b0077025ac5f099ca6b30dd21a2605e3ba600b01be38e1605b5ec93f69a125da",
+      "file": "prod/GLM-5.3-Flash-SGL-TP2x4-W4AFP8.yaml",
+      "timestamp": "2026-10-08T20:02:52.772129350+00:00",
+      "services": [
+        "model-sg-glm53-w4afp8-tp2-r1"
+      ]
+    },
+    {
+      "index": 176,
+      "action": "compose_up",
+      "actionSha256": "598660977805a1bb655c85a1d8e8700f462ae4ba05ac3cb1dac240bb6e72ccdf",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "1121ee56851dcec7dc89e60099d7be28fc51a73e",
+      "file_sha256": "b0077025ac5f099ca6b30dd21a2605e3ba600b01be38e1605b5ec93f69a125da",
+      "file": "prod/GLM-5.3-Flash-SGL-TP2x4-W4AFP8.yaml",
+      "timestamp": "2026-10-08T20:28:22.342609278+00:00",
+      "services": [
+        "model-sg-glm53-w4afp8-tp2-r2"
+      ]
+    },
+    {
+      "index": 177,
+      "action": "compose_up",
+      "actionSha256": "014d946f6af7cb8d65ff5dc973a1c534772152f53beadfba85e9443cd11a0c17",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "1121ee56851dcec7dc89e60099d7be28fc51a73e",
+      "file_sha256": "b0077025ac5f099ca6b30dd21a2605e3ba600b01be38e1605b5ec93f69a125da",
+      "file": "prod/GLM-5.3-Flash-SGL-TP2x4-W4AFP8.yaml",
+      "timestamp": "2026-10-08T20:50:18.380692591+00:00",
+      "services": [
+        "model-sg-glm53-w4afp8-tp2-r3"
+      ]
+    },
+    {
+      "index": 178,
+      "action": "compose_up",
+      "actionSha256": "6f1f7a3404d199d79b6d8f95cf350aeb41c33f9912412507cdbd8ceb5f51cd5a",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "1121ee56851dcec7dc89e60099d7be28fc51a73e",
+      "file_sha256": "b0077025ac5f099ca6b30dd21a2605e3ba600b01be38e1605b5ec93f69a125da",
+      "file": "prod/GLM-5.3-Flash-SGL-TP2x4-W4AFP8.yaml",
+      "timestamp": "2026-10-08T21:12:02.259883640+00:00",
+      "services": [
+        "model-sg-glm53-w4afp8-tp2-r4"
+      ]
+    },
+    {
+      "index": 179,
+      "action": "compose_up",
+      "actionSha256": "b34a04ce91110c34c73f9c0adeef2eed424227bd7ea1013b7f22b0a3651d854d",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "1121ee56851dcec7dc89e60099d7be28fc51a73e",
+      "file_sha256": "b0077025ac5f099ca6b30dd21a2605e3ba600b01be38e1605b5ec93f69a125da",
+      "file": "prod/GLM-5.3-Flash-SGL-TP2x4-W4AFP8.yaml",
+      "timestamp": "2026-10-08T21:29:49.381729297+00:00",
+      "services": [
+        "glm53-ghost-aggregator"
+      ]
+    },
+    {
+      "index": 180,
+      "action": "compose_up",
+      "actionSha256": "d52e39a247beb23592a8fecad1a5b7a1cb6735d49315b164fa70a4070974c492",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "1121ee56851dcec7dc89e60099d7be28fc51a73e",
+      "file_sha256": "b0077025ac5f099ca6b30dd21a2605e3ba600b01be38e1605b5ec93f69a125da",
+      "file": "prod/GLM-5.3-Flash-SGL-TP2x4-W4AFP8.yaml",
+      "timestamp": "2026-10-08T21:30:28.223838870+00:00",
+      "services": [
+        "otelcol-contrib"
+      ]
+    },
+    {
+      "index": 181,
+      "action": "compose_up",
+      "actionSha256": "995726fdbaeb4258af19200775c81278340f9c10ab6f6983818294dcde0ade43",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "b9acc8f208409daa2c35d26f0b7bbd93ecc5eef5",
+      "file_sha256": "a49d9c15e866c6f569655fb506a0c60cf97e70c01a6de580c1a4fac0a1e334be",
+      "file": "prod/GLM-5.3-Flash-SGL-TP2x4-W4AFP8.yaml",
+      "timestamp": "2026-10-09T02:03:51.896701811+00:00",
+      "services": [
+        "model-sg-glm53-w4afp8-tp2-r1"
+      ]
+    },
+    {
+      "index": 182,
+      "action": "compose_up",
+      "actionSha256": "36856ee0a772107517aec668dfa07f5188afa7961457b6c13e6b207e34e291ad",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "b9acc8f208409daa2c35d26f0b7bbd93ecc5eef5",
+      "file_sha256": "a49d9c15e866c6f569655fb506a0c60cf97e70c01a6de580c1a4fac0a1e334be",
+      "file": "prod/GLM-5.3-Flash-SGL-TP2x4-W4AFP8.yaml",
+      "timestamp": "2026-10-09T02:31:13.710403058+00:00",
+      "services": [
+        "model-sg-glm53-w4afp8-tp2-r2"
+      ]
+    },
+    {
+      "index": 183,
+      "action": "compose_up",
+      "actionSha256": "971aa4803f08550a31af5a79b58bee74eb8dbb7d93ceb83e2fad0030debc92b7",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "b9acc8f208409daa2c35d26f0b7bbd93ecc5eef5",
+      "file_sha256": "a49d9c15e866c6f569655fb506a0c60cf97e70c01a6de580c1a4fac0a1e334be",
+      "file": "prod/GLM-5.3-Flash-SGL-TP2x4-W4AFP8.yaml",
+      "timestamp": "2026-10-09T03:01:16.748119752+00:00",
+      "services": [
+        "model-sg-glm53-w4afp8-tp2-r3"
+      ]
+    },
+    {
+      "index": 184,
+      "action": "compose_up",
+      "actionSha256": "1583c16a009c82ca497e596566ff25afdce7bed3be674d2aa31bc7272d951a52",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "b9acc8f208409daa2c35d26f0b7bbd93ecc5eef5",
+      "file_sha256": "a49d9c15e866c6f569655fb506a0c60cf97e70c01a6de580c1a4fac0a1e334be",
+      "file": "prod/GLM-5.3-Flash-SGL-TP2x4-W4AFP8.yaml",
+      "timestamp": "2026-10-09T03:28:04.521843700+00:00",
+      "services": [
+        "model-sg-glm53-w4afp8-tp2-r4"
+      ]
+    },
+    {
+      "index": 185,
+      "action": "compose_up",
+      "actionSha256": "1be008a86388a787910478f73e6f0b6b7d4e098f500f5adfb1fda7356f623cf9",
+      "keys": [
+        "action",
+        "commit",
+        "file",
+        "file_sha256",
+        "services",
+        "tag",
+        "timestamp"
+      ],
+      "commit": "46bfd83ec22c179693e06308e40950d540154b4d",
+      "file_sha256": "c7c1bf4d82e137b8d2e0788f41cd6637b38bd08fdc74f38e87b4571ce0c8562e",
+      "file": "prod/GLM-5.3-Flash-SGL-TP2x4-W4AFP8-V8KdaCanary.yaml",
+      "timestamp": "2026-10-12T16:51:36.502687465+00:00",
+      "services": [
+        "model-sg-glm53-w4afp8-tp2-r4"
+      ]
+    }
+  ],
+  "sourceClaims": [
+    {
+      "commit": "00921657197842a557bc1d12fde98ef164a056b7",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "sha256": "4d1b4f73bd301ac043c22b930042686790490bd13fb9affb7da48920285e6eee"
+    },
+    {
+      "commit": "018dd378077e15fa14a3ed3e101c029c105588ae",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "sha256": "f77b43ed8970ebb34b048206dad488652ea01f755e7daef1a4d0853e6c3efa8c"
+    },
+    {
+      "commit": "065340e05635b885dfb238fe9f3601ad351d68a8",
+      "file": "prod/GLM-5.2-W4AFP8-vLLM-TP8.yaml",
+      "sha256": null
+    },
+    {
+      "commit": "065340e05635b885dfb238fe9f3601ad351d68a8",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4-HiCache.yaml",
+      "sha256": null
+    },
+    {
+      "commit": "065340e05635b885dfb238fe9f3601ad351d68a8",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4-HiCache.yaml",
+      "sha256": "e207fecf556ac8790723c3edfc40bfd844cd9c491d54979622350e9f3d3b38ea"
+    },
+    {
+      "commit": "065340e05635b885dfb238fe9f3601ad351d68a8",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "sha256": null
+    },
+    {
+      "commit": "065340e05635b885dfb238fe9f3601ad351d68a8",
+      "file": "prod/small-models.yaml",
+      "sha256": null
+    },
+    {
+      "commit": "094a49651dbdbc6120bc2335c087607f77c6a9cf",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "sha256": "4d0a1a6f2879147dde3827a53bb21851af12d4231f0435e70bb73fdb7c24b124"
+    },
+    {
+      "commit": "0a51138ef3ec104706c40a53dab0c3bcea75d7b3",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4-W4AFP8.yaml",
+      "sha256": null
+    },
+    {
+      "commit": "0a51138ef3ec104706c40a53dab0c3bcea75d7b3",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4-W4AFP8.yaml",
+      "sha256": "bcd313cf7117b82f0f850f9b93da06a4129a3073ae4a58c017a3723eb30a7255"
+    },
+    {
+      "commit": "0a51138ef3ec104706c40a53dab0c3bcea75d7b3",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "sha256": null
+    },
+    {
+      "commit": "0a51138ef3ec104706c40a53dab0c3bcea75d7b3",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "sha256": "b2d8b87cf185ff809f662ce276c2487da852e9903fe5fe0f0dbc3980af49f4ba"
+    },
+    {
+      "commit": "0aac69060e3cfce0af54952e6e598fc55911e56c",
+      "file": "prod/GLM-5.3-Flash-SGL-PD-W4AFP8.yaml",
+      "sha256": null
+    },
+    {
+      "commit": "0aac69060e3cfce0af54952e6e598fc55911e56c",
+      "file": "prod/GLM-5.3-Flash-SGL-PD-W4AFP8.yaml",
+      "sha256": "7da6fb45825efb39d32fd4bd5ecb9ad04eca1603e815de788caec904f30819b6"
+    },
+    {
+      "commit": "0feb6d29eb28086c212962edc533e045d4d8a7ee",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "sha256": "603ff2193dc4a6d61c3f5cd962283a954f5d95521dc2f564ee293b27cd20c271"
+    },
+    {
+      "commit": "1121ee56851dcec7dc89e60099d7be28fc51a73e",
+      "file": "prod/GLM-5.3-Flash-SGL-TP2x4-W4AFP8.yaml",
+      "sha256": "b0077025ac5f099ca6b30dd21a2605e3ba600b01be38e1605b5ec93f69a125da"
+    },
+    {
+      "commit": "1a53fcd398e31b0af3f4f855bdb31b00338fddc8",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "sha256": "6d001e2b250658ddd140361111eb93faa0cdae59e730bade792e3cc2adce69a4"
+    },
+    {
+      "commit": "1f0543890e83a348409f2d859d3afd5e4a6caabe",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "sha256": "a224ffc84a6419dac26ad66f3a6dce3977be1ef91ffae7a223a56d3648b0fa00"
+    },
+    {
+      "commit": "217e2da883f4f45ce4429dfd57e4644af7d4caa0",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "sha256": "8b623833dc002b74d94c5457c279ef7cef6bf42b30dd2d09879d471fce569d05"
+    },
+    {
+      "commit": "234c44d234338ba939d5fe21cf6f0ca1df3c3f13",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "sha256": "a5077df239b9e20ca06ff488612b092efb08f1b04b394477fc8495ac34af2704"
+    },
+    {
+      "commit": "240799623a0619bbb8ca5342df98d09f67fc8e22",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "sha256": "69165b2c007a4d4a10794728be90384fa41b6aa8e7f7acbbb47865eb08ca0fd6"
+    },
+    {
+      "commit": "2998acffb6f024fb85bb6ab69e288a775f907484",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "sha256": "434913ff0a4366929dee38efe3d556ffdb50a259bcca84292deada6c8a815c00"
+    },
+    {
+      "commit": "2cc328eed23c7c18e49acc798e671db57ec64580",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "sha256": "80dbd5fc325b65087e5154beecb9ec0c1007f20b282a462106f92a82c84cb123"
+    },
+    {
+      "commit": "31cfffadf5e08c3b400f19cfb1e272fbf70e3df1",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "sha256": "d1f8d2b05e3281e450a33f34d3359bc30bc61098b62903ea26d0845325db02e2"
+    },
+    {
+      "commit": "38aeaaaea13d31a944a0e997f937843f7a3a17cc",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "sha256": "4eb9f7eac64429d5d2c0be44d1089f956c6d70eeb08dc3f8506ac38e940a1b4f"
+    },
+    {
+      "commit": "3a69c7eb85aa1dec95923668827db67f3c166ccd",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "sha256": null
+    },
+    {
+      "commit": "3a69c7eb85aa1dec95923668827db67f3c166ccd",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "sha256": "0715afe979aafaff2e3157cc75e8bdd4621e3d165d981301520d10cef66afdc6"
+    },
+    {
+      "commit": "3c2f033b2a44d08832ffec32417dc35a95cdbe2c",
+      "file": "prod/rotate-compose-manager-token.yaml",
+      "sha256": "0d1263e5169ebacdb1da157857aafff9a5bb5645aabbd921b3bd7e18d60a8ee2"
+    },
+    {
+      "commit": "434c1a5fc3e614c7ee5387ff2e8caa936d5befa3",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "sha256": "0d95194b320affd6c22b3a716eb76e9a2670ad998c1573be613eef07bb190631"
+    },
+    {
+      "commit": "46a9722826273856571096342dd70dd9ecd27705",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "sha256": "97ecad06edeeae1414130a1e62b5a08bcb8f23dcf00eb874705deb59f27e0923"
+    },
+    {
+      "commit": "46bfd83ec22c179693e06308e40950d540154b4d",
+      "file": "prod/GLM-5.3-Flash-SGL-TP2x4-W4AFP8-V8KdaCanary.yaml",
+      "sha256": "c7c1bf4d82e137b8d2e0788f41cd6637b38bd08fdc74f38e87b4571ce0c8562e"
+    },
+    {
+      "commit": "5017cbace31a4823f3ced92af689b382932fb6b5",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "sha256": "dbb7df287e922f854d0b2c768715fa97d8f5dbf3d2e7f372da295d3f247b3f10"
+    },
+    {
+      "commit": "558f103154abaff0b6f087bbfa9eadce676ea803",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "sha256": "f83314a37d6ad8d80fb16a68e4713dc51cc09e1aacde960b80881625166ef0f8"
+    },
+    {
+      "commit": "5ba5a5bb92b7b1bbbe72fe9b7a8fbaec729627a1",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4-HiCache.yaml",
+      "sha256": "9fbc74afdb7020125399bf52b8c20863575fe8c474bd2bb8c7056b27cdbef63f"
+    },
+    {
+      "commit": "5ce07ad7da0d5432d9c13aa2851aca7bcc2e9478",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "sha256": null
+    },
+    {
+      "commit": "5ce07ad7da0d5432d9c13aa2851aca7bcc2e9478",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "sha256": "51cf1f377421030e234da042552cee704bd49e20eb22b6ee3ed07da92600e03d"
+    },
+    {
+      "commit": "651562ea04d924e34c1641c9de404123891c2ca2",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "sha256": "0158e8cfdf6ada338f1ee67d8d7d45f74c331a10e6fd32a65986a3aff91037e2"
+    },
+    {
+      "commit": "652bf62441fcf8067170a683959a49d6193fd74f",
+      "file": "prod/GLM-5.3-Flash-SGL-TP2x4-W4AFP8-V7Canary.yaml",
+      "sha256": "52e24a0b27c9acf56260ac91497ae698858c3f9546ad3a8adcf1a9888d52310c"
+    },
+    {
+      "commit": "678a6b5ee3e4e7b83340f810c76530958eecc499",
+      "file": "prod/GLM-5.3-Flash-SGL-TP2x4-W4AFP8.yaml",
+      "sha256": null
+    },
+    {
+      "commit": "678a6b5ee3e4e7b83340f810c76530958eecc499",
+      "file": "prod/GLM-5.3-Flash-SGL-TP2x4-W4AFP8.yaml",
+      "sha256": "a7914625ab8aa0dc1c12efd83b1bd43d92029d8d1202739f156f224b02a20bbc"
+    },
+    {
+      "commit": "68d6e93aa308818d92a6b39398cf8cbb8884e617",
+      "file": "prod/GLM-5.3-Flash-SGL-PD-W4AFP8.yaml",
+      "sha256": "1229cea053163a5e524690135232765de384ba00076b7675044a3f5470937569"
+    },
+    {
+      "commit": "6da46ed6de87c4f1d87f69be2e25f0fbb961d032",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "sha256": "c783beeb372557159a4d1c229752a2e89edb0bd8a6126affa8cf5e3c5e843230"
+    },
+    {
+      "commit": "72a7616d4424487eb56864df6390d9e78d9624ac",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "sha256": null
+    },
+    {
+      "commit": "72a7616d4424487eb56864df6390d9e78d9624ac",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "sha256": "c783beeb372557159a4d1c229752a2e89edb0bd8a6126affa8cf5e3c5e843230"
+    },
+    {
+      "commit": "76e1d1d2103f7260e78f9592bce2bbf3204dd6cf",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "sha256": "83704c4726138d094dfafb88f15bba7b2fcb58f300012a009a3df40fc0f4ff23"
+    },
+    {
+      "commit": "7e215e6ff45c20d2739f06a144ad88284f2dec4f",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "sha256": "10a244616ff672237b175b1e59f415569eada2fdbacb2b049a69b5c7f7399467"
+    },
+    {
+      "commit": "81ea8f03871957a0ed9e13eb4d526b06e2d62fb8",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4-W4AFP8.yaml",
+      "sha256": "4247dec8b67eea29b93d687b6c975617964519e2585611baf194128c7088aa63"
+    },
+    {
+      "commit": "854b246e0982355adf3f7725f91d4e0b82d3e5c3",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "sha256": "1b3624048648694bee0268256eed27e83b4e0d2462692f7dbdc2ff813c7ce4f3"
+    },
+    {
+      "commit": "85cea5e8d6c2292afdccbcba893438618f04ce90",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "sha256": null
+    },
+    {
+      "commit": "85cea5e8d6c2292afdccbcba893438618f04ce90",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "sha256": "c9b20839a11ddd06c2138f19d21be01a2af1775e014bd3da330b617bdca602fc"
+    },
+    {
+      "commit": "85f52ffb255417a47cb75d22fa7f6da3f2beae58",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "sha256": "69102f4c684c2864beb56f6d572699165848dabed1b94ce19015c7c4f7d86f04"
+    },
+    {
+      "commit": "870cbc215f3d30fd2cc6ea09d17246a821f7b019",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "sha256": "f600cda7ed3d12f929de7acbec9f55e4d62f614c05e838f3f27b86aa5b481ced"
+    },
+    {
+      "commit": "87b48f1fb122aeb2390b1966c5f07d45e14283ce",
+      "file": "prod/GLM-5.3-Flash-SGL-TP2x4-W4AFP8-V7-HiCacheOff-r3.yaml",
+      "sha256": "b13fc8be413e86715c3427d986cc161226f88ea98c79ed7c6cf776a380c8c120"
+    },
+    {
+      "commit": "88103a2b6551a16896562b05face6aba22be534f",
+      "file": "prod/GLM-5.3-Flash-SGL-TP2x4-W4AFP8.yaml",
+      "sha256": null
+    },
+    {
+      "commit": "89908f652269b5bbaae2731a6bf69b68b37337a5",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "sha256": "d8a2ce0597ff19d8b93a047fe32a581778abf434e9bcf84ca0345e1c5ebe622e"
+    },
+    {
+      "commit": "8bb674778eacc805459a1ff65c92b24550ddf782",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "sha256": "02a021024308f0ca2ab6c7041ea53523d6fe42abb3b70aebacdc93c59ad3b203"
+    },
+    {
+      "commit": "8c9938be32f0a40fa4ea29f3b6913b0fe758b77b",
+      "file": "prod/GLM-5.3-Flash-SGL-TP2x4-W4AFP8.yaml",
+      "sha256": null
+    },
+    {
+      "commit": "8c9938be32f0a40fa4ea29f3b6913b0fe758b77b",
+      "file": "prod/GLM-5.3-Flash-SGL-TP2x4-W4AFP8.yaml",
+      "sha256": "89391908174a1dfdb9da6025b2ce0d008bb6b87461abc2735f5208973331463b"
+    },
+    {
+      "commit": "8ca96cf5da08da72b4c4b80e4b84a438ceb4eb4a",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "sha256": null
+    },
+    {
+      "commit": "8ca96cf5da08da72b4c4b80e4b84a438ceb4eb4a",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "sha256": "d021637b365b1a8c625775ea5eeb486967722b1ba4e54076a4db07698dedbe05"
+    },
+    {
+      "commit": "8f97e8f22db8a32b915b7b59702fc09635a8ac24",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4-HiCache.yaml",
+      "sha256": "c3d1a5b6aad000fce81f08fdb22c24f5a5c6b17c44e8d6009f4dde1d7143eeee"
+    },
+    {
+      "commit": "8f97e8f22db8a32b915b7b59702fc09635a8ac24",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "sha256": "dac8e7bd277ba8f6dbf51201a859374f956e92d2546637e17c73608911e65bf4"
+    },
+    {
+      "commit": "93aa1121f736406acd10730fa9f8caf2fe045aa3",
+      "file": "prod/GLM-5.3-Flash-SGL-TP2x4-W4AFP8.yaml",
+      "sha256": null
+    },
+    {
+      "commit": "93aa1121f736406acd10730fa9f8caf2fe045aa3",
+      "file": "prod/GLM-5.3-Flash-SGL-TP2x4-W4AFP8.yaml",
+      "sha256": "e3c487c72189010f5afadc486c8c04ffb3a49a4d485827844e7c8fd105729359"
+    },
+    {
+      "commit": "93b30e759be0fc48a67f5f8f7a5bfe9df20b5295",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "sha256": null
+    },
+    {
+      "commit": "93b30e759be0fc48a67f5f8f7a5bfe9df20b5295",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "sha256": "546f7d31b08c44b38ab585fb13f7984e114fc59d942a094aff69561e82d3db0a"
+    },
+    {
+      "commit": "9bbcef0e013464ec42862e3ed9069afbd2942b4b",
+      "file": "prod/GLM-5.3-Flash-SGL-TP2x4-W4AFP8.yaml",
+      "sha256": "c4f85d87abb9cf8384428b47dddd8fb22b1672389aea5c6626c81e084f62ff39"
+    },
+    {
+      "commit": "a1182fd5017a5aa6fe61619ee256ca1b93db1c86",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4-HiCache.yaml",
+      "sha256": "223d989886b8b92e288b53ab827807fa20bc6e985e31db3241675fae637fa2e5"
+    },
+    {
+      "commit": "a56875666c4c4bf8bfbaf47aaaa7070393e2bbb7",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "sha256": "458b50951bfb2c18247be0a9d4b1838eba211f462728e5587472d6a425dd233f"
+    },
+    {
+      "commit": "a5c7dee0e61ebccfd9d464751a5ed7a54d6e656c",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "sha256": "fd2b0d062106701351700d89a9423dae489d7cdbae25eb1bca2183c293e7d6b1"
+    },
+    {
+      "commit": "b177e78bc2e79664d76e9f59a64edfdf27cc1021",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4-W4AFP8.yaml",
+      "sha256": "dec66aa4f0d712d55dcb235e7421dcbb1c54d6caaec17ca3f07ecc84fbf60b55"
+    },
+    {
+      "commit": "b996e382492b0b19e801d70b8d357e2c9d8160d1",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4-W4AFP8.yaml",
+      "sha256": "1528ba57ffeda148f400dd8b512f4f72ce1641068ca2d8bdcd4f69e73cd43386"
+    },
+    {
+      "commit": "b9acc8f208409daa2c35d26f0b7bbd93ecc5eef5",
+      "file": "prod/GLM-5.3-Flash-SGL-TP2x4-W4AFP8.yaml",
+      "sha256": "a49d9c15e866c6f569655fb506a0c60cf97e70c01a6de580c1a4fac0a1e334be"
+    },
+    {
+      "commit": "bd68b9191db2854694d49f859674fb6d2fc776d9",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "sha256": "f2168df3ef28735b7c90c674a24b34bd4a1a9c87a2be88a7197c547e0532c12a"
+    },
+    {
+      "commit": "bf4bc29a20b64517cab173f0386642e7643bc1f0",
+      "file": "prod/GLM-5.3-Flash-SGL-PD-W4AFP8.yaml",
+      "sha256": "41bf814e09339726b4f7e2933214a878570574f2b843577add8a2e43b61aa592"
+    },
+    {
+      "commit": "c3a5a0547c8f0b5c6cc38cae0eaef382897fe6e6",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "sha256": null
+    },
+    {
+      "commit": "c3a5a0547c8f0b5c6cc38cae0eaef382897fe6e6",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "sha256": "9beb023d6882dbc4eb3104e56428a2a5042d2b9b64c1775bcfc560950620e39e"
+    },
+    {
+      "commit": "c5c6e46191cb600a2497d755943ad9c6db5bcada",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "sha256": "31b1f00904a447bc672b3434d725f2815d0bc1683632afc8e4f05b4b305b7a02"
+    },
+    {
+      "commit": "ce7c02304a9a5ebcd4f3ecd3660d88365d8d1e7e",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "sha256": "dbd5bdb1fe74d38632b9f5886f1b54d91e134283f58256f064d686367491f7fc"
+    },
+    {
+      "commit": "cfea175361fa759adbab5e06974117aef8ea7deb",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "sha256": "ded3d1a6fe79d9bf668a30c19295e1d6b6e7613e5d536b3d4fa7820cf7f7cc6a"
+    },
+    {
+      "commit": "d0379076f97c2619bc0e93f815fc698c13be73a9",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "sha256": "7c12e355b7f285ac2032a7e436827f44cdc848e144d6797862fa2e73e3a4602b"
+    },
+    {
+      "commit": "d1a72bf122962f1582d8ba9ae38f56c3dfdfb139",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "sha256": null
+    },
+    {
+      "commit": "d1a72bf122962f1582d8ba9ae38f56c3dfdfb139",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "sha256": "e063942a0d88eeff6d085beaceb43c0d4c2d2426bc81003aa9fb42839ad39eab"
+    },
+    {
+      "commit": "d649b079baddcc6e06bb643b706a2ce73f6cf5a7",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "sha256": null
+    },
+    {
+      "commit": "d649b079baddcc6e06bb643b706a2ce73f6cf5a7",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "sha256": "4afd39283ef5f9df4db7f12aa41f32efe7391b9fff5a669349a918689db18e04"
+    },
+    {
+      "commit": "d75577a8c616044cf5f6b775660dfef0f48487cb",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "sha256": null
+    },
+    {
+      "commit": "d75577a8c616044cf5f6b775660dfef0f48487cb",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "sha256": "7a4f2c270ab5f04b27ddd86dd600ec19adda55450df9a1a770e8793f2b04cb3b"
+    },
+    {
+      "commit": "ddaccacd0b88dece6031d533c8b2af705f1584e6",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "sha256": "64987b452cf5bb5d2342e489469b7a2deca1ac5fddd2dde3e593b8f2fe6198d0"
+    },
+    {
+      "commit": "ddec8d8c4f637d16884ca949e43c51582d8ed858",
+      "file": "prod/GLM-5.2-W4AFP8-SGL-2xTP4.yaml",
+      "sha256": "71d005a45c5be89ab60b1b8f6142903b9a504e3ad67e80db3db8b737db7c9651"
+    },
+    {
+      "commit": "ddec8d8c4f637d16884ca949e43c51582d8ed858",
+      "file": "prod/GLM-5.3-Flash-SGL-TP2x4-W4AFP8.yaml",
+      "sha256": "5745db6b0d3e4a4f1ff6872acbf90da254ef83ca834c0bfd4cffb86f540ff781"
+    },
+    {
+      "commit": "e14107901d202215ab44eb027eb4792047d5ec83",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "sha256": null
+    },
+    {
+      "commit": "e14107901d202215ab44eb027eb4792047d5ec83",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "sha256": "2878b9c4c6db512a7538dc4e8981fd5acae72cdaace7794509f48161bcce08e3"
+    },
+    {
+      "commit": "e3219fb00d4fd0d9a989ca7c065fec953f63836c",
+      "file": "prod/GLM-5.3-Flash-SGL-PD-W4AFP8.yaml",
+      "sha256": "5d0c19d9f2ac14d704607575408582b56350e3154201e64a837762474eaf85d3"
+    },
+    {
+      "commit": "e56f3d2d736195d3c6425de2765ab2aece34104e",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "sha256": null
+    },
+    {
+      "commit": "e56f3d2d736195d3c6425de2765ab2aece34104e",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "sha256": "2b940307e83baceb8b5a7e85c422f9a2006461af103b8673fc60c1bbeaa62e65"
+    },
+    {
+      "commit": "e7a3faba30c43b3a4081f03f93322754de60d63b",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4-W4AFP8.yaml",
+      "sha256": "dec66aa4f0d712d55dcb235e7421dcbb1c54d6caaec17ca3f07ecc84fbf60b55"
+    },
+    {
+      "commit": "e87aed26be59d857cc370cbbf6039d32f9581fa2",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "sha256": "57de80ee1327d2829cdc6e37fb35f909d5db383a9b507a183ea41a64eb38c2e3"
+    },
+    {
+      "commit": "ec6b2a68d7d951f497c6d419ea7928cfaa8a971a",
+      "file": "prod/GLM-5.3-Flash-SGL-PD-W4AFP8.yaml",
+      "sha256": "c28905d4fd9c06b7a0940f0ad754c23fa8d3f3e955643bd639d5c76e236d069a"
+    },
+    {
+      "commit": "f7261c62751db08626cd1a850b6e88dda8eb2aed",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "sha256": "7968dd9f51d4f2a9db2a245e258410186fd80651c318f2e7c6d8f1e406bf508a"
+    },
+    {
+      "commit": "f87823ed3013b06797d5bc97955dbbb862277ee6",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "sha256": null
+    },
+    {
+      "commit": "f87823ed3013b06797d5bc97955dbbb862277ee6",
+      "file": "prod/GLM-5.3-Flash-SGL-TP4.yaml",
+      "sha256": "e6b93ebc23824722e607719dea69046c20c696f750c5e750470cad395df2e391"
+    }
+  ],
+  "installedPolicyProfiles": [
+    {
+      "index": 0,
+      "model": "z-ai/glm-5.3-flash",
+      "appComposeSha256": "55db164f4f8c6a837c2217c601c21bba4758f908536a6cd5b2978550205a9179",
+      "composeManagerImage": "nearaidev/compose-manager@sha256:6e035c8fb99c1d31f41760d25af178683a658cca4afd73cd0d366fbb5bf884be",
+      "actionsSha256": "00ac037cde28499ca5ee97b3fda1cd168d174bcd24f3a52adfa09f64047f6013"
+    },
+    {
+      "index": 1,
+      "model": "z-ai/glm-5.3-flash",
+      "appComposeSha256": "c82b1a2eaf6996154a5f39ae621643f034b082d5e51edd3d2ba6009273881d86",
+      "composeManagerImage": "nearaidev/compose-manager@sha256:6e035c8fb99c1d31f41760d25af178683a658cca4afd73cd0d366fbb5bf884be",
+      "actionsSha256": "3fe44adfd40dcfa61ae41e926e18bc432d0b4450288947630407ef478035962d"
+    },
+    {
+      "index": 2,
+      "model": "z-ai/glm-5.3-flash",
+      "appComposeSha256": "c82b1a2eaf6996154a5f39ae621643f034b082d5e51edd3d2ba6009273881d86",
+      "composeManagerImage": "nearaidev/compose-manager@sha256:6e035c8fb99c1d31f41760d25af178683a658cca4afd73cd0d366fbb5bf884be",
+      "actionsSha256": "1e4aa300bb9f6c4d6665affbfd978fe1fffc04b29a9181febe2a5a03e0baf13b"
+    },
+    {
+      "index": 3,
+      "model": "z-ai/glm-5.3-flash",
+      "appComposeSha256": "c82b1a2eaf6996154a5f39ae621643f034b082d5e51edd3d2ba6009273881d86",
+      "composeManagerImage": "nearaidev/compose-manager@sha256:6e035c8fb99c1d31f41760d25af178683a658cca4afd73cd0d366fbb5bf884be",
+      "actionsSha256": "281432886e04b7b19bc55793085fcbdf812eb2d7479e409e4a7b283e21ac069d"
+    }
+  ]
+}

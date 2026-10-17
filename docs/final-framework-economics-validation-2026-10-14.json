@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-14T17:16:32.385515+00:00",
+  "scope": "focused framework durable Vault retry/restart and economics-v2 financial-domain runtime acceptance on disposable local Anvil; CPU receipt v1 economics fixture",
+  "command": "npx vitest run tests/framework-protocol-floor.test.ts tests/framework-starters.test.ts tests/platform-economics-runtime.test.ts --reporter=json --outputFile=.local/final-framework-economics-node-20261014.json",
+  "filesPassed": 3,
+  "testsPassed": 4,
+  "failed": 0,
+  "skipped": 0,
+  "successful": true,
+  "durationSeconds": 85.958,
+  "tests": [
+    {
+      "title": "persists an observed CPU v2 protocol floor before any payment and rejects downgrade after encrypted journal reopen",
+      "status": "passed",
+      "durationSeconds": 0.512
+    },
+    {
+      "title": "binds the independent expected CPU v2 protocol into the immutable private profile and rejects initial v1",
+      "status": "passed",
+      "durationSeconds": 0.005
+    },
+    {
+      "title": "Eliza and Conway tools recover exact paid Vault work across response loss and encrypted journal restart over real HTTP",
+      "status": "passed",
+      "durationSeconds": 34.027
+    },
+    {
+      "title": "routes real economics-v2 EOA/Vault work over HTTP, applies canonical stake placement and locks admission fee tiers",
+      "status": "passed",
+      "durationSeconds": 45.351
+    }
+  ],
+  "sourceSha256": {
+    "src/integrations/durable-vault-compute.ts": "59e03636c8becf4b7bcf1737f653b5d0206b3c5be64f4feda7b75db1b55f35b4",
+    "src/integrations/elizaos.ts": "682fbb03e601d00854834706423729b7b1cbd88ac4601429a851abf72384ef9f",
+    "src/integrations/automaton.ts": "461b1600b2c56a82c8cafe2e5366aeade984bea559aea7d5b9e2e3bcf768b36c",
+    "src/integrations/cli.ts": "3bde8c362a7c6d5cf4be9a5290af60747b5c818cf94eb8743274c5877a74a2cb",
+    "src/integrations/index.ts": "e71c9dd484681b4c8219ea50e474302c803077e536fba4b001f4bfff792d164b",
+    "src/platform-runtime/client.ts": "3fcce81ed8250297b00d9074139aada0daeb06296d179fbbcdba6ef11db21542",
+    "src/platform-runtime/vault-client.ts": "d134aea855fd39a38e581e1fc0308c63d117237319efd331b31f46c14c5f4716",
+    "src/platform-runtime/service.ts": "7bf4532260c6fb6171c95195be70e7803fda264b8a573e4c740aa4f055a85d0b",
+    "src/platform-runtime/types.ts": "dd142aedeb705bb76765221bae91c3e552f12eca978c76c43b4ee079739ffe92",
+    "src/economics/profile.ts": "e66b959c866f0c06c33168968fc131a844a91a255b9c7275874ac637559ab36e",
+    "tests/framework-starters.test.ts": "1cb41fce0a56d26218b470c46f72b0bc527376aca21c7841a65cfc0b3c49eae7",
+    "tests/framework-protocol-floor.test.ts": "c58baa8aa6f68eb45db62a2b457240fb5ed186f2012fe9c406a12aceebd1c1e6",
+    "tests/platform-economics-runtime.test.ts": "761b1a09422b9ab864198d3aa4e631605084a4ae0d8e4cbc111a881f264e82f5",
+    "tests/fixtures/platform-economics-runtime.ts": "35b383a26275a8788cd00686185f856ab312601265bc2f9a38be414c5cc316c4"
+  },
+  "publicTransactions": 0,
+  "paidPublicRequests": 0,
+  "notEstablished": [
+    "full Node suite result",
+    "CPU receipt v2 AgentVault issuer acceptance",
+    "public Base funded acceptance",
+    "production TEE isolation",
+    "live managed inference completion"
+  ]
+}

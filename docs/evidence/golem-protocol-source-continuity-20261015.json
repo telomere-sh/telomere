@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "baselineRevision": "354fe7af62ea6701faafc3b04522abb1b4524d2d",
+  "currentRevision": "5b31957bce5c2dabc50a2ca23d43906a1612fc13",
+  "baselineArchiveSha256": "86b5dc9f36dcf841963f0ffa8161023c126f1fae473c94909f5dddae3040fdce",
+  "currentArchiveSha256": "dfad08e3322cfa457b387d321173d7aac2ef3085bdcbdb427aafecad43129248",
+  "baselineFiles": 685,
+  "currentFiles": 689,
+  "unchangedPriorFiles": 680,
+  "changed": [
+    "src/suppliers/golem-finance-ledger.ts",
+    "src/suppliers/golem-finance-types.ts",
+    "src/suppliers/golem-finance.ts",
+    "src/suppliers/index.ts",
+    "tests/golem-finance.test.ts"
+  ],
+  "added": [
+    "src/suppliers/golem-finance-http.ts",
+    "src/suppliers/golem-payment-chain.ts",
+    "tests/golem-finance-http.test.ts",
+    "tests/golem-payment-chain.test.ts"
+  ],
+  "removed": [],
+  "interpretation": "Supplier library and its focused tests only. Main, configuration, contracts, dependency locks, deployment profiles and public assets remain byte-identical. This is source continuity, not a complete backend rerun."
+}

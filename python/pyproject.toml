@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "telomere-pilot-sdk"
+version = "0.1.0"
+description = "Bounded Telomere pilot API client with an explicit external wallet boundary"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.optional-dependencies]
+crypto = ["eth-account==0.13.7"]
+
+[tool.setuptools.packages.find]
+where = ["src"]

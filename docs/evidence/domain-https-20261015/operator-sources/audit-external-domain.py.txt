@@ -1,0 +1,185 @@
+"""External PC read-only HTTPS/static audit; no auth, wallet, signing or POST."""
+import base64
+import concurrent.futures
+import datetime
+import hashlib
+import http.client
+import json
+import pathlib
+import re
+import socket
+import ssl
+import urllib.parse
+
+ROOT = pathlib.Path(__file__).resolve().parent
+IP = '2.27.12.39'
+CONTEXT = ssl.create_default_context()
+assert CONTEXT.check_hostname and CONTEXT.verify_mode == ssl.CERT_REQUIRED
+MANIFEST_BYTES = (ROOT / 'public-static-website-manifest.json').read_bytes()
+MANIFEST = json.loads(MANIFEST_BYTES)
+
+
+def now():
+    return datetime.datetime.now(datetime.timezone.utc).isoformat()
+
+
+def sha(data):
+    return hashlib.sha256(data).hexdigest()
+
+
+class VerifiedHTTPS(http.client.HTTPSConnection):
+    def __init__(self, host, override=False):
+        super().__init__(host, timeout=30, context=CONTEXT)
+        self.override = override
+
+    def connect(self):
+        raw = socket.create_connection((IP if self.override else self.host, 443), timeout=20)
+        self.sock = CONTEXT.wrap_socket(raw, server_hostname=self.host)
+
+
+def tls_probe(host, override):
+    result = {'host': host, 'connectMode': 'fixed-IP with real hostname SNI' if override else 'normal system DNS',
+              'checkHostname': True, 'verifyMode': 'CERT_REQUIRED'}
+    connection = VerifiedHTTPS(host, override)
+    try:
+        connection.connect()
+        cert = connection.sock.getpeercert()
+        result.update({'verified': True, 'peerAddress': connection.sock.getpeername()[0],
+                       'protocol': connection.sock.version(), 'cipher': connection.sock.cipher(),
+                       'certificateSha256': sha(connection.sock.getpeercert(binary_form=True)),
+                       'certificate': {key: cert.get(key) for key in
+                                       ['subject', 'issuer', 'serialNumber', 'notBefore', 'notAfter', 'subjectAltName']}})
+    except Exception as error:
+        result.update({'verified': False, 'errorType': type(error).__name__, 'error': str(error)[:500]})
+    finally:
+        connection.close()
+    return result
+
+
+def get(host, path, headers=None, override=True):
+    connection = VerifiedHTTPS(host, override)
+    try:
+        connection.request('GET', path, headers={'Accept-Encoding': 'identity', **(headers or {})})
+        response = connection.getresponse()
+        body = response.read(33554433)
+        return response.status, {key.lower(): value for key, value in response.getheaders()}, body
+    finally:
+        connection.close()
+
+
+started = now()
+dns = {}
+for host in ['telomere.sh', 'review.telomere.sh']:
+    try:
+        dns[host] = {'addresses': sorted(set(item[4][0] for item in socket.getaddrinfo(host, 443)))}
+    except socket.gaierror as error:
+        dns[host] = {'errorType': type(error).__name__, 'error': str(error)}
+tls = [tls_probe(host, override) for host in ['telomere.sh', 'review.telomere.sh'] for override in [False, True]]
+assert all(item['verified'] for item in tls if item['connectMode'].startswith('fixed-IP'))
+normal_apex_ok = next(item['verified'] for item in tls if item['host'] == 'telomere.sh' and item['connectMode'] == 'normal system DNS')
+USE_OVERRIDE = not normal_apex_ok
+root_status, root_headers, root_body = get('telomere.sh', '/', override=USE_OVERRIDE)
+policy = root_headers.get('content-security-policy', '')
+assert root_status == 200 and "frame-ancestors 'none'" in policy and "worker-src 'self' blob:" in policy
+assert "connect-src 'self'" in policy and "script-src 'self' 'sha256-" in policy
+policy_sha = sha(policy.encode())
+
+MIME = {'.html': {'text/html'}, '.js': {'application/javascript', 'text/javascript'},
+        '.css': {'text/css'}, '.json': {'application/json'}, '.svg': {'image/svg+xml'},
+        '.png': {'image/png'}, '.jpg': {'image/jpeg'}, '.woff2': {'font/woff2'},
+        '.mp4': {'video/mp4'}, '.wav': {'audio/wav', 'audio/x-wav', 'audio/wave'}}
+
+
+def asset(entry):
+    path = '/' + urllib.parse.quote(entry['path'], safe='/')
+    status, headers, body = get('telomere.sh', path, override=USE_OVERRIDE)
+    mime = headers.get('content-type', '').split(';', 1)[0].lower()
+    inline = []
+    if entry['path'].endswith('.html'):
+        text = body.decode('utf-8')
+        for match in re.finditer(r'<script\b[^>]*>([\s\S]*?)</script\s*>', text, re.I):
+            if match[1].strip():
+                value = "'sha256-" + base64.b64encode(hashlib.sha256(match[1].encode()).digest()).decode() + "'"
+                inline.append(value in policy)
+    checks = {'status': status == 200, 'bytes': len(body) == entry['bytes'],
+              'sha256': sha(body) == entry['sha256'],
+              'mime': mime in MIME[pathlib.Path(entry['path']).suffix],
+              'nosniff': headers.get('x-content-type-options') == 'nosniff',
+              'sameCsp': sha(headers.get('content-security-policy', '').encode()) == policy_sha,
+              'inlineScriptsPermittedByFiniteHashes': all(inline)}
+    return {'path': entry['path'], 'status': status, 'bytes': len(body), 'sha256': sha(body),
+            'expectedBytes': entry['bytes'], 'expectedSha256': entry['sha256'],
+            'contentType': headers.get('content-type'), 'contentEncoding': headers.get('content-encoding'),
+            'prefix64Sha256': sha(body[:64]), 'inlineScriptsChecked': len(inline),
+            'checks': checks, 'passed': all(checks.values())}
+
+
+with concurrent.futures.ThreadPoolExecutor(max_workers=8) as pool:
+    assets = list(pool.map(asset, MANIFEST['files']))
+asset_by_path = {item['path']: item for item in assets}
+manifest_by_path = {item['path']: item for item in MANIFEST['files']}
+route_specs = [('/', 200, 'index.html'), ('/about-us/', 200, 'about-us/index.html'),
+               ('/terms/', 200, 'terms/index.html'), ('/app', 200, 'page.html'),
+               ('/dashboard', 200, 'dashboard/index.html'), ('/api/', 503, None), ('/health/live', 503, None),
+               ('/docs/', 404, None), ('/src/main.ts', 404, None), ('/node_modules/', 404, None),
+               ('/.env', 404, None), ('/assets/not-present.js', 404, None), ('/missing/file.js', 404, None)]
+routes = []
+for path, expected, source in route_specs:
+    status, headers, body = get('telomere.sh', path, override=USE_OVERRIDE)
+    expected_hash = manifest_by_path[source]['sha256'] if source else None
+    routes.append({'path': path, 'status': status, 'expectedStatus': expected, 'contentType': headers.get('content-type'),
+                   'sha256': sha(body), 'expectedSha256': expected_hash,
+                   'passed': status == expected and (expected_hash is None or sha(body) == expected_hash)})
+ranges = []
+for entry in MANIFEST['files']:
+    if pathlib.Path(entry['path']).suffix not in ['.mp4', '.wav']:
+        continue
+    status, headers, body = get('telomere.sh', '/' + entry['path'], {'Range': 'bytes=0-63'}, override=USE_OVERRIDE)
+    checks = {'status': status == 206, 'length': len(body) == 64,
+              'contentRange': headers.get('content-range') == 'bytes 0-63/' + str(entry['bytes']),
+              'prefixHash': sha(body) == asset_by_path[entry['path']]['prefix64Sha256']}
+    ranges.append({'path': entry['path'], 'status': status, 'bytes': len(body),
+                   'contentRange': headers.get('content-range'), 'contentType': headers.get('content-type'),
+                   'checks': checks, 'passed': all(checks.values())})
+review = []
+for path in ['/', '/deployment.js', '/api/plan']:
+    status, headers, body = get('review.telomere.sh', path)
+    review.append({'path': path, 'status': status, 'wwwAuthenticate': headers.get('www-authenticate'),
+                   'bodyRetained': False,
+                   'passed': status == 401 and headers.get('www-authenticate', '').startswith('Basic ')})
+redirects = []
+for host in ['telomere.sh', 'review.telomere.sh']:
+    connection = http.client.HTTPConnection(IP, timeout=15)
+    try:
+        connection.request('GET', '/', headers={'Host': host})
+        response = connection.getresponse(); response.read(65536)
+        location = response.getheader('Location')
+        redirects.append({'host': host, 'status': response.status, 'location': location,
+                          'passed': response.status in [301, 308] and location == 'https://' + host + '/'})
+    finally:
+        connection.close()
+result = {'schemaVersion': 1, 'startedAt': started, 'finishedAt': now(),
+          'scope': 'External local-PC TLS/SNI, all public static bytes/MIME/CSP, safe routes/ranges and review unauthenticated challenge only',
+          'publicIp': IP, 'dns': dns, 'tls': tls,
+          'assetConnectMode': 'fixed-IP with real hostname certificate validation' if USE_OVERRIDE else 'normal system DNS with real hostname certificate validation',
+          'staticManifestSha256': sha(MANIFEST_BYTES), 'sourceCommit': MANIFEST['sourceCommit'],
+          'csp': {'value': policy, 'sha256': policy_sha, 'rootHeaders': root_headers},
+          'assets': assets, 'assetFiles': len(assets), 'assetBytes': sum(item['bytes'] for item in assets),
+          'assetFailures': [item['path'] for item in assets if not item['passed']],
+          'routes': routes, 'ranges': ranges, 'reviewUnauthenticated': review, 'httpRedirects': redirects,
+          'passed': all(item['passed'] for item in assets + routes + ranges + review + redirects),
+          'httpMethodsUsed': ['GET'], 'authenticatedRequests': 0, 'postRequests': 0,
+          'walletRequests': 0, 'financialRequests': 0, 'publicTransactionsSent': 0,
+          'privateFilesOrAuthSecretsRead': False, 'remoteMutations': 0,
+          'browserAnimationsOrMobileWalletAcceptanceClaimed': False}
+output = ROOT / 'external-domain-audit.json'
+output.write_text(json.dumps(result, indent=2) + '\n', encoding='utf-8')
+summary = {'path': str(output), 'sha256': sha(output.read_bytes()), 'startedAt': started, 'finishedAt': result['finishedAt'],
+           'passed': result['passed'], 'normalDns': dns,
+           'tls': [{key: item.get(key) for key in ['host', 'connectMode', 'verified', 'peerAddress', 'errorType', 'certificateSha256']} for item in tls],
+           'assetFiles': len(assets), 'assetBytes': result['assetBytes'], 'assetFailures': result['assetFailures'],
+           'routeFailures': [item for item in routes if not item['passed']], 'ranges': ranges,
+           'reviewUnauthenticated': review, 'httpRedirects': redirects,
+           'authenticatedRequests': 0, 'walletRequests': 0, 'financialRequests': 0}
+(ROOT / 'external-domain-audit-summary.json').write_text(json.dumps(summary, indent=2) + '\n', encoding='utf-8')
+print(json.dumps(summary, indent=2))

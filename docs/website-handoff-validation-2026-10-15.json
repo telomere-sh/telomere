@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "scope": "Local commit preparation; no public wallet, GPU Cell, staging activation, or push",
+  "baseCommit": "e5ba8d8afe3f057e255aaf64b53d91c38de654d4",
+  "build": {
+    "command": "npm run build",
+    "exitCode": 0
+  },
+  "focusedTests": {
+    "command": "npx vitest run tests/website.test.ts tests/service.test.ts tests/paid-cpu-job-finish-runner.test.ts tests/paid-cpu-job-replan-runner.test.ts tests/mcp-platform.test.ts tests/paid-cpu-jobs.test.ts --reporter=json",
+    "passed": 124,
+    "failed": 0,
+    "skipped": 0,
+    "rawReport": {
+      "path": "docs/evidence/commit-readiness-20261015-tests.json",
+      "sha256": "c4eb8a65e62679115c8ac050f52c4c4787028a724731dc43d3288a7ea9e12dd7"
+    }
+  },
+  "frontendSyntax": {
+    "command": "npm run check (cwd website)",
+    "exitCode": 0
+  },
+  "frontendIntegrity": {
+    "archiveSha256": "fcce1b980083ed4bdcde00bb37677dc256dc835dc3ceeac3e6d86bca3ec7f026",
+    "originalFilesByteIdentical": 411,
+    "builtPublicAssetsByteIdentical": 312,
+    "importManifest": {
+      "path": "docs/evidence/website-handoff-import-20261015.json",
+      "sha256": "e4ac879a6550ca5937104d549e293c2cc56a94cc5c30bb2312f80b9ff86856a7"
+    }
+  },
+  "compiledWebsite": {
+    "exactResponseBodies": 312,
+    "reservedOrMissingPathsRefused": 7,
+    "videoRangeStatus": 206,
+    "videoRangeBytes": 1024
+  },
+  "runtimeAnimationAcceptance": "Incomplete; browser observation covered initial page rendering, loaded fonts/images and mounted sections only. All interactive animation, responsive and reduced-motion cases are not accepted.",
+  "wholeBackendRegression": "Not rerun; this is a focused cohort and does not replace earlier failed full-run evidence.",
+  "workingTreeInputs": [
+    {
+      "path": "src/website.ts",
+      "sha256": "dfccecc36c530acfd65c944d38f07998bdd1f95bc8d517e1268fbd2796d3cdc1"
+    },
+    {
+      "path": "src/app.ts",
+      "sha256": "81d697ba0a220cc92ed9fd74fa9be4137970e2b8fae46d068f45db2b1c6aac2e"
+    },
+    {
+      "path": "src/main.ts",
+      "sha256": "59ed88a8a16d5f27193936011f2d07c58b157afa7ce2476b33ee5e42d4b74bf7"
+    },
+    {
+      "path": "scripts/copy-public.mjs",
+      "sha256": "41507ae5525a70131a5f3691f6b8ab4f8cfcde5cf1f3860254f285184e33b824"
+    },
+    {
+      "path": "scripts/demo.ts",
+      "sha256": "ad203e988a91570c328d3b7278d0409c2f079841591af8ca24be684a49958d01"
+    },
+    {
+      "path": "tests/website.test.ts",
+      "sha256": "735ecf5487bb93d91ad7133367b734e840d20f005104e78a5785952e0285d2d5"
+    }
+  ]
+}

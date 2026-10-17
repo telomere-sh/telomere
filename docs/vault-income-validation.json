@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "recordedAtUtc": "2026-10-12T11:52:33.8902621Z",
+  "scope": "Exact EIP-3009 atomic original-payer ingress into PlatformAgentVault",
+  "sourceFreeze": true,
+  "localAcceptance": {
+    "command": "npx vitest run tests/vault-income.test.ts --reporter=dot",
+    "files": 1,
+    "tests": 50,
+    "passed": 50,
+    "failed": 0,
+    "skipped": 0,
+    "durationSeconds": 51.94,
+    "testDurationSeconds": 50.27,
+    "typecheck": {
+      "command": "npm run typecheck",
+      "exitCode": 0
+    },
+    "independentReadOnlyReview": "No remaining actionable finding reported by generic_cpu_inventory after final source review"
+  },
+  "actualComponents": [
+    "disposable Anvil chain 31337",
+    "PlatformSelectionRegistry and PlatformAgentVault clones",
+    "real PlatformRunEscrow and bonded-host fixture",
+    "canonical TransferWithAuthorization inherited unchanged from the local EIP-3009 fixture",
+    "local-only default-zero token failure switches",
+    "authenticated Hono facilitator HTTP routes",
+    "filesystem PGlite close/reopen before first send and after ambiguous send"
+  ],
+  "covered": [
+    "external and unrelated-agent income with ceil 1% fee and exact gross/net/treasury conservation",
+    "owner, own agent, parent/child, controller and treasury original-payer subsidy exclusions",
+    "replay, bad signatures/destination/time, zero and uint96 overflow",
+    "short incoming/fee transfer full balances, token nonce, used-reference and classification rollback",
+    "frozen, Dormant and killed incoming classification plus Dead full rollback",
+    "read-only verification and authenticated exact HTTP settlement",
+    "uppercase signature byte interoperability",
+    "immutable signed raw/hash/nonce restart and ambiguous-send recovery",
+    "direct-token and other-outer-hash reconciliation with no receipt adoption",
+    "actual reorg cached-success downgrade and same-hash recovery",
+    "actual settled/reverted final-depth loss with receipt block still canonical",
+    "raw journal tamper and mutations of an actual receipt reference/source/fee/treasury/classification/removal",
+    "reviewed chain/token/registry/implementation/agent/treasury mismatches and upto refusal"
+  ],
+  "boundaries": {
+    "walletRequired": false,
+    "publicChainTransactions": false,
+    "paidProviderRequests": false,
+    "publicAssetCapabilityVerified": false,
+    "mainApplicationMounted": false,
+    "publicDeployment": false,
+    "supportedScheme": "exact",
+    "unsupportedScheme": "upto",
+    "legacyGatewayAndRoutesEdited": false,
+    "legacyServiceFinalityFix": "Owned and validated separately by root; required by the reorg replay acceptance",
+    "linuxAcceptance": "Separate root combined snapshot validation",
+    "externalAuthorizationConsumption": "Explicit income_authorization_reconciliation_required; original journal hash and bytes retained"
+  },
+  "sourceHashes": [
+    {
+      "path": "contracts/PlatformAgentVault.sol",
+      "sha256": "3e2640f17ae4e9c3623a5faebb107a943caad207116f73e2d1252238a342c370"
+    },
+    {
+      "path": "src/payments/vault-income-chain.ts",
+      "sha256": "27f7e44045e17f5a623e0bc8c30a80472a0c5677e2aa3d3a2b872f08fd6cfdba"
+    },
+    {
+      "path": "tests/vault-income.test.ts",
+      "sha256": "f1dd5d76ab8bddfa3d3343e810d2f951ce8fb09634d9fab3efa06ee7d6e982ea"
+    }
+  ],
+  "validationHistory": [
+    {
+      "tests": 15,
+      "passed": 15,
+      "failed": 0,
+      "durationSeconds": 11.49,
+      "scope": "Initial contract-only actual Anvil acceptance"
+    },
+    {
+      "tests": 41,
+      "passed": 38,
+      "failed": 3,
+      "durationSeconds": 60.96,
+      "scope": "First integrated adapter suite",
+      "failures": [
+        "Fixture queried single-connection PGlite from broadcast while service held its transaction, causing timeout; replaced by actual durable close/reopen before the first send",
+        "Fixture expected raw-journal error after newly strengthened amount/terms guard; corrected to isolate bound nonce corruption and added separate amount refusal",
+        "Wrong-signer fixture accidentally simulated an invalid selector before signing; corrected to sign the valid ingress calldata using the wrong account"
+      ],
+      "classification": "These three failed cases were fixture or assertion corrections, not three demonstrated production regressions"
+    },
+    {
+      "tests": 42,
+      "passed": 42,
+      "failed": 0,
+      "durationSeconds": 55.51,
+      "scope": "Corrected integrated fixtures plus actual uppercase signature interoperability"
+    },
+    {
+      "tests": 45,
+      "passed": 45,
+      "failed": 0,
+      "durationSeconds": 51.09,
+      "scope": "Additional raw amount guard and actual settled/reverted lost-final-depth races"
+    },
+    {
+      "tests": 50,
+      "passed": 50,
+      "failed": 0,
+      "durationSeconds": 51.94,
+      "scope": "Final frozen source: added short incoming/fee delta rollback and frozen/Dormant/killed acceptance"
+    }
+  ],
+  "reviewCorrections": [
+    "Case-insensitive signed calldata byte equality for valid uppercase signature hex",
+    "Fresh final confirmation depth and transaction-RPC chain checks, including reverted receipts",
+    "Exact authorization/accepted amount and full exact terms binding",
+    "Historical receipt-block registry/implementation/clone code and reviewed treasury fee destination checks"
+  ]
+}

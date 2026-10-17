@@ -1,0 +1,16 @@
+{
+  "checkedAt": "2026-10-08T17:52:58.022Z",
+  "scope": "Actual private VPS after stopped backup/restart; local TypeScript client decryption",
+  "chainId": 31337,
+  "checkpointId": "0x5d86aced96c7a4544ebcc982b5fbcb47a21b34b203ab1ff8cc50f2a0840773b6",
+  "encryptedBytes": 93,
+  "checkpoints": 1,
+  "restoredStateSha256": "d3f19599631191ddfcca73ebbf7bc882f3f8ee7655e49e6cdc272845d632226c",
+  "aeadAuthenticated": true,
+  "recoveryKeySentToApi": false,
+  "plaintextSentToApi": false,
+  "newUploads": 0,
+  "newCpuDispatches": 0,
+  "walletSubmissions": 0,
+  "paidNearPosts": 0
+}

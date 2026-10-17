@@ -1,0 +1,25 @@
+[Unit]
+Description=Validate and preserve last-good Telomere staging chain state
+After=telomere-staging-chain.service
+ConditionPathExists=/opt/telomere-pilot/data/chain.json
+ConditionPathIsDirectory=/opt/telomere-pilot/checkpoints/staging-chain
+
+[Service]
+Type=oneshot
+User=telomere
+Group=telomere
+UMask=0077
+ExecStart=/usr/bin/python3 -B /opt/telomere-pilot/checkpoint-operator/chain-checkpoint.py --chain-id 31337
+TimeoutStartSec=30
+MemoryMax=512M
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateDevices=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+ReadWritePaths=/opt/telomere-pilot/checkpoints/staging-chain
+RestrictAddressFamilies=AF_INET
+IPAddressDeny=any
+IPAddressAllow=127.0.0.1/32

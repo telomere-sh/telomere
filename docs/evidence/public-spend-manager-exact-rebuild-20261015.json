@@ -1,0 +1,549 @@
+{
+  "checkedAt": "2026-10-15T01:28:32.996Z",
+  "compiler": "0.8.28+commit.7893614a.Emscripten.clang",
+  "sourceChecks": [
+    {
+      "path": "lib/account-abstraction/contracts/core/Helpers.sol",
+      "metadataKeccak256": "0x591c87519f7155d1909210276b77925ab2722a99b7b5d5649aecc36ebbdb045a",
+      "pinnedPath": "lib/account-abstraction/contracts/core/Helpers.sol",
+      "pinnedKeccak256": "0xd0e3f0ed1a540a380fab5dda8aeafcace263802e60095deec17cc96dd1590743",
+      "exactTextMatches": false,
+      "lineEndingNormalizedMatches": true
+    },
+    {
+      "path": "lib/account-abstraction/contracts/interfaces/IAccount.sol",
+      "metadataKeccak256": "0x556a0e5980de18e90b115553ed502408155ba35f58642823010d9288047bc418",
+      "pinnedPath": "lib/account-abstraction/contracts/interfaces/IAccount.sol",
+      "pinnedKeccak256": "0x3dc911b985542365d3e321c86dd144ea20f9fde8662d8bdfc1c2dc778750c74b",
+      "exactTextMatches": false,
+      "lineEndingNormalizedMatches": true
+    },
+    {
+      "path": "lib/account-abstraction/contracts/interfaces/IAggregator.sol",
+      "metadataKeccak256": "0x060e9ddb0152250c269ba0640dc5753834ac44cf182a2837d508c0c529cae26a",
+      "pinnedPath": "lib/account-abstraction/contracts/interfaces/IAggregator.sol",
+      "pinnedKeccak256": "0xfc25632a56d81f044b9faf18d3bc7cf75cf45c107a5f29c90cc9b746b9a8ab6d",
+      "exactTextMatches": false,
+      "lineEndingNormalizedMatches": true
+    },
+    {
+      "path": "lib/account-abstraction/contracts/interfaces/IEntryPoint.sol",
+      "metadataKeccak256": "0x3a90bf308819ed125fa4202f880999caff8a8686633b8ddb79a30ca240d5b8f8",
+      "pinnedPath": "lib/account-abstraction/contracts/interfaces/IEntryPoint.sol",
+      "pinnedKeccak256": "0xe43f3d60c2df16d7c78f9da7067da1b0c7c66f61f60290552364992f0aaf13a3",
+      "exactTextMatches": false,
+      "lineEndingNormalizedMatches": true
+    },
+    {
+      "path": "lib/account-abstraction/contracts/interfaces/INonceManager.sol",
+      "metadataKeccak256": "0x509871e6c63663cdcc3eba19920fe84e991f38b289b1377ac3c3a6d9f22d7e12",
+      "pinnedPath": "lib/account-abstraction/contracts/interfaces/INonceManager.sol",
+      "pinnedKeccak256": "0xaac170aa38a3adde8ad100930d585a725e1217eee4b0828bab88dc387953bd35",
+      "exactTextMatches": false,
+      "lineEndingNormalizedMatches": true
+    },
+    {
+      "path": "lib/account-abstraction/contracts/interfaces/IPaymaster.sol",
+      "metadataKeccak256": "0x36858ba8685024974f533530420688da3454d29996ebc42e410673a1ed2ec456",
+      "pinnedPath": "lib/account-abstraction/contracts/interfaces/IPaymaster.sol",
+      "pinnedKeccak256": "0x85b50cfe3d3607171469704bc0583a91ac5b9c3a0dfabbf18d590bf7b9fb1fd4",
+      "exactTextMatches": false,
+      "lineEndingNormalizedMatches": true
+    },
+    {
+      "path": "lib/account-abstraction/contracts/interfaces/IStakeManager.sol",
+      "metadataKeccak256": "0xd227b02888cd4ac68daebcdfd992ec00f9fff66fa3b3bb16f656cd582fa3480f",
+      "pinnedPath": "lib/account-abstraction/contracts/interfaces/IStakeManager.sol",
+      "pinnedKeccak256": "0xda1caee7c7c1971432bad377ef0f92a1be3786af639900276448670eebe1e7d6",
+      "exactTextMatches": false,
+      "lineEndingNormalizedMatches": true
+    },
+    {
+      "path": "lib/account-abstraction/contracts/interfaces/UserOperation.sol",
+      "metadataKeccak256": "0x61374003361059087fdcf17967a7bba052badeaf5c7f0ae689166f8aafd3a45c",
+      "pinnedPath": "lib/account-abstraction/contracts/interfaces/UserOperation.sol",
+      "pinnedKeccak256": "0x1487b6ac6d5bb83af209fa1f272f0952d80e5789485946e2f2718bcc4c190f6d",
+      "exactTextMatches": false,
+      "lineEndingNormalizedMatches": true
+    },
+    {
+      "path": "lib/magic-spend/src/MagicSpend.sol",
+      "metadataKeccak256": "0xab0b6af28687ab4676b94455d15b6515631f96814365b0613e2e6a466338cd92",
+      "pinnedPath": "lib/magicspend/src/MagicSpend.sol",
+      "pinnedKeccak256": "0xb566c4f53a94042f01d1a1c64c91fac61e2df10485a0fdf0305e448ad4bfe5b6",
+      "exactTextMatches": false,
+      "lineEndingNormalizedMatches": true
+    },
+    {
+      "path": "lib/openzeppelin-contracts/contracts/interfaces/IERC1271.sol",
+      "metadataKeccak256": "0x0a7e89ffa57127a2e75931be926a11094b6ee2955632a5dce0228f3d8e98eb02",
+      "pinnedPath": "lib/openzeppelin-contracts/contracts/interfaces/IERC1271.sol",
+      "pinnedKeccak256": "0x155d1c80c2aa8e368d009cbf1e958a9835a8ec96b2b6b8ac9eb4efe74b163ff1",
+      "exactTextMatches": false,
+      "lineEndingNormalizedMatches": true
+    },
+    {
+      "path": "lib/openzeppelin-contracts/contracts/interfaces/IERC1363.sol",
+      "metadataKeccak256": "0x9f21f1bcc51daf7fe3998608d7eeb96b16a9c3816898a0cf6a9407bd105c9253",
+      "pinnedPath": "lib/openzeppelin-contracts/contracts/interfaces/IERC1363.sol",
+      "pinnedKeccak256": "0xfbaba9f2fbbd81f7d9793db3a0228dd3a2f33235538702c3bf2151c841b03a25",
+      "exactTextMatches": false,
+      "lineEndingNormalizedMatches": true
+    },
+    {
+      "path": "lib/openzeppelin-contracts/contracts/interfaces/IERC165.sol",
+      "metadataKeccak256": "0xde7e9fd9aee8d4f40772f96bb3b58836cbc6dfc0227014a061947f8821ea9724",
+      "pinnedPath": "lib/openzeppelin-contracts/contracts/interfaces/IERC165.sol",
+      "pinnedKeccak256": "0x4764a3cb550846ec714888e19407f05c8d3cf56181d4a090f451beb8064b1a41",
+      "exactTextMatches": false,
+      "lineEndingNormalizedMatches": true
+    },
+    {
+      "path": "lib/openzeppelin-contracts/contracts/interfaces/IERC20.sol",
+      "metadataKeccak256": "0xce41876e78d1badc0512229b4d14e4daf83bc1003d7f83978d18e0e56f965b9c",
+      "pinnedPath": "lib/openzeppelin-contracts/contracts/interfaces/IERC20.sol",
+      "pinnedKeccak256": "0xae64e8bd850602d50ae007a0beab0683d1c46388649332e00a7b9791739612da",
+      "exactTextMatches": false,
+      "lineEndingNormalizedMatches": true
+    },
+    {
+      "path": "lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol",
+      "metadataKeccak256": "0xee2337af2dc162a973b4be6d3f7c16f06298259e0af48c5470d2839bfa8a22f4",
+      "pinnedPath": "lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol",
+      "pinnedKeccak256": "0x2c8306cad55b8b14b81a62d4a54e41a024dd66b31986ec8d65e5e0a4b012fd67",
+      "exactTextMatches": false,
+      "lineEndingNormalizedMatches": true
+    },
+    {
+      "path": "lib/openzeppelin-contracts/contracts/token/ERC20/utils/SafeERC20.sol",
+      "metadataKeccak256": "0x18436638da96539b6a9f971f8ce332c6fcad32d15c988af689b174f753d9936b",
+      "pinnedPath": "lib/openzeppelin-contracts/contracts/token/ERC20/utils/SafeERC20.sol",
+      "pinnedKeccak256": "0x161cb072396187a9801e9082ec4076ad01b502f0b25f8838188cab4dbc06e308",
+      "exactTextMatches": false,
+      "lineEndingNormalizedMatches": true
+    },
+    {
+      "path": "lib/openzeppelin-contracts/contracts/token/ERC721/IERC721.sol",
+      "metadataKeccak256": "0xe0e3a2099f2e2ce3579dd35548f613928739642058dfec95b1745f93364ce3de",
+      "pinnedPath": "lib/openzeppelin-contracts/contracts/token/ERC721/IERC721.sol",
+      "pinnedKeccak256": "0xd69b15ed0963b90a77be20e2b83cbffc22e19e1363f2cdb1e27bf14f8af40d1a",
+      "exactTextMatches": false,
+      "lineEndingNormalizedMatches": true
+    },
+    {
+      "path": "lib/openzeppelin-contracts/contracts/utils/Address.sol",
+      "metadataKeccak256": "0x80b4189de089dc632b752b365a16c5063b58cc24da0dd38b82f2c25f56d25c84",
+      "pinnedPath": "lib/openzeppelin-contracts/contracts/utils/Address.sol",
+      "pinnedKeccak256": "0xb9b079f82086564647ccb0d393dff26c74ed2337ff6393a05464fb82e63e4a06",
+      "exactTextMatches": false,
+      "lineEndingNormalizedMatches": true
+    },
+    {
+      "path": "lib/openzeppelin-contracts/contracts/utils/Base64.sol",
+      "metadataKeccak256": "0x4bfbd4174c939234420cb69db68e5a4f57ca538b5c1189206c8f34743326c74f",
+      "pinnedPath": "lib/openzeppelin-contracts/contracts/utils/Base64.sol",
+      "pinnedKeccak256": "0x50197ede6fad5a0d561a4e69449fd68320aa3f21ecc83f442f5e8e999cde0052",
+      "exactTextMatches": false,
+      "lineEndingNormalizedMatches": true
+    },
+    {
+      "path": "lib/openzeppelin-contracts/contracts/utils/Errors.sol",
+      "metadataKeccak256": "0xc452b8c0ab5a57e6ca49c4fbe6aead2460c2f8d60d58bc60af68e559b7ca1179",
+      "pinnedPath": "lib/openzeppelin-contracts/contracts/utils/Errors.sol",
+      "pinnedKeccak256": "0xe8bb04f71f660e38743a7cd3333f7b9e287a75de611f392c02b8817bb7670ed9",
+      "exactTextMatches": false,
+      "lineEndingNormalizedMatches": true
+    },
+    {
+      "path": "lib/openzeppelin-contracts/contracts/utils/introspection/ERC165Checker.sol",
+      "metadataKeccak256": "0xa2a74d4098651d8729e7a83556077e0597d1ee6e2f03b7c94fe87cb5a3a9ee54",
+      "pinnedPath": "lib/openzeppelin-contracts/contracts/utils/introspection/ERC165Checker.sol",
+      "pinnedKeccak256": "0xf7850bc09f9d0c4ca0cdf3cf94cb1c28fea94ba481a403d19926c38e0210d7bf",
+      "exactTextMatches": false,
+      "lineEndingNormalizedMatches": true
+    },
+    {
+      "path": "lib/openzeppelin-contracts/contracts/utils/introspection/IERC165.sol",
+      "metadataKeccak256": "0xc859863e3bda7ec3cddf6dafe2ffe91bcbe648d1395b856b839c32ee9617c44c",
+      "pinnedPath": "lib/openzeppelin-contracts/contracts/utils/introspection/IERC165.sol",
+      "pinnedKeccak256": "0x6c534182213c28d01c8f51c4152901c9626ca7c29cc41d59a2c5434cf90c3f5b",
+      "exactTextMatches": false,
+      "lineEndingNormalizedMatches": true
+    },
+    {
+      "path": "lib/smart-wallet/src/CoinbaseSmartWallet.sol",
+      "metadataKeccak256": "0x97641aff96c3d2861f042ed9a84062ea4f62188c72a616b463f182374a93bac5",
+      "pinnedPath": "lib/smart-wallet/src/CoinbaseSmartWallet.sol",
+      "pinnedKeccak256": "0x227e5f293906f530f8bce8175bf2db4564b31b11959eebf509c0b947b9289cef",
+      "exactTextMatches": false,
+      "lineEndingNormalizedMatches": true
+    },
+    {
+      "path": "lib/smart-wallet/src/ERC1271.sol",
+      "metadataKeccak256": "0xa9e22c15b7bffce561ab4fcb430a796e306acbf1c8be757b9a2f15546e96ddd2",
+      "pinnedPath": "lib/smart-wallet/src/ERC1271.sol",
+      "pinnedKeccak256": "0xe1ae472b0f30b2708f91a0e4c0ddd1fa29f6b4dd9a869f188380fe4e30f4ce56",
+      "exactTextMatches": false,
+      "lineEndingNormalizedMatches": true
+    },
+    {
+      "path": "lib/smart-wallet/src/MultiOwnable.sol",
+      "metadataKeccak256": "0x5d7763c89efcbfc8e139daceb1d9908ad181b242c0f20e0cf89271b9a3355a59",
+      "pinnedPath": "lib/smart-wallet/src/MultiOwnable.sol",
+      "pinnedKeccak256": "0xd6c5fe0ef2d859fba810e6c80347cc0d71a1641ebe1d2032c222720ea99ffbac",
+      "exactTextMatches": false,
+      "lineEndingNormalizedMatches": true
+    },
+    {
+      "path": "lib/solady/src/accounts/Receiver.sol",
+      "metadataKeccak256": "0x9bf48dca73f428c20a0878a5a97d2d66626f835b077c012fd5b1ba6389feb2d0",
+      "pinnedPath": "lib/solady/src/accounts/Receiver.sol",
+      "pinnedKeccak256": "0xd8a0e9035d4f0973a8ae5f70e3cdc34f77e8487253747d84f3da766359ced2b9",
+      "exactTextMatches": false,
+      "lineEndingNormalizedMatches": true
+    },
+    {
+      "path": "lib/solady/src/auth/Ownable.sol",
+      "metadataKeccak256": "0xc208cdd9de02bbf4b5edad18b88e23a2be7ff56d2287d5649329dc7cda64b9a3",
+      "pinnedPath": "lib/solady/src/auth/Ownable.sol",
+      "pinnedKeccak256": "0xb3769ed6955fa7b83225d4b9d9e4af9222dcf31d0cae3e1ae2eade93aae742d3",
+      "exactTextMatches": false,
+      "lineEndingNormalizedMatches": true
+    },
+    {
+      "path": "lib/solady/src/utils/EIP712.sol",
+      "metadataKeccak256": "0xb5c4c8ac5368c9785b4e30314f4ad6f3ae13bdc21679007735681d13da797bec",
+      "pinnedPath": "lib/solady/src/utils/EIP712.sol",
+      "pinnedKeccak256": "0x5c7c8e49bc7eaf88638358e382445bad1a899e3421fc2a1c6fe3858c91a9459c",
+      "exactTextMatches": false,
+      "lineEndingNormalizedMatches": true
+    },
+    {
+      "path": "lib/solady/src/utils/LibString.sol",
+      "metadataKeccak256": "0xbb90caa572b7f65689b74867ec211fed8cde92714314101f4287d00a40d95ab2",
+      "pinnedPath": "lib/solady/src/utils/LibString.sol",
+      "pinnedKeccak256": "0xc75ed0cbbd2cc2f201dfc4f4bfe0e17aeaf3d0a41458dd145fd57a934d25db4e",
+      "exactTextMatches": false,
+      "lineEndingNormalizedMatches": true
+    },
+    {
+      "path": "lib/solady/src/utils/SafeTransferLib.sol",
+      "metadataKeccak256": "0x583f47701d9b47bb3ef80fcabbbd62fbb58a01733b7a57e19658b4b02468883a",
+      "pinnedPath": "lib/solady/src/utils/SafeTransferLib.sol",
+      "pinnedKeccak256": "0xe9600b6b6a2c196793211ad7322268cc88546c5bb0c79927907ce178ce1bee2e",
+      "exactTextMatches": false,
+      "lineEndingNormalizedMatches": true
+    },
+    {
+      "path": "lib/solady/src/utils/SignatureCheckerLib.sol",
+      "metadataKeccak256": "0x472ad43dd67dcc0d548efbbc8779f34e56a7eb99d7a8b1c29af33fb03bbe9ffc",
+      "pinnedPath": "lib/solady/src/utils/SignatureCheckerLib.sol",
+      "pinnedKeccak256": "0x657c3c989a9f8192926a3ec2be782337caffcc7e9f5d3441c31dce69ca5359b9",
+      "exactTextMatches": false,
+      "lineEndingNormalizedMatches": true
+    },
+    {
+      "path": "lib/solady/src/utils/UUPSUpgradeable.sol",
+      "metadataKeccak256": "0x6d24f09177c512b8591c333541cb0f8e207a546cdde9ed4893adc5c77e21063e",
+      "pinnedPath": "lib/solady/src/utils/UUPSUpgradeable.sol",
+      "pinnedKeccak256": "0x2e7441fe4d1536cab66a49fc6d87df217665918ae277c3aa42a14f76f46a3967",
+      "exactTextMatches": false,
+      "lineEndingNormalizedMatches": true
+    },
+    {
+      "path": "lib/webauthn-sol/lib/FreshCryptoLib/solidity/src/FCL_ecdsa.sol",
+      "metadataKeccak256": "0x679d2e9a655cd7e156a0cfc24de0aca88d4e0b34a8e0dfe6a599f23af092f5a2",
+      "pinnedPath": "lib/webauthn-sol/lib/FreshCryptoLib/solidity/src/FCL_ecdsa.sol",
+      "pinnedKeccak256": "0x54dfeb4b9a81f45baf546c7504067d7f02dffd63daf6282a7dbd4699841d411d",
+      "exactTextMatches": false,
+      "lineEndingNormalizedMatches": true
+    },
+    {
+      "path": "lib/webauthn-sol/lib/FreshCryptoLib/solidity/src/FCL_elliptic.sol",
+      "metadataKeccak256": "0xac7bb3260a446851f45b8cb71e31d64ca469d7711ed04662092a9554f1283a38",
+      "pinnedPath": "lib/webauthn-sol/lib/FreshCryptoLib/solidity/src/FCL_elliptic.sol",
+      "pinnedKeccak256": "0x94d9aabb367cc8d6e19fa23ce98f2ccc029b8c51bfe464db357e6ae6dc214f8e",
+      "exactTextMatches": false,
+      "lineEndingNormalizedMatches": true
+    },
+    {
+      "path": "lib/webauthn-sol/src/WebAuthn.sol",
+      "metadataKeccak256": "0x8b940975249f72155110e5e5b4611fc9031330538183862b9d8f12ea7c30ad25",
+      "pinnedPath": "lib/webauthn-sol/src/WebAuthn.sol",
+      "pinnedKeccak256": "0x02d6a1eeca9e86568845c0e711374a410a9ad816ffcfe6acfa6a3b8fed89e26b",
+      "exactTextMatches": false,
+      "lineEndingNormalizedMatches": true
+    },
+    {
+      "path": "src/PublicERC6492Validator.sol",
+      "metadataKeccak256": "0xad7b5480bebd2a39248696136b987a5f1506dee0837b33952c1997ea81e9e692",
+      "pinnedPath": "src/PublicERC6492Validator.sol",
+      "pinnedKeccak256": "0x6afed1ae32a823000a2b5ce3af01b2f01c4f58d4bd8537f9db0bcaa359de5012",
+      "exactTextMatches": false,
+      "lineEndingNormalizedMatches": true
+    },
+    {
+      "path": "src/SpendPermissionManager.sol",
+      "metadataKeccak256": "0x8c50528f7812e960698188dd23c3ce6ea84e18790b924770b8c9b8c73d7cfac9",
+      "pinnedPath": "src/SpendPermissionManager.sol",
+      "pinnedKeccak256": "0x89ab37d4d89176f8ef1de14567bef3a6ebbae2d12032af27717702277dce1e64",
+      "exactTextMatches": false,
+      "lineEndingNormalizedMatches": false
+    }
+  ],
+  "sourceCount": 36,
+  "metadataMatchesAuthenticated": true,
+  "runtimeBytes": 12610,
+  "immutableReferences": {
+    "4418": [
+      {
+        "length": 32,
+        "start": 8161
+      }
+    ],
+    "4420": [
+      {
+        "length": 32,
+        "start": 8196
+      }
+    ],
+    "4422": [
+      {
+        "length": 32,
+        "start": 8276
+      }
+    ],
+    "4424": [
+      {
+        "length": 32,
+        "start": 8314
+      }
+    ],
+    "4426": [
+      {
+        "length": 32,
+        "start": 8128
+      }
+    ],
+    "8193": [
+      {
+        "length": 32,
+        "start": 1109
+      },
+      {
+        "length": 32,
+        "start": 4295
+      },
+      {
+        "length": 32,
+        "start": 4966
+      }
+    ],
+    "8196": [
+      {
+        "length": 32,
+        "start": 1222
+      },
+      {
+        "length": 32,
+        "start": 4041
+      }
+    ]
+  },
+  "immutableNames": {
+    "4418": "_cachedThis",
+    "4420": "_cachedChainId",
+    "4422": "_cachedNameHash",
+    "4424": "_cachedVersionHash",
+    "4426": "_cachedDomainSeparator",
+    "5973": "__self",
+    "8193": "PUBLIC_ERC6492_VALIDATOR",
+    "8196": "MAGIC_SPEND"
+  },
+  "networks": [
+    {
+      "chainId": 8453,
+      "observedRuntimeKeccak256": "0x2e9e272aa2f685632aae292aaf8bca67f22e4494ec831959bc6e9ff071378bea",
+      "reproducedRuntimeKeccak256": "0x2e9e272aa2f685632aae292aaf8bca67f22e4494ec831959bc6e9ff071378bea",
+      "exactFullRuntimeMatch": true,
+      "immutableChecks": [
+        {
+          "name": "_cachedThis",
+          "start": 8161,
+          "length": 32,
+          "expected": "0x000000000000000000000000f85210b21cc50302f477ba56686d2019dc9b67ad",
+          "observed": "0x000000000000000000000000f85210b21cc50302f477ba56686d2019dc9b67ad",
+          "matches": true
+        },
+        {
+          "name": "_cachedChainId",
+          "start": 8196,
+          "length": 32,
+          "expected": "0x0000000000000000000000000000000000000000000000000000000000002105",
+          "observed": "0x0000000000000000000000000000000000000000000000000000000000002105",
+          "matches": true
+        },
+        {
+          "name": "_cachedNameHash",
+          "start": 8276,
+          "length": 32,
+          "expected": "0x311b82c3b5f6bd8fa6ae3267eb11250937dd192896e5599773844f1246fd7389",
+          "observed": "0x311b82c3b5f6bd8fa6ae3267eb11250937dd192896e5599773844f1246fd7389",
+          "matches": true
+        },
+        {
+          "name": "_cachedVersionHash",
+          "start": 8314,
+          "length": 32,
+          "expected": "0xc89efdaa54c0f20c7adf612882df0950f5a951637e0307cdcb4c672f298b8bc6",
+          "observed": "0xc89efdaa54c0f20c7adf612882df0950f5a951637e0307cdcb4c672f298b8bc6",
+          "matches": true
+        },
+        {
+          "name": "_cachedDomainSeparator",
+          "start": 8128,
+          "length": 32,
+          "expected": "0x3187a50f7c68cc46a370ce9830bcd5da649e5f41d60dd75ba256ced435601516",
+          "observed": "0x3187a50f7c68cc46a370ce9830bcd5da649e5f41d60dd75ba256ced435601516",
+          "matches": true
+        },
+        {
+          "name": "PUBLIC_ERC6492_VALIDATOR",
+          "start": 1109,
+          "length": 32,
+          "expected": "0x000000000000000000000000cfce48b757601f3f351cb6f434cb0517aeee293d",
+          "observed": "0x000000000000000000000000cfce48b757601f3f351cb6f434cb0517aeee293d",
+          "matches": true
+        },
+        {
+          "name": "PUBLIC_ERC6492_VALIDATOR",
+          "start": 4295,
+          "length": 32,
+          "expected": "0x000000000000000000000000cfce48b757601f3f351cb6f434cb0517aeee293d",
+          "observed": "0x000000000000000000000000cfce48b757601f3f351cb6f434cb0517aeee293d",
+          "matches": true
+        },
+        {
+          "name": "PUBLIC_ERC6492_VALIDATOR",
+          "start": 4966,
+          "length": 32,
+          "expected": "0x000000000000000000000000cfce48b757601f3f351cb6f434cb0517aeee293d",
+          "observed": "0x000000000000000000000000cfce48b757601f3f351cb6f434cb0517aeee293d",
+          "matches": true
+        },
+        {
+          "name": "MAGIC_SPEND",
+          "start": 1222,
+          "length": 32,
+          "expected": "0x000000000000000000000000011a61c07dbf256a68256b1cb51a5e246730ab92",
+          "observed": "0x000000000000000000000000011a61c07dbf256a68256b1cb51a5e246730ab92",
+          "matches": true
+        },
+        {
+          "name": "MAGIC_SPEND",
+          "start": 4041,
+          "length": 32,
+          "expected": "0x000000000000000000000000011a61c07dbf256a68256b1cb51a5e246730ab92",
+          "observed": "0x000000000000000000000000011a61c07dbf256a68256b1cb51a5e246730ab92",
+          "matches": true
+        }
+      ]
+    },
+    {
+      "chainId": 84532,
+      "observedRuntimeKeccak256": "0x52485746e0e69bdb943d424484c356c7d3eb97599374f38b29e87dda34c521ee",
+      "reproducedRuntimeKeccak256": "0x52485746e0e69bdb943d424484c356c7d3eb97599374f38b29e87dda34c521ee",
+      "exactFullRuntimeMatch": true,
+      "immutableChecks": [
+        {
+          "name": "_cachedThis",
+          "start": 8161,
+          "length": 32,
+          "expected": "0x000000000000000000000000f85210b21cc50302f477ba56686d2019dc9b67ad",
+          "observed": "0x000000000000000000000000f85210b21cc50302f477ba56686d2019dc9b67ad",
+          "matches": true
+        },
+        {
+          "name": "_cachedChainId",
+          "start": 8196,
+          "length": 32,
+          "expected": "0x0000000000000000000000000000000000000000000000000000000000014a34",
+          "observed": "0x0000000000000000000000000000000000000000000000000000000000014a34",
+          "matches": true
+        },
+        {
+          "name": "_cachedNameHash",
+          "start": 8276,
+          "length": 32,
+          "expected": "0x311b82c3b5f6bd8fa6ae3267eb11250937dd192896e5599773844f1246fd7389",
+          "observed": "0x311b82c3b5f6bd8fa6ae3267eb11250937dd192896e5599773844f1246fd7389",
+          "matches": true
+        },
+        {
+          "name": "_cachedVersionHash",
+          "start": 8314,
+          "length": 32,
+          "expected": "0xc89efdaa54c0f20c7adf612882df0950f5a951637e0307cdcb4c672f298b8bc6",
+          "observed": "0xc89efdaa54c0f20c7adf612882df0950f5a951637e0307cdcb4c672f298b8bc6",
+          "matches": true
+        },
+        {
+          "name": "_cachedDomainSeparator",
+          "start": 8128,
+          "length": 32,
+          "expected": "0x883f123e973ff58f2ae32b4abb6c220919b25b4147bb3c39287c6323518fd11b",
+          "observed": "0x883f123e973ff58f2ae32b4abb6c220919b25b4147bb3c39287c6323518fd11b",
+          "matches": true
+        },
+        {
+          "name": "PUBLIC_ERC6492_VALIDATOR",
+          "start": 1109,
+          "length": 32,
+          "expected": "0x000000000000000000000000cfce48b757601f3f351cb6f434cb0517aeee293d",
+          "observed": "0x000000000000000000000000cfce48b757601f3f351cb6f434cb0517aeee293d",
+          "matches": true
+        },
+        {
+          "name": "PUBLIC_ERC6492_VALIDATOR",
+          "start": 4295,
+          "length": 32,
+          "expected": "0x000000000000000000000000cfce48b757601f3f351cb6f434cb0517aeee293d",
+          "observed": "0x000000000000000000000000cfce48b757601f3f351cb6f434cb0517aeee293d",
+          "matches": true
+        },
+        {
+          "name": "PUBLIC_ERC6492_VALIDATOR",
+          "start": 4966,
+          "length": 32,
+          "expected": "0x000000000000000000000000cfce48b757601f3f351cb6f434cb0517aeee293d",
+          "observed": "0x000000000000000000000000cfce48b757601f3f351cb6f434cb0517aeee293d",
+          "matches": true
+        },
+        {
+          "name": "MAGIC_SPEND",
+          "start": 1222,
+          "length": 32,
+          "expected": "0x000000000000000000000000011a61c07dbf256a68256b1cb51a5e246730ab92",
+          "observed": "0x000000000000000000000000011a61c07dbf256a68256b1cb51a5e246730ab92",
+          "matches": true
+        },
+        {
+          "name": "MAGIC_SPEND",
+          "start": 4041,
+          "length": 32,
+          "expected": "0x000000000000000000000000011a61c07dbf256a68256b1cb51a5e246730ab92",
+          "observed": "0x000000000000000000000000011a61c07dbf256a68256b1cb51a5e246730ab92",
+          "matches": true
+        }
+      ]
+    }
+  ],
+  "sameCanonicalMetadataBothChains": true,
+  "sameRequiredSourceContentsBothChains": true,
+  "officialReleaseManagerSource": {
+    "tag": "v1.0.0",
+    "commit": "54e99c7e73846418c9b5d2b4139c17d415a27d41",
+    "exactByteMatch": true,
+    "sourceSha256": "5d03f32798f47aa1606c2d88c87c23044be9bda280cca7a8ec95ff9ef4326909"
+  }
+}

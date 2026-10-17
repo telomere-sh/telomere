@@ -1,0 +1,136 @@
+{
+  "date": "2026-10-14",
+  "scope": "Base/native USDC backend migration; local engineering validation, not public deployment acceptance",
+  "baselineCommit": "6a47040",
+  "productionSourceFingerprint": {
+    "algorithm": "sha256 of sorted path UTF-8 + NUL + file bytes + NUL",
+    "files": 331,
+    "sha256": "e87f3aacf32e3d700298e6a63e38b689eb590924ae40e48781d96275877119a5"
+  },
+  "networks": {
+    "mainnet": 8453,
+    "testnet": 84532,
+    "local": 31337
+  },
+  "initialFullNodeRun": {
+    "tests": 2073,
+    "passed": 2013,
+    "failed": 6,
+    "skipped": 54,
+    "testFiles": 150,
+    "durationSeconds": 2835.33,
+    "report": "evidence/base-usdc-20261014-initial-node-tests.json",
+    "sha256": "bc36c005260e37578aa581c60fd9bad16cf9c274debcf48f339b53056ce2133a",
+    "failedFiles": [
+      {
+        "file": "asset-facets.test.ts",
+        "cases": [
+          "reviewed USDG authorization facet rejects old USDG payment profiles and requires native Base USDC archive/proxy pins"
+        ]
+      },
+      {
+        "file": "bridge-circle-usdc.test.ts",
+        "cases": [
+          "legacy ChainBridge Circle USDC guard rechecks Circle pins after a new settlement is signed and stored, before broadcast"
+        ]
+      },
+      {
+        "file": "service.test.ts",
+        "cases": [
+          "wallet \u2192 escrow \u2192 CPU \u2192 signed receipt \u2192 settlement contract confirmation is required before queue admission"
+        ]
+      },
+      {
+        "file": "worker.test.ts",
+        "cases": [
+          "durable worker with real disposable PostgreSQL semantics permits new settlement signing when the latest mined nonce proves a prior journal consumed",
+          "durable worker with real disposable PostgreSQL semantics blocks signing for an unresolved nonce even when its old job was externally refunded",
+          "durable worker with real disposable PostgreSQL semantics replays the identical durable settlement transaction after a lost acknowledgement without repeating CPU"
+        ]
+      }
+    ],
+    "note": "Preserved initial failed run. Later fixes were verified by focused reruns; this report is not relabeled as a clean full-suite pass."
+  },
+  "finalFocusedNodeRuns": [
+    {
+      "tests": 37,
+      "passed": 37,
+      "files": [
+        "worker.test.ts",
+        "service.test.ts",
+        "base-migration.test.ts",
+        "deployment.test.ts"
+      ],
+      "report": "evidence/base-usdc-20261014-core-recheck.json"
+    },
+    {
+      "tests": 114,
+      "passed": 114,
+      "durationSeconds": 135.85,
+      "files": [
+        "asset-facets.test.ts",
+        "vault-income-client.test.ts",
+        "vault-income-client-http.test.ts",
+        "vault-income-client-reader.test.ts",
+        "bridge-circle-usdc.test.ts"
+      ],
+      "evidence": "Completed agent CLI run, session 51981; no JSON reporter enabled"
+    },
+    {
+      "tests": 21,
+      "passed": 21,
+      "durationSeconds": 1.22,
+      "files": [
+        "vault-income-client-base.test.ts"
+      ],
+      "evidence": "Completed agent CLI run at 17:38:23 Moscow; no JSON reporter enabled"
+    },
+    {
+      "tests": 8,
+      "passed": 8,
+      "files": [
+        "chain-gateway.test.ts"
+      ],
+      "report": "evidence/base-usdc-20261014-gateway-recheck.json"
+    }
+  ],
+  "finalFocusedTotal": {
+    "tests": 180,
+    "passed": 180
+  },
+  "python": {
+    "collected": 207,
+    "standardPassed": 185,
+    "standardSkipped": 22,
+    "cryptoAnvilPassed": 200,
+    "cryptoAnvilSkipped": 7,
+    "resourceWarningAsError": true,
+    "sourceChangedSinceValidation": false
+  },
+  "publicForks": [
+    "base-sepolia-fork-acceptance-2026-10-14.md",
+    "base-sepolia-usdc-vault-fork-acceptance-2026-10-14.md"
+  ],
+  "guardTestBoundary": {
+    "initialBridgeGuardTimeout": "A guard test used a public RPC URL with an unmocked broadcast spy; prior full run cannot substantiate zero public queries or broadcast attempts. Final fixture is literal loopback and unexpected send/wait calls reject locally.",
+    "fixtureReceiptProbe": {
+      "hash": "0x2ca0f7a547d5427ba044c3ba96a2abef4c3d8ce953b539d9a9e2393cde87222c",
+      "network": 84532,
+      "receiptFound": false,
+      "result": "TransactionReceiptNotFoundError",
+      "scope": "Point-in-time read-only lookup, not proof no submission was attempted"
+    }
+  },
+  "deployment": {
+    "fundedBaseOwnerAcceptance": false,
+    "BaseContractsDeployedByMigration": false,
+    "VpsUploadPerformed": false,
+    "latestSsh": "Connect timeout before authentication; existing deployment untouched"
+  },
+  "build": "passed",
+  "typecheck": "passed",
+  "diffCheck": "passed",
+  "optionalGpuCells": true,
+  "managedInferenceRequired": true,
+  "liveModelProviderAcceptance": false
+}

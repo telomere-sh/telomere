@@ -1,0 +1,96 @@
+{
+  "version": 1,
+  "purpose": "Read-only pinned official upstream data, not executed or deployed. Local harness is not provider acceptance.",
+  "sources": [
+    {
+      "repository": "https://github.com/golemfactory/ya-client",
+      "commit": "41e7d99048dc04f8e3de4a8b86273926d71872c9",
+      "path": "specs/payment-api.yaml",
+      "url": "https://raw.githubusercontent.com/golemfactory/ya-client/41e7d99048dc04f8e3de4a8b86273926d71872c9/specs/payment-api.yaml",
+      "artifact": "docs/evidence/golem-finance-upstream-20261015/ya-client--specs--payment-api.yaml",
+      "bytes": 46214,
+      "sha256": "193aebcce678081735a5c2447f90fb12eceeb4306faf84b310ad59ee55d8bdd9"
+    },
+    {
+      "repository": "https://github.com/golemfactory/ya-client",
+      "commit": "41e7d99048dc04f8e3de4a8b86273926d71872c9",
+      "path": "specs/market-api.yaml",
+      "url": "https://raw.githubusercontent.com/golemfactory/ya-client/41e7d99048dc04f8e3de4a8b86273926d71872c9/specs/market-api.yaml",
+      "artifact": "docs/evidence/golem-finance-upstream-20261015/ya-client--specs--market-api.yaml",
+      "bytes": 55442,
+      "sha256": "96a80efe2772db6044d70fbdabc03cafc142ec821aeb5bf99005fdb0310a1a1b"
+    },
+    {
+      "repository": "https://github.com/golemfactory/ya-client",
+      "commit": "41e7d99048dc04f8e3de4a8b86273926d71872c9",
+      "path": "specs/activity-api.yaml",
+      "url": "https://raw.githubusercontent.com/golemfactory/ya-client/41e7d99048dc04f8e3de4a8b86273926d71872c9/specs/activity-api.yaml",
+      "artifact": "docs/evidence/golem-finance-upstream-20261015/ya-client--specs--activity-api.yaml",
+      "bytes": 28015,
+      "sha256": "19b6bbe77a89140019915fdfecb1db9438b1eb7c93ab99f96b0b15da7b356699"
+    },
+    {
+      "repository": "https://github.com/golemfactory/ya-client",
+      "commit": "41e7d99048dc04f8e3de4a8b86273926d71872c9",
+      "path": "LICENSE",
+      "url": "https://raw.githubusercontent.com/golemfactory/ya-client/41e7d99048dc04f8e3de4a8b86273926d71872c9/LICENSE",
+      "artifact": "docs/evidence/golem-finance-upstream-20261015/ya-client--LICENSE",
+      "bytes": 7652,
+      "sha256": "e3a994d82e644b03a792a930f574002658412f62407f5fee083f2555c5f23118"
+    },
+    {
+      "repository": "https://github.com/golemfactory/yagna",
+      "commit": "c256fce68c50c141a51d4bd2ca18292e4b006f15",
+      "path": "core/payment/src/api/allocations/mod.rs",
+      "url": "https://raw.githubusercontent.com/golemfactory/yagna/c256fce68c50c141a51d4bd2ca18292e4b006f15/core/payment/src/api/allocations/mod.rs",
+      "artifact": "docs/evidence/golem-finance-upstream-20261015/yagna--core--payment--src--api--allocations--mod.rs",
+      "bytes": 24875,
+      "sha256": "90c7ed0e3f0bf7a51b891d34c15d2ab4902ab85d0d6da99c235c1dcd319e5a0b"
+    },
+    {
+      "repository": "https://github.com/golemfactory/yagna",
+      "commit": "c256fce68c50c141a51d4bd2ca18292e4b006f15",
+      "path": "core/payment/src/api/debit_notes.rs",
+      "url": "https://raw.githubusercontent.com/golemfactory/yagna/c256fce68c50c141a51d4bd2ca18292e4b006f15/core/payment/src/api/debit_notes.rs",
+      "artifact": "docs/evidence/golem-finance-upstream-20261015/yagna--core--payment--src--api--debit_notes.rs",
+      "bytes": 17730,
+      "sha256": "8790cefb178705a799dfe0066031900f5701172bf0460c0b80088fa987cbd2e2"
+    },
+    {
+      "repository": "https://github.com/golemfactory/yagna",
+      "commit": "c256fce68c50c141a51d4bd2ca18292e4b006f15",
+      "path": "core/payment/src/api/invoices.rs",
+      "url": "https://raw.githubusercontent.com/golemfactory/yagna/c256fce68c50c141a51d4bd2ca18292e4b006f15/core/payment/src/api/invoices.rs",
+      "artifact": "docs/evidence/golem-finance-upstream-20261015/yagna--core--payment--src--api--invoices.rs",
+      "bytes": 23612,
+      "sha256": "2b3173a055f93c5dc63ac12c66fae638e9387e20862cd8abf28d371e580d0783"
+    },
+    {
+      "repository": "https://github.com/golemfactory/yagna",
+      "commit": "c256fce68c50c141a51d4bd2ca18292e4b006f15",
+      "path": "LICENSE",
+      "url": "https://raw.githubusercontent.com/golemfactory/yagna/c256fce68c50c141a51d4bd2ca18292e4b006f15/LICENSE",
+      "artifact": "docs/evidence/golem-finance-upstream-20261015/yagna--LICENSE",
+      "bytes": 35149,
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+    },
+    {
+      "repository": "https://github.com/golemfactory/golem-js",
+      "commit": "615796669b49de0fba55173052252a32d3e7434f",
+      "path": "src/shared/yagna/adapters/payment-api-adapter.ts",
+      "url": "https://raw.githubusercontent.com/golemfactory/golem-js/615796669b49de0fba55173052252a32d3e7434f/src/shared/yagna/adapters/payment-api-adapter.ts",
+      "artifact": "docs/evidence/golem-finance-upstream-20261015/golem-js--src--shared--yagna--adapters--payment-api-adapter.ts",
+      "bytes": 6736,
+      "sha256": "beda7de1bb44c7789e23f8bbe54f86a5f42c268df551f250c3b262beb6af0675"
+    },
+    {
+      "repository": "https://github.com/golemfactory/golem-js",
+      "commit": "615796669b49de0fba55173052252a32d3e7434f",
+      "path": "LICENSE",
+      "url": "https://raw.githubusercontent.com/golemfactory/golem-js/615796669b49de0fba55173052252a32d3e7434f/LICENSE",
+      "artifact": "docs/evidence/golem-finance-upstream-20261015/golem-js--LICENSE",
+      "bytes": 7652,
+      "sha256": "e3a994d82e644b03a792a930f574002658412f62407f5fee083f2555c5f23118"
+    }
+  ]
+}

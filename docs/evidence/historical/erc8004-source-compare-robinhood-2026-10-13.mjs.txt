@@ -1,0 +1,264 @@
+// Read-only executable-bytecode comparison. No key, wallet or transaction path.
+// Usage: node scripts/erc8004-source-compare.mjs <official-source-checkout> <isolated-dependency-directory>
+import { execFileSync } from 'node:child_process';
+import { createHash } from 'node:crypto';
+import fs from 'node:fs';
+import path from 'node:path';
+import { createRequire } from 'node:module';
+import { gunzipSync } from 'node:zlib';
+import { keccak256 } from 'viem';
+
+const sourceCommit = 'b9e466c250744a7e06b13dff9d3c2844ed64f825';
+const rpcUrl = 'https://rpc.testnet.chain.robinhood.com';
+const implementationSlot = '0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc';
+const candidates = [
+  { name: 'IdentityRegistryUpgradeable', proxy: '0x8004A818BFB912233c491871b3d84c89A494BD9e',
+    implementation: '0x7274e874CA62410a93Bd8bf61c69d8045E399c02',
+    proxyCodeHash: '0xd0e45b1d89fa9b6cc7e97c1f155d64180e5c232aaccf9900ef9d4fd738c02b41',
+    implementationCodeHash: '0xa5f9624ea85e45b3f4b8558581f03bfb3e6cefab278d7bf0500ec9bd065dc16f' },
+  { name: 'ReputationRegistryUpgradeable', proxy: '0x8004B663056A597Dffe9eCcC1965A193B7388713',
+    implementation: '0x16e0FA7f7C56B9a767E34B192B51f921BE31dA34',
+    proxyCodeHash: '0xd0e45b1d89fa9b6cc7e97c1f155d64180e5c232aaccf9900ef9d4fd738c02b41',
+    implementationCodeHash: '0x38602de97f1bd86f0a4729f7f3c0a78b1d27892e6eb581272cce5504a68fd00b' },
+];
+const sha256 = data => createHash('sha256').update(data).digest('hex');
+if (process.argv.length !== 4) throw new Error('Source checkout and isolated dependency directory are required');
+const sourceRoot = path.resolve(process.argv[2]);
+const depsRoot = path.resolve(process.argv[3]);
+const gitBlob = filename => execFileSync('git', ['show', `HEAD:${filename}`],
+  { cwd: sourceRoot, encoding: 'utf8' });
+const revision = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: sourceRoot, encoding: 'utf8' }).trim();
+if (revision !== sourceCommit || execFileSync('git', ['status', '--porcelain'], { cwd: sourceRoot, encoding: 'utf8' }).trim()) {
+  throw new Error('Official source checkout must be the clean pinned commit');
+}
+const officialLockBytes = Buffer.from(gitBlob('package-lock.json'), 'utf8');
+const officialLock = JSON.parse(officialLockBytes.toString('utf8'));
+const isolatedLock = JSON.parse(fs.readFileSync(path.join(depsRoot, 'package-lock.json'), 'utf8'));
+const packagePins = {};
+for (const packageName of ['@openzeppelin/contracts', '@openzeppelin/contracts-upgradeable']) {
+  const key = `node_modules/${packageName}`;
+  const pin = officialLock.packages?.[key];
+  const installed = isolatedLock.packages?.[key];
+  if (pin?.version !== '5.4.0' || !/^sha512-[A-Za-z0-9+/]+={0,2}$/.test(pin.integrity ?? '')
+    || pin.resolved !== `https://registry.npmjs.org/${packageName}/-/${packageName.split('/')[1]}-5.4.0.tgz`
+    || installed?.version !== pin.version || installed?.integrity !== pin.integrity
+    || installed?.resolved !== pin.resolved) {
+    throw new Error(`${packageName}: dependency does not match the official source lockfile`);
+  }
+  packagePins[packageName] = { version: pin.version, resolved: pin.resolved, integrity: pin.integrity };
+}
+// Hardhat downloads solc separately; the upstream npm lock does not contain it.
+// Pin the isolated compiler archive explicitly and check its installed files below.
+const solcPin = { version: '0.8.24', resolved: 'https://registry.npmjs.org/solc/-/solc-0.8.24.tgz',
+  integrity: 'sha512-G5yUqjTUPc8Np74sCFwfsevhBPlUifUOfhYrgyu6CmYlC6feSw0YS6eZW47XDT23k3JYdKx5nJ+Q7whCEmNcoA==' };
+const lockedSolc = isolatedLock.packages?.['node_modules/solc'];
+if (lockedSolc?.version !== solcPin.version || lockedSolc?.resolved !== solcPin.resolved
+  || lockedSolc?.integrity !== solcPin.integrity) throw new Error('Isolated solc lockfile pin differs');
+packagePins.solc = solcPin;
+
+async function boundedBytes(url, maximumBytes, options = {}) {
+  const response = await fetch(url, { ...options, signal: AbortSignal.timeout(20_000) });
+  if (!response.ok || !response.body) throw new Error(`Read-only provider HTTP ${response.status}`);
+  const reader = response.body.getReader();
+  const chunks = []; let length = 0;
+  try {
+    for (;;) {
+      const next = await reader.read();
+      if (next.done) break;
+      length += next.value.byteLength;
+      if (length > maximumBytes) throw new Error('Read-only response too large');
+      chunks.push(next.value);
+    }
+  } finally { reader.releaseLock(); }
+  return Buffer.concat(chunks, length);
+}
+
+// npm archives use package/<path> tar entries. The imported Solidity and solc
+// paths have short names, so optional PAX headers can be ignored here.
+function npmArchiveFiles(archive) {
+  const tar = gunzipSync(archive, { maxOutputLength: 100 * 1024 * 1024 });
+  const files = new Map();
+  const field = (header, start, length) => header.subarray(start, start + length).toString('utf8').split('\0')[0];
+  for (let offset = 0; offset + 512 <= tar.length;) {
+    const header = tar.subarray(offset, offset + 512);
+    if (header.every(byte => byte === 0)) break;
+    const name = field(header, 0, 100);
+    const prefix = field(header, 345, 155);
+    const fullName = prefix ? `${prefix}/${name}` : name;
+    const sizeText = field(header, 124, 12).trim();
+    if (!/^[0-7]+$/.test(sizeText)) throw new Error('Invalid npm archive entry size');
+    const size = Number.parseInt(sizeText, 8);
+    const dataStart = offset + 512;
+    const dataEnd = dataStart + size;
+    if (!Number.isSafeInteger(size) || dataEnd > tar.length) throw new Error('Truncated npm archive');
+    const type = header[156];
+    if ((type === 0 || type === 48) && fullName.startsWith('package/')) {
+      const relative = fullName.slice('package/'.length);
+      if (!relative || relative.split('/').some(part => !part || part === '.' || part === '..')) {
+        throw new Error('Unsafe npm archive entry');
+      }
+      files.set(relative, tar.subarray(dataStart, dataEnd));
+    }
+    offset = dataStart + Math.ceil(size / 512) * 512;
+  }
+  return files;
+}
+
+const archives = {};
+for (const [packageName, pin] of Object.entries(packagePins)) {
+  const archive = await boundedBytes(pin.resolved, 25 * 1024 * 1024);
+  const actualIntegrity = `sha512-${createHash('sha512').update(archive).digest('base64')}`;
+  if (actualIntegrity !== pin.integrity) throw new Error(`${packageName}: npm archive integrity differs`);
+  archives[packageName] = npmArchiveFiles(archive);
+}
+for (const [relative, bytes] of archives.solc) {
+  const installed = fs.readFileSync(path.join(depsRoot, 'node_modules', 'solc', relative));
+  if (!bytes.equals(installed)) throw new Error(`solc file differs from pinned npm archive: ${relative}`);
+}
+const require = createRequire(path.join(depsRoot, 'package.json'));
+const solc = require('solc');
+const compiler = solc.version();
+const dependencyVersions = {
+  solc: require('solc/package.json').version,
+  openzeppelinContracts: require('@openzeppelin/contracts/package.json').version,
+  openzeppelinUpgradeable: require('@openzeppelin/contracts-upgradeable/package.json').version,
+};
+if (compiler !== '0.8.24+commit.e11b9ed9.Emscripten.clang'
+  || Object.values(dependencyVersions).join(',') !== '0.8.24,5.4.0,5.4.0') {
+  throw new Error('Compiler or OpenZeppelin dependencies differ from the pinned source build');
+}
+
+const sources = Object.fromEntries(candidates.map(({ name }) => {
+  const filename = `contracts/${name}.sol`;
+  // Read exact Git blobs: core.autocrlf on Windows may rewrite checked-out line endings,
+  // which changes Solidity metadata even though executable instructions stay equal.
+  return [filename, { content: gitBlob(filename) }];
+}));
+const importedSources = new Map();
+const input = { language: 'Solidity', sources, settings: {
+  evmVersion: 'shanghai', optimizer: { enabled: true, runs: 200 }, viaIR: true,
+  outputSelection: { '*': { '*': ['evm.deployedBytecode.object', 'evm.deployedBytecode.immutableReferences'] } },
+} };
+const output = JSON.parse(solc.compile(JSON.stringify(input), { import: name => {
+  const packageName = ['@openzeppelin/contracts-upgradeable', '@openzeppelin/contracts']
+    .find(prefix => name.startsWith(`${prefix}/`));
+  if (!packageName) return { error: `Unexpected source ${name}` };
+  const relative = name.slice(packageName.length + 1);
+  if (relative.split('/').some(part => !part || part === '.' || part === '..')) {
+    return { error: `Invalid imported source ${name}` };
+  }
+  const expected = archives[packageName].get(relative);
+  if (!expected) return { error: `Missing pinned source ${name}` };
+  const filename = path.join(depsRoot, 'node_modules', packageName, relative);
+  let actual;
+  try { actual = fs.readFileSync(filename); }
+  catch { return { error: `Missing installed source ${name}` }; }
+  if (!actual.equals(expected)) return { error: `Installed source differs from pinned archive: ${name}` };
+  importedSources.set(name, sha256(actual));
+  return { contents: actual.toString('utf8') };
+} }));
+const errors = output.errors?.filter(item => item.severity === 'error') ?? [];
+if (errors.length) throw new Error(errors.map(item => item.formattedMessage).join('\n'));
+const importedSourceSha256 = Object.fromEntries([...importedSources].sort(([a], [b]) => a.localeCompare(b)));
+const importedSourcesDigestSha256 = sha256(Object.entries(importedSourceSha256)
+  .map(([name, digest]) => `${name}\0${digest}\n`).join(''));
+
+const rpc = async (method, params) => {
+  const decoded = JSON.parse((await boundedBytes(rpcUrl, 256 * 1024, { method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ jsonrpc: '2.0', id: 1, method, params }) })).toString('utf8'));
+  if (!decoded || typeof decoded !== 'object' || !('result' in decoded) || 'error' in decoded) {
+    throw new Error(`Read-only RPC ${method} failed`);
+  }
+  return decoded.result;
+};
+const hex = (value, bytes) => {
+  if (typeof value !== 'string' || !/^0x(?:[0-9a-f]{2})*$/i.test(value)
+    || bytes !== undefined && value.length !== 2 + bytes * 2) throw new Error('Invalid read-only RPC hex');
+  return value.toLowerCase();
+};
+const quantity = value => {
+  if (typeof value !== 'string' || !/^0x(?:0|[1-9a-f][0-9a-f]*)$/i.test(value)) {
+    throw new Error('Invalid read-only RPC quantity');
+  }
+  return BigInt(value);
+};
+const block = value => {
+  if (!value || typeof value !== 'object') throw new Error('Missing read-only RPC block');
+  return { number: quantity(value.number), hash: hex(value.hash, 32) };
+};
+if (quantity(await rpc('eth_chainId', [])) !== 46630n) throw new Error('Expected Robinhood Chain testnet 46630');
+const head = block(await rpc('eth_getBlockByNumber', ['latest', false]));
+if (head.number < 4n) throw new Error('Insufficient block depth');
+const anchorNumber = head.number - 3n;
+const anchorTag = `0x${anchorNumber.toString(16)}`;
+const anchorBlock = block(await rpc('eth_getBlockByNumber', [anchorTag, false]));
+if (anchorBlock.number !== anchorNumber) throw new Error('Incorrect anchor block');
+const anchor = { blockHash: anchorBlock.hash, requireCanonical: true };
+const results = [];
+for (const candidate of candidates) {
+  const { name, proxy, implementation } = candidate;
+  const compiled = output.contracts[`contracts/${name}.sol`]?.[name]?.evm?.deployedBytecode;
+  if (!compiled || !/^[0-9a-f]+$/i.test(compiled.object)) throw new Error(`${name}: compiler runtime missing`);
+  const immutableGroups = Object.values(compiled.immutableReferences ?? {});
+  const references = immutableGroups.flat();
+  if (immutableGroups.length !== 1 || references.length !== 2 || references.some(reference =>
+    reference.length !== 32 || !Number.isSafeInteger(reference.start) || reference.start < 0)
+    || references[0].start + 32 > references[1].start) {
+    throw new Error(`${name}: expected only the two UUPS __self immutable references`);
+  }
+  const [proxyCode, implementationWord] = await Promise.all([
+    rpc('eth_getCode', [proxy, anchor]),
+    rpc('eth_getStorageAt', [proxy, implementationSlot, anchor]),
+  ]);
+  const proxyRuntime = hex(proxyCode);
+  if (proxyRuntime === '0x' || keccak256(proxyRuntime).toLowerCase() !== candidate.proxyCodeHash.toLowerCase()) {
+    throw new Error(`${name}: proxy code differs at canonical anchor`);
+  }
+  const word = hex(implementationWord, 32);
+  if (word !== `0x${'0'.repeat(24)}${implementation.slice(2).toLowerCase()}`) {
+    throw new Error(`${name}: proxy implementation slot differs at canonical anchor`);
+  }
+  const rpcCode = hex(await rpc('eth_getCode', [implementation, anchor]));
+  if (rpcCode === '0x' || keccak256(rpcCode).toLowerCase() !== candidate.implementationCodeHash.toLowerCase()) {
+    throw new Error(`${name}: implementation code differs at canonical anchor`);
+  }
+  const explorer = JSON.parse((await boundedBytes(
+    `https://explorer.testnet.chain.robinhood.com/api/v2/smart-contracts/${implementation}`, 256 * 1024)).toString('utf8'));
+  const explorerCode = hex(explorer?.deployed_bytecode);
+  if (explorerCode !== rpcCode) throw new Error(`${name}: Blockscout code differs from canonical RPC code`);
+  let local = compiled.object.toLowerCase();
+  for (const reference of references) {
+    const replacement = implementation.slice(2).toLowerCase().padStart(reference.length * 2, '0');
+    local = local.slice(0, reference.start * 2) + replacement + local.slice((reference.start + reference.length) * 2);
+  }
+  const remote = rpcCode.slice(2);
+  // Exact Solidity 0.8.24 ipfs+solc CBOR trailer; the two length bytes are 0x0033.
+  // Validate both sides so a fabricated remote length cannot hide executable differences.
+  const metadataPattern = /^a2646970667358221220[0-9a-f]{64}64736f6c63430008180033$/;
+  if (local.length !== remote.length || local.length < 106
+    || !metadataPattern.test(local.slice(-106)) || !metadataPattern.test(remote.slice(-106))) {
+    throw new Error(`${name}: runtime length or Solidity metadata format differs`);
+  }
+  const executableHexLength = remote.length - 106;
+  const result = {
+    name, proxy, address: implementation, proxyCodeHash: keccak256(proxyRuntime),
+    implementationCodeHash: keccak256(rpcCode), runtimeBytes: remote.length / 2,
+    executableBytes: executableHexLength / 2, immutableReferences: references,
+    metadataBytes: 53, localMetadataSha256: sha256(Buffer.from(local.slice(-106), 'hex')),
+    onchainMetadataSha256: sha256(Buffer.from(remote.slice(-106), 'hex')),
+    executableMatch: local.slice(0, executableHexLength) === remote.slice(0, executableHexLength),
+    fullRuntimeMatch: local === remote, explorerEqualsRpcAtAnchor: explorerCode === rpcCode,
+  };
+  if (!result.executableMatch) throw new Error(`${name}: executable bytecode differs`);
+  results.push(result);
+}
+const after = block(await rpc('eth_getBlockByNumber', [anchorTag, false]));
+if (after.number !== anchorBlock.number || after.hash !== anchorBlock.hash) {
+  throw new Error('Canonical anchor changed during read-only comparison');
+}
+console.log(JSON.stringify({ schemaVersion: 2, checkedAtUtc: new Date().toISOString(), chainId: 46630,
+  anchor: { number: anchorBlock.number.toString(), hash: anchorBlock.hash }, implementationSlot,
+  sourceRepository: 'https://github.com/erc-8004/erc-8004-contracts', sourceCommit,
+  sourceLockfileSha256: sha256(officialLockBytes), compiler, dependencyVersions, packagePins,
+  importedSourceSha256, importedSourcesDigestSha256, settings: input.settings, results }, null, 2));

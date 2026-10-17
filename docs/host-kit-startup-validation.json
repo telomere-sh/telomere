@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "checkedAtUtc": "2026-10-12T13:48:49.774952+00:00",
+  "scope": "One-shot HostKit startup-inclusive lease budget, durable admission replay and physical cleanup fencing",
+  "runtimeRevision": "a882602550a72e7456af3e8164e0b9a7a8de5d2f",
+  "platform": "Windows",
+  "sourceSha256": {
+    "src/host-kit/agent.ts": "c563c1ff529d9de6ff3d488a366fd227b0eec14afc46bb130641ddd253293cef",
+    "src/host-kit/docker-runtime.ts": "84ff52991a70a99d099f9afbee6c674e591f9037ce2d9b2a7ed9240a6909cd4d",
+    "tests/host-kit-timing.test.ts": "48c572be99672a41083be66b4b1a1ac013be033a7e85004886ccf9ae8973d5fd",
+    "tests/host-kit-cleanup.test.ts": "1ff3e4fc7d89871eabcc924a7625c33cd984c243823de75dae74793879e19600",
+    "tests/host-kit-startup-docker.test.ts": "bc15b739cf283ec679dcbccbcd5eebcf7200d078acdd2a6d21f761d9a44c2435",
+    "docs/host-kit.md": "b33bc66dfe5ade513ef8ef51d86c490e0401540d548aeef908eaecadc85e9a12"
+  },
+  "windows": {
+    "reports": [
+      {
+        "privateRawReport": ".local/host-kit-timing-vitest-first.json",
+        "sha256": "94385baf558d8b357bbf7535da10a246c2ed1ad99609ad6490ad4555ddab1c3e",
+        "totalTests": 16,
+        "passedTests": 16,
+        "failedTests": 0,
+        "skippedTests": 0,
+        "elapsedSeconds": 22.506,
+        "files": [
+          {
+            "name": "host-kit-timing.test.ts",
+            "cases": 16,
+            "status": "passed"
+          }
+        ]
+      },
+      {
+        "privateRawReport": ".local/host-kit-timing-regression.json",
+        "sha256": "d22787d198bffc2223e98247d6b867e2286dde497ac4af137687ca06d96fb6cc",
+        "totalTests": 62,
+        "passedTests": 62,
+        "failedTests": 0,
+        "skippedTests": 0,
+        "elapsedSeconds": 156.066,
+        "files": [
+          {
+            "name": "controller-host-kit.test.ts",
+            "cases": 8,
+            "status": "passed"
+          },
+          {
+            "name": "controller-platform.test.ts",
+            "cases": 6,
+            "status": "passed"
+          },
+          {
+            "name": "host-kit-command.test.ts",
+            "cases": 17,
+            "status": "passed"
+          },
+          {
+            "name": "host-kit.test.ts",
+            "cases": 31,
+            "status": "passed"
+          }
+        ]
+      }
+    ],
+    "passedAcrossSeparateCommands": 78,
+    "singleCombinedRunClaimed": false,
+    "typecheck": {
+      "command": "npm run typecheck",
+      "exitCode": 0,
+      "privateObservedRecord": ".local/host-kit-timing-typecheck.json",
+      "recordSha256": "97f600b3440daf124a8ccce04f983d4ec0fefb86f268b273e6ba0e43ae068e9c"
+    }
+  },
+  "linux": "Pending separate exact-commit 89-case full-build/gVisor acceptance at recording time; see host-kit-startup-linux-validation.json when available",
+  "limitations": [
+    "Controlled timing adapters and actual local children/HTTP/PGlite on Windows do not establish Docker isolation",
+    "The 13 new Unix Engine cleanup fixtures and four real gVisor cases require Linux; no Windows pass is claimed for them",
+    "Expired original signed lease replay reads immutable evidence without redispatch",
+    "An adapter that never returns a start handle retains its slot and can delay shutdown; cleanup uncertainty is never released by a timer",
+    "Terminal ticks preserve the previous durable CPU counter and add no billable interval",
+    "Shared one-shot/session CPU admission, paid interactive authorization/metering, migration and longer-lived sessions remain separate work",
+    "No public chain transaction, wallet signature or paid provider request was made"
+  ]
+}

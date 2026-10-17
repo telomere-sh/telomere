@@ -1,0 +1,94 @@
+{
+  "schema": 1,
+  "kind": "IMMUTABLE_INITIAL_FAILED_PYTHON_CRYPTO_EVIDENCE",
+  "retainedAtUtc": "2026-10-15T13:05:50.612935+00:00",
+  "originalRemoteLogs": "/opt/telomere-host-runtime/backend-completion-final-20261015-090932a350a5/.local/python-crypto-final-20261015",
+  "gitRevision": "d4481aec92179df44a533699897db2f523fbd0a2",
+  "archiveSha256": "090932a350a522ddfe2c056775edf194176060c3cca79a06d286e5d3f1989bd6",
+  "status": "failed",
+  "testsRun": 236,
+  "errors": 1,
+  "skipped": 20,
+  "cryptoDependencySkips": 0,
+  "failureCase": "test_posix_replaced_owner_is_detected",
+  "failureCode": "vault_income_journal_owned",
+  "sourceBeforeAfterIdentical": true,
+  "originalFilesCopiedWithoutModification": true,
+  "files": [
+    {
+      "path": "crypto-probe.stdout",
+      "bytes": 1007,
+      "sha256": "05d7def7333a459e9c0b4b5c3e21ad4a01bf680c8d5c91ffdfe62e73666e0d3c"
+    },
+    {
+      "path": "pip-check.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "pip-check.stdout",
+      "bytes": 30,
+      "sha256": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09"
+    },
+    {
+      "path": "pip-freeze.stdout",
+      "bytes": 423,
+      "sha256": "37140108d4a1ae6426f921afda46e7e73fe097d53cce37c03dd9d8bbc7f0d90b"
+    },
+    {
+      "path": "pip-install-report.json",
+      "bytes": 350453,
+      "sha256": "47cd426a0fdb2c0ae62159f69c8d6f9f42a3fdca0d7101ae91f73dec24398a55"
+    },
+    {
+      "path": "pip-install.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "pip-install.stdout",
+      "bytes": 4930,
+      "sha256": "0bf6222b2541b4ff514a610897baf344fec38472e3c19aa207a5bdc7ce803444"
+    },
+    {
+      "path": "report.json",
+      "bytes": 13402,
+      "sha256": "67f67e86ce6e432f8742b260dd30e29432d821cd837bff1280f53b2deed2c67b"
+    },
+    {
+      "path": "runner.py",
+      "bytes": 7975,
+      "sha256": "e72553d10e5a500665802b63de6280e96b487cbd254041ee2e664f0edaabe636"
+    },
+    {
+      "path": "source-after.json",
+      "bytes": 144817,
+      "sha256": "ecd764ce5aaa634358bebc2ad1aa2cd2aa1a0965f319585ed74e28e0d1371fe4"
+    },
+    {
+      "path": "source-before.json",
+      "bytes": 144817,
+      "sha256": "ecd764ce5aaa634358bebc2ad1aa2cd2aa1a0965f319585ed74e28e0d1371fe4"
+    },
+    {
+      "path": "unittest.stderr",
+      "bytes": 42375,
+      "sha256": "f094cd43efd20c3f2894267369ba683e35c99b27da3c5f01e4635030870a4e2e"
+    },
+    {
+      "path": "unittest.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "venv-create.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "venv-create.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

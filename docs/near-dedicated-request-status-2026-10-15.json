@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-15T03:30:05Z",
+  "decision": "CURRENT_REQUEST_STATUS_NOT_VERIFIED",
+  "reason": "BROWSER_UNAVAILABLE",
+  "intendedReadOnlyPage": "https://cloud.near.ai/dashboard/requests/dedicated-deployment",
+  "priorRequestSubmission": "Previously user-authorized submission; current state was not reached or reverified.",
+  "observations": [
+    {
+      "operation": "cua.getState()",
+      "apps": [],
+      "browsers": []
+    },
+    {
+      "operation": "cua.createBrowserTab('iab', dedicatedDeploymentUrl, { visible: false })",
+      "result": "Browser is not available: iab",
+      "successfulPageLoad": false
+    }
+  ],
+  "currentRequestStatus": null,
+  "allocatedResources": null,
+  "cpuTdxCapability": null,
+  "existingTabsChangedOrClosed": false,
+  "credentialsOrHostBrowserProfilesRead": false,
+  "authenticationAttempted": false,
+  "requestResubmitted": false,
+  "resourcesCreated": 0,
+  "paidOperations": 0,
+  "consentChanges": 0,
+  "externalMessages": 0,
+  "limitation": "Browser unavailability does not establish whether the earlier request is pending, approved, rejected or provisioned."
+}

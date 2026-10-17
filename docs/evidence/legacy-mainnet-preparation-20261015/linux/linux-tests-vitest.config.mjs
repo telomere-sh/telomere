@@ -1,0 +1,2 @@
+import { defineConfig } from '/opt/telomere-mainnet-pilot/releases/ee6169d1007b11f037fbc409dc1f7575f15117c9/node_modules/vitest/dist/config.js';
+export default defineConfig({ root: "/opt/telomere-mainnet-pilot/releases/ee6169d1007b11f037fbc409dc1f7575f15117c9", cacheDir: "/tmp/telomere-mainnet-linux-focused-20261015-sw5cd63a/vite-cache", test: { include: ['tests/**/*.test.ts'], testTimeout: 15000, hookTimeout: 30000, fileParallelism: false } });

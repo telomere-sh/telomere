@@ -1,0 +1,4097 @@
+[
+  {
+    "path": "public/app.js",
+    "type": "file",
+    "bytes": 881933,
+    "mode": 384,
+    "sha256": "5922b9b107c9d4ae96eb165f37c188c2f8d1db2bea090b9116e98c7546ead461"
+  },
+  {
+    "path": "public/cysts.js",
+    "type": "file",
+    "bytes": 11882,
+    "mode": 384,
+    "sha256": "9c46701ad19217789ecd366740809534f4185a523b5a3ff721d9bbbaa91d879d"
+  },
+  {
+    "path": "public/index.html",
+    "type": "file",
+    "bytes": 16278,
+    "mode": 384,
+    "sha256": "e1d49b06134f04c12239a6827bd67f6026beb1e03589934078a7d2f96747fd9f"
+  },
+  {
+    "path": "public/styles.css",
+    "type": "file",
+    "bytes": 18523,
+    "mode": 384,
+    "sha256": "2c6deb0a3bf174f668f0ee4ae480cd4d50e8a226c8152d2cbf3716e07680ce6a"
+  },
+  {
+    "path": "scripts/backup-platform.js",
+    "type": "file",
+    "bytes": 13695,
+    "mode": 384,
+    "sha256": "63007abf99d8c04f2732c6ced06e2b1f806d1f76655bcda6835d28076de3bcd0"
+  },
+  {
+    "path": "scripts/backup-staging.js",
+    "type": "file",
+    "bytes": 6628,
+    "mode": 384,
+    "sha256": "1b40982e8aa619751c5fddd1c944cf29b4e6bf1341a9510d9f3432cd693c6769"
+  },
+  {
+    "path": "scripts/base-usdc-deployment.js",
+    "type": "file",
+    "bytes": 2969,
+    "mode": 384,
+    "sha256": "0c45179232a77b0038ae673fa0e2dfd4661116709ed7dba96460cc3fcb4e0613"
+  },
+  {
+    "path": "scripts/compile-contracts.js",
+    "type": "file",
+    "bytes": 3219,
+    "mode": 384,
+    "sha256": "fda13417dae61d8954a558a6d4a606ee262f52288ddc92846c10c3c5077a8f4a"
+  },
+  {
+    "path": "scripts/cpu-smoke.js",
+    "type": "file",
+    "bytes": 3343,
+    "mode": 384,
+    "sha256": "cd5245d4a00737a1796649f9db6499153e73c3b0d1fbb68c984071003ac31727"
+  },
+  {
+    "path": "scripts/declared-state-cell-capture.js",
+    "type": "file",
+    "bytes": 1650,
+    "mode": 384,
+    "sha256": "69ff1973bf7e210f730ed893a64f7fade04c5c7803b66f2176a7e080d8a52e58"
+  },
+  {
+    "path": "scripts/declared-state-cell.js",
+    "type": "file",
+    "bytes": 3975,
+    "mode": 384,
+    "sha256": "c0359f8722acd9f93a50420f044b529e326947e66fac4b16678bb9ebd751ba0a"
+  },
+  {
+    "path": "scripts/demo.js",
+    "type": "file",
+    "bytes": 1763,
+    "mode": 384,
+    "sha256": "93869cb1a1cf02305de80fe816eedb586c91b1ab8102297176fb7aff1714a416"
+  },
+  {
+    "path": "scripts/deploy-contracts.js",
+    "type": "file",
+    "bytes": 6995,
+    "mode": 384,
+    "sha256": "3fa8e7b7d4ee3582a00cd1891b2334ef83a946558f84705d6aa0eaae7243b857"
+  },
+  {
+    "path": "scripts/deployment-approval.js",
+    "type": "file",
+    "bytes": 1006,
+    "mode": 384,
+    "sha256": "9c87fea807cab911e0ea11931b1690d02e4e66ab8782b5f7f98b707c6e0cffca"
+  },
+  {
+    "path": "scripts/erc8004-testnet-preflight.js",
+    "type": "file",
+    "bytes": 2703,
+    "mode": 384,
+    "sha256": "cb572ca240abde8eb5129ebe7e3cd46abfc914a8ad8868a5f2261aa2b77e3150"
+  },
+  {
+    "path": "scripts/erc8004-testnet-probe.js",
+    "type": "file",
+    "bytes": 6654,
+    "mode": 384,
+    "sha256": "095433c39e955a08935ec638e724e5b430243d6454ae9f1a4e3ed1b9473e2076"
+  },
+  {
+    "path": "scripts/host-kit.js",
+    "type": "file",
+    "bytes": 5068,
+    "mode": 384,
+    "sha256": "d58b4064f70c00e91b9fb18a9708b051c4cd0a4465a3dd82134e629d8b863e5c"
+  },
+  {
+    "path": "scripts/host-text-acceptance.js",
+    "type": "file",
+    "bytes": 12075,
+    "mode": 384,
+    "sha256": "b989c588d0b3cf75c49900e98421fcc0dbad93aada4e0de0bf1629b19af5e2b8"
+  },
+  {
+    "path": "scripts/large-cyst-capacity-acceptance.js",
+    "type": "file",
+    "bytes": 9563,
+    "mode": 384,
+    "sha256": "b44fb74c3735665c628b84fab2caa804ab465e526849b7932ec4ceeb357f76f3"
+  },
+  {
+    "path": "scripts/local-chain.js",
+    "type": "file",
+    "bytes": 6365,
+    "mode": 384,
+    "sha256": "3940465770b9ab92399ee867fa36d495db1a1e670a9299e8ce9dc505145fcc25"
+  },
+  {
+    "path": "scripts/mcp-platform.js",
+    "type": "file",
+    "bytes": 1814,
+    "mode": 384,
+    "sha256": "24c8269753626851a9a30e5d3d85e2e81b489e5b9680a99fae53636c4aef12ca"
+  },
+  {
+    "path": "scripts/mcp.js",
+    "type": "file",
+    "bytes": 3355,
+    "mode": 384,
+    "sha256": "585c350fdf3ca931788b39186ff4ffc4598ed0246a5cb1cb4aa9aa32c9865cc6"
+  },
+  {
+    "path": "scripts/migrate.js",
+    "type": "file",
+    "bytes": 300,
+    "mode": 384,
+    "sha256": "453fee03ca1491b2f5564f5454f02647a5a9a35fc924331a5da64892c5b73107"
+  },
+  {
+    "path": "scripts/near-cloud-evidence.js",
+    "type": "file",
+    "bytes": 1668,
+    "mode": 384,
+    "sha256": "26fdf06964a96bdd0942b0687f065403814ddff9ff527e501f37fb3a1ff0ffa8"
+  },
+  {
+    "path": "scripts/near-direct-evidence.js",
+    "type": "file",
+    "bytes": 1670,
+    "mode": 384,
+    "sha256": "8f273ea4a03fdae5c89d92292dc5e907e55fad22cd2210be476d9bf1d2ebfcf8"
+  },
+  {
+    "path": "scripts/near-preflight.js",
+    "type": "file",
+    "bytes": 1082,
+    "mode": 384,
+    "sha256": "4c572c9987ac341bcd444e6c490428ba52112cd08f1bb0f83c85c385e5f793e3"
+  },
+  {
+    "path": "scripts/near-readiness.js",
+    "type": "file",
+    "bytes": 632,
+    "mode": 384,
+    "sha256": "b0cc02d14602884f7a97186f4243c3d6b6bfe5fcc575610b19ae8520cd00c88f"
+  },
+  {
+    "path": "scripts/operator-platform-journal.js",
+    "type": "file",
+    "bytes": 6101,
+    "mode": 384,
+    "sha256": "b00e033dc65b802e4a2b96065bc1fe5d39da851079c1e9e6705ed64d96b31f41"
+  },
+  {
+    "path": "scripts/operator-platform-prepared.js",
+    "type": "file",
+    "bytes": 8824,
+    "mode": 384,
+    "sha256": "b35bcac2540718aa084a285fb93c91341d2b4bfb76a838c6084cb7b8a5eeb9e4"
+  },
+  {
+    "path": "scripts/operator-status.js",
+    "type": "file",
+    "bytes": 6787,
+    "mode": 384,
+    "sha256": "4478ad90b257bba9d63d72913bff035539d6eaed944df85d61430837be080295"
+  },
+  {
+    "path": "scripts/operator-watchdog.js",
+    "type": "file",
+    "bytes": 3430,
+    "mode": 384,
+    "sha256": "a931f4b65fee03d60e342af5cbbe9e9f06592b7449342fff86991c8a736a2ba3"
+  },
+  {
+    "path": "scripts/paid-preemption-gvisor-acceptance.js",
+    "type": "file",
+    "bytes": 17015,
+    "mode": 384,
+    "sha256": "95087f4bd5f15fe2e57703a93f326e11a1ca3fa3f94ab30598c6205d7ac72e45"
+  },
+  {
+    "path": "scripts/platform-host-acceptance.js",
+    "type": "file",
+    "bytes": 8656,
+    "mode": 384,
+    "sha256": "84bdcf99d0954373cdc2e9cdf90d9103ab24c378c108b1b8fd6a9345f00e609f"
+  },
+  {
+    "path": "scripts/platform-paid-gvisor-acceptance.js",
+    "type": "file",
+    "bytes": 40030,
+    "mode": 384,
+    "sha256": "172e6ad88b68fde72ce0f11fb2cf6baf6ea0cb6ca450a9bd0dceae3748af5421"
+  },
+  {
+    "path": "scripts/platform-presented-meter.js",
+    "type": "file",
+    "bytes": 5724,
+    "mode": 384,
+    "sha256": "358e7d89d20926a090bf3a455fd45bb01c259418c4ef63d43febb42b0b1f5e77"
+  },
+  {
+    "path": "scripts/platform-runtime-acceptance.js",
+    "type": "file",
+    "bytes": 30065,
+    "mode": 384,
+    "sha256": "528d74c144b16ade2cc95638981a13fffeb3d33dc0076fed268734c0976d6a3f"
+  },
+  {
+    "path": "scripts/platform-v2-verify.js",
+    "type": "file",
+    "bytes": 3871,
+    "mode": 384,
+    "sha256": "9d3e86c4c8ab0e7426e17e5b849c7a7365a94d78d3b3813b236b155df363f965"
+  },
+  {
+    "path": "scripts/prepare-platform-deployment.js",
+    "type": "file",
+    "bytes": 4749,
+    "mode": 384,
+    "sha256": "a423b814e5d338e49293e2d3c491996bdbd31d7f5608a92daee49651501b5a5d"
+  },
+  {
+    "path": "scripts/prepare-platform-payment-deployment.js",
+    "type": "file",
+    "bytes": 3693,
+    "mode": 384,
+    "sha256": "5f6f3cccae67231eb0e8cd91a07902762e3e168a6ef3ec5e9e509243f260d122"
+  },
+  {
+    "path": "scripts/receipt-proof.js",
+    "type": "file",
+    "bytes": 3218,
+    "mode": 384,
+    "sha256": "ab5f4adfa31ec9085c7b8a96e71adf06e38c7d93b839c87ba4be705a53078918"
+  },
+  {
+    "path": "scripts/receipt-recovery-acceptance.js",
+    "type": "file",
+    "bytes": 19158,
+    "mode": 384,
+    "sha256": "25653259be4d0c4d50c5f4c4270e40c3da22dbcc4a28caa692b2d3019305ae68"
+  },
+  {
+    "path": "scripts/recovery-acceptance.js",
+    "type": "file",
+    "bytes": 21076,
+    "mode": 384,
+    "sha256": "cef5fd32cba5f79adc8c04f4eeed15f607ae39d1e76b8d802bb7d58b6c68d815"
+  },
+  {
+    "path": "scripts/restore-acceptance.js",
+    "type": "file",
+    "bytes": 15379,
+    "mode": 384,
+    "sha256": "86df31d21c092e7f9e697721e1c7121376a74a7cba2b79be27920056df39196e"
+  },
+  {
+    "path": "scripts/staging-prepare.js",
+    "type": "file",
+    "bytes": 2064,
+    "mode": 384,
+    "sha256": "357e6b1b6711a86674c9957421bd12e1a21ff24a64563b99e3eb77d8b3b01c38"
+  },
+  {
+    "path": "scripts/staging-smoke.js",
+    "type": "file",
+    "bytes": 6030,
+    "mode": 384,
+    "sha256": "317ad45896ae28841e34fadc6bf963de9dd7640fa757b2665d23f5aeedea8745"
+  },
+  {
+    "path": "scripts/submit-deployment.js",
+    "type": "file",
+    "bytes": 10385,
+    "mode": 384,
+    "sha256": "324aee66372cd9353fe1e87b49c702b314f39e08ad96246fda6392d43882f29f"
+  },
+  {
+    "path": "scripts/testnet-fork-acceptance.js",
+    "type": "file",
+    "bytes": 20092,
+    "mode": 384,
+    "sha256": "eec453a9d199df0a220c995cd9f858810355a1fe1b9a61dc3085db6e8a3f5e08"
+  },
+  {
+    "path": "scripts/usdc-archive-preflight.js",
+    "type": "file",
+    "bytes": 2949,
+    "mode": 384,
+    "sha256": "feba63476fa05b29a8a0a623629f9dadb87dbb23929ca7af4b27277c6d8c0350"
+  },
+  {
+    "path": "scripts/usdc-vault-fork-acceptance.js",
+    "type": "file",
+    "bytes": 45583,
+    "mode": 384,
+    "sha256": "1db3b0ddc9729814b7e21619c518b779aaf309fe5664f3103705703a25367cd5"
+  },
+  {
+    "path": "scripts/verify-backup.js",
+    "type": "file",
+    "bytes": 908,
+    "mode": 384,
+    "sha256": "4c20b41a64b82b3d23acfff524c2ed053d1b510cd6b06de94cadeaf99d5955a5"
+  },
+  {
+    "path": "scripts/verify-platform-restore.js",
+    "type": "file",
+    "bytes": 14206,
+    "mode": 384,
+    "sha256": "897afdf82cdbc138800cc6032fc2a221e3b8cbb508f508bd5a19a12d079d306d"
+  },
+  {
+    "path": "src/agents/agent-current-cyst-file-restore.js",
+    "type": "file",
+    "bytes": 24804,
+    "mode": 384,
+    "sha256": "c7413bb8735bd455bb5837361337d75b261ca04fa7549f9e8bb28b025598b1d1"
+  },
+  {
+    "path": "src/agents/agent-current-cyst-restore.js",
+    "type": "file",
+    "bytes": 18847,
+    "mode": 384,
+    "sha256": "13e54d40d7cfce7b1867af65990013966784e352d9fdb9539a8202719048d986"
+  },
+  {
+    "path": "src/agents/checkpoint-cadence.js",
+    "type": "file",
+    "bytes": 5982,
+    "mode": 384,
+    "sha256": "a8b193777a67b81b267e3f02d02c2d8daed9c995b11309f481321c66bc72a28f"
+  },
+  {
+    "path": "src/agents/client.js",
+    "type": "file",
+    "bytes": 5768,
+    "mode": 384,
+    "sha256": "2302f8d9175d3729f6ebd41948078ef5c4d1692e5a87bdb4e9dc47da22e92c19"
+  },
+  {
+    "path": "src/agents/http-client.js",
+    "type": "file",
+    "bytes": 10523,
+    "mode": 384,
+    "sha256": "8998329c18563dafc59489892d6f53e14b80cf4db0e1b9beefd4b839bf79fa4f"
+  },
+  {
+    "path": "src/agents/index.js",
+    "type": "file",
+    "bytes": 597,
+    "mode": 384,
+    "sha256": "7a3f742468efa7d0e76adff344011aedd500246a72ac544512503a48f9dd8c40"
+  },
+  {
+    "path": "src/agents/lifeline.js",
+    "type": "file",
+    "bytes": 2890,
+    "mode": 384,
+    "sha256": "ed8d997facd5d7543fd75a951dc14d34e4483a452980dbd8e3b8cc1cc19eec14"
+  },
+  {
+    "path": "src/agents/metabolism-v2.js",
+    "type": "file",
+    "bytes": 4814,
+    "mode": 384,
+    "sha256": "062be0b45387a3e8661305ffaa413e1b498b6ba45c6caaf660b3f7c5cc7df648"
+  },
+  {
+    "path": "src/agents/paid-billing.js",
+    "type": "file",
+    "bytes": 8723,
+    "mode": 384,
+    "sha256": "6eb95e9d80a85b96305e49fb10d04c39f24a0467fb09a7dec224d7f02437d57f"
+  },
+  {
+    "path": "src/agents/paid-lifecycle-runner-v2.js",
+    "type": "file",
+    "bytes": 32237,
+    "mode": 384,
+    "sha256": "a2d377ae38d6cccd5617b190488256f58efc89768e3105064d35265ff1cc83bf"
+  },
+  {
+    "path": "src/agents/paid-lifecycle-runner.js",
+    "type": "file",
+    "bytes": 30351,
+    "mode": 384,
+    "sha256": "aa61360ca7ca974f3d832387fee8d72ae51c239a131afaa395c6b080db86475e"
+  },
+  {
+    "path": "src/agents/paid-lifecycle-vault-v3.js",
+    "type": "file",
+    "bytes": 11588,
+    "mode": 384,
+    "sha256": "348d7ab6754262d1e641aa49892301e10516ee0b9b3c649db5f354742aa2df84"
+  },
+  {
+    "path": "src/agents/paid-lifeline-reservations.js",
+    "type": "file",
+    "bytes": 18022,
+    "mode": 384,
+    "sha256": "6ebd702eb536dbdea5b69f77af8cb208c09ca939aeecdb982281427516c0c231"
+  },
+  {
+    "path": "src/agents/paid-lifeline.js",
+    "type": "file",
+    "bytes": 5267,
+    "mode": 384,
+    "sha256": "acd4112d15f82549eefd0a772b365b0f3b1899334caf6c03dded12a773b22d14"
+  },
+  {
+    "path": "src/agents/paid-metabolism.js",
+    "type": "file",
+    "bytes": 7280,
+    "mode": 384,
+    "sha256": "eb8ab920eeaf52e06d443e939f8d3dabb1f6daefb8995c0f96105ff2abc6763d"
+  },
+  {
+    "path": "src/agents/paid-owner-lifeline.js",
+    "type": "file",
+    "bytes": 3774,
+    "mode": 384,
+    "sha256": "7fb0662c543e61f42008c3e5dbede05cc680c5dd35652f8c67471a463bc7e891"
+  },
+  {
+    "path": "src/agents/paid-preemption-handoff.js",
+    "type": "file",
+    "bytes": 22212,
+    "mode": 384,
+    "sha256": "bfe89ba051387779673405428a1571d1e56b66cd4cd606ef78a537e7e49108da"
+  },
+  {
+    "path": "src/agents/paid-session-checkpoint.js",
+    "type": "file",
+    "bytes": 4025,
+    "mode": 384,
+    "sha256": "80226504c4a7cf624dfa576f79fe99b741c9d26ee37fe71d46d7caa49c4ceeb8"
+  },
+  {
+    "path": "src/agents/paid-session-handoff.js",
+    "type": "file",
+    "bytes": 18793,
+    "mode": 384,
+    "sha256": "174340667a7cc4605e860d8a4c275107a6c03b465d1c56d7ab2117aeb94e57d4"
+  },
+  {
+    "path": "src/agents/platform-runtime.js",
+    "type": "file",
+    "bytes": 10921,
+    "mode": 384,
+    "sha256": "201d84016b5438a6cae5b9cfe5f06056287575a5e7df513c8ff578f750a0dba3"
+  },
+  {
+    "path": "src/agents/routes.js",
+    "type": "file",
+    "bytes": 2372,
+    "mode": 384,
+    "sha256": "7c987f4ed60df9703dda9cc2a1299464e90d7d58e6cd4c250332e46194fadba3"
+  },
+  {
+    "path": "src/agents/runtime-binding.js",
+    "type": "file",
+    "bytes": 2470,
+    "mode": 384,
+    "sha256": "14fa48e1aea469c567ed102f74757507215f17555a885e49779c3dff0fbb4405"
+  },
+  {
+    "path": "src/agents/schema.js",
+    "type": "file",
+    "bytes": 6698,
+    "mode": 384,
+    "sha256": "c60d2c0d6253d82796219ac6fcf3ae03baf98c81ca7d20ef5f39c566c66564bc"
+  },
+  {
+    "path": "src/agents/service.js",
+    "type": "file",
+    "bytes": 25949,
+    "mode": 384,
+    "sha256": "2c51e8ece0e8c532e72a854690b47986ea0d69922a394a6bb68b2ae1f94cc3db"
+  },
+  {
+    "path": "src/agents/types.js",
+    "type": "file",
+    "bytes": 1472,
+    "mode": 384,
+    "sha256": "08748e05380dcdd59b2c79956b3066bc5244678aacd68572cee57f1c8009ddf5"
+  },
+  {
+    "path": "src/agents/vault-runtime.js",
+    "type": "file",
+    "bytes": 13655,
+    "mode": 384,
+    "sha256": "1913604b100d482b098ec514b336d0c4479c203e15ae892275be012d7aaadc89"
+  },
+  {
+    "path": "src/app.js",
+    "type": "file",
+    "bytes": 25469,
+    "mode": 384,
+    "sha256": "973c4de0a9bcae2e66650a833b8eec1ae528316c638689369875754fd90e45d2"
+  },
+  {
+    "path": "src/auth.js",
+    "type": "file",
+    "bytes": 3241,
+    "mode": 384,
+    "sha256": "b07b86c52881102ec431976bfdf0a495f3e06ee213e8ddca99fe13e2c01330f1"
+  },
+  {
+    "path": "src/bridge.js",
+    "type": "file",
+    "bytes": 16915,
+    "mode": 384,
+    "sha256": "c6f9440479bed081ad8ee5049318802bab5803c9b0f49e7df2ac116f84efdeba"
+  },
+  {
+    "path": "src/chain/abi.js",
+    "type": "file",
+    "bytes": 4031,
+    "mode": 384,
+    "sha256": "461219afd72c080cfa40a32f95f87f1268b140b826c48f41103c28350d6ff933"
+  },
+  {
+    "path": "src/chain/chains.js",
+    "type": "file",
+    "bytes": 1700,
+    "mode": 384,
+    "sha256": "672e3d15153da274077bbb17c5f52f482ff7a31661a4c17841a0b365e2dbdee2"
+  },
+  {
+    "path": "src/chain/controller-binding.js",
+    "type": "file",
+    "bytes": 3457,
+    "mode": 384,
+    "sha256": "46843ed398c24b5d36b64b173cf59520b89b2cb3ae9cc9cd3ab9388ca805f3d0"
+  },
+  {
+    "path": "src/chain/gateway.js",
+    "type": "file",
+    "bytes": 6611,
+    "mode": 384,
+    "sha256": "af9de6f8a45af47f2a20b7dad610065dda65869ba6aa3ba8dd1dfa67fe8050a8"
+  },
+  {
+    "path": "src/chain/index.js",
+    "type": "file",
+    "bytes": 361,
+    "mode": 384,
+    "sha256": "f198365b179dd968382ac3ccb4d8882676d9cb4029dd0a60b9c7d7d570f0f163"
+  },
+  {
+    "path": "src/chain/typed-data.js",
+    "type": "file",
+    "bytes": 1367,
+    "mode": 384,
+    "sha256": "810de9c1dbdd9a0a0c2568ae50a751d4ca59d7e2fa843e48c40201d47d5d6149"
+  },
+  {
+    "path": "src/common.js",
+    "type": "file",
+    "bytes": 2996,
+    "mode": 384,
+    "sha256": "749663d349937c9f276bc8932a27d64f4c09060f45dba7231886a67195b2eda0"
+  },
+  {
+    "path": "src/config.js",
+    "type": "file",
+    "bytes": 12504,
+    "mode": 384,
+    "sha256": "939f16a9eeaca1794163f2ff9f465f9b90c930007c616766c43f743b4d10a1d0"
+  },
+  {
+    "path": "src/cysts/chunk-aead.js",
+    "type": "file",
+    "bytes": 4719,
+    "mode": 384,
+    "sha256": "047fc60bf324456c34a8348410e83b7a5a23b8d171821dd51d013333fc0fc5c4"
+  },
+  {
+    "path": "src/cysts/configured.js",
+    "type": "file",
+    "bytes": 2340,
+    "mode": 384,
+    "sha256": "446d221e257c295767cca8f03e38347d315152d7624826eeafdb8a2c4266114f"
+  },
+  {
+    "path": "src/cysts/declared-state-protocol.js",
+    "type": "file",
+    "bytes": 3658,
+    "mode": 384,
+    "sha256": "ab5861160372cf85d9bd7b34b870df80d0dce667ebabfb26460eddab6fd0b28f"
+  },
+  {
+    "path": "src/cysts/large-checkpoints.js",
+    "type": "file",
+    "bytes": 43220,
+    "mode": 384,
+    "sha256": "ea39dce3d4a0c35ae9a1aa5eae1c4a5cfbbc94415215268182818f1f561058b1"
+  },
+  {
+    "path": "src/cysts/large-configured.js",
+    "type": "file",
+    "bytes": 4549,
+    "mode": 384,
+    "sha256": "c1e94010834a0d282c50e4dfac87167cb4794849e0a46c355402945143c1f010"
+  },
+  {
+    "path": "src/cysts/large-publication-routes.js",
+    "type": "file",
+    "bytes": 6882,
+    "mode": 384,
+    "sha256": "c742bf2d6734f738de6f29d0dd98181027ce7666c1e8c5388fa72b65c5e7504f"
+  },
+  {
+    "path": "src/cysts/large-publication-schema.js",
+    "type": "file",
+    "bytes": 2740,
+    "mode": 384,
+    "sha256": "80c926ec150f0d781f957090999c0bc8a16c31cb8c1a3352ef43b07700eb94c1"
+  },
+  {
+    "path": "src/cysts/large-publication-service.js",
+    "type": "file",
+    "bytes": 29641,
+    "mode": 384,
+    "sha256": "3b10984504548579e9f6b8d379aed028f69ac860720e2d9df681369176cfe94f"
+  },
+  {
+    "path": "src/cysts/large-publication-types.js",
+    "type": "file",
+    "bytes": 705,
+    "mode": 384,
+    "sha256": "c3d1cd3e3e648db39aff3de76dc0f55e86dfd0c44b72af80d3df922d273a60a4"
+  },
+  {
+    "path": "src/cysts/large-quota-shadow.js",
+    "type": "file",
+    "bytes": 10440,
+    "mode": 384,
+    "sha256": "422e1bd9fa371ff958e38ca98d8c4f0caecac233be909cbf2a1ef4d72d536575"
+  },
+  {
+    "path": "src/cysts/large-registry.js",
+    "type": "file",
+    "bytes": 8897,
+    "mode": 384,
+    "sha256": "ef952898f5ee5ef45beaa09ae30a6d97fdde4eee8d7aef4e8b7acc4f6e68ee52"
+  },
+  {
+    "path": "src/cysts/large-replicated.js",
+    "type": "file",
+    "bytes": 10582,
+    "mode": 384,
+    "sha256": "28019736a453c7a84b36124849c911454009ad74816ed6626a6e09ce53a14d13"
+  },
+  {
+    "path": "src/cysts/large-routes.js",
+    "type": "file",
+    "bytes": 10133,
+    "mode": 384,
+    "sha256": "b18d6b589a15727a1145f5d112a0800204beb119d24f3771eb1dceccda80951a"
+  },
+  {
+    "path": "src/cysts/large-s3.js",
+    "type": "file",
+    "bytes": 15088,
+    "mode": 384,
+    "sha256": "9f5aa9a9a27e82ed22dd87deb43fe03412e648a221639c9e369dc0c5b63aed35"
+  },
+  {
+    "path": "src/cysts/quota-types.js",
+    "type": "file",
+    "bytes": 1112,
+    "mode": 384,
+    "sha256": "e4f5742bd613c3a353143c4433044647671394905624af3f84de0a48328f896a"
+  },
+  {
+    "path": "src/cysts/quota.js",
+    "type": "file",
+    "bytes": 3320,
+    "mode": 384,
+    "sha256": "86be0603ebba17bee6652c690bc60227dbf59df649068286fd860db061b6abb9"
+  },
+  {
+    "path": "src/cysts/registry-client.js",
+    "type": "file",
+    "bytes": 11871,
+    "mode": 384,
+    "sha256": "ccdc16345e621c216886c99ad5317335fd8ec6f609d00a6406361b1ad16c1e81"
+  },
+  {
+    "path": "src/cysts/registry-configured.js",
+    "type": "file",
+    "bytes": 1458,
+    "mode": 384,
+    "sha256": "c84932d1f1f833077feafeae61650a03b477201b5c919a90e3c50f1dfc488c2f"
+  },
+  {
+    "path": "src/cysts/registry-reader.js",
+    "type": "file",
+    "bytes": 9437,
+    "mode": 384,
+    "sha256": "a808f1e4951ce0316cea094ebdd042ea5da3dd31483c580de4ff99f858d984a4"
+  },
+  {
+    "path": "src/cysts/registry-routes.js",
+    "type": "file",
+    "bytes": 4416,
+    "mode": 384,
+    "sha256": "31c23ff871d40f5c309db88e2ca21157c710a7a474682434ddd10715b0f7fab2"
+  },
+  {
+    "path": "src/cysts/registry-service.js",
+    "type": "file",
+    "bytes": 6349,
+    "mode": 384,
+    "sha256": "ab2ec74228eafbcb75eab5df5b04fb1f64d472197e7017020dc2d6a2436e6b4a"
+  },
+  {
+    "path": "src/cysts/registry-types.js",
+    "type": "file",
+    "bytes": 5943,
+    "mode": 384,
+    "sha256": "54a257dd905f60d17735f6dd503be3ff343afb4fad9c4db613a1be8fcdfd717a"
+  },
+  {
+    "path": "src/cysts/replicated.js",
+    "type": "file",
+    "bytes": 5683,
+    "mode": 384,
+    "sha256": "e7c86a49c9a870504b2503351649f69eea17e41c618ff25ffdc7432165a1fe20"
+  },
+  {
+    "path": "src/cysts/routes.js",
+    "type": "file",
+    "bytes": 2082,
+    "mode": 384,
+    "sha256": "e5bd5bbb3af053c58ae8fc183e1540226d49682654009645a99da46716dee91d"
+  },
+  {
+    "path": "src/cysts/s3.js",
+    "type": "file",
+    "bytes": 10264,
+    "mode": 384,
+    "sha256": "e92a8df8964516bb2a9ee1b95cfdbf74b9cf045a1941e4fbed5deb981e505631"
+  },
+  {
+    "path": "src/cysts/schema.js",
+    "type": "file",
+    "bytes": 2543,
+    "mode": 384,
+    "sha256": "b7bc40e3c12c5bfc93a550005ae979fb5643bbc19d47cde9e34b38dba0affdf1"
+  },
+  {
+    "path": "src/cysts/service.js",
+    "type": "file",
+    "bytes": 9613,
+    "mode": 384,
+    "sha256": "a58047d0a5518e3e2ec52fb1529b54dfdd3b59928a3f3094a8c9c80954e10f1a"
+  },
+  {
+    "path": "src/cysts/storage.js",
+    "type": "file",
+    "bytes": 7835,
+    "mode": 384,
+    "sha256": "92c17ff567f900fca3812cbacdb46d099fcce403c4f2f6619324c83e3facdd30"
+  },
+  {
+    "path": "src/cysts/types.js",
+    "type": "file",
+    "bytes": 2266,
+    "mode": 384,
+    "sha256": "af5e1a1fa84fa6c93fe92f1811eca445698172d6f879964ee8b05cb8bd1a20d5"
+  },
+  {
+    "path": "src/deployment/platform-payment-plan.js",
+    "type": "file",
+    "bytes": 10848,
+    "mode": 384,
+    "sha256": "3f8348464d119df9d28c2c5e79817694570e0a939fce0b3ac89c1cb43e6079b9"
+  },
+  {
+    "path": "src/deployment/platform-payment-preflight.js",
+    "type": "file",
+    "bytes": 10302,
+    "mode": 384,
+    "sha256": "1c01a501f4262fb7ddd694b0ed358382a98caaa3d0d280199f8446039ce4b208"
+  },
+  {
+    "path": "src/deployment/platform-plan.js",
+    "type": "file",
+    "bytes": 4779,
+    "mode": 384,
+    "sha256": "bf0b5d8aa5f878928a698f305d3829ebcc07ec7c036116bd6f6c4ca96ca6cddc"
+  },
+  {
+    "path": "src/economics/buy-and-burn.js",
+    "type": "file",
+    "bytes": 13964,
+    "mode": 384,
+    "sha256": "c8f41f3b908b369b2546c65a43e8b2b274eade30f51b46a726c9d97cfee14a0e"
+  },
+  {
+    "path": "src/economics/committed-work-verifier.js",
+    "type": "file",
+    "bytes": 8124,
+    "mode": 384,
+    "sha256": "4b0ea891f2a81a4f536b87f03b859b673a69d606e6aa0b3e3799f2c253734a76"
+  },
+  {
+    "path": "src/economics/cpu-work-verifier.js",
+    "type": "file",
+    "bytes": 3086,
+    "mode": 384,
+    "sha256": "510f6abfb31db51b2df5027a7d06a35532e26f12e318d91f316b49be54cfd2de"
+  },
+  {
+    "path": "src/economics/profile.js",
+    "type": "file",
+    "bytes": 5977,
+    "mode": 384,
+    "sha256": "ddafb8706183a9f8b5fb064c155bc8ec9a1b1287e02e50f2063ac3ed3124bc14"
+  },
+  {
+    "path": "src/economics/staking-reader.js",
+    "type": "file",
+    "bytes": 3942,
+    "mode": 384,
+    "sha256": "c88143051b9164217a011e4abd553fcad4f5773605ad8933d66d325dac70bbea"
+  },
+  {
+    "path": "src/economics/work-allocation.js",
+    "type": "file",
+    "bytes": 6461,
+    "mode": 384,
+    "sha256": "b1e6635b3d910974c4f5c7853c13ba38dd5fbe6a4597e41999dcc9bc28254177"
+  },
+  {
+    "path": "src/economics/work-operator.js",
+    "type": "file",
+    "bytes": 4083,
+    "mode": 384,
+    "sha256": "5d307c6d96bd17bd84ba515e5513da5ef53c03664a6733cf46b85ca6761526ed"
+  },
+  {
+    "path": "src/gpu/admission.js",
+    "type": "file",
+    "bytes": 8416,
+    "mode": 384,
+    "sha256": "d908266417ab2e54dacc2ba7221b87051873198bbffd43205b3504d5c877ee22"
+  },
+  {
+    "path": "src/gpu/index.js",
+    "type": "file",
+    "bytes": 419,
+    "mode": 384,
+    "sha256": "49f736a230fd4cb9ca64565063fc23b4e023a9cc0b5e8ab84a14f8dbc77078f9"
+  },
+  {
+    "path": "src/gpu/inventory.js",
+    "type": "file",
+    "bytes": 5390,
+    "mode": 384,
+    "sha256": "587fb33c49af7cbdd187b72d41c4ad1c883c93a4459950d38c8c55bcc542a831"
+  },
+  {
+    "path": "src/gpu/probes.js",
+    "type": "file",
+    "bytes": 4944,
+    "mode": 384,
+    "sha256": "1e9b407ad6b94c83fc041680b9516887babd662430d4f1eac0784ecbef2a18ca"
+  },
+  {
+    "path": "src/gpu/slot.js",
+    "type": "file",
+    "bytes": 3566,
+    "mode": 384,
+    "sha256": "febebb85e6032c8f4056ccf6a1c9ce3861ca5286160a6387d9dc6e1d60893c30"
+  },
+  {
+    "path": "src/host-kit/admission.js",
+    "type": "file",
+    "bytes": 23083,
+    "mode": 384,
+    "sha256": "7bb488cc3fe7284865700e75b10c2342e481f50402dea2aa7b7e9fddc3c43196"
+  },
+  {
+    "path": "src/host-kit/agent.js",
+    "type": "file",
+    "bytes": 44444,
+    "mode": 384,
+    "sha256": "ebb9c4e1e8e6ffba3cf66de0c10261b0a01fed260e110853f0b119230514c02f"
+  },
+  {
+    "path": "src/host-kit/client.js",
+    "type": "file",
+    "bytes": 29136,
+    "mode": 384,
+    "sha256": "d8713d33813147a88af582f6b0a01a9c16f58bd85a92773d711a07b7f7ef10f5"
+  },
+  {
+    "path": "src/host-kit/configured.js",
+    "type": "file",
+    "bytes": 1059,
+    "mode": 384,
+    "sha256": "9e57d452ac3d13f1e851fa3876dc2f29334642fe1be18246d352791a4084a270"
+  },
+  {
+    "path": "src/host-kit/controller-schema.js",
+    "type": "file",
+    "bytes": 953,
+    "mode": 384,
+    "sha256": "0b889351c69b792379f25639e10f10789ad8840afa9d8e6b4ea6c990308dd88d"
+  },
+  {
+    "path": "src/host-kit/controller.js",
+    "type": "file",
+    "bytes": 5659,
+    "mode": 384,
+    "sha256": "f94bbb37b9c76b0a35cc0b4f0629b262d83f5b5cf3ed5bb368e0cb76bf7c09f3"
+  },
+  {
+    "path": "src/host-kit/docker-inventory.js",
+    "type": "file",
+    "bytes": 6046,
+    "mode": 384,
+    "sha256": "ad6bfb5767d53c87cd69ebf6dcaa1cce70cc5cc7d910edb688504471ecbe4c61"
+  },
+  {
+    "path": "src/host-kit/docker-runtime.js",
+    "type": "file",
+    "bytes": 13573,
+    "mode": 384,
+    "sha256": "8e9a3c960c61b200f8b0f3097fea7dc142a2cd8ec90e6b3ef142443334bcb841"
+  },
+  {
+    "path": "src/host-kit/fixture-runtime.js",
+    "type": "file",
+    "bytes": 4135,
+    "mode": 384,
+    "sha256": "132959ee590d6d4e15e44ccdf014a83e2e33cdedce98e77a1dcf0628544a3f57"
+  },
+  {
+    "path": "src/host-kit/gpu-admission.js",
+    "type": "file",
+    "bytes": 9453,
+    "mode": 384,
+    "sha256": "47f92b2e805cf45ad572766031086bbb9ea0d7c755fcbbd18f3f8694cf9ca4b4"
+  },
+  {
+    "path": "src/host-kit/hosted-sessions.js",
+    "type": "file",
+    "bytes": 3456,
+    "mode": 384,
+    "sha256": "e50bf9b2924974ad7f5c9de950cc4e2a65f671b853ced70c9262a32193fe3b13"
+  },
+  {
+    "path": "src/host-kit/hosted.js",
+    "type": "file",
+    "bytes": 3950,
+    "mode": 384,
+    "sha256": "b13ceb29febb937eae5ad82549a276592771d5e3ce9bf13c070b776dacd6d9c0"
+  },
+  {
+    "path": "src/host-kit/index.js",
+    "type": "file",
+    "bytes": 906,
+    "mode": 384,
+    "sha256": "ba20f9c00c9ac90f5604abc7194c751014bc78a5f0812d483a7815992a417fbe"
+  },
+  {
+    "path": "src/host-kit/journal.js",
+    "type": "file",
+    "bytes": 9652,
+    "mode": 384,
+    "sha256": "2fc1b0a579e57d5eff603db454cafba32d8a276c923fa103c89f86b2c9769f40"
+  },
+  {
+    "path": "src/host-kit/meter.js",
+    "type": "file",
+    "bytes": 4475,
+    "mode": 384,
+    "sha256": "2bde102f4464178c02caedd4fe34be22785ad5aaefcbc18546f59f4a906604e3"
+  },
+  {
+    "path": "src/host-kit/protocol.js",
+    "type": "file",
+    "bytes": 6092,
+    "mode": 384,
+    "sha256": "d728dd1b478db64f8f096cb1007f828a97182f99fb19e0bc77e3a4e9fef1cc1b"
+  },
+  {
+    "path": "src/host-kit/runtime.js",
+    "type": "file",
+    "bytes": 1702,
+    "mode": 384,
+    "sha256": "69f6c4a0d0e08363e7946459af59ce3977f03fe49ecd9f2fc1bf3817c5f5fe11"
+  },
+  {
+    "path": "src/host-kit/sessions/backends.js",
+    "type": "file",
+    "bytes": 21784,
+    "mode": 384,
+    "sha256": "87f81ccf98eb7c270038bbc37284bc9d925575fd1a6cd64d1a9354eee4d3a511"
+  },
+  {
+    "path": "src/host-kit/sessions/cyst-input-config.js",
+    "type": "file",
+    "bytes": 1857,
+    "mode": 384,
+    "sha256": "94e37a0d72cb7e8cfe2b7ead849e6955438103aeee956e52dcc4c22493a4c845"
+  },
+  {
+    "path": "src/host-kit/sessions/cyst-input-protocol.js",
+    "type": "file",
+    "bytes": 2479,
+    "mode": 384,
+    "sha256": "25763c4a7409d9fd131a17661f991f19434e5f2789bd7941d315cc6784327dc7"
+  },
+  {
+    "path": "src/host-kit/sessions/cyst-input-spool.js",
+    "type": "file",
+    "bytes": 25670,
+    "mode": 384,
+    "sha256": "580fa3baca5eeff9af3220028fe511a0e150dd55dce5402d50cd85186f7fa8c2"
+  },
+  {
+    "path": "src/host-kit/sessions/cyst-input-stream.js",
+    "type": "file",
+    "bytes": 1983,
+    "mode": 384,
+    "sha256": "494128ac0779615581a514ad053127e2ebc0f112da54077880f91f663cc4d098"
+  },
+  {
+    "path": "src/host-kit/sessions/index.js",
+    "type": "file",
+    "bytes": 339,
+    "mode": 384,
+    "sha256": "0a4487ce655202b40f8389fb23733c14c519b5eaf67c8fa7ee3f2ebeacfe7369"
+  },
+  {
+    "path": "src/host-kit/sessions/init-program.js",
+    "type": "file",
+    "bytes": 5421,
+    "mode": 384,
+    "sha256": "51397208067519793880aa5c2e72c141105235c2605a3da9788fd20b1ef738c3"
+  },
+  {
+    "path": "src/host-kit/sessions/journal.js",
+    "type": "file",
+    "bytes": 10117,
+    "mode": 384,
+    "sha256": "6e6414db70f43eed9ba34de81e4ad365f011286337d3ef4b6021b6e08bc31d28"
+  },
+  {
+    "path": "src/host-kit/sessions/paid-agent.js",
+    "type": "file",
+    "bytes": 33065,
+    "mode": 384,
+    "sha256": "43c4727604f01c8bb6dc8e41b5f6ed3b5fd43224c52b2adbe1ea988723bfc0b2"
+  },
+  {
+    "path": "src/host-kit/sessions/paid-preemption-protocol.js",
+    "type": "file",
+    "bytes": 1996,
+    "mode": 384,
+    "sha256": "6458a8abbfa6d97f1e314ae99bd83c878f09c63cff98c6dfc08f54ee6e4e74fb"
+  },
+  {
+    "path": "src/host-kit/sessions/paid-preemption.js",
+    "type": "file",
+    "bytes": 18926,
+    "mode": 384,
+    "sha256": "3e25ca24d6a41c7e84a6d685417f84440fb6ae91ecd6e7a2c3aa824af010ec84"
+  },
+  {
+    "path": "src/host-kit/sessions/paid-protocol.js",
+    "type": "file",
+    "bytes": 4406,
+    "mode": 384,
+    "sha256": "7e66741ee22e22162563fbfc78fe7c478f438d4b7275be5de9841b0789a8744b"
+  },
+  {
+    "path": "src/host-kit/sessions/runtime.js",
+    "type": "file",
+    "bytes": 21088,
+    "mode": 384,
+    "sha256": "b6fa6745abe86223d0c91abce0bb3dc1ddfe73bab8233f5429a3f7d8de18c811"
+  },
+  {
+    "path": "src/host-kit/sessions/types.js",
+    "type": "file",
+    "bytes": 4476,
+    "mode": 384,
+    "sha256": "ef6eea880bfcb5ce1d88a43a2a309f8a9322b2f7f156cb63140b821923434441"
+  },
+  {
+    "path": "src/host-kit/text-output.js",
+    "type": "file",
+    "bytes": 1620,
+    "mode": 384,
+    "sha256": "7a575ddd64ff76b542f7c14483e052cc2d87882dd0a4d557fdf413bb2640600a"
+  },
+  {
+    "path": "src/host-kit/v2-admission-receipt.js",
+    "type": "file",
+    "bytes": 1026,
+    "mode": 384,
+    "sha256": "9bf0bd101f2ef918972b441ef8a11bbd480ef8cfbf75b6d3e35421c696169666"
+  },
+  {
+    "path": "src/host-kit/v2-admission.js",
+    "type": "file",
+    "bytes": 13654,
+    "mode": 384,
+    "sha256": "7572d78def5b2a28fbab15c9c2620f329d5440d84ea357d48b9b1161484fb1d1"
+  },
+  {
+    "path": "src/integrations/automaton.js",
+    "type": "file",
+    "bytes": 1942,
+    "mode": 384,
+    "sha256": "695ee8e662d8e48bdad1241bfe3a3900a63ba41d8fe55a802c418cb9394ff178"
+  },
+  {
+    "path": "src/integrations/cli.js",
+    "type": "file",
+    "bytes": 5378,
+    "mode": 384,
+    "sha256": "0d45dd8280a81e63f25a59524cd5f210b3852698d0c3a1080cef8e6220c49879"
+  },
+  {
+    "path": "src/integrations/durable-vault-compute.js",
+    "type": "file",
+    "bytes": 9679,
+    "mode": 384,
+    "sha256": "211fea4e967cfcd3f0e0df2e50e43f0f9996f21239c588f8c22feb313aaf0862"
+  },
+  {
+    "path": "src/integrations/elizaos.js",
+    "type": "file",
+    "bytes": 2722,
+    "mode": 384,
+    "sha256": "203c1c1427caf7c1fb92397cbf8c14d797e61115c8dc5f66cac0d677195553b5"
+  },
+  {
+    "path": "src/integrations/index.js",
+    "type": "file",
+    "bytes": 275,
+    "mode": 384,
+    "sha256": "ca2aee41278d59cec1b84f82af1273ef15610728a9151f12e4f3f7db3299d584"
+  },
+  {
+    "path": "src/main.js",
+    "type": "file",
+    "bytes": 16065,
+    "mode": 384,
+    "sha256": "8cea56a2a9efdc2c3c9ceaa778e5ddada12f449aaf73c1868f1fe0b593719e33"
+  },
+  {
+    "path": "src/mcp/http.js",
+    "type": "file",
+    "bytes": 27091,
+    "mode": 384,
+    "sha256": "72a36de7bcd1d6d6286ea88ea7674b85e7c5fecf5e28ac0bbceba56224b3ab12"
+  },
+  {
+    "path": "src/mcp/platform-config.js",
+    "type": "file",
+    "bytes": 1563,
+    "mode": 384,
+    "sha256": "03eb3cf200dccbbbfab07532fd5ac7b9d34a0678bc0cc63aeb436ee344ed5700"
+  },
+  {
+    "path": "src/mcp/platform.js",
+    "type": "file",
+    "bytes": 12371,
+    "mode": 384,
+    "sha256": "7197b5d7bd74210b0e64e76251156d5cdb00b638c2bb483c79116e7ec1c8168c"
+  },
+  {
+    "path": "src/mcp/server.js",
+    "type": "file",
+    "bytes": 11621,
+    "mode": 384,
+    "sha256": "18829edf6070b9c79cff82e1d1d02195aca0d37213f3c059cd435ee03b036edb"
+  },
+  {
+    "path": "src/operations.js",
+    "type": "file",
+    "bytes": 1580,
+    "mode": 384,
+    "sha256": "c0fdf7b7c8ffab70bd5bc38ba89393fbaca2e0b8dccb2a38cb74d7a7b1647cf5"
+  },
+  {
+    "path": "src/operator/backup.js",
+    "type": "file",
+    "bytes": 27376,
+    "mode": 384,
+    "sha256": "fae3bdc0d8c588d2d5bbede3a4e21c58983f07c29f45db6a3cc8bb724b121866"
+  },
+  {
+    "path": "src/operator/database.js",
+    "type": "file",
+    "bytes": 8121,
+    "mode": 384,
+    "sha256": "c4908bd9e4c7fe7531fff293c9fd9605c07387d8e34fdb8a31703c5c852dfaf2"
+  },
+  {
+    "path": "src/operator/diagnostics.js",
+    "type": "file",
+    "bytes": 2443,
+    "mode": 384,
+    "sha256": "6e8ff71d05a5b5a9dd4346607e53d0612edfc74c2a9f8999592f7b5c72735cd8"
+  },
+  {
+    "path": "src/operator/fork-guard.js",
+    "type": "file",
+    "bytes": 791,
+    "mode": 384,
+    "sha256": "ee7270fc83f84ad800e61d4b133cf26bc41a87d2d1752374695d72a28ffda6b5"
+  },
+  {
+    "path": "src/operator/large-cyst-storage.js",
+    "type": "file",
+    "bytes": 4288,
+    "mode": 384,
+    "sha256": "b9b99b482ed752fb939b466d71bc4427855a5c017ac5fa45e4ae4a993b65e103"
+  },
+  {
+    "path": "src/operator/platform-backup.js",
+    "type": "file",
+    "bytes": 39793,
+    "mode": 384,
+    "sha256": "43dbc395e0e733fbae0bfed23d1fa004ea849e56ac478b7b85022819d8582572"
+  },
+  {
+    "path": "src/operator/platform-journal-audit.js",
+    "type": "file",
+    "bytes": 6639,
+    "mode": 384,
+    "sha256": "f3ba857b146293489465639effe69902f03ecc34a852f3be7612aca50d25ebd3"
+  },
+  {
+    "path": "src/operator/platform-prepared-audit.js",
+    "type": "file",
+    "bytes": 6794,
+    "mode": 384,
+    "sha256": "c3106e0a805557dc11f5399b0b204aa247fcf8527e014690af355c7c7a7eee52"
+  },
+  {
+    "path": "src/operator/profile.js",
+    "type": "file",
+    "bytes": 2564,
+    "mode": 384,
+    "sha256": "c32e346d1ea1b400fbf17a2ad5a136805b5fd9c8384800b91ac9039028e97834"
+  },
+  {
+    "path": "src/operator/watchdog.js",
+    "type": "file",
+    "bytes": 20755,
+    "mode": 384,
+    "sha256": "8dcc6ee27aebfb314c600213549df440e28b4394885a89ff30e3f46d9d7a4887"
+  },
+  {
+    "path": "src/payments/asset-facets.js",
+    "type": "file",
+    "bytes": 2557,
+    "mode": 384,
+    "sha256": "574c05c4aad4b70469ad3f076542c6912f5705374a5cc6546c9d6f938b7396c5"
+  },
+  {
+    "path": "src/payments/circle-usdc-archive.js",
+    "type": "file",
+    "bytes": 2184,
+    "mode": 384,
+    "sha256": "391ed4d00a47aabe9ec118705f67a5ffb4214c3e185f3adaae4c2a1da5839dda"
+  },
+  {
+    "path": "src/payments/circle-usdc.js",
+    "type": "file",
+    "bytes": 3963,
+    "mode": 384,
+    "sha256": "a5719990b1a2310831ee1b74466278d9a37ced8b6217402772baa81328cc0abf"
+  },
+  {
+    "path": "src/payments/cpu-reservation-types.js",
+    "type": "file",
+    "bytes": 2140,
+    "mode": 384,
+    "sha256": "96f88284c180ed9d0647e3ddc1b0162d398b631b1395bb0d72f3e287b3a1a7e9"
+  },
+  {
+    "path": "src/payments/cpu-reservations.js",
+    "type": "file",
+    "bytes": 24262,
+    "mode": 384,
+    "sha256": "d11a7c52bf6c9ae4a06f0fa8944b94d91de0a35d20d90f5e4185063e3b241105"
+  },
+  {
+    "path": "src/payments/gateway.js",
+    "type": "file",
+    "bytes": 20323,
+    "mode": 384,
+    "sha256": "e404395b5d1f760392be2bf66895ae782578300b7d448f9fcc42341b46ab1629"
+  },
+  {
+    "path": "src/payments/index.js",
+    "type": "file",
+    "bytes": 149,
+    "mode": 384,
+    "sha256": "b9e0cfdc752573774bab61a6751fd4e44bd3ed9be20218e8c82e627567bf92be"
+  },
+  {
+    "path": "src/payments/protocol.js",
+    "type": "file",
+    "bytes": 4808,
+    "mode": 384,
+    "sha256": "eba17568c5a716bebb465b3e2df5ae6dfd26fcb3f57a05b412a019d1fb45a897"
+  },
+  {
+    "path": "src/payments/routes.js",
+    "type": "file",
+    "bytes": 4672,
+    "mode": 384,
+    "sha256": "7416b147b541875df879d7f76e1dfc139a8a8084d6ac807fc5d805ac9f6f5a50"
+  },
+  {
+    "path": "src/payments/schema.js",
+    "type": "file",
+    "bytes": 2602,
+    "mode": 384,
+    "sha256": "ab43a56df6fbac201b751ba31f264f6f093907e74fad3d62a2fc6d0f25d0bce4"
+  },
+  {
+    "path": "src/payments/service.js",
+    "type": "file",
+    "bytes": 19425,
+    "mode": 384,
+    "sha256": "244c9ab59be312a1234e59b16198c2c441d02a37ccd453ea2204150bac28830f"
+  },
+  {
+    "path": "src/payments/spend-permission-types.js",
+    "type": "file",
+    "bytes": 1649,
+    "mode": 384,
+    "sha256": "12984af29104ad54fa6e9065fbab62e19fc12e0f73388e9d0c81b76326d63066"
+  },
+  {
+    "path": "src/payments/spend-permissions.js",
+    "type": "file",
+    "bytes": 18875,
+    "mode": 384,
+    "sha256": "43141a2489003600332133ae21f56b2e24336da8e25cfd5923ae45b6aff0f6a3"
+  },
+  {
+    "path": "src/payments/usdg-archive.js",
+    "type": "file",
+    "bytes": 3823,
+    "mode": 384,
+    "sha256": "98f76f2b05de7986eaa2c841dcafc9fb10ebba1d2b89cb3278403cb1f9cda95b"
+  },
+  {
+    "path": "src/payments/vault-income-chain.js",
+    "type": "file",
+    "bytes": 23805,
+    "mode": 384,
+    "sha256": "ae800cb2f8264bf8ddd0b812af71f8ded58e34d90368bf347fdbaa4f978ce208"
+  },
+  {
+    "path": "src/payments/vault-income-configured.js",
+    "type": "file",
+    "bytes": 14380,
+    "mode": 384,
+    "sha256": "2fc3ed792924ce37114f3d52c792e72870e541f9c5b5cf4433d2ca047ffb62b9"
+  },
+  {
+    "path": "src/payments/vault-income-private-file.js",
+    "type": "file",
+    "bytes": 6323,
+    "mode": 384,
+    "sha256": "9e1c3c552f12256fd389bf401c4d62f062bdeb809094f447bf93621f1bf83470"
+  },
+  {
+    "path": "src/payments/vault-income-routes.js",
+    "type": "file",
+    "bytes": 6880,
+    "mode": 384,
+    "sha256": "61b0bf600f904aea92a3001efe17721a70817d694429836a2d5004827963f2eb"
+  },
+  {
+    "path": "src/payments/vault-income-rpc.js",
+    "type": "file",
+    "bytes": 2787,
+    "mode": 384,
+    "sha256": "646aa447be1a65a951fedbe7bfc0996aada441a0a877c2b3fbdf44f11f57e6ce"
+  },
+  {
+    "path": "src/platform-runtime/bridge.js",
+    "type": "file",
+    "bytes": 18363,
+    "mode": 384,
+    "sha256": "33ad66329742bc7f3b4422d6a151dac36e6734567992ca10534a917ff9ecbfd1"
+  },
+  {
+    "path": "src/platform-runtime/client.js",
+    "type": "file",
+    "bytes": 19815,
+    "mode": 384,
+    "sha256": "9350e63548ee62b5af1e1a7562523ce605458c84149766c8c00e0e2a6bfc2047"
+  },
+  {
+    "path": "src/platform-runtime/configured.js",
+    "type": "file",
+    "bytes": 6628,
+    "mode": 384,
+    "sha256": "7ae3739fe1acc0ae83546d14735d97eb9af1c2c2db8ce58edecbb403cef65213"
+  },
+  {
+    "path": "src/platform-runtime/host-executor.js",
+    "type": "file",
+    "bytes": 33293,
+    "mode": 384,
+    "sha256": "b064a4667e8c3fd9d2efb3362c63416ea333801b9a36cdfd444bd92bf177b502"
+  },
+  {
+    "path": "src/platform-runtime/paid-cyst-input-routes.js",
+    "type": "file",
+    "bytes": 1939,
+    "mode": 384,
+    "sha256": "d88cb1f44886aba0803ac3e8f3b8e351ee1df20322a0505fefa37c435ef0848d"
+  },
+  {
+    "path": "src/platform-runtime/paid-cyst-input.js",
+    "type": "file",
+    "bytes": 4414,
+    "mode": 384,
+    "sha256": "1c1f0599992c1a02d30989c8e55507603f25ea1a5bc3567fe509153e07492f45"
+  },
+  {
+    "path": "src/platform-runtime/presented-meter.js",
+    "type": "file",
+    "bytes": 12098,
+    "mode": 384,
+    "sha256": "00bd5e951b75e8ad5854613f0df71ad2802e3e8f5108d875fe8191a4dfb050ed"
+  },
+  {
+    "path": "src/platform-runtime/public-financial-routes.js",
+    "type": "file",
+    "bytes": 1230,
+    "mode": 384,
+    "sha256": "022a65dd66ed04f1c44b465f28ea743dbbccb8b0ea002e6cc0c15dfc0896d212"
+  },
+  {
+    "path": "src/platform-runtime/public-financial.js",
+    "type": "file",
+    "bytes": 23186,
+    "mode": 384,
+    "sha256": "6ea5009cd888d381c175dd08e71ca1b39c9dc18f307b4bb8d368c149789b8617"
+  },
+  {
+    "path": "src/platform-runtime/read-only.js",
+    "type": "file",
+    "bytes": 8709,
+    "mode": 384,
+    "sha256": "69cc8b4d0869f923dff3bcfd5588bd546844ff22862e168c8e245b99e4992f8c"
+  },
+  {
+    "path": "src/platform-runtime/routes.js",
+    "type": "file",
+    "bytes": 8008,
+    "mode": 384,
+    "sha256": "2fd3974ed5597199eb76e5316fa4720e543c7992ca875c17fda2507f45d1445f"
+  },
+  {
+    "path": "src/platform-runtime/schema.js",
+    "type": "file",
+    "bytes": 5671,
+    "mode": 384,
+    "sha256": "6ec40c19f5e40b345b4e4a06a48711ecf88783130b5a2a73d4ebd7994eebc526"
+  },
+  {
+    "path": "src/platform-runtime/service.js",
+    "type": "file",
+    "bytes": 114264,
+    "mode": 384,
+    "sha256": "19ce9323f123c082c3a9da06c18867528a6ec78bdb02c907a666ac92d54975e1"
+  },
+  {
+    "path": "src/platform-runtime/session-client.js",
+    "type": "file",
+    "bytes": 1703,
+    "mode": 384,
+    "sha256": "b5b1dc45c5e28777f74574716cebe9892a4b7f1a3624c6ed765ba9952d1db414"
+  },
+  {
+    "path": "src/platform-runtime/transactions.js",
+    "type": "file",
+    "bytes": 4992,
+    "mode": 384,
+    "sha256": "aae6ad395eb295fd32648dad6705da6a2455985766037eeb02f87bf577dd89cd"
+  },
+  {
+    "path": "src/platform-runtime/types.js",
+    "type": "file",
+    "bytes": 18791,
+    "mode": 384,
+    "sha256": "ae58f5c7ba1ca4bf6b5c1fac4416ec3fe2d08341c27c421d3341bb3f6e842dda"
+  },
+  {
+    "path": "src/platform-runtime/vault-client.js",
+    "type": "file",
+    "bytes": 34273,
+    "mode": 384,
+    "sha256": "1291f3af24bdf2879b93850353bb80b8d94ce4993467907c5e468aad38e65b38"
+  },
+  {
+    "path": "src/platform-runtime/vault-routes.js",
+    "type": "file",
+    "bytes": 6554,
+    "mode": 384,
+    "sha256": "ccbe599516199efc9cf261a0df408be21edae8d728a0c98db17a0266cf1d277e"
+  },
+  {
+    "path": "src/platform-runtime/vault-service.js",
+    "type": "file",
+    "bytes": 5508,
+    "mode": 384,
+    "sha256": "2f5389b99e3f959a0bce7d3d7358db1b4119c6671f70337e77c1a83546a9fcc6"
+  },
+  {
+    "path": "src/platform-runtime/vault.js",
+    "type": "file",
+    "bytes": 20654,
+    "mode": 384,
+    "sha256": "40f9560dd8fd19e5a0361502499ea6477a84a2bef40134a14b452b966198bb4f"
+  },
+  {
+    "path": "src/platform-runtime/x402-client.js",
+    "type": "file",
+    "bytes": 7925,
+    "mode": 384,
+    "sha256": "015998c461ffa4349b47545314c550191bd1e4845499f7c4d5cb3ddf23ce8721"
+  },
+  {
+    "path": "src/platform.js",
+    "type": "file",
+    "bytes": 10249,
+    "mode": 384,
+    "sha256": "05644d6e5f2f29c186dc194037428c8dc9041b96ae96222d40d59e6159d03c37"
+  },
+  {
+    "path": "src/providers/cloud-candidate.js",
+    "type": "file",
+    "bytes": 12324,
+    "mode": 384,
+    "sha256": "7597e8a21ab4db85d359b6f62e77bea6c70e4b2cad7382e79e2470897449c996"
+  },
+  {
+    "path": "src/providers/configured.js",
+    "type": "file",
+    "bytes": 1305,
+    "mode": 384,
+    "sha256": "f1f81e36c9e50fd9af24bd69ae0cd6a916985f0cd2aeedd8d80c1d36b62306ca"
+  },
+  {
+    "path": "src/providers/direct-candidate.js",
+    "type": "file",
+    "bytes": 9348,
+    "mode": 384,
+    "sha256": "e4646e7eb9edc59a6c75b80ffb12da297aaa924c132b64172496a01f561c77be"
+  },
+  {
+    "path": "src/providers/index.js",
+    "type": "file",
+    "bytes": 334,
+    "mode": 384,
+    "sha256": "d9b33d878067bc9cbabe9a87448fd88008c4d7a70516d0965596f1a07604fca6"
+  },
+  {
+    "path": "src/providers/near.js",
+    "type": "file",
+    "bytes": 9156,
+    "mode": 384,
+    "sha256": "4953563fe52b689371c5b7f6bd410cd10290b3df4ca5c8d4e1a56246178120ce"
+  },
+  {
+    "path": "src/providers/readiness.js",
+    "type": "file",
+    "bytes": 1326,
+    "mode": 384,
+    "sha256": "5f60121271b6d54c05936dd60f9357b22be20e092776c3614781f6bdae44c284"
+  },
+  {
+    "path": "src/providers/recovery.js",
+    "type": "file",
+    "bytes": 5486,
+    "mode": 384,
+    "sha256": "0c484a6d70ac22669ddbc33db061aa6665ce05c65265d90d4b9bdf6fca5b5ec0"
+  },
+  {
+    "path": "src/providers/verified/appraisal.js",
+    "type": "file",
+    "bytes": 1517,
+    "mode": 384,
+    "sha256": "b4d94b5de4b9228fcddb2935b8950732879cdc83498959e865447d573d7144bd"
+  },
+  {
+    "path": "src/providers/verified/attestation-error.js",
+    "type": "file",
+    "bytes": 3826,
+    "mode": 384,
+    "sha256": "7981a62f635c7e273442072f7c8050d66030efc8f43f227a7eb0a21240baf3c0"
+  },
+  {
+    "path": "src/providers/verified/attestation.js",
+    "type": "file",
+    "bytes": 24601,
+    "mode": 384,
+    "sha256": "87fe190e2b0e4ff94e6806a733614da328d42a4f95075462504af60dc2cebfee"
+  },
+  {
+    "path": "src/providers/verified/index.js",
+    "type": "file",
+    "bytes": 257,
+    "mode": 384,
+    "sha256": "364476075cd53ca5d061e39179c712201078887fad77d717519d0b532c52b06b"
+  },
+  {
+    "path": "src/providers/verified/inference.js",
+    "type": "file",
+    "bytes": 17428,
+    "mode": 384,
+    "sha256": "0b49dce28ef0c0db5606460e66f003336e4939ce3935dd681979ce7937b0665f"
+  },
+  {
+    "path": "src/providers/verified/provider.js",
+    "type": "file",
+    "bytes": 12070,
+    "mode": 384,
+    "sha256": "3e25610aba6551f4e9d49ecf3957c216fcb091adb26b336aa98f45345382b08c"
+  },
+  {
+    "path": "src/providers/verified/readiness.js",
+    "type": "file",
+    "bytes": 6579,
+    "mode": 384,
+    "sha256": "7a387b8d67c3d99e6772f010aa1ce39574add8b2987e99818d4c00e394e5ea9c"
+  },
+  {
+    "path": "src/providers/verified/support.js",
+    "type": "file",
+    "bytes": 700,
+    "mode": 384,
+    "sha256": "ac3709ab8114810cbd36970b90294f5dc85937085c82221e5160315aae03b03c"
+  },
+  {
+    "path": "src/receipts/index.js",
+    "type": "file",
+    "bytes": 502,
+    "mode": 384,
+    "sha256": "36d72e9edf28e57a6fc6a354820d9dd3f93da7b28c1a8c2b17602b82e1eb499a"
+  },
+  {
+    "path": "src/receipts/merkle.js",
+    "type": "file",
+    "bytes": 2367,
+    "mode": 384,
+    "sha256": "c7f1baf9cc046bcb26f5fbd4531faf77fbf089f1bee7f7e0a1ff68c65cbb9f03"
+  },
+  {
+    "path": "src/receipts/platform-merkle.js",
+    "type": "file",
+    "bytes": 1675,
+    "mode": 384,
+    "sha256": "6c4f7283d8b89817a52059aa45efa9bfe4ecb79d231e925814bf8e59fed39ff8"
+  },
+  {
+    "path": "src/receipts/platform-presented-meter-routes.js",
+    "type": "file",
+    "bytes": 5346,
+    "mode": 384,
+    "sha256": "c014d7494464d4b7f32ce8e839b151c5c5ddc5648ac4647efaf98fbae3462d2c"
+  },
+  {
+    "path": "src/receipts/platform-schema.js",
+    "type": "file",
+    "bytes": 2660,
+    "mode": 384,
+    "sha256": "b422380106007d36148cbb712af41be940fa366ca3b24c9ac61bb09fd88ec973"
+  },
+  {
+    "path": "src/receipts/platform-service.js",
+    "type": "file",
+    "bytes": 18712,
+    "mode": 384,
+    "sha256": "24b50984711c3e5a8c5c4488d6ed43080f61fcae18fe5a92db2ee53bd1e9c7cb"
+  },
+  {
+    "path": "src/receipts/platform-v2-admission.js",
+    "type": "file",
+    "bytes": 17437,
+    "mode": 384,
+    "sha256": "ac9d41bf8c5fc8fa5c3468b57899b9f330bf4c5f98e8affb94a2d0ade7ceece8"
+  },
+  {
+    "path": "src/receipts/platform-v2-combined.js",
+    "type": "file",
+    "bytes": 8449,
+    "mode": 384,
+    "sha256": "7091f185e055ad9075f6bbebcd1ded21227c430f6d47dfecb7a3188ac5fdb86d"
+  },
+  {
+    "path": "src/receipts/platform-v2-durable.js",
+    "type": "file",
+    "bytes": 7321,
+    "mode": 384,
+    "sha256": "ef2c4fc63d6e0d18b99d001a075bba9ea3a16fa1fe1c1ffe71979f2d455e99a8"
+  },
+  {
+    "path": "src/receipts/platform-v2-history.js",
+    "type": "file",
+    "bytes": 19262,
+    "mode": 384,
+    "sha256": "3b3d02c49aacd215b1b9e91edcfc9dbe1e65feb36c1a326d7f8cc910ecb013a9"
+  },
+  {
+    "path": "src/receipts/platform-v2-issuer.js",
+    "type": "file",
+    "bytes": 10957,
+    "mode": 384,
+    "sha256": "f618257af34afe6842b739d206568ee91ef8c53a476e3c5e718bd60a5511f1a9"
+  },
+  {
+    "path": "src/receipts/platform-v2-journal.js",
+    "type": "file",
+    "bytes": 4865,
+    "mode": 384,
+    "sha256": "f5a7e390bb74aef1651d558b53b7ac971be44d65e4f0a30a4c96c275cbed2662"
+  },
+  {
+    "path": "src/receipts/platform-v2-publication.js",
+    "type": "file",
+    "bytes": 16468,
+    "mode": 384,
+    "sha256": "ffca8135ee02ac4cf6dc8ceb313067c0787f139bdb169d27980b2b1a845e1a48"
+  },
+  {
+    "path": "src/receipts/platform-v2-routes.js",
+    "type": "file",
+    "bytes": 8876,
+    "mode": 384,
+    "sha256": "e9d7930bf026f462ff0d884fc65de6b4dc9b20ef6c62adca94308624172dabff"
+  },
+  {
+    "path": "src/receipts/platform-v2-s3.js",
+    "type": "file",
+    "bytes": 8374,
+    "mode": 384,
+    "sha256": "0ab608843df847b6b3a1063c506405a96f01f42ec8981599040e7cf3911da350"
+  },
+  {
+    "path": "src/receipts/platform-v2-witness.js",
+    "type": "file",
+    "bytes": 8543,
+    "mode": 384,
+    "sha256": "f3cf6254e0bf1bca99ee1bb365a84fa9b873119a8c8a893808f7e217788b72d4"
+  },
+  {
+    "path": "src/receipts/platform-v2.js",
+    "type": "file",
+    "bytes": 18599,
+    "mode": 384,
+    "sha256": "1d3b18e77e4e870de5eae9814a8590064cba8f4207ca8b8c8d266754c7cadf05"
+  },
+  {
+    "path": "src/receipts/routes.js",
+    "type": "file",
+    "bytes": 1084,
+    "mode": 384,
+    "sha256": "625d974615cae63051cc61364cf1c2080b97522516f6717b5109eca549248b5e"
+  },
+  {
+    "path": "src/receipts/schema.js",
+    "type": "file",
+    "bytes": 2253,
+    "mode": 384,
+    "sha256": "830d451bc9cd81aace70e203c3650cac975c5006a1c1dfca5d18f7174f00f302"
+  },
+  {
+    "path": "src/receipts/service.js",
+    "type": "file",
+    "bytes": 11320,
+    "mode": 384,
+    "sha256": "ddf62a416c9c0ce53927b85988fd06c204231c5bcc7db0cd30ee54f85082deaa"
+  },
+  {
+    "path": "src/receipts/verifier.js",
+    "type": "file",
+    "bytes": 6079,
+    "mode": 384,
+    "sha256": "d6e974ec806ab168469fa46bedb391633ae4299ad6ccd1652a51b8a65d3e3eb6"
+  },
+  {
+    "path": "src/runtime/command.js",
+    "type": "file",
+    "bytes": 2080,
+    "mode": 384,
+    "sha256": "345c06a812e6eed29f85c56bd3eee0a77929d0be9d0ef237be3305dd95eb9b0c"
+  },
+  {
+    "path": "src/runtime/demo.js",
+    "type": "file",
+    "bytes": 2630,
+    "mode": 384,
+    "sha256": "ccc97b65138fc125b412ba7b1ef64ab5d3bb0c95dc8539c02cbbec00ca04e05b"
+  },
+  {
+    "path": "src/runtime/docker.js",
+    "type": "file",
+    "bytes": 8633,
+    "mode": 384,
+    "sha256": "4eef9a2e255d2e8d9aef534639d0b2f5d61dde355017faf4feb68123d80dbd65"
+  },
+  {
+    "path": "src/runtime/index.js",
+    "type": "file",
+    "bytes": 222,
+    "mode": 384,
+    "sha256": "0bd0e916c18d6f34a6f2bc2d6469fdb775d30cd3890b3f8b02e83b80213661ef"
+  },
+  {
+    "path": "src/runtime/meter.js",
+    "type": "file",
+    "bytes": 1754,
+    "mode": 384,
+    "sha256": "b7c093fc557b2a9c2462850eb42f3053b059771d82b072b72a4b5cb653740656"
+  },
+  {
+    "path": "src/runtime/task-program.js",
+    "type": "file",
+    "bytes": 3134,
+    "mode": 384,
+    "sha256": "30666c0c5c7dfa484b5c23763d5d7ad743a3c78ec0794fcd641ea29545166568"
+  },
+  {
+    "path": "src/runtime/types.js",
+    "type": "file",
+    "bytes": 882,
+    "mode": 384,
+    "sha256": "ad143373bdd43f203b5c2e38bd949a30c77d4c8095c1a4a133b7134fff530440"
+  },
+  {
+    "path": "src/runtime/validation.js",
+    "type": "file",
+    "bytes": 2709,
+    "mode": 384,
+    "sha256": "2850ddefb0d1a9abfbdccc4e3d34c64e9cbb72b99ea6e75950ac210f93ec06a2"
+  },
+  {
+    "path": "src/scheduling/cpu-offers.js",
+    "type": "file",
+    "bytes": 3061,
+    "mode": 384,
+    "sha256": "d395e94b24146fb9a8707b82c6a4e33855cd017ff70642a3e8778e7f75043e43"
+  },
+  {
+    "path": "src/scheduling/cpu-replacement.js",
+    "type": "file",
+    "bytes": 10605,
+    "mode": 384,
+    "sha256": "2770da88b1746dc8a4a4423481128aec4d0066b8ebe18d0d06b8bc56942264a1"
+  },
+  {
+    "path": "src/scheduling/interruptible/client.js",
+    "type": "file",
+    "bytes": 2318,
+    "mode": 384,
+    "sha256": "9c7a3d6fdd0bbf0c3d5448bcd1c631d6355b567a4d752884c88f0ec2ea16b49c"
+  },
+  {
+    "path": "src/scheduling/interruptible/controller-reader.js",
+    "type": "file",
+    "bytes": 3995,
+    "mode": 384,
+    "sha256": "7d726a9f95c3fb2a646c92f353e0a3612aacc541c69e11efb30aa732da92ce3f"
+  },
+  {
+    "path": "src/scheduling/interruptible/host.js",
+    "type": "file",
+    "bytes": 6184,
+    "mode": 384,
+    "sha256": "74e3545d9dd448210e85809e2787846dcef825bce31a86567bddd569ac37fbca"
+  },
+  {
+    "path": "src/scheduling/interruptible/http-client.js",
+    "type": "file",
+    "bytes": 2977,
+    "mode": 384,
+    "sha256": "0ddb62e86298cb278e79b0daa667364edb2f957f84cf0d6fbb7b6b28a1d4c8cb"
+  },
+  {
+    "path": "src/scheduling/interruptible/index.js",
+    "type": "file",
+    "bytes": 246,
+    "mode": 384,
+    "sha256": "4d522b32590a20cad93bfa35678152e155420d2acc38367996383ac70168b2c6"
+  },
+  {
+    "path": "src/scheduling/interruptible/routes.js",
+    "type": "file",
+    "bytes": 3078,
+    "mode": 384,
+    "sha256": "b9612bfc9c9b7eb2c42cd8206af803f30cba22235eb7f5b6b3fcbbba3716f047"
+  },
+  {
+    "path": "src/scheduling/interruptible/schema.js",
+    "type": "file",
+    "bytes": 3665,
+    "mode": 384,
+    "sha256": "a91ab78123fbe3b142a6372c9ef0f062e74f6d1910c593ea3163407187b069b3"
+  },
+  {
+    "path": "src/scheduling/interruptible/service.js",
+    "type": "file",
+    "bytes": 35079,
+    "mode": 384,
+    "sha256": "d14d43067b5a32c6b56428d7f958ff307ce2e64778a454f91d6e746a3c3a2307"
+  },
+  {
+    "path": "src/scheduling/interruptible/types.js",
+    "type": "file",
+    "bytes": 4137,
+    "mode": 384,
+    "sha256": "b55eac8edb6d338092eb0ea5632e5792f94214e8cd601ddc0f7b5313b32f58e5"
+  },
+  {
+    "path": "src/scheduling/paid-cleanup.js",
+    "type": "file",
+    "bytes": 2763,
+    "mode": 384,
+    "sha256": "7ca7866a911f335dc894ec78c1936be45c2d6f78b661be204a3671b8e9918450"
+  },
+  {
+    "path": "src/scheduling/paid-job-routes.js",
+    "type": "file",
+    "bytes": 2947,
+    "mode": 384,
+    "sha256": "55370bb3ea8fd5c9970f74b06c3f7b4bb48c75d9a51cda429cc1f7a4cbe1f76d"
+  },
+  {
+    "path": "src/scheduling/paid-job-schema.js",
+    "type": "file",
+    "bytes": 918,
+    "mode": 384,
+    "sha256": "700977d7af4e543c4dbbfee5b67047c2954b1670923d386d2a83f15993bb4101"
+  },
+  {
+    "path": "src/scheduling/paid-job-types.js",
+    "type": "file",
+    "bytes": 3704,
+    "mode": 384,
+    "sha256": "19cc2dc737e1e770331d8ca00e8b9e51f67272ca45b65b85dc05167a413840d6"
+  },
+  {
+    "path": "src/scheduling/paid-jobs.js",
+    "type": "file",
+    "bytes": 16680,
+    "mode": 384,
+    "sha256": "77feedd6624a97a04755358caf89939c7ee2cf409436c4f33136453a0fa9e2be"
+  },
+  {
+    "path": "src/scheduling/paid-lanes.js",
+    "type": "file",
+    "bytes": 1548,
+    "mode": 384,
+    "sha256": "d02d2acd62ffe02cfb16a6394aa6e33c5e60fb3b81786bbae689c7e13f64fcd3"
+  },
+  {
+    "path": "src/scheduling/paid-reliability.js",
+    "type": "file",
+    "bytes": 1983,
+    "mode": 384,
+    "sha256": "410ab16359bd547eff343708c6fc502d812355f4002045e8cd51a30c66a1384a"
+  },
+  {
+    "path": "src/scheduling/planner.js",
+    "type": "file",
+    "bytes": 7057,
+    "mode": 384,
+    "sha256": "a6c7d62ead34a4bb168505bb0d09f8f4af0df84453ab26e6a0545c0c908021a5"
+  },
+  {
+    "path": "src/scheduling/routes.js",
+    "type": "file",
+    "bytes": 805,
+    "mode": 384,
+    "sha256": "5cd35199eba0a7c50efed76171e590b8a845b82b19b6c94d4db6afaf32472ab1"
+  },
+  {
+    "path": "src/scheduling/schema.js",
+    "type": "file",
+    "bytes": 1133,
+    "mode": 384,
+    "sha256": "a8a4705a4986cb791b2180dab4ada2397ff2b95a381f501c7c6d62cc36afa68a"
+  },
+  {
+    "path": "src/scheduling/service.js",
+    "type": "file",
+    "bytes": 6486,
+    "mode": 384,
+    "sha256": "0290fbc7ddffd4238c0ac124060bd67527af7ef157f58a7506b0b2da916508ce"
+  },
+  {
+    "path": "src/sdk/client.js",
+    "type": "file",
+    "bytes": 29647,
+    "mode": 384,
+    "sha256": "eedae0098c2e20bb1edf0b04735c2f4fe3f34038d509cc0a21d6dd511e9e84e9"
+  },
+  {
+    "path": "src/sdk/cyst-checkpoints-file-vault.js",
+    "type": "file",
+    "bytes": 29768,
+    "mode": 384,
+    "sha256": "12ee64b103a79f8a305a8a5af771bec4762a52408f8f68d50e38c97858aa8756"
+  },
+  {
+    "path": "src/sdk/cyst-checkpoints.js",
+    "type": "file",
+    "bytes": 13079,
+    "mode": 384,
+    "sha256": "06ada27a6f588dde88d152e4ff5998fc5ab390db74bef7d21b6934b423c157cb"
+  },
+  {
+    "path": "src/sdk/cyst-key-wrap.js",
+    "type": "file",
+    "bytes": 6678,
+    "mode": 384,
+    "sha256": "7fc4901319822759e56a9dab237b8af3274ba95c4e82dc284ca2404f441359e0"
+  },
+  {
+    "path": "src/sdk/cysts.js",
+    "type": "file",
+    "bytes": 9722,
+    "mode": 384,
+    "sha256": "7096f3dda4aed0419cba331792ec4847ae3d16a125da49686ac1fd55169876b0"
+  },
+  {
+    "path": "src/sdk/declared-state-bundle.js",
+    "type": "file",
+    "bytes": 10699,
+    "mode": 384,
+    "sha256": "5227b28b3433acefd23eb104a8a035997bd612bc22c0a578399c39bf20ae1cc8"
+  },
+  {
+    "path": "src/sdk/declared-state-checkpoint.js",
+    "type": "file",
+    "bytes": 6535,
+    "mode": 384,
+    "sha256": "accc7cf7a420869c7dddf9abe528efd52ecef504611ced419f39d4d1275613f6"
+  },
+  {
+    "path": "src/sdk/declared-state-restore.js",
+    "type": "file",
+    "bytes": 16985,
+    "mode": 384,
+    "sha256": "3e70f19ba1413589564e402d85edee2369ef1757701f66c991b74382335108e4"
+  },
+  {
+    "path": "src/sdk/index.js",
+    "type": "file",
+    "bytes": 4620,
+    "mode": 384,
+    "sha256": "8095f7c523505325b66aaa478f8a65e5998b4524cfddc21e55d2aa4496778693"
+  },
+  {
+    "path": "src/sdk/large-cyst-agent-manifest.js",
+    "type": "file",
+    "bytes": 13480,
+    "mode": 384,
+    "sha256": "8f69eceec38277962caccc6750034cef5ef1a0c537f00c6f1bb3512a2273217c"
+  },
+  {
+    "path": "src/sdk/large-cyst-http-store.js",
+    "type": "file",
+    "bytes": 6870,
+    "mode": 384,
+    "sha256": "75867be6b94159381ea3bba3fc97fe239933994c8d4634cd917706f201055568"
+  },
+  {
+    "path": "src/sdk/large-cyst-registry.js",
+    "type": "file",
+    "bytes": 3567,
+    "mode": 384,
+    "sha256": "7e7bca055edc6701ca2de8a88c5cd279c0dbe6ab192fd4e5c644ed77122da529"
+  },
+  {
+    "path": "src/sdk/paid-cyst-input.js",
+    "type": "file",
+    "bytes": 10568,
+    "mode": 384,
+    "sha256": "02ead1e70aa2378ed909fc94b29c67fc4e9203750c61b04863e0daf5fb537c77"
+  },
+  {
+    "path": "src/sdk/transport.js",
+    "type": "file",
+    "bytes": 5239,
+    "mode": 384,
+    "sha256": "8d6f6e25e352834bc51eb0a4dba6fe213b32b6d3e68fe2af2f762712279705b2"
+  },
+  {
+    "path": "src/sdk/types.js",
+    "type": "file",
+    "bytes": 11,
+    "mode": 384,
+    "sha256": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881"
+  },
+  {
+    "path": "src/sdk/vault-income/client.js",
+    "type": "file",
+    "bytes": 13904,
+    "mode": 384,
+    "sha256": "e0f1ac76282f4e4a1531b06db36f560ddd7778648b4d8664f0050da7b9d061a6"
+  },
+  {
+    "path": "src/sdk/vault-income/http.js",
+    "type": "file",
+    "bytes": 4873,
+    "mode": 384,
+    "sha256": "6bbfed531fe24bb159f460219cba96c89bd77fe134561bdb06df9ba3e083aeba"
+  },
+  {
+    "path": "src/sdk/vault-income/index.js",
+    "type": "file",
+    "bytes": 234,
+    "mode": 384,
+    "sha256": "72e7851d9b4e755934f96a4dcdcb1bea378ab8a434ed91afa4339aacdd3925a8"
+  },
+  {
+    "path": "src/sdk/vault-income/integrity.js",
+    "type": "file",
+    "bytes": 4148,
+    "mode": 384,
+    "sha256": "45644d99187091760f90df0b1c240bd90eb3db44f169cc33d96f65c7b8cf963d"
+  },
+  {
+    "path": "src/sdk/vault-income/reader.js",
+    "type": "file",
+    "bytes": 23040,
+    "mode": 384,
+    "sha256": "68f1cb45b73ad014b9cfe0ff3dc8513ba6079bc968219b87f0ece9b72457f0e7"
+  },
+  {
+    "path": "src/sdk/vault-income/types.js",
+    "type": "file",
+    "bytes": 4336,
+    "mode": 384,
+    "sha256": "0310fba61b9bfd4e30c68f5dc469dfaa51e35c8b2a4966179055b1da5f73d369"
+  },
+  {
+    "path": "src/sealed-keys/handoff-v3.js",
+    "type": "file",
+    "bytes": 21860,
+    "mode": 384,
+    "sha256": "1e93bccf4375e6e15ce62a7a5f8f3f86441f5e39ce537811ba3e7266bcd251d8"
+  },
+  {
+    "path": "src/sealed-keys/journal-v3.js",
+    "type": "file",
+    "bytes": 5124,
+    "mode": 384,
+    "sha256": "45705d975b193dbf1f81a614a0cd8ed80fcaf4a0d10e4d1f64fa1b46dc7a4f2c"
+  },
+  {
+    "path": "src/sealed-keys/protocol-v3.js",
+    "type": "file",
+    "bytes": 5950,
+    "mode": 384,
+    "sha256": "10a40ffe69caf9dc8af34d861e34524a307f6d1d535727544799b4681519c4cf"
+  },
+  {
+    "path": "src/sealed-keys/release.js",
+    "type": "file",
+    "bytes": 13191,
+    "mode": 384,
+    "sha256": "79c99c046f4bba83dd136391f49c96c372a3e6fbc680b567bc4f6b6804c23349"
+  },
+  {
+    "path": "src/sealed-keys/signed-appraiser.js",
+    "type": "file",
+    "bytes": 10335,
+    "mode": 384,
+    "sha256": "e182f8c7fca58dad33067a0cad2ceb313474c8e5af1418cd46da2b674af6c9fe"
+  },
+  {
+    "path": "src/selection/dataset.js",
+    "type": "file",
+    "bytes": 21653,
+    "mode": 384,
+    "sha256": "d9d2be9c643bcbb7aa5c065c542a1aa679abcb06ec02f50458ea3ec0659d4085"
+  },
+  {
+    "path": "src/selection/events.js",
+    "type": "file",
+    "bytes": 12133,
+    "mode": 384,
+    "sha256": "07a5e9b34f3089a56e309df5befbd5c8f29a565cad24f5957593b14741b17ceb"
+  },
+  {
+    "path": "src/selection/income-endpoints/configured.js",
+    "type": "file",
+    "bytes": 3644,
+    "mode": 384,
+    "sha256": "809463ae4f11ed98e6f1771962d1eb5ea42cd3cea46ab0d91912b2203eaec542"
+  },
+  {
+    "path": "src/selection/income-endpoints/http.js",
+    "type": "file",
+    "bytes": 7515,
+    "mode": 384,
+    "sha256": "0d75705db016fbfa03260349a1ff2e0459af49ef2b91559cdd08e4c7941ba37a"
+  },
+  {
+    "path": "src/selection/income-endpoints/index.js",
+    "type": "file",
+    "bytes": 172,
+    "mode": 384,
+    "sha256": "b3816bb9a06b10c7c86868f28d2dcb0be1854f086345e4f98ccdeb2d1f89eebe"
+  },
+  {
+    "path": "src/selection/income-endpoints/json.js",
+    "type": "file",
+    "bytes": 2945,
+    "mode": 384,
+    "sha256": "34b6e0d0389107634dd16d484328d24beae62b476465576a92221b1ab757cfb3"
+  },
+  {
+    "path": "src/selection/income-endpoints/reader.js",
+    "type": "file",
+    "bytes": 10666,
+    "mode": 384,
+    "sha256": "b3c57333bc5347c450cd0d128295023f00ea6fc51d4640369135dce17241572e"
+  },
+  {
+    "path": "src/selection/income-endpoints/routes.js",
+    "type": "file",
+    "bytes": 4690,
+    "mode": 384,
+    "sha256": "3e1b8f8f39488f70dd349252e7966159d024c3b0ed27cc8aa442b7ca15da7ae4"
+  },
+  {
+    "path": "src/selection/income-endpoints/schema.js",
+    "type": "file",
+    "bytes": 1905,
+    "mode": 384,
+    "sha256": "aefbe70899dad576ab8300c373a5ea1df03eb5b76ba268208c68636be0e098e7"
+  },
+  {
+    "path": "src/selection/income-endpoints/service.js",
+    "type": "file",
+    "bytes": 17847,
+    "mode": 384,
+    "sha256": "9b2e51be2dee3a7b6473740faab9be267590ecca4c29387c11da25a6fda48452"
+  },
+  {
+    "path": "src/selection/income-endpoints/types.js",
+    "type": "file",
+    "bytes": 4888,
+    "mode": 384,
+    "sha256": "fa41f0a598a5d2a468ad6cb110d780dad4a10774ab8fe46d51095221ecee5f6f"
+  },
+  {
+    "path": "src/selection/index.js",
+    "type": "file",
+    "bytes": 143,
+    "mode": 384,
+    "sha256": "05673a96f2163ba07c499d7e2fd8b975584b0db9a0daa41795fd6e8738f604a5"
+  },
+  {
+    "path": "src/selection/indexer.js",
+    "type": "file",
+    "bytes": 17890,
+    "mode": 384,
+    "sha256": "40b70680c72cd3575585d8456d29f4e52cb44aae4001426feb8ab558cc656df3"
+  },
+  {
+    "path": "src/selection/reputation-deployment.js",
+    "type": "file",
+    "bytes": 4051,
+    "mode": 384,
+    "sha256": "fed6e2c962ea87b1d081ad1af6d7b7eb5bd7c5de90157bc0ad4945e0830d18b7"
+  },
+  {
+    "path": "src/selection/reputation-feedback.js",
+    "type": "file",
+    "bytes": 12307,
+    "mode": 384,
+    "sha256": "d2fe8f95126e02544c7558dafeca32868e5ed562fef34aed3fde5a45a4270741"
+  },
+  {
+    "path": "src/selection/reputation-publisher-configured.js",
+    "type": "file",
+    "bytes": 3824,
+    "mode": 384,
+    "sha256": "4ba51b9ff15330c58f231b8c36c87d3ebd64088960dfae07f88b35c48c5ae7b1"
+  },
+  {
+    "path": "src/selection/reputation-publisher-schema.js",
+    "type": "file",
+    "bytes": 1383,
+    "mode": 384,
+    "sha256": "59e9dc51b9eacb7560a4f9f8b1f27c9be4e5c946ecc887aca3b218b494e82fbd"
+  },
+  {
+    "path": "src/selection/reputation-publisher.js",
+    "type": "file",
+    "bytes": 43148,
+    "mode": 384,
+    "sha256": "26d2f866699fa155310272d95c117a2634912622fdf88afc6ab856f2fb023c76"
+  },
+  {
+    "path": "src/selection/reputation.js",
+    "type": "file",
+    "bytes": 14842,
+    "mode": 384,
+    "sha256": "9b3cc582e9f18b207c356b3d02f97164efd6f066c5ac32dbc2c8ea86e8a40c5b"
+  },
+  {
+    "path": "src/selection/routes.js",
+    "type": "file",
+    "bytes": 1011,
+    "mode": 384,
+    "sha256": "86548671a5986411972b3e9ec67b8bd420dac3f27b24a926454e5cd78f80bae1"
+  },
+  {
+    "path": "src/selection/rpc.js",
+    "type": "file",
+    "bytes": 5799,
+    "mode": 384,
+    "sha256": "e1a0da256e5b6c5afee073759d3293b614038544ccdcc7b5604375e5a5fdd24f"
+  },
+  {
+    "path": "src/selection/schema.js",
+    "type": "file",
+    "bytes": 3000,
+    "mode": 384,
+    "sha256": "5855cd5939c2abdf09176fc019d4451015f05fd2cae4564c23f110ed556b726c"
+  },
+  {
+    "path": "src/service.js",
+    "type": "file",
+    "bytes": 13048,
+    "mode": 384,
+    "sha256": "135bec441dc3717c11027f9dfdd947a281fd1f43c896671df4fc93b9288f1ebb"
+  },
+  {
+    "path": "src/store.js",
+    "type": "file",
+    "bytes": 7768,
+    "mode": 384,
+    "sha256": "5bc7a7856c5db4f417d9c4b5abd0bc5c61f9cfc0a05c85c597e715daae600b22"
+  },
+  {
+    "path": "src/suppliers/akash-console.js",
+    "type": "file",
+    "bytes": 7236,
+    "mode": 384,
+    "sha256": "834bf6de7c7efd9602df474aa38c9067ea8fdba52dc7d5c3fc3082edce5afbde"
+  },
+  {
+    "path": "src/suppliers/akash-escrow-observation.js",
+    "type": "file",
+    "bytes": 8176,
+    "mode": 384,
+    "sha256": "cab38150521332275933663e2cb5d2ec9ce5ecfee5a51358cd36e79f47ce8fa1"
+  },
+  {
+    "path": "src/suppliers/akash-exact-bid.js",
+    "type": "file",
+    "bytes": 4615,
+    "mode": 384,
+    "sha256": "eab716e3f17522f69696574e76d7ccd7271de2010950c410a3ed47eaa1459183"
+  },
+  {
+    "path": "src/suppliers/akash-price.js",
+    "type": "file",
+    "bytes": 1794,
+    "mode": 384,
+    "sha256": "fbe0722fa3dcd7af0ced456c9186660b8d495205861c45395812b7b837e19ab9"
+  },
+  {
+    "path": "src/suppliers/akash-signed-binding.js",
+    "type": "file",
+    "bytes": 5950,
+    "mode": 384,
+    "sha256": "749ea25cd43eca17080bc2281b9ca8a7863fd2c7460426b7ad3f546fa31e47e3"
+  },
+  {
+    "path": "src/suppliers/controller-readiness.js",
+    "type": "file",
+    "bytes": 5079,
+    "mode": 384,
+    "sha256": "ff194f802d42a2a84d23daf5af64e17e34c8a56f46ebee483bc0e878437f5a94"
+  },
+  {
+    "path": "src/suppliers/controller-routes.js",
+    "type": "file",
+    "bytes": 342,
+    "mode": 384,
+    "sha256": "53c4c970addb535b18ff43cacaeadf023fb1da4006e8e56ff523209e0fef9ce3"
+  },
+  {
+    "path": "src/suppliers/golem-allocation-attribution-worker-loader.js",
+    "type": "file",
+    "bytes": 444,
+    "mode": 384,
+    "sha256": "9c0e8bb7d63e1e14987fda79a555283b13cfe22087baeb7efd7eddd5a4bf0246"
+  },
+  {
+    "path": "src/suppliers/golem-allocation-attribution-worker.js",
+    "type": "file",
+    "bytes": 7866,
+    "mode": 384,
+    "sha256": "0a993d8e06ef95049748ea6e1c9c26db810ba4706cb3101bb91aa4a73b790afc"
+  },
+  {
+    "path": "src/suppliers/golem-allocation-attribution.js",
+    "type": "file",
+    "bytes": 13826,
+    "mode": 384,
+    "sha256": "bfffa5682a046afb003230f526a4f6d0df370a7630f5a62e7b9be058cf12365e"
+  },
+  {
+    "path": "src/suppliers/golem-finance-http.js",
+    "type": "file",
+    "bytes": 14717,
+    "mode": 384,
+    "sha256": "253e431c9d6e390c6bd463c101ea17eb7a9950b7f292d7118647ea94a12b5968"
+  },
+  {
+    "path": "src/suppliers/golem-finance-ledger.js",
+    "type": "file",
+    "bytes": 8941,
+    "mode": 384,
+    "sha256": "612b9ec0f1fe638c42450c18cf154f24d482318d07356d13ed06217f2b85633f"
+  },
+  {
+    "path": "src/suppliers/golem-finance-types.js",
+    "type": "file",
+    "bytes": 6644,
+    "mode": 384,
+    "sha256": "df683b2a995a0a99fc6fea0c30a0a596d7c04daef0ea2cc640ee9658568c2629"
+  },
+  {
+    "path": "src/suppliers/golem-finance.js",
+    "type": "file",
+    "bytes": 31296,
+    "mode": 384,
+    "sha256": "1b3d002e215716905b0552a7b4d078489ea726488730d7907a146b9c7349a537"
+  },
+  {
+    "path": "src/suppliers/golem-payment-chain.js",
+    "type": "file",
+    "bytes": 15835,
+    "mode": 384,
+    "sha256": "38e6f782c7ca3506144e88a1b0bbbd89c44c10fb1c6c2865b5af2292f781dc20"
+  },
+  {
+    "path": "src/suppliers/golem-stats.js",
+    "type": "file",
+    "bytes": 5018,
+    "mode": 384,
+    "sha256": "d4ed3c6a5eb1b76e5934519e641ca2291a20974e22ecfd594a826a4b34834da7"
+  },
+  {
+    "path": "src/suppliers/index.js",
+    "type": "file",
+    "bytes": 1225,
+    "mode": 384,
+    "sha256": "62b88f36574eaff54a3473d9d657aa4e6515de2b27eb980ce4e70e51c2824881"
+  },
+  {
+    "path": "src/suppliers/ledger.js",
+    "type": "file",
+    "bytes": 3422,
+    "mode": 384,
+    "sha256": "37e09c2b2586173b4239dd63f7b6a7af15eab4292a47ea3e456f8069d04a3b78"
+  },
+  {
+    "path": "src/suppliers/nosana-ledger.js",
+    "type": "file",
+    "bytes": 2803,
+    "mode": 384,
+    "sha256": "eb67db8e343753db273fe1f60babc911691c360748209f0ab81276b9650a7fec"
+  },
+  {
+    "path": "src/suppliers/nosana-reader.js",
+    "type": "file",
+    "bytes": 3226,
+    "mode": 384,
+    "sha256": "4f1e4b9737cde16f5028ceac70045c3472a81629d83b6a5af63ba519a9bb83ce"
+  },
+  {
+    "path": "src/suppliers/nosana-service.js",
+    "type": "file",
+    "bytes": 12253,
+    "mode": 384,
+    "sha256": "e0bc8c9672a08acfc2a3d3d3bc895495cd45c62e552b3753eaa358303525c0ad"
+  },
+  {
+    "path": "src/suppliers/private-journal.js",
+    "type": "file",
+    "bytes": 13464,
+    "mode": 384,
+    "sha256": "cdb83fc9af50a6413b080ed0feca1f903093d9d27ea98937b72233d3b7621976"
+  },
+  {
+    "path": "src/suppliers/service.js",
+    "type": "file",
+    "bytes": 29938,
+    "mode": 384,
+    "sha256": "bc779c876ce332841d855440d38f198bf3bdca7aa2721af44279329d3a247ef7"
+  },
+  {
+    "path": "src/suppliers/shared-reserve.js",
+    "type": "file",
+    "bytes": 6110,
+    "mode": 384,
+    "sha256": "3cb8a873638cfaa25a0e90355adc6577e932d07e558e3386fd8137b7a652adee"
+  },
+  {
+    "path": "src/treasury/base-credit.js",
+    "type": "file",
+    "bytes": 17408,
+    "mode": 384,
+    "sha256": "76a30d580365748d004492a22bec8991a0330cb6a1cad2c066b7622c074b1abb"
+  },
+  {
+    "path": "src/treasury/configured.js",
+    "type": "file",
+    "bytes": 3329,
+    "mode": 384,
+    "sha256": "90aa2380a1ee4c013cadcf9d29b2e0642ecd00c7d54a0f6d89013e4b6ff6c770"
+  },
+  {
+    "path": "src/treasury/ledger.js",
+    "type": "file",
+    "bytes": 7904,
+    "mode": 384,
+    "sha256": "35a0d92bfecd26e2ab7983c560d81cba111acfef3ac426d09f1cd04e2b21d7ff"
+  },
+  {
+    "path": "src/treasury/routes.js",
+    "type": "file",
+    "bytes": 3990,
+    "mode": 384,
+    "sha256": "995016fcb6c264ef6d6c4a6495d450895be9f2109e1019080af8850c3a6a1a11"
+  },
+  {
+    "path": "src/treasury/service.js",
+    "type": "file",
+    "bytes": 15028,
+    "mode": 384,
+    "sha256": "c3b7f514d52bc800ef61c6b8248675aaffbc8214a7d3fe723492c9db506907d5"
+  },
+  {
+    "path": "src/treasury/signer-isolation.js",
+    "type": "file",
+    "bytes": 2034,
+    "mode": 384,
+    "sha256": "08b93f23711b9ed795a65a16530a4c6644ec16f5400b800b67eb97f3286ee53d"
+  },
+  {
+    "path": "src/treasury/solana-reader.js",
+    "type": "file",
+    "bytes": 11239,
+    "mode": 384,
+    "sha256": "9307c3535f61f17cdb351a25b980cf5c12b47a27b8d4999d6a8226de2886eaeb"
+  },
+  {
+    "path": "src/treasury/types.js",
+    "type": "file",
+    "bytes": 4803,
+    "mode": 384,
+    "sha256": "023408001327b86b0267fab36dd703979275602d2c122cbc5a8b65db739ae1ce"
+  },
+  {
+    "path": "src/worker.js",
+    "type": "file",
+    "bytes": 26946,
+    "mode": 384,
+    "sha256": "f1be1bf538f6045750a2e0910d271e336fcd913afd80a39b9f763434eb326b33"
+  },
+  {
+    "path": "tests/agent-lifecycle.test.js",
+    "type": "file",
+    "bytes": 30720,
+    "mode": 384,
+    "sha256": "5b79f7ae7e7a87618a1726d375a25ff47c6d5fcd1d3434d40ceecc057db5408c"
+  },
+  {
+    "path": "tests/appraisal-tcb.test.js",
+    "type": "file",
+    "bytes": 2392,
+    "mode": 384,
+    "sha256": "826512706b3edff65eb058aa68e8f81eac5850abc2ab5e7b4c6743b318035e4b"
+  },
+  {
+    "path": "tests/asset-facets.test.js",
+    "type": "file",
+    "bytes": 7186,
+    "mode": 384,
+    "sha256": "11c8742f672d70dd0669e2986961c3ae49aa29ecdaff1ed7e42114fdb97c0e36"
+  },
+  {
+    "path": "tests/base-migration.test.js",
+    "type": "file",
+    "bytes": 8757,
+    "mode": 384,
+    "sha256": "2eccc49b9e271d5088121079fff924a331106bad4a49b5ec6e5cd8b31804249c"
+  },
+  {
+    "path": "tests/bridge-circle-usdc.test.js",
+    "type": "file",
+    "bytes": 11119,
+    "mode": 384,
+    "sha256": "6e141b78e8e5401cdaa823f22c8c2c7384d3ffcc52edcde051ac3396068207e0"
+  },
+  {
+    "path": "tests/chain-gateway.test.js",
+    "type": "file",
+    "bytes": 1914,
+    "mode": 384,
+    "sha256": "c6e9969c8e027a2ed5c4b25e1658af4de2a0f1c8439df900f55d18fe38101207"
+  },
+  {
+    "path": "tests/chunk-aead.test.js",
+    "type": "file",
+    "bytes": 8803,
+    "mode": 384,
+    "sha256": "dd25bc35452a8ff1d89d278a47c6f9ab92c1746252de708700aebfa0b0278bc6"
+  },
+  {
+    "path": "tests/circle-usdc.test.js",
+    "type": "file",
+    "bytes": 5921,
+    "mode": 384,
+    "sha256": "939de9acf98e5e77b50d43e4a18ddf8a6e2622ba79a789c706f4b109a63ca6f5"
+  },
+  {
+    "path": "tests/cloud-candidate.test.js",
+    "type": "file",
+    "bytes": 8371,
+    "mode": 384,
+    "sha256": "14ff848eddd2f924a292afbe3db5c07c02c3313afde601ae8aa5e2247baca6ca"
+  },
+  {
+    "path": "tests/contracts.test.js",
+    "type": "file",
+    "bytes": 20572,
+    "mode": 384,
+    "sha256": "30a95ce9eee7c412db611aa37283509ef7db4c333578faa828e1d32a5355a6ae"
+  },
+  {
+    "path": "tests/controller-host-kit.test.js",
+    "type": "file",
+    "bytes": 11369,
+    "mode": 384,
+    "sha256": "4a3a7918597afddda6a832734720a3edf807c67bea47878235eea0b58ba4b197"
+  },
+  {
+    "path": "tests/controller-platform.test.js",
+    "type": "file",
+    "bytes": 24002,
+    "mode": 384,
+    "sha256": "1565efbf6d19aae0578d23b98680f864a14db2503bef98c13d65cd307ed3a348"
+  },
+  {
+    "path": "tests/cyst-backup.test.js",
+    "type": "file",
+    "bytes": 34917,
+    "mode": 384,
+    "sha256": "cd34c0e88a4823b0b49be30d316053ff77b20d457c565a94067927975e33bcef"
+  },
+  {
+    "path": "tests/cyst-checkpoints-file-vault.test.js",
+    "type": "file",
+    "bytes": 27508,
+    "mode": 384,
+    "sha256": "0b36921d6d7328b14f8a92fa0a6c6c184db4270809c7bcaca3d2380f852e8f17"
+  },
+  {
+    "path": "tests/cyst-checkpoints.test.js",
+    "type": "file",
+    "bytes": 28148,
+    "mode": 384,
+    "sha256": "38ad4a783f756bf48d05cb55178c0f9a9d3e6e16891851c42f2c4a38757623d2"
+  },
+  {
+    "path": "tests/cyst-input-spool.test.js",
+    "type": "file",
+    "bytes": 12738,
+    "mode": 384,
+    "sha256": "26a6e1f70c44c186a9e99195cc9342ab668f8fb0fc891c1f5076926817cdccaf"
+  },
+  {
+    "path": "tests/cyst-key-wrap.test.js",
+    "type": "file",
+    "bytes": 7365,
+    "mode": 384,
+    "sha256": "70820130a3315bc2b847b6c9440a058d474604212aab56932f62c8da2557e284"
+  },
+  {
+    "path": "tests/cyst-quota-v2.test.js",
+    "type": "file",
+    "bytes": 8278,
+    "mode": 384,
+    "sha256": "be77a7fc56a8759145257011be9d88d9068fdc8cd6e220d812ec47d6923b1cfa"
+  },
+  {
+    "path": "tests/cyst-registry-client.test.js",
+    "type": "file",
+    "bytes": 29627,
+    "mode": 384,
+    "sha256": "8c7de41afacd537411fdef13f4b4d78a2461e278135777665c1b4938961c24dd"
+  },
+  {
+    "path": "tests/cyst-registry-configured.test.js",
+    "type": "file",
+    "bytes": 9652,
+    "mode": 384,
+    "sha256": "fd4d44c282254dd821f3550627bbf9898ad3bc1fdf160f988c5706527daa09ab"
+  },
+  {
+    "path": "tests/cyst-registry-contracts.test.js",
+    "type": "file",
+    "bytes": 16896,
+    "mode": 384,
+    "sha256": "434105c7251a426a52f9fc67c66addc14b2e02f49a85d73c764914412258c894"
+  },
+  {
+    "path": "tests/cyst-registry-reader.test.js",
+    "type": "file",
+    "bytes": 13683,
+    "mode": 384,
+    "sha256": "46d1b6574ab742d02cd7bfcb67d5c3863710a56117d69081f26b29e3d46a4457"
+  },
+  {
+    "path": "tests/cyst-registry-runtime.test.js",
+    "type": "file",
+    "bytes": 33696,
+    "mode": 384,
+    "sha256": "6a068cee7725dc07e68d86a8e6d6a9bb1dba1e5a9597dc0b306d6274b1c349bd"
+  },
+  {
+    "path": "tests/cyst-replication.test.js",
+    "type": "file",
+    "bytes": 21500,
+    "mode": 384,
+    "sha256": "737bc5a97713dd00164124c45651a981c6e01a99268419734160eaf4850fe1e5"
+  },
+  {
+    "path": "tests/cysts.test.js",
+    "type": "file",
+    "bytes": 27959,
+    "mode": 384,
+    "sha256": "8d8e9052ca882d51c444a00ac664372befd51e8c75c573b8385a0fadbd284a2a"
+  },
+  {
+    "path": "tests/deadline-jobs.test.js",
+    "type": "file",
+    "bytes": 14280,
+    "mode": 384,
+    "sha256": "87157a84a647ae2abde4d5c7eff33ce8d2543463be54e642d85ca688ce8a2b5a"
+  },
+  {
+    "path": "tests/declared-state-bundle.test.js",
+    "type": "file",
+    "bytes": 8217,
+    "mode": 384,
+    "sha256": "89fefb08866ea85cf8b22ce2a58321f8fdcf1d6d75321e16831bf7f09fc4f94d"
+  },
+  {
+    "path": "tests/declared-state-restore.test.js",
+    "type": "file",
+    "bytes": 19760,
+    "mode": 384,
+    "sha256": "f5bdf7200300055a28882f70b26de207438bf3b526fc1fc4313d8dc6f32199cf"
+  },
+  {
+    "path": "tests/declared-state-session-checkpoint.test.js",
+    "type": "file",
+    "bytes": 21294,
+    "mode": 384,
+    "sha256": "f720605e86adb16bf3517ae3444144ed24acb54717951567701b0ac0941e0f35"
+  },
+  {
+    "path": "tests/deployment.test.js",
+    "type": "file",
+    "bytes": 9032,
+    "mode": 384,
+    "sha256": "b4aa88241c16402dfbc38ab32c03f5f02efe5d0df0e9f4ae312f9f3fe9948951"
+  },
+  {
+    "path": "tests/direct-candidate.test.js",
+    "type": "file",
+    "bytes": 8895,
+    "mode": 384,
+    "sha256": "a0eb0699a0ed4d59d61525e380936747f66639edb8ebd7e89c25a7d97821e63c"
+  },
+  {
+    "path": "tests/erc8004-testnet-preflight.test.js",
+    "type": "file",
+    "bytes": 6387,
+    "mode": 384,
+    "sha256": "18c89ced3aca8e662d9ed6cb2e942a727dbca1493af612ddd6c7307fb9266eae"
+  },
+  {
+    "path": "tests/fixtures/platform-economics-runtime.js",
+    "type": "file",
+    "bytes": 7575,
+    "mode": 384,
+    "sha256": "db51f7cabf9ae4d34a5a69d51ad5c39be11b5b119e4a3a47d0eb09012cfca57b"
+  },
+  {
+    "path": "tests/fixtures/platform-runtime.js",
+    "type": "file",
+    "bytes": 5722,
+    "mode": 384,
+    "sha256": "13a964b4b7bfd82f1284c5b21823081f30fe5aca38e16a83374b04608a4d45ec"
+  },
+  {
+    "path": "tests/fixtures/platform-spend-permission.js",
+    "type": "file",
+    "bytes": 10006,
+    "mode": 384,
+    "sha256": "641537942457d02ae7b11ecf8d54ed47958cafc03fac3fb6a55ea621505ba763"
+  },
+  {
+    "path": "tests/fixtures/platform-vault-runtime.js",
+    "type": "file",
+    "bytes": 5591,
+    "mode": 384,
+    "sha256": "b30b6ec4c24531fbc65ddfe6543ed1d893477a86ab61bd9fc2de09219c233cc0"
+  },
+  {
+    "path": "tests/fixtures/platform-x402-cpu.js",
+    "type": "file",
+    "bytes": 8628,
+    "mode": 384,
+    "sha256": "e7a5ee2f04b0a854a82111ce1ac0b613079e9c71c5aca87fa3aa206f14e50516"
+  },
+  {
+    "path": "tests/fixtures/treasury-topups.js",
+    "type": "file",
+    "bytes": 7053,
+    "mode": 384,
+    "sha256": "70a062cf4cfa039d0bc4601f5e10bd133c037f270ce72717a8da0d21ee3dcdc7"
+  },
+  {
+    "path": "tests/fixtures/vault-income-main.js",
+    "type": "file",
+    "bytes": 7277,
+    "mode": 384,
+    "sha256": "48cbee28f8fb5b89fd3ac21f50b79513add2ec503f3a9cf0f4ce30fe870ffcb4"
+  },
+  {
+    "path": "tests/fork-guard.test.js",
+    "type": "file",
+    "bytes": 1277,
+    "mode": 384,
+    "sha256": "3c787ed1c876254358688d1cf89d5987475133d12cefb8ae0792042ee7c4e3ca"
+  },
+  {
+    "path": "tests/framework-protocol-floor.test.js",
+    "type": "file",
+    "bytes": 4186,
+    "mode": 384,
+    "sha256": "5ba057d4d878753446ab997a9947ebf9c89a2d0c6d56ba1a08519643655b653e"
+  },
+  {
+    "path": "tests/framework-starters.test.js",
+    "type": "file",
+    "bytes": 17393,
+    "mode": 384,
+    "sha256": "368d19c8a1b9c2bea86aeb046807558bc3fc2d6d998d2a5f8f2f4b3dbf392e19"
+  },
+  {
+    "path": "tests/golem-allocation-attribution.test.js",
+    "type": "file",
+    "bytes": 20665,
+    "mode": 384,
+    "sha256": "712d14c0e8a81cd5d9a98a62eca98bec17d48a5ffa3c7bac83ab00f2856c418a"
+  },
+  {
+    "path": "tests/golem-finance-http.test.js",
+    "type": "file",
+    "bytes": 18360,
+    "mode": 384,
+    "sha256": "369535440771ddd3df4419b54ceac1fa774cbc05d291fb0c89e996290ee7a43b"
+  },
+  {
+    "path": "tests/golem-finance.test.js",
+    "type": "file",
+    "bytes": 40537,
+    "mode": 384,
+    "sha256": "8a352808b4253a15b8676b4733b37fbebe40ee0c76c59f227de78c3e1c31215e"
+  },
+  {
+    "path": "tests/golem-payment-chain.test.js",
+    "type": "file",
+    "bytes": 19346,
+    "mode": 384,
+    "sha256": "1a371d7903613c4981dde43c1746e4f95cd45cfc85261e4d12ff684fa24e0368"
+  },
+  {
+    "path": "tests/gpu-admission.test.js",
+    "type": "file",
+    "bytes": 14780,
+    "mode": 384,
+    "sha256": "6dde1b7d62fa6656e6543ad1f0856c73303f548dd29b49c1f81fe3586ef27895"
+  },
+  {
+    "path": "tests/host-kit-admission-docker.test.js",
+    "type": "file",
+    "bytes": 25391,
+    "mode": 384,
+    "sha256": "ee2ece554f8d5f7cab66421a66578bb334820092123729b789b021c65126a7f7"
+  },
+  {
+    "path": "tests/host-kit-admission.test.js",
+    "type": "file",
+    "bytes": 39538,
+    "mode": 384,
+    "sha256": "52e353f7b6f9edd3f81e456a9db98b184a3f0a0afd2237fa83c440755173ac89"
+  },
+  {
+    "path": "tests/host-kit-cleanup.test.js",
+    "type": "file",
+    "bytes": 4874,
+    "mode": 384,
+    "sha256": "46025bbb36964cd980dbf529543259709fe73ccf22a4dd5381250a9a6be35f0c"
+  },
+  {
+    "path": "tests/host-kit-command.test.js",
+    "type": "file",
+    "bytes": 22132,
+    "mode": 384,
+    "sha256": "fb7bf5d0c7b0685a6e4324576f6f49fa6c75ae19df8d8211df101f9a13396e16"
+  },
+  {
+    "path": "tests/host-kit-create-fence.test.js",
+    "type": "file",
+    "bytes": 11021,
+    "mode": 384,
+    "sha256": "e4f58f5ccd6c830d4133ba1c95d1087e8b3a66c3c09d4aa7eae9926776284970"
+  },
+  {
+    "path": "tests/host-kit-gpu-admission.test.js",
+    "type": "file",
+    "bytes": 14673,
+    "mode": 384,
+    "sha256": "2acaf85ec72587d07d808c9f34e911dcc313df60dbf6cce2f1c8ffdb7a0b2729"
+  },
+  {
+    "path": "tests/host-kit-inventory.test.js",
+    "type": "file",
+    "bytes": 13159,
+    "mode": 384,
+    "sha256": "7ef91bdb85a3c24f563291f4a58548135e4cdce47a888778686f208e55813bd1"
+  },
+  {
+    "path": "tests/host-kit-plain-binding.test.js",
+    "type": "file",
+    "bytes": 19542,
+    "mode": 384,
+    "sha256": "5e9dc8d8e58387712d469a62fac09895ce09d5902170bcb3cb35ddc6f7634adf"
+  },
+  {
+    "path": "tests/host-kit-startup-docker.test.js",
+    "type": "file",
+    "bytes": 16761,
+    "mode": 384,
+    "sha256": "1ff0373f3e58a0dcaa0e8b86c44c902fe996c01c8c6b89d78cdfbb37989f0ac2"
+  },
+  {
+    "path": "tests/host-kit-timing.test.js",
+    "type": "file",
+    "bytes": 18449,
+    "mode": 384,
+    "sha256": "f942adb9e3736d7ad0123bb1edafbf59d0f34b0ca32eaa705ca6b69e31d26f52"
+  },
+  {
+    "path": "tests/host-kit.test.js",
+    "type": "file",
+    "bytes": 27314,
+    "mode": 384,
+    "sha256": "fc7c55b9dd8810b659d67122be11ba478b1944e0c2a8c8fca1e52ba3c0e5c7e1"
+  },
+  {
+    "path": "tests/host-v2-admission.test.js",
+    "type": "file",
+    "bytes": 20614,
+    "mode": 384,
+    "sha256": "dde6693d684682a4330705924f8c429340b8c0bcd453e7d3aef9c644b899c09f"
+  },
+  {
+    "path": "tests/host-v2-current-circle.test.js",
+    "type": "file",
+    "bytes": 9384,
+    "mode": 384,
+    "sha256": "96dc7c6ae058c28646e2278df7b13aa175da4347b219b4d5510d18d1be3bce57"
+  },
+  {
+    "path": "tests/interruptible-lane.test.js",
+    "type": "file",
+    "bytes": 57316,
+    "mode": 384,
+    "sha256": "53012acf53a027ea79004999df9480260cb70d5edabb567e26b5ffdeef261968"
+  },
+  {
+    "path": "tests/langgraph-starter.test.js",
+    "type": "file",
+    "bytes": 6313,
+    "mode": 384,
+    "sha256": "37efbcd6bfe08a2d03f7b38bf8fbfa19f2226c01cf5dbda549411adc4f6c3a17"
+  },
+  {
+    "path": "tests/large-cyst-agent-manifest.test.js",
+    "type": "file",
+    "bytes": 13560,
+    "mode": 384,
+    "sha256": "28853ad4a027ceb17a3ffaca76c5d4907a18bc0563145a908eb63e06cf18d927"
+  },
+  {
+    "path": "tests/large-cyst-checkpoints.test.js",
+    "type": "file",
+    "bytes": 18065,
+    "mode": 384,
+    "sha256": "2dab605a0b84bc207bbe5678c3dbf2469e48d57ac3125b2f1c066c3f7eddf1fe"
+  },
+  {
+    "path": "tests/large-cyst-configured.test.js",
+    "type": "file",
+    "bytes": 12006,
+    "mode": 384,
+    "sha256": "9bdb6a2433a0888f67c1ac95f94e73c7c58e9422a068b70dd121e92e38d45358"
+  },
+  {
+    "path": "tests/large-cyst-current-resolver.test.js",
+    "type": "file",
+    "bytes": 7017,
+    "mode": 384,
+    "sha256": "12155836d7e9c38c8eb252a5ea37ab046b391faa8d6848d2545b25b2dd80a1b2"
+  },
+  {
+    "path": "tests/large-cyst-http.test.js",
+    "type": "file",
+    "bytes": 12869,
+    "mode": 384,
+    "sha256": "02b7e41441e50450cf5726cc39fb14ee608025578f87677fc3f1faaea94cd75a"
+  },
+  {
+    "path": "tests/large-cyst-part-abort.test.js",
+    "type": "file",
+    "bytes": 4172,
+    "mode": 384,
+    "sha256": "ac17f92fb982699e9da33d9dfd070e366d9366306c41414520f52a7a202d6798"
+  },
+  {
+    "path": "tests/large-cyst-publication-main.test.js",
+    "type": "file",
+    "bytes": 36346,
+    "mode": 384,
+    "sha256": "d7ec0381e8379840dd4bb08c7716eecc9f3e718683590561fa76ecbeca97f235"
+  },
+  {
+    "path": "tests/large-cyst-publication.test.js",
+    "type": "file",
+    "bytes": 20987,
+    "mode": 384,
+    "sha256": "b72bea27232563ac1b3645939cc49d0a6fbee0a1634849b253123df4799413d1"
+  },
+  {
+    "path": "tests/large-cyst-quota-shadow.test.js",
+    "type": "file",
+    "bytes": 13903,
+    "mode": 384,
+    "sha256": "3c4439b461b0c587ca1a248d677d0239da3f468f70a2ab8e4f4e1901fef3d41d"
+  },
+  {
+    "path": "tests/large-cyst-registry.test.js",
+    "type": "file",
+    "bytes": 15389,
+    "mode": 384,
+    "sha256": "9f95fc502f1e71e86bdb0f1d034ebd5293ab32f8ebb2f2468d6138a036fed213"
+  },
+  {
+    "path": "tests/large-cyst-replication.test.js",
+    "type": "file",
+    "bytes": 10756,
+    "mode": 384,
+    "sha256": "42f212bd85f4501fad07843f86f754ff745b0d38a52753577c210d07db46d00b"
+  },
+  {
+    "path": "tests/large-cyst-s3.test.js",
+    "type": "file",
+    "bytes": 21498,
+    "mode": 384,
+    "sha256": "8837d6b26923f454a2c870e7403f39de1d728f34460c383c00bd1c66312f39c9"
+  },
+  {
+    "path": "tests/leash-update.test.js",
+    "type": "file",
+    "bytes": 22751,
+    "mode": 384,
+    "sha256": "1d3d36c0a5778fa72a0db730f6d38733f2af5fa0e6482ff23559e878fcb6c96a"
+  },
+  {
+    "path": "tests/mcp-http.test.js",
+    "type": "file",
+    "bytes": 33800,
+    "mode": 384,
+    "sha256": "39bba3434185568e738b8552441b41a6e061dd66a7b65a4a9d6b5f6e6c449605"
+  },
+  {
+    "path": "tests/mcp-platform-stdio.test.js",
+    "type": "file",
+    "bytes": 5996,
+    "mode": 384,
+    "sha256": "1183a283ef4d4d06bd173e2cf729056a6246fe74f1f369a76271210d70f0630f"
+  },
+  {
+    "path": "tests/mcp-platform.test.js",
+    "type": "file",
+    "bytes": 31467,
+    "mode": 384,
+    "sha256": "4eb702b7b6b10ca2467cb6e09fab837fef4b918bf1f55a6801366f0a1a042f9a"
+  },
+  {
+    "path": "tests/metabolism-current-rate.test.js",
+    "type": "file",
+    "bytes": 7864,
+    "mode": 384,
+    "sha256": "c9d61760f1263d32babab9377c7d3da7b02776e7d3b2a950df8d9ef06b6b63b6"
+  },
+  {
+    "path": "tests/near-admission-readiness.test.js",
+    "type": "file",
+    "bytes": 11416,
+    "mode": 384,
+    "sha256": "2a31143a9b4c988e72d8b95548c475d1533b8442a8d2b31df07940f229f1732b"
+  },
+  {
+    "path": "tests/near-testnet-verification.test.js",
+    "type": "file",
+    "bytes": 4759,
+    "mode": 384,
+    "sha256": "45518c5520e8246bbacb3328c5be47cfedebcb6e3fc62b97b9c7bce08d0d2bb3"
+  },
+  {
+    "path": "tests/near.test.js",
+    "type": "file",
+    "bytes": 7107,
+    "mode": 384,
+    "sha256": "b6f6a59a721502075d3b60659d5eb65fa2471b9dc6ea211ca575fc9c91b63f27"
+  },
+  {
+    "path": "tests/operations.test.js",
+    "type": "file",
+    "bytes": 8080,
+    "mode": 384,
+    "sha256": "7743a65ed6e085f8b339468478ea09596f1de758e4b47b65da9d3c051ca5c967"
+  },
+  {
+    "path": "tests/operator-large-cyst-storage.test.js",
+    "type": "file",
+    "bytes": 9580,
+    "mode": 384,
+    "sha256": "2c706ee51dc915e2843d49742fc878d0cf8e169c63c420dd69096f24f471e5eb"
+  },
+  {
+    "path": "tests/operator-platform-journal.test.js",
+    "type": "file",
+    "bytes": 8416,
+    "mode": 384,
+    "sha256": "dbb138c231535d6cd958a6cbf149f6206952de8e5244a39897c2f83af6aae77c"
+  },
+  {
+    "path": "tests/operator-platform-prepared.test.js",
+    "type": "file",
+    "bytes": 13734,
+    "mode": 384,
+    "sha256": "e753357e97eed490d0b94c8b4e12d63300f1e60ee2a899e627ca45af74f6fb3b"
+  },
+  {
+    "path": "tests/operator-watchdog.test.js",
+    "type": "file",
+    "bytes": 17051,
+    "mode": 384,
+    "sha256": "388499c70ed9f0d3c6013b1cc3691a15c31cb69aa658d232ab4d3486773f7d3b"
+  },
+  {
+    "path": "tests/operator.test.js",
+    "type": "file",
+    "bytes": 8378,
+    "mode": 384,
+    "sha256": "7865668627b8d1dc0b6d7ec0d62da0f50c09e38f9151e322fb2fe3f7266d1d75"
+  },
+  {
+    "path": "tests/paid-agent-lifecycle-runner.test.js",
+    "type": "file",
+    "bytes": 27842,
+    "mode": 384,
+    "sha256": "f7613b05e600c524eb5dd010974c3df525e58e54f9b7944fa8aaa35541c763a8"
+  },
+  {
+    "path": "tests/paid-agent-lifecycle-v2.test.js",
+    "type": "file",
+    "bytes": 39695,
+    "mode": 384,
+    "sha256": "07883d0fe3f54588ef2132901e4a6a7f316391fa78d5d01e320be43bb934abe7"
+  },
+  {
+    "path": "tests/paid-agent-lifecycle.test.js",
+    "type": "file",
+    "bytes": 19934,
+    "mode": 384,
+    "sha256": "f4b8e8f9a22e50404bc8991033dd8e52dbcb0fd4e9e5dfad97a643d64a1f295b"
+  },
+  {
+    "path": "tests/paid-cpu-jobs.test.js",
+    "type": "file",
+    "bytes": 38148,
+    "mode": 384,
+    "sha256": "66dd829792d8cb9b8d1d3197d3288eff9acbeae610da2ab5ee7daff16192c4af"
+  },
+  {
+    "path": "tests/paid-cpu-reliability.test.js",
+    "type": "file",
+    "bytes": 4091,
+    "mode": 384,
+    "sha256": "4000fed0fae1be2fe45f35c9ae414854a717d841936730430c351cff321dc151"
+  },
+  {
+    "path": "tests/paid-cyst-file-cache-expiry.test.js",
+    "type": "file",
+    "bytes": 6973,
+    "mode": 384,
+    "sha256": "07f588adb4ebe1208580cc11deffbfe24c0b55833549f6ca93da2619d96cd52e"
+  },
+  {
+    "path": "tests/paid-cyst-file-restore.test.js",
+    "type": "file",
+    "bytes": 35229,
+    "mode": 384,
+    "sha256": "633c323f936e59cff86d7106b9c5ef40541c9f3d8a08de9b36bf7f67769931c4"
+  },
+  {
+    "path": "tests/paid-cyst-input-app.test.js",
+    "type": "file",
+    "bytes": 6300,
+    "mode": 384,
+    "sha256": "9373a9c89bec69d92140ad4c1ae2f3782470c8427483630ad0c232caffde0435"
+  },
+  {
+    "path": "tests/paid-cyst-input-config.test.js",
+    "type": "file",
+    "bytes": 4274,
+    "mode": 384,
+    "sha256": "84f6d47ab01b35feedd85c457bd09b81f3e9485458202ef32420f553684c53a8"
+  },
+  {
+    "path": "tests/paid-cyst-input-recovery.test.js",
+    "type": "file",
+    "bytes": 5937,
+    "mode": 384,
+    "sha256": "2670d7e03e9b458821bdbd703dad2485fec859f81e4d2ef0762a8a00f2bc3dd5"
+  },
+  {
+    "path": "tests/paid-host-preemption.test.js",
+    "type": "file",
+    "bytes": 19406,
+    "mode": 384,
+    "sha256": "341e9240fb5ec68a2424617903c122dc60cd6c9f4be028570d040671bdffdbb5"
+  },
+  {
+    "path": "tests/paid-host-session.test.js",
+    "type": "file",
+    "bytes": 13984,
+    "mode": 384,
+    "sha256": "654b72e20053a342bfaf650ad2c7edc1baf860da961bdfcb7e487914e33a7e7c"
+  },
+  {
+    "path": "tests/paid-lifecycle-vault-v3.test.js",
+    "type": "file",
+    "bytes": 6864,
+    "mode": 384,
+    "sha256": "b0360f0ad4f4cad19f35a3f3480de7d909e7d87524bfb15953122d4cf9794c20"
+  },
+  {
+    "path": "tests/paid-lifeline-funding-anvil.test.js",
+    "type": "file",
+    "bytes": 14304,
+    "mode": 384,
+    "sha256": "77d368c45d5a2f54b161cb1664252590ce71b09338714094138f4c2fe5d62f82"
+  },
+  {
+    "path": "tests/paid-lifeline-reservations.test.js",
+    "type": "file",
+    "bytes": 16701,
+    "mode": 384,
+    "sha256": "8ae909189e570d8560127aa8eb854779a413f6b2d238f0871852cc4cdd51337f"
+  },
+  {
+    "path": "tests/paid-session-checkpoint.test.js",
+    "type": "file",
+    "bytes": 15571,
+    "mode": 384,
+    "sha256": "fcd276210ec2aa48e11f361a5224362fda28a3224cc30fc76e424e38579b0586"
+  },
+  {
+    "path": "tests/paid-session-handoff.test.js",
+    "type": "file",
+    "bytes": 19379,
+    "mode": 384,
+    "sha256": "48208aadbe9dadcdaee53ec45c9040af509a862461480cb79e53a57692f71a3e"
+  },
+  {
+    "path": "tests/paid-vault-agent-lifecycle.test.js",
+    "type": "file",
+    "bytes": 18158,
+    "mode": 384,
+    "sha256": "6f6b32ae9c12181f4b2679cc5ffcc8dff5d239324bc4e1699e4a4dd0ee18f796"
+  },
+  {
+    "path": "tests/paid-vault-agent-main.test.js",
+    "type": "file",
+    "bytes": 8219,
+    "mode": 384,
+    "sha256": "2ee71391f2a3288c03dbcaef2526524e72f96b7a0f3c8f1e113254efdd9b8846"
+  },
+  {
+    "path": "tests/paid-vault-preemption-handoff.test.js",
+    "type": "file",
+    "bytes": 27262,
+    "mode": 384,
+    "sha256": "e0d28e682c9980e6cfb0030e38e587d6426df534775a6e043d080b9080f2c65c"
+  },
+  {
+    "path": "tests/platform-asset-pins.test.js",
+    "type": "file",
+    "bytes": 8475,
+    "mode": 384,
+    "sha256": "c80d8cf72338220e06bdc0dcdba8a458203e2b9df1f845e32a14611b4c27ecba"
+  },
+  {
+    "path": "tests/platform-backup-quota-v2.test.js",
+    "type": "file",
+    "bytes": 8310,
+    "mode": 384,
+    "sha256": "8c0f2e8f4e4be470b18574b5202a9c21bc90e486cb573579bcb72384cd35bef6"
+  },
+  {
+    "path": "tests/platform-backup.test.js",
+    "type": "file",
+    "bytes": 15626,
+    "mode": 384,
+    "sha256": "b8634cf5898e0b5f6f47177cc7b952c78480beb7984ce92156e8aa20c0b912c1"
+  },
+  {
+    "path": "tests/platform-client.test.js",
+    "type": "file",
+    "bytes": 30309,
+    "mode": 384,
+    "sha256": "2103ab5f3f250f99cb4a64b35b67b22fe8cd9e7c295109bdf5caeb84a867903f"
+  },
+  {
+    "path": "tests/platform-configured.test.js",
+    "type": "file",
+    "bytes": 10700,
+    "mode": 384,
+    "sha256": "79b383eb498f090b1df40add9d2f12a237a0ebea14984383930e1d2ad779505d"
+  },
+  {
+    "path": "tests/platform-contracts.test.js",
+    "type": "file",
+    "bytes": 33543,
+    "mode": 384,
+    "sha256": "8ff1a2b3aaa57aea08567efb227ebec95a14f8e18aa45137887441fa0977d0e8"
+  },
+  {
+    "path": "tests/platform-cpu-offers.test.js",
+    "type": "file",
+    "bytes": 11939,
+    "mode": 384,
+    "sha256": "5011a3992d2afaef5dfd859e4b736578cfc7b71aa2cc61436eae84b0dc40c815"
+  },
+  {
+    "path": "tests/platform-deployment-plan.test.js",
+    "type": "file",
+    "bytes": 7346,
+    "mode": 384,
+    "sha256": "62de8f8b417d41a6765e8103040c9675c0dc7e989e4489c49e6287a87e54421f"
+  },
+  {
+    "path": "tests/platform-economics-runtime.test.js",
+    "type": "file",
+    "bytes": 19620,
+    "mode": 384,
+    "sha256": "37c6249edecfed24942c07e300bd461a290461fa6066f591db8fb76bec67d476"
+  },
+  {
+    "path": "tests/platform-escrow.test.js",
+    "type": "file",
+    "bytes": 40324,
+    "mode": 384,
+    "sha256": "1a3cefcdf30cdb4b03e097982fd39a02582d80fc422e75604ed2e1b6b10d6575"
+  },
+  {
+    "path": "tests/platform-exec-client.test.js",
+    "type": "file",
+    "bytes": 19408,
+    "mode": 384,
+    "sha256": "ffa778cd7e3d0069d81535a7ddc66eed74b3e50db3525f06c87db11f0d96e06a"
+  },
+  {
+    "path": "tests/platform-exec-runtime.test.js",
+    "type": "file",
+    "bytes": 26784,
+    "mode": 384,
+    "sha256": "a89a948b68c577c9dfe3f19f9b3a0d6c9e78c849daebd4b4d07840c77d7b464c"
+  },
+  {
+    "path": "tests/platform-funded-reorg.test.js",
+    "type": "file",
+    "bytes": 7983,
+    "mode": 384,
+    "sha256": "e0406514ba53d25c13687c4eed2c07e206a63eaf9c6d73a8ffc4f97635cc1b21"
+  },
+  {
+    "path": "tests/platform-main.test.js",
+    "type": "file",
+    "bytes": 38318,
+    "mode": 384,
+    "sha256": "394d665e35f1d97b8a1ba20211d07edefd94b4d52a90795bf3cd641b077f66ea"
+  },
+  {
+    "path": "tests/platform-paid-session.test.js",
+    "type": "file",
+    "bytes": 37748,
+    "mode": 384,
+    "sha256": "8ab71acedd95e2b1817691e9bcfeb350dd3990225ce81d28f6d69b4bdb28472a"
+  },
+  {
+    "path": "tests/platform-payment-deployment-plan.test.js",
+    "type": "file",
+    "bytes": 29776,
+    "mode": 384,
+    "sha256": "64533ba60189979cf34dd36fd10cf2689af037caf90fde19022f94c888888400"
+  },
+  {
+    "path": "tests/platform-payment-imports.test.js",
+    "type": "file",
+    "bytes": 1422,
+    "mode": 384,
+    "sha256": "42ede0cc665c945d08e3ef1d9eeed84c5f13e4cc61374a7572c191f946d4f5f9"
+  },
+  {
+    "path": "tests/platform-presented-meter.test.js",
+    "type": "file",
+    "bytes": 14276,
+    "mode": 384,
+    "sha256": "5d101024a45d90d842ee70074fe789dbb5c09192309724c0827a337a34761bdc"
+  },
+  {
+    "path": "tests/platform-public-financial.test.js",
+    "type": "file",
+    "bytes": 17620,
+    "mode": 384,
+    "sha256": "ab6ebaf3e200d221b4fe509c1693711d8939274152c616c7c3c43ae35b7727b6"
+  },
+  {
+    "path": "tests/platform-read-only.test.js",
+    "type": "file",
+    "bytes": 2781,
+    "mode": 384,
+    "sha256": "d56ee5d1dd5673d00fb8b0199bfee8842760b207cbc2ad1f7b59e43ae823cd51"
+  },
+  {
+    "path": "tests/platform-readiness.test.js",
+    "type": "file",
+    "bytes": 9862,
+    "mode": 384,
+    "sha256": "9238cb0407cfe0bb0b7e1aca6179b72271ae76e8d82c03d9da2788c3259f1336"
+  },
+  {
+    "path": "tests/platform-receipt-v2-core.test.js",
+    "type": "file",
+    "bytes": 15742,
+    "mode": 384,
+    "sha256": "e393bfc58e4519b599022f54223252a16c66bb089b0e2673900345b365382068"
+  },
+  {
+    "path": "tests/platform-receipts.test.js",
+    "type": "file",
+    "bytes": 19611,
+    "mode": 384,
+    "sha256": "e0d189a3c31e6db522174273058489321cf24c99c79298c4fdc662cb49833df1"
+  },
+  {
+    "path": "tests/platform-runtime.test.js",
+    "type": "file",
+    "bytes": 45523,
+    "mode": 384,
+    "sha256": "5ac6ee55b97751c55f5614a143a5a0ed9b10454c9298e6b58965799d50b2001b"
+  },
+  {
+    "path": "tests/platform-selection.test.js",
+    "type": "file",
+    "bytes": 40885,
+    "mode": 384,
+    "sha256": "80e7d87d8aa43fc8721f34374a9099339120ca122e1bd1d741d65e41d98638d6"
+  },
+  {
+    "path": "tests/platform-session-client.test.js",
+    "type": "file",
+    "bytes": 1218,
+    "mode": 384,
+    "sha256": "67525951393ae3c04f63d9c9118ebacee2f26b78ceacfe17b903a4b8fa267a4f"
+  },
+  {
+    "path": "tests/platform-spend-permission.test.js",
+    "type": "file",
+    "bytes": 26221,
+    "mode": 384,
+    "sha256": "4d655519a4617049d1664a7e62f73f0b1bf83830ca72a0b3a6a3ac8e9843447d"
+  },
+  {
+    "path": "tests/platform-v2-durable-bridge.test.js",
+    "type": "file",
+    "bytes": 24782,
+    "mode": 384,
+    "sha256": "6626d3cfec705bf0dde46674aae7a5c10b159a1869379dad4f2788b93b14310d"
+  },
+  {
+    "path": "tests/platform-v2-history-circle.test.js",
+    "type": "file",
+    "bytes": 14240,
+    "mode": 384,
+    "sha256": "3a5be06484f17240a08ad482bbac1aa65ce3cd3247b3455d46e48fbfad4aebd8"
+  },
+  {
+    "path": "tests/platform-v2-history.test.js",
+    "type": "file",
+    "bytes": 11958,
+    "mode": 384,
+    "sha256": "3063b1797fafa4f8978775c034ac198b841c985d271bc83ea895c9050ad45945"
+  },
+  {
+    "path": "tests/platform-v2-host-transport.test.js",
+    "type": "file",
+    "bytes": 12648,
+    "mode": 384,
+    "sha256": "94582398a49ac7135a725fe56191c0597a2ad57bce74daf63f235e814d2b3158"
+  },
+  {
+    "path": "tests/platform-v2-issuance.test.js",
+    "type": "file",
+    "bytes": 24908,
+    "mode": 384,
+    "sha256": "b2717abc4e208cf3ee9fd40ca830483fd5751ac7e6a9ba0ce49b3dbf76a7628c"
+  },
+  {
+    "path": "tests/platform-v2-publication.test.js",
+    "type": "file",
+    "bytes": 17873,
+    "mode": 384,
+    "sha256": "536f413bb78060727395284a927273d9354f9dad418240541884c9eba8c92572"
+  },
+  {
+    "path": "tests/platform-v2-refund-recovery.test.js",
+    "type": "file",
+    "bytes": 12239,
+    "mode": 384,
+    "sha256": "48ce234e3995d7aacd00a9c8b41b581f68139d8e55a15d0ed0335d3ed9be012a"
+  },
+  {
+    "path": "tests/platform-v2-routes.test.js",
+    "type": "file",
+    "bytes": 10986,
+    "mode": 384,
+    "sha256": "6eabdbf2391f0681c2d81aee317603d202969e01659374ae6217f93ae10ff993"
+  },
+  {
+    "path": "tests/platform-v2-s3.test.js",
+    "type": "file",
+    "bytes": 11010,
+    "mode": 384,
+    "sha256": "66c8d0b1b3b85d592ad2b38d4dbf2d88bfcd25c13e6fc9e800b297093156f92c"
+  },
+  {
+    "path": "tests/platform-v2-seal-gate.test.js",
+    "type": "file",
+    "bytes": 9460,
+    "mode": 384,
+    "sha256": "2359f95995015bffb395525a3b483cef63f207f56b356e80b4b9f13417945198"
+  },
+  {
+    "path": "tests/platform-v2-witness.test.js",
+    "type": "file",
+    "bytes": 11006,
+    "mode": 384,
+    "sha256": "cee71f0e9fef2ba7cdc806682f3fc5eb02fbfe34a93bb8bed2efc63e6bcaa9ad"
+  },
+  {
+    "path": "tests/platform-vault-bridge.test.js",
+    "type": "file",
+    "bytes": 16652,
+    "mode": 384,
+    "sha256": "dc1d60b4e02b0ec1a30e535919bf3abfb4deada0d85c7386585a5e3a6ac5bd0a"
+  },
+  {
+    "path": "tests/platform-vault-client.test.js",
+    "type": "file",
+    "bytes": 24175,
+    "mode": 384,
+    "sha256": "3534b64cb9da5930f7069a2b417c2f5bd76470e700201f2f96eb0eed8435ca9f"
+  },
+  {
+    "path": "tests/platform-vault-runtime.test.js",
+    "type": "file",
+    "bytes": 27089,
+    "mode": 384,
+    "sha256": "f83ad2e4efdb34901d86911722ced1c6e972bbee84042e3c2ae8115f32e49839"
+  },
+  {
+    "path": "tests/platform-x402-cpu.test.js",
+    "type": "file",
+    "bytes": 25651,
+    "mode": 384,
+    "sha256": "12bc9ed43a9e463e978090fbd19fad79eff789f9e855325de3bc0248953e03c0"
+  },
+  {
+    "path": "tests/platform-x402-main.test.js",
+    "type": "file",
+    "bytes": 13413,
+    "mode": 384,
+    "sha256": "61a4161e6234bae37ada48b674180d3bbefceb0e3fac1ec51b3eacad52fd428d"
+  },
+  {
+    "path": "tests/provider-readiness.test.js",
+    "type": "file",
+    "bytes": 11455,
+    "mode": 384,
+    "sha256": "d5f2898a7c32d5dfd2f889b119abe8b87cc76659065300b1c8c219378584b7d9"
+  },
+  {
+    "path": "tests/provider-recovery.test.js",
+    "type": "file",
+    "bytes": 9053,
+    "mode": 384,
+    "sha256": "40ab6aff52f24fa8a545d17debda1c89c4aab116b0f167521e2d080e18bdadb6"
+  },
+  {
+    "path": "tests/receipt-merkle.test.js",
+    "type": "file",
+    "bytes": 25036,
+    "mode": 384,
+    "sha256": "62e361441d02407c9e9af44c5f66774fc42136c59776da281b61d7a58029b725"
+  },
+  {
+    "path": "tests/receipt-pending.test.js",
+    "type": "file",
+    "bytes": 21960,
+    "mode": 384,
+    "sha256": "589ea137df493a6893f0d6c14432b0bdabba36002568abdc0455658522b4e825"
+  },
+  {
+    "path": "tests/refund-scheduling.test.js",
+    "type": "file",
+    "bytes": 9588,
+    "mode": 384,
+    "sha256": "f64a7563b5a7a5780124f6b2f59d97ed5bde52d5474954702cbffc249b967afd"
+  },
+  {
+    "path": "tests/registered-agent-checkpoint-cadence.test.js",
+    "type": "file",
+    "bytes": 12498,
+    "mode": 384,
+    "sha256": "7434ff05a079e668017680f960043e183216f736ea292c19a8a5848d3b91f723"
+  },
+  {
+    "path": "tests/retry-scheduling.test.js",
+    "type": "file",
+    "bytes": 13614,
+    "mode": 384,
+    "sha256": "ba46dc5680fbb0ea710a5cfe65db4b485eaa7961e72b196b5832502951a21f51"
+  },
+  {
+    "path": "tests/runtime-command.test.js",
+    "type": "file",
+    "bytes": 1076,
+    "mode": 384,
+    "sha256": "0adf249f5ccc54abcc0640f649a8ae984297b6b1f163ab1c643e3d89b0d007c0"
+  },
+  {
+    "path": "tests/runtime.test.js",
+    "type": "file",
+    "bytes": 12205,
+    "mode": 384,
+    "sha256": "11c718d4d5ba551b1761a6e5dd1be294fccbb57ef2643241335825dbb37d4063"
+  },
+  {
+    "path": "tests/scheduling-collateral-cap.test.js",
+    "type": "file",
+    "bytes": 2327,
+    "mode": 384,
+    "sha256": "d2ece2dd052e0d64c9ce2f1bc5cd1042eb4ccce1a81b7403dc900c108657268f"
+  },
+  {
+    "path": "tests/scheduling-price-bands.test.js",
+    "type": "file",
+    "bytes": 12080,
+    "mode": 384,
+    "sha256": "1b9416c315a542bb4318860be00811ee4f02266f37344c8fe99cbd89badc540a"
+  },
+  {
+    "path": "tests/sdk-client.test.js",
+    "type": "file",
+    "bytes": 15772,
+    "mode": 384,
+    "sha256": "cba77cb186a713959078de8e2d4ed1cf4d87086cb74b6ef470e66698a02d1b84"
+  },
+  {
+    "path": "tests/sdk-mcp.test.js",
+    "type": "file",
+    "bytes": 4787,
+    "mode": 384,
+    "sha256": "8ddc86f5dd2c7fbe4e494fb31efe98d93be0d94b5ad03e1f15ec44a1ff6fea2f"
+  },
+  {
+    "path": "tests/sealed-handoff-v3.test.js",
+    "type": "file",
+    "bytes": 27596,
+    "mode": 384,
+    "sha256": "12b3fc72e686656ec9deb2bc14246d6d22848e70b2ce10fda515c7a83a78386a"
+  },
+  {
+    "path": "tests/sealed-keys-release.test.js",
+    "type": "file",
+    "bytes": 16498,
+    "mode": 384,
+    "sha256": "63aa2522295be785968ab620046b660ff80025a539c7b733891214f55c8d5ffe"
+  },
+  {
+    "path": "tests/sealed-keys-signed-appraiser.test.js",
+    "type": "file",
+    "bytes": 8713,
+    "mode": 384,
+    "sha256": "435923f54fbda3c8a2e358b06b41499e4aa04b917be6708face01ba21a1eb48e"
+  },
+  {
+    "path": "tests/selection-contracts.test.js",
+    "type": "file",
+    "bytes": 51792,
+    "mode": 384,
+    "sha256": "3db1eeea7721c788771b64afe05747dd8b94ad59297702c58194f749639c8c4e"
+  },
+  {
+    "path": "tests/selection-dataset.test.js",
+    "type": "file",
+    "bytes": 29818,
+    "mode": 384,
+    "sha256": "96edb3ae3bb80c5f463bcce622bcad4969f5cc96b096d806bad39358ded90f62"
+  },
+  {
+    "path": "tests/selection-income-endpoints-config.test.js",
+    "type": "file",
+    "bytes": 16102,
+    "mode": 384,
+    "sha256": "4263cd69ea730559dc1ab5f2a183e92c1947d939093675606341e4f1e5d43f7f"
+  },
+  {
+    "path": "tests/selection-income-endpoints-main.test.js",
+    "type": "file",
+    "bytes": 19629,
+    "mode": 384,
+    "sha256": "adff436b1c7a39334aa264f9901ac5ae46d3afeb1b851d3ac951457118e3e702"
+  },
+  {
+    "path": "tests/selection-income-endpoints.test.js",
+    "type": "file",
+    "bytes": 31619,
+    "mode": 384,
+    "sha256": "9d0c6214e1cef25e8cb82eb36b03adc53df308c7331ac1213c030f9641e299be"
+  },
+  {
+    "path": "tests/selection-indexer.test.js",
+    "type": "file",
+    "bytes": 21582,
+    "mode": 384,
+    "sha256": "d08582278901f38dd26b8f034b113fa9b6afd21cb811eb13769cf05cd426d21c"
+  },
+  {
+    "path": "tests/selection-reputation-publisher-fixture.js",
+    "type": "file",
+    "bytes": 6828,
+    "mode": 384,
+    "sha256": "b598e97b7259a666204e1b78bcffce74f4920b69f200a3c41cf4e6b5ec657062"
+  },
+  {
+    "path": "tests/selection-reputation-publisher-main.test.js",
+    "type": "file",
+    "bytes": 15112,
+    "mode": 384,
+    "sha256": "9860562655e8bea5c83cf234feb433a31e6aefe66e643b75983ba7da625ce8da"
+  },
+  {
+    "path": "tests/selection-reputation-publisher.test.js",
+    "type": "file",
+    "bytes": 45999,
+    "mode": 384,
+    "sha256": "bfef359b67f56838f8194742aab7a858bdd7a6ec2f3f8e12e2267669caf2d68b"
+  },
+  {
+    "path": "tests/selection-reputation.test.js",
+    "type": "file",
+    "bytes": 24750,
+    "mode": 384,
+    "sha256": "779214a6429c58e3746e3c786d1501c0d23c4a37dcf31f3c728fdbad1b03ba06"
+  },
+  {
+    "path": "tests/selection-rpc.test.js",
+    "type": "file",
+    "bytes": 7035,
+    "mode": 384,
+    "sha256": "7a80817dccce64b8b060c82485bca8cc9285fc6a4c2a59f48c3bd08cf485e34c"
+  },
+  {
+    "path": "tests/service.test.js",
+    "type": "file",
+    "bytes": 8096,
+    "mode": 384,
+    "sha256": "8bea303b734149e064a39e79120b94543f5b9f28578b1dd22ab41bb9425bce5e"
+  },
+  {
+    "path": "tests/session-runtime-docker.test.js",
+    "type": "file",
+    "bytes": 10867,
+    "mode": 384,
+    "sha256": "bb97dcf10ef8f612d8ff0ed533c86852f358d6088b6ab80c1c2c4bdf3d6d9ddb"
+  },
+  {
+    "path": "tests/session-runtime.test.js",
+    "type": "file",
+    "bytes": 25793,
+    "mode": 384,
+    "sha256": "d9fa409aec15322318f0179448278e0e9b6a9d613324c6ba06fcd818e1bb885c"
+  },
+  {
+    "path": "tests/supplier-akash-close.test.js",
+    "type": "file",
+    "bytes": 9338,
+    "mode": 384,
+    "sha256": "3210c6b47e0350e1938918b17a0af9d342a2186740be8ec1910bd727f29f8469"
+  },
+  {
+    "path": "tests/supplier-akash-escrow-observation.test.js",
+    "type": "file",
+    "bytes": 7219,
+    "mode": 384,
+    "sha256": "a7922a1cefaeeea993d0b2a6e4a46decc6784145007b369a2959e814e27e06ff"
+  },
+  {
+    "path": "tests/supplier-akash-exact-bid.test.js",
+    "type": "file",
+    "bytes": 5749,
+    "mode": 384,
+    "sha256": "47b260fffe4aeb12b8a292fab3f5f6ba0855720580e16626b4258e2b9b38eb42"
+  },
+  {
+    "path": "tests/supplier-akash-lease.test.js",
+    "type": "file",
+    "bytes": 12869,
+    "mode": 384,
+    "sha256": "b4eabc01272b52bf75d1bd53ddadf0c9d40d87514257e02f4712b4856863a3cf"
+  },
+  {
+    "path": "tests/supplier-akash-signed-binding.test.js",
+    "type": "file",
+    "bytes": 13033,
+    "mode": 384,
+    "sha256": "a0a3f0e5ddfe21e06ba09e9bb2ea3b97abe68a068ca7ae180a0c87b8e429e0fa"
+  },
+  {
+    "path": "tests/supplier-akash.test.js",
+    "type": "file",
+    "bytes": 18626,
+    "mode": 384,
+    "sha256": "e36ecdfcf88d71f16fe895094e9ab943834767bae0e5be7214b530abe7d06ce4"
+  },
+  {
+    "path": "tests/supplier-golem-stats.test.js",
+    "type": "file",
+    "bytes": 5962,
+    "mode": 384,
+    "sha256": "c6de3d62c6603a6b7c227cf916f136b5ca6c9afc11750dcaf8445d0b43fad654"
+  },
+  {
+    "path": "tests/supplier-nosana.test.js",
+    "type": "file",
+    "bytes": 16702,
+    "mode": 384,
+    "sha256": "a0e6f3b47b70b704d367169b95477c32e43b13f5f3887a1be4671e4c5927c17f"
+  },
+  {
+    "path": "tests/supplier-private-journal.test.js",
+    "type": "file",
+    "bytes": 14400,
+    "mode": 384,
+    "sha256": "79c69c46d3d502232c4dbd1719a2905145be9b80087af905580e29dc25952a6f"
+  },
+  {
+    "path": "tests/supplier-shared-reserve.test.js",
+    "type": "file",
+    "bytes": 8081,
+    "mode": 384,
+    "sha256": "643a6e2bc46a64e45691948bddfd5151d885d0c456a9de394d9cddd24d0831c4"
+  },
+  {
+    "path": "tests/tlmr-economics.test.js",
+    "type": "file",
+    "bytes": 40695,
+    "mode": 384,
+    "sha256": "9cf96307d1d890577fad6d8ed2c911fa6a93b4878447f822df952a60ee6b587c"
+  },
+  {
+    "path": "tests/treasury-solana-reader.test.js",
+    "type": "file",
+    "bytes": 4178,
+    "mode": 384,
+    "sha256": "9806daebdf65ffc87a0fcfa1ce400190d4b35dcc3de306f6a3bc93e092c36ed1"
+  },
+  {
+    "path": "tests/treasury-topup-main.test.js",
+    "type": "file",
+    "bytes": 12134,
+    "mode": 384,
+    "sha256": "55582ca417eb92ef51eac5a613b05680dd64c11b98ae828a6d968d6bce4ffdd0"
+  },
+  {
+    "path": "tests/treasury-topups.test.js",
+    "type": "file",
+    "bytes": 17344,
+    "mode": 384,
+    "sha256": "fd08ccd6e268a3f8a70a5d8590f3144ec7300d23f6751d925fe9fac0695ab8f9"
+  },
+  {
+    "path": "tests/usdg-archive.test.js",
+    "type": "file",
+    "bytes": 2476,
+    "mode": 384,
+    "sha256": "91b7509bfdb6ee2680272aa693533ac44f2c103852782cec889f73e21a227069"
+  },
+  {
+    "path": "tests/vault-income-client-base.test.js",
+    "type": "file",
+    "bytes": 18437,
+    "mode": 384,
+    "sha256": "4610ed59b692ca7a0de2a7aa758684607af3a22b2912876665c2248fa79bced0"
+  },
+  {
+    "path": "tests/vault-income-client-http.test.js",
+    "type": "file",
+    "bytes": 4943,
+    "mode": 384,
+    "sha256": "6b4c295208971eb32fd31d113de0c513a73f33b550a656fdf8fc5bb9a4158c9e"
+  },
+  {
+    "path": "tests/vault-income-client-reader.test.js",
+    "type": "file",
+    "bytes": 32509,
+    "mode": 384,
+    "sha256": "9011cc31d049c6d8416a399370887d6295bf438e07c8cb4642424b56d17ae688"
+  },
+  {
+    "path": "tests/vault-income-client.test.js",
+    "type": "file",
+    "bytes": 23374,
+    "mode": 384,
+    "sha256": "f9d4a87b2fb38aab876a382a1d7132dfc2b64ae359ce059cb86d3bbfdb4b60cf"
+  },
+  {
+    "path": "tests/vault-income-configured.test.js",
+    "type": "file",
+    "bytes": 16547,
+    "mode": 384,
+    "sha256": "98df36ee4670a08c5230990ba3ece032588e09be7f0c8d1ec51f7ebf522fa656"
+  },
+  {
+    "path": "tests/vault-income-main.test.js",
+    "type": "file",
+    "bytes": 20793,
+    "mode": 384,
+    "sha256": "d543b55df2f27106eccafc0cc5b7b68bb61b5e0f26310bccb38e5d8d22f0ab06"
+  },
+  {
+    "path": "tests/vault-income-private-file.test.js",
+    "type": "file",
+    "bytes": 8541,
+    "mode": 384,
+    "sha256": "5b4eb98dee36a98b6e759dd874799d7ea9fe0f1b4faa5dd33bded7be3eaf3b5d"
+  },
+  {
+    "path": "tests/vault-income-rpc.test.js",
+    "type": "file",
+    "bytes": 6976,
+    "mode": 384,
+    "sha256": "fa4e633a7f0167375f77f3ab13042c59dc35bbc68b156dd83fa367850b86654d"
+  },
+  {
+    "path": "tests/vault-income.test.js",
+    "type": "file",
+    "bytes": 46444,
+    "mode": 384,
+    "sha256": "12e52fb6c734031e36f32dc23d941d6f0dad80965930cb723fff0139e54c59de"
+  },
+  {
+    "path": "tests/verified-near.test.js",
+    "type": "file",
+    "bytes": 19609,
+    "mode": 384,
+    "sha256": "6d2c6ebab7fd25916ab5bca164f28676125e837585713fa48d8b5e4abcb7f3f0"
+  },
+  {
+    "path": "tests/worker.test.js",
+    "type": "file",
+    "bytes": 25790,
+    "mode": 384,
+    "sha256": "286822c5e9ae0c4d97c9fe411b9a137129e4825671b44313f4af95a09c6ccf82"
+  },
+  {
+    "path": "tests/x402-payments.test.js",
+    "type": "file",
+    "bytes": 50168,
+    "mode": 384,
+    "sha256": "96f7ccd9b32b3f5cace34e3202a9582f68f2495945ef76090d0976c4bd498543"
+  }
+]

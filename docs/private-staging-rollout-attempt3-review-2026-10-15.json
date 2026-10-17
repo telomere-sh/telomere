@@ -1,0 +1,178 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-10-15T04:29:45.399062+00:00",
+  "kind": "independent_static_and_offline_review_of_private_staging_attempt03",
+  "status": "review_complete_no_blocking_issue_found_at_frozen_cutoff",
+  "reviewer": "final_readiness_review",
+  "bundle": ".local/private-staging-rollout-attempt3-20261015",
+  "run": "staging-354fe7af62ea-launch03",
+  "operatorPath": "/opt/telomere-host-runtime/private-staging-operator-20261015-354fe7af62ea-attempt03",
+  "revision": "354fe7af62ea6701faafc3b04522abb1b4524d2d",
+  "archiveSha256": "86b5dc9f36dcf841963f0ffa8161023c126f1fae473c94909f5dddae3040fdce",
+  "files": {
+    "rollout.py": "26e580f34daa0db39710ff4114315809979686ceeaca656fb4cf59de715a15cb",
+    "clone-smoke.mjs": "43d37c51c7d50a1a9971b444367045a2c7e73b91239418d679460d1fb06176e5",
+    "README.md": "6c0792998957eddf5cb51f22e92478433fc6cc1fc83b2117c27417a33012e2cf",
+    "upload-launch.py": "deb1467b2b85814005ca9cceb4141ef2934cbe06c2ba88e48585007be65ee712",
+    "upload-launch-usage.md": "e808f1707bed73a3ad3e321da9651ca6af4e7bdb27904836ab04ae368a09a9c4"
+  },
+  "scope": {
+    "changedExistingRunnerFunctions": [
+      "clone_validate"
+    ],
+    "addedRunnerFunctions": [
+      "image_archive_stamp",
+      "image_archive_identity",
+      "assert_image_archive_stable",
+      "assert_loaded_cpu_identity",
+      "cpu_image_identity"
+    ],
+    "otherExistingRunnerFunctionsAstUnchanged": true,
+    "runnerImportsAdded": [
+      "gzip",
+      "zlib"
+    ],
+    "runnerTopLevelFailureHandler": "fixed_safe_refusal_code_and_image_stage_only",
+    "cloneSmokeByteIdenticalToAttempt02": true,
+    "driverOnlyChanges": "fresh run, remote operator and outer unit identities plus reviewed FROZEN hashes",
+    "acceptanceGateCodeUnchanged": true,
+    "oldAttempt01And02FiveFileHashesUnchanged": true,
+    "productionCodeDependenciesAndConfigurationChanged": false
+  },
+  "imageIdentityInvariants": [
+    "CPU_IMAGE comes only from the restored snapshot profile after its digest matches the stopped snapshot fingerprint.",
+    "Exact profile sha256 suffix equals the limited source inspect Id and verified root OCI index digest.",
+    "Unique complete linux/amd64 runtime manifest binds exact config and ordered layers; ambiguous or unsupported graphs refuse.",
+    "Every present blob is streamed and its sha256 filename and descriptor sizes checked; the compatibility manifest binds exactly the same config and ordered layer paths.",
+    "Selected plain or gzip layers are independently streamed to EOF and hashed as uncompressed diff_ids, preserving order against config and source RootFS.",
+    "Archive hash and stat are checked after validation, immediately before load and after load; source metadata must remain unchanged.",
+    "The isolated VFS daemon must expose the verified config Id and identical platform and ordered RootFS; only then is that config Id passed to the clone CPU executor.",
+    "Missing nonselected siblings are recorded and never fetched; auxiliary provenance or attestation claims are not verified.",
+    "No tag fallback, image pull, image relabel or original daemon configuration change is introduced."
+  ],
+  "resourceLimits": {
+    "archiveBytes": 268435456,
+    "archiveMembers": 512,
+    "individualRawBlobBytes": 134217728,
+    "jsonBytes": 1048576,
+    "rootManifestDescriptors": 64,
+    "layersPerManifest": 64,
+    "selectedExpandedLayerBytes": 268435456,
+    "selectedExpandedTotalBytes": 536870912,
+    "unsafeTarLinksPathsAndDuplicateNamesRejected": true,
+    "duplicateJsonKeysAndNonFiniteConstantsRejected": true,
+    "externalUrlsAndInlineDescriptorDataRejected": true
+  },
+  "resolvedReviewFindings": [
+    {
+      "finding": "Cross-engine image Id equality assumed an OCI index and classic config Id had the same representation.",
+      "resolution": "Content-addressed selected-chain proof and loaded config/platform/RootFS comparison replace representation equality."
+    },
+    {
+      "finding": "Final load boundary needed an explicit archive check after proof persistence.",
+      "resolution": "Archive hash/stat guard immediately before load and again afterwards."
+    },
+    {
+      "finding": "Safe proof need not retain the profile-derived repository reference.",
+      "resolution": "Proof contains only digest/platform/limited inspect identity; sourceImageReference omitted."
+    }
+  ],
+  "checks": {
+    "pythonAstSyntax": "passed",
+    "nodeCheckSyntax": "passed",
+    "actualLocalSchema2GateCheck": "passed",
+    "cleanFullSuiteClaimed": false,
+    "composedGateSummary": {
+      "initialFullPassed": 2281,
+      "initialFullFailed": 1,
+      "initialFullSkipped": 19,
+      "gvisorPassed": 16,
+      "selectionPassed": 40,
+      "additivePassed": 71,
+      "sourceFiles": 685
+    },
+    "independentActualFunctionControls": {
+      "total": 21,
+      "validAccepted": 3,
+      "hostileRejected": 18,
+      "runnerSourceStableBeforeAfter": true,
+      "dockerCalls": 0,
+      "sshCalls": 0,
+      "profileOrKeyReads": false
+    },
+    "authorOfflineControls": {
+      "total": 29,
+      "passed": 29,
+      "validatorSourceHashMatchesFrozenRunner": true,
+      "dockerCalls": 0,
+      "transportCalls": 0
+    },
+    "authorizedExistingExportReadOnlyProbe": {
+      "inspectedNotExecutedByReviewer": true,
+      "validatorSourceHashMatchesFrozenRunner": true,
+      "archiveBytes": 61116416,
+      "members": 16,
+      "presentBlobs": 11,
+      "selectedLayers": 4,
+      "expandedBytes": 169914880,
+      "missingNonselectedDescriptors": 8,
+      "loadedDaemonExecutionInThisProbe": false
+    }
+  },
+  "evidence": [
+    {
+      "path": "docs/evidence/private-staging-attempt03-independent-image-controls-20261015.json",
+      "sha256": "645ae41726e12944068e5e12f4f648fb4700403da02a471762e7abc90ef9147b",
+      "bytes": 1950
+    },
+    {
+      "path": "docs/evidence/private-staging-attempt03-author-image-controls-20261015.json",
+      "sha256": "c28634004ef949f12bfddebe1cf614e7be68cb8b99d0966d84195b422acc3809",
+      "bytes": 3422
+    },
+    {
+      "path": "docs/evidence/private-staging-attempt03-existing-export-readonly-proof-20261015.json",
+      "sha256": "5a568e0182d679ba004201641764f3febf44b658affd89054decdf8eeb99ed8a",
+      "bytes": 3275
+    }
+  ],
+  "officialPrimarySources": [
+    {
+      "url": "https://raw.githubusercontent.com/opencontainers/image-spec/main/config.md",
+      "basis": "Configuration ImageID and ordered uncompressed layer DiffIDs."
+    },
+    {
+      "url": "https://raw.githubusercontent.com/opencontainers/image-spec/main/descriptor.md",
+      "basis": "Descriptor content digest and raw byte size."
+    },
+    {
+      "url": "https://raw.githubusercontent.com/opencontainers/image-spec/main/image-index.md",
+      "basis": "Platform-specific manifests referenced by an image index."
+    },
+    {
+      "url": "https://docs.docker.com/engine/storage/containerd/",
+      "basis": "Containerd image indices and attestation support differ from the classic image store."
+    }
+  ],
+  "preservedHistory": [
+    "docs/private-staging-rollout-review-2026-10-15.json",
+    "docs/private-staging-rollout-composed-review-2026-10-15.json",
+    "docs/private-staging-rollout-attempt2-review-2026-10-15.json",
+    "docs/private-staging-attempt01-2026-10-15.json",
+    "docs/private-staging-attempt02-2026-10-15.json"
+  ],
+  "explicitBoundaries": {
+    "attempt03RuntimePhasesExecutedAtReviewCutoff": false,
+    "reviewerServerCalls": 0,
+    "reviewerProfileOrSecretReads": false,
+    "successfulRolloutClaimed": false,
+    "successfulCloneOrCutoverClaimed": false,
+    "gpuCellsCredit": false,
+    "supplierExternalExecutionCredit": false,
+    "publicBaseLaunchClaimed": false,
+    "readinessScoreChanged": false,
+    "automaticDataRestoreAdded": false,
+    "phaseChainingAdded": false,
+    "parentMustReviewActualPhaseReportsBeforeSeparateCutover": true
+  }
+}

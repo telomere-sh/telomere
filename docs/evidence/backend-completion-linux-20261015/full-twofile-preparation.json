@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "status": "accepted_preparation_only",
+  "startedAt": "2026-10-15T14:08:17.146262+00:00",
+  "gitRevision": "bc3ca04617c2ec6b0fec32ee59aa34af97ba867d",
+  "archiveSha256": "3ed17e69fc55c944999ca0449a3384beba7c0ef8753589d502463fa55a332ee2",
+  "directory": "/opt/telomere-host-runtime/full-twofile-corrected-20261015-3ed17e69fc55",
+  "sourceFiles": 708,
+  "oldSourceDirectory": "/opt/telomere-host-runtime/backend-completion-final-20261015-090932a350a5",
+  "oldManifestSha256": "16b7ddcfb62c1d6fde5bd0f6c4a2b55013d0dbe508c62e4ff233efd896e69028",
+  "oldSourceBefore": {
+    "unchanged": true,
+    "verified": 708,
+    "changed": []
+  },
+  "dependencyEntries": {
+    "node_modules": 21050,
+    "dist": 585
+  },
+  "dependencyInventoryBeforeSha256": "32de7e843d515b97df59a60661d758f78d8cf1632733b32af64cc40d448d4272",
+  "serviceMutations": false,
+  "publicTransactions": 0,
+  "paidProviderRequests": 0,
+  "reinstallPerformed": false,
+  "rebuildPerformed": false,
+  "dependenciesCopiedToOwnedDirectory": true,
+  "sourceAfter": {
+    "unchanged": true,
+    "verified": 708,
+    "changed": []
+  },
+  "oldSourceAfter": {
+    "unchanged": true,
+    "verified": 708,
+    "changed": []
+  },
+  "dependencyInventoryAfterSha256": "32de7e843d515b97df59a60661d758f78d8cf1632733b32af64cc40d448d4272",
+  "copiedDependencyInventorySha256": "32de7e843d515b97df59a60661d758f78d8cf1632733b32af64cc40d448d4272",
+  "success": true,
+  "finishedAt": "2026-10-15T14:08:20.155065+00:00"
+}

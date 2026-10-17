@@ -1,0 +1,164 @@
+{
+  "isolatedPath": "/opt/telomere-host-runtime/vault-income-client-check-gLPYbWXm",
+  "checkedAtUtc": "2026-10-12T13:18:05.573479+00:00",
+  "packageMetadataSha256": "a86b640551f246e09fff1c8d24eb14608b0476101c4e3aef145877d62d8ec7b2",
+  "package": {
+    "expectedSourceFiles": 314,
+    "expectedBuildAssets": 4,
+    "expectedTests": 108,
+    "expectedTestFiles": {
+      "vault-income.test.ts": 52,
+      "vault-income-client-reader.test.ts": 25,
+      "vault-income-client.test.ts": 13,
+      "vault-income-client-http.test.ts": 18
+    },
+    "expectedSkips": {},
+    "expectedSkippedTests": 0,
+    "expectedPassedTests": 108,
+    "snapshotAtUtc": "2026-10-12T13:17:43.331979+00:00",
+    "gitHeadAtSnapshot": "d38ba1b1172887e47e114bc2417c9311be50a06c",
+    "commitComparison": "Git clean-filter blob IDs match HEAD; exact executed bytes separately SHA256-pinned",
+    "excludedWip": [],
+    "reviewedFreeze": {
+      "src/sdk/vault-income/reader.ts": "40711e78fa8f0958db1a9f8be308520824bef10e0f738d9c17fe48a7809cb839",
+      "tests/vault-income-client-reader.test.ts": "42755b64fc700eabf78ab94c82a5104f6d1e790d0b492a5c435ae6d111fad997",
+      "src/payments/vault-income-chain.ts": "818d24b94876610624edeb1010b21f118d5dc074cdffa52a87e4e1926872b23d",
+      "tests/vault-income.test.ts": "dfc8f76d300222f8b5573eb753344afd25efa241539839e559b02102951f41ae"
+    },
+    "source": {
+      "archive": "vault-income-client-source.tar",
+      "manifest": "vault-income-client-source-sha256.txt",
+      "archiveSha256": "2764febe2c35700f9e0bb5c4397ee94d48a1768bc7b17c61373f40c5fb9460cf",
+      "manifestSha256": "23a2da4e31e359e53adff97f1ef2fe1fc2823f9a87293cd2e46825481932b1b0",
+      "archiveBytes": 3809280,
+      "files": 314
+    },
+    "build-assets": {
+      "archive": "vault-income-client-build-assets.tar",
+      "manifest": "vault-income-client-build-assets-sha256.txt",
+      "archiveSha256": "f079ccfdf3bf99a5cdd1de7bceec8a0ec356c097315959055c4ebea5ec26b138",
+      "manifestSha256": "e7bab231aad576014f733737754f06845e0917b796ce95e30931485dc405d73c",
+      "archiveBytes": 112640,
+      "files": 4
+    }
+  },
+  "publicChainOrProviderCalls": false,
+  "serviceMutations": false,
+  "healthBefore": {
+    "status": "ready",
+    "worker": "idle"
+  },
+  "servicesBefore": {
+    "telomere-staging.service": "active",
+    "telomere-staging-chain.service": "active",
+    "enclave-api.service": "active",
+    "enclave-worker.service": "active",
+    "enclave-web.service": "active"
+  },
+  "sourceMatchesBefore": 314,
+  "buildAssetsMatchesBefore": 4,
+  "nodeVersion": "v22.23.3",
+  "buildOwnedProcessGroupCleanup": false,
+  "buildElapsedSeconds": 52.642,
+  "buildExitCode": 0,
+  "sourceMatchesAfterBuild": 314,
+  "buildAssetsMatchesAfterBuild": 4,
+  "testsOwnedProcessGroupCleanup": false,
+  "testsElapsedSeconds": 179.371,
+  "testsExitCode": 0,
+  "tests": {
+    "numTotalTestSuites": 8,
+    "numPassedTestSuites": 8,
+    "numFailedTestSuites": 0,
+    "numTotalTests": 108,
+    "numPassedTests": 108,
+    "numFailedTests": 0,
+    "numPendingTests": 0,
+    "success": true
+  },
+  "testFiles": [
+    {
+      "name": "vault-income-client-http.test.ts",
+      "status": "passed",
+      "tests": 18,
+      "passed": 18,
+      "skipped": 0,
+      "skippedTitles": []
+    },
+    {
+      "name": "vault-income-client-reader.test.ts",
+      "status": "passed",
+      "tests": 25,
+      "passed": 25,
+      "skipped": 0,
+      "skippedTitles": []
+    },
+    {
+      "name": "vault-income-client.test.ts",
+      "status": "passed",
+      "tests": 13,
+      "passed": 13,
+      "skipped": 0,
+      "skippedTitles": []
+    },
+    {
+      "name": "vault-income.test.ts",
+      "status": "passed",
+      "tests": 52,
+      "passed": 52,
+      "skipped": 0,
+      "skippedTitles": []
+    }
+  ],
+  "rawVitestSha256": "7ab618f6439edac88bfdfd9d1cc70feabc493cd81370a1cc838ce5abdb40bfb2",
+  "sourceMatchesAfter": 314,
+  "buildAssetsMatchesAfter": 4,
+  "newFixtureDirectoriesRemaining": 0,
+  "healthAfter": {
+    "status": "ready",
+    "worker": "idle"
+  },
+  "servicesAfter": {
+    "telomere-staging.service": "active",
+    "telomere-staging-chain.service": "active",
+    "enclave-api.service": "active",
+    "enclave-worker.service": "active",
+    "enclave-web.service": "active"
+  },
+  "ownedCheckoutProcessesRemaining": 0,
+  "success": true,
+  "rawRunnerReportSha256": "7740a1948bcb637df5add3ababea025c2254fa322a928f43f66e6128cc05f0a4",
+  "rawVitestReportSha256": "7ab618f6439edac88bfdfd9d1cc70feabc493cd81370a1cc838ce5abdb40bfb2",
+  "runtimeEquivalentCommittedRevision": "d38ba1b1172887e47e114bc2417c9311be50a06c",
+  "committedRevisionMatchingSourceFiles": 314,
+  "committedRevisionMatchingBuildAssets": 4,
+  "committedRevisionComparison": "Git clean-filter blob IDs match the committed revision; exact executed bytes independently pinned by SHA256 manifests",
+  "schemaVersion": 1,
+  "scope": "Isolated Linux normal full build and focused checked public Node Vault payer SDK, independent canonical raw-transaction reader, bounded HTTP and native atomic Vault receipt acceptance",
+  "manifestArtifacts": [
+    "vault-income-client-source-sha256.txt",
+    "vault-income-client-build-assets-sha256.txt"
+  ],
+  "harnessSha256": {
+    "package": "1d3a30c49d3137f3aece9713965ec72da9a10179386cc90c5fb2fbf848dacffc",
+    "runner": "ced5db3897d1a944939875f7d7a1be0c86107e467049b0863ce54a7ea5509047",
+    "launch": "079de40c575aef1f36272c77bb006f07c917fe361f84a2382412aa83485beaa7",
+    "validation-write": "14992c62dc716c2ad032624b7384a149cfb5fbd4aa9f535e64fa0d19182cf12a"
+  },
+  "failureHistory": [],
+  "relatedEvidence": [
+    "vault-income-client-validation.json",
+    "vault-income-validation.json",
+    "vault-income-main-linux-validation.json"
+  ],
+  "limitations": [
+    "Focused four-file acceptance, not the entire repository test suite",
+    "Disposable Anvil and actual loopback HTTP; no public Robinhood transaction, live asset capability or public paid operation established",
+    "The independent reader requires eth_getRawTransactionByHash; unsupported RPC methods fail closed and no transaction reconstruction fallback is used",
+    "SDK caller supplies durable exclusive journal storage; the acceptance disk journal is a fixture and does not establish production ACL or power-loss durability",
+    "Direct-token or alternate-transaction authorization consumption requires explicit reconciliation and is never adopted as the original payment",
+    "Optional exact native Vault income remains disabled without a reviewed private profile and requires its new immutable implementation/Selection deployment",
+    "All committed runtime source is included for the normal full build; this focused run does not repeat separate session/runtime acceptance",
+    "Existing staging and enclave services observed only; no private environment or existing service configuration read or changed"
+  ]
+}

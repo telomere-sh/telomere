@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-08T17:50:46.760Z",
+  "readOnly": true,
+  "mode": "demo",
+  "chainId": 31337,
+  "escrow": "0xCC29B19b5EcAc380688d02bd14c131e13a2a74dc",
+  "token": "0xb280248C1299144a3Ab708ea23B133ea188B3F8d",
+  "signer": "0x7D1686Bc8b611Adc1426FD2a3f0ca03a3A063cc5",
+  "demoOwner": "0x8d45d09ecc6FceaD1edd26dBDc09F60FaC160734",
+  "allowedOwners": [],
+  "cpu": {
+    "mode": "docker",
+    "image": "node@sha256:0a7108bf6c7bf5de370ffb1a3ed6be93d405b43ff159f681a8d18c0e2bc2e402",
+    "digestPinned": true
+  },
+  "database": "postgresql",
+  "near": {
+    "configured": false,
+    "verification": "disabled",
+    "readiness": {
+      "state": "disabled",
+      "reasonCode": "NOT_CONFIGURED",
+      "checkedAt": "2026-10-08T17:50:46.618Z",
+      "verification": null,
+      "scope": "local_configuration",
+      "liveAttestationChecked": false
+    }
+  },
+  "checks": {
+    "networkMatches": true,
+    "signerMatches": true,
+    "tokenMatches": true,
+    "tokenHasSixDecimals": true
+  },
+  "chain": {
+    "actualChainId": 31337,
+    "quoteSigner": "0x7D1686Bc8b611Adc1426FD2a3f0ca03a3A063cc5",
+    "receiptSigner": "0x7D1686Bc8b611Adc1426FD2a3f0ca03a3A063cc5",
+    "treasury": "0x6D97bdF18D62FAB63aB144729E98EA83b5d5a8e7",
+    "latestNonce": 6,
+    "pendingNonce": 6,
+    "operatorGasBalanceWei": "9999037004275358056"
+  },
+  "controller": {
+    "status": "ready",
+    "worker": "idle"
+  },
+  "databaseStatus": {
+    "controllerLockHeld": true,
+    "counts": {
+      "completed": 5
+    },
+    "oldestQueuedAt": null,
+    "journal": {
+      "count": 5,
+      "unknownNonceCount": 0,
+      "highestNonce": 5,
+      "truncated": false
+    },
+    "diagnostics": [],
+    "reconciliation": [],
+    "reconciliationTruncated": false,
+    "pendingReceipts": [],
+    "pendingReceiptsTruncated": false
+  }
+}

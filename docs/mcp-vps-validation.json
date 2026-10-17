@@ -1,0 +1,13 @@
+{
+  "checkedAt": "2026-10-08T14:23:30.428Z",
+  "endpoint": "private_vps_staging_over_ssh",
+  "transport": "official_stdio_mcp",
+  "toolCount": 17,
+  "chainId": 31337,
+  "cpuMode": "docker",
+  "workerState": "idle",
+  "receiptSignatureValid": true,
+  "receiptAnchored": true,
+  "walletTransactionsSent": 0,
+  "providerPosts": 0
+}

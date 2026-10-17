@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "checkedAtUtc": "2026-10-13T09:49:17.784447+00:00",
+  "scope": "exact_paid_backup_shadow_quota_local_fixtures",
+  "commit": "613748e8b3471ac6295169572c118268ba87c1d0",
+  "sourceArchiveSha256": "478587dd2fe663f2bb698d07f29ba4898cee4187d1c59a1b81ae75f7e3df9b18",
+  "trackedFilesByteMatchedAfterBuildAndTests": 674,
+  "trackedFilesMismatched": [],
+  "normalBuild": "passed",
+  "tests": {
+    "files": 18,
+    "passed": 156,
+    "failed": 0,
+    "skipped": 0,
+    "durationSeconds": 340.54758422851563
+  },
+  "preexistingServicesActiveBefore": 6,
+  "preexistingServicesActiveAfter": 6,
+  "watchdogStateKeys": [
+    "active",
+    "checkedAt",
+    "schemaVersion",
+    "sequence"
+  ],
+  "publicProviderOrChainTestCalls": 0,
+  "liveServiceMutationDuringAcceptance": false
+}

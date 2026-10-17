@@ -1,0 +1,182 @@
+{
+  "schemaVersion": 1,
+  "sourceCommit": "8f5f41e9e0fd94c95c37992ff910f098bf7908b4",
+  "appDependencyCommit": "ee6169d1007b11f037fbc409dc1f7575f15117c9",
+  "planSha256": "2be56662f572ae01c25a2950f9f010104f12e2e30afb3150f153b96993f15bf8",
+  "destination": "/opt/telomere-mainnet-pilot/operator-wallet",
+  "node": "/opt/node-v22.23.3-linux-x64/bin/node",
+  "dependencyLinkTarget": "/opt/telomere-mainnet-pilot/releases/ee6169d1007b11f037fbc409dc1f7575f15117c9/node_modules",
+  "recursiveSourceImports": [
+    "scripts/base-usdc-deployment.ts",
+    "scripts/compile-contracts.ts",
+    "scripts/deployment-approval.ts",
+    "scripts/owner-wallet-deployment.ts",
+    "src/chain/chains.ts",
+    "src/deployment/owner-wallet-browser.ts",
+    "src/deployment/owner-wallet-fees.ts",
+    "src/deployment/owner-wallet-review.ts",
+    "src/deployment/owner-wallet-types.ts",
+    "src/deployment/owner-wallet-wallet.ts",
+    "src/payments/circle-usdc.ts",
+    "src/selection/income-endpoints/json.ts"
+  ],
+  "externalImports": [
+    "esbuild",
+    "solc",
+    "viem",
+    "zod"
+  ],
+  "files": [
+    {
+      "path": "START-REVIEW.md",
+      "bytes": 5936,
+      "sha256": "eb7533f5001a52b972209a14064a8f0d7e0079866e9921242c5cafa057afe621",
+      "mode": "0640",
+      "origin": "local operator draft"
+    },
+    {
+      "path": "contracts/TelomereRunEscrow.sol",
+      "bytes": 13930,
+      "sha256": "ae9d3da25d6ac222b3550c9cd5696bfcaef26cfd7bbaaec54aa0f3679ae3bf51",
+      "mode": "0640",
+      "origin": "git:8f5f41e9e0fd94c95c37992ff910f098bf7908b4"
+    },
+    {
+      "path": "docs/owner-wallet-deployment-review.md",
+      "bytes": 8309,
+      "sha256": "cb6f452ecd87c750458b568bc445f84dfd8e60aec96b56268d47558aa60ca52d",
+      "mode": "0640",
+      "origin": "git:8f5f41e9e0fd94c95c37992ff910f098bf7908b4"
+    },
+    {
+      "path": "frozen/deployment-plan-base-mainnet.json",
+      "bytes": 29895,
+      "sha256": "2be56662f572ae01c25a2950f9f010104f12e2e30afb3150f153b96993f15bf8",
+      "mode": "0640",
+      "origin": "reviewed public frozen plan"
+    },
+    {
+      "path": "package-lock.json",
+      "bytes": 124283,
+      "sha256": "e8549c057c2e4a8a3808ae2a2b386e9a20d20711c696836dd483d4c8bc7c533d",
+      "mode": "0640",
+      "origin": "git:8f5f41e9e0fd94c95c37992ff910f098bf7908b4"
+    },
+    {
+      "path": "package.json",
+      "bytes": 3228,
+      "sha256": "632c193486a5614ee2498eed76826fbb29e68d81fbe025878e48a4180de16fcc",
+      "mode": "0640",
+      "origin": "git:8f5f41e9e0fd94c95c37992ff910f098bf7908b4"
+    },
+    {
+      "path": "run-review.sh",
+      "bytes": 1135,
+      "sha256": "fc6443ea7930d7b9186a3226706e3c007a6cd20d8c1c622fb6528ea36fc1f64d",
+      "mode": "0640",
+      "origin": "local operator draft"
+    },
+    {
+      "path": "runtime/preflight.mjs",
+      "bytes": 4654,
+      "sha256": "8a8a1107c5012934e62d564f8b932bb3194d49e7b97fc1ee9022cd8fc30286c9",
+      "mode": "0640",
+      "origin": "local operator draft"
+    },
+    {
+      "path": "scripts/base-usdc-deployment.ts",
+      "bytes": 3228,
+      "sha256": "ae7543db2920ba1af1d85e42b47ef10c5bddbf47402d224437b72de231674c14",
+      "mode": "0640",
+      "origin": "git:8f5f41e9e0fd94c95c37992ff910f098bf7908b4"
+    },
+    {
+      "path": "scripts/compile-contracts.ts",
+      "bytes": 3463,
+      "sha256": "fd7c65be6290aa0531cbb0ba5f8310e806d9a81aa3bdc68fb384e3ceed2c8d6b",
+      "mode": "0640",
+      "origin": "git:8f5f41e9e0fd94c95c37992ff910f098bf7908b4"
+    },
+    {
+      "path": "scripts/deployment-approval.ts",
+      "bytes": 1017,
+      "sha256": "3d869ebe3e59a6832e77342aeb0a7f4e4f9cae9a3ff2c7c40b1050bd285e3b88",
+      "mode": "0640",
+      "origin": "git:8f5f41e9e0fd94c95c37992ff910f098bf7908b4"
+    },
+    {
+      "path": "scripts/owner-wallet-deployment.ts",
+      "bytes": 9996,
+      "sha256": "04b7c04c3bfbb5ee2fd9008cecece3ae303868f86dd926f720236114558eba0d",
+      "mode": "0640",
+      "origin": "git:8f5f41e9e0fd94c95c37992ff910f098bf7908b4"
+    },
+    {
+      "path": "src/chain/chains.ts",
+      "bytes": 1702,
+      "sha256": "7d328aa7ff89f7b6c0e3467e966729ce2fc24a9df8e07f5dce0edad8334b7f52",
+      "mode": "0640",
+      "origin": "git:8f5f41e9e0fd94c95c37992ff910f098bf7908b4"
+    },
+    {
+      "path": "src/deployment/owner-wallet-browser.ts",
+      "bytes": 8595,
+      "sha256": "a95fe469d99ad0a3692ec3d2a5fbbe5ef107418eb79a65c23eced86b9c2c5c16",
+      "mode": "0640",
+      "origin": "git:8f5f41e9e0fd94c95c37992ff910f098bf7908b4"
+    },
+    {
+      "path": "src/deployment/owner-wallet-fees.ts",
+      "bytes": 2065,
+      "sha256": "e40decefa0d33367e8271e364b0ca7e3971554cdb3a5d40b5b214a6662e7ae51",
+      "mode": "0640",
+      "origin": "git:8f5f41e9e0fd94c95c37992ff910f098bf7908b4"
+    },
+    {
+      "path": "src/deployment/owner-wallet-review.ts",
+      "bytes": 11874,
+      "sha256": "667c877dff8053cb37549fe09b457309a2865b434a1c3f5e51a9cf5343a1c7f1",
+      "mode": "0640",
+      "origin": "git:8f5f41e9e0fd94c95c37992ff910f098bf7908b4"
+    },
+    {
+      "path": "src/deployment/owner-wallet-types.ts",
+      "bytes": 3611,
+      "sha256": "e768b7b75cb407c47c224e1d2e1894b47334fac17bd8548f6f3319b492a9b990",
+      "mode": "0640",
+      "origin": "git:8f5f41e9e0fd94c95c37992ff910f098bf7908b4"
+    },
+    {
+      "path": "src/deployment/owner-wallet-wallet.ts",
+      "bytes": 6630,
+      "sha256": "2dcb32418b51a8be588cc227d82d37f3d5e2d42791c4551cdd902e11cd799d48",
+      "mode": "0640",
+      "origin": "git:8f5f41e9e0fd94c95c37992ff910f098bf7908b4"
+    },
+    {
+      "path": "src/payments/circle-usdc.ts",
+      "bytes": 4417,
+      "sha256": "d951d9c4d0d5349ad66ff69ef21b2c78b7cf708f84b380a73e5de6dd3e4de488",
+      "mode": "0640",
+      "origin": "git:8f5f41e9e0fd94c95c37992ff910f098bf7908b4"
+    },
+    {
+      "path": "src/selection/income-endpoints/json.ts",
+      "bytes": 2180,
+      "sha256": "0e21a07ec7b5d108050ca9a7906c12840d29cfc39a22a3d52eda2511ba53bd2a",
+      "mode": "0640",
+      "origin": "git:8f5f41e9e0fd94c95c37992ff910f098bf7908b4"
+    },
+    {
+      "path": "telomere-owner-review.service.draft",
+      "bytes": 1307,
+      "sha256": "f094df5b1e7c039d5220c7ca1d8b0955197067ca920d266fe22c15e98255d526",
+      "mode": "0640",
+      "origin": "local operator draft"
+    }
+  ],
+  "networkMutations": 0,
+  "walletCalls": 0,
+  "ownerKeysLoaded": false,
+  "controllerStarted": false
+}

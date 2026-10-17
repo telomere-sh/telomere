@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "status": "accepted_independent_local_recovery_and_byte_guard_control_flow",
+  "completedAt": "2026-10-15T04:56:33.4469871Z",
+  "scope": "Local review of exact AST-extracted functions from the frozen attempt04 operator runner. No runner import/main, transport, live service or application-state operation.",
+  "frozenOperator": {
+    "runnerSha256": "f9d9b264e9b5b447894ff982239b96c4be2973fe4d94daa23a14d4ed63943d32",
+    "launcherSha256": "247ed20abdc173e4b7b172d6cc558c5fddf94cf5b2cbf1256be13bc8564ab198",
+    "cloneSmokeSha256": "43d37c51c7d50a1a9971b444367045a2c7e73b91239418d679460d1fb06176e5",
+    "allFiveOperatorFilesMatchedAuthorFreeze": true,
+    "totalCapturedInputs": 8,
+    "allCapturedInputsUnchanged": true
+  },
+  "cohorts": {
+    "releaseByteGuards": {
+      "passed": 13,
+      "failed": 0,
+      "runnerSourceStable": true,
+      "boundary": {
+        "read_private": "Injected disposable JSON fixture reader; production Linux permissions are not exercised",
+        "Path.is_symlink": "One targeted mocked symlink observation; no OS symlink creation/permission claim"
+      },
+      "coverage": [
+        "685 retained source inputs",
+        "same-length source and compiled runtime edits",
+        "missing or extra compiled runtime and missing main",
+        "retained manifest and byte-pin tampering",
+        "path traversal, source-count refusal and an explicitly mocked symlink observation"
+      ]
+    },
+    "recoveryAndNegativeActivation": {
+      "passed": 28,
+      "failed": 0,
+      "runnerSourceStable": true,
+      "boundary": "Actual recovery/state/link and negative cutover control-flow bodies with in-memory ports. Actual release byte guards have a separate filesystem cohort. Does not test Linux privileges, signals, process cleanup or real rollout.",
+      "coverage": [
+        "activated/recovered and pre-intent parent no-ops",
+        "exact original installed drop-in and code-only recovery",
+        "unknown, changed, foreign or symlinked drop-in and original identity",
+        "helper/runner/child, missing/corrupt state refusal",
+        "incomplete owned cleanup remains recoverable",
+        "deterministic drop-in replacement during cleanup and awaited service stop",
+        "release pin checks before any held operation and again after fresh full clone",
+        "complete fresh raw-chain/jobs/Cyst/unknown fingerprint drift refuses before activation"
+      ]
+    }
+  },
+  "reviewCorrectionsVerified": [
+    "New source and compiled-runtime pins are rechecked before selection of the release.",
+    "Recovery accepts only an exactly owned installed drop-in when normalizing the original unit identity.",
+    "Drop-in identity and exact bytes are rechecked after awaited service stops and before rename.",
+    "Incomplete cleanup leaves a nonterminal active recovery state, permitting bounded reviewed recovery again."
+  ],
+  "mutationBoundary": {
+    "networkCalls": 0,
+    "sshOrScpCalls": 0,
+    "operatorMainExecuted": false,
+    "realSystemdOrDockerCalls": 0,
+    "applicationDatabaseOpened": false,
+    "chainOrCystRestore": false,
+    "privateProfileOrKeyRead": false,
+    "publicTransactions": 0,
+    "paidProviderRequests": 0,
+    "localEffects": "Only controlled synthetic fixture files and safe review artifacts. Disposable filesystem cleanup target was resolved and checked inside the owned review directory."
+  },
+  "coordination": {
+    "author": "backend_acceptance",
+    "separateReviewer": "final_readiness_review owns signal/deadline/parent-concurrency/owned-resource controls",
+    "overlap": "The actual recovery body is tested here. Negative cutover tests replace recovery with a labeled port; the other reviewer tests successful/signal cutover and cleanup independently."
+  },
+  "diagnostics": {
+    "history": "Earlier local harness development attempts are retained under .local/private-staging-recovery-review-20261015. They include WinError1314 for OS symlink creation, a fixture method/name collision and fixture metadata updates for newly strict PID/start/intent validation. They are not operator regressions.",
+    "negativeBaseline": "The attempted before-poststop source capture already contained the correction; its pass is not represented as an expected-failure baseline."
+  },
+  "evidence": [
+    {
+      "path": "docs/evidence/private-staging-attempt04-independent-release-pins-20261015.py",
+      "bytes": 8663,
+      "sha256": "698106174cb08d44d61bf3edbdb5a67fdbbe66b74985b682e2f4bfb5f2c9a6c8"
+    },
+    {
+      "path": "docs/evidence/private-staging-attempt04-independent-recovery-states-20261015.py",
+      "bytes": 19113,
+      "sha256": "f01e6902674bb0a7df85a9e2d8bdce94a5145380055769ead7b445c6dbe75637"
+    },
+    {
+      "path": "docs/evidence/private-staging-attempt04-independent-release-pins-20261015.json",
+      "bytes": 2497,
+      "sha256": "f4d237871488d1d3ea4cccec533e8be8519ab54453863e9aa06f259d735ba3aa"
+    },
+    {
+      "path": "docs/evidence/private-staging-attempt04-independent-recovery-states-20261015.json",
+      "bytes": 13449,
+      "sha256": "85ba0edd83c411a858f4e44c280437b897f5c8e5e340f2a8a77822d9d5b90a6e"
+    },
+    {
+      "path": "docs/evidence/private-staging-attempt04-independent-recovery-source-20261015.json",
+      "bytes": 5295,
+      "sha256": "834421973c840b57a0ee06b7976211e92de8fb57a1cd529da2421507a506a54a"
+    }
+  ],
+  "limits": [
+    "This is local function/control-flow acceptance, not Linux UID, actual signals, real parent death or service recovery acceptance.",
+    "The Linux private-file reader and one symlink observation are explicit ports in these tests; no POSIX permission claim follows.",
+    "Cutover fingerprint and external service observations use synthetic ports. Real clone, stopped-state preservation and activation still require their own operation evidence.",
+    "No public launch, new supplier/TDX functionality, full-suite pass or percentage increase is established."
+  ],
+  "actualAttempt04HeldCutoverExecutedByThisReview": false,
+  "functionalCoveragePercentUnchanged": 76.2222
+}

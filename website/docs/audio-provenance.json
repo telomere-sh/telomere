@@ -1,0 +1,197 @@
+{
+  "duration": 15.0,
+  "sample_rate": 48000,
+  "channels": 2,
+  "music": {
+    "title": "Modern IDM",
+    "creator": "LEXMusic",
+    "bpm": 120,
+    "url": "https://motionarray.com/royalty-free-music/modern-idm-270624/",
+    "source_archive": "Modern_IDM_source_270624.zip",
+    "source_duration": 16.0,
+    "download": "Original source downloaded through the user's signed-in Motion Array session on 2026-10-15.",
+    "sha256": "d46f3c785025790ea1b0e7ca264deb8c875dceb9beb89af36d61222f42e9da38"
+  },
+  "music_section": "Loop source 00:00\u201300:15, original tempo, 18 ms attack and 130 ms tail fade.",
+  "peak_dbfs": -11.3187566457406,
+  "rms_dbfs": -22.67519821591727,
+  "reference_recordings_audio_tracks": 0,
+  "sfx_license": "Previously downloaded Motion Array source archives in the user's Downloads, plus original synthesized soft-contact accents.",
+  "sfx_source_urls": [
+    "https://motionarray.com/sound-effects/ui-interaction-click-3693381/",
+    "https://motionarray.com/sound-effects/large-ui-movement-3693404/",
+    "https://motionarray.com/sound-effects/short-bubble-whooshes-1647575/"
+  ],
+  "cues": [
+    {
+      "time": 0.5,
+      "frame_60fps": 30,
+      "action": "Visible toggle click",
+      "source": "MA_MikalaiSenkin_UIInteractionClick_02.wav",
+      "peak_dbfs": -17,
+      "start": 0.5,
+      "duration": 0.16,
+      "reverse": false,
+      "speed": 1.0
+    },
+    {
+      "time": 1.0,
+      "frame_60fps": 60,
+      "action": "Compute letters settle",
+      "source": "MA_MikalaiSenkin_LargeUIMovement_06.wav",
+      "peak_dbfs": -24,
+      "start": 0.9740416666666667,
+      "duration": 0.2879375,
+      "reverse": false,
+      "speed": 1.3
+    },
+    {
+      "time": 2.5,
+      "frame_60fps": 150,
+      "action": "Dot leaves word",
+      "source": "MA_MikalaiSenkin_LargeUIMovement_03.wav",
+      "peak_dbfs": -21.5,
+      "start": 2.4474583333333335,
+      "duration": 0.3375208333333333,
+      "reverse": false,
+      "speed": 1.2
+    },
+    {
+      "time": 3.0,
+      "frame_60fps": 180,
+      "action": "Dot lands on the receipt graph",
+      "source": "Original synthesized soft contact",
+      "peak_dbfs": -18.5,
+      "start": 3.0,
+      "duration": 0.16
+    },
+    {
+      "time": 4.0,
+      "frame_60fps": 240,
+      "action": "Graph reaches peak",
+      "source": "MA_MikalaiSenkin_UIInteractionClick_06.wav",
+      "peak_dbfs": -26,
+      "start": 4.0,
+      "duration": 0.12,
+      "reverse": false,
+      "speed": 0.85
+    },
+    {
+      "time": 5.5,
+      "frame_60fps": 330,
+      "action": "Dot expands to orange circle",
+      "source": "MA_CineTransitions_ShortBubbleWhhoshes_3.wav",
+      "peak_dbfs": -22.5,
+      "start": 5.182520833333333,
+      "duration": 0.6,
+      "reverse": false,
+      "speed": 1.4
+    },
+    {
+      "time": 5.5,
+      "frame_60fps": 330,
+      "action": "Circle expansion contact",
+      "source": "Original synthesized soft contact",
+      "peak_dbfs": -21,
+      "start": 5.5,
+      "duration": 0.16
+    },
+    {
+      "time": 6.0,
+      "frame_60fps": 360,
+      "action": "Square rotation",
+      "source": "MA_MikalaiSenkin_LargeUIMovement_04.wav",
+      "peak_dbfs": -24,
+      "start": 5.928208333333333,
+      "duration": 0.40989583333333335,
+      "reverse": false,
+      "speed": 1.2
+    },
+    {
+      "time": 7.0,
+      "frame_60fps": 420,
+      "action": "Square stretches to pill",
+      "source": "MA_MikalaiSenkin_LargeUIMovement_09.wav",
+      "peak_dbfs": -23,
+      "start": 6.907104166666667,
+      "duration": 0.35429166666666667,
+      "reverse": false,
+      "speed": 1.3
+    },
+    {
+      "time": 8.0,
+      "frame_60fps": 480,
+      "action": "Pill contracts to dot",
+      "source": "MA_MikalaiSenkin_LargeUIMovement_07.wav",
+      "peak_dbfs": -24.5,
+      "start": 7.8136875,
+      "duration": 0.2856875,
+      "reverse": true,
+      "speed": 1.4
+    },
+    {
+      "time": 8.5,
+      "frame_60fps": 510,
+      "action": "Orbiting type opens",
+      "source": "MA_MikalaiSenkin_LargeUIMovement_01.wav",
+      "peak_dbfs": -25,
+      "start": 8.362604166666667,
+      "duration": 0.36,
+      "reverse": false,
+      "speed": 1.3
+    },
+    {
+      "time": 10.0,
+      "frame_60fps": 600,
+      "action": "Halftone field expands",
+      "source": "MA_CineTransitions_ShortBubbleWhhoshes_3.wav",
+      "peak_dbfs": -27,
+      "start": 9.591229166666666,
+      "duration": 0.5799791666666667,
+      "reverse": true,
+      "speed": 1.6
+    },
+    {
+      "time": 11.5,
+      "frame_60fps": 690,
+      "action": "Final card reveal",
+      "source": "MA_MikalaiSenkin_LargeUIMovement_06.wav",
+      "peak_dbfs": -23.5,
+      "start": 11.4701875,
+      "duration": 0.3119375,
+      "reverse": false,
+      "speed": 1.2
+    },
+    {
+      "time": 11.5,
+      "frame_60fps": 690,
+      "action": "Final card lands",
+      "source": "Original synthesized soft contact",
+      "peak_dbfs": -21,
+      "start": 11.5,
+      "duration": 0.16
+    },
+    {
+      "time": 13.5,
+      "frame_60fps": 810,
+      "action": "Return path begins",
+      "source": "MA_MikalaiSenkin_LargeUIMovement_02.wav",
+      "peak_dbfs": -24.5,
+      "start": 13.139291666666667,
+      "duration": 0.5,
+      "reverse": true,
+      "speed": 1.4
+    },
+    {
+      "time": 14.8,
+      "frame_60fps": 888,
+      "action": "Opening frame returns",
+      "source": "MA_MikalaiSenkin_LargeUIMovement_07.wav",
+      "peak_dbfs": -28,
+      "start": 14.636375,
+      "duration": 0.2,
+      "reverse": true,
+      "speed": 1.6
+    }
+  ]
+}

@@ -1,0 +1,259 @@
+{
+  "observedAt": "2026-10-15T23:03:59.15824+03:00",
+  "readOnly": true,
+  "mutations": false,
+  "nginxTest": {
+    "exitCode": 0,
+    "stdout": "",
+    "stderr": "nginx: the configuration file /etc/nginx/nginx.conf syntax is ok\nnginx: configuration file /etc/nginx/nginx.conf test is successful\n"
+  },
+  "enabledVhosts": [
+    {
+      "name": "enclave",
+      "resolvedPath": "/etc/nginx/sites-available/enclave",
+      "serverNames": [
+        "2.27.12.39",
+        "2.27.12.39"
+      ],
+      "sha256": "2350e9764809d2752dbfc463bbd7f493893381689bfb5a9a552510218829991b",
+      "ownedDraft": null
+    },
+    {
+      "name": "enclave-domain",
+      "resolvedPath": "/etc/nginx/sites-available/enclave-domain",
+      "serverNames": [
+        "enclaveagent.tech",
+        "www.enclaveagent.tech",
+        "enclaveagent.tech",
+        "www.enclaveagent.tech"
+      ],
+      "sha256": "044d24bc76166e7788119f329459314cad7a1ca74b015c66704db1451133ceb2",
+      "ownedDraft": null
+    },
+    {
+      "name": "telomere-apex-static",
+      "resolvedPath": "/etc/nginx/sites-available/telomere-apex-static",
+      "serverNames": [
+        "telomere.sh"
+      ],
+      "sha256": "c60619f3287ea933f7f5525bd41f1fa483930008a883dfa244e6c93de38995ea",
+      "ownedDraft": "apex"
+    },
+    {
+      "name": "telomere-http-acme",
+      "resolvedPath": "/etc/nginx/sites-available/telomere-http-acme",
+      "serverNames": [
+        "telomere.sh",
+        "review.telomere.sh"
+      ],
+      "sha256": "29403dcba89f719db98dc005968f551fcbec2f88dc7e0393e28c02443c50eab4",
+      "ownedDraft": "http"
+    },
+    {
+      "name": "telomere-owner-review",
+      "resolvedPath": "/etc/nginx/sites-available/telomere-owner-review",
+      "serverNames": [
+        "review.telomere.sh"
+      ],
+      "sha256": "7246164cdb5ccbec1cfb6a4b4bb4c362a0cdadce55cc26d6fcc782060c980958",
+      "ownedDraft": "review"
+    }
+  ],
+  "ownedVhostCount": 3,
+  "ownedVhostExpectedHashesMatch": true,
+  "certificate": {
+    "exitCode": 0,
+    "stdout": "subject=CN = telomere.sh\nissuer=C = US, O = Let's Encrypt, CN = YE1\nnotBefore=Oct 15 19:01:47 2026 GMT\nnotAfter=Jan 13 19:01:46 2027 GMT\nX509v3 Subject Alternative Name: \n    DNS:review.telomere.sh, DNS:telomere.sh\nsha256 Fingerprint=B8:B8:69:86:89:10:D8:4F:5D:94:53:89:19:AC:23:D4:42:61:A2:36:97:FB:20:18:14:EC:3F:27:C6:88:30:2E\n",
+    "stderr": ""
+  },
+  "https": [
+    {
+      "hostname": "telomere.sh",
+      "path": "/",
+      "status": 200,
+      "tlsVersion": "TLSv1.3",
+      "trustedCertificateVerified": true,
+      "bodyBytes": 1367731,
+      "bodySha256": "164f9e14c05bb23f6d341974ee12d1f5117e8400f88f24054d5511ff85e3d439",
+      "content-type": "text/html",
+      "content-security-policy": "default-src 'self'; script-src 'self' 'sha256-0TMJt/dENKI8PsDY9Ese9cXlRIwtvIzB0u/2QKTp2+M=' 'sha256-8WI9xq5+bHm6biJTg8NJNnEW6B8NihChU2jZSm33DIA=' 'sha256-K8pVb/Yey86yZ2rUwhtN6AnHirt16Ir16SQCLf+QYUA=' 'sha256-XsThJHS7eYXGRCK0qQXJgnufP0R8uKDS5+ucueUv46g=' 'sha256-cGmJtpllmUqfHbwTcmO17dJyjDXDr4AEo4rykbzzbLA=' 'sha256-eKRZnmTsFVopjqRK3MU5Ds71jW71QGKhQW7wztEqY+o=' 'sha256-mxGLvoz2gWXnu6wUgCfErK9GUDaFpmS1VC2StwtQorc=' 'sha256-q4bBYSGEsOrCwgvHJEhmfYQxAeg8Kml06korSyddTa0=' 'sha256-qOi5T08WW1Htc5YADz4C7xQhGtVYMbLaccGi9smu3Lw=' 'sha256-t2vIQ++0Uc6+d8MX8VTj91tBlwy6Hf6ubyQNl4fgpgE=' 'sha256-x44v9tvQ5ACsBUo52RqI7XlabuEYnLuZ0WC+XeKmFIE='; script-src-attr 'none'; style-src 'self' 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; media-src 'self' blob:; worker-src 'self' blob:; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'",
+      "cache-control": "no-cache"
+    },
+    {
+      "hostname": "telomere.sh",
+      "path": "/api/config",
+      "status": 503,
+      "tlsVersion": "TLSv1.3",
+      "trustedCertificateVerified": true,
+      "bodyBytes": 197,
+      "bodySha256": "0827d260e32d7f3083ad2c6b43e9eac119df1ab09a1fd601f9c5be5616d7cd4a",
+      "content-type": "text/html",
+      "content-security-policy": "default-src 'self'; script-src 'self' 'sha256-0TMJt/dENKI8PsDY9Ese9cXlRIwtvIzB0u/2QKTp2+M=' 'sha256-8WI9xq5+bHm6biJTg8NJNnEW6B8NihChU2jZSm33DIA=' 'sha256-K8pVb/Yey86yZ2rUwhtN6AnHirt16Ir16SQCLf+QYUA=' 'sha256-XsThJHS7eYXGRCK0qQXJgnufP0R8uKDS5+ucueUv46g=' 'sha256-cGmJtpllmUqfHbwTcmO17dJyjDXDr4AEo4rykbzzbLA=' 'sha256-eKRZnmTsFVopjqRK3MU5Ds71jW71QGKhQW7wztEqY+o=' 'sha256-mxGLvoz2gWXnu6wUgCfErK9GUDaFpmS1VC2StwtQorc=' 'sha256-q4bBYSGEsOrCwgvHJEhmfYQxAeg8Kml06korSyddTa0=' 'sha256-qOi5T08WW1Htc5YADz4C7xQhGtVYMbLaccGi9smu3Lw=' 'sha256-t2vIQ++0Uc6+d8MX8VTj91tBlwy6Hf6ubyQNl4fgpgE=' 'sha256-x44v9tvQ5ACsBUo52RqI7XlabuEYnLuZ0WC+XeKmFIE='; script-src-attr 'none'; style-src 'self' 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; media-src 'self' blob:; worker-src 'self' blob:; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'",
+      "cache-control": "no-cache"
+    },
+    {
+      "hostname": "telomere.sh",
+      "path": "/health/ready",
+      "status": 503,
+      "tlsVersion": "TLSv1.3",
+      "trustedCertificateVerified": true,
+      "bodyBytes": 197,
+      "bodySha256": "0827d260e32d7f3083ad2c6b43e9eac119df1ab09a1fd601f9c5be5616d7cd4a",
+      "content-type": "text/html",
+      "content-security-policy": "default-src 'self'; script-src 'self' 'sha256-0TMJt/dENKI8PsDY9Ese9cXlRIwtvIzB0u/2QKTp2+M=' 'sha256-8WI9xq5+bHm6biJTg8NJNnEW6B8NihChU2jZSm33DIA=' 'sha256-K8pVb/Yey86yZ2rUwhtN6AnHirt16Ir16SQCLf+QYUA=' 'sha256-XsThJHS7eYXGRCK0qQXJgnufP0R8uKDS5+ucueUv46g=' 'sha256-cGmJtpllmUqfHbwTcmO17dJyjDXDr4AEo4rykbzzbLA=' 'sha256-eKRZnmTsFVopjqRK3MU5Ds71jW71QGKhQW7wztEqY+o=' 'sha256-mxGLvoz2gWXnu6wUgCfErK9GUDaFpmS1VC2StwtQorc=' 'sha256-q4bBYSGEsOrCwgvHJEhmfYQxAeg8Kml06korSyddTa0=' 'sha256-qOi5T08WW1Htc5YADz4C7xQhGtVYMbLaccGi9smu3Lw=' 'sha256-t2vIQ++0Uc6+d8MX8VTj91tBlwy6Hf6ubyQNl4fgpgE=' 'sha256-x44v9tvQ5ACsBUo52RqI7XlabuEYnLuZ0WC+XeKmFIE='; script-src-attr 'none'; style-src 'self' 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; media-src 'self' blob:; worker-src 'self' blob:; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'",
+      "cache-control": "no-cache"
+    },
+    {
+      "hostname": "telomere.sh",
+      "path": "/console",
+      "status": 503,
+      "tlsVersion": "TLSv1.3",
+      "trustedCertificateVerified": true,
+      "bodyBytes": 197,
+      "bodySha256": "0827d260e32d7f3083ad2c6b43e9eac119df1ab09a1fd601f9c5be5616d7cd4a",
+      "content-type": "text/html",
+      "content-security-policy": "default-src 'self'; script-src 'self' 'sha256-0TMJt/dENKI8PsDY9Ese9cXlRIwtvIzB0u/2QKTp2+M=' 'sha256-8WI9xq5+bHm6biJTg8NJNnEW6B8NihChU2jZSm33DIA=' 'sha256-K8pVb/Yey86yZ2rUwhtN6AnHirt16Ir16SQCLf+QYUA=' 'sha256-XsThJHS7eYXGRCK0qQXJgnufP0R8uKDS5+ucueUv46g=' 'sha256-cGmJtpllmUqfHbwTcmO17dJyjDXDr4AEo4rykbzzbLA=' 'sha256-eKRZnmTsFVopjqRK3MU5Ds71jW71QGKhQW7wztEqY+o=' 'sha256-mxGLvoz2gWXnu6wUgCfErK9GUDaFpmS1VC2StwtQorc=' 'sha256-q4bBYSGEsOrCwgvHJEhmfYQxAeg8Kml06korSyddTa0=' 'sha256-qOi5T08WW1Htc5YADz4C7xQhGtVYMbLaccGi9smu3Lw=' 'sha256-t2vIQ++0Uc6+d8MX8VTj91tBlwy6Hf6ubyQNl4fgpgE=' 'sha256-x44v9tvQ5ACsBUo52RqI7XlabuEYnLuZ0WC+XeKmFIE='; script-src-attr 'none'; style-src 'self' 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; media-src 'self' blob:; worker-src 'self' blob:; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'",
+      "cache-control": "no-cache"
+    },
+    {
+      "hostname": "telomere.sh",
+      "path": "/assets/does-not-exist.js",
+      "status": 404,
+      "tlsVersion": "TLSv1.3",
+      "trustedCertificateVerified": true,
+      "bodyBytes": 153,
+      "bodySha256": "533a1ca5d6595793725bca7641d9461a0f00dd1732dded3e4281196f5dd21736",
+      "content-type": "text/html",
+      "content-security-policy": "default-src 'self'; script-src 'self' 'sha256-0TMJt/dENKI8PsDY9Ese9cXlRIwtvIzB0u/2QKTp2+M=' 'sha256-8WI9xq5+bHm6biJTg8NJNnEW6B8NihChU2jZSm33DIA=' 'sha256-K8pVb/Yey86yZ2rUwhtN6AnHirt16Ir16SQCLf+QYUA=' 'sha256-XsThJHS7eYXGRCK0qQXJgnufP0R8uKDS5+ucueUv46g=' 'sha256-cGmJtpllmUqfHbwTcmO17dJyjDXDr4AEo4rykbzzbLA=' 'sha256-eKRZnmTsFVopjqRK3MU5Ds71jW71QGKhQW7wztEqY+o=' 'sha256-mxGLvoz2gWXnu6wUgCfErK9GUDaFpmS1VC2StwtQorc=' 'sha256-q4bBYSGEsOrCwgvHJEhmfYQxAeg8Kml06korSyddTa0=' 'sha256-qOi5T08WW1Htc5YADz4C7xQhGtVYMbLaccGi9smu3Lw=' 'sha256-t2vIQ++0Uc6+d8MX8VTj91tBlwy6Hf6ubyQNl4fgpgE=' 'sha256-x44v9tvQ5ACsBUo52RqI7XlabuEYnLuZ0WC+XeKmFIE='; script-src-attr 'none'; style-src 'self' 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; media-src 'self' blob:; worker-src 'self' blob:; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'",
+      "cache-control": "no-cache"
+    },
+    {
+      "hostname": "review.telomere.sh",
+      "path": "/",
+      "status": 401,
+      "tlsVersion": "TLSv1.3",
+      "trustedCertificateVerified": true,
+      "bodyBytes": 179,
+      "bodySha256": "a2105be4129677c7c10198153bda6d835c493242782717272e2c94b1c85d2169",
+      "content-type": "text/html",
+      "cache-control": "no-store",
+      "www-authenticate": "Basic realm=\"Telomere owner review\"",
+      "x-robots-tag": "noindex, nofollow, noarchive"
+    }
+  ],
+  "staticIndexSha256": "164f9e14c05bb23f6d341974ee12d1f5117e8400f88f24054d5511ff85e3d439",
+  "staticIndexServedExactly": true,
+  "newRenewalPublicFields": {
+    "key_type": "ecdsa",
+    "server": "https://acme-v02.api.letsencrypt.org/directory",
+    "authenticator": "webroot",
+    "webroot_path": "/var/www/telomere-acme,",
+    "review.telomere.sh": "/var/www/telomere-acme",
+    "telomere.sh": "/var/www/telomere-acme"
+  },
+  "sharedRenewalServiceSha256": "aed404a32336e9093fc27188dd4a0bcc245c9c735fcd57910b0310359f66a8c8",
+  "sharedRenewalCoversAllLineages": true,
+  "sharedReloadHookMetadata": {
+    "genericNginxReload": true,
+    "renewedLineageFilterPresent": false,
+    "shellConditionalPresent": false
+  },
+  "renewTimer": {
+    "exitCode": 0,
+    "stdout": "NextElapseUSecRealtime=Fri 2026-10-16 00:00:10 CEST\nActiveState=active\nSubState=waiting\n",
+    "stderr": ""
+  },
+  "listeners": {
+    "exitCode": 0,
+    "stdout": "State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess\nLISTEN 0      511        127.0.0.1:3284      0.0.0.0:*    users:((\"node\",pid=4103781,fd=30))\n",
+    "stderr": ""
+  },
+  "services": {
+    "telomere-staging.service": {
+      "exitCode": 0,
+      "stdout": "MainPID=3888942\nNRestarts=104\nActiveState=active\nSubState=running\n",
+      "stderr": ""
+    },
+    "telomere-staging-chain.service": {
+      "exitCode": 0,
+      "stdout": "MainPID=1952401\nNRestarts=0\nActiveState=active\nSubState=running\n",
+      "stderr": ""
+    },
+    "telomere-staging-watchdog.service": {
+      "exitCode": 0,
+      "stdout": "MainPID=1952410\nNRestarts=0\nActiveState=active\nSubState=running\n",
+      "stderr": ""
+    },
+    "telomere-mainnet-pilot.service": {
+      "exitCode": 0,
+      "stdout": "MainPID=0\nNRestarts=0\nActiveState=inactive\nSubState=dead\n",
+      "stderr": ""
+    }
+  },
+  "activationAbsent": true,
+  "stagingResponses": [
+    {
+      "path": "/health/live",
+      "status": 200,
+      "body": "{\"status\":\"ok\"}"
+    },
+    {
+      "path": "/health/ready",
+      "status": 200,
+      "body": "{\"status\":\"ready\",\"worker\":\"idle\"}"
+    }
+  ],
+  "staticSourceInventory": {
+    "files": 312,
+    "bytes": 50435601,
+    "regularFilesOnly": true,
+    "inventorySha256": "ac55cdbf5e9209d13d64f9495c81a98490ff0056599208416447983f3ba15811"
+  },
+  "staticPublicInventory": {
+    "files": 312,
+    "bytes": 50435601,
+    "regularFilesOnly": true,
+    "inventorySha256": "ac55cdbf5e9209d13d64f9495c81a98490ff0056599208416447983f3ba15811"
+  },
+  "allPublicAssetBytesIdentical": true,
+  "compiledPolicy": {
+    "policySha256": "6613f9c7a06353a777db845977174c9dfedc25b1712f5014682bc7f13f6a8cad",
+    "policyBytes": 889
+  },
+  "http": [
+    {
+      "hostname": "telomere.sh",
+      "path": "/",
+      "status": 308,
+      "location": "https://telomere.sh/",
+      "wwwAuthenticatePresent": false
+    },
+    {
+      "hostname": "review.telomere.sh",
+      "path": "/",
+      "status": 308,
+      "location": "https://review.telomere.sh/",
+      "wwwAuthenticatePresent": false
+    },
+    {
+      "hostname": "telomere.sh",
+      "path": "/.well-known/acme-challenge/readonly-nonexistent-probe",
+      "status": 404,
+      "location": null,
+      "wwwAuthenticatePresent": false
+    },
+    {
+      "hostname": "review.telomere.sh",
+      "path": "/.well-known/acme-challenge/readonly-nonexistent-probe",
+      "status": 404,
+      "location": null,
+      "wwwAuthenticatePresent": false
+    }
+  ],
+  "servedPolicySha256": "6613f9c7a06353a777db845977174c9dfedc25b1712f5014682bc7f13f6a8cad",
+  "servedPolicyMatchesCompiled": true,
+  "tlsProbeTarget": "127.0.0.1:443 with requested hostname SNI and system certificate trust verification",
+  "externalDnsResolutionTested": false,
+  "remoteMutations": false,
+  "privateKeysOrPasswordsRead": false
+}

@@ -1,0 +1,7 @@
+{
+  "originalRevision": "7bb69e5e73199ab372ca6c263297792634648aaf",
+  "diagnosticRevision": "2015b118fa34b7d4288e72afe529852baef0bfbb",
+  "diagnosticTestSha256": "6f98620aafec1bb9069d8310379aaa79453f4c20c0cce62fa323871be3cdf862",
+  "sourceFiles": 703,
+  "scope": "One exact test diagnostic-only replacement; original703sourcefiles untouched; no production change."
+}

@@ -1,0 +1,23 @@
+{
+  "status": "PASS",
+  "exitCode": 0,
+  "seconds": 110.15837287902832,
+  "capturedSourceFiles": 48,
+  "changedDuringRun": [],
+  "numTotalTests": 90,
+  "numPassedTests": 87,
+  "numFailedTests": 0,
+  "numPendingTests": 3,
+  "testFiles": [
+    "tests/chunk-aead.test.ts",
+    "tests/large-cyst-checkpoints.test.ts",
+    "tests/large-cyst-agent-manifest.test.ts",
+    "tests/large-cyst-current-resolver.test.ts",
+    "tests/large-cyst-publication.test.ts",
+    "tests/large-cyst-s3.test.ts",
+    "tests/large-cyst-replication.test.ts",
+    "tests/cyst-key-wrap.test.ts",
+    "tests/paid-cyst-file-restore.test.ts",
+    "tests/paid-cyst-file-cache-expiry.test.ts"
+  ]
+}

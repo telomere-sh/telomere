@@ -1,0 +1,40 @@
+{
+  "accountGroupsUnionDocker": true,
+  "actualServiceUid": true,
+  "afterModes": {
+    "run": "0o750",
+    "work": "0o750"
+  },
+  "beforeModes": {
+    "run": "0o700",
+    "work": "0o700"
+  },
+  "beforeRefused": true,
+  "bothFixedAccepted": true,
+  "exactDisposableFilesAndDirectoriesRemoved": true,
+  "exactRuntimePreflightChecks": {
+    "baselineRead": true,
+    "cloneWrite": true,
+    "dockerRunTraverse": true,
+    "dockerSocketWrite": true,
+    "helperRead": true,
+    "mainRead": true,
+    "nodeExecute": true,
+    "optionsRead": true,
+    "profileRead": true,
+    "releaseTraverse": true,
+    "socketType": true,
+    "workTraverse": true
+  },
+  "kind": "actual_linux_umask077_disposable_filesystem_access_regression",
+  "probeSha256": "cb6ed25711f766cfe3f9c2d713d853c46feec05ae37054248873ffeea3401984",
+  "profilesOrCredentialsRead": false,
+  "result": "passed",
+  "schemaVersion": 1,
+  "servicesOrPhasesStarted": false,
+  "socketBoundButNeverListenedOrConnected": true,
+  "stagingPathsTouched": false,
+  "syntheticNodeNeverExecuted": true,
+  "umask": "0077",
+  "workOnlyStillRefused": true
+}

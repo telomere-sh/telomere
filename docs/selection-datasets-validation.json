@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "assessedOn": "2026-10-12",
+  "scope": "Public weekly Selection JSON/CSV/analytics and retained RPC deadlines; local main HTTP and database restart acceptance",
+  "baseCommit": "5516d5e",
+  "completionScoring": "Subsequent unscored implementation; the 55.5% midpoint at d44edd3 has not been recalculated.",
+  "commands": [
+    {
+      "command": "npm run typecheck",
+      "exitCode": 0
+    },
+    {
+      "command": "npm run build",
+      "exitCode": 0
+    },
+    {
+      "command": "npx vitest run tests/selection-dataset.test.ts tests/selection-rpc.test.ts tests/selection-indexer.test.ts --reporter=json --outputFile=.local/selection-dataset-final.json",
+      "total": 30,
+      "passed": 29,
+      "failed": 1,
+      "skipped": 0,
+      "durationMs": 92054.38134765625,
+      "initialFailure": "New main-server test expected floor fee 123 for amount 12345. Actual reviewed SelectionRegistry rounds 1% up to 124; corrected test expectation. Production behavior unchanged.",
+      "unchangedPassingSuites": {
+        "selection-indexer.test.ts": 9,
+        "selection-rpc.test.ts": 12
+      }
+    },
+    {
+      "command": "npx vitest run tests/selection-dataset.test.ts --reporter=json --outputFile=.local/selection-dataset-main-final.json",
+      "total": 9,
+      "passed": 9,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 45066.361572265625
+    }
+  ],
+  "finalSplitAcceptance": {
+    "passed": 30,
+    "failed": 0,
+    "skipped": 0,
+    "files": 3
+  },
+  "subsequentLinuxAcceptance": "selection-income-endpoints-linux-validation.json: all 114 tests in seven files passed, including dataset 9, RPC 12, indexer 9 and a real PlatformSelection/main-server endpoint-to-dataset check. Source is pinned by that report's 284-file manifest; subsequent financial contract changes require separate acceptance.",
+  "evidence": [
+    "Actual disposable Anvil contracts, PGlite canonical event replay and HTTP",
+    "Exact amounts above 2^53, actual fee rounding, owner subsidy exclusion and settled burn",
+    "Historical exclusive UTC cutoff, daily deaths and rational medians",
+    "CSV metadata retained on empty/first/last pages; stable pagination and reopened database",
+    "Real Anvil reorg, confirmation loss, changed anchor and bounded-capacity rejection",
+    "Actual configured startPilot mount, public JSON/CSV/analytics, owner route authentication and server/database restart without signing transactions",
+    "Real HTTP RPC stalled/oversized response tests; custom fetch/body ignores abort or cancellation without exceeding retained request deadline"
+  ],
+  "limitations": [
+    "No public Robinhood transaction or deployment; no wallet/private key required beyond generated disposable fixture accounts",
+    "Not a complete repository test run or Linux acceptance",
+    "Coverage is explicit and deploymentHistoryVerified remains false",
+    "No asset/decimal assumption, reputation oracle or paid income endpoint integration"
+  ],
+  "sourceSha256": {
+    "src/selection/dataset.ts": "8072a0da6bf34a17630fea1dc0a0362b758a46449bfb8279f8b3f238261a3ee1",
+    "src/selection/rpc.ts": "f2045b26999d491e933f5e6291d49dfaa38a5fa2d47f75fd5dea272da36b8547",
+    "src/platform.ts": "54fa1bc90925387312dd035ee5c8fe0478965c1c0ed754861f2f82ef4483a14f",
+    "src/app.ts": "1d057f371ae9df76834ecd1f8616fe9df12d16f7d1ea0a9a330a71fecc3fd966",
+    "tests/selection-dataset.test.ts": "0c3ef69ab895f21dd542e7ed0deb81025342a1aeceec8aa375ae0fa34709c7be",
+    "tests/selection-rpc.test.ts": "d3e559a2255f5c146d088a7559fbb2d79eb6adf4702b70c42a17852f1fbfe864",
+    "tests/selection-indexer.test.ts": "f36560177cc0573fe83ea7ff6814cf016fab0d00c2b68173faa1d98d1ffb300b"
+  }
+}
