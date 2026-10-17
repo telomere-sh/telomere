@@ -1,0 +1,11 @@
+Started telomere-cpu-journal-1bbb2f40f8854fee.service - /opt/node-v22.23.3-linux-x64/bin/node /opt/telomere-mainnet-pilot/operator/cpu-launch/journal-acceptance.mjs.
+{"phase":"mine_2105_distinct_legacy_settlements","observedAt":"2026-10-17T20:10:59.422Z"}
+{"phase":"mine_2105_distinct_legacy_settlements","settlements":200}
+{"phase":"mine_2105_distinct_legacy_settlements","settlements":400}
+{"phase":"mine_2105_distinct_legacy_settlements","settlements":600}
+{"phase":"mine_2105_distinct_legacy_settlements","settlements":800}
+{"phase":"mine_2105_distinct_legacy_settlements","settlements":1000}
+telomere-cpu-journal-1bbb2f40f8854fee.service: A process of this unit has been killed by the OOM killer.
+{"namespace": "1bbb2f40f8854fee", "serviceResult": "oom-kill", "observedAtUnix": 1792267894.9595664, "removedContainers": 1, "cleanupPassed": true}
+telomere-cpu-journal-1bbb2f40f8854fee.service: Failed with result 'oom-kill'.
+telomere-cpu-journal-1bbb2f40f8854fee.service: Consumed 30.614s CPU time.

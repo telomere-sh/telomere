@@ -1,0 +1,157 @@
+{
+  "schemaVersion": 1,
+  "scope": "Exact final backend, emitted runtime and acceptance/operations sources; production release a75ee7bc44ff9aaa8964023975f0b7147c92fee4 has 758 independent runtime pins",
+  "files": [
+    {
+      "originalPath": "src/bridge.ts",
+      "path": "source/fe903cf099e69c244ccf09b2c2032b6e40bb346d85542e2fe1b8ce926b0144c5.bin",
+      "bytes": 16919,
+      "sha256": "fe903cf099e69c244ccf09b2c2032b6e40bb346d85542e2fe1b8ce926b0144c5"
+    },
+    {
+      "originalPath": "src/main.ts",
+      "path": "source/82cf9f0b9d9b8a643bb854b52476474ff6ba96931bb803285b10868587c4b8d4.bin",
+      "bytes": 15956,
+      "sha256": "82cf9f0b9d9b8a643bb854b52476474ff6ba96931bb803285b10868587c4b8d4"
+    },
+    {
+      "originalPath": "src/store.ts",
+      "path": "source/c623e3bc2f3ecd06b4ea8401f4c06fde1b64f1a8cf965a276fc7cca59671447c.bin",
+      "bytes": 8939,
+      "sha256": "c623e3bc2f3ecd06b4ea8401f4c06fde1b64f1a8cf965a276fc7cca59671447c"
+    },
+    {
+      "originalPath": "src/chain/journal-archive.ts",
+      "path": "source/d416dcb5ce7509c684579a414e559ab67107bf4782f081fe6043d81cc0d790a7.bin",
+      "bytes": 16680,
+      "sha256": "d416dcb5ce7509c684579a414e559ab67107bf4782f081fe6043d81cc0d790a7"
+    },
+    {
+      "originalPath": "src/chain/journal-schema.ts",
+      "path": "source/23323752a57ed02d9cfd3033b0a0037ab2b31688ac0cf1b8c7f99b4f40a48d4e.bin",
+      "bytes": 2857,
+      "sha256": "23323752a57ed02d9cfd3033b0a0037ab2b31688ac0cf1b8c7f99b4f40a48d4e"
+    },
+    {
+      "originalPath": "tests/journal-archive.test.ts",
+      "path": "source/9d8c61943197021cd9c0dc1193d94f7f973ec4d8658de67187767ba19bea1fa9.bin",
+      "bytes": 18022,
+      "sha256": "9d8c61943197021cd9c0dc1193d94f7f973ec4d8658de67187767ba19bea1fa9"
+    },
+    {
+      "originalPath": "tests/bridge-circle-usdc.test.ts",
+      "path": "source/c2f0541098df642056841bb38c978f6e24cbd3efc114652700b7614cfdbe3fd1.bin",
+      "bytes": 10828,
+      "sha256": "c2f0541098df642056841bb38c978f6e24cbd3efc114652700b7614cfdbe3fd1"
+    },
+    {
+      "originalPath": "tests/treasury-topup-main.test.ts",
+      "path": "source/ba38b5709a1ed085eb48ccffdd1125ec086a726e3c9025b169398364df279ecd.bin",
+      "bytes": 11587,
+      "sha256": "ba38b5709a1ed085eb48ccffdd1125ec086a726e3c9025b169398364df279ecd"
+    },
+    {
+      "originalPath": "ops/cpu-launch/health.mjs",
+      "path": "source/62c95cc1efea8716152f6bb41e2303e1326f65efafb455c2b6c747f0bdaab971.bin",
+      "bytes": 2100,
+      "sha256": "62c95cc1efea8716152f6bb41e2303e1326f65efafb455c2b6c747f0bdaab971"
+    },
+    {
+      "originalPath": "ops/cpu-launch/mainnet-ops.py",
+      "path": "source/3998c5a6fbaf570f70a19bb97cdbca22d10f2e2c02fd67f99c04be7e951574ab.bin",
+      "bytes": 24449,
+      "sha256": "3998c5a6fbaf570f70a19bb97cdbca22d10f2e2c02fd67f99c04be7e951574ab"
+    },
+    {
+      "originalPath": "ops/cpu-launch/test_monitor.py",
+      "path": "source/0ed4bfa285b6f6e70c3dbcd45f60e9a110d72473678c8ad897b54f2608efed0e.bin",
+      "bytes": 7677,
+      "sha256": "0ed4bfa285b6f6e70c3dbcd45f60e9a110d72473678c8ad897b54f2608efed0e"
+    },
+    {
+      "originalPath": "ops/cpu-launch/launch-acceptance.py",
+      "path": "source/3c19c27e4beeaf6e38b90f6e18122e231116f16634d0d892f528a9f94172c45e.bin",
+      "bytes": 5348,
+      "sha256": "3c19c27e4beeaf6e38b90f6e18122e231116f16634d0d892f528a9f94172c45e"
+    },
+    {
+      "originalPath": "ops/cpu-launch/archive-journal.mjs",
+      "path": "source/33b522806cb4042b387bf91a85db79b00f065dd6833b590b48dd1dda68ad25c6.bin",
+      "bytes": 1483,
+      "sha256": "33b522806cb4042b387bf91a85db79b00f065dd6833b590b48dd1dda68ad25c6"
+    },
+    {
+      "originalPath": "ops/cpu-launch/audit-journal.mjs",
+      "path": "source/5bcf17045f85358e48ba42a0a467fee64b06e179623f3345fa1424e816c6c51a.bin",
+      "bytes": 2472,
+      "sha256": "5bcf17045f85358e48ba42a0a467fee64b06e179623f3345fa1424e816c6c51a"
+    },
+    {
+      "originalPath": "ops/cpu-launch/journal-acceptance.mjs",
+      "path": "source/b5da44f6379c2c4ff6c8c0a69efdda528a58b2645e8378e6ddef874efb5f18e1.bin",
+      "bytes": 22380,
+      "sha256": "b5da44f6379c2c4ff6c8c0a69efdda528a58b2645e8378e6ddef874efb5f18e1"
+    },
+    {
+      "originalPath": "ops/cpu-launch/stage-journal-candidate.py",
+      "path": "source/3abc1b2bdc392d2f90ed8ff7d4fe41376918c1dde889d28280383ba42cf7cb58.bin",
+      "bytes": 2262,
+      "sha256": "3abc1b2bdc392d2f90ed8ff7d4fe41376918c1dde889d28280383ba42cf7cb58"
+    },
+    {
+      "originalPath": "ops/cpu-launch/promote-journal.py",
+      "path": "source/740cc3b928335e6cfc7df2df22ec006450e60799feb9e05891487a8782ba1edc.bin",
+      "bytes": 7445,
+      "sha256": "740cc3b928335e6cfc7df2df22ec006450e60799feb9e05891487a8782ba1edc"
+    },
+    {
+      "originalPath": "ops/cpu-launch/seal-journal-proof.py",
+      "path": "source/5c5fcae6d2add6ab0b446203edcdc7fa5c56d7a40c40e13187c21a31331dfe4a.bin",
+      "bytes": 2712,
+      "sha256": "5c5fcae6d2add6ab0b446203edcdc7fa5c56d7a40c40e13187c21a31331dfe4a"
+    },
+    {
+      "originalPath": "ops/cpu-launch/README.md",
+      "path": "source/349fee3be25735c0d3d736df6b3829aeb303dab5d14f6085bf514f2031e470d1.bin",
+      "bytes": 21588,
+      "sha256": "349fee3be25735c0d3d736df6b3829aeb303dab5d14f6085bf514f2031e470d1"
+    },
+    {
+      "originalPath": "dist/src/bridge.js",
+      "path": "source/184e1461942ebe442ee367babdfa8c2d5b97bf15f00849e60657ecd04a385e9f.bin",
+      "bytes": 17008,
+      "sha256": "184e1461942ebe442ee367babdfa8c2d5b97bf15f00849e60657ecd04a385e9f"
+    },
+    {
+      "originalPath": "dist/src/main.js",
+      "path": "source/2a0eaf652e726cd023a5f011477d8b305376d2689d719893853084c58fe66c52.bin",
+      "bytes": 16232,
+      "sha256": "2a0eaf652e726cd023a5f011477d8b305376d2689d719893853084c58fe66c52"
+    },
+    {
+      "originalPath": "dist/src/store.js",
+      "path": "source/49f1fefe1097ffda1a7f6cb0d884813447726e143210a8514f8c304a4449764e.bin",
+      "bytes": 8344,
+      "sha256": "49f1fefe1097ffda1a7f6cb0d884813447726e143210a8514f8c304a4449764e"
+    },
+    {
+      "originalPath": "dist/src/chain/journal-archive.js",
+      "path": "source/f487150fc17e9a174cc90ac4660e1d48ab736b8156f88e3c8639bb79518865ba.bin",
+      "bytes": 16704,
+      "sha256": "f487150fc17e9a174cc90ac4660e1d48ab736b8156f88e3c8639bb79518865ba"
+    },
+    {
+      "originalPath": "dist/src/chain/journal-schema.js",
+      "path": "source/e672d1f05afe3eae0e3465a09e088598bf0e3bd2b4b35b19d82978d7026b77ce.bin",
+      "bytes": 2880,
+      "sha256": "e672d1f05afe3eae0e3465a09e088598bf0e3bd2b4b35b19d82978d7026b77ce"
+    },
+    {
+      "originalPath": "docs/evidence/public-source-archive/manifest.json",
+      "role": "Historical index before relocating four original source objects",
+      "path": "source/e6783c78c5bd0f78365a15b4cf7a6659389ed786991ca5add3879a2d24919cbd.bin",
+      "bytes": 641827,
+      "sha256": "e6783c78c5bd0f78365a15b4cf7a6659389ed786991ca5add3879a2d24919cbd"
+    }
+  ]
+}

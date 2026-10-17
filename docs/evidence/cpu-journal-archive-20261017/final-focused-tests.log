@@ -1,0 +1,10 @@
+
+ RUN  v4.1.11 C:/Users/Administrator/Downloads/telomere
+
+·································································
+
+ Test Files  7 passed (7)
+      Tests  65 passed (65)
+   Start at  23:20:16
+   Duration  190.58s (transform 2.73s, setup 0ms, import 13.04s, tests 175.76s, environment 1ms)
+

@@ -1,0 +1,64 @@
+{
+  "passed": true,
+  "observedAt": "2026-10-17T20:16:56.787Z",
+  "scope": "candidate backend; actual local EVM settlements and PostgreSQL; one genuine gVisor CPU job",
+  "mainnetTransactions": 0,
+  "mainnetSignerLoaded": false,
+  "fixtureEvm": {
+    "historicalStatesInMemory": 16,
+    "retainedTransactionBlocks": 8192,
+    "allTestTransactionReceiptsRetained": true,
+    "finalityBlocksMined": 128,
+    "peakRssKiB": 220216
+  },
+  "history": {
+    "settlements": 2105,
+    "elapsedSeconds": 81.083780101,
+    "realLocalTokenTransfers": 2105,
+    "generatedOwnerAndDistinctTreasury": true,
+    "historyRepresentsSyntheticMeteringFixtures": true,
+    "originalPayloadSha256": "bada3f973e657f294ba481ef89b44aa2c51178eaac218260bfd7dc73f4875504"
+  },
+  "crashAtomicity": {
+    "passed": true,
+    "realControllerSigkill": true,
+    "allOriginalRowsRetained": true,
+    "noPartialCheckpointOrMembership": true
+  },
+  "archive": {
+    "passed": true,
+    "archivedRows": 2105,
+    "batches": 9,
+    "elapsedSeconds": 11.133798357000007,
+    "allOriginalBytesRetained": true,
+    "fullFreshProcessStyleVerification": true,
+    "oldCanonicalHashesRecovered": true,
+    "noExtraSignerNonce": true
+  },
+  "paidCpuRecovery": {
+    "passed": true,
+    "executions": 1,
+    "settlementNonce": 2105,
+    "chargedAtomicTestTokens": "400",
+    "refundAtomicTestTokens": "1600",
+    "recoveredOriginalTransactionHash": "0x54569b5685c490ef522ad6b69cc91408ce01ed11ea0169430114e343948883c7",
+    "receiptValid": true,
+    "receiptAnchored": true,
+    "rawBytesIdentical": true,
+    "noAdditionalNonce": true,
+    "independentTreasuryExact": true,
+    "availableAtomicTestTokens": "997495"
+  },
+  "archivedRpcOutage": {
+    "passed": true,
+    "receiptUnavailabilityRefused": true,
+    "broadcasts": 0
+  },
+  "reorg": {
+    "passed": true,
+    "actualLocalChainRevertAndReplacementBlocks": true,
+    "archivalAnchorRejected": true,
+    "broadcasts": 0,
+    "positiveCpuBranchIntentionallyDiscardedAfterItsAssertions": true
+  }
+}

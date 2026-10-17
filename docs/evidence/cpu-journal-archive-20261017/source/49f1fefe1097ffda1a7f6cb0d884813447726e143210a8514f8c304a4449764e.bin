@@ -1,0 +1,125 @@
+import { workspaceDocuments, workspaceMigration } from './workspace/schema.js';
+import { PGlite } from '@electric-sql/pglite';
+import { drizzle as drizzlePglite } from 'drizzle-orm/pglite';
+import { drizzle as drizzlePg } from 'drizzle-orm/node-postgres';
+import { pgTable, text, jsonb, timestamp, integer, uniqueIndex } from 'drizzle-orm/pg-core';
+import { and, eq, lt, sql } from 'drizzle-orm';
+import pg from 'pg';
+import { cysts, cystOwners, cystMigrationSQL } from './cysts/schema.js';
+import { deadlineJobs, deadlineMigrationSQL } from './scheduling/schema.js';
+import { paidCpuJobs, paidCpuJobMigrationSQL } from './scheduling/paid-job-schema.js';
+import { agents, agentIntents, agentBilling, agentRuntimeBinding, agentVaultBindings, agentBillingProvenance, agentBillingAnchors, agentMigrationSQL } from './agents/schema.js';
+import { receiptHourBatches, receiptHourEntries, receiptHourLock, receiptHourMigrationSQL } from './receipts/schema.js';
+import { selectionSchema, selectionMigrationSQL } from './selection/schema.js';
+import { controllerHostRuns, controllerHostMigrationSQL } from './host-kit/controller-schema.js';
+import { paymentSchema, paymentMigrationSQL } from './payments/schema.js';
+import { interruptibleRuns, hostPreemptionNotices, interruptibleMigrationSQL } from './scheduling/interruptible/schema.js';
+import { platformRuntimeSchema, platformRuntimeMigrationSQL } from './platform-runtime/schema.js';
+import { platformReceiptTables, platformReceiptDdl } from './receipts/platform-schema.js';
+import { incomeEndpointSchema, incomeEndpointMigrationSQL } from './selection/income-endpoints/schema.js';
+import { journalArchiveBatches, journalMigration } from './chain/journal-schema.js';
+export { journalArchiveBatches } from './chain/journal-schema.js';
+export const nonces = pgTable('auth_nonces', {
+    nonce: text().primaryKey(), address: text().notNull(), message: text().notNull(),
+    expiresAt: timestamp({ withTimezone: true }).notNull(),
+});
+export const sessions = pgTable('auth_sessions', {
+    hash: text().primaryKey(), address: text().notNull(), expiresAt: timestamp({ withTimezone: true }).notNull(),
+});
+export const jobs = pgTable('jobs', {
+    id: text().primaryKey(), owner: text().notNull(), leashId: text().notNull(), agentAddress: text(),
+    idemKey: text().notNull(), inputHash: text().notNull(), input: jsonb().$type().notNull(),
+    quote: jsonb().$type().notNull(), signature: text().notNull(), ceiling: text().notNull(),
+    status: text().$type().notNull().default('prepared'),
+    txHash: text(), settlementTxHash: text(),
+    createdAt: timestamp({ withTimezone: true }).notNull().defaultNow(),
+    updatedAt: timestamp({ withTimezone: true }).notNull().defaultNow(),
+    billableSeconds: integer().notNull().default(0), ticks: jsonb().$type().notNull().default([]),
+    cpuResult: jsonb().$type(), nearResult: jsonb().$type(),
+    output: text(), charged: text(), refund: text(), errorCode: text(),
+    receipt: jsonb().$type(), targetStatus: text().$type(),
+}, table => [uniqueIndex('jobs_owner_idem').on(table.owner, table.idemKey)]);
+export const transactions = pgTable('transaction_journal', {
+    runId: text().primaryKey(), raw: text().notNull(), hash: text().notNull(),
+    nonce: integer(),
+    createdAt: timestamp({ withTimezone: true }).notNull().defaultNow(),
+    archiveBatchId: text().references(() => journalArchiveBatches.id),
+});
+export const leashRefs = pgTable('leash_refs', { id: text().primaryKey(), owner: text().notNull() });
+export const controllerChainBinding = pgTable('controller_chain_binding', {
+    id: integer().primaryKey(), scopeHash: text().notNull(), chainId: integer().notNull(),
+});
+export const storeSchema = { workspaceDocuments, nonces, sessions, jobs, transactions, journalArchiveBatches, leashRefs, controllerChainBinding, cysts, cystOwners, deadlineJobs, paidCpuJobs,
+    agents, agentIntents, agentBilling, agentRuntimeBinding, agentVaultBindings, agentBillingProvenance, agentBillingAnchors, receiptHourBatches, receiptHourEntries, receiptHourLock, ...selectionSchema, controllerHostRuns,
+    ...paymentSchema, interruptibleRuns, hostPreemptionNotices, ...platformRuntimeSchema, ...platformReceiptTables, ...incomeEndpointSchema };
+const schema = storeSchema;
+// Fixed DDL, never assembled from request data. Production uses an isolated database.
+const migration = `
+CREATE TABLE IF NOT EXISTS auth_nonces (nonce text PRIMARY KEY, address text NOT NULL, message text NOT NULL, expires_at timestamptz NOT NULL);
+CREATE TABLE IF NOT EXISTS auth_sessions (hash text PRIMARY KEY, address text NOT NULL, expires_at timestamptz NOT NULL);
+CREATE TABLE IF NOT EXISTS jobs (
+ id text PRIMARY KEY, owner text NOT NULL, leash_id text NOT NULL, idem_key text NOT NULL, input_hash text NOT NULL,
+ input jsonb NOT NULL, quote jsonb NOT NULL, signature text NOT NULL, ceiling text NOT NULL, status text NOT NULL DEFAULT 'prepared',
+ tx_hash text, settlement_tx_hash text, created_at timestamptz NOT NULL DEFAULT now(), updated_at timestamptz NOT NULL DEFAULT now(),
+ billable_seconds integer NOT NULL DEFAULT 0, ticks jsonb NOT NULL DEFAULT '[]', cpu_result jsonb, near_result jsonb,
+ output text, charged text, refund text, error_code text, receipt jsonb, target_status text
+);
+CREATE UNIQUE INDEX IF NOT EXISTS jobs_owner_idem ON jobs(owner, idem_key);
+CREATE INDEX IF NOT EXISTS jobs_status_created ON jobs(status, created_at);
+CREATE TABLE IF NOT EXISTS transaction_journal (run_id text PRIMARY KEY REFERENCES jobs(id), raw text NOT NULL, hash text NOT NULL, created_at timestamptz NOT NULL DEFAULT now());
+ALTER TABLE transaction_journal ADD COLUMN IF NOT EXISTS nonce integer;
+ALTER TABLE jobs ADD COLUMN IF NOT EXISTS agent_address text;
+CREATE TABLE IF NOT EXISTS leash_refs (id text PRIMARY KEY, owner text NOT NULL);
+CREATE TABLE IF NOT EXISTS controller_chain_binding (id integer PRIMARY KEY CHECK (id = 1), scope_hash text NOT NULL, chain_id integer NOT NULL);
+` + workspaceMigration + cystMigrationSQL + deadlineMigrationSQL + agentMigrationSQL + receiptHourMigrationSQL + selectionMigrationSQL + controllerHostMigrationSQL
+    + paymentMigrationSQL + interruptibleMigrationSQL + platformRuntimeMigrationSQL + platformReceiptDdl + incomeEndpointMigrationSQL + paidCpuJobMigrationSQL;
+async function migrate(db) {
+    await db.transaction(async (transaction) => {
+        for (const statement of migration.split(';').map(item => item.trim()).filter(Boolean))
+            await transaction.execute(sql.raw(statement));
+        // Function bodies contain semicolons; keep these fixed statements intact.
+        for (const statement of journalMigration)
+            await transaction.execute(sql.raw(statement));
+    });
+}
+export async function openStore(config) {
+    if (config.DATABASE_URL) {
+        const pool = new pg.Pool({ connectionString: config.DATABASE_URL, max: 4,
+            connectionTimeoutMillis: 5000, idleTimeoutMillis: 30000, statement_timeout: 5000 });
+        const lock = await pool.connect();
+        const result = await lock.query('SELECT pg_try_advisory_lock(728419023) AS locked');
+        if (!result.rows[0]?.locked) {
+            lock.release();
+            await pool.end();
+            throw new Error('A Telomere controller already owns this database');
+        }
+        const db = drizzlePg(pool, { schema, casing: 'snake_case' });
+        try {
+            await migrate(db);
+        }
+        catch (error) {
+            lock.release();
+            await pool.end();
+            throw error;
+        }
+        return { db, close: async () => { lock.release(); await pool.end(); } };
+    }
+    const client = new PGlite(config.DATA_DIR === ':memory:' ? undefined : config.DATA_DIR);
+    const db = drizzlePglite(client, { schema, casing: 'snake_case' });
+    try {
+        await migrate(db);
+    }
+    catch (error) {
+        await client.close();
+        throw error;
+    }
+    return { db, close: () => client.close() };
+}
+export async function pruneAuth(db) {
+    const now = new Date();
+    await db.delete(nonces).where(lt(nonces.expiresAt, now));
+    await db.delete(sessions).where(lt(sessions.expiresAt, now));
+}
+export async function ownerJob(db, owner, id) {
+    return (await db.select().from(jobs).where(and(eq(jobs.owner, owner.toLowerCase()), eq(jobs.id, id))).limit(1))[0];
+}

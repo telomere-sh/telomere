@@ -1,0 +1,72 @@
+{
+  "passed": true,
+  "candidateDirectory": "/opt/telomere-mainnet-pilot/rehearsals/journal-b000bd08c68d4541",
+  "candidateManifestSha256": "4dc4ef4cb3f5ab04e3bae902928efb0a8d3da0aa00fd0be4903a6ee2c6ba7599",
+  "acceptanceSourceSha256": "b5da44f6379c2c4ff6c8c0a69efdda528a58b2645e8378e6ddef874efb5f18e1",
+  "unit": "telomere-cpu-journal-3cdba6fd41744798",
+  "reportSha256": "deee2125c95287410e2e186930eeba78c37214394acbbe7a8e06b6f54c141140",
+  "report": {
+    "passed": true,
+    "observedAt": "2026-10-17T20:16:56.787Z",
+    "scope": "candidate backend; actual local EVM settlements and PostgreSQL; one genuine gVisor CPU job",
+    "mainnetTransactions": 0,
+    "mainnetSignerLoaded": false,
+    "fixtureEvm": {
+      "historicalStatesInMemory": 16,
+      "retainedTransactionBlocks": 8192,
+      "allTestTransactionReceiptsRetained": true,
+      "finalityBlocksMined": 128,
+      "peakRssKiB": 220216
+    },
+    "history": {
+      "settlements": 2105,
+      "elapsedSeconds": 81.083780101,
+      "realLocalTokenTransfers": 2105,
+      "generatedOwnerAndDistinctTreasury": true,
+      "historyRepresentsSyntheticMeteringFixtures": true,
+      "originalPayloadSha256": "bada3f973e657f294ba481ef89b44aa2c51178eaac218260bfd7dc73f4875504"
+    },
+    "crashAtomicity": {
+      "passed": true,
+      "realControllerSigkill": true,
+      "allOriginalRowsRetained": true,
+      "noPartialCheckpointOrMembership": true
+    },
+    "archive": {
+      "passed": true,
+      "archivedRows": 2105,
+      "batches": 9,
+      "elapsedSeconds": 11.133798357000007,
+      "allOriginalBytesRetained": true,
+      "fullFreshProcessStyleVerification": true,
+      "oldCanonicalHashesRecovered": true,
+      "noExtraSignerNonce": true
+    },
+    "paidCpuRecovery": {
+      "passed": true,
+      "executions": 1,
+      "settlementNonce": 2105,
+      "chargedAtomicTestTokens": "400",
+      "refundAtomicTestTokens": "1600",
+      "recoveredOriginalTransactionHash": "0x54569b5685c490ef522ad6b69cc91408ce01ed11ea0169430114e343948883c7",
+      "receiptValid": true,
+      "receiptAnchored": true,
+      "rawBytesIdentical": true,
+      "noAdditionalNonce": true,
+      "independentTreasuryExact": true,
+      "availableAtomicTestTokens": "997495"
+    },
+    "archivedRpcOutage": {
+      "passed": true,
+      "receiptUnavailabilityRefused": true,
+      "broadcasts": 0
+    },
+    "reorg": {
+      "passed": true,
+      "actualLocalChainRevertAndReplacementBlocks": true,
+      "archivalAnchorRejected": true,
+      "broadcasts": 0,
+      "positiveCpuBranchIntentionallyDiscardedAfterItsAssertions": true
+    }
+  }
+}

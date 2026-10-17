@@ -1,0 +1,3 @@
+Started telomere-cpu-journal-b32bc53e1afd467d.service - /opt/node-v22.23.3-linux-x64/bin/node /opt/telomere-mainnet-pilot/operator/cpu-launch/journal-acceptance.mjs.
+{"phase":"mine_2105_distinct_legacy_settlements","observedAt":"2026-10-17T20:07:41.892Z"}
+{"phase":"mine_2105_distinct_legacy_settlements","settlements":200}

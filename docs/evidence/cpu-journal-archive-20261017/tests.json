@@ -1,0 +1,40 @@
+{
+  "observedAt": "2026-10-17T20:19:31.827363+00:00",
+  "typecheck": {
+    "command": "npx tsc --noEmit",
+    "exitCode": 0
+  },
+  "suites": [
+    {
+      "command": "npx vitest run tests/journal-archive.test.ts --reporter=dot",
+      "passed": 13
+    },
+    {
+      "command": "npx vitest run tests/bridge-circle-usdc.test.ts tests/worker.test.ts tests/service.test.ts --reporter=dot",
+      "passed": 33
+    },
+    {
+      "command": "npx vitest run tests/operations.test.ts tests/workspace-auth.test.ts --reporter=dot",
+      "passed": 17
+    },
+    {
+      "command": "npx vitest run tests/treasury-topup-main.test.ts --reporter=dot",
+      "passed": 2
+    },
+    {
+      "command": "python3 -B -m unittest test_monitor test_restore",
+      "passed": 35,
+      "platform": "Linux"
+    }
+  ],
+  "mainnetTransactions": 0,
+  "finalFocusedRun": {
+    "command": "node node_modules/vitest/vitest.mjs run tests/journal-archive.test.ts tests/bridge-circle-usdc.test.ts tests/worker.test.ts tests/service.test.ts tests/operations.test.ts tests/workspace-auth.test.ts tests/treasury-topup-main.test.ts --reporter=dot --maxWorkers=2",
+    "passedFiles": 7,
+    "passedTests": 65,
+    "exitCode": 0,
+    "elapsedSeconds": 190.58,
+    "log": "final-focused-tests.log"
+  },
+  "totalFocusedNodeAndPythonTests": 100
+}

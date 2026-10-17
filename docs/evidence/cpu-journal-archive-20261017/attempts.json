@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "attempts": [
+    {
+      "unit": "telomere-cpu-journal-b32bc53e1afd467d",
+      "result": "stopped before completion",
+      "cause": "update receipt polling and use the final candidate with observer and exact receipt-hash checks",
+      "log": "initial-rehearsal.log"
+    },
+    {
+      "unit": "telomere-cpu-journal-1bbb2f40f8854fee",
+      "result": "fixture EVM cgroup OOM",
+      "cause": "unbounded Anvil historical state snapshots under the 2 GiB acceptance unit",
+      "correction": "16 retained state snapshots; all 8192 transaction blocks/receipts retained; same memory limit",
+      "log": "evm-memory-attempt.log"
+    },
+    {
+      "unit": "telomere-cpu-journal-6964f902ba4f469b",
+      "result": "finality precondition not yet satisfied",
+      "cause": "last historical settlements were ahead of the fixture finalized marker; archiver correctly left those rows active",
+      "correction": "mine 128 fixture blocks and check finality before archiving the complete history",
+      "log": "finality-attempt.log"
+    },
+    {
+      "unit": "telomere-cpu-journal-3cdba6fd41744798",
+      "result": "passed",
+      "candidateDirectory": "/opt/telomere-mainnet-pilot/rehearsals/journal-b000bd08c68d4541",
+      "resultFile": "acceptance.json",
+      "sourceRecord": "source-record.json",
+      "log": "accepted-rehearsal.log"
+    }
+  ],
+  "mainnetTransactions": 0,
+  "productionDataUnchangedDuringFixtures": true
+}

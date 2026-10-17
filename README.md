@@ -23,6 +23,8 @@ CPU launch operations, load acceptance, encrypted backups and recovery procedure
 
 Primary off-site backup verification and incident delivery run independently of the owner's PC; see [cloud operations](docs/CPU-CLOUD-OPERATIONS-20261017.md).
 
+Financial journals retain their complete signed history through finalized archive checkpoints. The [archive acceptance](docs/CPU-JOURNAL-ARCHIVE-20261017.md) covers more than 2,000 settlements, crash recovery and replay protection.
+
 ## Run locally
 
 Requires **Node.js 22.12+** and npm. On Windows and Linux x64, `npm ci` installs the platform-specific Anvil binary. On other platforms, install the appropriate Anvil binary.

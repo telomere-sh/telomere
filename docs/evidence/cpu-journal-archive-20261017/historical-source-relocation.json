@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "originalHistoricalSourceConstraintsUnchanged": true,
+  "oldIndexSha256": "e6783c78c5bd0f78365a15b4cf7a6659389ed786991ca5add3879a2d24919cbd",
+  "newIndexSha256": "78e6120063068870d7767e3244b686bcab5432d9d4c7eb0305fdc751626c9273",
+  "relocated": [
+    {
+      "originalSourcePath": "src/bridge.ts",
+      "archivedObject": {
+        "path": "docs/evidence/public-source-archive/objects/f435bb63677cf0a1e60c9c84338ebe850f4409501a3e34217d5ca4fd591f432b.bin",
+        "bytes": 16677,
+        "sha256": "f435bb63677cf0a1e60c9c84338ebe850f4409501a3e34217d5ca4fd591f432b"
+      }
+    },
+    {
+      "originalSourcePath": "src/main.ts",
+      "archivedObject": {
+        "path": "docs/evidence/public-source-archive/objects/59ed88a8a16d5f27193936011f2d07c58b157afa7ce2476b33ee5e42d4b74bf7.bin",
+        "bytes": 15905,
+        "sha256": "59ed88a8a16d5f27193936011f2d07c58b157afa7ce2476b33ee5e42d4b74bf7"
+      }
+    },
+    {
+      "originalSourcePath": "tests/bridge-circle-usdc.test.ts",
+      "archivedObject": {
+        "path": "docs/evidence/public-source-archive/objects/6fa95c96daf624954b192cc32a346e01fa5d9d38908b3d9b0d414015cd7602f6.bin",
+        "bytes": 10755,
+        "sha256": "6fa95c96daf624954b192cc32a346e01fa5d9d38908b3d9b0d414015cd7602f6"
+      }
+    },
+    {
+      "originalSourcePath": "tests/treasury-topup-main.test.ts",
+      "archivedObject": {
+        "path": "docs/evidence/public-source-archive/objects/35eb9dff9d62866258d52d6ee29cf1468d9b0fe56b761704c67896af9b35f43f.bin",
+        "bytes": 11313,
+        "sha256": "35eb9dff9d62866258d52d6ee29cf1468d9b0fe56b761704c67896af9b35f43f"
+      }
+    }
+  ]
+}

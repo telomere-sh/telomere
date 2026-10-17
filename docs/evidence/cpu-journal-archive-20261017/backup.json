@@ -1,0 +1,24 @@
+{
+  "id": "backup-20261017T201948Z-db4bfbbb",
+  "createdAt": "2026-10-17T20:20:11.671796+00:00",
+  "sha256": "2ec5b7155a15b3ccd6afb8ad4b9aa4ad4bcb30c266771de82f62e093482f2604",
+  "bytes": 430474,
+  "encryption": "age X25519",
+  "restore": {
+    "passed": true,
+    "tables": 47,
+    "rows": 27,
+    "elapsedSeconds": 4.321,
+    "network": "none",
+    "mainnetControllerStarted": false,
+    "databaseImage": "postgres@sha256:721873c34ceb9f8d8fc265984940dc982404c105f19ad51be9fdc5970a6080ea"
+  },
+  "runtimeBundle": {
+    "id": "runtime-a75ee7bc44ff9aaa8964023975f0b7147c92fee4-fcd1a4ec3f1bf3da",
+    "sha256": "2b2d047e4498a68b58c636def29939f9e99c64eb315ea17b7ad42910f1b5dc97",
+    "bytes": 344309706,
+    "runtimePinsVerified": 758,
+    "files": 22166
+  },
+  "elapsedSeconds": 23.499
+}

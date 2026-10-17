@@ -1,0 +1,19 @@
+Started telomere-cpu-journal-6964f902ba4f469b.service - /opt/node-v22.23.3-linux-x64/bin/node /opt/telomere-mainnet-pilot/operator/cpu-launch/journal-acceptance.mjs.
+{"phase":"mine_2105_distinct_legacy_settlements","observedAt":"2026-10-17T20:12:42.708Z"}
+{"phase":"mine_2105_distinct_legacy_settlements","settlements":200}
+{"phase":"mine_2105_distinct_legacy_settlements","settlements":400}
+{"phase":"mine_2105_distinct_legacy_settlements","settlements":600}
+{"phase":"mine_2105_distinct_legacy_settlements","settlements":800}
+{"phase":"mine_2105_distinct_legacy_settlements","settlements":1000}
+{"phase":"mine_2105_distinct_legacy_settlements","settlements":1200}
+{"phase":"mine_2105_distinct_legacy_settlements","settlements":1400}
+{"phase":"mine_2105_distinct_legacy_settlements","settlements":1600}
+{"phase":"mine_2105_distinct_legacy_settlements","settlements":1800}
+{"phase":"mine_2105_distinct_legacy_settlements","settlements":2000}
+{"phase":"kill_archive_controller_inside_uncommitted_membership_write","observedAt":"2026-10-17T20:14:05.097Z"}
+{"phase":"archive_all_2105_without_a_transaction","observedAt":"2026-10-17T20:14:11.507Z"}
+{"passed":false,"phase":"archive_all_2105_without_a_transaction","errorType":"Error","message":"Archive made no progress","reportDirectory":"/opt/telomere-mainnet-pilot/data/cpu-launch-acceptance-20261017/journal-EonDNP"}
+telomere-cpu-journal-6964f902ba4f469b.service: Main process exited, code=exited, status=1/FAILURE
+{"namespace": "6964f902ba4f469b", "serviceResult": "exit-code", "observedAtUnix": 1792268062.7863417, "removedContainers": 0, "cleanupPassed": true}
+telomere-cpu-journal-6964f902ba4f469b.service: Failed with result 'exit-code'.
+telomere-cpu-journal-6964f902ba4f469b.service: Consumed 1min 24.228s CPU time.

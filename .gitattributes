@@ -14,3 +14,4 @@ ops/legacy-mainnet/** -text whitespace=blank-at-eol,blank-at-eof,space-before-ta
 docs/evidence/cpu-cloud-20261017/source/*.bin -text -diff
 docs/evidence/cpu-sustained-20261017/source/*.bin -text -diff
 docs/evidence/cpu-resilience-20261017/source/*.bin -text -diff
+docs/evidence/cpu-journal-archive-20261017/source/*.bin -text -diff

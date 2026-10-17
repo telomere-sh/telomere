@@ -1,0 +1,232 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-17T20:24:01.137085+00:00",
+  "scope": "Non-destructive settlement archival, 2105 genuine local settlements, crash/stale recovery, production metadata-only archive and independent 47-table restore; zero new mainnet transactions",
+  "report": {
+    "path": "docs/CPU-JOURNAL-ARCHIVE-20261017.md",
+    "bytes": 6359,
+    "sha256": "2818f15a180da9e95f7c963958e2692a45164914f92881cd64748db6f2d5ae7e"
+  },
+  "files": [
+    {
+      "path": "docs/evidence/cpu-journal-archive-20261017/acceptance.json",
+      "bytes": 2010,
+      "sha256": "deee2125c95287410e2e186930eeba78c37214394acbbe7a8e06b6f54c141140"
+    },
+    {
+      "path": "docs/evidence/cpu-journal-archive-20261017/accepted-proof.json",
+      "bytes": 2591,
+      "sha256": "07404e7d0652ceb4f775ef91875a1389609e7424de201f37d4348c3e2fd044b8"
+    },
+    {
+      "path": "docs/evidence/cpu-journal-archive-20261017/accepted-rehearsal.log",
+      "bytes": 3593,
+      "sha256": "0dcf022459ced23d8f537ac63d94cbe6b256cfff66d65226ca47418f62d9e55f"
+    },
+    {
+      "path": "docs/evidence/cpu-journal-archive-20261017/attempts.json",
+      "bytes": 1487,
+      "sha256": "1996c11aee02ac2344f1e2d811d02b9f72466562ef771fd8c75c9f449931feee"
+    },
+    {
+      "path": "docs/evidence/cpu-journal-archive-20261017/backup.json",
+      "bytes": 786,
+      "sha256": "3c65e2461bd3967165c55e4f1eb1fe4e23290219b593e40f974db07eca9dfa8c"
+    },
+    {
+      "path": "docs/evidence/cpu-journal-archive-20261017/cloud-run-39066298783.json",
+      "bytes": 2082,
+      "sha256": "af02100b173337a2a2ab85461075a71938618bc8ffa2d5da37e7ad9ee593ce8e"
+    },
+    {
+      "path": "docs/evidence/cpu-journal-archive-20261017/evm-memory-attempt.log",
+      "bytes": 1002,
+      "sha256": "589a9669cb65e6504a85e56a0c433bf8eabba0f92f00f28718b0a39c305984f1"
+    },
+    {
+      "path": "docs/evidence/cpu-journal-archive-20261017/final-focused-tests.log",
+      "bytes": 364,
+      "sha256": "0bb5b0ad81bb51bd372e2e091be8bffc35c9dcb3a89b9b4abd74b9ef392dbc17"
+    },
+    {
+      "path": "docs/evidence/cpu-journal-archive-20261017/finality-attempt.log",
+      "bytes": 1772,
+      "sha256": "f9be66a84e67ef4f4f1189224475748f8b5dfebe27238033dddbddbf2c2f49c7"
+    },
+    {
+      "path": "docs/evidence/cpu-journal-archive-20261017/health.json",
+      "bytes": 390,
+      "sha256": "cb690d69a522987c6b550460508a43cc5ee88efb861d687fd20e8dae159b9f68"
+    },
+    {
+      "path": "docs/evidence/cpu-journal-archive-20261017/historical-source-relocation.json",
+      "bytes": 1687,
+      "sha256": "41b35fad560c0a010451d6a5114d599610e0f45498f935cbe66c8d4993a73772"
+    },
+    {
+      "path": "docs/evidence/cpu-journal-archive-20261017/initial-rehearsal.log",
+      "bytes": 324,
+      "sha256": "050f05a6d55670d5052e4e37c8fd9b3780670f7ac104689720d74b34787ce4e0"
+    },
+    {
+      "path": "docs/evidence/cpu-journal-archive-20261017/linux-operations-tests.log",
+      "bytes": 134,
+      "sha256": "74252a207a000678ca7f29a6f5da23a49d41036cf86a353c0811debd2b48793b"
+    },
+    {
+      "path": "docs/evidence/cpu-journal-archive-20261017/monitor.json",
+      "bytes": 895,
+      "sha256": "d37a328514e2cc54998d924da65e41f08d98aa33a9526425867c3e6729452f46"
+    },
+    {
+      "path": "docs/evidence/cpu-journal-archive-20261017/promotion.json",
+      "bytes": 1408,
+      "sha256": "4a42c3416b97f7c1670d573039f8a38f29ce881ff13b4a0f4bd43ab45d5eaa35"
+    },
+    {
+      "path": "docs/evidence/cpu-journal-archive-20261017/runtime-guard.json",
+      "bytes": 278,
+      "sha256": "46651c8d745541546d9a94f6211f69bddef72fca2387e019af5669288357ec1f"
+    },
+    {
+      "path": "docs/evidence/cpu-journal-archive-20261017/soak-progress.json",
+      "bytes": 1063,
+      "sha256": "c066dac5e71a82cb3ec386ed87d31f6990a25987b73abe829c3b27350f950d02"
+    },
+    {
+      "path": "docs/evidence/cpu-journal-archive-20261017/source/0ed4bfa285b6f6e70c3dbcd45f60e9a110d72473678c8ad897b54f2608efed0e.bin",
+      "bytes": 7677,
+      "sha256": "0ed4bfa285b6f6e70c3dbcd45f60e9a110d72473678c8ad897b54f2608efed0e"
+    },
+    {
+      "path": "docs/evidence/cpu-journal-archive-20261017/source/184e1461942ebe442ee367babdfa8c2d5b97bf15f00849e60657ecd04a385e9f.bin",
+      "bytes": 17008,
+      "sha256": "184e1461942ebe442ee367babdfa8c2d5b97bf15f00849e60657ecd04a385e9f"
+    },
+    {
+      "path": "docs/evidence/cpu-journal-archive-20261017/source/23323752a57ed02d9cfd3033b0a0037ab2b31688ac0cf1b8c7f99b4f40a48d4e.bin",
+      "bytes": 2857,
+      "sha256": "23323752a57ed02d9cfd3033b0a0037ab2b31688ac0cf1b8c7f99b4f40a48d4e"
+    },
+    {
+      "path": "docs/evidence/cpu-journal-archive-20261017/source/2a0eaf652e726cd023a5f011477d8b305376d2689d719893853084c58fe66c52.bin",
+      "bytes": 16232,
+      "sha256": "2a0eaf652e726cd023a5f011477d8b305376d2689d719893853084c58fe66c52"
+    },
+    {
+      "path": "docs/evidence/cpu-journal-archive-20261017/source/33b522806cb4042b387bf91a85db79b00f065dd6833b590b48dd1dda68ad25c6.bin",
+      "bytes": 1483,
+      "sha256": "33b522806cb4042b387bf91a85db79b00f065dd6833b590b48dd1dda68ad25c6"
+    },
+    {
+      "path": "docs/evidence/cpu-journal-archive-20261017/source/349fee3be25735c0d3d736df6b3829aeb303dab5d14f6085bf514f2031e470d1.bin",
+      "bytes": 21588,
+      "sha256": "349fee3be25735c0d3d736df6b3829aeb303dab5d14f6085bf514f2031e470d1"
+    },
+    {
+      "path": "docs/evidence/cpu-journal-archive-20261017/source/3998c5a6fbaf570f70a19bb97cdbca22d10f2e2c02fd67f99c04be7e951574ab.bin",
+      "bytes": 24449,
+      "sha256": "3998c5a6fbaf570f70a19bb97cdbca22d10f2e2c02fd67f99c04be7e951574ab"
+    },
+    {
+      "path": "docs/evidence/cpu-journal-archive-20261017/source/3abc1b2bdc392d2f90ed8ff7d4fe41376918c1dde889d28280383ba42cf7cb58.bin",
+      "bytes": 2262,
+      "sha256": "3abc1b2bdc392d2f90ed8ff7d4fe41376918c1dde889d28280383ba42cf7cb58"
+    },
+    {
+      "path": "docs/evidence/cpu-journal-archive-20261017/source/3c19c27e4beeaf6e38b90f6e18122e231116f16634d0d892f528a9f94172c45e.bin",
+      "bytes": 5348,
+      "sha256": "3c19c27e4beeaf6e38b90f6e18122e231116f16634d0d892f528a9f94172c45e"
+    },
+    {
+      "path": "docs/evidence/cpu-journal-archive-20261017/source/49f1fefe1097ffda1a7f6cb0d884813447726e143210a8514f8c304a4449764e.bin",
+      "bytes": 8344,
+      "sha256": "49f1fefe1097ffda1a7f6cb0d884813447726e143210a8514f8c304a4449764e"
+    },
+    {
+      "path": "docs/evidence/cpu-journal-archive-20261017/source/5bcf17045f85358e48ba42a0a467fee64b06e179623f3345fa1424e816c6c51a.bin",
+      "bytes": 2472,
+      "sha256": "5bcf17045f85358e48ba42a0a467fee64b06e179623f3345fa1424e816c6c51a"
+    },
+    {
+      "path": "docs/evidence/cpu-journal-archive-20261017/source/5c5fcae6d2add6ab0b446203edcdc7fa5c56d7a40c40e13187c21a31331dfe4a.bin",
+      "bytes": 2712,
+      "sha256": "5c5fcae6d2add6ab0b446203edcdc7fa5c56d7a40c40e13187c21a31331dfe4a"
+    },
+    {
+      "path": "docs/evidence/cpu-journal-archive-20261017/source/62c95cc1efea8716152f6bb41e2303e1326f65efafb455c2b6c747f0bdaab971.bin",
+      "bytes": 2100,
+      "sha256": "62c95cc1efea8716152f6bb41e2303e1326f65efafb455c2b6c747f0bdaab971"
+    },
+    {
+      "path": "docs/evidence/cpu-journal-archive-20261017/source/740cc3b928335e6cfc7df2df22ec006450e60799feb9e05891487a8782ba1edc.bin",
+      "bytes": 7445,
+      "sha256": "740cc3b928335e6cfc7df2df22ec006450e60799feb9e05891487a8782ba1edc"
+    },
+    {
+      "path": "docs/evidence/cpu-journal-archive-20261017/source/82cf9f0b9d9b8a643bb854b52476474ff6ba96931bb803285b10868587c4b8d4.bin",
+      "bytes": 15956,
+      "sha256": "82cf9f0b9d9b8a643bb854b52476474ff6ba96931bb803285b10868587c4b8d4"
+    },
+    {
+      "path": "docs/evidence/cpu-journal-archive-20261017/source/9d8c61943197021cd9c0dc1193d94f7f973ec4d8658de67187767ba19bea1fa9.bin",
+      "bytes": 18022,
+      "sha256": "9d8c61943197021cd9c0dc1193d94f7f973ec4d8658de67187767ba19bea1fa9"
+    },
+    {
+      "path": "docs/evidence/cpu-journal-archive-20261017/source/b5da44f6379c2c4ff6c8c0a69efdda528a58b2645e8378e6ddef874efb5f18e1.bin",
+      "bytes": 22380,
+      "sha256": "b5da44f6379c2c4ff6c8c0a69efdda528a58b2645e8378e6ddef874efb5f18e1"
+    },
+    {
+      "path": "docs/evidence/cpu-journal-archive-20261017/source/ba38b5709a1ed085eb48ccffdd1125ec086a726e3c9025b169398364df279ecd.bin",
+      "bytes": 11587,
+      "sha256": "ba38b5709a1ed085eb48ccffdd1125ec086a726e3c9025b169398364df279ecd"
+    },
+    {
+      "path": "docs/evidence/cpu-journal-archive-20261017/source/c2f0541098df642056841bb38c978f6e24cbd3efc114652700b7614cfdbe3fd1.bin",
+      "bytes": 10828,
+      "sha256": "c2f0541098df642056841bb38c978f6e24cbd3efc114652700b7614cfdbe3fd1"
+    },
+    {
+      "path": "docs/evidence/cpu-journal-archive-20261017/source/c623e3bc2f3ecd06b4ea8401f4c06fde1b64f1a8cf965a276fc7cca59671447c.bin",
+      "bytes": 8939,
+      "sha256": "c623e3bc2f3ecd06b4ea8401f4c06fde1b64f1a8cf965a276fc7cca59671447c"
+    },
+    {
+      "path": "docs/evidence/cpu-journal-archive-20261017/source/d416dcb5ce7509c684579a414e559ab67107bf4782f081fe6043d81cc0d790a7.bin",
+      "bytes": 16680,
+      "sha256": "d416dcb5ce7509c684579a414e559ab67107bf4782f081fe6043d81cc0d790a7"
+    },
+    {
+      "path": "docs/evidence/cpu-journal-archive-20261017/source/e672d1f05afe3eae0e3465a09e088598bf0e3bd2b4b35b19d82978d7026b77ce.bin",
+      "bytes": 2880,
+      "sha256": "e672d1f05afe3eae0e3465a09e088598bf0e3bd2b4b35b19d82978d7026b77ce"
+    },
+    {
+      "path": "docs/evidence/cpu-journal-archive-20261017/source/e6783c78c5bd0f78365a15b4cf7a6659389ed786991ca5add3879a2d24919cbd.bin",
+      "bytes": 641827,
+      "sha256": "e6783c78c5bd0f78365a15b4cf7a6659389ed786991ca5add3879a2d24919cbd"
+    },
+    {
+      "path": "docs/evidence/cpu-journal-archive-20261017/source/f487150fc17e9a174cc90ac4660e1d48ab736b8156f88e3c8639bb79518865ba.bin",
+      "bytes": 16704,
+      "sha256": "f487150fc17e9a174cc90ac4660e1d48ab736b8156f88e3c8639bb79518865ba"
+    },
+    {
+      "path": "docs/evidence/cpu-journal-archive-20261017/source/fe903cf099e69c244ccf09b2c2032b6e40bb346d85542e2fe1b8ce926b0144c5.bin",
+      "bytes": 16919,
+      "sha256": "fe903cf099e69c244ccf09b2c2032b6e40bb346d85542e2fe1b8ce926b0144c5"
+    },
+    {
+      "path": "docs/evidence/cpu-journal-archive-20261017/source-record.json",
+      "bytes": 7079,
+      "sha256": "361c693665e83c2772f5005e685ac30411500fe20be3484d038e7b65fe77cbcd"
+    },
+    {
+      "path": "docs/evidence/cpu-journal-archive-20261017/tests.json",
+      "bytes": 1347,
+      "sha256": "bbf84005cab97e6bba5e670c54d8f30af8472ee07e2f1379a0ead94ab2bb1551"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+Started telomere-cpu-journal-3cdba6fd41744798.service - /opt/node-v22.23.3-linux-x64/bin/node /opt/telomere-mainnet-pilot/operator/cpu-launch/journal-acceptance.mjs.
+{"phase":"mine_2105_distinct_legacy_settlements","observedAt":"2026-10-17T20:15:07.678Z"}
+{"phase":"mine_2105_distinct_legacy_settlements","settlements":200}
+{"phase":"mine_2105_distinct_legacy_settlements","settlements":400}
+{"phase":"mine_2105_distinct_legacy_settlements","settlements":600}
+{"phase":"mine_2105_distinct_legacy_settlements","settlements":800}
+{"phase":"mine_2105_distinct_legacy_settlements","settlements":1000}
+{"phase":"mine_2105_distinct_legacy_settlements","settlements":1200}
+{"phase":"mine_2105_distinct_legacy_settlements","settlements":1400}
+{"phase":"mine_2105_distinct_legacy_settlements","settlements":1600}
+{"phase":"mine_2105_distinct_legacy_settlements","settlements":1800}
+{"phase":"mine_2105_distinct_legacy_settlements","settlements":2000}
+{"phase":"kill_archive_controller_inside_uncommitted_membership_write","observedAt":"2026-10-17T20:16:30.970Z"}
+{"phase":"archive_all_2105_without_a_transaction","observedAt":"2026-10-17T20:16:37.338Z"}
+{"phase":"paid_gvisor_cpu_and_restore_of_pending_new_settlement","observedAt":"2026-10-17T20:16:48.472Z"}
+{"phase":"missing_archived_receipt_must_never_broadcast","observedAt":"2026-10-17T20:16:54.556Z"}
+{"phase":"reject_finalized_anchor_reorg_before_any_broadcast","observedAt":"2026-10-17T20:16:54.563Z"}
+{"phase":"passed","observedAt":"2026-10-17T20:16:56.787Z"}
+{"passed":true,"observedAt":"2026-10-17T20:16:56.787Z","scope":"candidate backend; actual local EVM settlements and PostgreSQL; one genuine gVisor CPU job","mainnetTransactions":0,"mainnetSignerLoaded":false,"fixtureEvm":{"historicalStatesInMemory":16,"retainedTransactionBlocks":8192,"allTestTransactionReceiptsRetained":true,"finalityBlocksMined":128,"peakRssKiB":220216},"history":{"settlements":2105,"elapsedSeconds":81.083780101,"realLocalTokenTransfers":2105,"generatedOwnerAndDistinctTreasury":true,"historyRepresentsSyntheticMeteringFixtures":true,"originalPayloadSha256":"bada3f973e657f294ba481ef89b44aa2c51178eaac218260bfd7dc73f4875504"},"crashAtomicity":{"passed":true,"realControllerSigkill":true,"allOriginalRowsRetained":true,"noPartialCheckpointOrMembership":true},"archive":{"passed":true,"archivedRows":2105,"batches":9,"elapsedSeconds":11.133798357000007,"allOriginalBytesRetained":true,"fullFreshProcessStyleVerification":true,"oldCanonicalHashesRecovered":true,"noExtraSignerNonce":true},"paidCpuRecovery":{"passed":true,"executions":1,"settlementNonce":2105,"chargedAtomicTestTokens":"400","refundAtomicTestTokens":"1600","recoveredOriginalTransactionHash":"0x54569b5685c490ef522ad6b69cc91408ce01ed11ea0169430114e343948883c7","receiptValid":true,"receiptAnchored":true,"rawBytesIdentical":true,"noAdditionalNonce":true,"independentTreasuryExact":true,"availableAtomicTestTokens":"997495"},"archivedRpcOutage":{"passed":true,"receiptUnavailabilityRefused":true,"broadcasts":0},"reorg":{"passed":true,"actualLocalChainRevertAndReplacementBlocks":true,"archivalAnchorRejected":true,"broadcasts":0,"positiveCpuBranchIntentionallyDiscardedAfterItsAssertions":true},"report":"/opt/telomere-mainnet-pilot/data/cpu-launch-acceptance-20261017/journal-47aOUE/result.json"}
+{"namespace": "3cdba6fd41744798", "serviceResult": "success", "observedAtUnix": 1792268217.107687, "removedContainers": 0, "cleanupPassed": true}
+telomere-cpu-journal-3cdba6fd41744798.service: Deactivated successfully.
+telomere-cpu-journal-3cdba6fd41744798.service: Consumed 1min 28.916s CPU time.
