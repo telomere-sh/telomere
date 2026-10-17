@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "platform": "linux",
+  "uid": 995,
+  "checks": 5,
+  "scope": "Frozen runtime, disposable encrypted Cyst and in-memory database",
+  "privateModes": true,
+  "publicModeRefused": true,
+  "symlinkBlobRefused": true,
+  "symlinkRootRefused": true,
+  "symlinkTemporaryRefused": true,
+  "mainnetTransactions": 0
+}

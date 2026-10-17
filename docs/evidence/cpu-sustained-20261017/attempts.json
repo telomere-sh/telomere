@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "typecheckPassed": true,
+  "fullDurationAcceptancePending": true,
+  "notes": [
+    {
+      "kind": "corrected_harness_setup",
+      "cause": "The first archive harness generated an invalid JavaScript import-path expression before application boot",
+      "correction": "Fixed quoting and added node --check before starting the disposable unit",
+      "failedEvidence": "restore-initial-harness-failure.json",
+      "successfulEvidence": "restore.json"
+    },
+    {
+      "kind": "controlled_replacement",
+      "cause": "Initial periodic-CPU prototype paused Workspace reads during each CPU wait",
+      "correction": "Run CPU settlement concurrently with reads; verify running-CPU overlap and accelerated session renewal before starting the final twelve-hour run",
+      "partialEvidence": "soak-preliminary-controlled-stop.json",
+      "smokeEvidence": "soak-smoke.json"
+    },
+    {
+      "kind": "intentional_failure_injection",
+      "cause": "SIGKILL of only the disposable acceptance unit",
+      "expectedResult": "Its two labelled containers and namespace volume are removed by ExecStopPost; production remains unchanged",
+      "evidence": "forced-stop-cleanup.json"
+    },
+    {
+      "kind": "platform_specific_test",
+      "cause": "The operations module imports POSIX fcntl and its monitor tests run on Linux",
+      "successfulEvidence": "linux-operations-tests.json"
+    },
+    {
+      "kind": "cloud_receipt_gate",
+      "cause": "A rehearsal launch waited until the new data/runtime pair had been acknowledged off-host",
+      "result": "No decryption/application activation before the selected backup and cloud receipt agreed"
+    },
+    {
+      "kind": "corrected_scratch_database_readiness",
+      "cause": "The strengthened root-owned tree rehearsal encountered a PostgreSQL initialization readiness window",
+      "correction": "Wait for final PostgreSQL PID 1 in addition to pg_isready, then rerun full recovery successfully",
+      "failedEvidence": "restore-root-tree-initial-failure.json",
+      "successfulEvidence": "restore.json"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "deployedSources": {
+    "launch-acceptance.py": "dcb55f757fc5b9fcd85547c7acdad1c9b1697b210504e76f2ff45ad3b6097fa3",
+    "mainnet-ops.py": "9093dd7fd52a5005470db20e1809b036899e5843010879f1479ce115d8e9f0a4",
+    "restore-rehearsal.py": "b8009c4995d9b912bc21ee43d9aeeddccc601b2dac2cb6d24d9cf10698518851",
+    "restored-data-reader.mjs": "ae99f427b7204bbba65cfa1d5c46c60b94c5abadf274766f9f5533d456bf40e4",
+    "soak.mjs": "8d7865f0faba13dccecfe88ed4f02d2794cce1c420a96e746ff91013752c18b3",
+    "soak-cleanup.py": "e664ebc959f1a31f4e874f8dde66a2a75986ac62c5d0b6252903166af15564f1",
+    "cyst-posix.mjs": "8467d0b5a9b8becb31168e8b09024ea4413a8d9fb3e8d1967f33d4fba6866682",
+    "test_monitor.py": "f274e5ade08f236761754166b29d2018355d175ccdf40da60d846ef6fab0def9",
+    "test_restore.py": "937b430665bbe8cfa42fa2651ac8fece7a64072ec6dbe93677ac4c7cdeaad312"
+  },
+  "guard": {
+    "readOnly": true,
+    "configurationValid": true,
+    "chainId": 8453,
+    "operator": "0x87599dBF6f720DE7751E8CB2d36d4Ea96A4A1d38",
+    "verifiedRuntimePins": 749,
+    "unsignedPlanBound": true,
+    "bootstrapOwnershipVerified": true,
+    "dockerIsolationVerified": true,
+    "controllerStarted": false,
+    "onChainCalls": false
+  },
+  "productionService": "active",
+  "longRunService": "active",
+  "remainingRestoreRuntimeDirectories": 0,
+  "remainingProtectedRestoreDirectories": 0,
+  "remainingPrivateRestoreDirectories": 0,
+  "protectedRehearsalParent": {
+    "uid": 0,
+    "mode": "0o750"
+  },
+  "recoveryReportRootOnly": true,
+  "scratchDatabases": [
+    "telomere-load-postgres-0edc56ed5ba346ae"
+  ],
+  "remainingRestoreDatabases": []
+}

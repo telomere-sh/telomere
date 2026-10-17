@@ -1,0 +1,31 @@
+{
+  "observedAt": "2026-10-17T19:10:23.923263+00:00",
+  "diskFreeBytes": 172694597632,
+  "ready": true,
+  "databaseAvailable": true,
+  "states": [
+    {
+      "status": "completed",
+      "count": 2,
+      "oldest_seconds": 8810
+    }
+  ],
+  "invalidFinancialRows": 0,
+  "rpc": {
+    "available": true,
+    "operatorGasWei": "98462564567330"
+  },
+  "cpuSoakState": "running",
+  "cpuSoakRequests": 15060,
+  "cpuSoakRuns": 6,
+  "cpuSoakElapsedSeconds": 1505.0685789049999,
+  "cpuSoakTargetSeconds": 43200,
+  "cpuSoakProgressAgeSeconds": 22.313382,
+  "offhostSource": "github-actions",
+  "backupAgeSeconds": 165.181461,
+  "offhostAgeSeconds": 87.107974,
+  "offhostRuntimeValid": true,
+  "tlsRemainingDays": 87.99397450170584,
+  "alerts": [],
+  "status": "ok"
+}

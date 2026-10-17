@@ -1,0 +1,136 @@
+{
+  "numTotalTestSuites": 2,
+  "numPassedTestSuites": 2,
+  "numFailedTestSuites": 0,
+  "numPendingTestSuites": 0,
+  "numTotalTests": 8,
+  "numPassedTests": 8,
+  "numFailedTests": 0,
+  "numPendingTests": 0,
+  "numTodoTests": 0,
+  "snapshot": {
+    "added": 0,
+    "failure": false,
+    "filesAdded": 0,
+    "filesRemoved": 0,
+    "filesRemovedList": [],
+    "filesUnmatched": 0,
+    "filesUpdated": 0,
+    "matched": 0,
+    "total": 0,
+    "unchecked": 0,
+    "uncheckedKeysByFile": [],
+    "unmatched": 0,
+    "updated": 0,
+    "didUpdate": false
+  },
+  "startTime": 1792262138980,
+  "success": true,
+  "testResults": [
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "CPU public launch security boundaries"
+          ],
+          "fullName": "CPU public launch security boundaries stores session hashes and issues HTTPS-only HttpOnly strict cookies",
+          "status": "passed",
+          "title": "stores session hashes and issues HTTPS-only HttpOnly strict cookies",
+          "duration": 44.617799999999534,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "CPU public launch security boundaries"
+          ],
+          "fullName": "CPU public launch security boundaries replaces a supplied session rather than allowing fixation or retaining the old session",
+          "status": "passed",
+          "title": "replaces a supplied session rather than allowing fixation or retaining the old session",
+          "duration": 17.053399999999783,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "CPU public launch security boundaries"
+          ],
+          "fullName": "CPU public launch security boundaries rejects expired and forged sessions on every owner-scoped read",
+          "status": "passed",
+          "title": "rejects expired and forged sessions on every owner-scoped read",
+          "duration": 21.305700000000797,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "CPU public launch security boundaries"
+          ],
+          "fullName": "CPU public launch security boundaries checks exact Origin and JSON before changing authentication state",
+          "status": "passed",
+          "title": "checks exact Origin and JSON before changing authentication state",
+          "duration": 11.523999999999432,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "CPU public launch security boundaries"
+          ],
+          "fullName": "CPU public launch security boundaries rejects oversized JSON and malformed bodies without returning parser details",
+          "status": "passed",
+          "title": "rejects oversized JSON and malformed bodies without returning parser details",
+          "duration": 3.4979999999995925,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "CPU public launch security boundaries"
+          ],
+          "fullName": "CPU public launch security boundaries does not expose demo signing in public Base mode",
+          "status": "passed",
+          "title": "does not expose demo signing in public Base mode",
+          "duration": 6.044600000000173,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "CPU public launch security boundaries"
+          ],
+          "fullName": "CPU public launch security boundaries does not trust spoofed proxy identity when no trusted socket is present",
+          "status": "passed",
+          "title": "does not trust spoofed proxy identity when no trusted socket is present",
+          "duration": 59.15679999999975,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "CPU public launch security boundaries"
+          ],
+          "fullName": "CPU public launch security boundaries binds login signatures to the complete issued message and consumes challenges once",
+          "status": "passed",
+          "title": "binds login signatures to the complete issued message and consumes challenges once",
+          "duration": 23.40599999999995,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1792262143110,
+      "endTime": 1792262143297.406,
+      "status": "passed",
+      "message": "",
+      "name": "C:/Users/Administrator/Downloads/telomere/tests/cpu-launch-security.test.ts"
+    }
+  ]
+}

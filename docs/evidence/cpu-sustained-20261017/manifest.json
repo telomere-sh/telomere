@@ -1,0 +1,282 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-17T19:10:34.107179+00:00",
+  "scope": "Bounded CPU security and application recovery; twelve-hour acceptance remains in progress; no GPU Cells or second human wallet",
+  "files": [
+    {
+      "path": "docs/evidence/cpu-sustained-20261017/attempts.json",
+      "bytes": 2142,
+      "sha256": "9872d88d24b49e39937a11756283111178aecd1b61038782694d2f2d1203bb26"
+    },
+    {
+      "path": "docs/evidence/cpu-sustained-20261017/backup.json",
+      "bytes": 810,
+      "sha256": "8a595be52daf5318b1cefaee7f152b4efc5c333258208944c7730a4ee580ced0"
+    },
+    {
+      "path": "docs/evidence/cpu-sustained-20261017/cloud-run-39059127224.json",
+      "bytes": 1856,
+      "sha256": "09d5931474e13cc168ddfe34d38c8fe8a84f57077c712b0fd5387b99abef4ac9"
+    },
+    {
+      "path": "docs/evidence/cpu-sustained-20261017/cloud-run-39059672149.json",
+      "bytes": 2078,
+      "sha256": "8efa86a49a9f9582fdfa180eb02e2f0ff1b12f99ecafa92faf922dc91bfbc1af"
+    },
+    {
+      "path": "docs/evidence/cpu-sustained-20261017/cloud-run-39061132366.json",
+      "bytes": 1880,
+      "sha256": "12efa851dd6a0464af6ba6595ad1501b00fb3f73c515f763c1dc635601fc2dff"
+    },
+    {
+      "path": "docs/evidence/cpu-sustained-20261017/cloud-source.json",
+      "bytes": 152,
+      "sha256": "78bf15643ac9dc6b03ebacb8b77b4293af7ef53e2fe03b28b212303e2cd08a6a"
+    },
+    {
+      "path": "docs/evidence/cpu-sustained-20261017/cyst-posix.json",
+      "bytes": 341,
+      "sha256": "6dee88378aaa6f220a7f0cde728d415df0d9213c0d9a320f1fff9e1de8ae2ab5"
+    },
+    {
+      "path": "docs/evidence/cpu-sustained-20261017/dependency-audit.json",
+      "bytes": 387,
+      "sha256": "64700c1342f9d07251902b690edc462ecb1a40cf63b5d4f10471ce0b6e6f4a58"
+    },
+    {
+      "path": "docs/evidence/cpu-sustained-20261017/extra-security.json",
+      "bytes": 4938,
+      "sha256": "966883a1b0d844ee9c5850ff8ae557d0c106daea819a007143ff37f86d1180a9"
+    },
+    {
+      "path": "docs/evidence/cpu-sustained-20261017/focused-security.json",
+      "bytes": 35017,
+      "sha256": "61b222aa5a2dc7b60bcb62a19abb614a1ce79307ac09da52543b8be2720409a6"
+    },
+    {
+      "path": "docs/evidence/cpu-sustained-20261017/forced-stop-cleanup.json",
+      "bytes": 165,
+      "sha256": "9019661768757c04f0d3b22a1bbd333c2cf1fbebc4f84853eb6786bd30efa862"
+    },
+    {
+      "path": "docs/evidence/cpu-sustained-20261017/host-controls.json",
+      "bytes": 1660,
+      "sha256": "cb89d525577493f5849b2a3a08b15c66bcabef30fb22de37a39a516baaf7781c"
+    },
+    {
+      "path": "docs/evidence/cpu-sustained-20261017/linux-operations-tests.json",
+      "bytes": 718,
+      "sha256": "f3ccb102693cb002a39c6abd2c8cf09b33e9c4fd66a9f83c282e81db9fd00aaa"
+    },
+    {
+      "path": "docs/evidence/cpu-sustained-20261017/mainnet-readonly.json",
+      "bytes": 696,
+      "sha256": "6b6ca370e05a94e1ccaff331a1d54eade0b8bf7af2671d72f90722dd3845d743"
+    },
+    {
+      "path": "docs/evidence/cpu-sustained-20261017/monitor.json",
+      "bytes": 789,
+      "sha256": "28be7ef24992ce0692aeb93523c3dae38efe6ec487228b1e4512930793a97f3f"
+    },
+    {
+      "path": "docs/evidence/cpu-sustained-20261017/normal-stop-cleanup.json",
+      "bytes": 166,
+      "sha256": "d3e6a325592841d90ddf34041d4158bb421bde4a8c24aaaa04c9330b22ee8afe"
+    },
+    {
+      "path": "docs/evidence/cpu-sustained-20261017/offhost.json",
+      "bytes": 532,
+      "sha256": "1800bc3ae3201acb0c7992b6416a4fd5aee1974a080233cc036d5ed0d8287b66"
+    },
+    {
+      "path": "docs/evidence/cpu-sustained-20261017/public-http-security.json",
+      "bytes": 3273,
+      "sha256": "70f599419f51a41ac4e21bc0f174c7c825935cd1bff099ba4842b8151ccea5e5"
+    },
+    {
+      "path": "docs/evidence/cpu-sustained-20261017/restore-first-full-success.json",
+      "bytes": 3209,
+      "sha256": "2f8333a97b73cc21cfab3545f1b9fb819bdde38115c750ec0293fc166e7275d2"
+    },
+    {
+      "path": "docs/evidence/cpu-sustained-20261017/restore-first-runtime-success.json",
+      "bytes": 2118,
+      "sha256": "fe7ee18def96045804a6753a5b256e7c69e4defe18bd5cd754d46c6767fd79e1"
+    },
+    {
+      "path": "docs/evidence/cpu-sustained-20261017/restore-initial-harness-failure.json",
+      "bytes": 1073,
+      "sha256": "0da1e1f48c33d0a857b0e9599eeff57c7e89cc6b2e0090137cec0b1744789f98"
+    },
+    {
+      "path": "docs/evidence/cpu-sustained-20261017/restore-root-tree-initial-failure.json",
+      "bytes": 1293,
+      "sha256": "6932111c441a7b269870d4e4d9c577f10cf8a7643c87bea0d6d1a5c9628d3e7c"
+    },
+    {
+      "path": "docs/evidence/cpu-sustained-20261017/restore.json",
+      "bytes": 3304,
+      "sha256": "0780dd4bdb48ab96956ccd7847b56cd831db02b17453516e46b7698f14c916b9"
+    },
+    {
+      "path": "docs/evidence/cpu-sustained-20261017/soak-launch.json",
+      "bytes": 337,
+      "sha256": "24f5a17ddfa62623f32940efb09ba80102a5e47f16b99c3a1ae4a8846eb8d08a"
+    },
+    {
+      "path": "docs/evidence/cpu-sustained-20261017/soak-preliminary-controlled-stop.json",
+      "bytes": 1031,
+      "sha256": "d9c555a35822d1f4657fa3a11229f09ef3b6409bf665b673ccf203dcec596c24"
+    },
+    {
+      "path": "docs/evidence/cpu-sustained-20261017/soak-progress.json",
+      "bytes": 1101,
+      "sha256": "6978fa2ea588678be8d3177232870f63e41f8426d6a811c9c9ce20dd240bd5ea"
+    },
+    {
+      "path": "docs/evidence/cpu-sustained-20261017/soak-smoke.json",
+      "bytes": 1094,
+      "sha256": "02131e1fed2329ed318a5813d65191b928e40fc724f9bd3068dc5083aebaff70"
+    },
+    {
+      "path": "docs/evidence/cpu-sustained-20261017/source/0e0da9cd5a1d03abb2ee591e8ec00be2c7bc969e362d7ed53f6e6e08d81b425f.bin",
+      "bytes": 23090,
+      "sha256": "0e0da9cd5a1d03abb2ee591e8ec00be2c7bc969e362d7ed53f6e6e08d81b425f"
+    },
+    {
+      "path": "docs/evidence/cpu-sustained-20261017/source/480ae2fc173c61c3c30154698833df014066a192ce11109899e87711d484cba2.bin",
+      "bytes": 18789,
+      "sha256": "480ae2fc173c61c3c30154698833df014066a192ce11109899e87711d484cba2"
+    },
+    {
+      "path": "docs/evidence/cpu-sustained-20261017/source/544db4400cbe50a784e0aaf194f902d13247c451c158cef3dae709f2fbe3f0e9.bin",
+      "bytes": 1576,
+      "sha256": "544db4400cbe50a784e0aaf194f902d13247c451c158cef3dae709f2fbe3f0e9"
+    },
+    {
+      "path": "docs/evidence/cpu-sustained-20261017/source/5821d7674f9a19993cfb3c198aa0d8b1ef1764abaf6ca7ba6bbd30c4af41efa2.bin",
+      "bytes": 3466,
+      "sha256": "5821d7674f9a19993cfb3c198aa0d8b1ef1764abaf6ca7ba6bbd30c4af41efa2"
+    },
+    {
+      "path": "docs/evidence/cpu-sustained-20261017/source/640a9dc88039fae905a25d84d80edebc43d2d95f368be03c0efe89a3de857398.bin",
+      "bytes": 19928,
+      "sha256": "640a9dc88039fae905a25d84d80edebc43d2d95f368be03c0efe89a3de857398"
+    },
+    {
+      "path": "docs/evidence/cpu-sustained-20261017/source/6e3d716245f3fb432d8240d279799b0c9d5e6b1ad4968d54aee80956a37651dc.bin",
+      "bytes": 1064,
+      "sha256": "6e3d716245f3fb432d8240d279799b0c9d5e6b1ad4968d54aee80956a37651dc"
+    },
+    {
+      "path": "docs/evidence/cpu-sustained-20261017/source/8467d0b5a9b8becb31168e8b09024ea4413a8d9fb3e8d1967f33d4fba6866682.bin",
+      "bytes": 2825,
+      "sha256": "8467d0b5a9b8becb31168e8b09024ea4413a8d9fb3e8d1967f33d4fba6866682"
+    },
+    {
+      "path": "docs/evidence/cpu-sustained-20261017/source/87c576517db616d83feb3af3f8d8172106ccfaffadac1e5a21bc734ef91b9a6c.bin",
+      "bytes": 3568,
+      "sha256": "87c576517db616d83feb3af3f8d8172106ccfaffadac1e5a21bc734ef91b9a6c"
+    },
+    {
+      "path": "docs/evidence/cpu-sustained-20261017/source/8d7865f0faba13dccecfe88ed4f02d2794cce1c420a96e746ff91013752c18b3.bin",
+      "bytes": 16917,
+      "sha256": "8d7865f0faba13dccecfe88ed4f02d2794cce1c420a96e746ff91013752c18b3"
+    },
+    {
+      "path": "docs/evidence/cpu-sustained-20261017/source/9093dd7fd52a5005470db20e1809b036899e5843010879f1479ce115d8e9f0a4.bin",
+      "bytes": 23080,
+      "sha256": "9093dd7fd52a5005470db20e1809b036899e5843010879f1479ce115d8e9f0a4"
+    },
+    {
+      "path": "docs/evidence/cpu-sustained-20261017/source/937b430665bbe8cfa42fa2651ac8fece7a64072ec6dbe93677ac4c7cdeaad312.bin",
+      "bytes": 3980,
+      "sha256": "937b430665bbe8cfa42fa2651ac8fece7a64072ec6dbe93677ac4c7cdeaad312"
+    },
+    {
+      "path": "docs/evidence/cpu-sustained-20261017/source/ae99f427b7204bbba65cfa1d5c46c60b94c5abadf274766f9f5533d456bf40e4.bin",
+      "bytes": 3574,
+      "sha256": "ae99f427b7204bbba65cfa1d5c46c60b94c5abadf274766f9f5533d456bf40e4"
+    },
+    {
+      "path": "docs/evidence/cpu-sustained-20261017/source/b32a897030b68b42c16843a2f5c932f1db3b14424bb47d4cfb0eb98328797ee5.bin",
+      "bytes": 3004,
+      "sha256": "b32a897030b68b42c16843a2f5c932f1db3b14424bb47d4cfb0eb98328797ee5"
+    },
+    {
+      "path": "docs/evidence/cpu-sustained-20261017/source/b8009c4995d9b912bc21ee43d9aeeddccc601b2dac2cb6d24d9cf10698518851.bin",
+      "bytes": 20403,
+      "sha256": "b8009c4995d9b912bc21ee43d9aeeddccc601b2dac2cb6d24d9cf10698518851"
+    },
+    {
+      "path": "docs/evidence/cpu-sustained-20261017/source/bdbd59b4c732f80d9be59e3a51f4575420f95e98f82c1b9723dc6662bbeaaee4.bin",
+      "bytes": 8169,
+      "sha256": "bdbd59b4c732f80d9be59e3a51f4575420f95e98f82c1b9723dc6662bbeaaee4"
+    },
+    {
+      "path": "docs/evidence/cpu-sustained-20261017/source/c2ea4ca037bc2e735544c9cff638d51958a8a756132ed92dd7ae0191cbab6c89.bin",
+      "bytes": 22687,
+      "sha256": "c2ea4ca037bc2e735544c9cff638d51958a8a756132ed92dd7ae0191cbab6c89"
+    },
+    {
+      "path": "docs/evidence/cpu-sustained-20261017/source/dcb55f757fc5b9fcd85547c7acdad1c9b1697b210504e76f2ff45ad3b6097fa3.bin",
+      "bytes": 3774,
+      "sha256": "dcb55f757fc5b9fcd85547c7acdad1c9b1697b210504e76f2ff45ad3b6097fa3"
+    },
+    {
+      "path": "docs/evidence/cpu-sustained-20261017/source/ddcfc369094d61212b4ac0c76b014eb0355e4c81034d33647cca27f9d7bb3dd9.bin",
+      "bytes": 10982,
+      "sha256": "ddcfc369094d61212b4ac0c76b014eb0355e4c81034d33647cca27f9d7bb3dd9"
+    },
+    {
+      "path": "docs/evidence/cpu-sustained-20261017/source/e0ad94f1432bc2947ca8c24eac3964861edf278d755b12cc3695c147cf2284d8.bin",
+      "bytes": 2423,
+      "sha256": "e0ad94f1432bc2947ca8c24eac3964861edf278d755b12cc3695c147cf2284d8"
+    },
+    {
+      "path": "docs/evidence/cpu-sustained-20261017/source/e41467dc99285deb09819792f959a44acd499ce3f1dc21f24fbc76e8dedc9efb.bin",
+      "bytes": 743,
+      "sha256": "e41467dc99285deb09819792f959a44acd499ce3f1dc21f24fbc76e8dedc9efb"
+    },
+    {
+      "path": "docs/evidence/cpu-sustained-20261017/source/e664ebc959f1a31f4e874f8dde66a2a75986ac62c5d0b6252903166af15564f1.bin",
+      "bytes": 1885,
+      "sha256": "e664ebc959f1a31f4e874f8dde66a2a75986ac62c5d0b6252903166af15564f1"
+    },
+    {
+      "path": "docs/evidence/cpu-sustained-20261017/source/e8f9e93d6f7c3198a8e6abf45cd2cb57d7bc89cc0e00f804c7dba3d9bdc81dc6.bin",
+      "bytes": 20106,
+      "sha256": "e8f9e93d6f7c3198a8e6abf45cd2cb57d7bc89cc0e00f804c7dba3d9bdc81dc6"
+    },
+    {
+      "path": "docs/evidence/cpu-sustained-20261017/source/f1077495d99c48dd8573e8d416b04181a875eb523f0c676944bf3d3612d1c3d1.bin",
+      "bytes": 6294,
+      "sha256": "f1077495d99c48dd8573e8d416b04181a875eb523f0c676944bf3d3612d1c3d1"
+    },
+    {
+      "path": "docs/evidence/cpu-sustained-20261017/source/f274e5ade08f236761754166b29d2018355d175ccdf40da60d846ef6fab0def9.bin",
+      "bytes": 6146,
+      "sha256": "f274e5ade08f236761754166b29d2018355d175ccdf40da60d846ef6fab0def9"
+    },
+    {
+      "path": "docs/evidence/cpu-sustained-20261017/source/f90e5dda57a1adfa205d92d2fb8c98757497246cae5da8e3bda99aeacd778386.bin",
+      "bytes": 1515,
+      "sha256": "f90e5dda57a1adfa205d92d2fb8c98757497246cae5da8e3bda99aeacd778386"
+    },
+    {
+      "path": "docs/evidence/cpu-sustained-20261017/source/fdd030cc3b517a4ea108ad57c2f11199ab7a530d9eb4f095e136cd69d25f9be9.bin",
+      "bytes": 4848,
+      "sha256": "fdd030cc3b517a4ea108ad57c2f11199ab7a530d9eb4f095e136cd69d25f9be9"
+    },
+    {
+      "path": "docs/evidence/cpu-sustained-20261017/source-record.json",
+      "bytes": 5600,
+      "sha256": "e40cb9388e651036150b1cf13afb8319d7a8f8a3ed99dd56d9ef6f99a98cb989"
+    },
+    {
+      "path": "docs/evidence/cpu-sustained-20261017/storage-runtime-tests.json",
+      "bytes": 21064,
+      "sha256": "8d9ba120e542170473aa21d68580f32fc3d31bbd3939e8b779a764664fa4ba3e"
+    }
+  ]
+}

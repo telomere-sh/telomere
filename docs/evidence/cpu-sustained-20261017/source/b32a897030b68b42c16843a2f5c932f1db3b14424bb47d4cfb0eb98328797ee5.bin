@@ -1,0 +1,32 @@
+import {readFile,writeFile} from 'node:fs/promises';
+import {createHash} from 'node:crypto';
+import {parseProfile} from '/opt/telomere-mainnet-pilot/app/dist/src/operator/profile.js';
+import {loadConfig} from '/opt/telomere-mainnet-pilot/app/dist/src/config.js';
+import {ChainBridge} from '/opt/telomere-mainnet-pilot/app/dist/src/bridge.js';
+import {Service} from '/opt/telomere-mainnet-pilot/app/dist/src/service.js';
+import {storeSchema} from '/opt/telomere-mainnet-pilot/app/dist/src/store.js';
+import {tokenAbi} from '/opt/telomere-mainnet-pilot/app/dist/src/chain/abi.js';
+import pg from '/opt/telomere-mainnet-pilot/app/node_modules/pg/lib/index.js';
+import {drizzle} from '/opt/telomere-mainnet-pilot/app/node_modules/drizzle-orm/node-postgres/index.js';
+const base='/opt/telomere-mainnet-pilot';
+const cfg=loadConfig(parseProfile(await readFile(base+'/private/mainnet.env','utf8'))),bridge=new ChainBridge(cfg);
+const owner='0xa67c6a174409b9b44e67d24cdd386a31d44edb1d';
+const c=new pg.Client({connectionString:cfg.DATABASE_URL});await c.connect();
+try{
+  await bridge.check();
+  const service=new Service(drizzle(c,{schema:storeSchema,casing:'snake_case'}),bridge,cfg,false);
+  const balance=await service.balance(owner),gas=await bridge.public.getBalance({address:bridge.account.address});
+  const logs=await bridge.public.getLogs({address:cfg.ESCROW_ADDRESS,fromBlock:52733300n,toBlock:52733400n});
+  const withdrawalFound=logs.some(l=>l.transactionHash==='0xc4c6d4d18a4b220696b801aa8067d5f12d60ac7c64fc7c5986c52d5c37889953');
+  const tokenBalance=address=>bridge.public.readContract({address:cfg.TOKEN_ADDRESS,abi:tokenAbi,functionName:'balanceOf',args:[address]});
+  const escrow=await tokenBalance(cfg.ESCROW_ADDRESS),wallet=await tokenBalance(owner);
+  const states=(await c.query('SELECT status,count(*)::integer AS count FROM jobs GROUP BY status ORDER BY status')).rows;
+  if(balance.available!=='0'||balance.reserved!=='0'||escrow!==0n||gas!==98462564567330n||!withdrawalFound||states.length!==1||states[0].status!=='completed'||states[0].count!==2)throw Error('Mainnet state differs');
+  const expected=JSON.parse(await readFile(base+'/private/expected.json','utf8'));
+  const router=await readFile(base+'/operator/base-rpc-router/router.mjs');
+  const r={passed:true,observedAt:new Date().toISOString(),chainId:8453,configurationAndAssetPinsPassed:true,releaseId:expected.releaseId,runtimePins:expected.runtimePins.length,
+    operatorGasWei:gas,availableAtomicUsdc:balance.available,reservedAtomicUsdc:balance.reserved,escrowAtomicUsdc:escrow,ownerWalletAtomicUsdc:wallet,states,
+    mainnetTransactionsSentByThisVerification:0,operatorGasUnchanged:true,logRangeBlocks:101,priorWithdrawalFound:withdrawalFound,routerSha256:createHash('sha256').update(router).digest('hex')};
+  const text=JSON.stringify(r,(_,v)=>typeof v==='bigint'?v.toString():v,2)+'\n';
+  await writeFile(base+'/work/cpu-launch-mainnet-verification.json',text);process.stdout.write(text);
+}finally{await c.end()}

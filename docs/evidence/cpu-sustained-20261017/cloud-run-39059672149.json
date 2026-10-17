@@ -1,0 +1,65 @@
+{
+  "run": {
+    "id": 39059672149,
+    "status": "completed",
+    "conclusion": "success",
+    "html_url": "https://github.com/telomere-sh/telomere-ops-backups/actions/runs/39059672149",
+    "head_sha": "d69d3ea6a2a6f3547db12b53caa76fb0fd68a137",
+    "event": "workflow_dispatch"
+  },
+  "reports": [
+    {
+      "scope": "independent cloud CPU operations",
+      "mainnetTransactions": 0,
+      "cpuSoak": {
+        "state": "running",
+        "requests": 1210,
+        "cpuRuns": 1,
+        "elapsedSeconds": 120.020124313,
+        "targetSeconds": 43200,
+        "progressAgeSeconds": 7.516894
+      },
+      "cloudRestore": {
+        "passed": true,
+        "tables": 45,
+        "rows": 23,
+        "elapsedSeconds": 14.531,
+        "network": "none",
+        "controllerStarted": false
+      },
+      "backupId": "backup-20261017T184722Z-ad0d84b0",
+      "backupVerified": {
+        "id": "backup-20261017T184722Z-ad0d84b0",
+        "verifiedFiles": 20,
+        "authenticatedAgeDecryption": true,
+        "manifestChecksumsValid": true,
+        "verifiedAt": 1792262937.633966,
+        "runtimeBundle": {
+          "id": "runtime-ef6436151e2d098c21a46e1512a140e6f0cbf548-b4f0178d4d679012",
+          "sha256": "e5688ebc69be113e9ce76ab589cfcc77f880bcd7f9ab9a6c84ad1224898ebb9b",
+          "bytes": 344218917,
+          "runtimePinsVerified": 749,
+          "files": 22137
+        }
+      },
+      "runtimeVerified": {
+        "id": "runtime-ef6436151e2d098c21a46e1512a140e6f0cbf548-b4f0178d4d679012",
+        "verifiedFiles": 22137,
+        "authenticatedAgeDecryption": true,
+        "manifestChecksumsValid": true,
+        "verifiedAt": 1792262916.557503
+      },
+      "independentStorageReadback": true,
+      "snapshotCopyAttempts": 1,
+      "retention": {
+        "retentionApplied": true,
+        "snapshotsKept": 4,
+        "snapshotsRemoved": 0
+      },
+      "passed": true,
+      "alerts": [],
+      "syntheticSshOutage": false,
+      "observedAt": "2026-10-17T18:49:18.574737+00:00"
+    }
+  ]
+}

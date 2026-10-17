@@ -1,0 +1,820 @@
+{
+  "numTotalTestSuites": 10,
+  "numPassedTestSuites": 10,
+  "numFailedTestSuites": 0,
+  "numPendingTestSuites": 0,
+  "numTotalTests": 62,
+  "numPassedTests": 62,
+  "numFailedTests": 0,
+  "numPendingTests": 0,
+  "numTodoTests": 0,
+  "snapshot": {
+    "added": 0,
+    "failure": false,
+    "filesAdded": 0,
+    "filesRemoved": 0,
+    "filesRemovedList": [],
+    "filesUnmatched": 0,
+    "filesUpdated": 0,
+    "matched": 0,
+    "total": 0,
+    "unchecked": 0,
+    "uncheckedKeysByFile": [],
+    "unmatched": 0,
+    "updated": 0,
+    "didUpdate": false
+  },
+  "startTime": 1792262026025,
+  "success": true,
+  "testResults": [
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "Base RPC transport failover"
+          ],
+          "fullName": "Base RPC transport failover passes canonical-state parameters and successful results through unchanged",
+          "status": "passed",
+          "title": "passes canonical-state parameters and successful results through unchanged",
+          "duration": 10.550000000000011,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "Base RPC transport failover"
+          ],
+          "fullName": "Base RPC transport failover fails over rate-limited reads without substituting block selectors",
+          "status": "passed",
+          "title": "fails over rate-limited reads without substituting block selectors",
+          "duration": 1.2230000000000132,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "Base RPC transport failover"
+          ],
+          "fullName": "Base RPC transport failover routes event history to the compatible upstream first",
+          "status": "passed",
+          "title": "routes event history to the compatible upstream first",
+          "duration": 0.8238000000000056,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "Base RPC transport failover"
+          ],
+          "fullName": "Base RPC transport failover keeps exact receipt-block logs on the compatible archive upstream",
+          "status": "passed",
+          "title": "keeps exact receipt-block logs on the compatible archive upstream",
+          "duration": 0.595799999999997,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "Base RPC transport failover"
+          ],
+          "fullName": "Base RPC transport failover fails over an HTTP log-range refusal without changing the filter",
+          "status": "passed",
+          "title": "fails over an HTTP log-range refusal without changing the filter",
+          "duration": 0.9816000000000145,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "Base RPC transport failover"
+          ],
+          "fullName": "Base RPC transport failover bounds streamed upstream data before parsing",
+          "status": "passed",
+          "title": "bounds streamed upstream data before parsing",
+          "duration": 3.533399999999972,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "Base RPC transport failover"
+          ],
+          "fullName": "Base RPC transport failover does not retry contract reverts",
+          "status": "passed",
+          "title": "does not retry contract reverts",
+          "duration": 0.8944999999999936,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "Base RPC transport failover"
+          ],
+          "fullName": "Base RPC transport failover never retries a signed broadcast even when its outcome is unknown",
+          "status": "passed",
+          "title": "never retries a signed broadcast even when its outcome is unknown",
+          "duration": 0.8290000000000077,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "Base RPC transport failover"
+          ],
+          "fullName": "Base RPC transport failover rejects mismatched upstream request IDs",
+          "status": "passed",
+          "title": "rejects mismatched upstream request IDs",
+          "duration": 0.9873999999999796,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "Base RPC transport failover"
+          ],
+          "fullName": "Base RPC transport failover rejects signing methods at the HTTP boundary",
+          "status": "passed",
+          "title": "rejects signing methods at the HTTP boundary",
+          "duration": 42.342100000000016,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1792262110780,
+      "endTime": 1792262110843.342,
+      "status": "passed",
+      "message": "",
+      "name": "C:/Users/Administrator/Downloads/telomere/tests/base-rpc-router.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "Telomere escrow on a real disposable local EVM"
+          ],
+          "fullName": "Telomere escrow on a real disposable local EVM matches the Solidity EIP-712 domain and exact quote encoding",
+          "status": "passed",
+          "title": "matches the Solidity EIP-712 domain and exact quote encoding",
+          "duration": 12.001899999999296,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "Telomere escrow on a real disposable local EVM"
+          ],
+          "fullName": "Telomere escrow on a real disposable local EVM withdraws only available funds, preserving the entire pending ceiling",
+          "status": "passed",
+          "title": "withdraws only available funds, preserving the entire pending ceiling",
+          "duration": 41.294200000000274,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "Telomere escrow on a real disposable local EVM"
+          ],
+          "fullName": "Telomere escrow on a real disposable local EVM atomically rejects concurrent ceilings exceeding the hour cap",
+          "status": "passed",
+          "title": "atomically rejects concurrent ceilings exceeding the hour cap",
+          "duration": 38.68629999999757,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "Telomere escrow on a real disposable local EVM"
+          ],
+          "fullName": "Telomere escrow on a real disposable local EVM carries all unfinished reservations across both hour and day boundaries",
+          "status": "passed",
+          "title": "carries all unfinished reservations across both hour and day boundaries",
+          "duration": 37.64810000000216,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "Telomere escrow on a real disposable local EVM"
+          ],
+          "fullName": "Telomere escrow on a real disposable local EVM separately enforces the day cap after the hour rolls",
+          "status": "passed",
+          "title": "separately enforces the day cap after the hour rolls",
+          "duration": 51.50800000000163,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "Telomere escrow on a real disposable local EVM"
+          ],
+          "fullName": "Telomere escrow on a real disposable local EVM rejects quote replay, wrong-chain signatures, payer substitution and unapproved callers",
+          "status": "passed",
+          "title": "rejects quote replay, wrong-chain signatures, payer substitution and unapproved callers",
+          "duration": 27.75879999999961,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "Telomere escrow on a real disposable local EVM"
+          ],
+          "fullName": "Telomere escrow on a real disposable local EVM allows the named agent to reserve only its owner's funds",
+          "status": "passed",
+          "title": "allows the named agent to reserve only its owner's funds",
+          "duration": 17.332299999998213,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "Telomere escrow on a real disposable local EVM"
+          ],
+          "fullName": "Telomere escrow on a real disposable local EVM never changes an existing leash owner or revives a killed leash",
+          "status": "passed",
+          "title": "never changes an existing leash owner or revives a killed leash",
+          "duration": 16.344199999999546,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "Telomere escrow on a real disposable local EVM"
+          ],
+          "fullName": "Telomere escrow on a real disposable local EVM allows any relayer to settle actual usage and returns the unused balance atomically",
+          "status": "passed",
+          "title": "allows any relayer to settle actual usage and returns the unused balance atomically",
+          "duration": 24.702699999998003,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "Telomere escrow on a real disposable local EVM"
+          ],
+          "fullName": "Telomere escrow on a real disposable local EVM blocks new runs after kill but pays work accepted before kill, with a wall-time cutoff",
+          "status": "passed",
+          "title": "blocks new runs after kill but pays work accepted before kill, with a wall-time cutoff",
+          "duration": 26.648799999999028,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "Telomere escrow on a real disposable local EVM"
+          ],
+          "fullName": "Telomere escrow on a real disposable local EVM a stop stamps the cutoff without permitting an immediate unearned full refund",
+          "status": "passed",
+          "title": "a stop stamps the cutoff without permitting an immediate unearned full refund",
+          "duration": 19.178100000000995,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "Telomere escrow on a real disposable local EVM"
+          ],
+          "fullName": "Telomere escrow on a real disposable local EVM permits full timeout refund by an unrelated caller and excludes all later settlements",
+          "status": "passed",
+          "title": "permits full timeout refund by an unrelated caller and excludes all later settlements",
+          "duration": 18.565700000002835,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "Telomere escrow on a real disposable local EVM"
+          ],
+          "fullName": "Telomere escrow on a real disposable local EVM has no overlap between settlement and refund at the exact grace boundary",
+          "status": "passed",
+          "title": "has no overlap between settlement and refund at the exact grace boundary",
+          "duration": 14.316999999999098,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "Telomere escrow on a real disposable local EVM"
+          ],
+          "fullName": "Telomere escrow on a real disposable local EVM accepts a signed zero-charge failure receipt and rejects empty/reused hashes and partial inference fees",
+          "status": "passed",
+          "title": "accepts a signed zero-charge failure receipt and rejects empty/reused hashes and partial inference fees",
+          "duration": 29.55160000000251,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "Telomere escrow on a real disposable local EVM"
+          ],
+          "fullName": "Telomere escrow on a real disposable local EVM rejects fake signer, premature seconds and ceilings beyond the 120-second pilot",
+          "status": "passed",
+          "title": "rejects fake signer, premature seconds and ceilings beyond the 120-second pilot",
+          "duration": 22.270300000000134,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "Telomere escrow on a real disposable local EVM"
+          ],
+          "fullName": "Telomere escrow on a real disposable local EVM resists token callback reentrancy and rolls back fee-on-transfer deposits",
+          "status": "passed",
+          "title": "resists token callback reentrancy and rolls back fee-on-transfer deposits",
+          "duration": 56.03259999999864,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1792262106354,
+      "endTime": 1792262106808.0327,
+      "status": "passed",
+      "message": "",
+      "name": "C:/Users/Administrator/Downloads/telomere/tests/contracts.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "wallet \u2192 escrow \u2192 CPU \u2192 signed receipt \u2192 settlement"
+          ],
+          "fullName": "wallet \u2192 escrow \u2192 CPU \u2192 signed receipt \u2192 settlement sign-in challenges are bound to address, domain and chain, consumed once",
+          "status": "passed",
+          "title": "sign-in challenges are bound to address, domain and chain, consumed once",
+          "duration": 16.543100000002596,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "wallet \u2192 escrow \u2192 CPU \u2192 signed receipt \u2192 settlement"
+          ],
+          "fullName": "wallet \u2192 escrow \u2192 CPU \u2192 signed receipt \u2192 settlement rejects cross-origin mutations and unauthenticated reads",
+          "status": "passed",
+          "title": "rejects cross-origin mutations and unauthenticated reads",
+          "duration": 1.3590000000003783,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "wallet \u2192 escrow \u2192 CPU \u2192 signed receipt \u2192 settlement"
+          ],
+          "fullName": "wallet \u2192 escrow \u2192 CPU \u2192 signed receipt \u2192 settlement reserves once, produces SHA-256 output and returns unused funds",
+          "status": "passed",
+          "title": "reserves once, produces SHA-256 output and returns unused funds",
+          "duration": 205.39410000000134,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "wallet \u2192 escrow \u2192 CPU \u2192 signed receipt \u2192 settlement"
+          ],
+          "fullName": "wallet \u2192 escrow \u2192 CPU \u2192 signed receipt \u2192 settlement wallet/tenant cannot admit or read another owner run",
+          "status": "passed",
+          "title": "wallet/tenant cannot admit or read another owner run",
+          "duration": 9.616299999997864,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "wallet \u2192 escrow \u2192 CPU \u2192 signed receipt \u2192 settlement"
+          ],
+          "fullName": "wallet \u2192 escrow \u2192 CPU \u2192 signed receipt \u2192 settlement a stop before dispatch executes zero work and releases the reservation",
+          "status": "passed",
+          "title": "a stop before dispatch executes zero work and releases the reservation",
+          "duration": 78.42020000000048,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "wallet \u2192 escrow \u2192 CPU \u2192 signed receipt \u2192 settlement"
+          ],
+          "fullName": "wallet \u2192 escrow \u2192 CPU \u2192 signed receipt \u2192 settlement contract confirmation is required before queue admission",
+          "status": "passed",
+          "title": "contract confirmation is required before queue admission",
+          "duration": 15.112099999998463,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "wallet \u2192 escrow \u2192 CPU \u2192 signed receipt \u2192 settlement"
+          ],
+          "fullName": "wallet \u2192 escrow \u2192 CPU \u2192 signed receipt \u2192 settlement serializes public quote admission and preserves idempotent replay at capacity",
+          "status": "passed",
+          "title": "serializes public quote admission and preserves idempotent replay at capacity",
+          "duration": 82.25050000000192,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "wallet \u2192 escrow \u2192 CPU \u2192 signed receipt \u2192 settlement"
+          ],
+          "fullName": "wallet \u2192 escrow \u2192 CPU \u2192 signed receipt \u2192 settlement retains a paid reservation when the queue is full and admits it later without another payment",
+          "status": "passed",
+          "title": "retains a paid reservation when the queue is full and admits it later without another payment",
+          "duration": 98.76849999999831,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1792262085163,
+      "endTime": 1792262085670.7686,
+      "status": "passed",
+      "message": "",
+      "name": "C:/Users/Administrator/Downloads/telomere/tests/service.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "durable worker with real disposable PostgreSQL semantics"
+          ],
+          "fullName": "durable worker with real disposable PostgreSQL semantics persists the provider dispatch marker and never repeats an ambiguous paid request after restart",
+          "status": "passed",
+          "title": "persists the provider dispatch marker and never repeats an ambiguous paid request after restart",
+          "duration": 1725.8247999999994,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "durable worker with real disposable PostgreSQL semantics"
+          ],
+          "fullName": "durable worker with real disposable PostgreSQL semantics atomically claims one queued workload across concurrent drains",
+          "status": "passed",
+          "title": "atomically claims one queued workload across concurrent drains",
+          "duration": 1464.3315999999995,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "durable worker with real disposable PostgreSQL semantics"
+          ],
+          "fullName": "durable worker with real disposable PostgreSQL semantics quarantines a crash between the persisted provider intent and its result",
+          "status": "passed",
+          "title": "quarantines a crash between the persisted provider intent and its result",
+          "duration": 1432.1493999999993,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "durable worker with real disposable PostgreSQL semantics"
+          ],
+          "fullName": "durable worker with real disposable PostgreSQL semantics settles a durably stored successful NEAR result after restart with no second dispatch",
+          "status": "passed",
+          "title": "settles a durably stored successful NEAR result after restart with no second dispatch",
+          "duration": 1799.3849999999993,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "durable worker with real disposable PostgreSQL semantics"
+          ],
+          "fullName": "durable worker with real disposable PostgreSQL semantics keeps a completed CPU result across restart before receipt creation without another workload",
+          "status": "passed",
+          "title": "keeps a completed CPU result across restart before receipt creation without another workload",
+          "duration": 2753.061599999999,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "durable worker with real disposable PostgreSQL semantics"
+          ],
+          "fullName": "durable worker with real disposable PostgreSQL semantics retains valid saved CPU observations when a recovery RPC fails and recovers once RPC returns",
+          "status": "passed",
+          "title": "retains valid saved CPU observations when a recovery RPC fails and recovers once RPC returns",
+          "duration": 2443.657000000001,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "durable worker with real disposable PostgreSQL semantics"
+          ],
+          "fullName": "durable worker with real disposable PostgreSQL semantics retains a durable successful provider result when recovery RPC is unavailable",
+          "status": "passed",
+          "title": "retains a durable successful provider result when recovery RPC is unavailable",
+          "duration": 2396.097899999999,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "durable worker with real disposable PostgreSQL semantics"
+          ],
+          "fullName": "durable worker with real disposable PostgreSQL semantics restores the journal transaction hash when mining preceded the final database update",
+          "status": "passed",
+          "title": "restores the journal transaction hash when mining preceded the final database update",
+          "duration": 2149.7445000000007,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "durable worker with real disposable PostgreSQL semantics"
+          ],
+          "fullName": "durable worker with real disposable PostgreSQL semantics refuses tampered persisted observations and quarantines future CPU dispatch",
+          "status": "passed",
+          "title": "refuses tampered persisted observations and quarantines future CPU dispatch",
+          "duration": 1233.2953000000016,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "durable worker with real disposable PostgreSQL semantics"
+          ],
+          "fullName": "durable worker with real disposable PostgreSQL semantics quarantines an unconfirmed container cleanup until exclusive startup cleanup succeeds",
+          "status": "passed",
+          "title": "quarantines an unconfirmed container cleanup until exclusive startup cleanup succeeds",
+          "duration": 1295.096300000001,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "durable worker with real disposable PostgreSQL semantics"
+          ],
+          "fullName": "durable worker with real disposable PostgreSQL semantics holds funds when a successful provider result cannot be persisted instead of settling a false zero inference charge",
+          "status": "passed",
+          "title": "holds funds when a successful provider result cannot be persisted instead of settling a false zero inference charge",
+          "duration": 1199.7850999999973,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "durable worker with real disposable PostgreSQL semantics"
+          ],
+          "fullName": "durable worker with real disposable PostgreSQL semantics does not produce a zero-price receipt when CPU tick persistence fails after work ran",
+          "status": "passed",
+          "title": "does not produce a zero-price receipt when CPU tick persistence fails after work ran",
+          "duration": 1350.7782000000007,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "durable worker with real disposable PostgreSQL semantics"
+          ],
+          "fullName": "durable worker with real disposable PostgreSQL semantics uses only already-persisted CPU ticks on restart without executing the workload again",
+          "status": "passed",
+          "title": "uses only already-persisted CPU ticks on restart without executing the workload again",
+          "duration": 1325.5548999999992,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "durable worker with real disposable PostgreSQL semantics"
+          ],
+          "fullName": "durable worker with real disposable PostgreSQL semantics polls an onchain stop and cancels CPU execution before attempting NEAR",
+          "status": "passed",
+          "title": "polls an onchain stop and cancels CPU execution before attempting NEAR",
+          "duration": 2439.448700000001,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "durable worker with real disposable PostgreSQL semantics"
+          ],
+          "fullName": "durable worker with real disposable PostgreSQL semantics passes an already-aborted CPU signal and never calls NEAR after the escrow refund deadline",
+          "status": "passed",
+          "title": "passes an already-aborted CPU signal and never calls NEAR after the escrow refund deadline",
+          "duration": 1497.1222000000016,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "durable worker with real disposable PostgreSQL semantics"
+          ],
+          "fullName": "durable worker with real disposable PostgreSQL semantics permits new settlement signing when the latest mined nonce proves a prior journal consumed",
+          "status": "passed",
+          "title": "permits new settlement signing when the latest mined nonce proves a prior journal consumed",
+          "duration": 1504.7884999999987,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "durable worker with real disposable PostgreSQL semantics"
+          ],
+          "fullName": "durable worker with real disposable PostgreSQL semantics blocks signing for an unresolved nonce even when its old job was externally refunded",
+          "status": "passed",
+          "title": "blocks signing for an unresolved nonce even when its old job was externally refunded",
+          "duration": 1303.493400000003,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "durable worker with real disposable PostgreSQL semantics"
+          ],
+          "fullName": "durable worker with real disposable PostgreSQL semantics replays the identical durable settlement transaction after a lost acknowledgement without repeating CPU",
+          "status": "passed",
+          "title": "replays the identical durable settlement transaction after a lost acknowledgement without repeating CPU",
+          "duration": 1374.5636000000013,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "durable worker with real disposable PostgreSQL semantics"
+          ],
+          "fullName": "durable worker with real disposable PostgreSQL semantics keeps another tenant's run, receipt and output inaccessible",
+          "status": "passed",
+          "title": "keeps another tenant's run, receipt and output inaccessible",
+          "duration": 1398.7862999999998,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1792262028495,
+      "endTime": 1792262060583.7864,
+      "status": "passed",
+      "message": "",
+      "name": "C:/Users/Administrator/Downloads/telomere/tests/worker.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "public wallet accounts and private workspace repository"
+          ],
+          "fullName": "public wallet accounts and private workspace repository allows a new independently signed wallet without a pilot entry",
+          "status": "passed",
+          "title": "allows a new independently signed wallet without a pilot entry",
+          "duration": 2.6291000000001077,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "public wallet accounts and private workspace repository"
+          ],
+          "fullName": "public wallet accounts and private workspace repository keeps allowlist mode closed and denies unapproved sessions too",
+          "status": "passed",
+          "title": "keeps allowlist mode closed and denies unapproved sessions too",
+          "duration": 2.294600000000173,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "public wallet accounts and private workspace repository"
+          ],
+          "fullName": "public wallet accounts and private workspace repository requires a signature from the challenged address and consumes nonce only once",
+          "status": "passed",
+          "title": "requires a signature from the challenged address and consumes nonce only once",
+          "duration": 21.078500000000076,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "public wallet accounts and private workspace repository"
+          ],
+          "fullName": "public wallet accounts and private workspace repository rejects an expired challenge",
+          "status": "passed",
+          "title": "rejects an expired challenge",
+          "duration": 4.577100000000428,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "public wallet accounts and private workspace repository"
+          ],
+          "fullName": "public wallet accounts and private workspace repository persists Alice\u2019s document and never returns it to Bob",
+          "status": "passed",
+          "title": "persists Alice\u2019s document and never returns it to Bob",
+          "duration": 8.480299999999716,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "public wallet accounts and private workspace repository"
+          ],
+          "fullName": "public wallet accounts and private workspace repository rejects stale revisions and concurrent first writes rather than losing changes",
+          "status": "passed",
+          "title": "rejects stale revisions and concurrent first writes rather than losing changes",
+          "duration": 6.2456999999999425,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "public wallet accounts and private workspace repository"
+          ],
+          "fullName": "public wallet accounts and private workspace repository rejects client supplied owner, forged balances and oversized plans",
+          "status": "passed",
+          "title": "rejects client supplied owner, forged balances and oversized plans",
+          "duration": 10.895500000000084,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "public wallet accounts and private workspace repository"
+          ],
+          "fullName": "public wallet accounts and private workspace repository rejects a stale tab\u2019s reads and writes after a different account replaced its cookie",
+          "status": "passed",
+          "title": "rejects a stale tab\u2019s reads and writes after a different account replaced its cookie",
+          "duration": 3.628400000000056,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "public wallet accounts and private workspace repository"
+          ],
+          "fullName": "public wallet accounts and private workspace repository requires same-origin JSON and authenticated sessions; revokes on logout",
+          "status": "passed",
+          "title": "requires same-origin JSON and authenticated sessions; revokes on logout",
+          "duration": 3.768000000000029,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1792262110372,
+      "endTime": 1792262110435.768,
+      "status": "passed",
+      "message": "",
+      "name": "C:/Users/Administrator/Downloads/telomere/tests/workspace-auth.test.ts"
+    }
+  ]
+}

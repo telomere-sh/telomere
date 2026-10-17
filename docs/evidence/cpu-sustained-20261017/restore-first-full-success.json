@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "passed": true,
+  "backupId": "backup-20261017T183837Z-5babdd63",
+  "runtimeId": "runtime-ef6436151e2d098c21a46e1512a140e6f0cbf548-6f21e0d622c59cc7",
+  "mainnetTransactions": 0,
+  "productionControllerRestarted": false,
+  "mainnetSignerPassedToApplication": false,
+  "completeVpsRebuild": false,
+  "authenticatedDecryption": true,
+  "dataMembers": 20,
+  "runtimeMembers": 22134,
+  "runtimePins": 749,
+  "productionDataRestore": {
+    "passed": true,
+    "tables": 45,
+    "rows": 23,
+    "elapsedSeconds": 4.638,
+    "network": "none",
+    "mainnetControllerStarted": false,
+    "databaseImage": "postgres@sha256:721873c34ceb9f8d8fc265984940dc982404c105f19ad51be9fdc5970a6080ea"
+  },
+  "archivedNodeVersion": "v22.23.3",
+  "archivedRunscExecutable": true,
+  "restoredProductionDataApi": {
+    "passed": true,
+    "owners": 1,
+    "restoredJobs": 2,
+    "authenticatedReads": 2,
+    "unauthenticatedStatus": 401,
+    "workerStarted": false,
+    "networkNamespace": "no interfaces or routes",
+    "productionSignerLoaded": false,
+    "syntheticSessionsRemoved": true,
+    "allOriginalTableFingerprintsPreserved": true
+  },
+  "restoredTlsProxy": {
+    "passed": true,
+    "checks": [
+      {
+        "path": "/",
+        "status": 200
+      },
+      {
+        "path": "/page.html",
+        "status": 200
+      },
+      {
+        "path": "/api/me",
+        "status": 401
+      },
+      {
+        "path": "/.env",
+        "status": 404
+      },
+      {
+        "path": "/src/main.ts",
+        "status": 404
+      }
+    ],
+    "privateLoopbackOnly": true,
+    "ephemeralTestCertificate": true,
+    "productionTlsOrDnsChanged": false
+  },
+  "archivedApplication": {
+    "schemaVersion": 1,
+    "state": "completed",
+    "startedAt": "2026-10-17T18:43:41.057Z",
+    "observedAt": "2026-10-17T18:44:41.063Z",
+    "targetSeconds": 60,
+    "elapsedSeconds": 60.00641168599999,
+    "httpOrigin": "http://127.0.0.1:31857",
+    "scope": "archived runtime, isolated PostgreSQL, local chain 31337, actual gVisor CPU",
+    "users": 50,
+    "burst": {
+      "users": 50,
+      "requests": 1000,
+      "concurrency": 50,
+      "elapsedSeconds": 1.7664532750000008,
+      "requestsPerSecond": 566.1061145248801,
+      "p50Ms": 93.65905999999995,
+      "p95Ms": 156.05325900000025,
+      "p99Ms": 176.53166500000043,
+      "errors": 0
+    },
+    "requests": 600,
+    "writes": 60,
+    "cpuRuns": 1,
+    "chargedAtomicTestTokens": "200",
+    "sessionRefreshes": 0,
+    "readsWhileCpuPending": 30,
+    "readsWhileCpuRunning": 30,
+    "errors": 0,
+    "p95UpperBoundMs": 20,
+    "p99UpperBoundMs": 20,
+    "maxLatencyMs": 17.541024999998626,
+    "maxWorkerRssKiB": 144088,
+    "mainnetTransactions": 0,
+    "mainnetSignerLoaded": false,
+    "reportDirectory": "/opt/telomere-mainnet-pilot/data/cpu-launch-acceptance-20261017/http-load-2IraJH"
+  },
+  "applicationRuntimePinsUnchanged": true,
+  "nginxConfigurationRetained": true,
+  "scratchRuntimeRemoved": true,
+  "elapsedSeconds": 89.187,
+  "report": "/opt/telomere-mainnet-pilot/data/cpu-launch-acceptance-20261017/restore-28635e9d122645ef.json"
+}

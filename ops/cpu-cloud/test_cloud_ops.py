@@ -10,6 +10,14 @@ ops = importlib.util.module_from_spec(spec); spec.loader.exec_module(ops)
 
 
 class ProtocolTests(unittest.TestCase):
+    def test_soak_report_has_no_unselected_fields(self):
+        result=cloud.soak_observation({'cpuSoakState':'running','cpuSoakRequests':100,'privateKey':'fixture','cpuSoakTargetSeconds':43200})
+        self.assertEqual(result,{'state':'running','requests':100,'targetSeconds':43200})
+        self.assertIsNone(cloud.soak_observation({}))
+    def test_soak_report_refuses_unknown_states_and_nonnumeric_values(self):
+        for value in ({'cpuSoakState':'unknown'},{'cpuSoakState':'running','cpuSoakRequests':True},
+                      {'cpuSoakState':'running','cpuSoakRequests':float('nan')},{'cpuSoakState':'running','cpuSoakRequests':'secret'}):
+            with self.assertRaises(ValueError):cloud.soak_observation(value)
     def test_no_shell_or_arbitrary_path(self):
         for request in ({'schemaVersion':1,'operation':'status','command':'id'},
             {'schemaVersion':1,'operation':'download','id':'../../private/mainnet.env'},

@@ -1,0 +1,537 @@
+{
+  "numTotalTestSuites": 7,
+  "numPassedTestSuites": 7,
+  "numFailedTestSuites": 0,
+  "numPendingTestSuites": 0,
+  "numTotalTests": 40,
+  "numPassedTests": 39,
+  "numFailedTests": 0,
+  "numPendingTests": 1,
+  "numTodoTests": 0,
+  "snapshot": {
+    "added": 0,
+    "failure": false,
+    "filesAdded": 0,
+    "filesRemoved": 0,
+    "filesRemovedList": [],
+    "filesUnmatched": 0,
+    "filesUpdated": 0,
+    "matched": 0,
+    "total": 0,
+    "unchecked": 0,
+    "uncheckedKeysByFile": [],
+    "unmatched": 0,
+    "updated": 0,
+    "didUpdate": false
+  },
+  "startTime": 1792262953649,
+  "success": true,
+  "testResults": [
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "bounded encrypted application Cysts"
+          ],
+          "fullName": "bounded encrypted application Cysts bounds aggregate storage across wallets while keeping existing snapshots readable and replayable",
+          "status": "passed",
+          "title": "bounds aggregate storage across wallets while keeping existing snapshots readable and replayable",
+          "duration": 1794.2145000000019,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "bounded encrypted application Cysts"
+          ],
+          "fullName": "bounded encrypted application Cysts encrypts in the client, uploads opaque ciphertext, downloads and restores portable state",
+          "status": "passed",
+          "title": "encrypts in the client, uploads opaque ciphertext, downloads and restores portable state",
+          "duration": 1279.146799999995,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "bounded encrypted application Cysts"
+          ],
+          "fullName": "bounded encrypted application Cysts uses independent random recovery keys and fresh 24-byte nonces",
+          "status": "passed",
+          "title": "uses independent random recovery keys and fresh 24-byte nonces",
+          "duration": 1230.6530000000057,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "bounded encrypted application Cysts"
+          ],
+          "fullName": "bounded encrypted application Cysts preserves caller-owned recovery keys across repeated restores, exports and failure paths",
+          "status": "passed",
+          "title": "preserves caller-owned recovery keys across repeated restores, exports and failure paths",
+          "duration": 1206.9941000000035,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "bounded encrypted application Cysts"
+          ],
+          "fullName": "bounded encrypted application Cysts validates combined agent/cursor queries and rejects list responses that change their scope",
+          "status": "passed",
+          "title": "validates combined agent/cursor queries and rejects list responses that change their scope",
+          "duration": 1237.071299999996,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "bounded encrypted application Cysts"
+          ],
+          "fullName": "bounded encrypted application Cysts authenticates owner as AEAD context",
+          "status": "passed",
+          "title": "authenticates owner as AEAD context",
+          "duration": 1293.2787000000026,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "bounded encrypted application Cysts"
+          ],
+          "fullName": "bounded encrypted application Cysts authenticates agent as AEAD context",
+          "status": "passed",
+          "title": "authenticates agent as AEAD context",
+          "duration": 1253.5982000000004,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "bounded encrypted application Cysts"
+          ],
+          "fullName": "bounded encrypted application Cysts authenticates id as AEAD context",
+          "status": "passed",
+          "title": "authenticates id as AEAD context",
+          "duration": 1211.2287999999971,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "bounded encrypted application Cysts"
+          ],
+          "fullName": "bounded encrypted application Cysts authenticates nonce as AEAD context",
+          "status": "passed",
+          "title": "authenticates nonce as AEAD context",
+          "duration": 1272.2782000000007,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "bounded encrypted application Cysts"
+          ],
+          "fullName": "bounded encrypted application Cysts authenticates applicationSchema as AEAD context",
+          "status": "passed",
+          "title": "authenticates applicationSchema as AEAD context",
+          "duration": 1208.4193999999989,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "bounded encrypted application Cysts"
+          ],
+          "fullName": "bounded encrypted application Cysts rejects tampered ciphertext even if its public digest was recomputed",
+          "status": "passed",
+          "title": "rejects tampered ciphertext even if its public digest was recomputed",
+          "duration": 1212.1730000000025,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "bounded encrypted application Cysts"
+          ],
+          "fullName": "bounded encrypted application Cysts enforces owner access on metadata, blobs, lists and uploads without revealing another tenant",
+          "status": "passed",
+          "title": "enforces owner access on metadata, blobs, lists and uploads without revealing another tenant",
+          "duration": 1481.9088000000047,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "bounded encrypted application Cysts"
+          ],
+          "fullName": "bounded encrypted application Cysts replays exactly one immutable upload and rejects changed idempotent requests or reused nonces",
+          "status": "passed",
+          "title": "replays exactly one immutable upload and rejects changed idempotent requests or reused nonces",
+          "duration": 1251.7899000000034,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "bounded encrypted application Cysts"
+          ],
+          "fullName": "bounded encrypted application Cysts atomically reserves quota under concurrent uploads",
+          "status": "passed",
+          "title": "atomically reserves quota under concurrent uploads",
+          "duration": 1207.601999999999,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "bounded encrypted application Cysts"
+          ],
+          "fullName": "bounded encrypted application Cysts also bounds tiny checkpoints by record count",
+          "status": "passed",
+          "title": "also bounds tiny checkpoints by record count",
+          "duration": 1215.0208000000057,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "bounded encrypted application Cysts"
+          ],
+          "fullName": "bounded encrypted application Cysts resumes a durable pending reservation after a failed filesystem write without double quota",
+          "status": "passed",
+          "title": "resumes a durable pending reservation after a failed filesystem write without double quota",
+          "duration": 1189.8372000000018,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "bounded encrypted application Cysts"
+          ],
+          "fullName": "bounded encrypted application Cysts recovers a durable blob after the ready database update fails on restart",
+          "status": "passed",
+          "title": "recovers a durable blob after the ready database update fails on restart",
+          "duration": 1201.7451,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "bounded encrypted application Cysts"
+          ],
+          "fullName": "bounded encrypted application Cysts restores metadata and ciphertext together after closing and reopening a persistent store",
+          "status": "passed",
+          "title": "restores metadata and ciphertext together after closing and reopening a persistent store",
+          "duration": 4797.618800000004,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "bounded encrypted application Cysts"
+          ],
+          "fullName": "bounded encrypted application Cysts bounds maximum upload and download and leaves the ordinary SDK response cap unchanged",
+          "status": "passed",
+          "title": "bounds maximum upload and download and leaves the ordinary SDK response cap unchanged",
+          "duration": 2149.7051999999967,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "bounded encrypted application Cysts"
+          ],
+          "fullName": "bounded encrypted application Cysts rejects keys, paths, malformed metadata, changed digests and noncanonical base64 before storage",
+          "status": "passed",
+          "title": "rejects keys, paths, malformed metadata, changed digests and noncanonical base64 before storage",
+          "duration": 1153.3304999999964,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "bounded encrypted application Cysts"
+          ],
+          "fullName": "bounded encrypted application Cysts detects ciphertext corruption and never overwrites the immutable blob",
+          "status": "passed",
+          "title": "detects ciphertext corruption and never overwrites the immutable blob",
+          "duration": 1203.2934000000096,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "bounded encrypted application Cysts"
+          ],
+          "fullName": "bounded encrypted application Cysts refuses a replaced storage directory by inode even when the pathname is unchanged",
+          "status": "passed",
+          "title": "refuses a replaced storage directory by inode even when the pathname is unchanged",
+          "duration": 1248.354999999996,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "bounded encrypted application Cysts"
+          ],
+          "fullName": "bounded encrypted application Cysts cleans only bounded private upload temporary files before accepting new requests",
+          "status": "passed",
+          "title": "cleans only bounded private upload temporary files before accepting new requests",
+          "duration": 1209.2615000000078,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "bounded encrypted application Cysts"
+          ],
+          "fullName": "bounded encrypted application Cysts enforces private POSIX modes and rejects symlink blobs or roots",
+          "status": "skipped",
+          "title": "enforces private POSIX modes and rejects symlink blobs or roots",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "bounded encrypted application Cysts"
+          ],
+          "fullName": "bounded encrypted application Cysts never discloses idempotency or internal storage paths through public metadata",
+          "status": "passed",
+          "title": "never discloses idempotency or internal storage paths through public metadata",
+          "duration": 1201.8144999999931,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "bounded encrypted application Cysts"
+          ],
+          "fullName": "bounded encrypted application Cysts uses real createApp authentication and origin guards, changing body limits only for mounted Cysts",
+          "status": "passed",
+          "title": "uses real createApp authentication and origin guards, changing body limits only for mounted Cysts",
+          "duration": 1344.2246000000014,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1792262992255,
+      "endTime": 1792263028311.2246,
+      "status": "passed",
+      "message": "",
+      "name": "C:/Users/Administrator/Downloads/telomere/tests/cysts.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "local command boundary"
+          ],
+          "fullName": "local command boundary terminates a process when combined output exceeds 16 KiB",
+          "status": "passed",
+          "title": "terminates a process when combined output exceeds 16 KiB",
+          "duration": 70.7062,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "local command boundary"
+          ],
+          "fullName": "local command boundary kills a running local process on cancellation",
+          "status": "passed",
+          "title": "kills a running local process on cancellation",
+          "duration": 45.21100000000001,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "local command boundary"
+          ],
+          "fullName": "local command boundary reports a missing executable without exposing child input",
+          "status": "passed",
+          "title": "reports a missing executable without exposing child input",
+          "duration": 16.766399999999976,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1792263029303,
+      "endTime": 1792263029435.7664,
+      "status": "passed",
+      "message": "",
+      "name": "C:/Users/Administrator/Downloads/telomere/tests/runtime-command.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "allowlisted CPU tasks"
+          ],
+          "fullName": "allowlisted CPU tasks executes actual fixed programs locally with deterministic bounded results",
+          "status": "passed",
+          "title": "executes actual fixed programs locally with deterministic bounded results",
+          "duration": 241.61829999999998,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "allowlisted CPU tasks"
+          ],
+          "fullName": "allowlisted CPU tasks rejects arbitrary commands, malformed data and all operator caps before dispatch",
+          "status": "passed",
+          "title": "rejects arbitrary commands, malformed data and all operator caps before dispatch",
+          "duration": 11.660399999999981,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "allowlisted CPU tasks"
+          ],
+          "fullName": "allowlisted CPU tasks executes the known SHA-256 digest chain without artificial delays",
+          "status": "passed",
+          "title": "executes the known SHA-256 digest chain without artificial delays",
+          "duration": 139.8813,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "allowlisted CPU tasks"
+          ],
+          "fullName": "allowlisted CPU tasks pre-aborted work has no dispatch or billable seconds",
+          "status": "passed",
+          "title": "pre-aborted work has no dispatch or billable seconds",
+          "duration": 0.9410000000000309,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "Docker runtime lifecycle and meter"
+          ],
+          "fullName": "Docker runtime lifecycle and meter creates an isolated cell, meters every five seconds and hashes the final output",
+          "status": "passed",
+          "title": "creates an isolated cell, meters every five seconds and hashes the final output",
+          "duration": 4.93119999999999,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "Docker runtime lifecycle and meter"
+          ],
+          "fullName": "Docker runtime lifecycle and meter kills and removes a cancelled container, including a lost attach outcome",
+          "status": "passed",
+          "title": "kills and removes a cancelled container, including a lost attach outcome",
+          "duration": 7.085100000000011,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "Docker runtime lifecycle and meter"
+          ],
+          "fullName": "Docker runtime lifecycle and meter enforces the deadline and cleans up without retrying execution",
+          "status": "passed",
+          "title": "enforces the deadline and cleans up without retrying execution",
+          "duration": 1.2800999999999476,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "Docker runtime lifecycle and meter"
+          ],
+          "fullName": "Docker runtime lifecycle and meter reports a container failure and refuses to hide a failed tick write",
+          "status": "passed",
+          "title": "reports a container failure and refuses to hide a failed tick write",
+          "duration": 0.963799999999992,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "Docker runtime lifecycle and meter"
+          ],
+          "fullName": "Docker runtime lifecycle and meter waits for a cancelled create acknowledgement and never starts the cell",
+          "status": "passed",
+          "title": "waits for a cancelled create acknowledgement and never starts the cell",
+          "duration": 0.7554000000000087,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "Docker runtime lifecycle and meter"
+          ],
+          "fullName": "Docker runtime lifecycle and meter attempts cleanup after a lost create acknowledgement and surfaces failed removal",
+          "status": "passed",
+          "title": "attempts cleanup after a lost create acknowledgement and surfaces failed removal",
+          "duration": 0.6999000000000706,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "Docker runtime lifecycle and meter"
+          ],
+          "fullName": "Docker runtime lifecycle and meter cleans only labelled, validated orphan names during exclusive recovery",
+          "status": "passed",
+          "title": "cleans only labelled, validated orphan names during exclusive recovery",
+          "duration": 0.6800000000000637,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1792263028637,
+      "endTime": 1792263029048.68,
+      "status": "passed",
+      "message": "",
+      "name": "C:/Users/Administrator/Downloads/telomere/tests/runtime.test.ts"
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 """Independent hosted backup verifier and outage pager. No application execution."""
-import argparse, datetime, hashlib, json, os, re, select, subprocess, tarfile, tempfile, time, traceback, urllib.request
+import argparse, datetime, hashlib, json, math, os, re, select, subprocess, tarfile, tempfile, time, traceback, urllib.request
 from pathlib import Path, PurePosixPath
 from github_store import GitHubStore, digest
 from pager import delivery_plan, send
@@ -8,6 +8,24 @@ MAX_ARCHIVE = 512 * 1024**2
 DELIVERY_ATTEMPTED = False
 BACKUP_ID = re.compile(r'backup-[0-9]{8}T[0-9]{6}Z-[0-9a-f]{8}')
 RUNTIME_ID = re.compile(r'runtime-[0-9a-f]{40}-[0-9a-f]{16}')
+
+def soak_observation(monitor):
+    """Retain only numeric acceptance counters in private hosted run evidence."""
+    if 'cpuSoakState' not in monitor:
+        return None
+    state = monitor['cpuSoakState']
+    if state not in ('running', 'failed', 'completed', 'invalid'):
+        raise ValueError('Unknown soak observation')
+    result = {'state': state}
+    fields = {'requests': 'cpuSoakRequests', 'cpuRuns': 'cpuSoakRuns', 'elapsedSeconds': 'cpuSoakElapsedSeconds',
+              'targetSeconds': 'cpuSoakTargetSeconds', 'progressAgeSeconds': 'cpuSoakProgressAgeSeconds'}
+    for target, source in fields.items():
+        if source in monitor:
+            value = monitor[source]
+            if type(value) not in (int, float) or not math.isfinite(value) or not 0 <= value <= 10**12:
+                raise ValueError('Invalid soak counter')
+            result[target] = value
+    return result
 
 
 def validate_archive_metadata(value, runtime=False):
@@ -281,6 +299,9 @@ def run():
             status, runtime_proof, data_proof, restored, attempts = copy_current_backup(store, exporter, identity, folder,
                 os.environ.get('TELOMERE_RESTORE_REHEARSAL') == 'true')
             monitor, backup = status['monitor'], status['backup']
+            soak = soak_observation(monitor)
+            if soak is not None:
+                report['cpuSoak'] = soak
             observed = datetime.datetime.fromisoformat(monitor['observedAt']).timestamp()
             if time.time() - observed > 300:
                 alerts.append('LOCAL_MONITOR_STALE')

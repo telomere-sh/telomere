@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 1,
+  "scope": "Exact acceptance, recovery and security-check sources; archived production app retains its 749 runtime pins",
+  "files": [
+    {
+      "originalPath": "ops/cpu-launch/docker-load.py",
+      "path": "source/6e3d716245f3fb432d8240d279799b0c9d5e6b1ad4968d54aee80956a37651dc.bin",
+      "bytes": 1064,
+      "sha256": "6e3d716245f3fb432d8240d279799b0c9d5e6b1ad4968d54aee80956a37651dc"
+    },
+    {
+      "originalPath": "ops/cpu-launch/launch-acceptance.py",
+      "path": "source/dcb55f757fc5b9fcd85547c7acdad1c9b1697b210504e76f2ff45ad3b6097fa3.bin",
+      "bytes": 3774,
+      "sha256": "dcb55f757fc5b9fcd85547c7acdad1c9b1697b210504e76f2ff45ad3b6097fa3"
+    },
+    {
+      "originalPath": "ops/cpu-launch/mainnet-ops.py",
+      "path": "source/9093dd7fd52a5005470db20e1809b036899e5843010879f1479ce115d8e9f0a4.bin",
+      "bytes": 23080,
+      "sha256": "9093dd7fd52a5005470db20e1809b036899e5843010879f1479ce115d8e9f0a4"
+    },
+    {
+      "originalPath": "ops/cpu-launch/offhost.py",
+      "path": "source/bdbd59b4c732f80d9be59e3a51f4575420f95e98f82c1b9723dc6662bbeaaee4.bin",
+      "bytes": 8169,
+      "sha256": "bdbd59b4c732f80d9be59e3a51f4575420f95e98f82c1b9723dc6662bbeaaee4"
+    },
+    {
+      "originalPath": "ops/cpu-launch/restore-rehearsal.py",
+      "path": "source/b8009c4995d9b912bc21ee43d9aeeddccc601b2dac2cb6d24d9cf10698518851.bin",
+      "bytes": 20403,
+      "sha256": "b8009c4995d9b912bc21ee43d9aeeddccc601b2dac2cb6d24d9cf10698518851"
+    },
+    {
+      "originalPath": "ops/cpu-launch/security-probe.py",
+      "path": "source/e0ad94f1432bc2947ca8c24eac3964861edf278d755b12cc3695c147cf2284d8.bin",
+      "bytes": 2423,
+      "sha256": "e0ad94f1432bc2947ca8c24eac3964861edf278d755b12cc3695c147cf2284d8"
+    },
+    {
+      "originalPath": "ops/cpu-launch/soak-cleanup.py",
+      "path": "source/e664ebc959f1a31f4e874f8dde66a2a75986ac62c5d0b6252903166af15564f1.bin",
+      "bytes": 1885,
+      "sha256": "e664ebc959f1a31f4e874f8dde66a2a75986ac62c5d0b6252903166af15564f1"
+    },
+    {
+      "originalPath": "ops/cpu-launch/test_monitor.py",
+      "path": "source/f274e5ade08f236761754166b29d2018355d175ccdf40da60d846ef6fab0def9.bin",
+      "bytes": 6146,
+      "sha256": "f274e5ade08f236761754166b29d2018355d175ccdf40da60d846ef6fab0def9"
+    },
+    {
+      "originalPath": "ops/cpu-launch/test_restore.py",
+      "path": "source/937b430665bbe8cfa42fa2651ac8fece7a64072ec6dbe93677ac4c7cdeaad312.bin",
+      "bytes": 3980,
+      "sha256": "937b430665bbe8cfa42fa2651ac8fece7a64072ec6dbe93677ac4c7cdeaad312"
+    },
+    {
+      "originalPath": "ops/cpu-launch/cyst-posix.mjs",
+      "path": "source/8467d0b5a9b8becb31168e8b09024ea4413a8d9fb3e8d1967f33d4fba6866682.bin",
+      "bytes": 2825,
+      "sha256": "8467d0b5a9b8becb31168e8b09024ea4413a8d9fb3e8d1967f33d4fba6866682"
+    },
+    {
+      "originalPath": "ops/cpu-launch/health.mjs",
+      "path": "source/f90e5dda57a1adfa205d92d2fb8c98757497246cae5da8e3bda99aeacd778386.bin",
+      "bytes": 1515,
+      "sha256": "f90e5dda57a1adfa205d92d2fb8c98757497246cae5da8e3bda99aeacd778386"
+    },
+    {
+      "originalPath": "ops/cpu-launch/load-worker.mjs",
+      "path": "source/e41467dc99285deb09819792f959a44acd499ce3f1dc21f24fbc76e8dedc9efb.bin",
+      "bytes": 743,
+      "sha256": "e41467dc99285deb09819792f959a44acd499ce3f1dc21f24fbc76e8dedc9efb"
+    },
+    {
+      "originalPath": "ops/cpu-launch/load.mjs",
+      "path": "source/0e0da9cd5a1d03abb2ee591e8ec00be2c7bc969e362d7ed53f6e6e08d81b425f.bin",
+      "bytes": 23090,
+      "sha256": "0e0da9cd5a1d03abb2ee591e8ec00be2c7bc969e362d7ed53f6e6e08d81b425f"
+    },
+    {
+      "originalPath": "ops/cpu-launch/restored-data-reader.mjs",
+      "path": "source/ae99f427b7204bbba65cfa1d5c46c60b94c5abadf274766f9f5533d456bf40e4.bin",
+      "bytes": 3574,
+      "sha256": "ae99f427b7204bbba65cfa1d5c46c60b94c5abadf274766f9f5533d456bf40e4"
+    },
+    {
+      "originalPath": "ops/cpu-launch/snapshot.mjs",
+      "path": "source/544db4400cbe50a784e0aaf194f902d13247c451c158cef3dae709f2fbe3f0e9.bin",
+      "bytes": 1576,
+      "sha256": "544db4400cbe50a784e0aaf194f902d13247c451c158cef3dae709f2fbe3f0e9"
+    },
+    {
+      "originalPath": "ops/cpu-launch/soak.mjs",
+      "path": "source/8d7865f0faba13dccecfe88ed4f02d2794cce1c420a96e746ff91013752c18b3.bin",
+      "bytes": 16917,
+      "sha256": "8d7865f0faba13dccecfe88ed4f02d2794cce1c420a96e746ff91013752c18b3"
+    },
+    {
+      "originalPath": ".local/cpu-launch-verify.mjs",
+      "path": "source/b32a897030b68b42c16843a2f5c932f1db3b14424bb47d4cfb0eb98328797ee5.bin",
+      "bytes": 3004,
+      "sha256": "b32a897030b68b42c16843a2f5c932f1db3b14424bb47d4cfb0eb98328797ee5"
+    },
+    {
+      "originalPath": "ops/cpu-cloud/cloud.py",
+      "path": "source/e8f9e93d6f7c3198a8e6abf45cd2cb57d7bc89cc0e00f804c7dba3d9bdc81dc6.bin",
+      "bytes": 20106,
+      "sha256": "e8f9e93d6f7c3198a8e6abf45cd2cb57d7bc89cc0e00f804c7dba3d9bdc81dc6"
+    },
+    {
+      "originalPath": "ops/cpu-cloud/test_cloud_ops.py",
+      "path": "source/ddcfc369094d61212b4ac0c76b014eb0355e4c81034d33647cca27f9d7bb3dd9.bin",
+      "bytes": 10982,
+      "sha256": "ddcfc369094d61212b4ac0c76b014eb0355e4c81034d33647cca27f9d7bb3dd9"
+    },
+    {
+      "originalPath": "tests/cpu-launch-security.test.ts",
+      "path": "source/f1077495d99c48dd8573e8d416b04181a875eb523f0c676944bf3d3612d1c3d1.bin",
+      "bytes": 6294,
+      "sha256": "f1077495d99c48dd8573e8d416b04181a875eb523f0c676944bf3d3612d1c3d1"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "passed": false,
+  "backupId": "backup-20261017T182020Z-6487f58e",
+  "runtimeId": "runtime-ef6436151e2d098c21a46e1512a140e6f0cbf548-344d206ca13551a1",
+  "mainnetTransactions": 0,
+  "productionControllerRestarted": false,
+  "mainnetSignerPassedToApplication": false,
+  "completeVpsRebuild": false,
+  "authenticatedDecryption": true,
+  "dataMembers": 18,
+  "runtimeMembers": 22131,
+  "runtimePins": 749,
+  "productionDataRestore": {
+    "passed": true,
+    "tables": 45,
+    "rows": 23,
+    "elapsedSeconds": 4.666,
+    "network": "none",
+    "mainnetControllerStarted": false,
+    "databaseImage": "postgres@sha256:721873c34ceb9f8d8fc265984940dc982404c105f19ad51be9fdc5970a6080ea"
+  },
+  "archivedNodeVersion": "v22.23.3",
+  "archivedRunscExecutable": true,
+  "errorType": "RuntimeError",
+  "errorCode": "Archived runtime acceptance unit failed",
+  "scratchRuntimeRemoved": true,
+  "elapsedSeconds": 19.811,
+  "report": "/opt/telomere-mainnet-pilot/data/cpu-launch-acceptance-20261017/restore-b28aa3447e3e4741.json"
+}

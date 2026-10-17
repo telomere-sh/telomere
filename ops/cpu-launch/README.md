@@ -22,7 +22,7 @@ The hourly `telomere-mainnet-backup.timer` runs `mainnet-ops.py backup` without 
 
 Every successful backup first restores its database dump into an isolated, temporary PostgreSQL container using the production image digest, `--network none`, and no application process. All restored table fingerprints and row counts must match. Failure prevents publication of a new successful backup status. The plaintext staging directory is removed on completion.
 
-Data and private configuration are encrypted with age X25519 before retention. The separate encrypted runtime bundle contains the exact app release, public website, operator code, systemd units, Node and runsc binaries. All 749 production runtime pins are checked before archiving. Data manifests bind the bundle ID and checksum. Do not remove an older runtime bundle while retained data snapshots reference it.
+Data and private configuration are encrypted with age X25519 before retention. The nginx site, its CSP include and HTTP/ACME configuration are retained together. The separate encrypted runtime bundle contains the exact app release, public website, operator code, systemd units, Node and runsc binaries. All 749 production runtime pins are checked before archiving. Data manifests bind the bundle ID and checksum. Do not remove an older runtime bundle while retained data snapshots reference it.
 
 On the VPS, encrypted archives are in `/opt/telomere-mainnet-pilot/backups` with root-only access. Retention keeps the latest 24 data snapshots and one older snapshot for each of seven distinct days. Runtime bundles are retained separately. The recipient is public; the decryption identity is not stored on the VPS.
 
@@ -64,3 +64,24 @@ The launcher checks the frozen production pins and passes only the CPU image and
 The recovery suite injects SIGKILL during computation and between journal persistence and settlement broadcast, verifies byte-identical recovery and no duplicate charge, and exercises the timeout refund. Its PGlite parent/child harness needs a 3 GiB memory limit; the initial 1 GiB test limit caused an isolated test OOM and was corrected. The live controller keeps its existing 768 MiB limit.
 
 See the dated launch record in `docs/CPU-LAUNCH-READINESS-20261017.md` and its retained evidence for measured results and remaining external acceptance.
+
+
+## Sustained acceptance
+
+```sh
+python3 /opt/telomere-mainnet-pilot/operator/cpu-launch/launch-acceptance.py soak --duration-seconds 43200
+```
+
+This starts a transient systemd unit with 50 generated accounts, a separate PostgreSQL database and chain 31337. The normal profile sends ten Workspace reads per second in concurrent batches, conditional writes, and a genuine gVisor paid CPU job every five minutes. Reads continue during execution. Each job checks its anchored receipt and conservation of the local test tokens. Sessions are renewed every four hours. The accelerated smoke profile uses `--duration-seconds 70 --session-refresh-seconds 30` to exercise renewal without waiting four hours.
+
+Progress is atomically saved once per minute under `data/cpu-launch-acceptance-20261017/soak-<namespace>.json` and in the unit journal. Latency uses fixed histogram buckets and recent request observations are bounded; the harness does not accumulate twelve hours of individual samples. Acceptance requires at least seven Workspace reads/second over the complete duration, zero errors, p95 no higher than two seconds, and reads overlapping a running CPU job. The memory observer compares worker RSS with the production 768 MiB ceiling. These are loopback capacity measurements for one CPU worker.
+
+`ExecStopPost` removes only containers and the volume carrying that acceptance namespace, including after a forced process kill. It does not remove evidence directories. A root-only `private/cpu-soak-watch.json` selects the namespace for the existing two-minute monitor. Failed, invalid or stale observations generate explicit `CPU_SOAK_*` incidents through the existing VPS and independent hosted pagers. Completed and healthy running observations remain quiet. Hosted run reports retain the selected numeric counters. A VPS reboot interrupts the transient test; stale progress is an incident rather than a successful result.
+
+## Restore the application from an encrypted snapshot
+
+`restore-rehearsal.py` receives an age identity on stdin over the existing SSH channel. The identity is never an argument, environment variable or retained file. It requires a cloud-acknowledged data snapshot and its exact runtime bundle, authenticates both archives, checks every member and all runtime pins, and restores all production database tables in a network-isolated scratch PostgreSQL container. Executable clones stay in a separate root-owned `rehearsals/` tree; the live application UID cannot replace their directories or files. Archived programs, including version and syntax checks, run as UID 995. The root-owned recovery report stays in private/, outside application-writable data/. The TLS proxy accepts only an exact numeric loopback origin from the unprivileged progress record; progress reads use bounded, nonblocking, no-follow file descriptors.
+
+The archived API then reads the actual restored jobs, receipts and Workspace in a new network namespace through a separate scratch PostgreSQL Unix socket. Synthetic local sessions are removed and every original table fingerprint must remain unchanged. No worker starts against that restored production database. A second empty scratch database and loopback chain exercise a complete boot and paid CPU lifecycle using the archived application and Node binary with newly generated keys. A separate loopback TLS nginx loads the retained website/site/CSP configuration with an ephemeral test certificate; HTML bytes, authenticated API routing and private-path denials are checked. The original application files remain byte-identical and the production service, TLS certificates and DNS are not switched.
+
+This rehearses application/data/proxy recovery on the existing Linux host. It does not measure provisioning a replacement VPS, installing the OS/Docker packages, obtaining a public certificate or switching DNS. The complete-machine recovery procedure above still applies. Never start the archived mainnet controller alongside production or enable a signer from an old snapshot before canonical chain reconciliation.

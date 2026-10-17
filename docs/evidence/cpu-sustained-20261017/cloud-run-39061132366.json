@@ -1,0 +1,57 @@
+{
+  "run": {
+    "id": 39061132366,
+    "status": "completed",
+    "conclusion": "success",
+    "html_url": "https://github.com/telomere-sh/telomere-ops-backups/actions/runs/39061132366",
+    "head_sha": "f4fecded7cd0b622ed503a7e09e537a8628f96bd",
+    "event": "workflow_dispatch"
+  },
+  "reports": [
+    {
+      "scope": "independent cloud CPU operations",
+      "mainnetTransactions": 0,
+      "cpuSoak": {
+        "state": "running",
+        "requests": 13260,
+        "cpuRuns": 5,
+        "elapsedSeconds": 1325.056600386,
+        "targetSeconds": 43200,
+        "progressAgeSeconds": 41.205993
+      },
+      "backupId": "backup-20261017T190717Z-a819b846",
+      "backupVerified": {
+        "id": "backup-20261017T190717Z-a819b846",
+        "verifiedFiles": 20,
+        "authenticatedAgeDecryption": true,
+        "manifestChecksumsValid": true,
+        "verifiedAt": 1792264109.3142335,
+        "runtimeBundle": {
+          "id": "runtime-ef6436151e2d098c21a46e1512a140e6f0cbf548-f3143a082197be94",
+          "sha256": "4aab78fba06b8d5dad6204dfc9e8d9008aca4a11fead77dbae37fb5b955559d8",
+          "bytes": 344226443,
+          "runtimePinsVerified": 749,
+          "files": 22138
+        }
+      },
+      "runtimeVerified": {
+        "id": "runtime-ef6436151e2d098c21a46e1512a140e6f0cbf548-f3143a082197be94",
+        "verifiedFiles": 22138,
+        "authenticatedAgeDecryption": true,
+        "manifestChecksumsValid": true,
+        "verifiedAt": 1792264091.3817134
+      },
+      "independentStorageReadback": true,
+      "snapshotCopyAttempts": 1,
+      "retention": {
+        "retentionApplied": true,
+        "snapshotsKept": 7,
+        "snapshotsRemoved": 0
+      },
+      "passed": true,
+      "alerts": [],
+      "syntheticSshOutage": false,
+      "observedAt": "2026-10-17T19:08:59.820102+00:00"
+    }
+  ]
+}

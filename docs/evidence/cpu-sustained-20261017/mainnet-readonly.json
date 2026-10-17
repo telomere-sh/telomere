@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "observedAt": "2026-10-17T19:10:28.525Z",
+  "chainId": 8453,
+  "configurationAndAssetPinsPassed": true,
+  "releaseId": "ef6436151e2d098c21a46e1512a140e6f0cbf548",
+  "runtimePins": 749,
+  "operatorGasWei": "98462564567330",
+  "availableAtomicUsdc": "0",
+  "reservedAtomicUsdc": "0",
+  "escrowAtomicUsdc": "0",
+  "ownerWalletAtomicUsdc": "2422567",
+  "states": [
+    {
+      "status": "completed",
+      "count": 2
+    }
+  ],
+  "mainnetTransactionsSentByThisVerification": 0,
+  "operatorGasUnchanged": true,
+  "logRangeBlocks": 101,
+  "priorWithdrawalFound": true,
+  "routerSha256": "11501d8ba6b60e3839a19ce27917d351ea58ab7c556ed4aaaaad8cbbb4276fc1"
+}

@@ -1,0 +1,159 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "path": "/api/me",
+      "method": "GET",
+      "status": 401,
+      "noStore": true,
+      "nosniff": true,
+      "hasCsp": true
+    },
+    {
+      "path": "/api/workspace",
+      "method": "GET",
+      "status": 401,
+      "noStore": true,
+      "nosniff": true,
+      "hasCsp": true
+    },
+    {
+      "path": "/api/runs",
+      "method": "GET",
+      "status": 401,
+      "noStore": true,
+      "nosniff": true,
+      "hasCsp": true
+    },
+    {
+      "path": "/api/balance",
+      "method": "GET",
+      "status": 401,
+      "noStore": true,
+      "nosniff": true,
+      "hasCsp": true
+    },
+    {
+      "path": "/api/leashes",
+      "method": "GET",
+      "status": 401,
+      "noStore": true,
+      "nosniff": true,
+      "hasCsp": true
+    },
+    {
+      "path": "/api/operations",
+      "method": "GET",
+      "status": 401,
+      "noStore": true,
+      "nosniff": true,
+      "hasCsp": true
+    },
+    {
+      "path": "/.env",
+      "method": "GET",
+      "status": 404,
+      "noStore": false,
+      "nosniff": true,
+      "hasCsp": true
+    },
+    {
+      "path": "/.git/config",
+      "method": "GET",
+      "status": 404,
+      "noStore": false,
+      "nosniff": true,
+      "hasCsp": true
+    },
+    {
+      "path": "/src/main.ts",
+      "method": "GET",
+      "status": 404,
+      "noStore": false,
+      "nosniff": true,
+      "hasCsp": true
+    },
+    {
+      "path": "/scripts/deploy-contracts.ts",
+      "method": "GET",
+      "status": 404,
+      "noStore": false,
+      "nosniff": true,
+      "hasCsp": true
+    },
+    {
+      "path": "/node_modules/pg/package.json",
+      "method": "GET",
+      "status": 404,
+      "noStore": false,
+      "nosniff": true,
+      "hasCsp": true
+    },
+    {
+      "path": "/dist/src/main.js",
+      "method": "GET",
+      "status": 404,
+      "noStore": false,
+      "nosniff": true,
+      "hasCsp": true
+    },
+    {
+      "path": "/api/auth/challenge",
+      "method": "POST",
+      "status": 403,
+      "noStore": true,
+      "nosniff": true,
+      "hasCsp": true
+    },
+    {
+      "path": "/api/auth/challenge",
+      "method": "POST",
+      "status": 403,
+      "noStore": true,
+      "nosniff": true,
+      "hasCsp": true
+    },
+    {
+      "path": "/api/auth/challenge",
+      "method": "POST",
+      "status": 403,
+      "noStore": true,
+      "nosniff": true,
+      "hasCsp": true
+    },
+    {
+      "path": "/api/auth/challenge",
+      "method": "POST",
+      "status": 403,
+      "noStore": true,
+      "nosniff": true,
+      "hasCsp": true
+    },
+    {
+      "path": "/api/auth/challenge",
+      "method": "POST",
+      "status": 400,
+      "noStore": true,
+      "nosniff": true,
+      "hasCsp": true
+    },
+    {
+      "path": "/api/auth/challenge",
+      "method": "POST",
+      "status": 422,
+      "noStore": true,
+      "nosniff": true,
+      "hasCsp": true
+    },
+    {
+      "path": "/api/auth/demo",
+      "method": "POST",
+      "status": 404,
+      "noStore": true,
+      "nosniff": true,
+      "hasCsp": true
+    }
+  ],
+  "mainnetTransactions": 0,
+  "validLoginChallengesCreated": 0
+}

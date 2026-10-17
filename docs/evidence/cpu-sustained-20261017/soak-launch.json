@@ -1,0 +1,11 @@
+{
+  "started": true,
+  "unit": "telomere-cpu-soak-0edc56ed5ba346ae",
+  "mode": "soak",
+  "productionRuntimePinsVerified": true,
+  "productionKeysPassed": false,
+  "startedAt": "2026-10-17T18:44:59.179Z",
+  "targetSeconds": 43200,
+  "supersededPreliminaryUnit": "telomere-cpu-soak-a20b4037bcf1406c",
+  "watcherUpdated": true
+}

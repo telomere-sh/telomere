@@ -163,7 +163,9 @@ def backup():
                 'deployment-plan-base-mainnet.json':PRIVATE/'deployment-plan-base-mainnet.json','backup-recipient.txt':PRIVATE/'backup-recipient.txt',
                 'source-snapshot.json':BASE/'app/source-snapshot.json','package-lock.json':BASE/'app/package-lock.json',
                 'controller.service':Path('/etc/systemd/system/telomere-mainnet-pilot.service'),
-                'rpc.service':Path('/etc/systemd/system/telomere-mainnet-rpc.service'),'nginx.conf':Path('/etc/nginx/sites-available/telomere-apex-static')}
+                'rpc.service':Path('/etc/systemd/system/telomere-mainnet-rpc.service'),'nginx.conf':Path('/etc/nginx/sites-available/telomere-apex-static'),
+                'nginx-csp.conf':Path('/etc/nginx/snippets/telomere-website-csp.conf'),
+                'nginx-http-acme.conf':Path('/etc/nginx/sites-available/telomere-http-acme')}
             for name,source in sources.items():assert source.is_file() and not source.is_symlink();shutil.copyfile(source,stage/'configuration'/name)
             for unit in ('telomere-mainnet-postgres.service','telomere-mainnet-docker.service'):
                 for line in Path('/etc/systemd/system',unit).read_text().splitlines():
@@ -209,6 +211,15 @@ def ack(identifier,checksum,*runtime):
         'runtimeBundleId':runtime[0] if runtime else None,'runtimeBundleSha256':runtime[1] if runtime else None})
     print(json.dumps({'acknowledged':True}))
 def status():print((PRIVATE/'cpu-backup-status.json').read_text())
+
+def read_soak_progress(folder,namespace,expected_uid=995):
+    assert re.fullmatch('[0-9a-f]{16}',namespace) and folder.resolve()==folder
+    descriptor=os.open(folder/('soak-'+namespace+'.json'),os.O_RDONLY|os.O_NOFOLLOW|os.O_NONBLOCK)
+    with os.fdopen(descriptor,'rb') as source:
+        info=os.fstat(source.fileno())
+        assert stat.S_ISREG(info.st_mode) and info.st_uid==expected_uid and info.st_nlink==1 and 0<info.st_size<=16384
+        raw=source.read(16385);assert len(raw)<=16384
+    return json.loads(raw)
 def evaluate_health(observation):
     alerts=[]
     if not observation.get('ready'):alerts.append('CONTROLLER_NOT_READY')
@@ -226,6 +237,9 @@ def evaluate_health(observation):
     if not observation.get('offhostRuntimeValid',True):alerts.append('OFFHOST_RUNTIME_NOT_VERIFIED')
     if observation.get('diskFreeBytes',0)<5*1024**3:alerts.append('DISK_SPACE_LOW')
     if observation.get('tlsRemainingDays',0)<14:alerts.append('TLS_EXPIRY_NEAR')
+    if observation.get('cpuSoakState')=='failed':alerts.append('CPU_SOAK_FAILED')
+    if observation.get('cpuSoakState')=='invalid':alerts.append('CPU_SOAK_OBSERVATION_INVALID')
+    if observation.get('cpuSoakState')=='running' and observation.get('cpuSoakProgressAgeSeconds',float('inf'))>180:alerts.append('CPU_SOAK_STALE')
     return sorted(set(alerts))
 def monitor():
     observed={'observedAt':now(),'diskFreeBytes':shutil.disk_usage(BASE).free}
@@ -235,6 +249,17 @@ def monitor():
     try:observed.update(json.loads(run([NODE,str(BASE/'operator/cpu-launch/health.mjs')],cwd=BASE/'app').stdout))
     except Exception:observed['databaseAvailable']=False
     current=datetime.datetime.now(datetime.timezone.utc)
+    watch=PRIVATE/'cpu-soak-watch.json'
+    if watch.exists():
+        try:
+            namespace=json.loads(watch.read_text())['namespace'];assert re.fullmatch('[0-9a-f]{16}',namespace)
+            folder=BASE/'data/cpu-launch-acceptance-20261017';assert folder.resolve()==folder
+            progress=read_soak_progress(folder,namespace);state=progress['state'];assert state in ('running','failed','completed')
+            assert progress['mainnetTransactions']==0 and progress['mainnetSignerLoaded'] is False
+            if state=='completed':assert progress['errors']==0 and progress['elapsedSeconds']>=progress['targetSeconds'] and progress['requests']>=progress['targetSeconds']*7
+            observed.update(cpuSoakState=state,cpuSoakRequests=progress['requests'],cpuSoakRuns=progress['cpuRuns'],cpuSoakElapsedSeconds=progress['elapsedSeconds'],
+                cpuSoakTargetSeconds=progress['targetSeconds'],cpuSoakProgressAgeSeconds=max(0,(current-datetime.datetime.fromisoformat(progress['observedAt'].replace('Z','+00:00'))).total_seconds()))
+        except Exception:observed['cpuSoakState']='invalid'
     offhost_file='cpu-cloud-offhost-status.json' if (PRIVATE/'cpu-cloud-required.json').is_file() else 'cpu-offhost-status.json'
     observed['offhostSource']='github-actions' if offhost_file=='cpu-cloud-offhost-status.json' else 'windows-additional-copy'
     for name,key,field in [('cpu-backup-status.json','backupAgeSeconds','createdAt'),(offhost_file,'offhostAgeSeconds','verifiedAt')]:

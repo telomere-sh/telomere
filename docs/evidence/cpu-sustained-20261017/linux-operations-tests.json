@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "suites": [
+    {
+      "command": "python3 -B -m unittest discover -s /opt/telomere-mainnet-pilot/operator/cpu-launch -p 'test_*.py'",
+      "exitCode": 0,
+      "output": "...............................\n----------------------------------------------------------------------\nRan 31 tests in 0.013s\n\nOK\n",
+      "passed": 31
+    },
+    {
+      "command": "python3 -B -m unittest discover -s /opt/telomere-mainnet-pilot/work/cpu-final-security/ops/cpu-cloud -p test_cloud_ops.py",
+      "exitCode": 0,
+      "output": ".................\n----------------------------------------------------------------------\nRan 17 tests in 0.026s\n\nOK\n",
+      "passed": 17
+    }
+  ]
+}

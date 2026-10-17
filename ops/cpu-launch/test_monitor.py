@@ -1,4 +1,4 @@
-import hashlib,importlib.util,tempfile,unittest
+import hashlib,importlib.util,json,os,tempfile,unittest
 from pathlib import Path
 spec=importlib.util.spec_from_file_location('mainnet_ops',Path(__file__).with_name('mainnet-ops.py'))
 ops=importlib.util.module_from_spec(spec);spec.loader.exec_module(ops)
@@ -27,6 +27,33 @@ class HealthTests(unittest.TestCase):
     def test_cpu_exceeding_maximum_runtime_without_updates(self):
         self.good['states']=[{'status':'running','count':1,'oldest_seconds':181}]
         self.assertIn('CPU_RUN_STALLED',ops.evaluate_health(self.good))
+    def test_soak_failure_or_missing_progress_alerts(self):
+        self.good.update(cpuSoakState='failed');self.assertIn('CPU_SOAK_FAILED',ops.evaluate_health(self.good))
+        self.good.update(cpuSoakState='running',cpuSoakProgressAgeSeconds=181);self.assertIn('CPU_SOAK_STALE',ops.evaluate_health(self.good))
+        self.good.update(cpuSoakState='invalid');self.assertIn('CPU_SOAK_OBSERVATION_INVALID',ops.evaluate_health(self.good))
+    def test_running_and_completed_soak_do_not_page(self):
+        self.good.update(cpuSoakState='running',cpuSoakProgressAgeSeconds=60);self.assertEqual(ops.evaluate_health(self.good),[])
+        self.good.update(cpuSoakState='completed',cpuSoakProgressAgeSeconds=86400);self.assertEqual(ops.evaluate_health(self.good),[])
+class ProgressDescriptorTests(unittest.TestCase):
+    def setUp(self):
+        self.temp=tempfile.TemporaryDirectory();self.root=Path(self.temp.name).resolve();self.namespace='a'*16;self.file=self.root/('soak-'+self.namespace+'.json');self.file.write_text('{"state":"running"}')
+    def tearDown(self):self.temp.cleanup()
+    def read(self):return ops.read_soak_progress(self.root,self.namespace,os.getuid())
+    def test_regular_owned_record(self):self.assertEqual(self.read(),{'state':'running'})
+    def test_symlink_is_not_followed(self):
+        original=self.root/'original';self.file.rename(original);self.file.symlink_to(original)
+        with self.assertRaises(OSError):self.read()
+    def test_hardlink_is_rejected(self):
+        os.link(self.file,self.root/'linked')
+        with self.assertRaises(AssertionError):self.read()
+    def test_oversized_record(self):
+        self.file.write_text('x'*16385)
+        with self.assertRaises(AssertionError):self.read()
+    def test_fifo_is_rejected_without_waiting_for_a_writer(self):
+        self.file.unlink();os.mkfifo(self.file)
+        with self.assertRaises(AssertionError):self.read()
+    def test_foreign_owner(self):
+        with self.assertRaises(AssertionError):ops.read_soak_progress(self.root,self.namespace,os.getuid()+1)
 class BackupCiphertextTests(unittest.TestCase):
     def setUp(self):
         self.temp=tempfile.TemporaryDirectory();self.root=Path(self.temp.name).resolve();self.source=self.root/'source';self.target=self.root/'target';self.source.mkdir();self.target.mkdir()
