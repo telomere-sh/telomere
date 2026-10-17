@@ -1,18 +1,21 @@
-import { createPublicClient, createWalletClient, decodeFunctionData, defineChain, encodeFunctionData, http, keccak256, parseEventLogs, parseTransaction,
+import { createPublicClient, createWalletClient, defineChain, encodeFunctionData, http, keccak256, parseEventLogs, parseTransaction,
   recoverTransactionAddress, ContractFunctionRevertedError, BaseError, type Address, type Hex, type TransactionSerialized } from 'viem';
 import { privateKeyToAccount } from 'viem/accounts';
 import { escrowAbi, tokenAbi } from './chain/abi.js';
 import { escrowDomain, quoteTypes, settlementTypes, type Quote, type Settlement } from './chain/typed-data.js';
-import { eq, ne } from 'drizzle-orm';
+import { eq } from 'drizzle-orm';
 import { transactions, type Database } from './store.js';
 import type { Config } from './config.js';
 import { Problem, bytes32Schema } from './common.js';
 import { baseUsdcForChainId, chainForId } from './chain/chains.js';
+import { JournalArchiveVerifier, archiveConfirmedJournal, lockSettlementJournal, observeJournalArchive, validateActiveJournal, type archiveOptions } from './chain/journal-archive.js';
+import type { z } from 'zod';
 import { matchesCircleProxyPins, matchesNativeBaseUsdcMetadata, stableCircleProxyReceiptBlock } from './payments/circle-usdc.js';
 
 export type WalletTransaction = { to: Address; data: Hex; value: '0x0' };
 export class SettlementRejectedError extends Error { constructor() { super('Settlement rejected by the contract'); this.name = 'SettlementRejectedError'; } }
 export class ChainBridge {
+  private readonly archiveVerifier = new JournalArchiveVerifier();
   readonly account;
   readonly chain;
   readonly public;
@@ -26,7 +29,7 @@ export class ChainBridge {
         !== baseUsdcForChainId(config.CHAIN_ID)?.toLowerCase())) throw new Error('Reviewed Circle USDC pins are required');
     this.chain = defineChain({ id: config.CHAIN_ID, name: chainForId(config.CHAIN_ID).name,
       nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 }, rpcUrls: { default: { http: [config.RPC_URL] } } });
-    this.public = createPublicClient({ chain: this.chain, transport: http(config.RPC_URL, { timeout: 10000, retryCount: 0 }) });
+    this.public = createPublicClient({ chain: this.chain, cacheTime: 0, transport: http(config.RPC_URL, { timeout: 10000, retryCount: 0 }) });
     this.wallet = createWalletClient({ account: this.account, chain: this.chain, transport: http(config.RPC_URL, { timeout: 10000, retryCount: 0 }) });
     this.demo = config.DEMO_PRIVATE_KEY ? createWalletClient({ account: privateKeyToAccount(config.DEMO_PRIVATE_KEY), chain: this.chain, transport: http(config.RPC_URL) }) : undefined;
     this.domain = escrowDomain(config.CHAIN_ID, config.ESCROW_ADDRESS);
@@ -107,30 +110,13 @@ export class ChainBridge {
   async settle(db: Database, settlement: Settlement, signature: Hex): Promise<Hex> {
     await this.assertCurrentAssetPins();
     const expectedData = encodeFunctionData({ abi: escrowAbi, functionName: 'settleRun', args: [settlement, signature] });
-    let journal = (await db.select().from(transactions).where(eq(transactions.runId, settlement.runId)).limit(1))[0];
-    if (!journal) {
-      const prior = await db.select().from(transactions).where(ne(transactions.runId, settlement.runId)).limit(2001);
-      if (prior.length > 2000) throw new Error('Pilot transaction history requires archival review');
-      if (prior.length) {
-        const chainNonce = await this.public.getTransactionCount({ address: this.account.address, blockTag: 'latest' });
-        for (const entry of prior) {
-          if (!/^0x[0-9a-fA-F]+$/.test(entry.raw) || entry.raw.length % 2 !== 0 || entry.nonce === null
-            || keccak256(entry.raw as Hex) !== bytes32Schema.parse(entry.hash)) {
-            throw new Error('Prior settlement journal differs from reviewed scope');
-          }
-          // REASON: parseTransaction validates the previously persisted signed transaction envelope.
-          const serialized = entry.raw as TransactionSerialized, transaction = parseTransaction(serialized);
-          const call = transaction.data ? decodeFunctionData({ abi: escrowAbi, data: transaction.data }) : undefined;
-          if (transaction.chainId !== this.config.CHAIN_ID
-            || transaction.to?.toLowerCase() !== this.config.ESCROW_ADDRESS.toLowerCase()
-            || (transaction.value ?? 0n) !== 0n || transaction.nonce !== entry.nonce
-            || call?.functionName !== 'settleRun' || call.args[0].runId.toLowerCase() !== entry.runId.toLowerCase()
-            || (await recoverTransactionAddress({ serializedTransaction: serialized })).toLowerCase() !== this.account.address.toLowerCase()) {
-            throw new Error('Prior settlement journal differs from reviewed scope');
-          }
-          if (entry.nonce >= chainNonce) throw new Error('Signer has an unresolved transaction nonce');
-        }
-      }
+    const journal = await db.transaction(async transaction => {
+      await lockSettlementJournal(transaction);
+      const checkpoint = await this.archiveVerifier.verify(this, transaction, db);
+      const existing = (await transaction.select().from(transactions).where(eq(transactions.runId, settlement.runId)).limit(1))[0];
+      if (existing) return existing;
+      await archiveConfirmedJournal(this, transaction, checkpoint);
+      const chainNonce = await validateActiveJournal(this, transaction, settlement.runId);
       let request;
       try { request = await this.wallet.prepareTransactionRequest({ to: this.config.ESCROW_ADDRESS, data: expectedData }); }
       catch (error) {
@@ -139,14 +125,15 @@ export class ChainBridge {
       }
       if (request.gas) request = { ...request, gas: request.gas * 13n / 10n + 10000n };
       if (request.nonce === undefined) throw new Error('Prepared settlement nonce missing');
-      const raw = await this.wallet.signTransaction(request);
-      const hash = keccak256(raw);
-      await db.insert(transactions).values({ runId: settlement.runId, raw, hash, nonce: request.nonce });
-      journal = { runId: settlement.runId, raw, hash, nonce: request.nonce, createdAt: new Date() };
-    }
+      if (request.nonce !== chainNonce) throw new Error('Signer nonce changed while preparing settlement');
+      const raw = await this.wallet.signTransaction(request), hash = keccak256(raw);
+      const saved = (await transaction.insert(transactions).values({ runId: settlement.runId, raw, hash, nonce: request.nonce }).returning())[0];
+      if (!saved) throw new Error('Signed settlement journal was not persisted');
+      return saved;
+    });
     const hash = bytes32Schema.parse(journal.hash);
     // Retained bytes must still be the exact signed settlement for this chain and run.
-    if (!/^0x[0-9a-fA-F]+$/.test(journal.raw) || journal.raw.length % 2 !== 0) {
+    if (!/^0x[0-9a-fA-F]+$/.test(journal.raw) || journal.raw.length > 16_384 || journal.raw.length % 2 !== 0) {
       throw new Error('Retained settlement transaction encoding differs');
     }
     // REASON: parseTransaction validates the retained signed envelope after this bounded hex check.
@@ -160,6 +147,7 @@ export class ChainBridge {
     }
     try {
       const receipt = await this.public.getTransactionReceipt({ hash });
+      if (receipt.transactionHash !== hash) throw new Error('Settlement receipt hash differs');
       await this.verifySettlementReceipt(settlement, receipt);
       return hash;
     } catch (error) {
@@ -167,20 +155,40 @@ export class ChainBridge {
       // failure after a receipt read is evidence of a different deployment.
       if (!(error instanceof Error && error.name === 'TransactionReceiptNotFoundError')) throw error;
     }
+    if (journal.archiveBatchId !== null) throw new Error('Archived settlement receipt is unavailable; reconciliation is required');
     await this.assertCurrentAssetPins();
     // REASON: raw transaction bytes are signed and produced locally, then durably stored before broadcast.
     try { await this.public.sendRawTransaction({ serializedTransaction: raw }); }
     catch { /* Duplicate/uncertain broadcast is reconciled by its deterministic hash below. */ }
     const receipt = await this.public.waitForTransactionReceipt({ hash, confirmations: 1, timeout: 15000 });
+    if (receipt.transactionHash !== hash) throw new Error('Settlement receipt hash differs');
     await this.verifySettlementReceipt(settlement, receipt);
     return hash;
+  }
+  async verifyJournalArchive(db: Database): Promise<void> {
+    await db.transaction(async transaction => {
+      await lockSettlementJournal(transaction);
+      await this.archiveVerifier.verify(this, transaction, db);
+    });
+  }
+  async journalArchiveStatus(db: Database) {
+    return db.transaction(transaction => observeJournalArchive(this, transaction),
+      { isolationLevel: 'repeatable read', accessMode: 'read only' });
+  }
+  async archiveJournal(db: Database, options: z.input<typeof archiveOptions> = {}) {
+    await this.assertCurrentAssetPins();
+    return db.transaction(async transaction => {
+      await lockSettlementJournal(transaction);
+      const checkpoint = await this.archiveVerifier.verify(this, transaction, db);
+      return archiveConfirmedJournal(this, transaction, checkpoint, options);
+    });
   }
   async confirmedSettlement(settlement: Settlement, hash: Hex): Promise<Date> {
     const receipt = await this.public.getTransactionReceipt({ hash });
     await this.verifySettlementReceipt(settlement, receipt);
     return new Date(Number((await this.public.getBlock({ blockNumber: receipt.blockNumber })).timestamp) * 1000);
   }
-  private async verifySettlementReceipt(settlement: Settlement, receipt: Awaited<ReturnType<typeof this.public.getTransactionReceipt>>): Promise<void> {
+  async verifySettlementReceipt(settlement: Settlement, receipt: Awaited<ReturnType<typeof this.public.getTransactionReceipt>>): Promise<void> {
     if (receipt.status !== 'success') throw new SettlementRejectedError();
     if (receipt.to?.toLowerCase() !== this.config.ESCROW_ADDRESS.toLowerCase()
       || receipt.from.toLowerCase() !== this.account.address.toLowerCase()) throw new SettlementRejectedError();

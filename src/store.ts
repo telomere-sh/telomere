@@ -20,6 +20,8 @@ import { interruptibleRuns, hostPreemptionNotices, interruptibleMigrationSQL } f
 import { platformRuntimeSchema, platformRuntimeMigrationSQL } from './platform-runtime/schema.js';
 import { platformReceiptTables, platformReceiptDdl } from './receipts/platform-schema.js';
 import { incomeEndpointSchema, incomeEndpointMigrationSQL } from './selection/income-endpoints/schema.js';
+import { journalArchiveBatches, journalMigration } from './chain/journal-schema.js';
+export { journalArchiveBatches } from './chain/journal-schema.js';
 
 export const nonces = pgTable('auth_nonces', {
   nonce: text().primaryKey(), address: text().notNull(), message: text().notNull(),
@@ -46,12 +48,13 @@ export const transactions = pgTable('transaction_journal', {
   runId: text().primaryKey(), raw: text().notNull(), hash: text().notNull(),
   nonce: integer(),
   createdAt: timestamp({ withTimezone: true }).notNull().defaultNow(),
+  archiveBatchId: text().references(() => journalArchiveBatches.id),
 });
 export const leashRefs = pgTable('leash_refs', { id: text().primaryKey(), owner: text().notNull() });
 export const controllerChainBinding = pgTable('controller_chain_binding', {
   id: integer().primaryKey(), scopeHash: text().notNull(), chainId: integer().notNull(),
 });
-export const storeSchema = { workspaceDocuments, nonces, sessions, jobs, transactions, leashRefs, controllerChainBinding, cysts, cystOwners, deadlineJobs, paidCpuJobs,
+export const storeSchema = { workspaceDocuments, nonces, sessions, jobs, transactions, journalArchiveBatches, leashRefs, controllerChainBinding, cysts, cystOwners, deadlineJobs, paidCpuJobs,
   agents, agentIntents, agentBilling, agentRuntimeBinding, agentVaultBindings, agentBillingProvenance, agentBillingAnchors, receiptHourBatches, receiptHourEntries, receiptHourLock, ...selectionSchema, controllerHostRuns,
   ...paymentSchema, interruptibleRuns, hostPreemptionNotices, ...platformRuntimeSchema, ...platformReceiptTables, ...incomeEndpointSchema };
 const schema = storeSchema;
@@ -81,6 +84,8 @@ CREATE TABLE IF NOT EXISTS controller_chain_binding (id integer PRIMARY KEY CHEC
 async function migrate(db: Database): Promise<void> {
   await db.transaction(async transaction => {
     for (const statement of migration.split(';').map(item => item.trim()).filter(Boolean)) await transaction.execute(sql.raw(statement));
+    // Function bodies contain semicolons; keep these fixed statements intact.
+    for (const statement of journalMigration) await transaction.execute(sql.raw(statement));
   });
 }
 export async function openStore(config: Pick<Config, 'DATABASE_URL' | 'DATA_DIR'>): Promise<{ db: Database; close(): Promise<void> }> {

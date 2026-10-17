@@ -22,6 +22,11 @@ class HealthTests(unittest.TestCase):
     def test_stalled_settlement_and_queue(self):
         self.good['states']=[{'status':'settling','count':1,'oldest_seconds':121},{'status':'queued','count':1,'oldest_seconds':301}]
         self.assertEqual(ops.evaluate_health(self.good),['QUEUE_DELAY_HIGH','SETTLEMENT_OR_RECEIPT_STALLED'])
+    def test_archive_uses_active_backlog_and_retains_integrity_alerts(self):
+        self.good.update(settlementJournalRows=100000,journalArchive={'supported':True,'activeRows':'127','archivedRows':'99873','latestCheckpointVerified':True})
+        self.assertEqual(ops.evaluate_health(self.good),[])
+        self.good['journalArchive']['activeRows']='1500';self.assertIn('SETTLEMENT_ARCHIVE_BACKLOG',ops.evaluate_health(self.good))
+        self.good['journalArchive']['latestCheckpointVerified']=False;self.assertIn('SETTLEMENT_ARCHIVE_VERIFICATION_FAILED',ops.evaluate_health(self.good))
     def test_backup_and_offhost_expiry(self):
         self.good.update(backupAgeSeconds=7201,offhostAgeSeconds=10801)
         self.assertEqual(ops.evaluate_health(self.good),['BACKUP_STALE','OFFHOST_BACKUP_STALE'])

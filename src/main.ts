@@ -61,6 +61,7 @@ export async function startPilot(config: Config) {
   const prepareExecutors = async () => {
     try {
       await bindControllerChain(store.db, config, bridge.account.address);
+      await bridge.verifyJournalArchive(store.db);
       const quotaPolicy = config.CYSTS_QUOTA_POLICY_PATH && config.CYSTS_QUOTA_POLICY_SHA256
         ? await readCystQuotaPolicy(config.CYSTS_QUOTA_POLICY_PATH, config.CYSTS_QUOTA_POLICY_SHA256) : undefined;
       return { cpu: config.CPU_MODE === 'hostkit' ? await configuredHostKit(store.db, config)

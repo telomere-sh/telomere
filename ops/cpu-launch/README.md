@@ -70,7 +70,33 @@ An on-chain reservation absent from the snapshot must not be recreated with gues
 
 The reviewed public profile admits at most eight outstanding quotes/runs per owner and 64 globally, with 500 new quote rows per owner per day. It executes one CPU job at a time. A reservation already paid while the queue fills remains available for retry with the same run ID/transaction hash; users must not pay again. Queue capacity is not a claim that 64 CPU jobs execute concurrently. Existing per-IP HTTP rate limits also apply.
 
-The frozen financial bridge requires archival review when more than 2,000 earlier settlement journal rows exist. The monitor now raises `SETTLEMENT_HISTORY_REVIEW_DUE` at 1,500 rows, before this guard can halt new settlement preparation. Preserve raw signed journal bytes, nonce provenance and canonical receipts; do not delete journal history merely to bypass the guard. A reviewed archival/financial-history scaling change remains necessary before operating past this bounded history. This acceptance does not remove that financial guard.
+The journal archive release removes the 2,000-row preparation limit. Original signed transactions and all jobs/receipts remain in the database and encrypted backups. A partial index separates active records from archived members; this is logical archival, not deletion or moving the only copy off-server. Disk use still grows and the existing backup/dump bounds still apply.
+
+Before signing a new settlement, the bridge serializes nonce selection with a database lock, verifies the signed archive chain and its canonical finalized anchor/nonce floor, and checks every active record in bounded pages. Pending, disputed, refunded or nonfinalized rows remain active. At 128 active records, settlement preparation attempts a batch of at most eight finalized terminal jobs. Each member must match the original signed transaction, saved receipt, canonical settlement event, on-chain terms and exact charge/refund. A locally signed EIP-712 archive checkpoint uses a separate domain from contract settlements; it sends no transaction or USDC. The checkpoint and all membership markers commit together. SQL triggers prohibit changing/deleting original bytes or rewriting/deleting checkpoints.
+
+Startup walks the retained archive in bounded pages. Later settlements check new checkpoints and recheck the head's canonical anchor/nonce floor. Archived retries return the original canonical transaction hash. An unavailable archived receipt or a changed anchor stops reconciliation; it never triggers another archived broadcast. Unarchived retries retain the exact original signed bytes. RPC/finality outages may delay settlement; removing a row limit does not promise unlimited throughput.
+
+The read-only observer checks the signed latest batch, its retained bytes/count and canonical anchor. `SETTLEMENT_ARCHIVE_VERIFICATION_FAILED` pages for a failed check, and `SETTLEMENT_ARCHIVE_BACKLOG` warns at 1,500 active rows. A pre-archive release retains the earlier `SETTLEMENT_HISTORY_REVIEW_DUE` compatibility warning.
+
+For a controlled one-batch maintenance archive, stop the controller first so it releases its exclusive database lock, then run:
+
+```sh
+node /opt/telomere-mainnet-pilot/operator/cpu-launch/archive-journal.mjs --archive-finalized
+```
+
+The command checks asset/role pins, archives at most eight finalized records, verifies the resulting archive and checks that the signer nonce did not change. Restart exactly one controller and check readiness/monitoring. Automatic archival during normal settlement needs no maintenance downtime. Never delete original rows to speed up an archive. Recovery retains the full chain-cursor and missing-reservation procedure above: archive metadata cannot reconstruct jobs missing from an older snapshot.
+
+The migration is additive and retains every row visible to older code. Rolling code back while preserving the database works within the older release's 2,000-row guard; above that count, that old release stops new settlement preparation. Use an archive-aware compatible release to continue past that count. A rollback must never delete journals or restore an older database to evade the guard.
+
+### Financial archive acceptance
+
+`stage-journal-candidate.py` clones the verified release into a root-owned rehearsal directory and overlays only the five reviewed backend modules and their TypeScript sources. The launcher verifies the candidate's complete runtime pin set and supplies no production keys or database URL:
+
+```sh
+python3 /opt/telomere-mainnet-pilot/operator/cpu-launch/launch-acceptance.py journal --candidate-directory /opt/telomere-mainnet-pilot/rehearsals/journal-<16-hex-id>
+```
+
+The fixture mines 2,105 separate local EVM settlements with generated accounts and a distinct treasury. Those historical jobs carry synthetic metering records; they are not 2,105 claimed CPU executions. Anvil keeps bounded historical state snapshots while retaining all tested transaction blocks and receipts. After actual finality, the test kills the archive process inside an uncommitted PostgreSQL membership update, checks complete rollback, archives/reopens/verifies all original bytes and replays old hashes without another signer nonce. It then executes one genuine gVisor CPU job, restores a database dump captured before its settlement broadcast, recovers the original receipt without another CPU execution or transaction, and verifies exact local token conservation. Missing archived RPC receipts and replacement finalized blocks must produce zero broadcasts.
 
 ### Extended queue, rollback and scaled-data acceptance
 

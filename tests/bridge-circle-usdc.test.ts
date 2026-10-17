@@ -111,6 +111,7 @@ describe('legacy ChainBridge Circle USDC guard', () => {
 
   it('rechecks Circle pins after a new settlement is signed and stored, before broadcast', async () => {
     const bridge = new ChainBridge(config);
+    vi.spyOn(bridge.public, 'getTransactionCount').mockResolvedValue(0);
     let currentPointer: Address = implementation;
     stubAsset(bridge, () => currentPointer);
     const store = await openStore({ DATA_DIR: ':memory:' });

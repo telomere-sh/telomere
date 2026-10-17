@@ -134,7 +134,12 @@ it('rejects a top-up relayer retained by each disabled financial module before c
       store = await openStore(configured.config);
       if (module === 'x402') { await store.db.delete(paymentJournal); await store.db.delete(paymentChallenges); }
       else if (module === 'platform') await store.db.delete(platformTransactionJournal);
-      else { await store.db.delete(transactions); await store.db.delete(jobs); }
+      else {
+        // The final fixture is disposed with its entire temporary database below;
+        // normal application SQL must retain signed financial provenance.
+        await expect(store.db.delete(transactions)).rejects.toThrow();
+        expect(await store.db.select().from(transactions)).toMatchObject([{runId:id,raw,hash,nonce:0}]);
+      }
       await store.close(); store = undefined;
     }
   } finally {

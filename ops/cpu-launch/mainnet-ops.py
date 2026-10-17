@@ -242,7 +242,11 @@ def evaluate_health(observation):
     if not observation.get('rpc',{}).get('available'):alerts.append('RPC_OR_ASSET_PINS_UNAVAILABLE')
     elif int(observation['rpc']['operatorGasWei'])<20000000000000:alerts.append('OPERATOR_GAS_LOW')
     if observation.get('invalidFinancialRows',0):alerts.append('FINANCIAL_INVARIANT_FAILED')
-    if observation.get('settlementJournalRows',0)>=1500:alerts.append('SETTLEMENT_HISTORY_REVIEW_DUE')
+    archive=observation.get('journalArchive',{})
+    if archive.get('supported'):
+        if archive.get('latestCheckpointVerified') is not True:alerts.append('SETTLEMENT_ARCHIVE_VERIFICATION_FAILED')
+        elif int(archive.get('activeRows',0))>=1500:alerts.append('SETTLEMENT_ARCHIVE_BACKLOG')
+    elif observation.get('settlementJournalRows',0)>=1500:alerts.append('SETTLEMENT_HISTORY_REVIEW_DUE')
     for entry in observation.get('states',[]):
         if entry['status']=='reconciliation' and entry['count']:alerts.append('RUN_REQUIRES_RECONCILIATION')
         if entry['status'] in ('settling','receipt_pending') and entry['oldest_seconds']>120:alerts.append('SETTLEMENT_OR_RECEIPT_STALLED')

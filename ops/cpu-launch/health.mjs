@@ -4,6 +4,7 @@ import {parseProfile} from '/opt/telomere-mainnet-pilot/app/dist/src/operator/pr
 import {loadConfig} from '/opt/telomere-mainnet-pilot/app/dist/src/config.js';
 import {ChainBridge} from '/opt/telomere-mainnet-pilot/app/dist/src/bridge.js';
 import pg from '/opt/telomere-mainnet-pilot/app/node_modules/pg/lib/index.js';
+import {drizzle} from '/opt/telomere-mainnet-pilot/app/node_modules/drizzle-orm/node-postgres/index.js';
 const cfg=loadConfig(parseProfile(await readFile('/opt/telomere-mainnet-pilot/private/mainnet.env','utf8')));
 const c=new pg.Client({connectionString:cfg.DATABASE_URL});await c.connect();
 try{
@@ -13,5 +14,10 @@ try{
   const bridge=new ChainBridge(cfg);let rpc;
   try{await bridge.check();rpc={available:true,operatorGasWei:String(await bridge.public.getBalance({address:bridge.account.address}))}}
   catch(error){rpc={available:false,errorType:error.name}}
-  process.stdout.write(JSON.stringify({databaseAvailable:true,states,invalidFinancialRows:invalid,settlementJournalRows,rpc})+'\n');
+  let journalArchive;
+  if(typeof bridge.journalArchiveStatus==='function'){
+    try{journalArchive={supported:true,...await bridge.journalArchiveStatus(drizzle(c,{casing:'snake_case'}))}}
+    catch(error){journalArchive={supported:true,latestCheckpointVerified:false,errorType:error.name}}
+  }
+  process.stdout.write(JSON.stringify({databaseAvailable:true,states,invalidFinancialRows:invalid,settlementJournalRows,rpc,...(journalArchive?{journalArchive}:{})})+'\n');
 }finally{await c.end()}
