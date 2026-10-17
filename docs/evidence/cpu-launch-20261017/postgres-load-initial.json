@@ -1,0 +1,43 @@
+{
+  "passed": true,
+  "observedAt": "2026-10-17T17:27:59.920Z",
+  "scope": "isolated full HTTP application, ephemeral chain 31337, separate PostgreSQL and actual gVisor CPU",
+  "database": "PostgreSQL, production image digest",
+  "mainnetTransactions": 0,
+  "mainnetSignerLoaded": false,
+  "load": {
+    "users": 50,
+    "requests": 1000,
+    "concurrency": 50,
+    "elapsedSeconds": 1.6638464210000001,
+    "requestsPerSecond": 601.0170093697608,
+    "p50Ms": 84.07565199999954,
+    "p95Ms": 131.7251080000001,
+    "p99Ms": 215.30541300000004,
+    "errors": 0
+  },
+  "checks": [
+    "50 signed tenants, 1000 real HTTP reads, zero cross-tenant records",
+    "stale account header and conflicting writes rejected",
+    "240 requests per IP accepted, next 20 rejected with 429",
+    "12 concurrent quotes: 8 accepted, 4 refused; all 8 genuine Docker jobs settled with valid receipts",
+    "RPC outage after on-chain reservation: 503, same-hash recovery, repeated admission without second charge",
+    "owner-signed stop cancels active real CPU and returns unused reservation",
+    "Leash revocation cancels active CPU and preserves unused-fund return",
+    "available plus settled charges conserved; treasury exact; withdrawal above balance rejected",
+    "65 concurrently signed quote requests across local owners: 64 accepted, 65th refused",
+    "funded original-payer quote succeeds before expiry and reverts after expiry"
+  ],
+  "soak": {
+    "targetSeconds": 180,
+    "requests": 1798,
+    "p95Ms": 4.491657999999006,
+    "errors": 0,
+    "duringActualCpuExecution": true
+  },
+  "paidRuns": 11,
+  "chargedAtomicTestTokens": "900",
+  "remainingReservedAtomicTestTokens": "0",
+  "stopStatus": "cancelled",
+  "killStatus": "cancelled"
+}

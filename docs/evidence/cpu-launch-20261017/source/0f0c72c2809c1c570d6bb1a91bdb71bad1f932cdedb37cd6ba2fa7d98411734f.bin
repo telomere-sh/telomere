@@ -1,0 +1,19 @@
+[Unit]
+Description=Read-only Telomere CPU financial and operational health observer
+After=telomere-mainnet-pilot.service telomere-mainnet-rpc.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/python3 /opt/telomere-mainnet-pilot/operator/cpu-launch/mainnet-ops.py monitor
+User=root
+Group=root
+UMask=0077
+TimeoutStartSec=90
+MemoryMax=192M
+CPUQuota=25%
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/opt/telomere-mainnet-pilot/private
+

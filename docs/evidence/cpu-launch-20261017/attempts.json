@@ -1,0 +1,26 @@
+{
+  "scope": "Disposable acceptance setup failures retained with successful reruns; no production keys or DB used",
+  "failures": [
+    {
+      "test": "recovery initial unit",
+      "cause": "1 GiB test cgroup exhausted by parent and child PGlite runtimes",
+      "correction": "3 GiB test cgroup; production controller limit unchanged",
+      "successfulEvidence": "recovery.json"
+    },
+    {
+      "test": "HTTP fixture startup",
+      "cause": "Unwritable initial work directory, invalid silent log level, and MockToken mint instead of faucet",
+      "correction": "Owned scratch work directory, error log level, real faucet ABI",
+      "successfulEvidence": "postgres-load-initial.json"
+    },
+    {
+      "test": "PostgreSQL restart fixture, units 2c64e25260bf4958 and a3b9dfc500dd49fe",
+      "cause": "Run-count expectation was captured before the subsequent global-quote test added another owner quote",
+      "correction": "Compare against the exact pre-outage baseline. The final fixture also uses a unique labelled persistent scratch volume across stop/start, removed after acceptance",
+      "successfulEvidence": "postgres-load-final.json"
+    }
+  ],
+  "tamperedEncryptedBackupRejected": true,
+  "windowsTaskSchedulerRegistration": "Access denied; installed HKCU login startup fallback",
+  "typecheckPassed": true
+}

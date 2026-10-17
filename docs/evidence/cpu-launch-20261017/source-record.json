@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 1,
+  "scope": "Exact operations sources at CPU launch acceptance, plus preserved prior RPC evidence sources",
+  "files": [
+    {
+      "originalPath": "scripts/base-rpc-router.ts",
+      "path": "source/2af60ff8032fc931f7adce52331aa3d75e9ff1a30b7f8f6fdcc9c752b49b224e.bin",
+      "bytes": 5650,
+      "sha256": "2af60ff8032fc931f7adce52331aa3d75e9ff1a30b7f8f6fdcc9c752b49b224e"
+    },
+    {
+      "originalPath": "tests/base-rpc-router.test.ts",
+      "path": "source/2c65e62932f175a01ebde2a85528f8cbb7ded92f577230ae24799f7027b88cff.bin",
+      "bytes": 4588,
+      "sha256": "2c65e62932f175a01ebde2a85528f8cbb7ded92f577230ae24799f7027b88cff"
+    },
+    {
+      "originalPath": "ops/cpu-launch/docker-load.py",
+      "path": "source/6e3d716245f3fb432d8240d279799b0c9d5e6b1ad4968d54aee80956a37651dc.bin",
+      "bytes": 1064,
+      "sha256": "6e3d716245f3fb432d8240d279799b0c9d5e6b1ad4968d54aee80956a37651dc"
+    },
+    {
+      "originalPath": "ops/cpu-launch/health.mjs",
+      "path": "source/f90e5dda57a1adfa205d92d2fb8c98757497246cae5da8e3bda99aeacd778386.bin",
+      "bytes": 1515,
+      "sha256": "f90e5dda57a1adfa205d92d2fb8c98757497246cae5da8e3bda99aeacd778386"
+    },
+    {
+      "originalPath": "ops/cpu-launch/launch-acceptance.py",
+      "path": "source/da2f8b5298190de1d980f5bf6873891719e459f949b3db86ca75aa0b912ae33a.bin",
+      "bytes": 2872,
+      "sha256": "da2f8b5298190de1d980f5bf6873891719e459f949b3db86ca75aa0b912ae33a"
+    },
+    {
+      "originalPath": "ops/cpu-launch/load-worker.mjs",
+      "path": "source/e41467dc99285deb09819792f959a44acd499ce3f1dc21f24fbc76e8dedc9efb.bin",
+      "bytes": 743,
+      "sha256": "e41467dc99285deb09819792f959a44acd499ce3f1dc21f24fbc76e8dedc9efb"
+    },
+    {
+      "originalPath": "ops/cpu-launch/load.mjs",
+      "path": "source/0e0da9cd5a1d03abb2ee591e8ec00be2c7bc969e362d7ed53f6e6e08d81b425f.bin",
+      "bytes": 23090,
+      "sha256": "0e0da9cd5a1d03abb2ee591e8ec00be2c7bc969e362d7ed53f6e6e08d81b425f"
+    },
+    {
+      "originalPath": "ops/cpu-launch/mainnet-ops.py",
+      "path": "source/a88b35920fce9c087d7b64702ba4d86e9217d2f0c0c4cae53cf28a5a9255368d.bin",
+      "bytes": 19837,
+      "sha256": "a88b35920fce9c087d7b64702ba4d86e9217d2f0c0c4cae53cf28a5a9255368d"
+    },
+    {
+      "originalPath": "ops/cpu-launch/offhost.py",
+      "path": "source/bdbd59b4c732f80d9be59e3a51f4575420f95e98f82c1b9723dc6662bbeaaee4.bin",
+      "bytes": 8169,
+      "sha256": "bdbd59b4c732f80d9be59e3a51f4575420f95e98f82c1b9723dc6662bbeaaee4"
+    },
+    {
+      "originalPath": "ops/cpu-launch/README.md",
+      "path": "source/9826b4e25ac6936faf4e2a9644e718cd0ca3ffc7b90bd8b9db677cc3d3a44ab8.bin",
+      "bytes": 8226,
+      "sha256": "9826b4e25ac6936faf4e2a9644e718cd0ca3ffc7b90bd8b9db677cc3d3a44ab8"
+    },
+    {
+      "originalPath": "ops/cpu-launch/snapshot.mjs",
+      "path": "source/544db4400cbe50a784e0aaf194f902d13247c451c158cef3dae709f2fbe3f0e9.bin",
+      "bytes": 1576,
+      "sha256": "544db4400cbe50a784e0aaf194f902d13247c451c158cef3dae709f2fbe3f0e9"
+    },
+    {
+      "originalPath": "ops/cpu-launch/telomere-mainnet-backup.service",
+      "path": "source/7d3a1e94aa531a06e4f82f20008470d15fe7f03cbaf50236c6a220d393c585c2.bin",
+      "bytes": 539,
+      "sha256": "7d3a1e94aa531a06e4f82f20008470d15fe7f03cbaf50236c6a220d393c585c2"
+    },
+    {
+      "originalPath": "ops/cpu-launch/telomere-mainnet-backup.timer",
+      "path": "source/2aa9e4f4aed83947cfc3e76cc1f8c97de2e7ee2d81efa3021523b22703a2ec91.bin",
+      "bytes": 197,
+      "sha256": "2aa9e4f4aed83947cfc3e76cc1f8c97de2e7ee2d81efa3021523b22703a2ec91"
+    },
+    {
+      "originalPath": "ops/cpu-launch/telomere-mainnet-monitor.service",
+      "path": "source/0f0c72c2809c1c570d6bb1a91bdb71bad1f932cdedb37cd6ba2fa7d98411734f.bin",
+      "bytes": 478,
+      "sha256": "0f0c72c2809c1c570d6bb1a91bdb71bad1f932cdedb37cd6ba2fa7d98411734f"
+    },
+    {
+      "originalPath": "ops/cpu-launch/telomere-mainnet-monitor.timer",
+      "path": "source/2fca8cb00a0419a1a9f72eaf60f38e9b98358b4f228e47bc5eba88552d6892f9.bin",
+      "bytes": 182,
+      "sha256": "2fca8cb00a0419a1a9f72eaf60f38e9b98358b4f228e47bc5eba88552d6892f9"
+    },
+    {
+      "originalPath": "ops/cpu-launch/test_monitor.py",
+      "path": "source/4c51d0a05ed08dd1f7fe9529974e8d1d3e630714dcc70fd2b342c0701f5cd08a.bin",
+      "bytes": 4084,
+      "sha256": "4c51d0a05ed08dd1f7fe9529974e8d1d3e630714dcc70fd2b342c0701f5cd08a"
+    },
+    {
+      "originalPath": "scripts/base-rpc-router.ts",
+      "sourceCommit": "ce7911a",
+      "historicalRpcSource": true,
+      "path": "source/019f6c293fb5ad14cbed2f68857746665161a0738be71f3813f6591da53adf82.bin",
+      "bytes": 4646,
+      "sha256": "019f6c293fb5ad14cbed2f68857746665161a0738be71f3813f6591da53adf82"
+    },
+    {
+      "originalPath": "tests/base-rpc-router.test.ts",
+      "sourceCommit": "ce7911a",
+      "historicalRpcSource": true,
+      "path": "source/df88e7e039597f50b0e85309cf95356654fd79e38f0f291cc784a3323f785a97.bin",
+      "bytes": 3337,
+      "sha256": "df88e7e039597f50b0e85309cf95356654fd79e38f0f291cc784a3323f785a97"
+    }
+  ]
+}

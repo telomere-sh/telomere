@@ -18,7 +18,21 @@ describe('Base RPC transport failover',()=>{
   });
   it('routes event history to the compatible upstream first',async()=>{
     const send=vi.fn<typeof fetch>().mockResolvedValue(response([]));await routeBaseRpc({...request,method:'eth_getLogs'},send);
+    expect(send.mock.calls[0]?.[0]).toBe('https://base-rpc.publicnode.com');
+  });
+  it('keeps exact receipt-block logs on the compatible archive upstream',async()=>{
+    const send=vi.fn<typeof fetch>().mockResolvedValue(response([]));await routeBaseRpc({...request,method:'eth_getLogs',params:[{blockHash:'0xbeef'}]},send);
     expect(send.mock.calls[0]?.[0]).toBe('https://base-mainnet.public.blastapi.io');
+  });
+  it('fails over an HTTP log-range refusal without changing the filter',async()=>{
+    const send=vi.fn<typeof fetch>().mockResolvedValueOnce(new Response('unavailable',{status:429})).mockResolvedValueOnce(new Response('range limit',{status:400})).mockResolvedValueOnce(response([]));
+    const logs={...request,method:'eth_getLogs',params:[{fromBlock:'0x1',toBlock:'0x100',topics:['0xtopic']}]};
+    expect(await routeBaseRpc(logs,send)).toEqual({jsonrpc:'2.0',id:7,result:[]});expect(send).toHaveBeenCalledTimes(3);
+    for(const call of send.mock.calls)expect(JSON.parse(String(call[1]?.body))).toEqual(logs);
+  });
+  it('bounds streamed upstream data before parsing',async()=>{
+    const send=vi.fn<typeof fetch>().mockResolvedValueOnce(new Response('x'.repeat(4*1024*1024+1))).mockResolvedValueOnce(response('bounded'));
+    expect(await routeBaseRpc(request,send)).toEqual({jsonrpc:'2.0',id:7,result:'bounded'});
   });
   it('does not retry contract reverts',async()=>{
     const payload={jsonrpc:'2.0',id:7,error:{code:3,message:'execution reverted',data:'0xdead'}};

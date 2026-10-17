@@ -1,0 +1,24 @@
+{
+  "observedAt": "2026-10-17T17:40:00.164858+00:00",
+  "diskFreeBytes": 175874777088,
+  "ready": true,
+  "databaseAvailable": true,
+  "states": [
+    {
+      "status": "completed",
+      "count": 2,
+      "oldest_seconds": 3389
+    }
+  ],
+  "invalidFinancialRows": 0,
+  "rpc": {
+    "available": true,
+    "operatorGasWei": "98462564567330"
+  },
+  "backupAgeSeconds": 208.718054,
+  "offhostAgeSeconds": 4.310341,
+  "offhostRuntimeValid": true,
+  "tlsRemainingDays": 88.05671339837765,
+  "alerts": [],
+  "status": "ok"
+}

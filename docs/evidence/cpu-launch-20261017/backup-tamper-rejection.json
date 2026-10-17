@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "observedAt": "2026-10-17T17:33:31.430600+00:00",
+  "oneCiphertextByteChanged": true,
+  "authenticatedDecryptionRejected": true,
+  "exitCode": 1,
+  "plaintextExtracted": false
+}

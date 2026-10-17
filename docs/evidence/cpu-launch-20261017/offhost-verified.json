@@ -1,0 +1,14 @@
+{
+  "id": "backup-20261017T173609Z-5f32e25a",
+  "verifiedFiles": 14,
+  "authenticatedAgeDecryption": true,
+  "manifestChecksumsValid": true,
+  "ciphertextSha256": "831a6ee780e9119e99d2c8675cf990cd8ed315caec2db726b251f47c110c1434",
+  "runtimeBundleVerified": true,
+  "runtimeFiles": 22125,
+  "runtimeBundle": {
+    "id": "runtime-ef6436151e2d098c21a46e1512a140e6f0cbf548-fbb8ca893eb90274",
+    "sha256": "c6c326407a052caf8afe1f34f37a22bbb66d831702a0c6dc7fdff0933b4e7813"
+  },
+  "verifiedAt": "2026-10-17T17:40:01.537059+00:00"
+}

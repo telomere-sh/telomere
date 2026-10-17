@@ -14,23 +14,35 @@ type Request=z.infer<typeof requestSchema>;
 const responseSchema=z.object({jsonrpc:z.literal('2.0'),id:z.union([z.string(),z.number(),z.null()]),
   result:z.unknown().optional(),error:z.object({code:z.number().int(),message:z.string(),data:z.unknown().optional()}).passthrough().optional()})
   .passthrough().refine(value=>Object.hasOwn(value,'result')!==Object.hasOwn(value,'error'));
-const primary='https://mainnet.base.org',secondary='https://base-mainnet.public.blastapi.io';
+const primary='https://mainnet.base.org',secondary='https://base-mainnet.public.blastapi.io',history='https://base-rpc.publicnode.com';
 const transient=(code:number,message:string)=>[-32005,-32011,-32016,-32002,-32603].includes(code)
   || /rate.?limit|request limit|too many requests|temporar|timeout|header not found|missing trie node/i.test(message);
 type Fetch=typeof fetch;
 type Logger={warn:(data:Record<string,unknown>,message:string)=>void};
 
+async function boundedResponse(response:Response):Promise<string>{
+  if(!response.body)throw Error('Empty upstream response');
+  const reader=response.body.getReader(),chunks:Uint8Array[]=[];let bytes=0;
+  try{while(true){const part=await reader.read();if(part.done)break;bytes+=part.value.byteLength;
+    if(bytes>4*1024*1024){await reader.cancel();throw Error('Upstream response too large')}chunks.push(part.value)}
+  }finally{reader.releaseLock()}
+  return Buffer.concat(chunks).toString('utf8');
+}
+
 /** Relay responses unchanged; retry reads only. Signed broadcasts have exactly one upstream attempt. */
 export async function routeBaseRpc(request:Request,send:Fetch=fetch,logger?:Logger):Promise<unknown>{
   const write=request.method==='eth_sendRawTransaction';
-  const hosts=write?[primary]:request.method==='eth_getLogs'?[secondary,primary]:[primary,secondary];
+  const blockHashLog=request.method==='eth_getLogs'&&z.object({blockHash:z.string()}).passthrough().safeParse(request.params[0]).success;
+  // Public Blast limits range queries to ten blocks. It remains useful for exact
+  // receipt blocks; the history upstream does not supply our archive-state reads.
+  const hosts=write?[primary]:request.method==='eth_getLogs'?(blockHashLog?[secondary,history,primary]:[history,secondary,primary]):[primary,secondary];
   let last:unknown;
   for(const [index,url] of hosts.entries()){
     try{
       const response=await send(url,{method:'POST',headers:{'content-type':'application/json'},
-        body:JSON.stringify(request),signal:AbortSignal.timeout(index===0&&!write?2500:5000)});
+        body:JSON.stringify(request),signal:AbortSignal.timeout(write?5000:2500)});
       if(!response.ok)throw Error('Upstream HTTP unavailable');
-      const text=await response.text();if(Buffer.byteLength(text)>4*1024*1024)throw Error('Upstream response too large');
+      const text=await boundedResponse(response);
       const payload=responseSchema.parse(JSON.parse(text));
       if(payload.id!==request.id)throw Error('Upstream response ID mismatch');
       last=payload;
@@ -48,6 +60,7 @@ export async function routeBaseRpc(request:Request,send:Fetch=fetch,logger?:Logg
 export function baseRpcServer(logger:Logger,send:Fetch=fetch):Server{
   let active=0;
   return createServer(async(req,res)=>{
+    if(req.method==='GET'&&req.url==='/health/live'){res.writeHead(200,{'content-type':'application/json','cache-control':'no-store'});res.end(JSON.stringify({status:'ok',active}));return}
     if(req.method!=='POST'||req.url!=='/'||active>=64){res.writeHead(503);res.end();return}
     active++;
     try{

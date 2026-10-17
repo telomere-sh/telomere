@@ -1,0 +1,26 @@
+{
+  "telomere-mainnet-pilot.service": {
+    "enabled": "enabled",
+    "active": "active"
+  },
+  "telomere-mainnet-rpc.service": {
+    "enabled": "enabled",
+    "active": "active"
+  },
+  "telomere-mainnet-postgres.service": {
+    "enabled": "static",
+    "active": "active"
+  },
+  "telomere-mainnet-docker.service": {
+    "enabled": "static",
+    "active": "active"
+  },
+  "telomere-mainnet-backup.timer": {
+    "enabled": "enabled",
+    "active": "active"
+  },
+  "telomere-mainnet-monitor.timer": {
+    "enabled": "enabled",
+    "active": "active"
+  }
+}

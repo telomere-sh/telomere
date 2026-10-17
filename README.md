@@ -19,6 +19,8 @@ The complete project implementation is maintained in the CEO's development envir
 
 Open [telomere.sh/dashboard](https://telomere.sh/dashboard/) and connect your wallet. A signed login opens your private server-backed Workspace. Balances, Leashes, CPU reservations, execution records, signed receipts and encrypted snapshots connect to the backend. Deposits, withdrawals, Leash changes and reservations request wallet approval. Settlement then follows the approved quote. See [launch and paid acceptance](docs/PUBLIC-WORKSPACE-LAUNCH.md).
 
+CPU launch operations, load acceptance, encrypted backups and recovery procedures are recorded in [CPU launch readiness](docs/CPU-LAUNCH-READINESS-20261017.md) and the [operations runbook](ops/cpu-launch/README.md).
+
 ## Run locally
 
 Requires **Node.js 22.12+** and npm. On Windows and Linux x64, `npm ci` installs the platform-specific Anvil binary. On other platforms, install the appropriate Anvil binary.

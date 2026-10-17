@@ -1,0 +1,26 @@
+{
+  "controller": {
+    "Restart": "on-failure",
+    "RestartUSec": "10s",
+    "CPUQuotaPerSecUSec": "1s",
+    "MemoryMax": "805306368",
+    "User": "telomere-mainnet",
+    "Group": "telomere-mainnet",
+    "ReadWritePaths": "/opt/telomere-mainnet-pilot/data"
+  },
+  "configurationGuard": {
+    "readOnly": true,
+    "configurationValid": true,
+    "chainId": 8453,
+    "operator": "0x87599dBF6f720DE7751E8CB2d36d4Ea96A4A1d38",
+    "verifiedRuntimePins": 749,
+    "unsignedPlanBound": true,
+    "bootstrapOwnershipVerified": true,
+    "dockerIsolationVerified": true,
+    "controllerStarted": false,
+    "onChainCalls": false
+  },
+  "remainingLoadContainers": [],
+  "remainingLoadDatabases": [],
+  "remainingLoadVolumes": []
+}
