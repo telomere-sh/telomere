@@ -1,0 +1,17 @@
+{
+  "container": "telomere-cloud-restore-1792265900664215",
+  "events": [
+    {
+      "action": "oom",
+      "at": 1792265970,
+      "exitCode": null
+    },
+    {
+      "action": "die",
+      "at": 1792265970,
+      "exitCode": "137"
+    }
+  ],
+  "cause": "psql result buffering inside the 512 MiB database container",
+  "correction": "FETCH_COUNT=256 in both operational restore verifiers"
+}

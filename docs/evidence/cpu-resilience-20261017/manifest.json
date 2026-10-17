@@ -1,0 +1,372 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-17T19:47:08.760366+00:00",
+  "scope": "Bounded CPU queue saturation, compatible release rollback, canonical stale recovery and scaled backups; 12h soak remains running; zero mainnet transactions",
+  "report": {
+    "path": "docs/CPU-QUEUE-ROLLBACK-SCALE-20261017.md",
+    "bytes": 7973,
+    "sha256": "5ba31a9a3536168f6412c5dcecd02c267e1e49a8ebcd91703dee173e74bc9095"
+  },
+  "files": [
+    {
+      "path": "docs/evidence/cpu-resilience-20261017/attempts.json",
+      "bytes": 1692,
+      "sha256": "9a0b7da5193f338dd4b7bd64fc9bec3cec72b502e72f26bceeba3ff89a7e3cee"
+    },
+    {
+      "path": "docs/evidence/cpu-resilience-20261017/backup.json",
+      "bytes": 786,
+      "sha256": "15bc5d9b693a2cce3c406622a92872e26819c4028950dc1a905f6e0d62971375"
+    },
+    {
+      "path": "docs/evidence/cpu-resilience-20261017/cloud-run-39062708018.json",
+      "bytes": 2087,
+      "sha256": "380745b68b885f732b5c5c26c129f49e7758c65ab66c98f3f8e44a154f165204"
+    },
+    {
+      "path": "docs/evidence/cpu-resilience-20261017/cloud-run-39063729206.json",
+      "bytes": 2083,
+      "sha256": "0c8cdea1ab9bee4c0a01bc25e35b5effadc72332c5bb915ca5e019be5edaeb13"
+    },
+    {
+      "path": "docs/evidence/cpu-resilience-20261017/fixture-files-cleanup.json",
+      "bytes": 277,
+      "sha256": "b83486025eb76f577e02e6f24a4c90b799ebdb51c51dec01229ee7a295d76d51"
+    },
+    {
+      "path": "docs/evidence/cpu-resilience-20261017/host-controls.json",
+      "bytes": 846,
+      "sha256": "24c4ad139d446e3323898cb4b6dee8e3cf94ca18957c7307803477751a5c76e6"
+    },
+    {
+      "path": "docs/evidence/cpu-resilience-20261017/initial-run.log",
+      "bytes": 1082,
+      "sha256": "6075899034f53a96dd67622d8c03547d8e69e9b814d51f0002f625db249eeb5b"
+    },
+    {
+      "path": "docs/evidence/cpu-resilience-20261017/initial-source/launch-acceptance.py",
+      "bytes": 3806,
+      "sha256": "1f5f4fe42b7d80c181d11c7fd6da6fb9e47726e952de50194c2d8041408c91be"
+    },
+    {
+      "path": "docs/evidence/cpu-resilience-20261017/initial-source/resilience-scenarios.mjs",
+      "bytes": 20874,
+      "sha256": "38af68585feb9d1179910a925e05faccded10cd0c499df8e6972b2b8fd479b75"
+    },
+    {
+      "path": "docs/evidence/cpu-resilience-20261017/initial-source/resilience-worker.mjs",
+      "bytes": 1446,
+      "sha256": "0fe206a12a9bc1c4e3fc42889abf1cf3531d9c18f2c15e93174533a58a10970d"
+    },
+    {
+      "path": "docs/evidence/cpu-resilience-20261017/initial-source/resilience.mjs",
+      "bytes": 10409,
+      "sha256": "80d5932b27043a1258104a288549ff99299e62a585f45e16c633a1caf472ef20"
+    },
+    {
+      "path": "docs/evidence/cpu-resilience-20261017/initial-source/table-fingerprints.mjs",
+      "bytes": 989,
+      "sha256": "cec50b4bf2215852dee7c4e2ecdab39ae8602dba4bb45ac5834ae742d0985432"
+    },
+    {
+      "path": "docs/evidence/cpu-resilience-20261017/large-table-fingerprints.json",
+      "bytes": 6785,
+      "sha256": "d424bd106009de3faac4f58423606d360a95aaf29e23e421512985abebbfff59"
+    },
+    {
+      "path": "docs/evidence/cpu-resilience-20261017/linux-tests-final.log",
+      "bytes": 2003,
+      "sha256": "23cf82d4d453df9d135f013d3748b40c6a2348fdb9c990d98992e11011f67f93"
+    },
+    {
+      "path": "docs/evidence/cpu-resilience-20261017/linux-tests.log",
+      "bytes": 901,
+      "sha256": "722f2b2d5c8824c756914fc35e6356a848f1f613c57b4e751a4439f5598a4ef1"
+    },
+    {
+      "path": "docs/evidence/cpu-resilience-20261017/mainnet-observer-source.mjs",
+      "bytes": 1462,
+      "sha256": "27e0eecaf585ebea3e09710f88c577d71d7f04cc8ddf044f1a202edab1c1106e"
+    },
+    {
+      "path": "docs/evidence/cpu-resilience-20261017/mainnet-readonly.json",
+      "bytes": 249,
+      "sha256": "85787aa06ca645d6ff7fd247e2cbe100ec889f9cd187b877bd15d4f10beaaf99"
+    },
+    {
+      "path": "docs/evidence/cpu-resilience-20261017/mainnet-snapshot-cursor.json",
+      "bytes": 336,
+      "sha256": "9e9f878b4e17afb43bf9e1b9f3600f5216641185b31f46663ad389e238ef1b27"
+    },
+    {
+      "path": "docs/evidence/cpu-resilience-20261017/monitor.json",
+      "bytes": 702,
+      "sha256": "f12af6f5c5f6ae30ea8a28aaf6fc387c223f6a4d5d7cea8688e92d03239e9803"
+    },
+    {
+      "path": "docs/evidence/cpu-resilience-20261017/resilience-cleanup.json",
+      "bytes": 145,
+      "sha256": "f6828c6308911c2e38edfbe3add0f0eb1040ee22846cb6b01c5be9af1163d839"
+    },
+    {
+      "path": "docs/evidence/cpu-resilience-20261017/resilience-run.log",
+      "bytes": 3762,
+      "sha256": "ef58de71e7e416dbf7b05382bb8493f96e5a70af65adeb99517e7f87d51dc65c"
+    },
+    {
+      "path": "docs/evidence/cpu-resilience-20261017/resilience.json",
+      "bytes": 3132,
+      "sha256": "8b09e26b55508aeedf15489835598dda1b8f5fd27df283fb3f1e8a837034788f"
+    },
+    {
+      "path": "docs/evidence/cpu-resilience-20261017/runtime-guard.json",
+      "bytes": 195,
+      "sha256": "3649f5e84528714cc6e8b8fb220b29bdbdc8f75f0d809513aa605d94501c4156"
+    },
+    {
+      "path": "docs/evidence/cpu-resilience-20261017/scale-initial-failure.log",
+      "bytes": 2687,
+      "sha256": "790013483efe9c59e3f1040785d3678c6464a9c51b0a559603d5593ed9f10573"
+    },
+    {
+      "path": "docs/evidence/cpu-resilience-20261017/scale-initial-oom.json",
+      "bytes": 410,
+      "sha256": "7820d7ac7e18e4fdbe19ef2b01186bb4df6ff49e546c1d476988205e718b921e"
+    },
+    {
+      "path": "docs/evidence/cpu-resilience-20261017/scale-restore.json",
+      "bytes": 809,
+      "sha256": "619d8422967449308882ef4732a615b0ebc42c2422b127d4c9e915206224faab"
+    },
+    {
+      "path": "docs/evidence/cpu-resilience-20261017/scale-run.log",
+      "bytes": 995,
+      "sha256": "cba1bbb9469398cb7c4eb1b0e6017f02c89e228b40e6ce05bf049d51a529c55d"
+    },
+    {
+      "path": "docs/evidence/cpu-resilience-20261017/second-checkpoint.json",
+      "bytes": 2092,
+      "sha256": "8dfc4fef31682ff411d6fbeb24abb7b8826e09ec51bc34b1581e12e48155b1d1"
+    },
+    {
+      "path": "docs/evidence/cpu-resilience-20261017/second-run.log",
+      "bytes": 2424,
+      "sha256": "d1583c89567df259c04e073bfad77ab2d6c06853a1cde0be1120a6c270dbdb2d"
+    },
+    {
+      "path": "docs/evidence/cpu-resilience-20261017/second-source/resilience-scenarios.mjs",
+      "bytes": 22530,
+      "sha256": "b824e94aa727f7e12f7bc0cea04b8f111d8181f145be284f731d6872ed0f99d9"
+    },
+    {
+      "path": "docs/evidence/cpu-resilience-20261017/second-source/resilience.mjs",
+      "bytes": 10447,
+      "sha256": "66c906070467afa1097a1542b705432b451cb5ffe79b796681d9c85a09bf07a0"
+    },
+    {
+      "path": "docs/evidence/cpu-resilience-20261017/soak-progress.json",
+      "bytes": 1067,
+      "sha256": "fcc7fe3c40e8b505555ed73cc6d983280db4fe2605739d4a05781614fa0a7148"
+    },
+    {
+      "path": "docs/evidence/cpu-resilience-20261017/source/0e0da9cd5a1d03abb2ee591e8ec00be2c7bc969e362d7ed53f6e6e08d81b425f.bin",
+      "bytes": 23090,
+      "sha256": "0e0da9cd5a1d03abb2ee591e8ec00be2c7bc969e362d7ed53f6e6e08d81b425f"
+    },
+    {
+      "path": "docs/evidence/cpu-resilience-20261017/source/0f0c72c2809c1c570d6bb1a91bdb71bad1f932cdedb37cd6ba2fa7d98411734f.bin",
+      "bytes": 478,
+      "sha256": "0f0c72c2809c1c570d6bb1a91bdb71bad1f932cdedb37cd6ba2fa7d98411734f"
+    },
+    {
+      "path": "docs/evidence/cpu-resilience-20261017/source/0fe206a12a9bc1c4e3fc42889abf1cf3531d9c18f2c15e93174533a58a10970d.bin",
+      "bytes": 1446,
+      "sha256": "0fe206a12a9bc1c4e3fc42889abf1cf3531d9c18f2c15e93174533a58a10970d"
+    },
+    {
+      "path": "docs/evidence/cpu-resilience-20261017/source/1537ae3b245a65d306bc0ed37f09c05f9e903c78e6ebca2c19a7c19146a3f5da.bin",
+      "bytes": 24150,
+      "sha256": "1537ae3b245a65d306bc0ed37f09c05f9e903c78e6ebca2c19a7c19146a3f5da"
+    },
+    {
+      "path": "docs/evidence/cpu-resilience-20261017/source/19dc8e409827aeb1334fd46b6fe43aca47329f3fda989fbfb04044ab4248ad06.bin",
+      "bytes": 2772,
+      "sha256": "19dc8e409827aeb1334fd46b6fe43aca47329f3fda989fbfb04044ab4248ad06"
+    },
+    {
+      "path": "docs/evidence/cpu-resilience-20261017/source/1f5f4fe42b7d80c181d11c7fd6da6fb9e47726e952de50194c2d8041408c91be.bin",
+      "bytes": 3806,
+      "sha256": "1f5f4fe42b7d80c181d11c7fd6da6fb9e47726e952de50194c2d8041408c91be"
+    },
+    {
+      "path": "docs/evidence/cpu-resilience-20261017/source/27341c6b6eb0be6ccc3548b55a08978fbec29c9ba036c8b3896e70c88ed1fb12.bin",
+      "bytes": 21145,
+      "sha256": "27341c6b6eb0be6ccc3548b55a08978fbec29c9ba036c8b3896e70c88ed1fb12"
+    },
+    {
+      "path": "docs/evidence/cpu-resilience-20261017/source/2aa9e4f4aed83947cfc3e76cc1f8c97de2e7ee2d81efa3021523b22703a2ec91.bin",
+      "bytes": 197,
+      "sha256": "2aa9e4f4aed83947cfc3e76cc1f8c97de2e7ee2d81efa3021523b22703a2ec91"
+    },
+    {
+      "path": "docs/evidence/cpu-resilience-20261017/source/2fca8cb00a0419a1a9f72eaf60f38e9b98358b4f228e47bc5eba88552d6892f9.bin",
+      "bytes": 182,
+      "sha256": "2fca8cb00a0419a1a9f72eaf60f38e9b98358b4f228e47bc5eba88552d6892f9"
+    },
+    {
+      "path": "docs/evidence/cpu-resilience-20261017/source/509aabe40df3499de3ad468bf5f3ea6485b4f8e77d507c372368daca499a0dd5.bin",
+      "bytes": 7962,
+      "sha256": "509aabe40df3499de3ad468bf5f3ea6485b4f8e77d507c372368daca499a0dd5"
+    },
+    {
+      "path": "docs/evidence/cpu-resilience-20261017/source/5659ea93ce9dc61f9e167cdd673547be7c7c9054456d62d15c2c91577177279e.bin",
+      "bytes": 1795,
+      "sha256": "5659ea93ce9dc61f9e167cdd673547be7c7c9054456d62d15c2c91577177279e"
+    },
+    {
+      "path": "docs/evidence/cpu-resilience-20261017/source/57e2d5b2aa959b9b1817d5444aa46c9f6730b68c7726606d8fc162f9b499e073.bin",
+      "bytes": 1980,
+      "sha256": "57e2d5b2aa959b9b1817d5444aa46c9f6730b68c7726606d8fc162f9b499e073"
+    },
+    {
+      "path": "docs/evidence/cpu-resilience-20261017/source/6276b5b49d7520d8e9badd5e4e6d55360494b4919c4b09996af34b811b2a3e80.bin",
+      "bytes": 3986,
+      "sha256": "6276b5b49d7520d8e9badd5e4e6d55360494b4919c4b09996af34b811b2a3e80"
+    },
+    {
+      "path": "docs/evidence/cpu-resilience-20261017/source/66c906070467afa1097a1542b705432b451cb5ffe79b796681d9c85a09bf07a0.bin",
+      "bytes": 10447,
+      "sha256": "66c906070467afa1097a1542b705432b451cb5ffe79b796681d9c85a09bf07a0"
+    },
+    {
+      "path": "docs/evidence/cpu-resilience-20261017/source/6a2535bb60370733058315da25f700a667b42e1d4b8620da77ebe71b224a4054.bin",
+      "bytes": 7890,
+      "sha256": "6a2535bb60370733058315da25f700a667b42e1d4b8620da77ebe71b224a4054"
+    },
+    {
+      "path": "docs/evidence/cpu-resilience-20261017/source/6e3d716245f3fb432d8240d279799b0c9d5e6b1ad4968d54aee80956a37651dc.bin",
+      "bytes": 1064,
+      "sha256": "6e3d716245f3fb432d8240d279799b0c9d5e6b1ad4968d54aee80956a37651dc"
+    },
+    {
+      "path": "docs/evidence/cpu-resilience-20261017/source/7d3a1e94aa531a06e4f82f20008470d15fe7f03cbaf50236c6a220d393c585c2.bin",
+      "bytes": 539,
+      "sha256": "7d3a1e94aa531a06e4f82f20008470d15fe7f03cbaf50236c6a220d393c585c2"
+    },
+    {
+      "path": "docs/evidence/cpu-resilience-20261017/source/7ea8e57084de173c95ed32250868d80701ff9b19715665807058dd9fbaa7b4b5.bin",
+      "bytes": 5945,
+      "sha256": "7ea8e57084de173c95ed32250868d80701ff9b19715665807058dd9fbaa7b4b5"
+    },
+    {
+      "path": "docs/evidence/cpu-resilience-20261017/source/8467d0b5a9b8becb31168e8b09024ea4413a8d9fb3e8d1967f33d4fba6866682.bin",
+      "bytes": 2825,
+      "sha256": "8467d0b5a9b8becb31168e8b09024ea4413a8d9fb3e8d1967f33d4fba6866682"
+    },
+    {
+      "path": "docs/evidence/cpu-resilience-20261017/source/873a3ff666e85d6782991a17a081192e41bf728f5f7e0bb1ebc31856e3386fab.bin",
+      "bytes": 8191,
+      "sha256": "873a3ff666e85d6782991a17a081192e41bf728f5f7e0bb1ebc31856e3386fab"
+    },
+    {
+      "path": "docs/evidence/cpu-resilience-20261017/source/88bf4567ae1a85a177679c9f4387f815773682ede6d4c77de5b5d5098addf22b.bin",
+      "bytes": 21170,
+      "sha256": "88bf4567ae1a85a177679c9f4387f815773682ede6d4c77de5b5d5098addf22b"
+    },
+    {
+      "path": "docs/evidence/cpu-resilience-20261017/source/8d7865f0faba13dccecfe88ed4f02d2794cce1c420a96e746ff91013752c18b3.bin",
+      "bytes": 16917,
+      "sha256": "8d7865f0faba13dccecfe88ed4f02d2794cce1c420a96e746ff91013752c18b3"
+    },
+    {
+      "path": "docs/evidence/cpu-resilience-20261017/source/937b430665bbe8cfa42fa2651ac8fece7a64072ec6dbe93677ac4c7cdeaad312.bin",
+      "bytes": 3980,
+      "sha256": "937b430665bbe8cfa42fa2651ac8fece7a64072ec6dbe93677ac4c7cdeaad312"
+    },
+    {
+      "path": "docs/evidence/cpu-resilience-20261017/source/9f7087d4a8d1dadea94f21496a47e34e0b1375857bbb8dc1b0f7588339f21f1b.bin",
+      "bytes": 1638,
+      "sha256": "9f7087d4a8d1dadea94f21496a47e34e0b1375857bbb8dc1b0f7588339f21f1b"
+    },
+    {
+      "path": "docs/evidence/cpu-resilience-20261017/source/a231623eaea5ec47f8a5df89592de230f2e1f8884e828d0f733810ded425e223.bin",
+      "bytes": 2163,
+      "sha256": "a231623eaea5ec47f8a5df89592de230f2e1f8884e828d0f733810ded425e223"
+    },
+    {
+      "path": "docs/evidence/cpu-resilience-20261017/source/ae99f427b7204bbba65cfa1d5c46c60b94c5abadf274766f9f5533d456bf40e4.bin",
+      "bytes": 3574,
+      "sha256": "ae99f427b7204bbba65cfa1d5c46c60b94c5abadf274766f9f5533d456bf40e4"
+    },
+    {
+      "path": "docs/evidence/cpu-resilience-20261017/source/b516045790b8eede4ef684c501e5d06b71550338ae69823f9abebfbab66e0c9d.bin",
+      "bytes": 24097,
+      "sha256": "b516045790b8eede4ef684c501e5d06b71550338ae69823f9abebfbab66e0c9d"
+    },
+    {
+      "path": "docs/evidence/cpu-resilience-20261017/source/b73e73b3d5782204c0a631fbeadfcf5095a2ce6919167af47ae795bba1a8391d.bin",
+      "bytes": 17622,
+      "sha256": "b73e73b3d5782204c0a631fbeadfcf5095a2ce6919167af47ae795bba1a8391d"
+    },
+    {
+      "path": "docs/evidence/cpu-resilience-20261017/source/b8009c4995d9b912bc21ee43d9aeeddccc601b2dac2cb6d24d9cf10698518851.bin",
+      "bytes": 20403,
+      "sha256": "b8009c4995d9b912bc21ee43d9aeeddccc601b2dac2cb6d24d9cf10698518851"
+    },
+    {
+      "path": "docs/evidence/cpu-resilience-20261017/source/bdbd59b4c732f80d9be59e3a51f4575420f95e98f82c1b9723dc6662bbeaaee4.bin",
+      "bytes": 8169,
+      "sha256": "bdbd59b4c732f80d9be59e3a51f4575420f95e98f82c1b9723dc6662bbeaaee4"
+    },
+    {
+      "path": "docs/evidence/cpu-resilience-20261017/source/c8f2f2f83579341f673cb2b068d4596764ec0911096ea3490596296abfec38d3.bin",
+      "bytes": 11412,
+      "sha256": "c8f2f2f83579341f673cb2b068d4596764ec0911096ea3490596296abfec38d3"
+    },
+    {
+      "path": "docs/evidence/cpu-resilience-20261017/source/cec50b4bf2215852dee7c4e2ecdab39ae8602dba4bb45ac5834ae742d0985432.bin",
+      "bytes": 989,
+      "sha256": "cec50b4bf2215852dee7c4e2ecdab39ae8602dba4bb45ac5834ae742d0985432"
+    },
+    {
+      "path": "docs/evidence/cpu-resilience-20261017/source/dc06805acfedef309a5c4b745f627ad91d80107d94ad685ea92582190ee86da9.bin",
+      "bytes": 1660,
+      "sha256": "dc06805acfedef309a5c4b745f627ad91d80107d94ad685ea92582190ee86da9"
+    },
+    {
+      "path": "docs/evidence/cpu-resilience-20261017/source/dff7d904dca2be6b4c0b2aa73d7a4354f6a4e48e156cde0292c2d1b2d7569774.bin",
+      "bytes": 17645,
+      "sha256": "dff7d904dca2be6b4c0b2aa73d7a4354f6a4e48e156cde0292c2d1b2d7569774"
+    },
+    {
+      "path": "docs/evidence/cpu-resilience-20261017/source/e0ad94f1432bc2947ca8c24eac3964861edf278d755b12cc3695c147cf2284d8.bin",
+      "bytes": 2423,
+      "sha256": "e0ad94f1432bc2947ca8c24eac3964861edf278d755b12cc3695c147cf2284d8"
+    },
+    {
+      "path": "docs/evidence/cpu-resilience-20261017/source/e41467dc99285deb09819792f959a44acd499ce3f1dc21f24fbc76e8dedc9efb.bin",
+      "bytes": 743,
+      "sha256": "e41467dc99285deb09819792f959a44acd499ce3f1dc21f24fbc76e8dedc9efb"
+    },
+    {
+      "path": "docs/evidence/cpu-resilience-20261017/source/e6081714b82dd5d027dca3576bc947ac9516a48ff4447ee2823cb494c60637d9.bin",
+      "bytes": 7088,
+      "sha256": "e6081714b82dd5d027dca3576bc947ac9516a48ff4447ee2823cb494c60637d9"
+    },
+    {
+      "path": "docs/evidence/cpu-resilience-20261017/source/e664ebc959f1a31f4e874f8dde66a2a75986ac62c5d0b6252903166af15564f1.bin",
+      "bytes": 1885,
+      "sha256": "e664ebc959f1a31f4e874f8dde66a2a75986ac62c5d0b6252903166af15564f1"
+    },
+    {
+      "path": "docs/evidence/cpu-resilience-20261017/source/ec9508abe2996bc172f489041501a6ede793be5b7158ccaf9605869f023db6da.bin",
+      "bytes": 24127,
+      "sha256": "ec9508abe2996bc172f489041501a6ede793be5b7158ccaf9605869f023db6da"
+    },
+    {
+      "path": "docs/evidence/cpu-resilience-20261017/source-record.json",
+      "bytes": 20379,
+      "sha256": "d51de7f07f5e92ded9f5bcc47c20c428c341c88ae18536810d3dfed3a2c4b7d4"
+    }
+  ]
+}

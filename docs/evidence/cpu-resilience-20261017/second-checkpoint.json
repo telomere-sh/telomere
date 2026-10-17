@@ -1,0 +1,70 @@
+{
+  "phase": "large_database_queries",
+  "outcome": {
+    "scope": "isolated local chain 31337; exact production code except explicit release-candidate fixture",
+    "mainnetSignerLoaded": false,
+    "mainnetTransactions": 0,
+    "queue": {
+      "passed": true,
+      "fundedOwners": 9,
+      "queued": 64,
+      "quotesAtCapacityStatus": 429,
+      "paidAdmissionAtCapacityStatus": 429,
+      "resumedSameReservationWithoutSecondPayment": true,
+      "queuedCancellationCharge": "0",
+      "canonicalReceipts": 65,
+      "maxRunning": 1,
+      "samples": 679,
+      "healthyReads": 85,
+      "fullQueueReadRequests": 500,
+      "fullQueueReadP95Ms": 102.76359599999887,
+      "drainElapsedSeconds": 175.47118410800002,
+      "chargedAtomicTestTokens": "12100"
+    },
+    "rollback": {
+      "passed": true,
+      "fixtureReleaseHashes": [
+        "128a49e46c31f99df2b9a4fc45485ec78692e7f406a39892889d6942a9826948",
+        "2b67d30b073bd3839ceabc057623db7742540c39324c55b98afd817f8de99f87"
+      ],
+      "compatibleAdditiveMigration": true,
+      "newerWorkspaceAndFinancialRecordsRetained": true,
+      "settlementNonceUnchanged": true
+    },
+    "staleRestore": {
+      "passed": true,
+      "snapshot": {
+        "bytes": 141166,
+        "elapsedSeconds": 0.24015846299999977
+      },
+      "restoredExactJournalBytes": true,
+      "chainAheadByOneSettlement": true,
+      "canonicalReceiptRecovered": true,
+      "noSecondBroadcastNonce": true,
+      "missingPostSnapshotRowStatus": 404,
+      "missingRowReservationRefundedByOwnerOnLocalChain": true,
+      "automaticMissingRowReconstruction": false,
+      "chargedAtomicTestTokens": "12500"
+    },
+    "largeDatabase": {
+      "synthetic": true,
+      "historicalRows": 400000,
+      "databaseBytes": 466354703,
+      "seedSeconds": 16.45016370800001,
+      "tableCounts": [
+        {
+          "name": "workspace_documents",
+          "rows": 50050
+        },
+        {
+          "name": "auth_sessions",
+          "rows": 100050
+        },
+        {
+          "name": "jobs",
+          "rows": 250067
+        }
+      ]
+    }
+  }
+}

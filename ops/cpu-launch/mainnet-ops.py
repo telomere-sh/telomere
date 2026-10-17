@@ -12,6 +12,12 @@ def digest(path):
     with path.open('rb') as f:
         for chunk in iter(lambda:f.read(1024*1024),b''):h.update(chunk)
     return h.hexdigest()
+def fingerprint_file(source):
+    """psql emits one newline-terminated JSON record per row; bound verifier memory."""
+    checksum=hashlib.sha256();rows=0
+    for chunk in iter(lambda:source.read(1024*1024),b''):
+        checksum.update(chunk);rows+=chunk.count(b'\n')
+    return checksum.hexdigest(),rows
 def atomic(path,value):
     temp=path.with_name(path.name+'.next');temp.write_text(json.dumps(value,indent=2)+'\n');temp.chmod(0o600);os.replace(temp,path)
 def now():return datetime.datetime.now(datetime.timezone.utc).isoformat()
@@ -92,15 +98,17 @@ def runtime_bundle():
 def restore(stage,snapshot):
     global PHASE
     PHASE="restore_create"
-    name='telomere-backup-restore-'+uuid.uuid4().hex;owned=False
+    name='telomere-backup-restore-'+uuid.uuid4().hex;owned=False;volume=name+'-data';volume_created=False
     image=run(DOCKER+['inspect','--format','{{.Image}}','telomere-mainnet-postgres']).stdout.decode().strip()
     assert re.fullmatch(r'sha256:[0-9a-f]{64}',image)
     digests=json.loads(run(DOCKER+['image','inspect','--format','{{json .RepoDigests}}',image]).stdout)
     pull_image=next(value for value in digests if re.fullmatch(r'postgres@sha256:[0-9a-f]{64}',value))
     began=time.monotonic()
     try:
+        assert shutil.disk_usage(BASE).free>4*1024**3,'Insufficient scratch restore disk'
+        run(DOCKER+['volume','create','--label','telomere.backup.exercise='+name,volume]);volume_created=True
         run(DOCKER+['run','-d','--name',name,'--label','telomere.backup.exercise='+name,'--runtime','runc','--network','none',
-            '--cpus','0.5','--memory','512m','--pids-limit','128','--tmpfs','/var/lib/postgresql/data:rw,size=512m',
+            '--cpus','0.5','--memory','512m','--pids-limit','128','--mount','type=volume,source='+volume+',target=/var/lib/postgresql/data',
             '-e','POSTGRES_USER=restore','-e','POSTGRES_DB=restore','-e','POSTGRES_HOST_AUTH_METHOD=trust',image]);owned=True
         for attempt in range(60):
             ready=subprocess.run(DOCKER+['exec',name,'sh','-c','test "$(cat /proc/1/comm)" = postgres && pg_isready -U restore -d restore'],capture_output=True,timeout=5)
@@ -115,9 +123,12 @@ def restore(stage,snapshot):
         for entry in snapshot['fingerprints']:
             table=entry['table'];PHASE='restore_table_'+table;assert re.fullmatch('[a-z][a-z0-9_]*',table)
             query='SELECT to_jsonb(t)::text FROM public."'+table+'" t ORDER BY to_jsonb(t)::text;'
-            result=run(DOCKER+['exec',name,'psql','-X','-q','-A','-t','-U','restore','-d','restore','-v','ON_ERROR_STOP=1','-c',query]).stdout
-            assert hashlib.sha256(result).hexdigest()==entry['sha256'],'Restored table fingerprint differs'
-            count=0 if not result else len(result.splitlines());assert count==entry['rows']
+            with tempfile.TemporaryFile() as output:
+                subprocess.run(DOCKER+['exec',name,'psql','-X','-q','-A','-t','-U','restore','-d','restore','-v','ON_ERROR_STOP=1','-v','FETCH_COUNT=256','-c',query],
+                    check=True,stdout=output,stderr=subprocess.PIPE,timeout=120)
+                output.seek(0);checksum,count=fingerprint_file(output)
+            assert checksum==entry['sha256'],'Restored table fingerprint differs'
+            assert count==entry['rows']
             tables+=1;rows+=count
         return {'passed':True,'tables':tables,'rows':rows,'elapsedSeconds':round(time.monotonic()-began,3),'network':'none','mainnetControllerStarted':False,'databaseImage':pull_image}
     finally:
@@ -125,6 +136,10 @@ def restore(stage,snapshot):
             label=run(DOCKER+['inspect','--format','{{index .Config.Labels "telomere.backup.exercise"}}',name]).stdout.decode().strip()
             assert label==name
             run(DOCKER+['rm','-f',name])
+        if volume_created:
+            label=run(DOCKER+['volume','inspect','--format','{{index .Labels "telomere.backup.exercise"}}',volume]).stdout.decode().strip()
+            assert label==name
+            run(DOCKER+['volume','rm',volume])
 def backup():
     global PHASE
     PHASE="backup_setup"
@@ -227,6 +242,7 @@ def evaluate_health(observation):
     if not observation.get('rpc',{}).get('available'):alerts.append('RPC_OR_ASSET_PINS_UNAVAILABLE')
     elif int(observation['rpc']['operatorGasWei'])<20000000000000:alerts.append('OPERATOR_GAS_LOW')
     if observation.get('invalidFinancialRows',0):alerts.append('FINANCIAL_INVARIANT_FAILED')
+    if observation.get('settlementJournalRows',0)>=1500:alerts.append('SETTLEMENT_HISTORY_REVIEW_DUE')
     for entry in observation.get('states',[]):
         if entry['status']=='reconciliation' and entry['count']:alerts.append('RUN_REQUIRES_RECONCILIATION')
         if entry['status'] in ('settling','receipt_pending') and entry['oldest_seconds']>120:alerts.append('SETTLEMENT_OR_RECEIPT_STALLED')

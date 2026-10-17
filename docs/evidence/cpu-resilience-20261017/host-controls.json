@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "services": {
+    "telomere-mainnet-pilot": "active",
+    "telomere-mainnet-postgres": "active",
+    "telomere-mainnet-rpc": "active",
+    "telomere-mainnet-docker": "active",
+    "telomere-mainnet-monitor.timer": "active",
+    "telomere-mainnet-backup.timer": "active",
+    "telomere-mainnet-pager.timer": "active"
+  },
+  "containers": [
+    "telomere-load-postgres-0edc56ed5ba346ae",
+    "telomere-mainnet-postgres"
+  ],
+  "volumes": [
+    "telomere-load-postgres-0edc56ed5ba346ae-data"
+  ],
+  "retiredOnlyOwnFailedFixtureUnits": [
+    "telomere-cpu-resilience-a0d32e4e7b62475e.service",
+    "telomere-cpu-resilience-5a56026d2bd34c3d.service",
+    "telomere-cpu-scale-20261017-1937.service"
+  ],
+  "oldFixtureJournalsRetained": true,
+  "productionApplicationRestarted": false,
+  "defaultDedicatedDockerRuntime": "runsc"
+}

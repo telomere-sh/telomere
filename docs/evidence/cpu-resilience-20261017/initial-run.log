@@ -1,0 +1,10 @@
+Started telomere-cpu-resilience-a0d32e4e7b62475e.service - /opt/node-v22.23.3-linux-x64/bin/node /opt/telomere-mainnet-pilot/operator/cpu-launch/resilience.mjs.
+{"phase":"fund_nine_independent_local_accounts","at":"2026-10-17T19:24:16.178Z"}
+{"phase":"queue_global_saturation","at":"2026-10-17T19:24:16.521Z"}
+{"phase":"drain_saturated_paid_queue","at":"2026-10-17T19:24:21.761Z"}
+{"phase":"release_rollback_preserving_new_writes","at":"2026-10-17T19:27:16.762Z"}
+{"passed":false,"phase":"release_rollback_preserving_new_writes","errorType":"Error","message":"Release A","reportDirectory":"/opt/telomere-mainnet-pilot/data/cpu-launch-acceptance-20261017/http-load-AwMHxL"}
+telomere-cpu-resilience-a0d32e4e7b62475e.service: Main process exited, code=exited, status=1/FAILURE
+{"namespace": "a0d32e4e7b62475e", "serviceResult": "exit-code", "observedAtUnix": 1792265268.0327814, "removedContainers": 0, "cleanupPassed": true}
+telomere-cpu-resilience-a0d32e4e7b62475e.service: Failed with result 'exit-code'.
+telomere-cpu-resilience-a0d32e4e7b62475e.service: Consumed 39.889s CPU time.

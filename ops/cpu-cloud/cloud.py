@@ -1,5 +1,5 @@
 """Independent hosted backup verifier and outage pager. No application execution."""
-import argparse, datetime, hashlib, json, math, os, re, select, subprocess, tarfile, tempfile, time, traceback, urllib.request
+import argparse, datetime, hashlib, json, math, os, re, select, shutil, subprocess, tarfile, tempfile, time, traceback, urllib.request
 from pathlib import Path, PurePosixPath
 from github_store import GitHubStore, digest
 from pager import delivery_plan, send
@@ -193,6 +193,12 @@ def rehearse_restore(store, backup, identity, folder):
     with tempfile.TemporaryDirectory(prefix='restore-', dir=folder) as temporary:
         return _rehearse_restore(store, backup, identity, Path(temporary))
 
+def fingerprint_file(source):
+    checksum=hashlib.sha256();rows=0
+    for chunk in iter(lambda:source.read(1024*1024),b''):
+        checksum.update(chunk);rows+=chunk.count(b'\n')
+    return checksum.hexdigest(),rows
+
 
 def _rehearse_restore(store, backup, identity, folder):
     image = backup['restore']['databaseImage']
@@ -220,13 +226,19 @@ def _rehearse_restore(store, backup, identity, folder):
     name = 'telomere-cloud-restore-' + run_id
     docker = ['docker', '--host', 'unix:///var/run/docker.sock']
     def command(arguments, **kwargs):
-        return subprocess.run(docker + arguments, check=True, capture_output=True, timeout=120, **kwargs)
-    created = False
+        options={'check':True,'capture_output':True,'timeout':120}
+        if 'stdout' in kwargs:
+            options.pop('capture_output');options['stderr']=subprocess.PIPE
+        return subprocess.run(docker + arguments, **options, **kwargs)
+    created = False; volume=name+'-data';volume_created=False
     started = time.monotonic()
     try:
+        if shutil.disk_usage(folder).free<4*1024**3:
+            raise RuntimeError('Insufficient isolated restore disk')
+        command(['volume','create','--label','telomere.cloud.restore='+name,volume]);volume_created=True
         command(['run', '-d', '--name', name, '--label', 'telomere.cloud.restore=' + name,
             '--network', 'none', '--cpus', '0.5', '--memory', '512m', '--pids-limit', '128',
-            '--tmpfs', '/var/lib/postgresql/data:rw,size=512m', '-e', 'POSTGRES_USER=restore',
+            '--mount', 'type=volume,source='+volume+',target=/var/lib/postgresql/data', '-e', 'POSTGRES_USER=restore',
             '-e', 'POSTGRES_DB=restore', '-e', 'POSTGRES_HOST_AUTH_METHOD=trust', image])
         created = True
         for attempt in range(60):
@@ -245,8 +257,10 @@ def _rehearse_restore(store, backup, identity, folder):
             if not re.fullmatch(r'[a-z][a-z0-9_]*', table):
                 raise ValueError('Invalid restored table')
             query = 'SELECT to_jsonb(t)::text FROM public."' + table + '" t ORDER BY to_jsonb(t)::text;'
-            restored = command(['exec', name, 'psql', '-X', '-q', '-A', '-t', '-U', 'restore', '-d', 'restore', '-v', 'ON_ERROR_STOP=1', '-c', query]).stdout
-            if hashlib.sha256(restored).hexdigest() != entry['sha256'] or len(restored.splitlines()) != entry['rows']:
+            with tempfile.TemporaryFile(dir=folder) as output:
+                command(['exec', name, 'psql', '-X', '-q', '-A', '-t', '-U', 'restore', '-d', 'restore', '-v', 'ON_ERROR_STOP=1', '-v', 'FETCH_COUNT=256', '-c', query],stdout=output)
+                output.seek(0);checksum,count=fingerprint_file(output)
+            if checksum != entry['sha256'] or count != entry['rows']:
                 raise RuntimeError('Cloud-restored table differs')
             rows += entry['rows']
         return {'passed': True, 'tables': len(snapshot['fingerprints']), 'rows': rows,
@@ -257,6 +271,10 @@ def _rehearse_restore(store, backup, identity, folder):
             if label != name:
                 raise RuntimeError('Isolated restore label differs')
             command(['rm', '-f', name])
+        if volume_created:
+            label=command(['volume','inspect','--format','{{index .Labels "telomere.cloud.restore"}}',volume]).stdout.decode().strip()
+            if label != name:raise RuntimeError('Isolated restore volume label differs')
+            command(['volume','rm',volume])
 
 
 def copy_current_backup(store, exporter, identity, folder, restore=False):

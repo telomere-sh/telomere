@@ -1,0 +1,121 @@
+# CPU mainnet operations
+
+This directory contains the operations layer for the existing Base mainnet USDC CPU service. It does not deploy a new contract, submit owner-wallet transactions, or change the website. Production application code remains the reviewed immutable release. Paths, service names and numeric UID/GID below are specific to this VPS.
+
+## Routine checks
+
+Run as root on the VPS:
+
+```sh
+systemctl status telomere-mainnet-pilot telomere-mainnet-rpc --no-pager
+systemctl list-timers 'telomere-mainnet-*' --no-pager
+python3 /opt/telomere-mainnet-pilot/operator/cpu-launch/mainnet-ops.py monitor
+python3 /opt/telomere-mainnet-pilot/operator/cpu-launch/mainnet-ops.py status
+journalctl -u telomere-mainnet-monitor.service -n 20 --no-pager
+```
+
+The monitor runs every two minutes. Its private status file is `/opt/telomere-mainnet-pilot/private/cpu-monitor-status.json`. Alerts cover readiness, database/RPC availability, financial row invariants, stalled settlements, reconciliation, queue delay, low operator ETH, disk space, TLS expiry, stale backups and missing verification of the current runtime bundle off the VPS. The server pager delivers Telegram incidents/recovery, and a separate hosted checker covers VPS loss. See [independent cloud operations](../cpu-cloud/README.md).
+
+## Backups
+
+The hourly `telomere-mainnet-backup.timer` runs `mainnet-ops.py backup` without stopping the application. A PostgreSQL repeatable-read exported snapshot binds the dump and table fingerprints. Referenced Cyst ciphertext is copied with size/hash checks; missing ready blobs and symlinks fail the backup. A pending, not-yet-uploaded blob remains pending.
+
+Every successful backup first restores its database dump into an isolated, temporary PostgreSQL container using the production image digest, `--network none`, and no application process. All restored table fingerprints and row counts must match. Failure prevents publication of a new successful backup status. The plaintext staging directory is removed on completion.
+
+Data and private configuration are encrypted with age X25519 before retention. The nginx site, its CSP include and HTTP/ACME configuration are retained together. The separate encrypted runtime bundle contains the exact app release, public website, operator code, systemd units, Node and runsc binaries. All 749 production runtime pins are checked before archiving. Data manifests bind the bundle ID and checksum. Do not remove an older runtime bundle while retained data snapshots reference it.
+
+On the VPS, encrypted archives are in `/opt/telomere-mainnet-pilot/backups` with root-only access. Retention keeps the latest 24 data snapshots and one older snapshot for each of seven distinct days. Runtime bundles are retained separately. The recipient is public; the decryption identity is not stored on the VPS.
+
+The private Windows copy lives outside Git:
+
+`C:\Users\Administrator\Documents\Telomere-private-backups\mainnet-cpu`
+
+These are additional manual recovery copies. Primary off-host copies and authenticated verification now run in the private GitHub operations repository with a separate cloud identity. The earlier Windows login watcher is retired after cloud acceptance. An offline PC does not prevent primary backup or paging; the production monitor requires a fresh cloud receipt.
+
+The client verifies ciphertext SHA-256, authenticated age decryption and every archived file checksum before acknowledging the copy. The runtime bundle is also decrypted and verified. Use the installed Python to perform an immediate pull or verify a retained copy:
+
+```powershell
+python C:\Users\Administrator\Documents\Telomere-private-backups\mainnet-cpu\offhost.py pull
+python C:\Users\Administrator\Documents\Telomere-private-backups\mainnet-cpu\offhost.py verify C:\Users\Administrator\Documents\Telomere-private-backups\mainnet-cpu\backup-<id>.tar.age
+```
+
+Keep `identity.dpapi`, Windows recovery credentials and encrypted archives private. DPAPI ties this additional owner identity to the Windows user/device. The separate cloud recovery identity is held in Actions secrets, and a manual recovery workflow can wrap it to a new public age recipient without the original Windows device. No private identity is published unencrypted.
+
+## Recovery procedure
+
+1. Stop the failed production controller before restoring data. Do not run a second controller against the same mainnet escrow or signer. Keep the static website available as appropriate, with compute admission unavailable during recovery.
+2. Select a verified data snapshot and its exact runtime bundle from the private cloud releases, or an additional retained local copy. Use the hosted verification/recovery workflow or the existing owner identity. Decrypt only into a private recovery directory. Never put private configuration, transaction journal raw bytes or a decryption key into Git or a public log.
+3. Restore the dump into an isolated PostgreSQL container with no network and no Telomere controller. Recompute every table fingerprint using the ordered `to_jsonb(row)::text` query in `mainnet-ops.py restore()`, and compare against `snapshot.json`. Verify Cyst ciphertext checksums and the file manifest. The hourly rehearsal implements this database verification already.
+4. For complete VPS loss, rebuild Debian dependencies and the dedicated Docker daemon, recreate UID 995/GID 993, restore the pinned Node/runsc binaries and release layout from the runtime manifest, and obtain the CPU and PostgreSQL images by their reviewed digests. Restore root-only private configuration and ownership, website, nginx and service units. Reissue TLS certificates if needed. Validate paths and permissions before allowing any application process to run. This machine rebuild has no measured automatic recovery time.
+5. Before enabling a restored mainnet worker, use read-only RPC checks to confirm chain 8453, native USDC implementation, escrow roles, original transaction hashes, operator nonce and on-chain balances. Reconcile changes after the snapshot against chain receipts/logs and owner transaction hashes. The target schedule is hourly snapshots plus hosted off-site pulls every 30 minutes; provider failures can increase the gap. Check the actual timestamp of the chosen verified snapshot. Never regenerate a settlement or blindly broadcast a journal from a stale snapshot. Reservations absent from the snapshot require explicit reconciliation; the contract's timeout refund remains available to the owner.
+6. Run the existing production configuration/activation guards, then start the RPC and exactly one controller. Confirm readiness, inspect reconciliation/settlement states, verify balances and receipts, and run the monitor. Re-enable backup/pager timers and verify the hosted cloud workflow. Do not interpret a database-only rehearsal as proof that an entire VPS was rebuilt.
+
+Rollback of application code must preserve the current database, chain binding and transaction journal. Replacing the live database with an older copy merely to undo a code release can lose newer reservations and settlements.
+
+### Audit a stale database before enabling compute
+
+New snapshots retain `chainCursor`, observed before opening the database snapshot. If RPC is unavailable, the database backup still succeeds with a null cursor; that snapshot requires a separately reviewed canonical starting block. Older snapshots also need that explicit review. The cursor is part of the encrypted, authenticated backup; never accept an arbitrary user-supplied cursor as recovery evidence.
+
+With production compute stopped, a restored scratch database selected explicitly through `TELOMERE_RECOVERY_DATABASE_URL`, and a read-only endpoint selected through `TELOMERE_RECOVERY_RPC_URL`, run:
+
+```sh
+node /opt/telomere-mainnet-pilot/operator/cpu-launch/recovery-audit.mjs /private/recovery/snapshot.json
+```
+
+The command opens a read-only database transaction and scans canonical `RunOpened` events in pages of at most 1,000 blocks. It checks the snapshot and ending block hashes again, refuses a chain/escrow mismatch or a gap exceeding 10,000 blocks, and reports reservations missing from the restored database. It never creates a wallet client or sends a transaction. Exit 2 requires operator reconciliation; exit 1 means the audit itself failed. An empty missing-reservation report does not replace asset/role/nonce checks, journal reconciliation, receipt verification or the single-controller guard.
+
+An on-chain reservation absent from the snapshot must not be recreated with guessed execution evidence. Keep admission closed while resolving it using verified newer records. If those records are lost, the owner can use the contract's timeout refund. The acceptance fixture verifies that this missing record returns 404, its original reservation remains on-chain, and the owner can recover its full unused reserve. The time-advanced refund probe uses a disposable local-chain branch which is reverted afterwards.
+
+### Bounded queue and settlement history
+
+The reviewed public profile admits at most eight outstanding quotes/runs per owner and 64 globally, with 500 new quote rows per owner per day. It executes one CPU job at a time. A reservation already paid while the queue fills remains available for retry with the same run ID/transaction hash; users must not pay again. Queue capacity is not a claim that 64 CPU jobs execute concurrently. Existing per-IP HTTP rate limits also apply.
+
+The frozen financial bridge requires archival review when more than 2,000 earlier settlement journal rows exist. The monitor now raises `SETTLEMENT_HISTORY_REVIEW_DUE` at 1,500 rows, before this guard can halt new settlement preparation. Preserve raw signed journal bytes, nonce provenance and canonical receipts; do not delete journal history merely to bypass the guard. A reviewed archival/financial-history scaling change remains necessary before operating past this bounded history. This acceptance does not remove that financial guard.
+
+### Extended queue, rollback and scaled-data acceptance
+
+```sh
+python3 /opt/telomere-mainnet-pilot/operator/cpu-launch/launch-acceptance.py resilience
+```
+
+This isolated profile funds nine generated local owners, fills 64 paid queue slots, rejects excess quotes/admission with 429, cancels a waiting job, checks API reads during drain, and verifies canonical receipts and per-owner/treasury conservation. It retries the previously paid overflow reservation without a second payment.
+
+Two disposable app clones differ only by a fixture release marker. A representative compatible additive database migration is applied between them. A newer Workspace write, paid job, receipt and signed transaction journal must survive code rollback. This is an A-to-B-to-A rehearsal for compatible additive changes, not certification that an arbitrary future destructive migration can be rolled back.
+
+The stale-copy phase retains a signed settlement journal before broadcast, mines the transaction, restores the older database, and requires recovery of that canonical receipt without another signer nonce. It separately exercises a post-snapshot reservation missing from the database. The scaled phase adds 250,000 expired unpaid historical quote fixtures, 50,000 Workspace documents and 100,000 sessions, then checks HTTP queries, a genuine paid gVisor CPU job, consistent dump/restore and every table's exact fingerprint. Synthetic history rows are not claimed to be real settled payments.
+
+`scale-restore.py http-load-<id>` runs the actual server and hosted restore implementations against the retained synthetic dump. The hosted implementation uses a local one-use age-encrypted fixture and the dedicated Docker socket on the VPS for this capacity exercise; a separate GitHub-hosted run verifies the current real encrypted backup. Both production restore paths now spool table output to disk and hash it in bounded chunks; psql also uses `FETCH_COUNT=256` to avoid buffering the complete result inside its own container. PostgreSQL remains capped at 512 MiB and uses a labelled disposable disk volume rather than placing the entire restored database in memory. Restoration checks at least 4 GiB free disk, retains timeouts and removes only its labelled resources.
+
+## Disposable acceptance
+
+```sh
+python3 /opt/telomere-mainnet-pilot/operator/cpu-launch/launch-acceptance.py load
+python3 /opt/telomere-mainnet-pilot/operator/cpu-launch/launch-acceptance.py recovery
+```
+
+The launcher checks the frozen production pins and passes only the CPU image and dedicated Docker socket. Tests use generated keys, new contracts on loopback Anvil chain 31337 and separate scratch databases. The load harness uses the production PostgreSQL image and real gVisor CPU tasks. It never receives the mainnet signer or production database URL. Resource limits bound the transient unit; container labels restrict cleanup to the acceptance namespace. Never replace the acceptance Docker wrapper with a global cleanup command.
+
+The recovery suite injects SIGKILL during computation and between journal persistence and settlement broadcast, verifies byte-identical recovery and no duplicate charge, and exercises the timeout refund. Its PGlite parent/child harness needs a 3 GiB memory limit; the initial 1 GiB test limit caused an isolated test OOM and was corrected. The live controller keeps its existing 768 MiB limit.
+
+See the dated launch record in `docs/CPU-LAUNCH-READINESS-20261017.md` and its retained evidence for measured results and remaining external acceptance.
+
+
+## Sustained acceptance
+
+```sh
+python3 /opt/telomere-mainnet-pilot/operator/cpu-launch/launch-acceptance.py soak --duration-seconds 43200
+```
+
+This starts a transient systemd unit with 50 generated accounts, a separate PostgreSQL database and chain 31337. The normal profile sends ten Workspace reads per second in concurrent batches, conditional writes, and a genuine gVisor paid CPU job every five minutes. Reads continue during execution. Each job checks its anchored receipt and conservation of the local test tokens. Sessions are renewed every four hours. The accelerated smoke profile uses `--duration-seconds 70 --session-refresh-seconds 30` to exercise renewal without waiting four hours.
+
+Progress is atomically saved once per minute under `data/cpu-launch-acceptance-20261017/soak-<namespace>.json` and in the unit journal. Latency uses fixed histogram buckets and recent request observations are bounded; the harness does not accumulate twelve hours of individual samples. Acceptance requires at least seven Workspace reads/second over the complete duration, zero errors, p95 no higher than two seconds, and reads overlapping a running CPU job. The memory observer compares worker RSS with the production 768 MiB ceiling. These are loopback capacity measurements for one CPU worker.
+
+`ExecStopPost` removes only containers and the volume carrying that acceptance namespace, including after a forced process kill. It does not remove evidence directories. A root-only `private/cpu-soak-watch.json` selects the namespace for the existing two-minute monitor. Failed, invalid or stale observations generate explicit `CPU_SOAK_*` incidents through the existing VPS and independent hosted pagers. Completed and healthy running observations remain quiet. Hosted run reports retain the selected numeric counters. A VPS reboot interrupts the transient test; stale progress is an incident rather than a successful result.
+
+## Restore the application from an encrypted snapshot
+
+`restore-rehearsal.py` receives an age identity on stdin over the existing SSH channel. The identity is never an argument, environment variable or retained file. It requires a cloud-acknowledged data snapshot and its exact runtime bundle, authenticates both archives, checks every member and all runtime pins, and restores all production database tables in a network-isolated scratch PostgreSQL container. Executable clones stay in a separate root-owned `rehearsals/` tree; the live application UID cannot replace their directories or files. Archived programs, including version and syntax checks, run as UID 995. The root-owned recovery report stays in private/, outside application-writable data/. The TLS proxy accepts only an exact numeric loopback origin from the unprivileged progress record; progress reads use bounded, nonblocking, no-follow file descriptors.
+
+The archived API then reads the actual restored jobs, receipts and Workspace in a new network namespace through a separate scratch PostgreSQL Unix socket. Synthetic local sessions are removed and every original table fingerprint must remain unchanged. No worker starts against that restored production database. A second empty scratch database and loopback chain exercise a complete boot and paid CPU lifecycle using the archived application and Node binary with newly generated keys. A separate loopback TLS nginx loads the retained website/site/CSP configuration with an ephemeral test certificate; HTML bytes, authenticated API routing and private-path denials are checked. The original application files remain byte-identical and the production service, TLS certificates and DNS are not switched.
+
+This rehearses application/data/proxy recovery on the existing Linux host. It does not measure provisioning a replacement VPS, installing the OS/Docker packages, obtaining a public certificate or switching DNS. The complete-machine recovery procedure above still applies. Never start the archived mainnet controller alongside production or enable a signer from an old snapshot before canonical chain reconciliation.

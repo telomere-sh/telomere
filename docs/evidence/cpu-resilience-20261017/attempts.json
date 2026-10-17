@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "attempts": [
+    {
+      "unit": "telomere-cpu-resilience-a0d32e4e7b62475e",
+      "result": "fixture failure",
+      "phase": "release_rollback_preserving_new_writes",
+      "cause": "release marker registered after the application catch-all",
+      "correction": "intercept the acceptance marker in the disposable server fetch wrapper",
+      "sources": "initial-source/"
+    },
+    {
+      "unit": "telomere-cpu-resilience-5a56026d2bd34c3d",
+      "result": "fixture failure",
+      "phase": "large_database_queries",
+      "cause": "the preceding timeout-refund probe advanced Anvil by six hours, expiring subsequent wall-clock quotes",
+      "correction": "run the timeout-refund probe in a disposable snapshot branch and revert that branch before subsequent phases",
+      "sources": "second-source/",
+      "sharedUnchangedSources": "initial-source/"
+    },
+    {
+      "unit": "telomere-cpu-resilience-033723ae13b24301",
+      "result": "passed",
+      "mainnetTransactions": 0,
+      "sourceRecord": "source-record.json",
+      "resultFile": "resilience.json"
+    }
+  ],
+  "operationalScale": [
+    {
+      "unit": "telomere-cpu-scale-20261017-1937",
+      "result": "failed",
+      "cause": "cloud-implementation PostgreSQL cgroup OOM; psql buffered the full SELECT under the VPS dedicated daemon default gVisor runtime",
+      "evidence": "scale-initial-oom.json",
+      "correction": "FETCH_COUNT=256 in both operational psql verifiers; same 512 MiB limit retained"
+    },
+    {
+      "unit": "telomere-cpu-scale-20261017-cursor",
+      "result": "passed",
+      "resultFile": "scale-restore.json"
+    }
+  ]
+}

@@ -1,11 +1,24 @@
-import hashlib,importlib.util,json,os,tempfile,unittest
+import hashlib,importlib.util,io,json,os,tempfile,unittest
 from pathlib import Path
 spec=importlib.util.spec_from_file_location('mainnet_ops',Path(__file__).with_name('mainnet-ops.py'))
 ops=importlib.util.module_from_spec(spec);spec.loader.exec_module(ops)
+class FingerprintTests(unittest.TestCase):
+    def test_large_output_is_hashed_in_bounded_chunks(self):
+        payload=(b'{"record":"'+b'x'*8192+b'"}\n')*300
+        class Bounded(io.BytesIO):
+            def read(self,size=-1):
+                if not 0<size<=1024*1024:raise AssertionError('Unbounded fingerprint read')
+                return super().read(size)
+        self.assertEqual(ops.fingerprint_file(Bounded(payload)),(hashlib.sha256(payload).hexdigest(),300))
+    def test_empty_table_fingerprint(self):
+        self.assertEqual(ops.fingerprint_file(io.BytesIO(b'')),(hashlib.sha256(b'').hexdigest(),0))
 class HealthTests(unittest.TestCase):
     def setUp(self):self.good={'ready':True,'databaseAvailable':True,'rpc':{'available':True,'operatorGasWei':'100000000000000'},'invalidFinancialRows':0,'states':[],
         'backupAgeSeconds':100,'offhostAgeSeconds':100,'diskFreeBytes':10*1024**3,'tlsRemainingDays':60}
     def test_ready(self):self.assertEqual(ops.evaluate_health(self.good),[])
+    def test_journal_history_warning_precedes_the_runtime_cap(self):
+        self.good['settlementJournalRows']=1499;self.assertNotIn('SETTLEMENT_HISTORY_REVIEW_DUE',ops.evaluate_health(self.good))
+        self.good['settlementJournalRows']=1500;self.assertIn('SETTLEMENT_HISTORY_REVIEW_DUE',ops.evaluate_health(self.good))
     def test_stalled_settlement_and_queue(self):
         self.good['states']=[{'status':'settling','count':1,'oldest_seconds':121},{'status':'queued','count':1,'oldest_seconds':301}]
         self.assertEqual(ops.evaluate_health(self.good),['QUEUE_DELAY_HIGH','SETTLEMENT_OR_RECEIPT_STALLED'])

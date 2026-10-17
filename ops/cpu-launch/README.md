@@ -52,6 +52,40 @@ Keep `identity.dpapi`, Windows recovery credentials and encrypted archives priva
 
 Rollback of application code must preserve the current database, chain binding and transaction journal. Replacing the live database with an older copy merely to undo a code release can lose newer reservations and settlements.
 
+### Audit a stale database before enabling compute
+
+New snapshots retain `chainCursor`, observed before opening the database snapshot. If RPC is unavailable, the database backup still succeeds with a null cursor; that snapshot requires a separately reviewed canonical starting block. Older snapshots also need that explicit review. The cursor is part of the encrypted, authenticated backup; never accept an arbitrary user-supplied cursor as recovery evidence.
+
+With production compute stopped, a restored scratch database selected explicitly through `TELOMERE_RECOVERY_DATABASE_URL`, and a read-only endpoint selected through `TELOMERE_RECOVERY_RPC_URL`, run:
+
+```sh
+node /opt/telomere-mainnet-pilot/operator/cpu-launch/recovery-audit.mjs /private/recovery/snapshot.json
+```
+
+The command opens a read-only database transaction and scans canonical `RunOpened` events in pages of at most 1,000 blocks. It checks the snapshot and ending block hashes again, refuses a chain/escrow mismatch or a gap exceeding 10,000 blocks, and reports reservations missing from the restored database. It never creates a wallet client or sends a transaction. Exit 2 requires operator reconciliation; exit 1 means the audit itself failed. An empty missing-reservation report does not replace asset/role/nonce checks, journal reconciliation, receipt verification or the single-controller guard.
+
+An on-chain reservation absent from the snapshot must not be recreated with guessed execution evidence. Keep admission closed while resolving it using verified newer records. If those records are lost, the owner can use the contract's timeout refund. The acceptance fixture verifies that this missing record returns 404, its original reservation remains on-chain, and the owner can recover its full unused reserve. The time-advanced refund probe uses a disposable local-chain branch which is reverted afterwards.
+
+### Bounded queue and settlement history
+
+The reviewed public profile admits at most eight outstanding quotes/runs per owner and 64 globally, with 500 new quote rows per owner per day. It executes one CPU job at a time. A reservation already paid while the queue fills remains available for retry with the same run ID/transaction hash; users must not pay again. Queue capacity is not a claim that 64 CPU jobs execute concurrently. Existing per-IP HTTP rate limits also apply.
+
+The frozen financial bridge requires archival review when more than 2,000 earlier settlement journal rows exist. The monitor now raises `SETTLEMENT_HISTORY_REVIEW_DUE` at 1,500 rows, before this guard can halt new settlement preparation. Preserve raw signed journal bytes, nonce provenance and canonical receipts; do not delete journal history merely to bypass the guard. A reviewed archival/financial-history scaling change remains necessary before operating past this bounded history. This acceptance does not remove that financial guard.
+
+### Extended queue, rollback and scaled-data acceptance
+
+```sh
+python3 /opt/telomere-mainnet-pilot/operator/cpu-launch/launch-acceptance.py resilience
+```
+
+This isolated profile funds nine generated local owners, fills 64 paid queue slots, rejects excess quotes/admission with 429, cancels a waiting job, checks API reads during drain, and verifies canonical receipts and per-owner/treasury conservation. It retries the previously paid overflow reservation without a second payment.
+
+Two disposable app clones differ only by a fixture release marker. A representative compatible additive database migration is applied between them. A newer Workspace write, paid job, receipt and signed transaction journal must survive code rollback. This is an A-to-B-to-A rehearsal for compatible additive changes, not certification that an arbitrary future destructive migration can be rolled back.
+
+The stale-copy phase retains a signed settlement journal before broadcast, mines the transaction, restores the older database, and requires recovery of that canonical receipt without another signer nonce. It separately exercises a post-snapshot reservation missing from the database. The scaled phase adds 250,000 expired unpaid historical quote fixtures, 50,000 Workspace documents and 100,000 sessions, then checks HTTP queries, a genuine paid gVisor CPU job, consistent dump/restore and every table's exact fingerprint. Synthetic history rows are not claimed to be real settled payments.
+
+`scale-restore.py http-load-<id>` runs the actual server and hosted restore implementations against the retained synthetic dump. The hosted implementation uses a local one-use age-encrypted fixture and the dedicated Docker socket on the VPS for this capacity exercise; a separate GitHub-hosted run verifies the current real encrypted backup. Both production restore paths now spool table output to disk and hash it in bounded chunks; psql also uses `FETCH_COUNT=256` to avoid buffering the complete result inside its own container. PostgreSQL remains capped at 512 MiB and uses a labelled disposable disk volume rather than placing the entire restored database in memory. Restoration checks at least 4 GiB free disk, retains timeouts and removes only its labelled resources.
+
 ## Disposable acceptance
 
 ```sh

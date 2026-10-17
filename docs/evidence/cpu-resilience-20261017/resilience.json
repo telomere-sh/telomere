@@ -1,0 +1,103 @@
+{
+  "passed": true,
+  "observedAt": "2026-10-17T19:37:12.149Z",
+  "scope": "isolated local chain 31337; exact production code except explicit release-candidate fixture",
+  "mainnetSignerLoaded": false,
+  "mainnetTransactions": 0,
+  "queue": {
+    "passed": true,
+    "fundedOwners": 9,
+    "queued": 64,
+    "quotesAtCapacityStatus": 429,
+    "paidAdmissionAtCapacityStatus": 429,
+    "resumedSameReservationWithoutSecondPayment": true,
+    "queuedCancellationCharge": "0",
+    "canonicalReceipts": 65,
+    "maxRunning": 1,
+    "samples": 670,
+    "healthyReads": 84,
+    "perOwnerNinthQuoteStatus": 429,
+    "fullQueueReadRequests": 500,
+    "fullQueueReadP95Ms": 171.0359929999995,
+    "maxQueueWaitSeconds": 172.491974,
+    "p95QueueWaitSeconds": 166.825054,
+    "drainElapsedSeconds": 173.734534357,
+    "chargedAtomicTestTokens": "12100"
+  },
+  "rollback": {
+    "passed": true,
+    "fixtureReleaseHashes": [
+      "128a49e46c31f99df2b9a4fc45485ec78692e7f406a39892889d6942a9826948",
+      "2b67d30b073bd3839ceabc057623db7742540c39324c55b98afd817f8de99f87"
+    ],
+    "compatibleAdditiveMigration": true,
+    "newerWorkspaceAndFinancialRecordsRetained": true,
+    "settlementNonceUnchanged": true
+  },
+  "staleRestore": {
+    "passed": true,
+    "snapshot": {
+      "bytes": 140735,
+      "elapsedSeconds": 0.25862022799998524
+    },
+    "restoredExactJournalBytes": true,
+    "chainAheadByOneSettlement": true,
+    "canonicalReceiptRecovered": true,
+    "noSecondBroadcastNonce": true,
+    "missingPostSnapshotRowStatus": 404,
+    "missingRowReservationRefundedByOwnerOnLocalChain": true,
+    "refundProbeBranchReverted": true,
+    "missingReservationDetectedByReadOnlyScan": true,
+    "audit": {
+      "chainId": 31337,
+      "fromBlock": "172",
+      "throughBlock": "174",
+      "scannedEvents": 2,
+      "missing": [
+        {
+          "runId": "0xd18c68fd74c6d2453cae2230ad50701992b3c1df289f11e6725d20d23b00270d",
+          "payer": "0xeF57472b9c9035F92818907Fc5a233caDe15eA05",
+          "chainStatus": 1,
+          "ceiling": "1000",
+          "openedInTransaction": "0x93a46ed64775c51d59d72caa2c395765f077848d3c69cbdd369e9f321caacd8d"
+        }
+      ],
+      "requiresOperatorReconciliation": true,
+      "transactionsSubmitted": 0
+    },
+    "automaticMissingRowReconstruction": false,
+    "chargedAtomicTestTokens": "12500"
+  },
+  "largeDatabase": {
+    "synthetic": true,
+    "historicalRows": 400000,
+    "databaseBytes": 466846223,
+    "seedSeconds": 16.327333798999984,
+    "tableCounts": [
+      {
+        "name": "workspace_documents",
+        "rows": 50050
+      },
+      {
+        "name": "auth_sessions",
+        "rows": 100050
+      },
+      {
+        "name": "jobs",
+        "rows": 250067
+      }
+    ],
+    "passed": true,
+    "requests": 30,
+    "p95Ms": 12.65958900001715,
+    "paidCpuWithCanonicalReceipt": true,
+    "tablesVerified": 45,
+    "totalRowsVerified": 400254,
+    "snapshotSeconds": 18.90587805900001,
+    "archiveBytes": 26234043,
+    "restoreSeconds": 10.651240474000021,
+    "allTableHashesMatch": true,
+    "restoredApplicationRead": true,
+    "peakHarnessRssBytes": 140849152
+  }
+}

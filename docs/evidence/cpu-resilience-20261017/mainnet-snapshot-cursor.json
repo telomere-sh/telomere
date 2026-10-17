@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "chainCursor": {
+    "chainId": 8453,
+    "escrow": "0x27c1e35F563Aa4f57a68B192d88a76c25e68e0db",
+    "blockNumber": "52738277",
+    "blockHash": "0x593ef378d4e5113efc74399da84d186c5f31d7b3502cb0c802e2ba8260f0b3c0"
+  },
+  "tables": 45,
+  "rows": 24,
+  "readOnly": true,
+  "transactionsSubmitted": 0
+}

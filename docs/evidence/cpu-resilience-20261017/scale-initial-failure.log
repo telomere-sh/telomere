@@ -1,0 +1,31 @@
+Started telomere-cpu-scale-20261017-1937.service - /usr/bin/python3 /opt/telomere-mainnet-pilot/operator/cpu-launch/scale-restore.py http-load-1qy1g1.
+Traceback (most recent call last):
+  File "/opt/telomere-mainnet-pilot/operator/cpu-launch/scale-restore.py", line 54, in <module>
+    hosted=cloud.rehearse_restore(FixtureStore(),{'id':identifier,'sha256':checksum,'restore':{'databaseImage':result['databaseImage']}},identity,stage)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/telomere-mainnet-pilot/operator/cpu-cloud/cloud.py", line 194, in rehearse_restore
+    return _rehearse_restore(store, backup, identity, Path(temporary))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/telomere-mainnet-pilot/operator/cpu-cloud/cloud.py", line 261, in _rehearse_restore
+    command(['exec', name, 'psql', '-X', '-q', '-A', '-t', '-U', 'restore', '-d', 'restore', '-v', 'ON_ERROR_STOP=1', '-c', query],stdout=output)
+  File "/opt/telomere-mainnet-pilot/operator/cpu-cloud/cloud.py", line 232, in command
+    return subprocess.run(docker + arguments, **options, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/unittest/mock.py", line 1118, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/unittest/mock.py", line 1122, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/unittest/mock.py", line 1183, in _execute_mock_call
+    result = effect(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/telomere-mainnet-pilot/operator/cpu-launch/scale-restore.py", line 52, in fixture_run
+    return original(arguments,**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/usr/bin/docker', '--host', 'unix:///run/telomere-mainnet-docker/docker.sock', 'exec', 'telomere-cloud-restore-1792265900664215', 'psql', '-X', '-q', '-A', '-t', '-U', 'restore', '-d', 'restore', '-v', 'ON_ERROR_STOP=1', '-c', 'SELECT to_jsonb(t)::text FROM public."jobs" t ORDER BY to_jsonb(t)::text;']' returned non-zero exit status 128.
+telomere-cpu-scale-20261017-1937.service: Main process exited, code=exited, status=1/FAILURE
+telomere-cpu-scale-20261017-1937.service: Failed with result 'exit-code'.
+telomere-cpu-scale-20261017-1937.service: Consumed 3.634s CPU time.

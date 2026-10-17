@@ -1,0 +1,13 @@
+Started telomere-cpu-resilience-5a56026d2bd34c3d.service - /opt/node-v22.23.3-linux-x64/bin/node /opt/telomere-mainnet-pilot/operator/cpu-launch/resilience.mjs.
+{"phase":"fund_nine_independent_local_accounts","at":"2026-10-17T19:28:02.906Z"}
+{"phase":"queue_global_saturation","at":"2026-10-17T19:28:03.182Z"}
+{"phase":"drain_saturated_paid_queue","at":"2026-10-17T19:28:08.855Z"}
+{"phase":"release_rollback_preserving_new_writes","at":"2026-10-17T19:31:04.379Z"}
+{"phase":"snapshot_before_settlement_broadcast","at":"2026-10-17T19:31:15.219Z"}
+{"phase":"large_database_seed","at":"2026-10-17T19:31:24.552Z"}
+{"phase":"large_database_queries","at":"2026-10-17T19:31:41.665Z"}
+{"passed":false,"phase":"large_database_queries","errorType":"TransactionExecutionError","message":"Execution reverted with reason: custom error 0xf8618030.\n\nRequest Arguments:\n  from:   0x86ACa6e5c29507c2fc3f1884D1A0d4B60c338b60\n  to:     0x49c74Cc57C64BCe563b7359DACaDbDF1040E9519\n  value:  0 ETH\n  data:   0x26a58f319baf7b78b30b11e48763f52968042c29c9caa67ea31fc648d4d37d41e9043385284f7283bf70e823976fb094b6ce4f2f252620fcbef27a899161fa90cdac8a3a00000000000000000000000086aca6e5c29507c2fc3f1884d1a0d4b60c338b60053e526c40f8f141556aa52736a43ded2968264dff3e66dc76b4589253d38278000000000000000000000000000000000000000000000000000000000000000a00000000000000000000000000000000000000000000000000000000000000640000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000006ad3ce4b000000000000000000000000000000000000000000000000000000000000012000000000000000000000000000000000000000000000000000000000000000411b035e0022660d2d5ed34204b8a6e55d2ed0485a0886158998e630f0127ff61c4466bd3b94f35c716b5bbef169ab3b7f925506ba7bed69c704490900823b94041c00000000000000000000000000000000000000000000000000000000000000\n\nDetails: execution reverted: custom error 0xf8618030\nVersion: viem@2.57.3","reportDirectory":"/opt/telomere-mainnet-pilot/data/cpu-launch-acceptance-20261017/http-load-TUXNGa"}
+telomere-cpu-resilience-5a56026d2bd34c3d.service: Main process exited, code=exited, status=1/FAILURE
+{"namespace": "5a56026d2bd34c3d", "serviceResult": "exit-code", "observedAtUnix": 1792265531.7581604, "removedContainers": 0, "cleanupPassed": true}
+telomere-cpu-resilience-5a56026d2bd34c3d.service: Failed with result 'exit-code'.
+telomere-cpu-resilience-5a56026d2bd34c3d.service: Consumed 50.339s CPU time.

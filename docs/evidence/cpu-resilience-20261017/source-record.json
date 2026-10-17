@@ -1,0 +1,433 @@
+{
+  "schemaVersion": 1,
+  "scope": "Exact final acceptance, read-only recovery, bounded backup and monitor sources; production application retains 749 independent pins",
+  "files": [
+    {
+      "originalPath": "ops/cpu-cloud/cloud.py",
+      "path": "source/88bf4567ae1a85a177679c9f4387f815773682ede6d4c77de5b5d5098addf22b.bin",
+      "bytes": 21170,
+      "sha256": "88bf4567ae1a85a177679c9f4387f815773682ede6d4c77de5b5d5098addf22b"
+    },
+    {
+      "originalPath": "ops/cpu-cloud/github_store.py",
+      "path": "source/873a3ff666e85d6782991a17a081192e41bf728f5f7e0bb1ebc31856e3386fab.bin",
+      "bytes": 8191,
+      "sha256": "873a3ff666e85d6782991a17a081192e41bf728f5f7e0bb1ebc31856e3386fab"
+    },
+    {
+      "originalPath": "ops/cpu-cloud/pager.py",
+      "path": "source/7ea8e57084de173c95ed32250868d80701ff9b19715665807058dd9fbaa7b4b5.bin",
+      "bytes": 5945,
+      "sha256": "7ea8e57084de173c95ed32250868d80701ff9b19715665807058dd9fbaa7b4b5"
+    },
+    {
+      "originalPath": "ops/cpu-cloud/README.md",
+      "path": "source/509aabe40df3499de3ad468bf5f3ea6485b4f8e77d507c372368daca499a0dd5.bin",
+      "bytes": 7962,
+      "sha256": "509aabe40df3499de3ad468bf5f3ea6485b4f8e77d507c372368daca499a0dd5"
+    },
+    {
+      "originalPath": "ops/cpu-cloud/test_cloud_ops.py",
+      "path": "source/c8f2f2f83579341f673cb2b068d4596764ec0911096ea3490596296abfec38d3.bin",
+      "bytes": 11412,
+      "sha256": "c8f2f2f83579341f673cb2b068d4596764ec0911096ea3490596296abfec38d3"
+    },
+    {
+      "originalPath": "ops/cpu-launch/chain-recovery-audit.mjs",
+      "path": "source/a231623eaea5ec47f8a5df89592de230f2e1f8884e828d0f733810ded425e223.bin",
+      "bytes": 2163,
+      "sha256": "a231623eaea5ec47f8a5df89592de230f2e1f8884e828d0f733810ded425e223"
+    },
+    {
+      "originalPath": "ops/cpu-launch/cyst-posix.mjs",
+      "path": "source/8467d0b5a9b8becb31168e8b09024ea4413a8d9fb3e8d1967f33d4fba6866682.bin",
+      "bytes": 2825,
+      "sha256": "8467d0b5a9b8becb31168e8b09024ea4413a8d9fb3e8d1967f33d4fba6866682"
+    },
+    {
+      "originalPath": "ops/cpu-launch/docker-load.py",
+      "path": "source/6e3d716245f3fb432d8240d279799b0c9d5e6b1ad4968d54aee80956a37651dc.bin",
+      "bytes": 1064,
+      "sha256": "6e3d716245f3fb432d8240d279799b0c9d5e6b1ad4968d54aee80956a37651dc"
+    },
+    {
+      "originalPath": "ops/cpu-launch/health.mjs",
+      "path": "source/dc06805acfedef309a5c4b745f627ad91d80107d94ad685ea92582190ee86da9.bin",
+      "bytes": 1660,
+      "sha256": "dc06805acfedef309a5c4b745f627ad91d80107d94ad685ea92582190ee86da9"
+    },
+    {
+      "originalPath": "ops/cpu-launch/launch-acceptance.py",
+      "path": "source/1f5f4fe42b7d80c181d11c7fd6da6fb9e47726e952de50194c2d8041408c91be.bin",
+      "bytes": 3806,
+      "sha256": "1f5f4fe42b7d80c181d11c7fd6da6fb9e47726e952de50194c2d8041408c91be"
+    },
+    {
+      "originalPath": "ops/cpu-launch/load-worker.mjs",
+      "path": "source/e41467dc99285deb09819792f959a44acd499ce3f1dc21f24fbc76e8dedc9efb.bin",
+      "bytes": 743,
+      "sha256": "e41467dc99285deb09819792f959a44acd499ce3f1dc21f24fbc76e8dedc9efb"
+    },
+    {
+      "originalPath": "ops/cpu-launch/load.mjs",
+      "path": "source/0e0da9cd5a1d03abb2ee591e8ec00be2c7bc969e362d7ed53f6e6e08d81b425f.bin",
+      "bytes": 23090,
+      "sha256": "0e0da9cd5a1d03abb2ee591e8ec00be2c7bc969e362d7ed53f6e6e08d81b425f"
+    },
+    {
+      "originalPath": "ops/cpu-launch/mainnet-ops.py",
+      "path": "source/1537ae3b245a65d306bc0ed37f09c05f9e903c78e6ebca2c19a7c19146a3f5da.bin",
+      "bytes": 24150,
+      "sha256": "1537ae3b245a65d306bc0ed37f09c05f9e903c78e6ebca2c19a7c19146a3f5da"
+    },
+    {
+      "originalPath": "ops/cpu-launch/offhost.py",
+      "path": "source/bdbd59b4c732f80d9be59e3a51f4575420f95e98f82c1b9723dc6662bbeaaee4.bin",
+      "bytes": 8169,
+      "sha256": "bdbd59b4c732f80d9be59e3a51f4575420f95e98f82c1b9723dc6662bbeaaee4"
+    },
+    {
+      "originalPath": "ops/cpu-launch/README.md",
+      "path": "source/b73e73b3d5782204c0a631fbeadfcf5095a2ce6919167af47ae795bba1a8391d.bin",
+      "bytes": 17622,
+      "sha256": "b73e73b3d5782204c0a631fbeadfcf5095a2ce6919167af47ae795bba1a8391d"
+    },
+    {
+      "originalPath": "ops/cpu-launch/recovery-audit.mjs",
+      "path": "source/57e2d5b2aa959b9b1817d5444aa46c9f6730b68c7726606d8fc162f9b499e073.bin",
+      "bytes": 1980,
+      "sha256": "57e2d5b2aa959b9b1817d5444aa46c9f6730b68c7726606d8fc162f9b499e073"
+    },
+    {
+      "originalPath": "ops/cpu-launch/resilience-scenarios.mjs",
+      "path": "source/b516045790b8eede4ef684c501e5d06b71550338ae69823f9abebfbab66e0c9d.bin",
+      "bytes": 24097,
+      "sha256": "b516045790b8eede4ef684c501e5d06b71550338ae69823f9abebfbab66e0c9d"
+    },
+    {
+      "originalPath": "ops/cpu-launch/resilience-worker.mjs",
+      "path": "source/0fe206a12a9bc1c4e3fc42889abf1cf3531d9c18f2c15e93174533a58a10970d.bin",
+      "bytes": 1446,
+      "sha256": "0fe206a12a9bc1c4e3fc42889abf1cf3531d9c18f2c15e93174533a58a10970d"
+    },
+    {
+      "originalPath": "ops/cpu-launch/resilience.mjs",
+      "path": "source/66c906070467afa1097a1542b705432b451cb5ffe79b796681d9c85a09bf07a0.bin",
+      "bytes": 10447,
+      "sha256": "66c906070467afa1097a1542b705432b451cb5ffe79b796681d9c85a09bf07a0"
+    },
+    {
+      "originalPath": "ops/cpu-launch/restore-rehearsal.py",
+      "path": "source/b8009c4995d9b912bc21ee43d9aeeddccc601b2dac2cb6d24d9cf10698518851.bin",
+      "bytes": 20403,
+      "sha256": "b8009c4995d9b912bc21ee43d9aeeddccc601b2dac2cb6d24d9cf10698518851"
+    },
+    {
+      "originalPath": "ops/cpu-launch/restored-data-reader.mjs",
+      "path": "source/ae99f427b7204bbba65cfa1d5c46c60b94c5abadf274766f9f5533d456bf40e4.bin",
+      "bytes": 3574,
+      "sha256": "ae99f427b7204bbba65cfa1d5c46c60b94c5abadf274766f9f5533d456bf40e4"
+    },
+    {
+      "originalPath": "ops/cpu-launch/scale-restore.py",
+      "path": "source/6276b5b49d7520d8e9badd5e4e6d55360494b4919c4b09996af34b811b2a3e80.bin",
+      "bytes": 3986,
+      "sha256": "6276b5b49d7520d8e9badd5e4e6d55360494b4919c4b09996af34b811b2a3e80"
+    },
+    {
+      "originalPath": "ops/cpu-launch/security-probe.py",
+      "path": "source/e0ad94f1432bc2947ca8c24eac3964861edf278d755b12cc3695c147cf2284d8.bin",
+      "bytes": 2423,
+      "sha256": "e0ad94f1432bc2947ca8c24eac3964861edf278d755b12cc3695c147cf2284d8"
+    },
+    {
+      "originalPath": "ops/cpu-launch/snapshot.mjs",
+      "path": "source/5659ea93ce9dc61f9e167cdd673547be7c7c9054456d62d15c2c91577177279e.bin",
+      "bytes": 1795,
+      "sha256": "5659ea93ce9dc61f9e167cdd673547be7c7c9054456d62d15c2c91577177279e"
+    },
+    {
+      "originalPath": "ops/cpu-launch/soak-cleanup.py",
+      "path": "source/e664ebc959f1a31f4e874f8dde66a2a75986ac62c5d0b6252903166af15564f1.bin",
+      "bytes": 1885,
+      "sha256": "e664ebc959f1a31f4e874f8dde66a2a75986ac62c5d0b6252903166af15564f1"
+    },
+    {
+      "originalPath": "ops/cpu-launch/soak.mjs",
+      "path": "source/8d7865f0faba13dccecfe88ed4f02d2794cce1c420a96e746ff91013752c18b3.bin",
+      "bytes": 16917,
+      "sha256": "8d7865f0faba13dccecfe88ed4f02d2794cce1c420a96e746ff91013752c18b3"
+    },
+    {
+      "originalPath": "ops/cpu-launch/table-fingerprints.mjs",
+      "path": "source/cec50b4bf2215852dee7c4e2ecdab39ae8602dba4bb45ac5834ae742d0985432.bin",
+      "bytes": 989,
+      "sha256": "cec50b4bf2215852dee7c4e2ecdab39ae8602dba4bb45ac5834ae742d0985432"
+    },
+    {
+      "originalPath": "ops/cpu-launch/telomere-mainnet-backup.service",
+      "path": "source/7d3a1e94aa531a06e4f82f20008470d15fe7f03cbaf50236c6a220d393c585c2.bin",
+      "bytes": 539,
+      "sha256": "7d3a1e94aa531a06e4f82f20008470d15fe7f03cbaf50236c6a220d393c585c2"
+    },
+    {
+      "originalPath": "ops/cpu-launch/telomere-mainnet-backup.timer",
+      "path": "source/2aa9e4f4aed83947cfc3e76cc1f8c97de2e7ee2d81efa3021523b22703a2ec91.bin",
+      "bytes": 197,
+      "sha256": "2aa9e4f4aed83947cfc3e76cc1f8c97de2e7ee2d81efa3021523b22703a2ec91"
+    },
+    {
+      "originalPath": "ops/cpu-launch/telomere-mainnet-monitor.service",
+      "path": "source/0f0c72c2809c1c570d6bb1a91bdb71bad1f932cdedb37cd6ba2fa7d98411734f.bin",
+      "bytes": 478,
+      "sha256": "0f0c72c2809c1c570d6bb1a91bdb71bad1f932cdedb37cd6ba2fa7d98411734f"
+    },
+    {
+      "originalPath": "ops/cpu-launch/telomere-mainnet-monitor.timer",
+      "path": "source/2fca8cb00a0419a1a9f72eaf60f38e9b98358b4f228e47bc5eba88552d6892f9.bin",
+      "bytes": 182,
+      "sha256": "2fca8cb00a0419a1a9f72eaf60f38e9b98358b4f228e47bc5eba88552d6892f9"
+    },
+    {
+      "originalPath": "ops/cpu-launch/test-fingerprints.mjs",
+      "path": "source/9f7087d4a8d1dadea94f21496a47e34e0b1375857bbb8dc1b0f7588339f21f1b.bin",
+      "bytes": 1638,
+      "sha256": "9f7087d4a8d1dadea94f21496a47e34e0b1375857bbb8dc1b0f7588339f21f1b"
+    },
+    {
+      "originalPath": "ops/cpu-launch/test-recovery-audit.mjs",
+      "path": "source/19dc8e409827aeb1334fd46b6fe43aca47329f3fda989fbfb04044ab4248ad06.bin",
+      "bytes": 2772,
+      "sha256": "19dc8e409827aeb1334fd46b6fe43aca47329f3fda989fbfb04044ab4248ad06"
+    },
+    {
+      "originalPath": "ops/cpu-launch/test_monitor.py",
+      "path": "source/e6081714b82dd5d027dca3576bc947ac9516a48ff4447ee2823cb494c60637d9.bin",
+      "bytes": 7088,
+      "sha256": "e6081714b82dd5d027dca3576bc947ac9516a48ff4447ee2823cb494c60637d9"
+    },
+    {
+      "originalPath": "ops/cpu-launch/test_restore.py",
+      "path": "source/937b430665bbe8cfa42fa2651ac8fece7a64072ec6dbe93677ac4c7cdeaad312.bin",
+      "bytes": 3980,
+      "sha256": "937b430665bbe8cfa42fa2651ac8fece7a64072ec6dbe93677ac4c7cdeaad312"
+    }
+  ],
+  "priorAttemptSourceRecords": [
+    {
+      "scope": "operational scale attempt before FETCH_COUNT correction",
+      "files": [
+        {
+          "originalPath": "ops/cpu-cloud/cloud.py",
+          "path": "source/27341c6b6eb0be6ccc3548b55a08978fbec29c9ba036c8b3896e70c88ed1fb12.bin",
+          "bytes": 21145,
+          "sha256": "27341c6b6eb0be6ccc3548b55a08978fbec29c9ba036c8b3896e70c88ed1fb12"
+        },
+        {
+          "originalPath": "ops/cpu-cloud/github_store.py",
+          "path": "source/873a3ff666e85d6782991a17a081192e41bf728f5f7e0bb1ebc31856e3386fab.bin",
+          "bytes": 8191,
+          "sha256": "873a3ff666e85d6782991a17a081192e41bf728f5f7e0bb1ebc31856e3386fab"
+        },
+        {
+          "originalPath": "ops/cpu-cloud/pager.py",
+          "path": "source/7ea8e57084de173c95ed32250868d80701ff9b19715665807058dd9fbaa7b4b5.bin",
+          "bytes": 5945,
+          "sha256": "7ea8e57084de173c95ed32250868d80701ff9b19715665807058dd9fbaa7b4b5"
+        },
+        {
+          "originalPath": "ops/cpu-cloud/README.md",
+          "path": "source/6a2535bb60370733058315da25f700a667b42e1d4b8620da77ebe71b224a4054.bin",
+          "bytes": 7890,
+          "sha256": "6a2535bb60370733058315da25f700a667b42e1d4b8620da77ebe71b224a4054"
+        },
+        {
+          "originalPath": "ops/cpu-cloud/test_cloud_ops.py",
+          "path": "source/c8f2f2f83579341f673cb2b068d4596764ec0911096ea3490596296abfec38d3.bin",
+          "bytes": 11412,
+          "sha256": "c8f2f2f83579341f673cb2b068d4596764ec0911096ea3490596296abfec38d3"
+        },
+        {
+          "originalPath": "ops/cpu-launch/chain-recovery-audit.mjs",
+          "path": "source/a231623eaea5ec47f8a5df89592de230f2e1f8884e828d0f733810ded425e223.bin",
+          "bytes": 2163,
+          "sha256": "a231623eaea5ec47f8a5df89592de230f2e1f8884e828d0f733810ded425e223"
+        },
+        {
+          "originalPath": "ops/cpu-launch/cyst-posix.mjs",
+          "path": "source/8467d0b5a9b8becb31168e8b09024ea4413a8d9fb3e8d1967f33d4fba6866682.bin",
+          "bytes": 2825,
+          "sha256": "8467d0b5a9b8becb31168e8b09024ea4413a8d9fb3e8d1967f33d4fba6866682"
+        },
+        {
+          "originalPath": "ops/cpu-launch/docker-load.py",
+          "path": "source/6e3d716245f3fb432d8240d279799b0c9d5e6b1ad4968d54aee80956a37651dc.bin",
+          "bytes": 1064,
+          "sha256": "6e3d716245f3fb432d8240d279799b0c9d5e6b1ad4968d54aee80956a37651dc"
+        },
+        {
+          "originalPath": "ops/cpu-launch/health.mjs",
+          "path": "source/dc06805acfedef309a5c4b745f627ad91d80107d94ad685ea92582190ee86da9.bin",
+          "bytes": 1660,
+          "sha256": "dc06805acfedef309a5c4b745f627ad91d80107d94ad685ea92582190ee86da9"
+        },
+        {
+          "originalPath": "ops/cpu-launch/launch-acceptance.py",
+          "path": "source/1f5f4fe42b7d80c181d11c7fd6da6fb9e47726e952de50194c2d8041408c91be.bin",
+          "bytes": 3806,
+          "sha256": "1f5f4fe42b7d80c181d11c7fd6da6fb9e47726e952de50194c2d8041408c91be"
+        },
+        {
+          "originalPath": "ops/cpu-launch/load-worker.mjs",
+          "path": "source/e41467dc99285deb09819792f959a44acd499ce3f1dc21f24fbc76e8dedc9efb.bin",
+          "bytes": 743,
+          "sha256": "e41467dc99285deb09819792f959a44acd499ce3f1dc21f24fbc76e8dedc9efb"
+        },
+        {
+          "originalPath": "ops/cpu-launch/load.mjs",
+          "path": "source/0e0da9cd5a1d03abb2ee591e8ec00be2c7bc969e362d7ed53f6e6e08d81b425f.bin",
+          "bytes": 23090,
+          "sha256": "0e0da9cd5a1d03abb2ee591e8ec00be2c7bc969e362d7ed53f6e6e08d81b425f"
+        },
+        {
+          "originalPath": "ops/cpu-launch/mainnet-ops.py",
+          "path": "source/ec9508abe2996bc172f489041501a6ede793be5b7158ccaf9605869f023db6da.bin",
+          "bytes": 24127,
+          "sha256": "ec9508abe2996bc172f489041501a6ede793be5b7158ccaf9605869f023db6da"
+        },
+        {
+          "originalPath": "ops/cpu-launch/offhost.py",
+          "path": "source/bdbd59b4c732f80d9be59e3a51f4575420f95e98f82c1b9723dc6662bbeaaee4.bin",
+          "bytes": 8169,
+          "sha256": "bdbd59b4c732f80d9be59e3a51f4575420f95e98f82c1b9723dc6662bbeaaee4"
+        },
+        {
+          "originalPath": "ops/cpu-launch/README.md",
+          "path": "source/dff7d904dca2be6b4c0b2aa73d7a4354f6a4e48e156cde0292c2d1b2d7569774.bin",
+          "bytes": 17645,
+          "sha256": "dff7d904dca2be6b4c0b2aa73d7a4354f6a4e48e156cde0292c2d1b2d7569774"
+        },
+        {
+          "originalPath": "ops/cpu-launch/recovery-audit.mjs",
+          "path": "source/57e2d5b2aa959b9b1817d5444aa46c9f6730b68c7726606d8fc162f9b499e073.bin",
+          "bytes": 1980,
+          "sha256": "57e2d5b2aa959b9b1817d5444aa46c9f6730b68c7726606d8fc162f9b499e073"
+        },
+        {
+          "originalPath": "ops/cpu-launch/resilience-scenarios.mjs",
+          "path": "source/b516045790b8eede4ef684c501e5d06b71550338ae69823f9abebfbab66e0c9d.bin",
+          "bytes": 24097,
+          "sha256": "b516045790b8eede4ef684c501e5d06b71550338ae69823f9abebfbab66e0c9d"
+        },
+        {
+          "originalPath": "ops/cpu-launch/resilience-worker.mjs",
+          "path": "source/0fe206a12a9bc1c4e3fc42889abf1cf3531d9c18f2c15e93174533a58a10970d.bin",
+          "bytes": 1446,
+          "sha256": "0fe206a12a9bc1c4e3fc42889abf1cf3531d9c18f2c15e93174533a58a10970d"
+        },
+        {
+          "originalPath": "ops/cpu-launch/resilience.mjs",
+          "path": "source/66c906070467afa1097a1542b705432b451cb5ffe79b796681d9c85a09bf07a0.bin",
+          "bytes": 10447,
+          "sha256": "66c906070467afa1097a1542b705432b451cb5ffe79b796681d9c85a09bf07a0"
+        },
+        {
+          "originalPath": "ops/cpu-launch/restore-rehearsal.py",
+          "path": "source/b8009c4995d9b912bc21ee43d9aeeddccc601b2dac2cb6d24d9cf10698518851.bin",
+          "bytes": 20403,
+          "sha256": "b8009c4995d9b912bc21ee43d9aeeddccc601b2dac2cb6d24d9cf10698518851"
+        },
+        {
+          "originalPath": "ops/cpu-launch/restored-data-reader.mjs",
+          "path": "source/ae99f427b7204bbba65cfa1d5c46c60b94c5abadf274766f9f5533d456bf40e4.bin",
+          "bytes": 3574,
+          "sha256": "ae99f427b7204bbba65cfa1d5c46c60b94c5abadf274766f9f5533d456bf40e4"
+        },
+        {
+          "originalPath": "ops/cpu-launch/scale-restore.py",
+          "path": "source/6276b5b49d7520d8e9badd5e4e6d55360494b4919c4b09996af34b811b2a3e80.bin",
+          "bytes": 3986,
+          "sha256": "6276b5b49d7520d8e9badd5e4e6d55360494b4919c4b09996af34b811b2a3e80"
+        },
+        {
+          "originalPath": "ops/cpu-launch/security-probe.py",
+          "path": "source/e0ad94f1432bc2947ca8c24eac3964861edf278d755b12cc3695c147cf2284d8.bin",
+          "bytes": 2423,
+          "sha256": "e0ad94f1432bc2947ca8c24eac3964861edf278d755b12cc3695c147cf2284d8"
+        },
+        {
+          "originalPath": "ops/cpu-launch/snapshot.mjs",
+          "path": "source/5659ea93ce9dc61f9e167cdd673547be7c7c9054456d62d15c2c91577177279e.bin",
+          "bytes": 1795,
+          "sha256": "5659ea93ce9dc61f9e167cdd673547be7c7c9054456d62d15c2c91577177279e"
+        },
+        {
+          "originalPath": "ops/cpu-launch/soak-cleanup.py",
+          "path": "source/e664ebc959f1a31f4e874f8dde66a2a75986ac62c5d0b6252903166af15564f1.bin",
+          "bytes": 1885,
+          "sha256": "e664ebc959f1a31f4e874f8dde66a2a75986ac62c5d0b6252903166af15564f1"
+        },
+        {
+          "originalPath": "ops/cpu-launch/soak.mjs",
+          "path": "source/8d7865f0faba13dccecfe88ed4f02d2794cce1c420a96e746ff91013752c18b3.bin",
+          "bytes": 16917,
+          "sha256": "8d7865f0faba13dccecfe88ed4f02d2794cce1c420a96e746ff91013752c18b3"
+        },
+        {
+          "originalPath": "ops/cpu-launch/table-fingerprints.mjs",
+          "path": "source/cec50b4bf2215852dee7c4e2ecdab39ae8602dba4bb45ac5834ae742d0985432.bin",
+          "bytes": 989,
+          "sha256": "cec50b4bf2215852dee7c4e2ecdab39ae8602dba4bb45ac5834ae742d0985432"
+        },
+        {
+          "originalPath": "ops/cpu-launch/telomere-mainnet-backup.service",
+          "path": "source/7d3a1e94aa531a06e4f82f20008470d15fe7f03cbaf50236c6a220d393c585c2.bin",
+          "bytes": 539,
+          "sha256": "7d3a1e94aa531a06e4f82f20008470d15fe7f03cbaf50236c6a220d393c585c2"
+        },
+        {
+          "originalPath": "ops/cpu-launch/telomere-mainnet-backup.timer",
+          "path": "source/2aa9e4f4aed83947cfc3e76cc1f8c97de2e7ee2d81efa3021523b22703a2ec91.bin",
+          "bytes": 197,
+          "sha256": "2aa9e4f4aed83947cfc3e76cc1f8c97de2e7ee2d81efa3021523b22703a2ec91"
+        },
+        {
+          "originalPath": "ops/cpu-launch/telomere-mainnet-monitor.service",
+          "path": "source/0f0c72c2809c1c570d6bb1a91bdb71bad1f932cdedb37cd6ba2fa7d98411734f.bin",
+          "bytes": 478,
+          "sha256": "0f0c72c2809c1c570d6bb1a91bdb71bad1f932cdedb37cd6ba2fa7d98411734f"
+        },
+        {
+          "originalPath": "ops/cpu-launch/telomere-mainnet-monitor.timer",
+          "path": "source/2fca8cb00a0419a1a9f72eaf60f38e9b98358b4f228e47bc5eba88552d6892f9.bin",
+          "bytes": 182,
+          "sha256": "2fca8cb00a0419a1a9f72eaf60f38e9b98358b4f228e47bc5eba88552d6892f9"
+        },
+        {
+          "originalPath": "ops/cpu-launch/test-fingerprints.mjs",
+          "path": "source/9f7087d4a8d1dadea94f21496a47e34e0b1375857bbb8dc1b0f7588339f21f1b.bin",
+          "bytes": 1638,
+          "sha256": "9f7087d4a8d1dadea94f21496a47e34e0b1375857bbb8dc1b0f7588339f21f1b"
+        },
+        {
+          "originalPath": "ops/cpu-launch/test-recovery-audit.mjs",
+          "path": "source/19dc8e409827aeb1334fd46b6fe43aca47329f3fda989fbfb04044ab4248ad06.bin",
+          "bytes": 2772,
+          "sha256": "19dc8e409827aeb1334fd46b6fe43aca47329f3fda989fbfb04044ab4248ad06"
+        },
+        {
+          "originalPath": "ops/cpu-launch/test_monitor.py",
+          "path": "source/e6081714b82dd5d027dca3576bc947ac9516a48ff4447ee2823cb494c60637d9.bin",
+          "bytes": 7088,
+          "sha256": "e6081714b82dd5d027dca3576bc947ac9516a48ff4447ee2823cb494c60637d9"
+        },
+        {
+          "originalPath": "ops/cpu-launch/test_restore.py",
+          "path": "source/937b430665bbe8cfa42fa2651ac8fece7a64072ec6dbe93677ac4c7cdeaad312.bin",
+          "bytes": 3980,
+          "sha256": "937b430665bbe8cfa42fa2651ac8fece7a64072ec6dbe93677ac4c7cdeaad312"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+TAP version 13
+# Subtest: cursor pages retain exact canonical newline hash and close empty tables
+ok 1 - cursor pages retain exact canonical newline hash and close empty tables
+  ---
+  duration_ms: 1.604491
+  type: 'test'
+  ...
+# Subtest: cursor is closed after a read failure
+ok 2 - cursor is closed after a read failure
+  ---
+  duration_ms: 0.346434
+  type: 'test'
+  ...
+# Subtest: unexpected identifiers are rejected before cursor SQL
+ok 3 - unexpected identifiers are rejected before cursor SQL
+  ---
+  duration_ms: 0.123393
+  type: 'test'
+  ...
+# Subtest: unknown active reservation is found without submitting a transaction
+ok 4 - unknown active reservation is found without submitting a transaction
+  ---
+  duration_ms: 1.007132
+  type: 'test'
+  ...
+# Subtest: an unknown already-refunded reservation needs no new payment
+ok 5 - an unknown already-refunded reservation needs no new payment
+  ---
+  duration_ms: 0.242838
+  type: 'test'
+  ...
+# Subtest: chain mismatch, reorg and excessive scan ranges fail closed
+ok 6 - chain mismatch, reorg and excessive scan ranges fail closed
+  ---
+  duration_ms: 0.928153
+  type: 'test'
+  ...
+# Subtest: head reorg during event scan rejects the result
+ok 7 - head reorg during event scan rejects the result
+  ---
+  duration_ms: 0.412749
+  type: 'test'
+  ...
+# Subtest: missing or malformed snapshot cursor is rejected
+ok 8 - missing or malformed snapshot cursor is rejected
+  ---
+  duration_ms: 0.195069
+  type: 'test'
+  ...
+# Subtest: RPC errors do not produce a clear reconciliation report
+ok 9 - RPC errors do not produce a clear reconciliation report
+  ---
+  duration_ms: 0.139113
+  type: 'test'
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 9
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 53.088182
+..................................
+----------------------------------------------------------------------
+Ran 34 tests in 0.018s
+
+OK
+..................
+----------------------------------------------------------------------
+Ran 18 tests in 0.028s
+
+OK

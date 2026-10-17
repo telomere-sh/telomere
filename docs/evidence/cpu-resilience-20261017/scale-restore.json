@@ -1,0 +1,25 @@
+{
+  "passed": true,
+  "serverRestore": {
+    "passed": true,
+    "tables": 45,
+    "rows": 400254,
+    "elapsedSeconds": 28.503,
+    "network": "none",
+    "mainnetControllerStarted": false,
+    "databaseImage": "postgres@sha256:721873c34ceb9f8d8fc265984940dc982404c105f19ad51be9fdc5970a6080ea",
+    "scope": "actual backup restore implementation; synthetic scaled database",
+    "mainnetTransactions": 0
+  },
+  "cloudImplementationRestore": {
+    "passed": true,
+    "tables": 45,
+    "rows": 400254,
+    "elapsedSeconds": 87.374,
+    "network": "none",
+    "controllerStarted": false
+  },
+  "cloudScaleExecutionLocation": "VPS disposable fixture; dedicated Docker socket and local encrypted store adapters",
+  "fixtureAgeIdentityDestroyedOnExit": true,
+  "mainnetTransactions": 0
+}

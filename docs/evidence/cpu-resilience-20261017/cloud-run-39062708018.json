@@ -1,0 +1,65 @@
+{
+  "run": {
+    "id": 39062708018,
+    "status": "completed",
+    "conclusion": "success",
+    "html_url": "https://github.com/telomere-sh/telomere-ops-backups/actions/runs/39062708018",
+    "head_sha": "2281afed4a07eae1dc0de4cb9b85ab21a2d5dbce",
+    "event": "workflow_dispatch"
+  },
+  "reports": [
+    {
+      "scope": "independent cloud CPU operations",
+      "mainnetTransactions": 0,
+      "cpuSoak": {
+        "state": "running",
+        "requests": 25940,
+        "cpuRuns": 9,
+        "elapsedSeconds": 2593.0746202200003,
+        "targetSeconds": 43200,
+        "progressAgeSeconds": 59.757187
+      },
+      "cloudRestore": {
+        "passed": true,
+        "tables": 45,
+        "rows": 24,
+        "elapsedSeconds": 14.389,
+        "network": "none",
+        "controllerStarted": false
+      },
+      "backupId": "backup-20261017T192903Z-68c84c08",
+      "backupVerified": {
+        "id": "backup-20261017T192903Z-68c84c08",
+        "verifiedFiles": 20,
+        "authenticatedAgeDecryption": true,
+        "manifestChecksumsValid": true,
+        "verifiedAt": 1792265486.8656821,
+        "runtimeBundle": {
+          "id": "runtime-ef6436151e2d098c21a46e1512a140e6f0cbf548-9bf7f676442814d6",
+          "sha256": "a99fda7e10a8578ff9d30463e12ec7b7ee481c9bcf400e0504b129e51c36558d",
+          "bytes": 344253314,
+          "runtimePinsVerified": 749,
+          "files": 22147
+        }
+      },
+      "runtimeVerified": {
+        "id": "runtime-ef6436151e2d098c21a46e1512a140e6f0cbf548-9bf7f676442814d6",
+        "verifiedFiles": 22147,
+        "authenticatedAgeDecryption": true,
+        "manifestChecksumsValid": true,
+        "verifiedAt": 1792265450.9118152
+      },
+      "independentStorageReadback": true,
+      "snapshotCopyAttempts": 1,
+      "retention": {
+        "retentionApplied": true,
+        "snapshotsKept": 8,
+        "snapshotsRemoved": 0
+      },
+      "passed": true,
+      "alerts": [],
+      "syntheticSshOutage": false,
+      "observedAt": "2026-10-17T19:31:49.931210+00:00"
+    }
+  ]
+}

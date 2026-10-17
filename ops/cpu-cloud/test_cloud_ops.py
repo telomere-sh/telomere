@@ -10,6 +10,13 @@ ops = importlib.util.module_from_spec(spec); spec.loader.exec_module(ops)
 
 
 class ProtocolTests(unittest.TestCase):
+    def test_scaled_restore_fingerprint_is_chunked_and_exact(self):
+        payload=(b'{"row":"'+b'a'*8192+b'"}\n')*300
+        class Bounded(io.BytesIO):
+            def read(self,size=-1):
+                if not 0<size<=1024*1024:raise AssertionError('Unbounded restore read')
+                return super().read(size)
+        self.assertEqual(cloud.fingerprint_file(Bounded(payload)),(hashlib.sha256(payload).hexdigest(),300))
     def test_soak_report_has_no_unselected_fields(self):
         result=cloud.soak_observation({'cpuSoakState':'running','cpuSoakRequests':100,'privateKey':'fixture','cpuSoakTargetSeconds':43200})
         self.assertEqual(result,{'state':'running','requests':100,'targetSeconds':43200})

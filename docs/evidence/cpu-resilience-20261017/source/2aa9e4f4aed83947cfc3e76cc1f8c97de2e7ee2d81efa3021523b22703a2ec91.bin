@@ -1,0 +1,11 @@
+[Unit]
+Description=Hourly Telomere encrypted mainnet backup
+
+[Timer]
+OnCalendar=hourly
+RandomizedDelaySec=120
+Persistent=true
+Unit=telomere-mainnet-backup.service
+
+[Install]
+WantedBy=timers.target

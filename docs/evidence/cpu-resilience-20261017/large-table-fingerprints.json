@@ -1,0 +1,229 @@
+{
+  "fingerprints": [
+    {
+      "table": "agent_billing",
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "table": "agent_billing_anchors",
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "table": "agent_billing_provenance",
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "table": "agent_intents",
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "table": "agent_runtime_binding",
+      "rows": 1,
+      "sha256": "61127e9998284e49bd0c80705bff24937898e2bd464836993b0ac6b79d78c264"
+    },
+    {
+      "table": "agent_vault_bindings",
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "table": "agents",
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "table": "auth_nonces",
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "table": "auth_sessions",
+      "rows": 100050,
+      "sha256": "bef86de31fafb684d580972c2bcf65fb9ad271fa8c9d33ee9d39d5bf37dfa4ce"
+    },
+    {
+      "table": "controller_chain_binding",
+      "rows": 1,
+      "sha256": "94598949c5258466be3e2d00631f42119271131f5ce805d8c705ee6d8990a5e7"
+    },
+    {
+      "table": "controller_host_runs",
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "table": "cyst_owners",
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "table": "cysts",
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "table": "deadline_jobs",
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "table": "host_preemption_notices",
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "table": "interruptible_runs",
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "table": "jobs",
+      "rows": 250068,
+      "sha256": "b285e4fe54dc560f32035442ca6cfbb828930a35631955ad1ac2df237ab8441d"
+    },
+    {
+      "table": "leash_refs",
+      "rows": 9,
+      "sha256": "1f4599cb6c9231627977861af951da54bb8fee3341a46e0783c633cf071674d4"
+    },
+    {
+      "table": "paid_cpu_jobs",
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "table": "platform_host_leases",
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "table": "platform_receipt_batches",
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "table": "platform_receipt_entries",
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "table": "platform_receipt_lock",
+      "rows": 1,
+      "sha256": "82b0cf5da91b6a7e02f031e2da2fa5ed1261dce4c85ae20d63db9d1e84a4c384"
+    },
+    {
+      "table": "platform_runs",
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "table": "platform_signer_lock",
+      "rows": 1,
+      "sha256": "82b0cf5da91b6a7e02f031e2da2fa5ed1261dce4c85ae20d63db9d1e84a4c384"
+    },
+    {
+      "table": "platform_transaction_journal",
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "table": "platform_x402_challenges",
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "table": "quote_admission_lock",
+      "rows": 1,
+      "sha256": "82b0cf5da91b6a7e02f031e2da2fa5ed1261dce4c85ae20d63db9d1e84a4c384"
+    },
+    {
+      "table": "receipt_hour_batches",
+      "rows": 1,
+      "sha256": "bc67d5a89aef1dd688a6d3b9df5f4e7df44179621ffd252570c491f3ef53a28e"
+    },
+    {
+      "table": "receipt_hour_entries",
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "table": "receipt_hour_lock",
+      "rows": 1,
+      "sha256": "82b0cf5da91b6a7e02f031e2da2fa5ed1261dce4c85ae20d63db9d1e84a4c384"
+    },
+    {
+      "table": "selection_agents",
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "table": "selection_blocks",
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "table": "selection_cursors",
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "table": "selection_events",
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "table": "selection_fossils",
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "table": "selection_income_endpoint_lock",
+      "rows": 1,
+      "sha256": "82b0cf5da91b6a7e02f031e2da2fa5ed1261dce4c85ae20d63db9d1e84a4c384"
+    },
+    {
+      "table": "selection_income_endpoint_operations",
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "table": "selection_income_endpoints",
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "table": "transaction_journal",
+      "rows": 68,
+      "sha256": "985f03f8e9ea33170203822c267c1cbf476468540be56772c2312b7d9430c747"
+    },
+    {
+      "table": "workspace_documents",
+      "rows": 50050,
+      "sha256": "f424d5d4bf4aaec1b419535080e1d957bebc208948735b9f4839f5c1af2fe37a"
+    },
+    {
+      "table": "x402_challenges",
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "table": "x402_journal",
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "table": "x402_lock",
+      "rows": 1,
+      "sha256": "82b0cf5da91b6a7e02f031e2da2fa5ed1261dce4c85ae20d63db9d1e84a4c384"
+    },
+    {
+      "table": "x402_resource_results",
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}
