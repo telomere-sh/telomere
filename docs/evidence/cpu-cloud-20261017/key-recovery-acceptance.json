@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "recoveryWorkflowRun": 39057351312,
+  "freshIndependentIdentityUsed": true,
+  "originalWindowsAgeIdentityUsedForDecryption": false,
+  "vpsConnectionRequired": false,
+  "recoveredCloudKeyMatches": true,
+  "plaintextIdentityWrittenToDisk": false,
+  "publicOrPlaintextKeyUpload": false,
+  "ciphertextSha256": "8fab00a2fb53411251f79254c5b5c178cc6b6cee3cadbab93eeff3bcaf3e3018"
+}

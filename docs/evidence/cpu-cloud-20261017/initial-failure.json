@@ -1,0 +1,26 @@
+{
+  "runId": 39056695861,
+  "sourceCommit": "0f81b66a19214f6f83d23f432ab8af1838fa8a04",
+  "report": {
+    "scope": "independent cloud CPU operations",
+    "mainnetTransactions": 0,
+    "backupFailureType": "ValueError",
+    "notification": {
+      "delivered": true,
+      "kind": "incident",
+      "messageId": 4,
+      "sentAt": 1792260496.0289621
+    },
+    "passed": false,
+    "alerts": [
+      "CLOUD_BACKUP_OR_EXPORT_FAILED",
+      "OFFHOST_BACKUP_STALE",
+      "OFFHOST_RUNTIME_NOT_VERIFIED"
+    ],
+    "syntheticSshOutage": false,
+    "observedAt": "2026-10-17T18:08:16.322493+00:00"
+  },
+  "cause": "UTC backup identifiers contain uppercase T/Z; initial release-tag validation accepted lowercase only.",
+  "corrected": true,
+  "regressionTest": "test_backup_timestamp_tag_preserves_uppercase_t_and_z"
+}

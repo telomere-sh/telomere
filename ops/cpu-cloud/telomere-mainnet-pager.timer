@@ -1,0 +1,10 @@
+[Unit]
+Description=Telomere CPU incident delivery every two minutes
+
+[Timer]
+OnBootSec=3min
+OnUnitActiveSec=120s
+Unit=telomere-mainnet-pager.service
+
+[Install]
+WantedBy=timers.target

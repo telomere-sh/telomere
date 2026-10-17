@@ -1,0 +1,25 @@
+{
+  "observedAt": "2026-10-17T18:23:41.766033+00:00",
+  "diskFreeBytes": 174494912512,
+  "ready": true,
+  "databaseAvailable": true,
+  "states": [
+    {
+      "status": "completed",
+      "count": 2,
+      "oldest_seconds": 6010
+    }
+  ],
+  "invalidFinancialRows": 0,
+  "rpc": {
+    "available": true,
+    "operatorGasWei": "98462564567330"
+  },
+  "offhostSource": "github-actions",
+  "backupAgeSeconds": 181.152922,
+  "offhostAgeSeconds": 65.615113,
+  "offhostRuntimeValid": true,
+  "tlsRemainingDays": 88.02637774110944,
+  "alerts": [],
+  "status": "ok"
+}

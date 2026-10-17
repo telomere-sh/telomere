@@ -1,0 +1,20 @@
+{
+  "run": {
+    "id": 39057351312,
+    "status": "completed",
+    "conclusion": "success",
+    "html_url": "https://github.com/telomere-sh/telomere-ops-backups/actions/runs/39057351312",
+    "head_sha": "7486bbcf33b06d124382fef49e6f1f3fd3b389d5",
+    "event": "workflow_dispatch"
+  },
+  "reports": [
+    {
+      "passed": true,
+      "privateKeyPrinted": false,
+      "onlyOwnerEncryptedIdentityUploaded": true,
+      "assetId": 651216640,
+      "ciphertextSha256": "8fab00a2fb53411251f79254c5b5c178cc6b6cee3cadbab93eeff3bcaf3e3018",
+      "mainnetTransactions": 0
+    }
+  ]
+}

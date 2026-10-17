@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "scope": "Exact independent backup/pager/restore sources at acceptance",
+  "files": [
+    {
+      "originalPath": "ops/cpu-cloud/cloud.py",
+      "path": "source/6f26f2671bc230bd3054baf4ea88a62a53bf1c481870de063e1d09d4fd88a80d.bin",
+      "bytes": 19081,
+      "sha256": "6f26f2671bc230bd3054baf4ea88a62a53bf1c481870de063e1d09d4fd88a80d"
+    },
+    {
+      "originalPath": "ops/cpu-cloud/export.py",
+      "path": "source/3f8a9418acc3bb93a88d0946ef0f37949b1c9dc4b8c2e375d066b6c25c959426.bin",
+      "bytes": 5188,
+      "sha256": "3f8a9418acc3bb93a88d0946ef0f37949b1c9dc4b8c2e375d066b6c25c959426"
+    },
+    {
+      "originalPath": "ops/cpu-cloud/github_store.py",
+      "path": "source/873a3ff666e85d6782991a17a081192e41bf728f5f7e0bb1ebc31856e3386fab.bin",
+      "bytes": 8191,
+      "sha256": "873a3ff666e85d6782991a17a081192e41bf728f5f7e0bb1ebc31856e3386fab"
+    },
+    {
+      "originalPath": "ops/cpu-cloud/operations.yml",
+      "path": "source/6ddb53c6a47fb3c261ee64ee1f88ae4e06e50f89c6afa72f7a0af753daa7208b.bin",
+      "bytes": 2973,
+      "sha256": "6ddb53c6a47fb3c261ee64ee1f88ae4e06e50f89c6afa72f7a0af753daa7208b"
+    },
+    {
+      "originalPath": "ops/cpu-cloud/pager.py",
+      "path": "source/7ea8e57084de173c95ed32250868d80701ff9b19715665807058dd9fbaa7b4b5.bin",
+      "bytes": 5945,
+      "sha256": "7ea8e57084de173c95ed32250868d80701ff9b19715665807058dd9fbaa7b4b5"
+    },
+    {
+      "originalPath": "ops/cpu-cloud/README.md",
+      "path": "source/6fb79b9cede0d12bb0bb91af0f298728f75c199e4fae957b22b96bc3c0bfa959.bin",
+      "bytes": 7294,
+      "sha256": "6fb79b9cede0d12bb0bb91af0f298728f75c199e4fae957b22b96bc3c0bfa959"
+    },
+    {
+      "originalPath": "ops/cpu-cloud/recover-key.yml",
+      "path": "source/d3c61013aa630a55e4f5e2bc803637559c2f82128f09fbbc72c7f8320799c638.bin",
+      "bytes": 814,
+      "sha256": "d3c61013aa630a55e4f5e2bc803637559c2f82128f09fbbc72c7f8320799c638"
+    },
+    {
+      "originalPath": "ops/cpu-cloud/recover_key.py",
+      "path": "source/9f68e516fb0ce159f945e2f68514b2d5a746ab9d2b13a3d5f5ad8051b4411239.bin",
+      "bytes": 1786,
+      "sha256": "9f68e516fb0ce159f945e2f68514b2d5a746ab9d2b13a3d5f5ad8051b4411239"
+    },
+    {
+      "originalPath": "ops/cpu-cloud/telomere-mainnet-pager.service",
+      "path": "source/f22f655e4e1a86cbe2a449ceac52e952a33382ddf924b0d6d4bee105d58804fd.bin",
+      "bytes": 406,
+      "sha256": "f22f655e4e1a86cbe2a449ceac52e952a33382ddf924b0d6d4bee105d58804fd"
+    },
+    {
+      "originalPath": "ops/cpu-cloud/telomere-mainnet-pager.timer",
+      "path": "source/33a9868a3fb2671de71d526ebb32e324877b8ae574a4eebc1436bb6c29b39405.bin",
+      "bytes": 183,
+      "sha256": "33a9868a3fb2671de71d526ebb32e324877b8ae574a4eebc1436bb6c29b39405"
+    },
+    {
+      "originalPath": "ops/cpu-cloud/test_cloud_ops.py",
+      "path": "source/d214ce51b5c0b9c9753556ffbb2909d7b9d08f983eae6c32728c9e10b1e11f80.bin",
+      "bytes": 10251,
+      "sha256": "d214ce51b5c0b9c9753556ffbb2909d7b9d08f983eae6c32728c9e10b1e11f80"
+    },
+    {
+      "originalPath": "ops/cpu-launch/mainnet-ops.py",
+      "path": "source/71472c653018e9bdc2e2868b29e8e0119054d82cb5042052baf96fdb4b21573d.bin",
+      "bytes": 20935,
+      "sha256": "71472c653018e9bdc2e2868b29e8e0119054d82cb5042052baf96fdb4b21573d"
+    }
+  ]
+}

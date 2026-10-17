@@ -1,0 +1,57 @@
+{
+  "repository": "telomere-sh/telomere-ops-backups",
+  "private": true,
+  "headCommit": "b43834e50fd84b88dd43fc45533cc85aaa2bd666",
+  "schedulesUtc": [
+    "17,47 * * * *",
+    "7 3 * * *"
+  ],
+  "workflows": [
+    {
+      "id": 387860298,
+      "name": "Independent CPU backup and monitoring",
+      "state": "active",
+      "path": ".github/workflows/operations.yml"
+    },
+    {
+      "id": 387861872,
+      "name": "Recover owner access to encrypted backups",
+      "state": "active",
+      "path": ".github/workflows/recover-key.yml"
+    }
+  ],
+  "configuredSecretNames": [
+    "TELOMERE_AGE_IDENTITY",
+    "TELOMERE_KNOWN_HOSTS",
+    "TELOMERE_SSH_KEY",
+    "TELOMERE_TELEGRAM_CHAT_ID",
+    "TELOMERE_TELEGRAM_TOKEN"
+  ],
+  "hostedSourcesMatchRepository": [
+    {
+      "sourcePath": "ops/cpu-cloud/cloud.py",
+      "sha256": "6f26f2671bc230bd3054baf4ea88a62a53bf1c481870de063e1d09d4fd88a80d"
+    },
+    {
+      "sourcePath": "ops/cpu-cloud/pager.py",
+      "sha256": "7ea8e57084de173c95ed32250868d80701ff9b19715665807058dd9fbaa7b4b5"
+    },
+    {
+      "sourcePath": "ops/cpu-cloud/github_store.py",
+      "sha256": "873a3ff666e85d6782991a17a081192e41bf728f5f7e0bb1ebc31856e3386fab"
+    },
+    {
+      "sourcePath": "ops/cpu-cloud/recover_key.py",
+      "sha256": "9f68e516fb0ce159f945e2f68514b2d5a746ab9d2b13a3d5f5ad8051b4411239"
+    },
+    {
+      "sourcePath": "ops/cpu-cloud/operations.yml",
+      "sha256": "6ddb53c6a47fb3c261ee64ee1f88ae4e06e50f89c6afa72f7a0af753daa7208b"
+    },
+    {
+      "sourcePath": "ops/cpu-cloud/recover-key.yml",
+      "sha256": "d3c61013aa630a55e4f5e2bc803637559c2f82128f09fbbc72c7f8320799c638"
+    }
+  ],
+  "newPaidSpendingEnabled": false
+}

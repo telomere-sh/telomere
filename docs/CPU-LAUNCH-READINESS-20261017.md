@@ -38,3 +38,5 @@ Off-host automation currently depends on this Windows PC being awake and signed 
 The service is prepared for a bounded CPU launch with its present queue and worker limits. Additional compute hosts or broader unbounded workloads require a new capacity test. GPU Cells and the broader multi-host platform are outside this launch record.
 
 Operational commands and recovery precautions are in [the CPU operations runbook](../ops/cpu-launch/README.md).
+
+The later [independent cloud operations follow-up](CPU-CLOUD-OPERATIONS-20261017.md) supersedes this record's initial PC-dependent backup and missing outbound paging boundaries.

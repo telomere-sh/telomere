@@ -1,0 +1,172 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-17T18:25:48.769769+00:00",
+  "scope": "Independent encrypted CPU backup, hosted restore, and Telegram incident delivery; no PC, GPU Cells or new mainnet transactions required",
+  "files": [
+    {
+      "path": "docs/evidence/cpu-cloud-20261017/backup.json",
+      "bytes": 786,
+      "sha256": "35dc60c033e06cb6b2ca97bb9459adf598041eb7cbff7a40474475df58c710e5"
+    },
+    {
+      "path": "docs/evidence/cpu-cloud-20261017/cloud-receipt.json",
+      "bytes": 521,
+      "sha256": "78eb92b22bae2640e33da2c290efd902f9fb432ea801e416333ef26759cefc17"
+    },
+    {
+      "path": "docs/evidence/cpu-cloud-20261017/cloud-run-39056964526.json",
+      "bytes": 1977,
+      "sha256": "e44b548261aabe940bda728a76141d689e85820f79cbf7fa94a3ef894b1c1fbb"
+    },
+    {
+      "path": "docs/evidence/cpu-cloud-20261017/cloud-run-39057349533.json",
+      "bytes": 1236,
+      "sha256": "1aeb392c966366ef8bf0b44730d74cd7b2b6c5997841c37f46c0ad8ea1dac204"
+    },
+    {
+      "path": "docs/evidence/cpu-cloud-20261017/cloud-run-39057351312.json",
+      "bytes": 598,
+      "sha256": "0f999174638e068f3cf1b00be3ecc1c5c4b47dada7014a450d686b623d22bcec"
+    },
+    {
+      "path": "docs/evidence/cpu-cloud-20261017/cloud-run-39057429775.json",
+      "bytes": 1808,
+      "sha256": "0ac290c6c8f93d43ca6d7f3608a9d3b2a44a4faabb780f3eb2374df966ebd3b9"
+    },
+    {
+      "path": "docs/evidence/cpu-cloud-20261017/cloud-run-39057520109.json",
+      "bytes": 1855,
+      "sha256": "742efd921adde45e82cfc60b69fc78c9863275b8e1aa26edac50a680a84ca94c"
+    },
+    {
+      "path": "docs/evidence/cpu-cloud-20261017/cloud-run-39057727541.json",
+      "bytes": 1653,
+      "sha256": "203951a0f19a147b19035e70cfd76f746e31b54d893f40729b6e40e91f8907ab"
+    },
+    {
+      "path": "docs/evidence/cpu-cloud-20261017/deployed-sources.json",
+      "bytes": 979,
+      "sha256": "dca3dec6e85f65f2244e8ae7eae1ceaf36a3575d2d8142694d1988b44b95e528"
+    },
+    {
+      "path": "docs/evidence/cpu-cloud-20261017/export-acceptance.json",
+      "bytes": 212,
+      "sha256": "28fd78b02c2401a91d3031832358e0df4d7cc39d5935408c83199adaa5b95eb7"
+    },
+    {
+      "path": "docs/evidence/cpu-cloud-20261017/hosted-configuration.json",
+      "bytes": 1683,
+      "sha256": "f8be212cadf66f4751646981a6fdae64ca72f927b90fd2f4af923e04b7b48ebc"
+    },
+    {
+      "path": "docs/evidence/cpu-cloud-20261017/initial-failure.json",
+      "bytes": 813,
+      "sha256": "c758e61effdabea68978a91d550cedc09bb23d03ec855bc25ffc87a973246a3a"
+    },
+    {
+      "path": "docs/evidence/cpu-cloud-20261017/key-recovery-acceptance.json",
+      "bytes": 408,
+      "sha256": "afae584e309e755c509cd20c3690616d2c67f167f7d2022589f17272a8113d84"
+    },
+    {
+      "path": "docs/evidence/cpu-cloud-20261017/linux-tests.json",
+      "bytes": 338,
+      "sha256": "75c55ed8b740ac4727150d438ccd4d4c221df62afbb9f78fa6c81de39711f078"
+    },
+    {
+      "path": "docs/evidence/cpu-cloud-20261017/local-pager-acceptance.json",
+      "bytes": 215,
+      "sha256": "4a3f072cbd3d190a683af60f697543438b706fe73387ebd3cc759af9e92e8edb"
+    },
+    {
+      "path": "docs/evidence/cpu-cloud-20261017/mainnet-readonly.json",
+      "bytes": 672,
+      "sha256": "70e1477421be26c0d084d92a7d3a0e992ed00e4bbb87bfbb786c9269798746c2"
+    },
+    {
+      "path": "docs/evidence/cpu-cloud-20261017/monitor.json",
+      "bytes": 559,
+      "sha256": "9468b5fef2ca3de4873cd55db04d952b83b0ee35321639e83bbe7adb29d1d83b"
+    },
+    {
+      "path": "docs/evidence/cpu-cloud-20261017/secret-check.json",
+      "bytes": 126,
+      "sha256": "71239f915dc1226e51c682c0749c29ae821c97131b97ef734553981d897aedb3"
+    },
+    {
+      "path": "docs/evidence/cpu-cloud-20261017/services.json",
+      "bytes": 458,
+      "sha256": "5b1c7847c9d4d069e2ae2657c7e253afc204b49bc7521c37c60aeee92b9f7aff"
+    },
+    {
+      "path": "docs/evidence/cpu-cloud-20261017/source/33a9868a3fb2671de71d526ebb32e324877b8ae574a4eebc1436bb6c29b39405.bin",
+      "bytes": 183,
+      "sha256": "33a9868a3fb2671de71d526ebb32e324877b8ae574a4eebc1436bb6c29b39405"
+    },
+    {
+      "path": "docs/evidence/cpu-cloud-20261017/source/3f8a9418acc3bb93a88d0946ef0f37949b1c9dc4b8c2e375d066b6c25c959426.bin",
+      "bytes": 5188,
+      "sha256": "3f8a9418acc3bb93a88d0946ef0f37949b1c9dc4b8c2e375d066b6c25c959426"
+    },
+    {
+      "path": "docs/evidence/cpu-cloud-20261017/source/6ddb53c6a47fb3c261ee64ee1f88ae4e06e50f89c6afa72f7a0af753daa7208b.bin",
+      "bytes": 2973,
+      "sha256": "6ddb53c6a47fb3c261ee64ee1f88ae4e06e50f89c6afa72f7a0af753daa7208b"
+    },
+    {
+      "path": "docs/evidence/cpu-cloud-20261017/source/6f26f2671bc230bd3054baf4ea88a62a53bf1c481870de063e1d09d4fd88a80d.bin",
+      "bytes": 19081,
+      "sha256": "6f26f2671bc230bd3054baf4ea88a62a53bf1c481870de063e1d09d4fd88a80d"
+    },
+    {
+      "path": "docs/evidence/cpu-cloud-20261017/source/6fb79b9cede0d12bb0bb91af0f298728f75c199e4fae957b22b96bc3c0bfa959.bin",
+      "bytes": 7294,
+      "sha256": "6fb79b9cede0d12bb0bb91af0f298728f75c199e4fae957b22b96bc3c0bfa959"
+    },
+    {
+      "path": "docs/evidence/cpu-cloud-20261017/source/71472c653018e9bdc2e2868b29e8e0119054d82cb5042052baf96fdb4b21573d.bin",
+      "bytes": 20935,
+      "sha256": "71472c653018e9bdc2e2868b29e8e0119054d82cb5042052baf96fdb4b21573d"
+    },
+    {
+      "path": "docs/evidence/cpu-cloud-20261017/source/7ea8e57084de173c95ed32250868d80701ff9b19715665807058dd9fbaa7b4b5.bin",
+      "bytes": 5945,
+      "sha256": "7ea8e57084de173c95ed32250868d80701ff9b19715665807058dd9fbaa7b4b5"
+    },
+    {
+      "path": "docs/evidence/cpu-cloud-20261017/source/873a3ff666e85d6782991a17a081192e41bf728f5f7e0bb1ebc31856e3386fab.bin",
+      "bytes": 8191,
+      "sha256": "873a3ff666e85d6782991a17a081192e41bf728f5f7e0bb1ebc31856e3386fab"
+    },
+    {
+      "path": "docs/evidence/cpu-cloud-20261017/source/9f68e516fb0ce159f945e2f68514b2d5a746ab9d2b13a3d5f5ad8051b4411239.bin",
+      "bytes": 1786,
+      "sha256": "9f68e516fb0ce159f945e2f68514b2d5a746ab9d2b13a3d5f5ad8051b4411239"
+    },
+    {
+      "path": "docs/evidence/cpu-cloud-20261017/source/d214ce51b5c0b9c9753556ffbb2909d7b9d08f983eae6c32728c9e10b1e11f80.bin",
+      "bytes": 10251,
+      "sha256": "d214ce51b5c0b9c9753556ffbb2909d7b9d08f983eae6c32728c9e10b1e11f80"
+    },
+    {
+      "path": "docs/evidence/cpu-cloud-20261017/source/d3c61013aa630a55e4f5e2bc803637559c2f82128f09fbbc72c7f8320799c638.bin",
+      "bytes": 814,
+      "sha256": "d3c61013aa630a55e4f5e2bc803637559c2f82128f09fbbc72c7f8320799c638"
+    },
+    {
+      "path": "docs/evidence/cpu-cloud-20261017/source/f22f655e4e1a86cbe2a449ceac52e952a33382ddf924b0d6d4bee105d58804fd.bin",
+      "bytes": 406,
+      "sha256": "f22f655e4e1a86cbe2a449ceac52e952a33382ddf924b0d6d4bee105d58804fd"
+    },
+    {
+      "path": "docs/evidence/cpu-cloud-20261017/source-record.json",
+      "bytes": 3299,
+      "sha256": "242387848c6eb56865738c615238ca342c585c24ffe9a038d0fae1e06b708ff0"
+    },
+    {
+      "path": "docs/evidence/cpu-cloud-20261017/windows-retired.json",
+      "bytes": 73,
+      "sha256": "379d49f6ad588d23ce292a1623d2392ccf63bbdbe3b39c30d0edfd8c03efe61f"
+    }
+  ]
+}

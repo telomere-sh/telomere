@@ -1,0 +1,25 @@
+name: Recover owner access to encrypted backups
+on:
+  workflow_dispatch:
+    inputs:
+      recipient:
+        description: NEW public age recipient; keep its private identity on the recovery device
+        type: string
+        required: true
+permissions:
+  contents: write
+jobs:
+  wrap:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq age
+      - name: Wrap recovery identity for owner
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TELOMERE_AGE_IDENTITY: ${{ secrets.TELOMERE_AGE_IDENTITY }}
+          RECOVERY_RECIPIENT: ${{ inputs.recipient }}
+        run: python3 recover_key.py

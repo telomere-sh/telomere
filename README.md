@@ -21,6 +21,8 @@ Open [telomere.sh/dashboard](https://telomere.sh/dashboard/) and connect your wa
 
 CPU launch operations, load acceptance, encrypted backups and recovery procedures are recorded in [CPU launch readiness](docs/CPU-LAUNCH-READINESS-20261017.md) and the [operations runbook](ops/cpu-launch/README.md).
 
+Primary off-site backup verification and incident delivery run independently of the owner's PC; see [cloud operations](docs/CPU-CLOUD-OPERATIONS-20261017.md).
+
 ## Run locally
 
 Requires **Node.js 22.12+** and npm. On Windows and Linux x64, `npm ci` installs the platform-specific Anvil binary. On other platforms, install the appropriate Anvil binary.

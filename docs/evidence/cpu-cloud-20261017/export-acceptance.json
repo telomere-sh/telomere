@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "strictKnownHostVerification": true,
+  "separateRestrictedKey": true,
+  "arbitraryPathRejected": true,
+  "shellCommandOverriddenByForcedProtocol": true,
+  "mainnetTransactions": 0
+}

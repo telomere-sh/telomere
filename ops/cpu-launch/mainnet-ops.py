@@ -15,6 +15,11 @@ def digest(path):
 def atomic(path,value):
     temp=path.with_name(path.name+'.next');temp.write_text(json.dumps(value,indent=2)+'\n');temp.chmod(0o600);os.replace(temp,path)
 def now():return datetime.datetime.now(datetime.timezone.utc).isoformat()
+
+def validate_recipients(text):
+    recipients=text.splitlines()
+    assert 1<=len(recipients)<=4 and len(set(recipients))==len(recipients)
+    assert all(re.fullmatch(r'age1[0-9a-z]{58}',recipient) for recipient in recipients)
 def copy_cysts(directory,target,references):
     assert directory.is_dir() and not directory.is_symlink() and directory.resolve()==directory
     for entry in references:
@@ -61,9 +66,10 @@ def runtime_bundle():
     for pin in expected['runtimePins']:
         found=next((f for f in files if f['path']=='release/'+pin['path']),None)
         assert found and found['sha256']==pin['sha256'],'Runtime pin differs during backup'
-    identity=hashlib.sha256(json.dumps(files,sort_keys=True).encode()).hexdigest()
+    recipient_hash=digest(PRIVATE/'backup-recipient.txt')
+    identity=hashlib.sha256(json.dumps({'files':files,'recipientSha256':recipient_hash},sort_keys=True).encode()).hexdigest()
     identifier='runtime-'+expected['releaseId']+'-'+identity[:16];target=BACKUPS/(identifier+'.tar.age')
-    manifest={'schemaVersion':1,'id':identifier,'kind':'exact-reviewed-runtime','runtimePinsVerified':len(expected['runtimePins']),
+    manifest={'schemaVersion':1,'id':identifier,'kind':'exact-reviewed-runtime','runtimePinsVerified':len(expected['runtimePins']),'recipientSha256':recipient_hash,
         'layout':{'releaseDirectory':str(release),'publicWebroot':str(website),'nodeBinary':NODE,'runscBinary':'/opt/telomere-host-runtime/gvisor/runsc'},'files':files}
     status_file=PRIVATE/'cpu-runtime-backup-status.json'
     if target.exists():
@@ -89,6 +95,8 @@ def restore(stage,snapshot):
     name='telomere-backup-restore-'+uuid.uuid4().hex;owned=False
     image=run(DOCKER+['inspect','--format','{{.Image}}','telomere-mainnet-postgres']).stdout.decode().strip()
     assert re.fullmatch(r'sha256:[0-9a-f]{64}',image)
+    digests=json.loads(run(DOCKER+['image','inspect','--format','{{json .RepoDigests}}',image]).stdout)
+    pull_image=next(value for value in digests if re.fullmatch(r'postgres@sha256:[0-9a-f]{64}',value))
     began=time.monotonic()
     try:
         run(DOCKER+['run','-d','--name',name,'--label','telomere.backup.exercise='+name,'--runtime','runc','--network','none',
@@ -111,7 +119,7 @@ def restore(stage,snapshot):
             assert hashlib.sha256(result).hexdigest()==entry['sha256'],'Restored table fingerprint differs'
             count=0 if not result else len(result.splitlines());assert count==entry['rows']
             tables+=1;rows+=count
-        return {'passed':True,'tables':tables,'rows':rows,'elapsedSeconds':round(time.monotonic()-began,3),'network':'none','mainnetControllerStarted':False}
+        return {'passed':True,'tables':tables,'rows':rows,'elapsedSeconds':round(time.monotonic()-began,3),'network':'none','mainnetControllerStarted':False,'databaseImage':pull_image}
     finally:
         if owned:
             label=run(DOCKER+['inspect','--format','{{index .Config.Labels "telomere.backup.exercise"}}',name]).stdout.decode().strip()
@@ -126,7 +134,7 @@ def backup():
         fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
         started=time.monotonic();identifier='backup-'+datetime.datetime.now(datetime.timezone.utc).strftime('%Y%m%dT%H%M%SZ')+'-'+uuid.uuid4().hex[:8]
         assert shutil.disk_usage(BASE).free>4*1024**3
-        recipient=PRIVATE/'backup-recipient.txt';assert re.fullmatch(r'age1[0-9a-z]+\s*',recipient.read_text())
+        recipient=PRIVATE/'backup-recipient.txt';validate_recipients(recipient.read_text())
         with tempfile.TemporaryDirectory(prefix='cpu-snapshot-',dir=PRIVATE) as temp:
             stage=Path(temp).resolve();assert stage.parent==PRIVATE
             helper=BASE/'operator/cpu-launch/snapshot.mjs'
@@ -165,6 +173,9 @@ def backup():
             for name,source in sources.items():
                 target=stage/'configuration'/name
                 if not target.exists():shutil.copyfile(source,target)
+            for name in ('telegram-bot-token','cpu-telegram.json','cpu-cloud-config.json','cpu-cloud-required.json'):
+                source=PRIVATE/name
+                if source.exists():assert source.is_file() and not source.is_symlink();shutil.copyfile(source,stage/'configuration'/name)
             rehearsal=restore(stage,snapshot)
             PHASE='runtime_bundle';runtime=runtime_bundle()
             files=[]
@@ -224,11 +235,13 @@ def monitor():
     try:observed.update(json.loads(run([NODE,str(BASE/'operator/cpu-launch/health.mjs')],cwd=BASE/'app').stdout))
     except Exception:observed['databaseAvailable']=False
     current=datetime.datetime.now(datetime.timezone.utc)
-    for name,key,field in [('cpu-backup-status.json','backupAgeSeconds','createdAt'),('cpu-offhost-status.json','offhostAgeSeconds','verifiedAt')]:
+    offhost_file='cpu-cloud-offhost-status.json' if (PRIVATE/'cpu-cloud-required.json').is_file() else 'cpu-offhost-status.json'
+    observed['offhostSource']='github-actions' if offhost_file=='cpu-cloud-offhost-status.json' else 'windows-additional-copy'
+    for name,key,field in [('cpu-backup-status.json','backupAgeSeconds','createdAt'),(offhost_file,'offhostAgeSeconds','verifiedAt')]:
         try:observed[key]=max(0,(current-datetime.datetime.fromisoformat(json.loads((PRIVATE/name).read_text())[field])).total_seconds())
         except Exception:pass
     try:
-        backup=json.loads((PRIVATE/'cpu-backup-status.json').read_text());offhost=json.loads((PRIVATE/'cpu-offhost-status.json').read_text())
+        backup=json.loads((PRIVATE/'cpu-backup-status.json').read_text());offhost=json.loads((PRIVATE/offhost_file).read_text())
         expected=backup.get('runtimeBundle');observed['offhostRuntimeValid']=not expected or (offhost.get('runtimeBundleId')==expected['id'] and offhost.get('runtimeBundleSha256')==expected['sha256'])
     except Exception:observed['offhostRuntimeValid']=False
     try:

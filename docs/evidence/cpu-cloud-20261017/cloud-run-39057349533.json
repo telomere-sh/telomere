@@ -1,0 +1,47 @@
+{
+  "run": {
+    "id": 39057349533,
+    "status": "completed",
+    "conclusion": "failure",
+    "html_url": "https://github.com/telomere-sh/telomere-ops-backups/actions/runs/39057349533",
+    "head_sha": "7486bbcf33b06d124382fef49e6f1f3fd3b389d5",
+    "event": "workflow_dispatch"
+  },
+  "reports": [
+    {
+      "scope": "independent cloud CPU operations",
+      "mainnetTransactions": 0,
+      "backupFailureType": "RuntimeError",
+      "failureFrames": [
+        {
+          "file": "cloud.py",
+          "line": 281,
+          "function": "run"
+        },
+        {
+          "file": "cloud.py",
+          "line": 246,
+          "function": "copy_current_backup"
+        },
+        {
+          "file": "cloud.py",
+          "line": 76,
+          "function": "request"
+        }
+      ],
+      "backupFailureReason": "Restricted backup SSH failed",
+      "notification": {
+        "delivered": true,
+        "kind": "incident",
+        "messageId": 8,
+        "sentAt": 1792260993.7286
+      },
+      "passed": false,
+      "alerts": [
+        "CLOUD_BACKUP_OR_EXPORT_FAILED"
+      ],
+      "syntheticSshOutage": true,
+      "observedAt": "2026-10-17T18:16:34.277343+00:00"
+    }
+  ]
+}

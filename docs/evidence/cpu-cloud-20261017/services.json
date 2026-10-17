@@ -1,0 +1,22 @@
+{
+  "telomere-mainnet-pilot.service": {
+    "enabled": "enabled",
+    "active": "active"
+  },
+  "telomere-mainnet-rpc.service": {
+    "enabled": "enabled",
+    "active": "active"
+  },
+  "telomere-mainnet-backup.timer": {
+    "enabled": "enabled",
+    "active": "active"
+  },
+  "telomere-mainnet-monitor.timer": {
+    "enabled": "enabled",
+    "active": "active"
+  },
+  "telomere-mainnet-pager.timer": {
+    "enabled": "enabled",
+    "active": "active"
+  }
+}

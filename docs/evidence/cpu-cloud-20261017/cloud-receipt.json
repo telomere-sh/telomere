@@ -1,0 +1,11 @@
+{
+  "id": "backup-20261017T182020Z-6487f58e",
+  "sha256": "1a92b87168b84396eab2fd29a7195d52ad863e7ce553459acb94f3338085fdfc",
+  "verifiedAt": "2026-10-17T18:22:41.289584+00:00",
+  "source": "github-actions",
+  "runtimeBundleId": "runtime-ef6436151e2d098c21a46e1512a140e6f0cbf548-344d206ca13551a1",
+  "runtimeBundleSha256": "df9802d6769a15b0da304255b7edb86e6eb0d2abfd46f768f9ea01f310ca201d",
+  "authenticatedDecryptionVerifiedByClient": true,
+  "repository": "telomere-sh/telomere-ops-backups",
+  "runId": "39057727541"
+}

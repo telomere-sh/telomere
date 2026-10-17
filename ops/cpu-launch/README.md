@@ -14,7 +14,7 @@ python3 /opt/telomere-mainnet-pilot/operator/cpu-launch/mainnet-ops.py status
 journalctl -u telomere-mainnet-monitor.service -n 20 --no-pager
 ```
 
-The monitor runs every two minutes. Its private status file is `/opt/telomere-mainnet-pilot/private/cpu-monitor-status.json`. Alerts cover readiness, database/RPC availability, financial row invariants, stalled settlements, reconciliation, queue delay, low operator ETH, disk space, TLS expiry, stale backups and missing verification of the current runtime bundle off the VPS. Journal alerts currently require an operator or an external collector to read them; there is no configured outbound paging destination.
+The monitor runs every two minutes. Its private status file is `/opt/telomere-mainnet-pilot/private/cpu-monitor-status.json`. Alerts cover readiness, database/RPC availability, financial row invariants, stalled settlements, reconciliation, queue delay, low operator ETH, disk space, TLS expiry, stale backups and missing verification of the current runtime bundle off the VPS. The server pager delivers Telegram incidents/recovery, and a separate hosted checker covers VPS loss. See [independent cloud operations](../cpu-cloud/README.md).
 
 ## Backups
 
@@ -30,7 +30,7 @@ The private Windows copy lives outside Git:
 
 `C:\Users\Administrator\Documents\Telomere-private-backups\mainnet-cpu`
 
-The identity is protected by Windows current-user DPAPI. The hidden `offhost.py watch` process runs every 30 minutes and starts through the user's HKCU Run entry. Windows Task Scheduler registration was denied; the login startup is the installed fallback. **The PC must be awake and the user signed in.** A stale copy raises the server-side monitor alert after three hours. Do not treat this as an independent always-on backup location.
+These are additional manual recovery copies. Primary off-host copies and authenticated verification now run in the private GitHub operations repository with a separate cloud identity. The earlier Windows login watcher is retired after cloud acceptance. An offline PC does not prevent primary backup or paging; the production monitor requires a fresh cloud receipt.
 
 The client verifies ciphertext SHA-256, authenticated age decryption and every archived file checksum before acknowledging the copy. The runtime bundle is also decrypted and verified. Use the installed Python to perform an immediate pull or verify a retained copy:
 
@@ -39,16 +39,16 @@ python C:\Users\Administrator\Documents\Telomere-private-backups\mainnet-cpu\off
 python C:\Users\Administrator\Documents\Telomere-private-backups\mainnet-cpu\offhost.py verify C:\Users\Administrator\Documents\Telomere-private-backups\mainnet-cpu\backup-<id>.tar.age
 ```
 
-Keep `identity.dpapi`, Windows recovery credentials and encrypted archives private. DPAPI ties recovery to the Windows user/device. A separately escrowed offline recovery identity or a second independently administered backup location still needs an owner decision. No unprotected identity has been exported.
+Keep `identity.dpapi`, Windows recovery credentials and encrypted archives private. DPAPI ties this additional owner identity to the Windows user/device. The separate cloud recovery identity is held in Actions secrets, and a manual recovery workflow can wrap it to a new public age recipient without the original Windows device. No private identity is published unencrypted.
 
 ## Recovery procedure
 
 1. Stop the failed production controller before restoring data. Do not run a second controller against the same mainnet escrow or signer. Keep the static website available as appropriate, with compute admission unavailable during recovery.
-2. Select a verified data snapshot and its exact runtime bundle. Verify both with the off-host helper. Decrypt only into a private recovery directory using the DPAPI-protected identity through age's stdin interface. Never put private configuration, transaction journal raw bytes or a decryption key into Git or a public log.
+2. Select a verified data snapshot and its exact runtime bundle from the private cloud releases, or an additional retained local copy. Use the hosted verification/recovery workflow or the existing owner identity. Decrypt only into a private recovery directory. Never put private configuration, transaction journal raw bytes or a decryption key into Git or a public log.
 3. Restore the dump into an isolated PostgreSQL container with no network and no Telomere controller. Recompute every table fingerprint using the ordered `to_jsonb(row)::text` query in `mainnet-ops.py restore()`, and compare against `snapshot.json`. Verify Cyst ciphertext checksums and the file manifest. The hourly rehearsal implements this database verification already.
 4. For complete VPS loss, rebuild Debian dependencies and the dedicated Docker daemon, recreate UID 995/GID 993, restore the pinned Node/runsc binaries and release layout from the runtime manifest, and obtain the CPU and PostgreSQL images by their reviewed digests. Restore root-only private configuration and ownership, website, nginx and service units. Reissue TLS certificates if needed. Validate paths and permissions before allowing any application process to run. This machine rebuild has no measured automatic recovery time.
-5. Before enabling a restored mainnet worker, use read-only RPC checks to confirm chain 8453, native USDC implementation, escrow roles, original transaction hashes, operator nonce and on-chain balances. Reconcile changes after the snapshot against chain receipts/logs and owner transaction hashes. The target schedule is hourly snapshots plus off-host pulls every 30 minutes; failures or an offline PC increase the gap. Check the actual timestamp of the chosen verified snapshot. Never regenerate a settlement or blindly broadcast a journal from a stale snapshot. Reservations absent from the snapshot require explicit reconciliation; the contract's timeout refund remains available to the owner.
-6. Run the existing production configuration/activation guards, then start the RPC and exactly one controller. Confirm readiness, inspect reconciliation/settlement states, verify balances and receipts, and run the monitor. Re-enable backup timers and the off-host watcher. Do not interpret a database-only rehearsal as proof that an entire VPS was rebuilt.
+5. Before enabling a restored mainnet worker, use read-only RPC checks to confirm chain 8453, native USDC implementation, escrow roles, original transaction hashes, operator nonce and on-chain balances. Reconcile changes after the snapshot against chain receipts/logs and owner transaction hashes. The target schedule is hourly snapshots plus hosted off-site pulls every 30 minutes; provider failures can increase the gap. Check the actual timestamp of the chosen verified snapshot. Never regenerate a settlement or blindly broadcast a journal from a stale snapshot. Reservations absent from the snapshot require explicit reconciliation; the contract's timeout refund remains available to the owner.
+6. Run the existing production configuration/activation guards, then start the RPC and exactly one controller. Confirm readiness, inspect reconciliation/settlement states, verify balances and receipts, and run the monitor. Re-enable backup/pager timers and verify the hosted cloud workflow. Do not interpret a database-only rehearsal as proof that an entire VPS was rebuilt.
 
 Rollback of application code must preserve the current database, chain binding and transaction journal. Replacing the live database with an older copy merely to undo a code release can lose newer reservations and settlements.
 

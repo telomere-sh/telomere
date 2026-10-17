@@ -1,0 +1,17 @@
+[Unit]
+Description=Telomere CPU Telegram incident delivery
+After=telomere-mainnet-monitor.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/python3 -I /opt/telomere-mainnet-pilot/operator/cpu-cloud/pager.py notify
+User=root
+Group=root
+UMask=0077
+TimeoutStartSec=30
+MemoryMax=64M
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/opt/telomere-mainnet-pilot/private

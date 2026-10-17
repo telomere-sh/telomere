@@ -1,0 +1,16 @@
+{
+  "cloudOperations": {
+    "passed": 15,
+    "failed": 0,
+    "command": "python3 -B test_cloud_ops.py",
+    "platform": "Linux",
+    "includesAuthenticatedAgeTests": true
+  },
+  "monitorBackup": {
+    "passed": 14,
+    "failed": 0,
+    "command": "python3 -B test_monitor.py",
+    "platform": "Linux"
+  },
+  "mainnetTransactions": 0
+}

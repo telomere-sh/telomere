@@ -1,0 +1,29 @@
+{
+  "files": [
+    {
+      "sourcePath": "ops/cpu-cloud/export.py",
+      "sha256": "3f8a9418acc3bb93a88d0946ef0f37949b1c9dc4b8c2e375d066b6c25c959426",
+      "deployedBytesMatch": true
+    },
+    {
+      "sourcePath": "ops/cpu-cloud/pager.py",
+      "sha256": "7ea8e57084de173c95ed32250868d80701ff9b19715665807058dd9fbaa7b4b5",
+      "deployedBytesMatch": true
+    },
+    {
+      "sourcePath": "ops/cpu-launch/mainnet-ops.py",
+      "sha256": "71472c653018e9bdc2e2868b29e8e0119054d82cb5042052baf96fdb4b21573d",
+      "deployedBytesMatch": true
+    },
+    {
+      "sourcePath": "ops/cpu-cloud/telomere-mainnet-pager.service",
+      "sha256": "f22f655e4e1a86cbe2a449ceac52e952a33382ddf924b0d6d4bee105d58804fd",
+      "deployedBytesMatch": true
+    },
+    {
+      "sourcePath": "ops/cpu-cloud/telomere-mainnet-pager.timer",
+      "sha256": "33a9868a3fb2671de71d526ebb32e324877b8ae574a4eebc1436bb6c29b39405",
+      "deployedBytesMatch": true
+    }
+  ]
+}
