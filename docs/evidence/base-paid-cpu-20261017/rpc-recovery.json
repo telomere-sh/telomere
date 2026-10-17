@@ -1,0 +1,43 @@
+{
+  "scope": "Base RPC transport recovery for the owner-approved CPU test",
+  "testsPassed": 7,
+  "typecheckPassed": true,
+  "deployedRouterSha256": "8d6f34e4a8c1ccb269df22e90e2c42da3ba0ebc29d335a1be974364fabc66910",
+  "activationGuardUnchanged": true,
+  "frozenBackendReleaseUnchanged": true,
+  "frontendUnchanged": true,
+  "controllerAndRpcServicesEnabled": true,
+  "rpcBind": "127.0.0.1:18545",
+  "publicEndpoints": [
+    "https://mainnet.base.org",
+    "https://base-mainnet.public.blastapi.io"
+  ],
+  "directSecondaryRolloutAttempts": {
+    "count": 2,
+    "outcome": "rolled back; startup or preflight intermittently failed"
+  },
+  "readFallbackEnabled": true,
+  "signedBroadcastFallbackEnabled": false,
+  "sources": [
+    {
+      "path": "scripts/base-rpc-router.ts",
+      "bytes": 4646,
+      "sha256": "019f6c293fb5ad14cbed2f68857746665161a0738be71f3813f6591da53adf82"
+    },
+    {
+      "path": "tests/base-rpc-router.test.ts",
+      "bytes": 3337,
+      "sha256": "df88e7e039597f50b0e85309cf95356654fd79e38f0f291cc784a3323f785a97"
+    },
+    {
+      "path": "ops/base-rpc-router/telomere-mainnet-rpc.service",
+      "bytes": 884,
+      "sha256": "900be1dd5be24ef2d73b9ae81bd00e005cf22bb739216f6d96dd5a18ec63af88"
+    },
+    {
+      "path": "ops/base-rpc-router/rpc-router.conf",
+      "bytes": 80,
+      "sha256": "d27d41b663476189de1268e42f71b857190e8314e7909dbbcc7ffa0dc2694aeb"
+    }
+  ]
+}
