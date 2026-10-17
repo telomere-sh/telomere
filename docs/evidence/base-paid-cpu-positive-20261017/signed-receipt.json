@@ -1,0 +1,54 @@
+{
+  "body": {
+    "cpu": {
+      "mode": "docker",
+      "ticks": [
+        {
+          "hash": "39364c4548438b3f2a7ee6523d5c1bd39f2037eeca37b1d07611cf00aed03f45",
+          "runId": "0xb25b7db2253dc3984f51340f267210aac8cbb9aa37d834dc9db97765b011026b",
+          "state": "completed",
+          "sequence": 0,
+          "elapsedMs": 4301,
+          "timestamp": "2026-10-17T16:50:20.243Z",
+          "outputHash": "ec79c446c048c49a28233005fc7071a1bae69c3d8f0f71370f1efdd298d57e6d",
+          "previousHash": null,
+          "billableSeconds": 4
+        }
+      ],
+      "outputHash": "0x16c8fd22527e5ad2f0925435425bd2b9c223d7e04f6244788fc34371a3ab09df",
+      "billingUnit": "running_seconds",
+      "pricePerSecond": "100",
+      "billableSeconds": 4,
+      "measuredSeconds": 4
+    },
+    "near": null,
+    "payer": "0xa67c6a174409b9b44e67d24cdd386a31d44edb1d",
+    "runId": "0xb25b7db2253dc3984f51340f267210aac8cbb9aa37d834dc9db97765b011026b",
+    "status": "completed",
+    "billing": {
+      "token": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+      "refund": "1600",
+      "ceiling": "2000",
+      "charged": "400"
+    },
+    "leashId": "0xa0585ad5f724531fced1112db0ba24b09f18d64bae85d159fc479eaa5d4f1063",
+    "version": 1,
+    "issuedAt": "2026-10-17T16:50:20.344Z",
+    "workloadHash": "0x18d68c2587184805d3c975ab9c2a943d346f35c6c2f656acd17aceaef9951793"
+  },
+  "domain": {
+    "name": "TelomereRunEscrow",
+    "chainId": 8453,
+    "version": "1",
+    "verifyingContract": "0x27c1e35F563Aa4f57a68B192d88a76c25e68e0db"
+  },
+  "signer": "0x87599dBF6f720DE7751E8CB2d36d4Ea96A4A1d38",
+  "signature": "0xaa5bd9f29c590c3b87591adb166f706d967685b5274c1afd89a72f8e303fc5243ac81e6e1e46206a4ae5818881fb3ae85fb8628d760411d70cb4410c31f0e9db1c",
+  "settlement": {
+    "runId": "0xb25b7db2253dc3984f51340f267210aac8cbb9aa37d834dc9db97765b011026b",
+    "receiptHash": "0x37a803ef00952cb05e3ad8f8a72c384b2dc1dde76da7edb4481841e72eb11de1",
+    "billableSeconds": "4",
+    "inferenceCharge": "0"
+  },
+  "receiptHash": "0x37a803ef00952cb05e3ad8f8a72c384b2dc1dde76da7edb4481841e72eb11de1"
+}
