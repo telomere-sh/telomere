@@ -5,8 +5,8 @@
   "files": [
     {
       "path": "website/dist/dashboard.js",
-      "bytes": 50183,
-      "sha256": "b884ccfa06ab404bc2143e6ee63a3af800377d2fd529d0d37a562c134b5ed9a9"
+      "bytes": 52824,
+      "sha256": "8e1822a5642c705e9e76eba4ab745c6e9d719326c130c70bf093c95947292b16"
     },
     {
       "path": "website/dist/site.js",

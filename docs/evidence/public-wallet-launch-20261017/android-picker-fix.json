@@ -1,0 +1,25 @@
+{
+  "scope": "Workspace select controls for Android OKX browser compatibility",
+  "observedAt": "2026-10-17T16:31:03.381773+00:00",
+  "previousIntegrationManifestSha256": "9aac30e5cd41c76ac3b4ce5e9c09848d9a625f3138c3c4bee501cff24a45e148",
+  "publicFrontendRoot": "/var/www/telomere-public/android-picker-20261017-8e1822a5642c",
+  "dashboardSha256": "8e1822a5642c705e9e76eba4ab745c6e9d719326c130c70bf093c95947292b16",
+  "otherStaticFilesUnchanged": 312,
+  "backendRestarted": false,
+  "healthLive": true,
+  "healthReady": true,
+  "signaturesOrTransactionsByAutomation": 0,
+  "browserChecks": {
+    "environment": "desktop in-app browser, local demo account",
+    "passed": [
+      "Allowed hardware opens web option panel",
+      "CPU/RTX selection updates original form value",
+      "Unsubmitted label survives option panel selection",
+      "Escape cancels to original form with unchanged values and focus",
+      "CPU/Standard plan saves successfully with hidden native control FormData",
+      "Status picker outside drawer updates table",
+      "Logout in second tab clears option panel and detached owner form in first tab"
+    ],
+    "physicalAndroidOkxTest": "pending user verification"
+  }
+}
