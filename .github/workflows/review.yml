@@ -104,6 +104,10 @@ jobs:
           for suite in cpu-launch cpu-cloud owner-review-mobile staging-chain-checkpoint; do
             python -B -m unittest discover -s "ops/$suite" -p 'test_*.py' -v || exit 1
           done
+          python -B -m unittest discover -s tests -p 'test_near*.py' -v
+          python -B ops/legacy-mainnet/network-fixture.test.py
+          node --test ops/cpu-launch/test-fingerprints.mjs ops/cpu-launch/test-fixture-rpc.mjs ops/cpu-launch/test-recovery-audit.mjs
+          node --import tsx --test ops/legacy-mainnet/preflight-fixture.test.mjs
           python -B docs/verify-evidence.py
           python -B -m unittest discover -s security -p 'test_*.py' -v
       - run: |
