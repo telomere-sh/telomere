@@ -23,7 +23,8 @@ def main():
         # Keep the established direct-solc scope after adding foundry.toml for
         # independent properties. Auto-detection would silently select a different
         # build system (and require Forge in the scanner environment).
-        'slither': [str(slither), 'contracts', '--compile-force-framework', 'solc', '--solc', str(binary / ('solc' + suffix)),
+        'slither': [str(slither), 'contracts', '--compile-force-framework', 'solc', '--foundry-ignore',
+                    '--solc', str(binary / ('solc' + suffix)),
                     '--solc-remaps', '@openzeppelin/=node_modules/@openzeppelin/', '--solc-args',
                     '--optimize --optimize-runs 200 --evm-version paris', '--exclude-dependencies', '--json', str(output / 'slither.json')],
     }
