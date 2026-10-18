@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 import tempfile
 import unittest
+from unittest.mock import patch
 
 spec = importlib.util.spec_from_file_location('finding_gate', Path(__file__).with_name('check-findings.py'))
 gate = importlib.util.module_from_spec(spec)
@@ -18,6 +19,8 @@ class FindingGateTests(unittest.TestCase):
         self.previous = gate.ROOT
         gate.ROOT = Path(self.directory.name)
         self.addCleanup(setattr, gate, 'ROOT', self.previous)
+        inputs = patch.object(gate, 'reviewed_inputs', return_value={'fixture': 'v1'})
+        inputs.start(); self.addCleanup(inputs.stop)
         (gate.ROOT / 'contracts').mkdir()
         (gate.ROOT / 'contracts/Example.sol').write_text('contract Example {}', encoding='utf-8')
         (gate.ROOT / 'security/baselines').mkdir(parents=True)
@@ -25,7 +28,7 @@ class FindingGateTests(unittest.TestCase):
             'check': 'example', 'impact': 'High', 'description': 'Example finding',
             'elements': [{'source_mapping': {'filename_relative': 'contracts/Example.sol'}}]}]}}
         row = next(iter(gate.slither_rows(self.report).values()))
-        self.baseline = {'schemaVersion': 1, 'tool': 'slither', 'findings': [{
+        self.baseline = {'schemaVersion': 1, 'tool': 'slither', 'inputs': {'fixture': 'v1'}, 'findings': [{
             **row, 'classification': 'accepted_design_risk', 'rationale': 'Explicit fixture review.'}]}
         self.save()
 
@@ -45,6 +48,12 @@ class FindingGateTests(unittest.TestCase):
     def test_source_change_blocks(self):
         (gate.ROOT / 'contracts/Example.sol').write_text('contract Example { uint x; }', encoding='utf-8')
         self.assertFalse(gate.review('slither', self.report)['passed'])
+
+    def test_changed_scanner_inputs_block(self):
+        self.baseline['inputs']['fixture'] = 'unreviewed-v2'
+        self.save()
+        with self.assertRaisesRegex(ValueError, 'toolchain inputs differ'):
+            gate.review('slither', self.report)
 
     def test_stale_review_blocks(self):
         self.assertFalse(gate.review('slither', {'success': True, 'results': {'detectors': []}})['passed'])

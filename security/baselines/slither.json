@@ -2227,5 +2227,11 @@
       "rationale": "Reviewed cross-contract writes/observations occur behind entry-point reentrancy guards and fixed integration roles. Finality and token-movement checks are still required; a hostile immutable dependency can make its operation revert. Retained as a design dependency rather than suppressed as a clean scan."
     }
   ],
-  "identityNormalization": "Sort diagnostic lines to stabilize Slither set iteration; no line is removed. Exact project source hashes and raw reports remain required."
+  "identityNormalization": "Sort diagnostic lines to stabilize Slither set iteration; no line is removed. Exact project source hashes and raw reports remain required.",
+  "inputs": {
+    "toolsManifestSha256": "7ecec542077342b20cf8782159847dd4e6317b743c77f035a28840c71cce776c",
+    "scannerScriptSha256": "658d4d4f4eb9d99cc43859c8150b2b5520bf057808bbd24440e4dd5dab21d6cc",
+    "openzeppelinLockEntrySha256": "1e93fbe7b11287f9288a3c479a6ab6c1005efe965b127881609bb6f722cdba5f",
+    "scannerEnvironmentSha256": "61b0fe2127759c0fa03e8f6fe891b69fb52d83e1cc36fe4ab493841bb7422b28"
+  }
 }

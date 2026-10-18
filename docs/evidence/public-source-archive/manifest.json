@@ -11392,8 +11392,8 @@
           "path": "website/dist/agent-panels.js",
           "bytes": 5900,
           "sha256": "4ccf437775bad45832ec887561667eef697a91f0b4464c214148c4731e4200ea",
-          "storage": "working-tree",
-          "storedPath": "website/dist/agent-panels.js"
+          "storage": "object",
+          "storedPath": "docs/evidence/public-source-archive/objects/4ccf437775bad45832ec887561667eef697a91f0b4464c214148c4731e4200ea.bin"
         },
         {
           "path": "website/dist/articles/index.html",
@@ -14466,6 +14466,13 @@
           "sha256": "164f9e14c05bb23f6d341974ee12d1f5117e8400f88f24054d5511ff85e3d439",
           "storage": "object",
           "storedPath": "docs/evidence/public-source-archive/objects/164f9e14c05bb23f6d341974ee12d1f5117e8400f88f24054d5511ff85e3d439.bin"
+        },
+        {
+          "path": "website/dist/agent-panels.js",
+          "bytes": 5900,
+          "sha256": "4ccf437775bad45832ec887561667eef697a91f0b4464c214148c4731e4200ea",
+          "storage": "object",
+          "storedPath": "docs/evidence/public-source-archive/objects/4ccf437775bad45832ec887561667eef697a91f0b4464c214148c4731e4200ea.bin"
         }
       ]
     }

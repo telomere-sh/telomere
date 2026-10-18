@@ -21,6 +21,19 @@ def project_path(value):
     return normalized
 
 
+def reviewed_inputs(tool):
+    canonical = lambda value: json.dumps(value, sort_keys=True, separators=(',', ':')).encode()
+    result = {
+        'toolsManifestSha256': digest(canonical(json.loads((ROOT / 'security/tools.json').read_text(encoding='utf-8')))),
+        'scannerScriptSha256': digest((ROOT / 'security/run-scans.py').read_bytes().replace(b'\r\n', b'\n')),
+    }
+    if tool == 'slither':
+        lock = json.loads((ROOT / 'package-lock.json').read_text(encoding='utf-8'))
+        result['openzeppelinLockEntrySha256'] = digest(canonical(lock['packages']['node_modules/@openzeppelin/contracts']))
+        result['scannerEnvironmentSha256'] = digest((ROOT / 'security/requirements-tools.lock').read_bytes().replace(b'\r\n', b'\n'))
+    return result
+
+
 def slither_rows(report):
     if report.get('success') is not True:
         raise ValueError('Slither did not successfully analyze the contracts')
@@ -61,6 +74,8 @@ def gitleaks_rows(report):
 
 def review(tool, report):
     baseline = json.loads((ROOT / ('security/baselines/' + tool + '.json')).read_text(encoding='utf-8'))
+    if baseline.get('inputs') != reviewed_inputs(tool):
+        raise ValueError('Reviewed scanner/toolchain inputs differ')
     rows = gitleaks_rows(report) if tool == 'gitleaks' else slither_rows(report)
     expected = {row['id']: row for row in baseline['findings']}
     if len(expected) != len(baseline['findings']) or baseline['schemaVersion'] != 1:

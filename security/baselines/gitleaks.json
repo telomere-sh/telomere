@@ -698,6 +698,69 @@
       "rationale": "Reviewed exact historical blob: matching public contract/host identity, SHA-256 provenance fingerprint, test marker or explanatory prose; not a reusable credential. Full blob hash binds this review to the inspected version."
     },
     {
+      "id": "ae59e26a74310a3a550ab589b5f2c52f2ef603e2:security/baselines/slither.json:generic-api-key:1284",
+      "detector": "generic-api-key",
+      "commit": "ae59e26a74310a3a550ab589b5f2c52f2ef603e2",
+      "file": "security/baselines/slither.json",
+      "sourceBlobSha256": "4a20053ca36590b0229db29d8aa3f6f44d656412aed5101ebf5eaf625fa5f6ea",
+      "classification": "false_positive",
+      "rationale": "Inspected exact diagnostic review entry: a SHA-256 source digest next to a token-named Solidity file. It is not an API credential."
+    },
+    {
+      "id": "ae59e26a74310a3a550ab589b5f2c52f2ef603e2:security/baselines/slither.json:generic-api-key:162",
+      "detector": "generic-api-key",
+      "commit": "ae59e26a74310a3a550ab589b5f2c52f2ef603e2",
+      "file": "security/baselines/slither.json",
+      "sourceBlobSha256": "4a20053ca36590b0229db29d8aa3f6f44d656412aed5101ebf5eaf625fa5f6ea",
+      "classification": "false_positive",
+      "rationale": "Inspected exact diagnostic review entry: a SHA-256 source digest next to a token-named Solidity file. It is not an API credential."
+    },
+    {
+      "id": "ae59e26a74310a3a550ab589b5f2c52f2ef603e2:security/baselines/slither.json:generic-api-key:2092",
+      "detector": "generic-api-key",
+      "commit": "ae59e26a74310a3a550ab589b5f2c52f2ef603e2",
+      "file": "security/baselines/slither.json",
+      "sourceBlobSha256": "4a20053ca36590b0229db29d8aa3f6f44d656412aed5101ebf5eaf625fa5f6ea",
+      "classification": "false_positive",
+      "rationale": "Inspected exact diagnostic review entry: a SHA-256 source digest next to a token-named Solidity file. It is not an API credential."
+    },
+    {
+      "id": "ae59e26a74310a3a550ab589b5f2c52f2ef603e2:security/baselines/slither.json:generic-api-key:2224",
+      "detector": "generic-api-key",
+      "commit": "ae59e26a74310a3a550ab589b5f2c52f2ef603e2",
+      "file": "security/baselines/slither.json",
+      "sourceBlobSha256": "4a20053ca36590b0229db29d8aa3f6f44d656412aed5101ebf5eaf625fa5f6ea",
+      "classification": "false_positive",
+      "rationale": "Inspected exact diagnostic review entry: a SHA-256 source digest next to a token-named Solidity file. It is not an API credential."
+    },
+    {
+      "id": "ae59e26a74310a3a550ab589b5f2c52f2ef603e2:security/baselines/slither.json:generic-api-key:46",
+      "detector": "generic-api-key",
+      "commit": "ae59e26a74310a3a550ab589b5f2c52f2ef603e2",
+      "file": "security/baselines/slither.json",
+      "sourceBlobSha256": "4a20053ca36590b0229db29d8aa3f6f44d656412aed5101ebf5eaf625fa5f6ea",
+      "classification": "false_positive",
+      "rationale": "Inspected exact diagnostic review entry: a SHA-256 source digest next to a token-named Solidity file. It is not an API credential."
+    },
+    {
+      "id": "ae59e26a74310a3a550ab589b5f2c52f2ef603e2:security/baselines/slither.json:generic-api-key:506",
+      "detector": "generic-api-key",
+      "commit": "ae59e26a74310a3a550ab589b5f2c52f2ef603e2",
+      "file": "security/baselines/slither.json",
+      "sourceBlobSha256": "4a20053ca36590b0229db29d8aa3f6f44d656412aed5101ebf5eaf625fa5f6ea",
+      "classification": "false_positive",
+      "rationale": "Inspected exact diagnostic review entry: a SHA-256 source digest next to a token-named Solidity file. It is not an API credential."
+    },
+    {
+      "id": "ae59e26a74310a3a550ab589b5f2c52f2ef603e2:security/baselines/slither.json:generic-api-key:528",
+      "detector": "generic-api-key",
+      "commit": "ae59e26a74310a3a550ab589b5f2c52f2ef603e2",
+      "file": "security/baselines/slither.json",
+      "sourceBlobSha256": "4a20053ca36590b0229db29d8aa3f6f44d656412aed5101ebf5eaf625fa5f6ea",
+      "classification": "false_positive",
+      "rationale": "Inspected exact diagnostic review entry: a SHA-256 source digest next to a token-named Solidity file. It is not an API credential."
+    },
+    {
       "id": "b41cda8fddd31f119ecea9818ebc46268f12eaab:docs/evidence/cpu-backup-crash-20261018/provenance.json:generic-api-key:15",
       "detector": "generic-api-key",
       "commit": "b41cda8fddd31f119ecea9818ebc46268f12eaab",
@@ -796,5 +859,9 @@
       "classification": "false_positive",
       "rationale": "Reviewed exact historical blob: matching public contract/host identity, SHA-256 provenance fingerprint, test marker or explanatory prose; not a reusable credential. Full blob hash binds this review to the inspected version."
     }
-  ]
+  ],
+  "inputs": {
+    "toolsManifestSha256": "7ecec542077342b20cf8782159847dd4e6317b743c77f035a28840c71cce776c",
+    "scannerScriptSha256": "658d4d4f4eb9d99cc43859c8150b2b5520bf057808bbd24440e4dd5dab21d6cc"
+  }
 }

@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "kind": "audit-remediation-source-boundary",
   "previousIntegrationRecord": "docs/evidence/public-wallet-launch-20261017/frontend-integration.json",
-  "changes": "Reviewed CPU disclosures and factual counters in existing animated spans. Runtime rebuild localizes 16 pinned public CMS assets under the same origin; HTML changes reference the rebuilt runtime. No CSS, fonts, animation modules or media bytes edited.",
+  "changes": "Reviewed CPU disclosures and counters in existing animated spans, with current-profile panel descriptions and Workspace links. Runtime rebuild localizes 16 pinned public CMS exports. HTML changes reference the rebuilt runtime. CSS, fonts, imported motion sources and media bytes remain unchanged.",
   "files": [
     {
       "path": "website/dist/dashboard.js",
@@ -17,8 +17,8 @@
     },
     {
       "path": "website/dist/site.js",
-      "bytes": 49744,
-      "sha256": "f1acec8b84552c04ee31f48ff0952f40f5b6c5c056c22a5345601d2d79eafcc2",
+      "bytes": 49798,
+      "sha256": "7eef33d6ac874bb8fa3d47e96086478ce3eee708cf9a4101790ac76869b05b85",
       "previous": {
         "path": "website/dist/site.js",
         "bytes": 44906,
@@ -35,6 +35,17 @@
         "bytes": 11645,
         "sha256": "11ba3ef7576323472ede798e8b93b69dce78f44005eb351c1b6468b99e899577",
         "storedPath": "docs/evidence/audit-remediation-20261018/source/11ba3ef7576323472ede798e8b93b69dce78f44005eb351c1b6468b99e899577.bin"
+      }
+    },
+    {
+      "path": "website/dist/agent-panels.js",
+      "bytes": 5893,
+      "sha256": "d4d6bde495803dbb16e0561c20a3337ae0eb0ae67b93b29bd610a99c6337457d",
+      "previous": {
+        "path": "website/dist/agent-panels.js",
+        "bytes": 5900,
+        "sha256": "4ccf437775bad45832ec887561667eef697a91f0b4464c214148c4731e4200ea",
+        "storedPath": "docs/evidence/audit-remediation-20261018/source/4ccf437775bad45832ec887561667eef697a91f0b4464c214148c4731e4200ea.bin"
       }
     }
   ]

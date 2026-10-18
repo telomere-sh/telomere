@@ -55,7 +55,7 @@ social_document = 'docs/evidence/domain-https-20261015/social-links-approved-cha
 approved_social_sha256 = '859669b4db1c9ba2061823769cbd80e1c38fc30be0bcbf71d4245318ab5e29ce'
 source_document = 'docs/evidence/legacy-mainnet-preparation-20261015/vps/vps-source-record.json'
 archive_document = 'docs/evidence/public-source-archive/manifest.json'
-archive_sha256 = '69929b06578fe6214c349712493afbcf5b169b34010c58d465b69d272198e2a4'
+archive_sha256 = '880164d70b33c021aa300bce5a0166d1a6bd63619bc9c20cc680181b33482059'
 used_archive_entries = set()
 
 
@@ -231,11 +231,11 @@ assert {entry['path'] for entry in integration['files']} == {'website/dist/dashb
 remediation_document = 'docs/evidence/audit-remediation-20261018/frontend-source.json'
 assert remediation_document in tracked
 remediation_bytes = (root / remediation_document).read_bytes()
-assert hashlib.sha256(remediation_bytes).hexdigest() == '08802fd1f63b4fc7cbaae136383327709e3a4f43d8b8cdca2d89ec00de869702'
+assert hashlib.sha256(remediation_bytes).hexdigest() == '0edcccdbe6817a71ea13b85012fe1531a41fcaaaddd70255807e67a40cff199f'
 remediation = json.loads(remediation_bytes)
 assert remediation['schemaVersion'] == 1 and remediation['previousIntegrationRecord'] == integration_document
-assert {entry['path'] for entry in remediation['files']} == {entry['path'] for entry in integration['files']}
-prior = {entry['path']: entry for entry in integration['files']}
+assert {entry['path'] for entry in remediation['files']} == {entry['path'] for entry in integration['files']} | {'website/dist/agent-panels.js'}
+prior = {entry['path']: entry for entry in integration['files'] + integration['preserved']}
 for entry in remediation['files']:
     name, digest = validate_source_entry(entry)
     previous = entry['previous']
@@ -248,7 +248,7 @@ for entry in remediation['files']:
     current = (root / name).read_bytes()
     assert len(current) == entry['bytes'] and hashlib.sha256(current).hexdigest() == digest, 'Reviewed frontend changed: ' + name
     references += 2
-for entry in integration['preserved'] + [integration['historicalSocial']]:
+for entry in [item for item in integration['preserved'] if item['path'] != 'website/dist/agent-panels.js'] + [integration['historicalSocial']]:
     name, digest = validate_source_entry(entry)
     assert name in tracked
     actual = (root / name).read_bytes()
