@@ -11,6 +11,7 @@ evm_version = "paris"
 optimizer = true
 optimizer_runs = 200
 chain_id = 31337
+fs_permissions = [{ access = "read-write", path = "./.local/invariant-metrics" }]
 
 [fuzz]
 runs = 256

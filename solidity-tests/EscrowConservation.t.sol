@@ -12,6 +12,10 @@ interface VmCash {
     function expectRevert() external;
     function expectRevert(bytes4 selector) external;
     function mockCall(address target, bytes calldata data, bytes calldata result) external;
+    function envOr(string calldata name, string calldata defaultValue) external returns (string memory);
+    function toString(uint256 value) external pure returns (string memory);
+    function toString(bytes32 value) external pure returns (string memory);
+    function writeLine(string calldata path, string calldata line) external;
 }
 
 /// Independent cash-flow model; no expected balance is initialized from escrow storage.
@@ -29,10 +33,21 @@ contract CashHandler {
     uint256 public earned;
     uint256 public protocolCalls;
     uint256 public expectedEscrowReverts;
+    uint256 public scheduledHandlerCalls;
+    bytes32 public scheduledTrace;
+    bool private ready;
+    bool public finished;
+    modifier scheduled() {
+        if (ready && !finished) {
+            scheduledHandlerCalls++;
+            scheduledTrace = keccak256(abi.encode(scheduledTrace, msg.data, block.timestamp));
+        }
+        _;
+    }
     uint256 private serial;
     struct Leash { bytes32 id; uint256 owner; uint96 hour; uint96 day; uint64 expiry; uint64 killedAt; }
     struct Run { TelomereRunEscrow.Quote q; uint256 leash; uint64 opened; uint64 expiry; uint64 stop;
-        uint8 state; uint64 settledAt; uint256 charge; bytes32 receipt; }
+        uint8 state; uint64 settledAt; uint256 charge; bytes32 receipt; uint64 billableSeconds; uint96 inferenceCharge; }
     Leash[] private leashes;
     Run[] private runs;
     mapping(bytes32 => bool) private usedReceipt;
@@ -46,6 +61,7 @@ contract CashHandler {
         }
         // Guarantee valid payment, release and a rejected protocol call before fuzzing.
         open(0, 1, 1); settle(0, 1, 1); open(1, 1, 2); advance(21_631); refund(1); deposit(0, 0);
+        ready = true;
     }
     function _id() private returns (bytes32) { return keccak256(abi.encode("cash-campaign", ++serial)); }
     function _signature(bytes32 hash, bool wrong) private returns (bytes memory) {
@@ -69,8 +85,8 @@ contract CashHandler {
         _invoke(owners[owner], abi.encodeCall(escrow.deposit, (amount)), ok);
         if (ok) { walletCash[owner] -= amount; free[owner] += amount; }
     }
-    function deposit(uint256 ownerSeed, uint256 amountSeed) public { _deposit(ownerSeed % 2, uint96(amountSeed % 2500)); }
-    function withdraw(uint256 ownerSeed, uint256 amountSeed) public {
+    function deposit(uint256 ownerSeed, uint256 amountSeed) public scheduled { _deposit(ownerSeed % 2, uint96(amountSeed % 2500)); }
+    function withdraw(uint256 ownerSeed, uint256 amountSeed) public scheduled {
         uint256 owner = ownerSeed % 2; uint96 amount = uint96(amountSeed % 20_000); bool ok = amount != 0 && free[owner] >= amount;
         _invoke(owners[owner], abi.encodeCall(escrow.withdraw, (amount)), ok);
         if (ok) { free[owner] -= amount; walletCash[owner] += amount; }
@@ -80,8 +96,8 @@ contract CashHandler {
         _invoke(owners[owner], abi.encodeCall(escrow.createLeash, (id, owners[owner], uint96(900), uint96(2000), expiry)), true);
         leashes.push(Leash(id, owner, 900, 2000, expiry, 0));
     }
-    function create(uint256 ownerSeed) public { _create(ownerSeed % 2); }
-    function open(uint256 leashSeed, uint256 timeSeed, uint256 priceSeed) public {
+    function create(uint256 ownerSeed) public scheduled { _create(ownerSeed % 2); }
+    function open(uint256 leashSeed, uint256 timeSeed, uint256 priceSeed) public scheduled {
         uint256 li = leashSeed % leashes.length; Leash storage l = leashes[li];
         bool wrong = priceSeed % 7 == 0; bool foreign = timeSeed % 5 == 0;
         TelomereRunEscrow.Quote memory q = TelomereRunEscrow.Quote(_id(), l.id, owners[l.owner], _id(),
@@ -93,10 +109,10 @@ contract CashHandler {
             && _spent(li, 3600) + _pending(li) + amount <= l.hour && _spent(li, 86400) + _pending(li) + amount <= l.day;
         bytes memory signature = _signature(escrow.quoteDigest(q), wrong);
         _invoke(foreign ? owners[1 - l.owner] : owners[l.owner], abi.encodeCall(escrow.openRun, (q, signature)), ok);
-        if (ok) { free[l.owner] -= amount; runs.push(Run(q, li, uint64(block.timestamp), l.expiry, 0, 1, 0, 0, bytes32(0))); }
+        if (ok) { free[l.owner] -= amount; runs.push(Run(q, li, uint64(block.timestamp), l.expiry, 0, 1, 0, 0, bytes32(0), 0, 0)); }
     }
     struct SettlementModel { uint256 cutoff; uint256 permitted; uint64 secondsBilled; uint96 inference; uint256 charge; bytes32 receipt; bool wrong; bool ok; }
-    function settle(uint256 runSeed, uint256 chargeSeed, uint256 modeSeed) public {
+    function settle(uint256 runSeed, uint256 chargeSeed, uint256 modeSeed) public scheduled {
         Run storage r = runs[runSeed % runs.length]; Leash storage l = leashes[r.leash]; SettlementModel memory m;
         m.cutoff = block.timestamp;
         if (r.stop != 0 && r.stop < m.cutoff) m.cutoff = r.stop;
@@ -114,32 +130,33 @@ contract CashHandler {
         TelomereRunEscrow.Settlement memory s = TelomereRunEscrow.Settlement(r.q.runId, m.secondsBilled, m.inference, m.receipt);
         _invoke(owners[1 - l.owner], abi.encodeCall(escrow.settleRun, (s, _signature(escrow.settlementDigest(s), m.wrong))), m.ok);
         if (m.ok) { r.state = 2; r.settledAt = uint64(block.timestamp); r.charge = m.charge; r.receipt = m.receipt;
+            r.billableSeconds = m.secondsBilled; r.inferenceCharge = m.inference;
             usedReceipt[m.receipt] = true; earned += m.charge; free[l.owner] += _ceiling(r) - m.charge; }
     }
-    function refund(uint256 seed) public {
+    function refund(uint256 seed) public scheduled {
         Run storage r = runs[seed % runs.length]; bool ok = r.state == 1 && block.timestamp >= uint256(r.opened) + r.q.maxSeconds + 21600;
         _invoke(owners[1 - leashes[r.leash].owner], abi.encodeCall(escrow.refundRun, (r.q.runId)), ok);
         if (ok) { r.state = 3; free[leashes[r.leash].owner] += _ceiling(r); }
     }
-    function stop(uint256 seed, bool foreign) public {
+    function stop(uint256 seed, bool foreign) public scheduled {
         Run storage r = runs[seed % runs.length]; uint256 owner = leashes[r.leash].owner; bool ok = r.state == 1 && !foreign;
         _invoke(owners[foreign ? 1 - owner : owner], abi.encodeCall(escrow.requestStop, (r.q.runId)), ok);
         if (ok && r.stop == 0) r.stop = uint64(block.timestamp);
     }
-    function kill(uint256 seed, bool foreign) public {
+    function kill(uint256 seed, bool foreign) public scheduled {
         Leash storage l = leashes[seed % leashes.length]; bool ok = l.killedAt == 0 && !foreign;
         _invoke(owners[foreign ? 1 - l.owner : l.owner], abi.encodeCall(escrow.killLeash, (l.id)), ok);
         if (ok) l.killedAt = uint64(block.timestamp);
     }
-    function update(uint256 seed, uint256 hourSeed, uint256 daySeed, bool foreign) public {
+    function update(uint256 seed, uint256 hourSeed, uint256 daySeed, bool foreign) public scheduled {
         uint256 li = seed % leashes.length; Leash storage l = leashes[li]; uint96 hour = uint96(1 + hourSeed % 2000); uint96 day = uint96(1 + daySeed % 4000);
         uint64 expiry = uint64(block.timestamp + 1 + hourSeed % 100_000);
         bool ok = !foreign && l.killedAt == 0 && _spent(li, 3600) + _pending(li) <= hour && _spent(li, 86400) + _pending(li) <= day;
         _invoke(owners[foreign ? 1 - l.owner : l.owner], abi.encodeCall(escrow.updateLeash, (l.id, owners[l.owner], hour, day, expiry)), ok);
         if (ok) { l.hour = hour; l.day = day; l.expiry = expiry; }
     }
-    function advance(uint256 seed) public { vm.warp(block.timestamp + seed % 100_000); }
-    function replay(uint256 seed) public {
+    function advance(uint256 seed) public scheduled { vm.warp(block.timestamp + seed % 100_000); }
+    function replay(uint256 seed) public scheduled {
         Run storage r = runs[seed % runs.length]; bytes memory sig = _signature(escrow.quoteDigest(r.q), false);
         _invoke(r.q.payer, abi.encodeCall(escrow.openRun, (r.q, sig)), false);
     }
@@ -154,7 +171,8 @@ contract CashHandler {
         for (uint256 i; i < runs.length; i++) {
             Run storage r = runs[i]; TelomereRunEscrow.Run memory actual = escrow.getRun(r.q.runId);
             require(uint8(actual.status) == r.state && actual.payer == r.q.payer && actual.ceiling == _ceiling(r)
-                && actual.acceptedExpiry == r.expiry && actual.stopAt == r.stop && actual.receiptHash == r.receipt, "immutable run history");
+                && actual.acceptedExpiry == r.expiry && actual.stopAt == r.stop && actual.receiptHash == r.receipt
+                && actual.billableSeconds == r.billableSeconds && actual.inferenceCharge == r.inferenceCharge, "immutable run history");
             if (r.state == 2) require(escrow.usedReceiptHash(r.receipt), "settlement receipt replay index");
         }
         for (uint256 i; i < 2; i++) {
@@ -166,6 +184,10 @@ contract CashHandler {
         require(walletCash[0] + walletCash[1] + earned + free[0] + free[1] + pending == 2_000_000, "total cash conservation");
     }
     function finish() public {
+        // Forge may invoke the final hook again after the last sequence. Recheck
+        // that exit, but never count its withdrawals or telemetry twice.
+        if (finished) { check(); return; }
+        finished = true;
         vm.warp(block.timestamp + 300_000);
         for (uint256 i; i < runs.length; i++) if (runs[i].state == 1) refund(i);
         for (uint256 i; i < 2; i++) if (free[i] != 0) {
@@ -192,7 +214,17 @@ contract EscrowConservationInvariantTest {
         s[9] = handler.advance.selector; s[10] = handler.replay.selector; a[0] = FuzzSelector(address(handler), s);
     }
     function invariant_cashAndReservationHistory() public view { handler.check(); }
-    function afterInvariant() public { handler.finish(); }
+    function afterInvariant() public {
+        if (handler.finished()) { handler.check(); return; }
+        handler.finish();
+        string memory path = vm.envOr("TELOMERE_INVARIANT_METRICS_PATH", string(""));
+        if (bytes(path).length != 0) vm.writeLine(path, string.concat(
+            '{"scheduledHandlerCalls":', vm.toString(handler.scheduledHandlerCalls()),
+            ',"scheduledTrace":"', vm.toString(handler.scheduledTrace()), '"',
+            ',"protocolCallsIncludingSetupAndExit":', vm.toString(handler.protocolCalls()),
+            ',"expectedEscrowReverts":', vm.toString(handler.expectedEscrowReverts()),
+            ',"oracleVerifiedAfterExit":true}'));
+    }
     function testOracleRejectsForgedWalletCash() public {
         MockToken t = handler.token(); address owner = handler.owners(0); uint256 cash = t.balanceOf(owner);
         vm.mockCall(address(t), abi.encodeCall(t.balanceOf, (owner)), abi.encode(cash + 1));
@@ -230,5 +262,9 @@ contract EscrowConservationInvariantTest {
     }
     function _openBoundary(TelomereRunEscrow e, TelomereRunEscrow.Quote memory q, uint256 key, address payer) private {
         bytes memory signature = _boundarySignature(key, e.quoteDigest(q)); vm.prank(payer); e.openRun(q, signature);
+    }
+    function testExactMaxAndOneAtomicUnitBoundaries() public {
+        testFuzzExactUint96ReservationAndSettlement(type(uint96).max, 119);
+        testFuzzExactUint96ReservationAndSettlement(1, 119);
     }
 }

@@ -261,16 +261,21 @@ jobs:
           python-version: '3.11'
       - run: npm ci --ignore-scripts
       - run: python security/install-tools.py && python security/install-forge.py
+      - run: npm run contracts:compile
       - run: |
-          mkdir -p .local/solidity-invariants
+          mkdir -p .local/solidity-invariants .local/invariant-metrics
           for seed in c0ffee19 5eed2026; do
-            .local/security-bin/forge test --match-contract EscrowConservationInvariantTest --fuzz-seed "0x$seed" --json > ".local/solidity-invariants/$seed.json" || exit 1
+            test ! -e ".local/invariant-metrics/$seed.jsonl" || exit 1
+            TELOMERE_INVARIANT_METRICS_PATH=".local/invariant-metrics/$seed.jsonl" .local/security-bin/forge test --threads 1 --match-contract EscrowConservationInvariantTest --fuzz-seed "0x$seed" --json > ".local/solidity-invariants/$seed.json" || exit 1
           done
+          python security/verify-solidity-campaigns.py > .local/solidity-invariants/acceptance.json
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:
           name: independent-solidity-invariants
-          path: .local/solidity-invariants/
+          path: |
+            .local/solidity-invariants/
+            .local/invariant-metrics/
   cpu-coverage:
     runs-on: ubuntu-24.04
     timeout-minutes: 60
