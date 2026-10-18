@@ -40,7 +40,7 @@ The campaign also pins the Anvil genesis/snapshot timestamp and every time-advan
 
 ## Independent Solidity invariants
 
-Install the pinned native tools with `python3 security/install-tools.py` and `python3 security/install-forge.py`. Run `.local/security-bin/forge test --match-contract EscrowConservationInvariantTest --fuzz-seed 0xc0ffee19` from a clean Linux checkout. `foundry.toml` fixes solc/EVM/optimizer, 128 sequences × 256 handler calls and 256 boundary-fuzz examples. Repeat with seed `0x5eed2026`.
+Install the pinned native tools with `python3 security/install-tools.py` and `python3 security/install-forge.py`. Run `.local/security-bin/forge test --root . --config-path solidity-tests/foundry.toml --match-contract EscrowConservationInvariantTest --fuzz-seed 0xc0ffee19` from a clean Linux checkout. `solidity-tests/foundry.toml` fixes solc/EVM/optimizer, 128 sequences × 256 handler calls and 256 boundary-fuzz examples. Repeat with seed `0x5eed2026`.
 
 The separate Solidity cash-flow model tracks two payers, reserves, budgets, settlements, stop/kill/update/refund/withdraw/replay and immutable run history. One invariant groups all assertions; they are not counted as independent campaigns. The final hook refunds open positions and withdraws all free funds. Expected escrow reverts are caught and compared with the model; an unexpected handler revert fails the campaign. No `vm.assume` discards are used. Two negative controls forge observed cash/reserves and must be detected by the oracle. The boundary property reserves and settles the exact requested `uint96` budget, including near its maximum, and rejects another reservation without a wraparound.
 

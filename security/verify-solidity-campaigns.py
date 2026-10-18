@@ -66,7 +66,7 @@ def main():
     a=canonical['deployedBytecode'];b=native['deployedBytecode']['object'];require(executable(a)==executable(b),'Native campaign differs from canonical executable runtime')
     source=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip()
     require(not subprocess.check_output(['git','status','--porcelain'],cwd=ROOT,text=True),'Clean reviewed source required')
-    names=['contracts/TelomereRunEscrow.sol','contracts/MockToken.sol','solidity-tests/EscrowConservation.t.sol','foundry.toml','package-lock.json','security/forge-tools.json']
+    names=['contracts/TelomereRunEscrow.sol','contracts/MockToken.sol','solidity-tests/EscrowConservation.t.sol','solidity-tests/foundry.toml','package-lock.json','security/forge-tools.json']
     print(json.dumps({'sourceCommit':source,'sourceHashes':{n:hashlib.sha256((ROOT/n).read_bytes()).hexdigest()for n in names},
         'campaigns':results,'canonicalAndNativeExecutableEqual':True,'fullRuntimeEqual':a.removeprefix('0x')==b.removeprefix('0x'),
         'executableSha256':hashlib.sha256(executable(a)).hexdigest(),

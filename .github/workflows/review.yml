@@ -266,7 +266,7 @@ jobs:
           mkdir -p .local/solidity-invariants .local/invariant-metrics
           for seed in c0ffee19 5eed2026; do
             test ! -e ".local/invariant-metrics/$seed.jsonl" || exit 1
-            TELOMERE_INVARIANT_METRICS_PATH=".local/invariant-metrics/$seed.jsonl" .local/security-bin/forge test --threads 1 --match-contract EscrowConservationInvariantTest --fuzz-seed "0x$seed" --json > ".local/solidity-invariants/$seed.json" || exit 1
+            TELOMERE_INVARIANT_METRICS_PATH=".local/invariant-metrics/$seed.jsonl" .local/security-bin/forge test --root . --config-path solidity-tests/foundry.toml --threads 1 --match-contract EscrowConservationInvariantTest --fuzz-seed "0x$seed" --json > ".local/solidity-invariants/$seed.json" || exit 1
           done
           python security/verify-solidity-campaigns.py > .local/solidity-invariants/acceptance.json
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02

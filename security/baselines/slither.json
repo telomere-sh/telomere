@@ -2230,7 +2230,7 @@
   "identityNormalization": "Sort diagnostic lines to stabilize Slither set iteration; no line is removed. Exact project source hashes and raw reports remain required.",
   "inputs": {
     "toolsManifestSha256": "7ecec542077342b20cf8782159847dd4e6317b743c77f035a28840c71cce776c",
-    "scannerScriptSha256": "2e3efafd853617d8ff319f4d79b394e3bb376b76b294fdbf0c9a119cbae05c1a",
+    "scannerScriptSha256": "d5ce620ed207e7f864c4946ccd15209b98c0bd1dce02604663b5995679d1c9bc",
     "openzeppelinLockEntrySha256": "1e93fbe7b11287f9288a3c479a6ab6c1005efe965b127881609bb6f722cdba5f",
     "scannerEnvironmentSha256": "61b0fe2127759c0fa03e8f6fe891b69fb52d83e1cc36fe4ab493841bb7422b28"
   }
