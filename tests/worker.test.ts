@@ -372,4 +372,32 @@ describe("durable worker with real disposable PostgreSQL semantics", () => {
     expect(await service.requireJob(owner, runId)).toMatchObject({ status: "completed", output: "CPU result" });
     expect(await store.db.select().from(jobs).where(and(eq(jobs.owner, outsider.toLowerCase()), eq(jobs.id, runId)))).toEqual([]);
   });
+
+  it('rejects noncanonical or misbound settlement receipts before treating a run as confirmed', async () => {
+    const receiptHash = hashJson({ fixture: 'settlement-confirmation-boundary' });
+    const settlement = { runId, billableSeconds: 5n, inferenceCharge: 0n, receiptHash };
+    type Receipt = Awaited<ReturnType<typeof bridge.public.getTransactionReceipt>>;
+    const topics = encodeEventTopics({ abi: escrowAbi, eventName: 'RunSettled', args: { runId, receiptHash } });
+    const data = encodeAbiParameters([{ type: 'uint64' }, { type: 'uint96' }, { type: 'uint96' }, { type: 'uint96' }], [5n, 0n, 500n, 2500n]);
+    // REASON: this RPC-boundary fixture supplies every receipt/log field consumed
+    // by verification. The service suite separately checks actual EVM receipts.
+    const receipt = { status: 'success', transactionHash: txHash, from: bridge.account.address,
+      to: config.ESCROW_ADDRESS, blockNumber: 100n, blockHash: txHash,
+      logs: [{ address: config.ESCROW_ADDRESS, topics, data, logIndex: 0, transactionIndex: 0,
+        transactionHash: txHash, blockNumber: 100n, blockHash: txHash, removed: false }] } as Receipt;
+    const settled = { ...runState, status: 2, receiptHash, billableSeconds: 5n };
+    runState = settled;
+    await expect(bridge.verifySettlementReceipt(settlement, receipt)).resolves.toBeUndefined();
+    const mutations: Array<Partial<Receipt>> = [{ status: 'reverted' }, { to: outsider }, { from: outsider },
+      { blockHash: zero }, { logs: [] }, { logs: receipt.logs.map(log => ({ ...log, address: outsider })) }];
+    for (const change of mutations) {
+      await expect(bridge.verifySettlementReceipt(settlement, { ...receipt, ...change })).rejects.toThrow();
+    }
+    for (const change of [{ status: 1 }, { receiptHash: zero }]) {
+      runState = { ...settled, ...change };
+      await expect(bridge.verifySettlementReceipt(settlement, receipt)).rejects.toThrow('Settlement state mismatch');
+    }
+    runState = settled;
+    await expect(bridge.verifySettlementReceipt({ ...settlement, receiptHash: zero }, receipt)).rejects.toThrow();
+  });
 });
