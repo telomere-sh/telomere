@@ -26,7 +26,7 @@ describe.skipIf(!selected)('real PostgreSQL multi-connection admission and accou
   const signer = generatePrivateKey();
   const leashIds = actors.map((_, index) => bytes32Schema.parse('0x' + (index + 1).toString(16).padStart(64, '0')));
   let store: Awaited<ReturnType<typeof openStore>>, service: Service, auth: Auth;
-  const config = loadConfig({ MODE: 'demo', DATA_DIR: ':memory:', WALLET_ACCESS: 'public', SIGNER_PRIVATE_KEY: signer,
+  const config = loadConfig({ MODE: 'demo', DATA_DIR: ':memory:', WALLET_ACCESS: 'public', SIGNER_PRIVATE_KEY: signer, DEMO_PRIVATE_KEY: generatePrivateKey(),
     ESCROW_ADDRESS: '0x6666666666666666666666666666666666666666', TOKEN_ADDRESS: '0x7777777777777777777777777777777777777777' });
   const input = { leashId: leashIds[0]!, task: { kind: 'sha256' as const, text: 'postgres-atomic-admission' }, maxSeconds: 10 };
   beforeAll(async () => {

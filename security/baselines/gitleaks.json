@@ -707,6 +707,78 @@
       "rationale": "Reviewed exact historical blob: matching public contract/host identity, SHA-256 provenance fingerprint, test marker or explanatory prose; not a reusable credential. Full blob hash binds this review to the inspected version."
     },
     {
+      "id": "cb9ae5228f494c710e5fbad68848a3dca9cee9fe:security/baselines/slither.json:generic-api-key:1365",
+      "detector": "generic-api-key",
+      "commit": "cb9ae5228f494c710e5fbad68848a3dca9cee9fe",
+      "file": "security/baselines/slither.json",
+      "sourceBlobSha256": "0538b2b8f5144b576767d23576edb2cf6aa7fce4b359f26b59e8fa4af678d3ea",
+      "classification": "false_positive",
+      "rationale": "Exact inspected Slither review entry: a SHA-256 source-file digest beside a token-named Solidity path, not a token credential."
+    },
+    {
+      "id": "cb9ae5228f494c710e5fbad68848a3dca9cee9fe:security/baselines/slither.json:generic-api-key:1531",
+      "detector": "generic-api-key",
+      "commit": "cb9ae5228f494c710e5fbad68848a3dca9cee9fe",
+      "file": "security/baselines/slither.json",
+      "sourceBlobSha256": "0538b2b8f5144b576767d23576edb2cf6aa7fce4b359f26b59e8fa4af678d3ea",
+      "classification": "false_positive",
+      "rationale": "Exact inspected Slither review entry: a SHA-256 source-file digest beside a token-named Solidity path, not a token credential."
+    },
+    {
+      "id": "cb9ae5228f494c710e5fbad68848a3dca9cee9fe:security/baselines/slither.json:generic-api-key:1578",
+      "detector": "generic-api-key",
+      "commit": "cb9ae5228f494c710e5fbad68848a3dca9cee9fe",
+      "file": "security/baselines/slither.json",
+      "sourceBlobSha256": "0538b2b8f5144b576767d23576edb2cf6aa7fce4b359f26b59e8fa4af678d3ea",
+      "classification": "false_positive",
+      "rationale": "Exact inspected Slither review entry: a SHA-256 source-file digest beside a token-named Solidity path, not a token credential."
+    },
+    {
+      "id": "cb9ae5228f494c710e5fbad68848a3dca9cee9fe:security/baselines/slither.json:generic-api-key:1710",
+      "detector": "generic-api-key",
+      "commit": "cb9ae5228f494c710e5fbad68848a3dca9cee9fe",
+      "file": "security/baselines/slither.json",
+      "sourceBlobSha256": "0538b2b8f5144b576767d23576edb2cf6aa7fce4b359f26b59e8fa4af678d3ea",
+      "classification": "false_positive",
+      "rationale": "Exact inspected Slither review entry: a SHA-256 source-file digest beside a token-named Solidity path, not a token credential."
+    },
+    {
+      "id": "cb9ae5228f494c710e5fbad68848a3dca9cee9fe:security/baselines/slither.json:generic-api-key:1837",
+      "detector": "generic-api-key",
+      "commit": "cb9ae5228f494c710e5fbad68848a3dca9cee9fe",
+      "file": "security/baselines/slither.json",
+      "sourceBlobSha256": "0538b2b8f5144b576767d23576edb2cf6aa7fce4b359f26b59e8fa4af678d3ea",
+      "classification": "false_positive",
+      "rationale": "Exact inspected Slither review entry: a SHA-256 source-file digest beside a token-named Solidity path, not a token credential."
+    },
+    {
+      "id": "cb9ae5228f494c710e5fbad68848a3dca9cee9fe:security/baselines/slither.json:generic-api-key:2169",
+      "detector": "generic-api-key",
+      "commit": "cb9ae5228f494c710e5fbad68848a3dca9cee9fe",
+      "file": "security/baselines/slither.json",
+      "sourceBlobSha256": "0538b2b8f5144b576767d23576edb2cf6aa7fce4b359f26b59e8fa4af678d3ea",
+      "classification": "false_positive",
+      "rationale": "Exact inspected Slither review entry: a SHA-256 source-file digest beside a token-named Solidity path, not a token credential."
+    },
+    {
+      "id": "cb9ae5228f494c710e5fbad68848a3dca9cee9fe:security/baselines/slither.json:generic-api-key:483",
+      "detector": "generic-api-key",
+      "commit": "cb9ae5228f494c710e5fbad68848a3dca9cee9fe",
+      "file": "security/baselines/slither.json",
+      "sourceBlobSha256": "0538b2b8f5144b576767d23576edb2cf6aa7fce4b359f26b59e8fa4af678d3ea",
+      "classification": "false_positive",
+      "rationale": "Exact inspected Slither review entry: a SHA-256 source-file digest beside a token-named Solidity path, not a token credential."
+    },
+    {
+      "id": "cb9ae5228f494c710e5fbad68848a3dca9cee9fe:security/baselines/slither.json:generic-api-key:869",
+      "detector": "generic-api-key",
+      "commit": "cb9ae5228f494c710e5fbad68848a3dca9cee9fe",
+      "file": "security/baselines/slither.json",
+      "sourceBlobSha256": "0538b2b8f5144b576767d23576edb2cf6aa7fce4b359f26b59e8fa4af678d3ea",
+      "classification": "false_positive",
+      "rationale": "Exact inspected Slither review entry: a SHA-256 source-file digest beside a token-named Solidity path, not a token credential."
+    },
+    {
       "id": "ce7911a03441449e5c6f1da3a9cea8a9a4a839c5:docs/evidence/base-paid-cpu-20261017/signed-receipt.json:generic-api-key:29",
       "detector": "generic-api-key",
       "commit": "ce7911a03441449e5c6f1da3a9cea8a9a4a839c5",
