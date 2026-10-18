@@ -7045,8 +7045,8 @@
           "path": "scripts/local-chain.ts",
           "bytes": 6433,
           "sha256": "f58091ca4f9835f73d447621e495297a9dec717ae6e3de5bb845d3a078220c43",
-          "storage": "working-tree",
-          "storedPath": "scripts/local-chain.ts"
+          "storage": "object",
+          "storedPath": "docs/evidence/public-source-archive/objects/f58091ca4f9835f73d447621e495297a9dec717ae6e3de5bb845d3a078220c43.bin"
         },
         {
           "path": "scripts/mcp-platform.ts",

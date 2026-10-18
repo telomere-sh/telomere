@@ -1,0 +1,22 @@
+[profile.default]
+src = "contracts"
+test = "solidity-tests"
+out = ".local/forge-out"
+cache_path = ".local/forge-cache"
+libs = ["node_modules"]
+remappings = ["@openzeppelin/=node_modules/@openzeppelin/"]
+auto_detect_solc = false
+solc = ".local/security-bin/solc"
+evm_version = "paris"
+optimizer = true
+optimizer_runs = 200
+chain_id = 31337
+
+[fuzz]
+runs = 256
+
+[invariant]
+runs = 128
+depth = 256
+fail_on_revert = true
+show_metrics = true

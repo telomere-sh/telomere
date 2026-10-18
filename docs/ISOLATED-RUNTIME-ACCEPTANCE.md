@@ -36,4 +36,14 @@ The native Windows private-file suite is separate: `npm test -- tests/vault-inco
 
 `TELOMERE_ESCROW_EXTENDED_ACCEPTANCE=1 npm test -- tests/escrow-stateful.test.ts` runs 16 fixed seeds with 512 scheduled steps each. It retains separate success/failure traces in `.local/audit-remediation/stateful-extended/`, including actual transaction/revert counts; the default three shorter campaigns remain available. A failed campaign never reports a zero final escrow balance.
 
+The campaign also pins the Anvil genesis/snapshot timestamp and every time-advance operation. Replaying a seed does not depend on the host's current hour/day. Random disposable account keys only rename actors; no real account is used.
+
+## Independent Solidity invariants
+
+Install the pinned native tools with `python3 security/install-tools.py` and `python3 security/install-forge.py`. Run `.local/security-bin/forge test --match-contract EscrowConservationInvariantTest --fuzz-seed 0xc0ffee19` from a clean Linux checkout. `foundry.toml` fixes solc/EVM/optimizer, 128 sequences × 256 handler calls and 256 boundary-fuzz examples. Repeat with seed `0x5eed2026`.
+
+The separate Solidity cash-flow model tracks two payers, reserves, budgets, settlements, stop/kill/update/refund/withdraw/replay and immutable run history. One invariant groups all assertions; they are not counted as independent campaigns. The final hook refunds open positions and withdraws all free funds. Expected escrow reverts are caught and compared with the model; an unexpected handler revert fails the campaign. No `vm.assume` discards are used. Two negative controls forge observed cash/reserves and must be detected by the oracle. The boundary property reserves and settles the exact requested `uint96` budget, including near its maximum, and rejects another reservation without a wraparound.
+
+Foundry handler calls include time advances and expected rejected protocol operations. They are not real transactions. Framework reverts/discards and per-selector counts are retained in the JSON report; expected inner escrow reverts are separate from framework failures. This is bounded property testing, not formal verification or a replacement for the immutable signer trust disclosure.
+
 For the LangGraph starter, create a dedicated Python 3.11 environment and install `python/examples/requirements-langgraph.lock` with `--only-binary=:all: --require-hashes`. Set `PYTHONPATH=python/src` and `TELOMERE_LANGGRAPH_PYTHON` to its interpreter, then run `npm test -- tests/langgraph-starter.test.ts`. Tracing is disabled in the fixture. It exercises the real wallet interrupt against local disposable Anvil accounts, without model-provider calls or real funds.

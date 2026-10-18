@@ -28,7 +28,7 @@ describe('seeded real-EVM escrow campaigns with independent cash accounting', ()
   let token: Address, escrow: Address, snapshot: Hex;
 
   beforeAll(async () => {
-    local = await startLocalChain();
+    local = await startLocalChain({ timestamp: 1_700_000_000 });
     const test = createTestClient({ chain: localChain, mode: 'anvil', transport: http(local.rpcUrl) });
     for (const account of [...owners, signer, treasury]) await test.setBalance({ address: account.address, value: parseEther('10') });
     const artifacts = compileContracts(['MockToken.sol', 'TelomereRunEscrow.sol']);
@@ -48,6 +48,7 @@ describe('seeded real-EVM escrow campaigns with independent cash accounting', ()
       await local.publicClient.waitForTransactionReceipt({ hash: await owner.writeContract({ address: token, abi: tokenAbi,
         functionName: 'approve', args: [escrow, supply] }) });
     }
+    await test.setNextBlockTimestamp({ timestamp: 1_700_003_600n }); await test.mine({ blocks: 1 });
     snapshot = await test.snapshot();
   }, 60_000);
   afterAll(async () => { await local?.close(); });
@@ -60,6 +61,7 @@ describe('seeded real-EVM escrow campaigns with independent cash accounting', ()
     const publicClient = createPublicClient({ chain: localChain, transport: http(local.rpcUrl, { retryCount: 0, timeout: 5000 }),
       cacheTime: 0, pollingInterval: 10 });
     let state = seed >>> 0, serial = 0, clock = (await publicClient.getBlock()).timestamp;
+    const initialTimestamp = clock;
     const random = (max: number) => { state ^= state << 13; state ^= state >>> 17; state ^= state << 5; return (state >>> 0) % max; };
     const id = () => keccak256(toHex(`telomere-campaign-${seed}-${serial++}`));
     const wallets = owners.map(account => createWalletClient({ account, chain: localChain, transport: http(local.rpcUrl), cacheTime: 0 }));
@@ -139,7 +141,7 @@ describe('seeded real-EVM escrow campaigns with independent cash accounting', ()
       if (accepted) { available[leash.owner]! -= amount; runs.push({ quote, owner: leash.owner, openedAt: clock, expiry: leash.expiry, state: 'open', charged: 0n }); }
     }
     async function advance(seconds: number) {
-      await test.increaseTime({ seconds }); await test.mine({ blocks: 1 }); clock = (await publicClient.getBlock()).timestamp;
+      await test.setNextBlockTimestamp({ timestamp: clock + BigInt(seconds) }); await test.mine({ blocks: 1 }); clock = (await publicClient.getBlock()).timestamp;
       const record = handlers.advance ??= { calls: 0, accepted: 0, reverted: 0 }; record.calls++; record.accepted++;
     }
     async function settle(run: Run, forceValid = false) {
@@ -228,7 +230,7 @@ describe('seeded real-EVM escrow campaigns with independent cash accounting', ()
       campaignPassed = true;
     } finally {
       const directory = resolve('.local/audit-remediation/' + (extended ? 'stateful-extended' : 'stateful')); await mkdir(directory, { recursive: true });
-      await writeFile(resolve(directory, `seed-${seed}.json`), JSON.stringify({ schemaVersion: 2, seed, scheduledSteps: steps,
+      await writeFile(resolve(directory, `seed-${seed}.json`), JSON.stringify({ schemaVersion: 2, seed, initialTimestamp: initialTimestamp.toString(), scheduledSteps: steps,
         completedScheduledSteps: completedSteps, passed: campaignPassed,
         handlers, transactionCalls: trace.length, expectedReverts: trace.filter(item => !item.accepted).length, discardedCalls: 0,
         observedReverts: trace.filter(item => item.observedStatus === 'reverted').length,

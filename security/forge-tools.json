@@ -1,0 +1,10 @@
+{
+  "version": "1.7.1",
+  "platform": "linux-x64",
+  "url": "https://registry.npmjs.org/@foundry-rs/forge-linux-amd64/-/forge-linux-amd64-1.7.1.tgz",
+  "sha256": "9f63cb0f5a1d7b87ed434eab8103ea172ec8d233acbc832e010edc3fd90ef94b",
+  "member": "package/bin/forge",
+  "binaryBytes": 84666760,
+  "binarySha256": "4f77da0810de94325734855d0ad58d70640aa8a5b2a837608ddf8c26da34355c",
+  "upstream": "https://github.com/foundry-rs/foundry"
+}

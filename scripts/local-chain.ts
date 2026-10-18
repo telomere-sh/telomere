@@ -31,12 +31,15 @@ function anvilCommand(): { command: string; prefix: string[] } {
   throw new Error("Anvil binary is missing; run npm install to install the supported local EVM dependency");
 }
 
-export async function startLocalChain(options: { port?: number } = {}) {
+export async function startLocalChain(options: { port?: number; timestamp?: number } = {}) {
+  if (options.timestamp !== undefined && (!Number.isSafeInteger(options.timestamp) || options.timestamp <= 0)) {
+    throw new Error('Local EVM timestamp must be a positive safe integer');
+  }
   const port = options.port ?? await unusedLocalPort();
   const rpcUrl = `http://127.0.0.1:${port}`;
   const command = anvilCommand();
   const child = spawn(command.command, [...command.prefix, "--host", "127.0.0.1", "--port", String(port),
-    "--chain-id", "31337", "--accounts", "0", "--silent"], {
+    "--chain-id", "31337", "--accounts", "0", ...(options.timestamp === undefined ? [] : ['--timestamp', String(options.timestamp)]), "--silent"], {
     cwd: projectRoot, stdio: ["ignore", "pipe", "pipe"], windowsHide: true,
   });
   let startupError: Error | undefined;
