@@ -229,7 +229,7 @@ assert {entry['path'] for entry in integration['files']} == {'website/dist/dashb
 remediation_document = 'docs/evidence/audit-remediation-20261018/frontend-source.json'
 assert remediation_document in tracked
 remediation_bytes = (root / remediation_document).read_bytes()
-assert hashlib.sha256(remediation_bytes).hexdigest() == 'ce948be397a93fd15041d4589efdda18e5089ee38fe50ee89bf6182f44f5541a'
+assert hashlib.sha256(remediation_bytes).hexdigest() == '3b32ef868857eecd36618d5cb9627102755a50268cf9d56c6afd400a3c9bbbe5'
 remediation = json.loads(remediation_bytes)
 assert remediation['schemaVersion'] == 1 and remediation['previousIntegrationRecord'] == integration_document
 assert {entry['path'] for entry in remediation['files']} == {entry['path'] for entry in integration['files']}

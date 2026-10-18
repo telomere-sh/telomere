@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "kind": "audit-remediation-source-boundary",
   "previousIntegrationRecord": "docs/evidence/public-wallet-launch-20261017/frontend-integration.json",
-  "changes": "Reviewed receipt/escrow/privacy disclosures, actual repository link and compatible config fields. No CSS, HTML, font, animation or media bytes changed.",
+  "changes": "Reviewed receipt, escrow and privacy copy; inherited agency counters now show CPU limits, billing resolution, global Cyst quota and Base chain ID in the same animated spans. Actual repository link and compatible config fields. No CSS, HTML, font, animation module or media bytes changed.",
   "files": [
     {
       "path": "website/dist/dashboard.js",
@@ -17,8 +17,8 @@
     },
     {
       "path": "website/dist/site.js",
-      "bytes": 45554,
-      "sha256": "fdb0f1d76275b053fb8932509466a56e64539483728d72a3a0b7b211c6986fcb",
+      "bytes": 49744,
+      "sha256": "f1acec8b84552c04ee31f48ff0952f40f5b6c5c056c22a5345601d2d79eafcc2",
       "previous": {
         "path": "website/dist/site.js",
         "bytes": 44906,
