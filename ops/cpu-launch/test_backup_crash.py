@@ -1,5 +1,5 @@
 """POSIX recovery ownership and publication boundary tests; no chain access."""
-import importlib.util,json,os,tempfile,unittest
+import errno,importlib.util,json,os,tempfile,unittest
 from pathlib import Path
 from types import SimpleNamespace
 from unittest.mock import patch
@@ -11,12 +11,14 @@ class RecoveryTests(unittest.TestCase):
     def setUp(self):
         self.temp=tempfile.TemporaryDirectory();self.root=Path(self.temp.name).resolve();self.root.chmod(0o700)
         self.private=patch.object(ops,'PRIVATE',self.root);self.private.start()
+        self.backups=self.root/'backups';self.backups.mkdir(mode=0o700)
+        self.backup_patch=patch.object(ops,'BACKUPS',self.backups);self.backup_patch.start()
         self.commands=[]
         def command(args,**kwargs):
             self.commands.append(args)
             return SimpleNamespace(stdout=b'')
         self.docker=patch.object(ops,'run',side_effect=command);self.docker.start()
-    def tearDown(self):self.docker.stop();self.private.stop();self.temp.cleanup()
+    def tearDown(self):self.docker.stop();self.backup_patch.stop();self.private.stop();self.temp.cleanup()
     def stale(self):
         folder=self.root/'cpu-backup-work';folder.mkdir(mode=0o700,exist_ok=True)
         stage=folder/('attempt-'+'a'*32);stage.mkdir(mode=0o700);(stage/'private.dump').write_bytes(b'fixture plaintext')
@@ -114,5 +116,49 @@ class RecoveryTests(unittest.TestCase):
     def test_successful_atomic_has_no_partial(self):
         receipt=self.root/'receipt';ops.atomic(receipt,{'new':True})
         self.assertEqual(json.loads(receipt.read_bytes()),{'new':True});self.assertFalse(receipt.with_name('receipt.next').exists())
+    def publication(self):
+        source=self.root/'cipher';source.write_bytes(b'encrypted fixture')
+        target=self.backups/'backup-20261019T010203Z-1234abcd.tar.age'
+        return source,target
+    def cross_mount_replace(self,source,target):
+        original=os.replace
+        def replace(left,right):
+            if left==source:raise OSError(errno.EXDEV,'fixture separate bind mounts')
+            return original(left,right)
+        return patch.object(ops.os,'replace',side_effect=replace)
+    def test_cross_mount_publication_is_exact_and_has_no_partial(self):
+        source,target=self.publication()
+        with self.cross_mount_replace(source,target):ops.publish_ciphertext(source,target)
+        self.assertEqual(target.read_bytes(),source.read_bytes());self.assertEqual(target.stat().st_mode&0o777,0o600)
+        self.assertFalse(target.with_name(target.name+'.publish-next').exists())
+    def test_cross_mount_copy_error_preserves_previous_and_removes_partial(self):
+        source,target=self.publication();target.write_bytes(b'previous')
+        with self.cross_mount_replace(source,target),patch.object(ops.shutil,'copyfileobj',side_effect=OSError('fixture full disk')):
+            with self.assertRaises(OSError):ops.publish_ciphertext(source,target)
+        self.assertEqual(target.read_bytes(),b'previous');self.assertEqual(list(self.backups.iterdir()),[target])
+    def test_cross_mount_fsync_error_does_not_publish(self):
+        source,target=self.publication()
+        with self.cross_mount_replace(source,target),patch.object(ops.os,'fsync',side_effect=OSError('fixture disk error')):
+            with self.assertRaises(OSError):ops.publish_ciphertext(source,target)
+        self.assertEqual(list(self.backups.iterdir()),[])
+    def test_other_rename_error_does_not_copy(self):
+        source,target=self.publication()
+        with patch.object(ops.os,'replace',side_effect=OSError(errno.EACCES,'fixture permission error')),patch.object(ops.shutil,'copyfileobj') as copy:
+            with self.assertRaises(OSError):ops.publish_ciphertext(source,target)
+            copy.assert_not_called()
+    def test_stale_ciphertext_publication_reclaimed_success_retained(self):
+        source,target=self.publication();target.write_bytes(b'previous')
+        partial=target.with_name(target.name+'.publish-next');partial.write_bytes(b'interrupted')
+        with ops.backup_workspace():self.assertFalse(partial.exists());self.assertEqual(target.read_bytes(),b'previous')
+    def test_stale_publication_symlink_is_rejected(self):
+        source,target=self.publication();partial=target.with_name(target.name+'.publish-next');partial.symlink_to(source)
+        with self.assertRaises(AssertionError):
+            with ops.backup_workspace():pass
+        self.assertEqual(source.read_bytes(),b'encrypted fixture');self.assertTrue(partial.is_symlink())
+    def test_publication_existing_partial_is_never_truncated(self):
+        source,target=self.publication();partial=target.with_name(target.name+'.publish-next');partial.write_bytes(b'foreign')
+        with self.cross_mount_replace(source,target):
+            with self.assertRaises(FileExistsError):ops.publish_ciphertext(source,target)
+        self.assertEqual(partial.read_bytes(),b'foreign');self.assertFalse(target.exists())
 
 if __name__=='__main__':unittest.main()

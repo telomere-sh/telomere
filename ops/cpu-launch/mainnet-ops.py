@@ -3,7 +3,7 @@ import sys as _runtime_sys
 if _runtime_sys.flags.optimize:
     raise RuntimeError('Telomere recovery tooling requires checked Python; remove -O/-OO and PYTHONOPTIMIZE.')
 
-import argparse,contextlib,datetime,fcntl,hashlib,importlib.util,json,os,re,select,shutil,socket,ssl,stat,subprocess,tarfile,tempfile,time,uuid,urllib.request
+import argparse,contextlib,datetime,errno,fcntl,hashlib,importlib.util,json,os,re,select,shutil,socket,ssl,stat,subprocess,tarfile,tempfile,time,uuid,urllib.request
 from pathlib import Path
 _spec=importlib.util.spec_from_file_location('backup_capacity_policy',Path(__file__).parent.parent/'cpu-cloud/archive_policy.py')
 policy=importlib.util.module_from_spec(_spec);_spec.loader.exec_module(policy)
@@ -80,6 +80,17 @@ def backup_workspace():
             if path.exists() or path.is_symlink():
                 info=path.lstat();assert stat.S_ISREG(info.st_mode) and info.st_nlink==1 and info.st_uid==os.geteuid()
                 path.unlink()
+        # Separate ReadWritePaths bind mounts make private/ -> backups/ rename
+        # return EXDEV even when both directories share a physical filesystem.
+        # Only ciphertext publication scratch is retained in the backup mount.
+        private_directory(BACKUPS)
+        publications=list(BACKUPS.glob('*.tar.age.publish-next'));assert len(publications)<=8
+        for path in publications:
+            identifier=path.name.removesuffix('.tar.age.publish-next')
+            assert policy.BACKUP_ID.fullmatch(identifier) or policy.RUNTIME_ID.fullmatch(identifier)
+            info=path.lstat();assert stat.S_ISREG(info.st_mode) and info.st_nlink==1 and info.st_uid==os.geteuid()
+        for path in publications:path.unlink()
+        if publications:sync_directory(BACKUPS)
         stage=root/('attempt-'+uuid.uuid4().hex);stage.mkdir(mode=0o700);sync_directory(root)
         try:yield stage
         finally:remove_attempt(stage)
@@ -112,6 +123,25 @@ def copy_cysts(directory,target,references):
                     assert not incoming.read(1) and h.hexdigest()==entry['sha256']
             assert destination.stat().st_size==entry['ciphertext_bytes'] and digest(destination)==entry['sha256']
 
+def publish_ciphertext(source,output):
+    """Keep publication atomic across the backup service's distinct bind mounts."""
+    try:os.replace(source,output)
+    except OSError as error:
+        if error.errno!=errno.EXDEV:raise
+        assert output.parent==BACKUPS;private_directory(BACKUPS)
+        identifier=output.name.removesuffix('.tar.age')
+        assert policy.BACKUP_ID.fullmatch(identifier) or policy.RUNTIME_ID.fullmatch(identifier)
+        temporary=output.with_name(output.name+'.publish-next');created=False
+        try:
+            descriptor=os.open(temporary,os.O_WRONLY|os.O_CREAT|os.O_EXCL|os.O_NOFOLLOW,0o600);created=True
+            with os.fdopen(descriptor,'wb') as outgoing,source.open('rb') as incoming:
+                shutil.copyfileobj(incoming,outgoing,1024*1024);outgoing.flush();os.fsync(outgoing.fileno())
+            assert temporary.stat().st_size==source.stat().st_size and digest(temporary)==digest(source)
+            os.replace(temporary,output)
+        finally:
+            if created:temporary.unlink(missing_ok=True)
+    sync_directory(output.parent)
+
 def encrypt_archive(archive,recipient,output,identifier):
     """Publish only a complete ciphertext accepted by every downstream consumer."""
     # Plaintext and partial ciphertext share the reclaimable attempt directory.
@@ -123,7 +153,7 @@ def encrypt_archive(archive,recipient,output,identifier):
         assert 100<=temporary.stat().st_size<=policy.archive_limit(identifier),'Encrypted archive capacity exceeded'
         temporary.chmod(0o600)
         with temporary.open('rb') as stream:os.fsync(stream.fileno())
-        os.replace(temporary,output);sync_directory(output.parent)
+        publish_ciphertext(temporary,output)
     finally:temporary.unlink(missing_ok=True)
 
 def seal_data_archive(stage,identifier,recipient,output,metadata):
