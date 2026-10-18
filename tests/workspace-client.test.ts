@@ -15,7 +15,7 @@ function setup(){
     if(method==='eth_accounts')return [owner];if(method==='eth_chainId')return '0x2105';if(method==='eth_sendTransaction')return txHash;if(method==='eth_getTransactionReceipt')return {status:'0x1'};throw Error('Unexpected method');
   })};
   const client=new WorkspaceClient(changed,notice);client.address=owner;client.provider=provider as never;
-  client.config={mode:'mainnet',chain:{id:8453,name:'Base',rpcUrl:'https://mainnet.base.org'},token:{address:owner,symbol:'USDC',decimals:6},escrowAddress:escrow,cpuMode:'docker',prices:{cpuPerSecond:'100',maxSeconds:120},platform:{agentLifecycle:false},cystsAvailable:true};
+  client.config={mode:'mainnet',chain:{id:8453,name:'Base',rpcUrl:'https://mainnet.base.org'},token:{address:owner,symbol:'USDC',decimals:6},escrowAddress:escrow,cpuMode:'docker',prices:{cpuPerSecond:'100',maxSeconds:120},platform:{agentLifecycle:false,receiptRootAddress:null},nearAvailable:false,cystsAvailable:true};
   return {client,provider,changed,entries};
 }
 afterEach(()=>vi.unstubAllGlobals());
