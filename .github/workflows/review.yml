@@ -102,6 +102,7 @@ jobs:
           for suite in cpu-launch cpu-cloud owner-review-mobile staging-chain-checkpoint; do
             python -B -m unittest discover -s "ops/$suite" -p 'test_*.py' -v || exit 1
           done
+          python -B docs/verify-evidence.py
           python -B -m unittest discover -s security -p 'test_*.py' -v
       - run: |
           cd infra/near

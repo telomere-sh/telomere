@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "kind": "audit-remediation-source-boundary",
+  "previousIntegrationRecord": "docs/evidence/public-wallet-launch-20261017/frontend-integration.json",
+  "changes": "Reviewed receipt/escrow/privacy disclosures, actual repository link and compatible config fields. No CSS, HTML, font, animation or media bytes changed.",
+  "files": [
+    {
+      "path": "website/dist/dashboard.js",
+      "bytes": 53895,
+      "sha256": "9eec189ddbeaaaa7694be40c5450789a9acd1b4960f72fe79d57f03f94cf4ff9",
+      "previous": {
+        "path": "website/dist/dashboard.js",
+        "bytes": 52824,
+        "sha256": "8e1822a5642c705e9e76eba4ab745c6e9d719326c130c70bf093c95947292b16",
+        "storedPath": "docs/evidence/audit-remediation-20261018/source/8e1822a5642c705e9e76eba4ab745c6e9d719326c130c70bf093c95947292b16.bin"
+      }
+    },
+    {
+      "path": "website/dist/site.js",
+      "bytes": 45554,
+      "sha256": "fdb0f1d76275b053fb8932509466a56e64539483728d72a3a0b7b211c6986fcb",
+      "previous": {
+        "path": "website/dist/site.js",
+        "bytes": 44906,
+        "sha256": "48464b0ad9eee1b4839687cb72bbf5774b8a5ff680c4590cef3849bfb7e84679",
+        "storedPath": "docs/evidence/audit-remediation-20261018/source/48464b0ad9eee1b4839687cb72bbf5774b8a5ff680c4590cef3849bfb7e84679.bin"
+      }
+    },
+    {
+      "path": "public/workspace-client.ts",
+      "bytes": 11799,
+      "sha256": "72f75822f9cedcd782c8a99b0c29664063338afa639f869b83f972e827af73f2",
+      "previous": {
+        "path": "public/workspace-client.ts",
+        "bytes": 11645,
+        "sha256": "11ba3ef7576323472ede798e8b93b69dce78f44005eb351c1b6468b99e899577",
+        "storedPath": "docs/evidence/audit-remediation-20261018/source/11ba3ef7576323472ede798e8b93b69dce78f44005eb351c1b6468b99e899577.bin"
+      }
+    }
+  ]
+}

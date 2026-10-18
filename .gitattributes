@@ -22,3 +22,6 @@ docs/evidence/cpu-cyst-count-20261018/source/*.bin -text -diff
 docs/evidence/cpu-backup-crash-20261018/source/*.bin -text -diff
 docs/evidence/cpu-fresh-vm-20261018/source/*.bin -text -diff
 docs/evidence/cpu-self-contained-20261018/source/*.bin -text -diff
+
+# Retain the prior Workspace source separately from current audit disclosures.
+docs/evidence/audit-remediation-20261018/source/*.bin -text -diff

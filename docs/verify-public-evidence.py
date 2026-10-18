@@ -3,6 +3,10 @@
 Run: python -B docs/verify-evidence.py
 Reads local files and the current Git commit only; never reruns acceptance.
 """
+import sys
+if sys.flags.optimize:
+    raise RuntimeError('Evidence verification requires checked Python; remove -O/-OO and PYTHONOPTIMIZE.')
+
 import hashlib
 import json
 import pathlib
@@ -220,11 +224,31 @@ integration_bytes = (root / integration_document).read_bytes()
 assert hashlib.sha256(integration_bytes).hexdigest() == 'd8f49088fb288b41b91fadfcccce10b69aaa13301be8614968aebae70acd8697'
 integration = json.loads(integration_bytes)
 assert {entry['path'] for entry in integration['files']} == {'website/dist/dashboard.js','website/dist/site.js','public/workspace-client.ts'}
-for entry in integration['files'] + integration['preserved'] + [integration['historicalSocial']]:
+remediation_document = 'docs/evidence/audit-remediation-20261018/frontend-source.json'
+assert remediation_document in tracked
+remediation_bytes = (root / remediation_document).read_bytes()
+assert hashlib.sha256(remediation_bytes).hexdigest() == 'ce948be397a93fd15041d4589efdda18e5089ee38fe50ee89bf6182f44f5541a'
+remediation = json.loads(remediation_bytes)
+assert remediation['schemaVersion'] == 1 and remediation['previousIntegrationRecord'] == integration_document
+assert {entry['path'] for entry in remediation['files']} == {entry['path'] for entry in integration['files']}
+prior = {entry['path']: entry for entry in integration['files']}
+for entry in remediation['files']:
+    name, digest = validate_source_entry(entry)
+    previous = entry['previous']
+    assert {key: previous[key] for key in ('path', 'bytes', 'sha256')} == prior[name]
+    stored = previous['storedPath']
+    assert stored == 'docs/evidence/audit-remediation-20261018/source/' + previous['sha256'] + '.bin'
+    assert stored in tracked and name in tracked
+    archived = (root / stored).read_bytes()
+    assert len(archived) == previous['bytes'] and hashlib.sha256(archived).hexdigest() == previous['sha256']
+    current = (root / name).read_bytes()
+    assert len(current) == entry['bytes'] and hashlib.sha256(current).hexdigest() == digest, 'Reviewed frontend changed: ' + name
+    references += 2
+for entry in integration['preserved'] + [integration['historicalSocial']]:
     name, digest = validate_source_entry(entry)
     assert name in tracked
     actual = (root / name).read_bytes()
-    assert len(actual) == entry['bytes'] and hashlib.sha256(actual).hexdigest() == digest, 'Workspace integration source changed: ' + name
+    assert len(actual) == entry['bytes'] and hashlib.sha256(actual).hexdigest() == digest, 'Preserved frontend changed: ' + name
     references += 1
 
 for name in names:
