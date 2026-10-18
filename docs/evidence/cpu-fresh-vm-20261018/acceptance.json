@@ -1,0 +1,146 @@
+{
+  "passed": true,
+  "namespace": "772e1085572545b9",
+  "releaseId": "a75ee7bc44ff9aaa8964023975f0b7147c92fee4",
+  "backupId": "backup-20261018T150116Z-f183ed2f",
+  "runtimeId": "runtime-a75ee7bc44ff9aaa8964023975f0b7147c92fee4-b08590b94b797fd9",
+  "runtimePinsVerified": 758,
+  "freshOs": true,
+  "dependencyBootstrapExecuted": true,
+  "archiveVerification": {
+    "passed": true,
+    "releaseId": "a75ee7bc44ff9aaa8964023975f0b7147c92fee4",
+    "verifiedRuntimePins": 758,
+    "tables": 47,
+    "rows": 46,
+    "authenticatedDecryption": true,
+    "fileHashesVerified": true,
+    "installPlanPrepared": true,
+    "restoredExecutableRun": false,
+    "controllerStarted": false,
+    "mainnetTransactions": 0,
+    "stage": "/root/verified-recovery"
+  },
+  "database": {
+    "passed": true,
+    "tables": 47,
+    "rows": 46
+  },
+  "restoredDataApi": {
+    "passed": true,
+    "owners": 1,
+    "restoredJobs": 2,
+    "authenticatedReads": 2,
+    "unauthenticatedStatus": 401,
+    "workerStarted": false,
+    "networkNamespace": "no interfaces or routes",
+    "productionSignerLoaded": false,
+    "syntheticSessionsRemoved": true,
+    "duplicateControllerRejected": true
+  },
+  "restoredCystFiles": 0,
+  "restoredHttps": {
+    "passed": true,
+    "checks": [
+      {
+        "path": "/",
+        "status": 200
+      },
+      {
+        "path": "/page.html",
+        "status": 200
+      },
+      {
+        "path": "/api/me",
+        "status": 401
+      },
+      {
+        "path": "/.env",
+        "status": 404
+      },
+      {
+        "path": "/src/main.ts",
+        "status": 404
+      }
+    ],
+    "privateLoopbackOnly": true,
+    "ephemeralTestCertificate": true,
+    "productionTlsOrDnsChanged": false
+  },
+  "paidCpuSmoke": {
+    "passed": true,
+    "chainId": 31337,
+    "generatedAccounts": true,
+    "mainnetTransactions": 0,
+    "mainnetSignerLoaded": false,
+    "realGvisorCpuRuns": 1,
+    "authenticatedOwners": 2,
+    "workspaceIsolation": true,
+    "restoredApplicationRestart": true,
+    "originalSettlementHashPreserved": true,
+    "anchoredReceipt": true,
+    "depositAtomicTestTokens": "1000000",
+    "chargedAtomicTestTokens": "800",
+    "withdrawnAtomicTestTokens": "999200",
+    "remainingEscrowAtomicTestTokens": "0",
+    "elapsedSeconds": 103.2555444
+  },
+  "retainedDockerAndNetworkUnitsStarted": true,
+  "restoredDatabaseSystemdServiceActive": true,
+  "mainnetControllerMasked": true,
+  "nodeVersion": "v22.23.3",
+  "gvisorExecutable": true,
+  "gvisorDistributionFiles": 7,
+  "legacyRuntimeSupplementUsed": true,
+  "legacyRuntimeSupplement": {
+    "manifestSha256": "088fdf20ba5fec4a86623e161f9609c2eef632d59e6760f0c19eaeaa1edb72a5",
+    "files": 7,
+    "runscSha256": "210b437a9cfae51e8f8c9074ed19b8b5e59477178e2e391a18117d8d6b924f7a"
+  },
+  "externalInterfaces": [],
+  "mainnetTransactions": 0,
+  "mainnetSignerPassedToApplication": false,
+  "publicTlsIssued": false,
+  "dnsChanged": false,
+  "timings": {
+    "keyWaitSeconds": 33.328,
+    "archiveAuthenticationSeconds": 105.46,
+    "runtimeAndServicesInstallSeconds": 50.531,
+    "databaseRestoreAndFingerprintsSeconds": 87.55,
+    "restoredDataApiSeconds": 65.718,
+    "httpsAndPaidCpuSmokeSeconds": 120.741
+  },
+  "elapsedSeconds": 464.925,
+  "osImage": {
+    "passed": true,
+    "kind": "signed-debootstrap-minimal",
+    "format": "raw",
+    "imageFile": "debian-12-minimal.ext4",
+    "os": "Debian 12 bookworm amd64",
+    "repository": "https://deb.debian.org/debian",
+    "aptSignaturesVerifiedByDebootstrap": true,
+    "sha512": "f3194779d5c6a56b106dede2120d055566af45d663363e1baa43bcef81773e57ff06b37406315475d4b23588b19ab030e4c4ff4393da3907b23d56f6a4df1da9",
+    "bytes": 4294967296,
+    "osPackagesSha256": "b2f20ab17acb2bedb012674378e4312d4c961efe353e30877dd7025f3f182f9f",
+    "kernel": "6.1.0-45-amd64",
+    "kernelSha256": "86986a74ded29f6a246f51f28589fb08c8da5635664411e5659a0118b8138568",
+    "initrdSha256": "1d20632671ce4bc95fe30478762fc1d14a2d40a7b32dd8426970d5409b21bd2e",
+    "hostPackagesInstalled": false,
+    "elapsedSeconds": 182.465
+  },
+  "guestVcpus": 2,
+  "guestMemoryMiB": 4096,
+  "guestDiskGiB": 32,
+  "hostRebooted": false,
+  "productionUpdated": false,
+  "gitPublished": false,
+  "hostPackagesInstalled": false,
+  "productionGuardsUnchanged": true,
+  "resumedFromCleanDependencyCheckpoint": true,
+  "dependencyBootstrapExecutedAgain": false,
+  "offlineRetryHostElapsedSeconds": 599.413,
+  "dependencyGuestElapsedSeconds": 387.664,
+  "entireExerciseElapsedSeconds": 2463.903,
+  "entireExerciseIncludesSetupAndProtocolCorrection": true,
+  "guestDiskAndPrivateStagingRemoved": true
+}

@@ -1,0 +1,37 @@
+{
+  "bootId": "43a5909f-81ff-4e95-b5d0-12a500d3aade",
+  "releaseId": "a75ee7bc44ff9aaa8964023975f0b7147c92fee4",
+  "pinsVerified": 758,
+  "configuration": {
+    "readOnly": true,
+    "configurationValid": true,
+    "chainId": 8453,
+    "operator": "0x87599dBF6f720DE7751E8CB2d36d4Ea96A4A1d38",
+    "verifiedRuntimePins": 758,
+    "unsignedPlanBound": true,
+    "bootstrapOwnershipVerified": true,
+    "dockerIsolationVerified": true,
+    "controllerStarted": false,
+    "onChainCalls": false
+  },
+  "audit": {
+    "readOnly": true,
+    "observedAt": "2026-10-18T15:13:35.331Z",
+    "chainId": 8453,
+    "journalRows": "2",
+    "originalJournalSha256": "d26dcd891a949f492e0457fb8bc94f06ded34993caf1724dc27389098143593e",
+    "states": [
+      {
+        "status": "completed",
+        "count": 2
+      }
+    ],
+    "signerNonce": 2,
+    "operatorEthWei": "98462564567330",
+    "ownerUsdcAtomic": "2422567",
+    "escrowUsdcAtomic": "0",
+    "ownerAvailableUsdcAtomic": "0",
+    "broadcast": false
+  },
+  "controller": "MainPID=521970\nNRestarts=0\nExecMainStartTimestamp=Sat 2026-10-17 22:19:23 CEST\nActiveState=active\n"
+}

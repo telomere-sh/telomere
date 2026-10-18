@@ -1,0 +1,9 @@
+{
+  "failure": {
+    "passed": false,
+    "phase": "restore",
+    "errorType": "AssertionError"
+  },
+  "console": "/dev/vda: clean, 25673/2097152 files, 621191/8388608 blocks\n[   14.092887] platform regulatory.0: firmware: failed to load regulatory.db (-2)\n[   14.093491] firmware_class: See https://wiki.debian.org/Firmware for information about missing firmware\n[   14.093722] platform regulatory.0: firmware: failed to load regulatory.db (-2)\n\n\nDebian GNU/Linux 12 telomere-recovery-772e1085572545b9 ttyS0\n\ntelomere-recovery-772e1085572545b9 login: [   40.186691] sh[593]: Traceback (most recent call last):\n[   40.211390] sh[593]:   File \"/root/recovery-kit/cpu-launch/fresh-vm-guest.py\", line 249, in <module>\n[   40.214285] sh[593]:     if __name__=='__main__':main()\n[   40.215554] sh[593]:                             ^^^^^^\n[   40.274135] sh[593]:   File \"/root/recovery-kit/cpu-launch/fresh-vm-guest.py\", line 239, in main\n[   40.275904] sh[593]:     {'bootstrap':bootstrap,'restore':restore}[phase]()\n[   40.294962] sh[593]:   File \"/root/recovery-kit/cpu-launch/fresh-vm-guest.py\", line 123, in restore\n[   40.309552] sh[593]:     identity=read_identity();elapsed('keyWaitSeconds')\n[   40.310831] sh[593]:              ^^^^^^^^^^^^^^^\n[   40.398474] sh[593]:   File \"/root/recovery-kit/cpu-launch/fresh-vm-guest.py\", line 98, in read_identity\n[   40.399792] sh[593]:     length=struct.unpack('!I',exactly(incoming,4))[0];assert 0<length<=16384\n[   40.401344] sh[593]:                               ^^^^^^^^^^^^^^^^^^^\n[   40.404711] sh[593]:   File \"/root/recovery-kit/cpu-launch/fresh-vm-guest.py\", line 94, in exactly\n[   40.454869] sh[593]:     chunk=stream.read(size-len(value));assert chunk;value+=chunk\n[   40.458896] sh[593]:                                        ^^^^^^^^^^^^\n[   40.471016] sh[593]: AssertionError\n[   41.651023] reboot: Power down\n",
+  "recoveryKeyDelivered": false
+}

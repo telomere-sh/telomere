@@ -162,7 +162,9 @@ def runtime_bundle(workspace=None):
         elif path.is_dir():
             for child in sorted(path.iterdir()):
                 if child.is_file() and not child.is_symlink():entries.append((child,'systemd/'+path.name+'/'+child.name))
-    entries.extend([(Path(NODE),'binaries/node'),(Path('/opt/telomere-host-runtime/gvisor/runsc'),'binaries/runsc')])
+    runtime_spec=importlib.util.spec_from_file_location('backup_gvisor_runtime',Path(__file__).with_name('gvisor-runtime.py'))
+    gvisor=importlib.util.module_from_spec(runtime_spec);runtime_spec.loader.exec_module(gvisor)
+    entries.extend([(Path(NODE),'binaries/node'),*gvisor.entries()])
     files=[{'path':name,'bytes':path.stat().st_size,'sha256':digest(path),'mode':path.stat().st_mode&0o777} for path,name in entries]
     capacity=policy.validate_files(files,runtime=True)
     for pin in expected['runtimePins']:

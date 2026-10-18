@@ -1,0 +1,13 @@
+/dev/vda: clean, 15703/262144 files, 220636/1048576 blocks
+[   18.747839] platform regulatory.0: firmware: failed to load regulatory.db (-2)
+[   18.748418] firmware_class: See https://wiki.debian.org/Firmware for information about missing firmware
+[   18.748658] platform regulatory.0: firmware: failed to load regulatory.db (-2)
+[   21.253831] resize2fs[337]: resize2fs 1.47.0 (5-Feb-2023)
+[   21.424395] resize2fs[337]: Filesystem at /dev/vda is mounted on /; on-line resizing required
+[   21.426572] resize2fs[337]: old_desc_blocks = 1, new_desc_blocks = 4
+[   21.427773] resize2fs[337]: The filesystem on /dev/vda is now 8388608 (4k) blocks long.
+
+
+Debian GNU/Linux 12 telomere-recovery-772e1085572545b9 ttyS0
+
+telomere-recovery-772e1085572545b9 login: [  412.873436] reboot: Power down

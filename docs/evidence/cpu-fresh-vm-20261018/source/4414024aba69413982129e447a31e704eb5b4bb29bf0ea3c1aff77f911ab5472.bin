@@ -1,0 +1,191 @@
+"""Full clean Debian VM restore rehearsal; all host writes stay in private/fresh-vm-*.
+
+Never changes production services, packages, network, DNS, backups or receipts.
+The OS checksum is checked before use. A networked dependency-only boot has no
+key. The recovery boot has no NIC and receives a key once over virtio serial.
+"""
+import hashlib,json,os,re,shutil,socket,struct,subprocess,sys,time
+from pathlib import Path
+
+B=Path('/opt/telomere-mainnet-pilot');TOOLS=B/'private/backup-crash-vm-tools/extracted'
+DOCKER=['/usr/bin/docker','--host','unix:///run/telomere-mainnet-docker/docker.sock']
+
+def validated_root(value):
+    root=Path(value)
+    assert root.is_absolute() and root.resolve()==root and root.parent==B/'private' and re.fullmatch('fresh-vm-[0-9a-f]{16}',root.name)
+    info=root.lstat();assert info.st_uid==0 and info.st_mode&0o077==0 and not root.is_symlink()
+    return root
+def run(args,**kwargs):return subprocess.run(args,**{'check':True,'capture_output':True,'timeout':120,**kwargs})
+def digest(path):
+    checksum=hashlib.sha256()
+    with path.open('rb') as source:
+        for chunk in iter(lambda:source.read(1024**2),b''):checksum.update(chunk)
+    return checksum.hexdigest()
+def save(path,value):path.write_text(json.dumps(value,indent=2)+'\n');path.chmod(0o600)
+def debug_dump(disk,name,target):
+    assert re.fullmatch('[a-zA-Z0-9_.-]+',name)
+    run(['/usr/sbin/debugfs','-R','dump /'+name+' '+str(target),str(disk)])
+    return json.loads(target.read_text()) if target.exists() else None
+def guard():
+    expected=json.loads((B/'private/expected.json').read_text())
+    for item in expected['runtimePins']:assert digest(B/'app'/item['path'])==item['sha256']
+    node='/opt/node-v22.23.3-linux-x64/bin/node'
+    configuration=json.loads(run([node,str(B/'operator/preflight-public.mjs'),'--configuration-only']).stdout)
+    audit=json.loads(run([node,str(B/'operator/cpu-launch/audit-journal.mjs')]).stdout)
+    service=run(['systemctl','show','telomere-mainnet-pilot.service','-p','MainPID','-p','NRestarts','-p','ExecMainStartTimestamp','-p','ActiveState']).stdout.decode()
+    return {'bootId':Path('/proc/sys/kernel/random/boot_id').read_text().strip(),'releaseId':expected['releaseId'],'pinsVerified':len(expected['runtimePins']),
+        'configuration':configuration,'audit':audit,'controller':service}
+
+def deliver_key(root):
+    root=validated_root(root);identity=sys.stdin.buffer.read(16385)
+    assert 0<len(identity)<=16384 and b'AGE-SECRET-KEY-' in identity
+    ready=json.loads((root/'waiting-for-key.json').read_text());assert ready['phase']=='offline-restore-boot' and not (root/'key-delivered.json').exists()
+    path=root/'key.sock';info=path.lstat();assert info.st_uid==0
+    with socket.socket(socket.AF_UNIX,socket.SOCK_STREAM) as stream:
+        stream.settimeout(60);stream.connect(str(path));stream.sendall(struct.pack('!I',len(identity))+identity)
+        confirmation=b''
+        while len(confirmation)<2:
+            chunk=stream.recv(2-len(confirmation));assert chunk;confirmation+=chunk
+        assert confirmation==b'OK'
+    identity=b'';save(root/'key-delivered.json',{'delivered':True,'keyWrittenToHostFile':False,'observedAt':time.time()})
+    print(json.dumps({'delivered':True,'identityPrinted':False,'identityWrittenToHostFile':False}))
+
+def main(root):
+    root=validated_root(root);os.umask(0o077);namespace=root.name.rsplit('-',1)[1];began=time.monotonic()
+    assert not (root/'input').exists() and shutil.disk_usage(root).free>30*1024**3
+    before=guard();save(root/'production-before.json',before)
+    prepared=json.loads((root/'prepare-result.json').read_text());assert prepared['passed']
+    image=root/prepared.get('imageFile','debian-12-genericcloud-amd64.qcow2')
+    checksum=hashlib.sha512()
+    with image.open('rb') as source:
+        for chunk in iter(lambda:source.read(1024**2),b''):checksum.update(chunk)
+    assert checksum.hexdigest()==prepared['sha512']
+    environment={**os.environ,'LD_LIBRARY_PATH':str(TOOLS/'usr/lib/x86_64-linux-gnu')+':'+str(TOOLS/'lib/x86_64-linux-gnu'),'QEMU_MODULE_DIR':str(TOOLS/'usr/lib/x86_64-linux-gnu/qemu')}
+    qemu=TOOLS/'usr/bin/qemu-system-x86_64';img=TOOLS/'usr/bin/qemu-img';iso=TOOLS/'usr/bin/genisoimage'
+    source=Path(__file__).resolve().parents[1];input_dir=root/'input';input_dir.mkdir(mode=0o700)
+    for folder in ('cpu-launch','cpu-cloud'):
+        target=input_dir/'operator'/folder;target.mkdir(parents=True,mode=0o700)
+        for path in (source/folder).iterdir():
+            if path.suffix in ('.py','.mjs','.sh','.json'):shutil.copyfile(path,target/path.name)
+    receipt=json.loads((B/'private/cpu-backup-status.json').read_text());assert re.fullmatch('backup-[0-9]{8}T[0-9]{6}Z-[0-9a-f]{8}',receipt['id'])
+    assert re.fullmatch('runtime-[0-9a-f]{40}-[0-9a-f]{16}',receipt['runtimeBundle']['id'])
+    for item in (receipt,receipt['runtimeBundle']):
+        name=item['id']+'.tar.age';shutil.copyfile(B/'backups'/name,input_dir/name);assert digest(input_dir/name)==item['sha256']
+    save(input_dir/'receipt.json',receipt)
+    profile=(B/'private/mainnet.env').read_text();match=re.search(r'^CPU_IMAGE=[\'\"]?([^\s\'\"]+)[\'\"]?$',profile,re.M);assert match
+    cpu=match[1];assert re.fullmatch(r'[a-zA-Z0-9_./:-]+@sha256:[0-9a-f]{64}',cpu);profile=''
+    image_id=run(DOCKER+['inspect','--format','{{.Image}}','telomere-mainnet-postgres']).stdout.decode().strip()
+    pg=next(value for value in json.loads(run(DOCKER+['image','inspect','--format','{{json .RepoDigests}}',image_id]).stdout) if value.startswith('postgres@sha256:'))
+    images=[{'reference':pg,'imageId':image_id},{'reference':cpu,'imageId':run(DOCKER+['image','inspect','--format','{{.Id}}',cpu]).stdout.decode().strip()}]
+    save(input_dir/'input.json',{'namespace':namespace,'images':images,'productionRelease':before['releaseId']})
+    shutil.copyfile(B/'private/docker-daemon.json',input_dir/'dependency-daemon.json')
+    source_hashes={str(path.relative_to(input_dir)):digest(path) for path in (input_dir/'operator').rglob('*') if path.is_file()}
+    save(root/'candidate-sources.json',source_hashes)
+    disk=root/'input.ext4'
+    with disk.open('wb') as out:out.truncate(2*1024**3)
+    run(['/usr/sbin/mkfs.ext4','-F','-q','-L','TELOMERE_INPUT','-d',str(input_dir),str(disk)],timeout=180)
+    overlay=root/'guest.qcow2';run([str(img),'create','-f','qcow2','-F',prepared.get('format','qcow2'),'-b',str(image),str(overlay),'32G'],env=environment)
+    seed=root/'seed';seed.mkdir(mode=0o700)
+    marker={'kind':'telomere-disposable-clean-vm','namespace':namespace,'productionControllerAllowed':False,'mainnetTransactionsAllowed':False}
+    import base64
+    user_data='#cloud-config\ndisable_root: true\nssh_pwauth: false\nwrite_files:\n  - path: /etc/telomere-recovery-guest.json\n    permissions: "0600"\n    encoding: b64\n    content: '+base64.b64encode(json.dumps(marker).encode()).decode()+'\nruncmd:\n  - [bash, -lc, "mkdir -p /mnt/recovery; mount -L TELOMERE_INPUT /mnt/recovery; cp -a /mnt/recovery/operator /root/recovery-kit; python3 -B /root/recovery-kit/cpu-launch/fresh-vm-guest.py bootstrap"]\n'
+    (seed/'user-data').write_text(user_data);(seed/'meta-data').write_text('instance-id: telomere-'+namespace+'\nlocal-hostname: telomere-recovery-'+namespace+'\n')
+    seed_iso=root/'seed.iso';run([str(iso),'-output',str(seed_iso),'-volid','cidata','-joliet','-rock',str(seed/'user-data'),str(seed/'meta-data')],env=environment)
+    common=[str(qemu),'-no-user-config','-nodefaults','-machine','pc,accel=tcg','-cpu','max','-smp','2','-m','4096','-L',str(TOOLS/'usr/share/qemu'),
+        '-display','none','-serial','stdio','-monitor','none','-drive','file='+str(overlay)+',format=qcow2,if=virtio,cache=writeback',
+        '-drive','file='+str(disk)+',format=raw,if=virtio,cache=writeback','-drive','file='+str(seed_iso)+',format=raw,media=cdrom,readonly=on',
+        '-object','rng-random,id=rng0,filename=/dev/urandom','-device','virtio-rng-pci,rng=rng0']
+    if prepared.get('kind')=='signed-debootstrap-minimal':
+        common+=['-kernel','/boot/vmlinuz-'+os.uname().release,'-initrd','/boot/initrd.img-'+os.uname().release,'-append','console=ttyS0 root=/dev/vda rw quiet']
+    phases={};phase_start=time.monotonic()
+    save(root/'progress.json',{'phase':'networked-dependency-boot','recoveryKeyAvailable':False})
+    with (root/'bootstrap-console.log').open('wb') as out:
+        boot=subprocess.run(common+['-netdev','user,id=provision','-device','virtio-net-pci,netdev=provision'],env=environment,stdout=out,stderr=subprocess.STDOUT,timeout=3000)
+    assert boot.returncode==0;phases['cleanBootAndDependenciesSeconds']=round(time.monotonic()-phase_start,3)
+    bootstrap=debug_dump(disk,'bootstrap-result.json',root/'bootstrap-result.json')
+    if not bootstrap or not bootstrap['passed']:
+        debug_dump(disk,'bootstrap-failed.json',root/'bootstrap-failed.json');debug_dump(disk,'failure-private.json',root/'failure-private.json');raise RuntimeError('Clean dependency boot failed; inspect private guest log')
+    run([str(img),'snapshot','-c','dependencies',str(overlay)],env=environment)
+    # No external network device is created for the only boot that receives a key.
+    key_socket=root/'key.sock';assert not key_socket.exists();phase_start=time.monotonic()
+    save(root/'waiting-for-key.json',{'phase':'offline-restore-boot','networkDevices':0,'observedAt':time.time()})
+    save(root/'progress.json',{'phase':'offline-restore-boot','waitingForRecoveryIdentity':True})
+    with (root/'restore-console.log').open('wb') as out:
+        boot=subprocess.run(common+['-nic','none','-device','virtio-serial-pci','-chardev','socket,id=recoverykey,path='+str(key_socket)+',server=on,wait=off',
+            '-device','virtserialport,chardev=recoverykey,name=telomere.recovery-key'],env=environment,stdout=out,stderr=subprocess.STDOUT,timeout=3600)
+    assert boot.returncode==0;phases['offlineBootAndRecoverySeconds']=round(time.monotonic()-phase_start,3)
+    result=debug_dump(disk,'restore-result.json',root/'restore-result.json')
+    if not result or not result['passed']:
+        debug_dump(disk,'restore-failed.json',root/'restore-failed.json');debug_dump(disk,'failure-private.json',root/'failure-private.json');raise RuntimeError('Offline full restore failed; inspect private guest log')
+    after=guard();save(root/'production-after.json',after)
+    for key in ('bootId','releaseId','controller'):assert before[key]==after[key]
+    for key in ('signerNonce','originalJournalSha256','operatorEthWei','ownerUsdcAtomic','escrowUsdcAtomic'):assert before['audit'][key]==after['audit'][key]
+    result.update(hostTimings=phases,totalHostElapsedSeconds=round(time.monotonic()-began,3),osImage=prepared,guestVcpus=2,guestMemoryMiB=4096,
+        guestDiskGiB=32,hostRebooted=False,productionUpdated=False,gitPublished=False,hostPackagesInstalled=False,productionGuardsUnchanged=True)
+    # Unlink the full guest and staging filesystem: decrypted real configuration
+    # only ever existed on this root-only disposable disk, not in public evidence.
+    for path in (overlay,disk,seed_iso):assert path.parent==root and path.resolve()==path;path.unlink()
+    for path in (input_dir,seed):assert path.parent==root and not path.is_symlink();shutil.rmtree(path)
+    key_socket.unlink(missing_ok=True);result['guestDiskAndPrivateStagingRemoved']=True
+    save(root/'result.json',result);save(root/'progress.json',{'phase':'completed','passed':True});print(json.dumps(result),flush=True)
+
+def resume_offline(root):
+    """Retry only the offline acceptance from the clean dependency checkpoint.
+
+    The dependency boot/result is retained, not claimed to have run again. Never
+    retry a restored controller or a transaction; this is a disposable VM reset.
+    """
+    root=validated_root(root);os.umask(0o077);began=time.monotonic()
+    assert not (root/'result.json').exists() and not (root/'key-delivered.json').exists()
+    for entry in Path('/proc').iterdir():
+        if entry.name.isdecimal():
+            try:command=(entry/'cmdline').read_bytes()
+            except (FileNotFoundError,PermissionError,ProcessLookupError):continue
+            assert not (b'qemu-system-x86_64\x00' in command and str(root/'guest.qcow2').encode() in command),'Fixture VM is still running'
+    bootstrap=json.loads((root/'bootstrap-result.json').read_text());assert bootstrap['passed']
+    environment={**os.environ,'LD_LIBRARY_PATH':str(TOOLS/'usr/lib/x86_64-linux-gnu')+':'+str(TOOLS/'lib/x86_64-linux-gnu'),'QEMU_MODULE_DIR':str(TOOLS/'usr/lib/x86_64-linux-gnu/qemu')}
+    img=TOOLS/'usr/bin/qemu-img';overlay=root/'guest.qcow2';disk=root/'input.ext4';seed_iso=root/'seed.iso';input_dir=root/'input';seed=root/'seed'
+    run([str(img),'snapshot','-a','dependencies',str(overlay)],env=environment)
+    for name in ('restore-console.log','restore-failed.json','failure-private.json','candidate-sources.json'):
+        source=root/name
+        if source.exists() and not (root/('first-offline-'+name)).exists():source.rename(root/('first-offline-'+name))
+    disk.unlink();(root/'key.sock').unlink(missing_ok=True)
+    save(root/'candidate-sources.json',{str(path.relative_to(input_dir)):digest(path) for path in (input_dir/'operator').rglob('*') if path.is_file()})
+    with disk.open('wb') as out:out.truncate(2*1024**3)
+    run(['/usr/sbin/mkfs.ext4','-F','-q','-L','TELOMERE_INPUT','-d',str(input_dir),str(disk)],timeout=180)
+    prepared=json.loads((root/'prepare-result.json').read_text());before=json.loads((root/'production-before.json').read_text())
+    common=[str(TOOLS/'usr/bin/qemu-system-x86_64'),'-no-user-config','-nodefaults','-machine','pc,accel=tcg','-cpu','max','-smp','2','-m','4096','-L',str(TOOLS/'usr/share/qemu'),
+        '-display','none','-serial','stdio','-monitor','none','-drive','file='+str(overlay)+',format=qcow2,if=virtio,cache=writeback',
+        '-drive','file='+str(disk)+',format=raw,if=virtio,cache=writeback','-drive','file='+str(seed_iso)+',format=raw,media=cdrom,readonly=on',
+        '-object','rng-random,id=rng0,filename=/dev/urandom','-device','virtio-rng-pci,rng=rng0',
+        '-kernel','/boot/vmlinuz-'+os.uname().release,'-initrd','/boot/initrd.img-'+os.uname().release,'-append','console=ttyS0 root=/dev/vda rw quiet',
+        '-nic','none','-device','virtio-serial-pci','-chardev','socket,id=recoverykey,path='+str(root/'key.sock')+',server=on,wait=off',
+        '-device','virtserialport,chardev=recoverykey,name=telomere.recovery-key']
+    save(root/'waiting-for-key.json',{'phase':'offline-restore-boot','networkDevices':0,'observedAt':time.time()})
+    save(root/'progress.json',{'phase':'offline-restore-retry','networkDevices':0})
+    with (root/'restore-console.log').open('wb') as out:
+        completed=subprocess.run(common,env=environment,stdout=out,stderr=subprocess.STDOUT,timeout=3600)
+    assert completed.returncode==0
+    result=debug_dump(disk,'restore-result.json',root/'restore-result.json')
+    if not result or not result['passed']:
+        debug_dump(disk,'restore-failed.json',root/'restore-failed.json');debug_dump(disk,'failure-private.json',root/'failure-private.json');debug_dump(disk,'smoke-state.json',root/'smoke-state.json')
+        raise RuntimeError('Offline acceptance retry failed; inspect private diagnostics')
+    after=guard();save(root/'production-after.json',after)
+    for key in ('bootId','releaseId','controller'):assert before[key]==after[key]
+    for key in ('signerNonce','originalJournalSha256','operatorEthWei','ownerUsdcAtomic','escrowUsdcAtomic'):assert before['audit'][key]==after['audit'][key]
+    result.update(osImage=prepared,guestVcpus=2,guestMemoryMiB=4096,guestDiskGiB=32,hostRebooted=False,productionUpdated=False,gitPublished=False,hostPackagesInstalled=False,productionGuardsUnchanged=True,
+        resumedFromCleanDependencyCheckpoint=True,dependencyBootstrapExecutedAgain=False,offlineRetryHostElapsedSeconds=round(time.monotonic()-began,3),
+        dependencyGuestElapsedSeconds=bootstrap['elapsedSeconds'])
+    initial=json.loads((root/'initial-attempt-timing.json').read_text())
+    result['entireExerciseElapsedSeconds']=round(time.monotonic()-initial['startedMonotonicSeconds'],3)
+    result['entireExerciseIncludesSetupAndProtocolCorrection']=True
+    for path in (overlay,disk,seed_iso):assert path.parent==root and path.resolve()==path;path.unlink()
+    for path in (input_dir,seed):assert path.parent==root and not path.is_symlink();shutil.rmtree(path)
+    (root/'key.sock').unlink(missing_ok=True);result['guestDiskAndPrivateStagingRemoved']=True
+    save(root/'result.json',result);save(root/'progress.json',{'phase':'completed','passed':True});print(json.dumps(result),flush=True)
+
+if __name__=='__main__':
+    assert os.geteuid()==0
+    if sys.argv[1]=='deliver-key':deliver_key(sys.argv[2])
+    elif sys.argv[1]=='resume-offline':resume_offline(sys.argv[2])
+    else:assert sys.argv[1]=='run';main(sys.argv[2])

@@ -1,0 +1,275 @@
+"""Two-phase clean Debian recovery acceptance. Runs only in a marked disposable VM.
+
+Bootstrap has internet but no recovery key. Restore has no NIC; an age identity
+arrives once over virtio serial and is never written to an identity file.
+The restored mainnet data is read without a worker. Paid execution uses a new
+empty database, generated accounts and loopback chain 31337.
+"""
+import grp,hashlib,importlib.util,json,os,pwd,re,shutil,stat,struct,subprocess,sys,tempfile,time,uuid
+from pathlib import Path
+
+B=Path('/opt/telomere-mainnet-pilot');INPUT=Path('/mnt/recovery');MARKER=Path('/etc/telomere-recovery-guest.json')
+DOCKER=['/usr/bin/docker','--host','unix:///run/telomere-mainnet-docker/docker.sock']
+NODE='/opt/node-v22.23.3-linux-x64/bin/node'
+
+def run(args,**kwargs):return subprocess.run(args,**{'check':True,'capture_output':True,'timeout':120,**kwargs})
+def load(name):
+    path=Path(__file__).with_name(name);spec=importlib.util.spec_from_file_location(name.replace('-','_'),path)
+    module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module);return module
+def digest(path):
+    checksum=hashlib.sha256()
+    with path.open('rb') as source:
+        for chunk in iter(lambda:source.read(1024**2),b''):checksum.update(chunk)
+    return checksum.hexdigest()
+def save(path,value):
+    temporary=path.with_name(path.name+'.next')
+    with temporary.open('w') as out:json.dump(value,out,indent=2);out.write('\n');out.flush();os.fsync(out.fileno())
+    temporary.chmod(0o600);os.replace(temporary,path)
+def validate_marker(value,restoring=False,interfaces=()):
+    assert value.get('kind')=='telomere-disposable-clean-vm' and re.fullmatch('[0-9a-f]{16}',value.get('namespace',''))
+    assert value.get('productionControllerAllowed') is False and value.get('mainnetTransactionsAllowed') is False
+    if restoring:assert set(interfaces)<={'lo','docker0','tlmr-mainnet0'},'Restore requires a VM with no external NIC'
+def guard(restoring=False):
+    assert os.geteuid()==0 and MARKER.is_file() and not MARKER.is_symlink()
+    info=MARKER.stat();assert info.st_uid==0 and info.st_mode&0o077==0
+    value=json.loads(MARKER.read_text());validate_marker(value,restoring,[p.name for p in Path('/sys/class/net').iterdir()])
+    assert run(['systemd-detect-virt','--vm']).stdout.decode().strip() in ('qemu','kvm')
+    assert (INPUT/'input.json').is_file() and json.loads((INPUT/'input.json').read_text())['namespace']==value['namespace']
+    return value
+def progress(phase,**extra):
+    save(INPUT/'progress.json',{'phase':phase,'observedAt':time.time(),**extra})
+def private_tree(root,executable=False):
+    for path in [root,*root.rglob('*')]:
+        assert not path.is_symlink()
+        os.chown(path,0,993);path.chmod(0o750 if path.is_dir() or executable else 0o640)
+
+def bootstrap():
+    marker=guard();began=time.monotonic();assert not B.exists()
+    # Reserve source-compatible IDs before package postinst scripts can allocate
+    # them to unrelated daemons. Never rename/delete an existing system account.
+    try:pwd.getpwuid(995);raise RuntimeError('Recovery UID is occupied')
+    except KeyError:pass
+    try:grp.getgrgid(993);raise RuntimeError('Recovery GID is occupied')
+    except KeyError:pass
+    run(['groupadd','--gid','993','telomere-mainnet']);run(['useradd','--uid','995','--gid','993','--no-create-home','--home-dir','/nonexistent','--shell','/usr/sbin/nologin','telomere-mainnet'])
+    progress('installing-dependencies')
+    with (INPUT/'dependency-install-private.log').open('wb') as out:
+        subprocess.run(['bash',str(Path(__file__).with_name('bootstrap-clean-host.sh'))],check=True,stdout=out,stderr=subprocess.STDOUT,timeout=2400)
+    recovery=load('clean-server-recovery.py');report=recovery.host_report()
+    assert report['freshTelomereTarget'] and report['cgroupV2'] and report['freeDiskBytes']>8*1024**3 and all(report['requiredTools'].values())
+    assert report['os']=='debian' and report['version']=='12' and report['architecture']=='x86_64'
+    B.mkdir(mode=0o755);B.chmod(0o755);(B/'private').mkdir(mode=0o700)
+    config=json.loads((INPUT/'dependency-daemon.json').read_text());config['default-runtime']='runc';config['runtimes']={}
+    save(B/'private/docker-daemon.json',config)
+    # Keep the default Docker bridge as required by the archived coexistence guard.
+    run(['systemctl','start','docker.service'])
+    run(['/usr/sbin/ip','link','add','name','tlmr-mainnet0','type','bridge'])
+    run(['/usr/sbin/ip','link','set','dev','tlmr-mainnet0','alias','telomere-mainnet-prepare-20261015:f1f1fa857fb34ae9adb708ecf6af7166','mtu','1500'])
+    run(['/usr/sbin/ip','address','add','172.31.254.1/24','dev','tlmr-mainnet0']);run(['/usr/sbin/ip','link','set','dev','tlmr-mainnet0','up'])
+    unit=Path('/etc/systemd/system/telomere-recovery-pull.service')
+    unit.write_text('[Unit]\nAfter=containerd.service docker.service\nRequires=containerd.service\n[Service]\nType=notify\nGroup=telomere-mainnet\nRuntimeDirectory=telomere-mainnet-docker\nRuntimeDirectoryMode=0710\nExecStart=/usr/bin/dockerd --config-file='+str(B/'private/docker-daemon.json')+' --containerd-plugins-namespace=telomere-mainnet-plugins\nDelegate=yes\nTimeoutStartSec=180\n')
+    run(['systemctl','daemon-reload']);run(['systemctl','start',unit.name],timeout=200)
+    selected=json.loads((INPUT/'input.json').read_text());images=[]
+    progress('pulling-pinned-images')
+    for image in selected['images']:
+        run(DOCKER+['pull',image['reference']],timeout=1800)
+        actual=run(DOCKER+['image','inspect','--format','{{.Id}}',image['reference']]).stdout.decode().strip()
+        assert actual==image['imageId'];images.append({'reference':image['reference'],'imageId':actual})
+    run(['systemctl','stop',unit.name],timeout=180);unit.unlink();run(['systemctl','daemon-reload'])
+    restore=Path('/etc/systemd/system/telomere-fresh-restore.service')
+    restore.write_text('[Unit]\nAfter=local-fs.target docker.service\nRequires=docker.service\n[Service]\nType=oneshot\nExecStart=/bin/sh -c "mount -L TELOMERE_INPUT /mnt/recovery && cp -a /mnt/recovery/operator/. /root/recovery-kit/ && /usr/bin/python3 -B /root/recovery-kit/cpu-launch/fresh-vm-guest.py restore"\nTimeoutStartSec=3600\nUMask=0077\nStandardOutput=journal+console\nStandardError=journal+console\n[Install]\nWantedBy=multi-user.target\n')
+    run(['systemctl','daemon-reload']);run(['systemctl','enable',restore.name])
+    if Path('/etc/cloud').is_dir():Path('/etc/cloud/cloud-init.disabled').touch()
+    if Path('/etc/systemd/system/telomere-fresh-bootstrap.service').exists():run(['systemctl','disable','telomere-fresh-bootstrap.service'])
+    run(['systemctl','mask','systemd-networkd-wait-online.service'])
+    result={'passed':True,'namespace':marker['namespace'],'hostReportBeforeTelomerePlacement':report,'dockerClient':run(['/usr/bin/docker','--version']).stdout.decode().strip(),
+        'images':images,'recoveryIdentityAvailable':False,'elapsedSeconds':round(time.monotonic()-began,3)}
+    save(INPUT/'bootstrap-result.json',result);progress('dependencies-ready',elapsedSeconds=result['elapsedSeconds'])
+
+def read_identity():
+    # Read one length-prefixed frame. The key never becomes argv/env/a disk file.
+    def exactly(stream,size):
+        value=b'';deadline=time.monotonic()+600
+        while len(value)<size:
+            chunk=stream.read(size-len(value))
+            if not chunk:
+                assert time.monotonic()<deadline,'Recovery sender did not connect';time.sleep(.1);continue
+            value+=chunk
+        return value
+    progress('waiting-for-recovery-key')
+    with Path('/dev/virtio-ports/telomere.recovery-key').open('r+b',buffering=0) as incoming:
+        length=struct.unpack('!I',exactly(incoming,4))[0];assert 0<length<=16384
+        identity=exactly(incoming,length)
+        incoming.write(b'OK')
+    assert b'AGE-SECRET-KEY-' in identity
+    return identity
+
+def fingerprints(container,snapshot):
+    ops=load('mainnet-ops.py');rows=0
+    for entry in snapshot['fingerprints']:
+        table=entry['table'];assert re.fullmatch('[a-z][a-z0-9_]*',table)
+        query='SELECT to_jsonb(t)::text FROM public."'+table+'" t ORDER BY to_jsonb(t)::text;'
+        with tempfile.TemporaryFile() as output:
+            subprocess.run(DOCKER+['exec',container,'psql','-X','-q','-A','-t','-U','restore','-d','restore','-v','ON_ERROR_STOP=1','-v','FETCH_COUNT=256','-c',query],check=True,stdout=output,stderr=subprocess.PIPE,timeout=300)
+            output.seek(0);checksum,count=ops.fingerprint_file(output)
+        assert checksum==entry['sha256'] and count==entry['rows'];rows+=count
+    return {'passed':True,'tables':len(snapshot['fingerprints']),'rows':rows}
+
+def restore():
+    marker=guard(True);began=time.monotonic();timings={};phase_started=began
+    def elapsed(name):
+        nonlocal phase_started
+        current=time.monotonic();timings[name]=round(current-phase_started,3);phase_started=current
+    # Nothing from a recovered mainnet service may auto-start in this guest.
+    for name in ('telomere-mainnet-pilot.service','telomere-mainnet-rpc.service','telomere-mainnet-backup.timer','telomere-mainnet-monitor.timer','telomere-mainnet-pager.timer'):
+        run(['systemctl','mask',name])
+    identity=read_identity();elapsed('keyWaitSeconds')
+    progress('authenticating-archives')
+    recovery=load('clean-server-recovery.py');receipt=json.loads((INPUT/'receipt.json').read_text());stage=Path('/root/verified-recovery')
+    try:verified=recovery.stage_pair(INPUT/'receipt.json',INPUT/(receipt['id']+'.tar.age'),INPUT/(receipt['runtimeBundle']['id']+'.tar.age'),stage,identity)
+    finally:identity=b''
+    elapsed('archiveAuthenticationSeconds')
+    data=json.loads((stage/'data/manifest.json').read_text());archived=json.loads((stage/'runtime/manifest.json').read_text())
+    expected,snapshot,pg_image,cpu_image=recovery.validate_pair(data,archived,receipt,stage/'data',stage/'runtime')
+    B.chmod(0o755)
+    release=B/'releases'/expected['releaseId'];release.parent.mkdir(mode=0o755);release.parent.chmod(0o755);shutil.copytree(stage/'runtime/release',release);private_tree(release)
+    (B/'app').symlink_to(release,target_is_directory=True)
+    shutil.copytree(stage/'runtime/operator',B/'operator');private_tree(B/'operator')
+    # Use the current independent recovery tools, not an unreviewed profile.
+    kit=Path(__file__).parent
+    for path in kit.iterdir():
+        if path.suffix in ('.py','.mjs','.sh'):shutil.copyfile(path,B/'operator/cpu-launch'/path.name)
+    cloud=B/'operator/cpu-cloud';cloud.mkdir(exist_ok=True)
+    for name in ('archive_policy.py','cyst-capacity.json'):shutil.copyfile(kit.parent/'cpu-cloud'/name,cloud/name)
+    for part,target in (('node',Path(NODE)),('runsc',Path('/opt/telomere-host-runtime/gvisor/runsc'))):
+        target.parent.mkdir(mode=0o755,parents=True,exist_ok=True);shutil.copyfile(stage/'runtime/binaries'/part,target);target.chmod(0o755)
+        for parent in target.parents:
+            if parent==Path('/opt'):break
+            parent.chmod(0o755)
+    gvisor=load('gvisor-runtime.py')
+    descriptor=json.loads((INPUT/'input.json').read_text()).get('runtimeDependencySupplement')
+    if descriptor:
+        gvisor.verify_supplement(INPUT/'gvisor-runtime',descriptor,stage/'runtime/binaries/runsc')
+        gvisor_files=gvisor.install(INPUT/'gvisor-runtime')
+    else:gvisor_files=gvisor.install(stage/'runtime')
+    for path in (B/'operator').rglob('*'):
+        if path.is_dir():path.chmod(0o755)
+        elif path.is_file():path.chmod(0o644)
+    (B/'operator/acceptance-tools/anvil').chmod(0o755)
+    (B/'data').mkdir(mode=0o750);os.chown(B/'data',995,993)
+    (B/'data/cpu-launch-acceptance-20261017').mkdir(mode=0o750);os.chown(B/'data/cpu-launch-acceptance-20261017',995,993)
+    for path in (stage/'data/configuration').iterdir():
+        if path.is_file():shutil.copyfile(path,B/'private'/path.name);(B/'private'/path.name).chmod(0o600)
+    assert run(['/usr/sbin/runuser','-u','telomere-mainnet','--','test','!','-r',str(B/'private/mainnet.env')]).returncode==0
+    (B/'data/cysts').mkdir(mode=0o700);os.chown(B/'data/cysts',995,993);cyst_count=0
+    for entry in data['files']:
+        if entry['path'].startswith('cysts/'):
+            target=B/'data/cysts'/Path(entry['path']).name;shutil.copyfile(stage/'data'/entry['path'],target);target.chmod(0o600);os.chown(target,995,993)
+            assert digest(target)==entry['sha256'];cyst_count+=1
+    for pin in expected['runtimePins']:assert digest(release/pin['path'])==pin['sha256']
+    # Install the actual retained network and Docker units; keep monetary units masked.
+    for name in ('telomere-mainnet-network.service','telomere-mainnet-docker.service'):
+        shutil.copyfile(stage/'runtime/systemd'/name,Path('/etc/systemd/system')/name)
+    run(['systemctl','daemon-reload']);run(['systemctl','start','telomere-mainnet-docker.service'],timeout=240)
+    for image in json.loads((INPUT/'input.json').read_text())['images']:
+        assert run(DOCKER+['image','inspect','--format','{{.Id}}',image['reference']]).stdout.decode().strip()==image['imageId']
+    elapsed('runtimeAndServicesInstallSeconds');progress('restoring-postgresql')
+    parent=B/'rehearsals';parent.mkdir(mode=0o750);os.chown(parent,0,993);parent.chmod(0o750)
+    root=parent/('cpu-dr-'+marker['namespace']);root.mkdir(mode=0o750);os.chown(root,0,993);root.chmod(0o750)
+    (root/'release').symlink_to(release,target_is_directory=True);shutil.copytree(stage/'runtime/binaries',root/'binaries');private_tree(root/'binaries',True)
+    socket=root/'pg-socket';socket.mkdir(mode=0o777);socket.chmod(0o777)
+    database='telomere-recovered-data';volume=database+'-data'
+    run(DOCKER+['volume','create','--label','telomere.fresh.vm='+marker['namespace'],volume])
+    identifier=run(DOCKER+['create','--name',database,'--label','telomere.fresh.vm='+marker['namespace'],'--runtime','runc','--network','none','--memory','512m','--pids-limit','128',
+        '--mount','type=volume,source='+volume+',target=/var/lib/postgresql/data','--mount','type=bind,source='+str(socket)+',target=/var/run/postgresql',
+        '-e','POSTGRES_USER=restore','-e','POSTGRES_DB=restore','-e','POSTGRES_HOST_AUTH_METHOD=trust',pg_image]).stdout.decode().strip()
+    assert re.fullmatch('[0-9a-f]{64}',identifier)
+    service=Path('/etc/systemd/system/telomere-recovered-data.service')
+    service.write_text('[Unit]\nAfter=telomere-mainnet-docker.service\nRequires=telomere-mainnet-docker.service\n[Service]\nType=simple\nExecStart=/usr/bin/docker --host=unix:///run/telomere-mainnet-docker/docker.sock start --attach '+identifier+'\nExecStop=/usr/bin/docker --host=unix:///run/telomere-mainnet-docker/docker.sock stop '+identifier+'\nRestart=on-failure\n')
+    run(['systemctl','daemon-reload']);run(['systemctl','start',service.name])
+    deadline=time.monotonic()+180
+    while True:
+        ready=subprocess.run(DOCKER+['exec',database,'sh','-c','test "$(cat /proc/1/comm)" = postgres && pg_isready -U restore -d restore'],capture_output=True,timeout=10)
+        if ready.returncode==0:break
+        assert time.monotonic()<deadline;time.sleep(1)
+    with (stage/'data/database.dump').open('rb') as dump:run(DOCKER+['exec','-i',database,'pg_restore','-U','restore','-d','restore','--exit-on-error','--no-owner','--no-acl'],stdin=dump,timeout=600)
+    restored=fingerprints(database,snapshot);elapsed('databaseRestoreAndFingerprintsSeconds')
+    reader=root/'data-reader.mjs';shutil.copyfile(B/'operator/cpu-launch/restored-data-reader.mjs',reader);reader.chmod(0o640);os.chown(reader,0,993)
+    observed=json.loads(run(['/usr/bin/unshare','--net','/usr/sbin/runuser','-u','telomere-mainnet','--',NODE,str(reader),str(root),str(socket)],cwd=release,timeout=240).stdout)
+    assert observed['passed'] and observed['workerStarted'] is False;fingerprints(database,snapshot)
+    elapsed('restoredDataApiSeconds');progress('starting-isolated-cpu-service')
+    work=B/'data/fresh-vm-smoke';work.mkdir(mode=0o750);os.chown(work,995,993)
+    wrapper=B/'operator/cpu-launch/bin';wrapper.mkdir(exist_ok=True,parents=True,mode=0o755);wrapper.chmod(0o755)
+    shutil.copyfile(B/'operator/cpu-launch/docker-load.py',wrapper/'docker');(wrapper/'docker').chmod(0o755)
+    env={'PATH':str(wrapper)+':/opt/node-v22.23.3-linux-x64/bin:/usr/bin:/bin','DOCKER_HOST':'unix:///run/telomere-mainnet-docker/docker.sock',
+        'TELOMERE_ACCEPTANCE_NAMESPACE':marker['namespace'],'CPU_IMAGE':cpu_image,'ACCEPTANCE_POSTGRES_IMAGE':run(DOCKER+['image','inspect','--format','{{.Id}}',pg_image]).stdout.decode().strip()}
+    unit=Path('/etc/systemd/system/telomere-fresh-cpu.service')
+    unit.write_text('[Unit]\nAfter=telomere-mainnet-docker.service\nRequires=telomere-mainnet-docker.service\n[Service]\nType=oneshot\nUser=telomere-mainnet\nGroup=telomere-mainnet\nWorkingDirectory='+str(release)+'\n'+''.join('Environment="'+key+'='+value+'"\n' for key,value in env.items())+'ExecStart='+NODE+' '+str(B/'operator/cpu-launch/fresh-vm-smoke.mjs')+'\nTimeoutStartSec=600\nUMask=0077\n')
+    run(['systemctl','daemon-reload']);run(['systemctl','start','--no-block',unit.name])
+    helper=load('restore-rehearsal.py');https=None;deadline=time.monotonic()+720
+    while time.monotonic()<deadline:
+        report=work/'progress.json'
+        state=json.loads(report.read_text()) if report.exists() else {}
+        if state.get('state')=='ready-for-https' and https is None:
+            website=root/'website';shutil.copytree(stage/'runtime/website',website);private_tree(website)
+            # nginx's worker must traverse the temporary test config directory.
+            public_stage=B/'https-recovery';public_stage.mkdir(mode=0o755);public_stage.chmod(0o755)
+            (public_stage/'data/configuration').mkdir(parents=True,mode=0o755)
+            for name in ('nginx.conf','nginx-csp.conf'):shutil.copyfile(stage/'data/configuration'/name,public_stage/'data/configuration'/name)
+            https=helper.proxy_rehearsal(public_stage,root,state['httpOrigin']);save(work/'https-checked.json',{'passed':True});os.chmod(work/'https-checked.json',0o644)
+        if state.get('state') in ('completed','failed'):break
+        failed=run(['systemctl','show',unit.name,'-p','ActiveState','--value']).stdout.decode().strip()
+        if failed=='failed':raise RuntimeError('Disposable CPU service failed; inspect private guest journal')
+        time.sleep(1)
+    else:raise TimeoutError('Disposable CPU service deadline')
+    save(INPUT/'smoke-state.json',state)
+    assert state['state']=='completed' and https and https['passed'];smoke=json.loads((work/'result.json').read_text());assert smoke['passed']
+    while time.monotonic()<deadline:
+        service_state=run(['systemctl','show',unit.name,'-p','ActiveState','--value']).stdout.decode().strip()
+        if service_state=='inactive':break
+        assert service_state!='failed';time.sleep(1)
+    else:raise TimeoutError('CPU acceptance service did not exit')
+    assert run(['systemctl','show',unit.name,'-p','Result','--value']).stdout.decode().strip()=='success'
+    elapsed('httpsAndPaidCpuSmokeSeconds')
+    for pin in expected['runtimePins']:assert digest(release/pin['path'])==pin['sha256']
+    run(['systemctl','is-active','telomere-mainnet-docker.service']);run(['systemctl','is-active','telomere-recovered-data.service'])
+    assert run(['systemctl','is-enabled','telomere-mainnet-pilot.service'],check=False).stdout.decode().strip()=='masked'
+    result={'passed':True,'namespace':marker['namespace'],'releaseId':expected['releaseId'],'backupId':receipt['id'],'runtimeId':receipt['runtimeBundle']['id'],
+        'runtimePinsVerified':len(expected['runtimePins']),'freshOs':True,'dependencyBootstrapExecuted':True,'archiveVerification':verified,
+        'database':restored,'restoredDataApi':observed,'restoredCystFiles':cyst_count,'restoredHttps':https,'paidCpuSmoke':smoke,
+        'retainedDockerAndNetworkUnitsStarted':True,'restoredDatabaseSystemdServiceActive':True,'mainnetControllerMasked':True,
+        'nodeVersion':run([NODE,'--version']).stdout.decode().strip(),'gvisorExecutable':run(['/opt/telomere-host-runtime/gvisor/runsc','--version']).returncode==0,
+        'gvisorDistributionFiles':gvisor_files,'legacyRuntimeSupplementUsed':bool(descriptor),'legacyRuntimeSupplement':descriptor,
+        'externalInterfaces':[],'mainnetTransactions':0,'mainnetSignerPassedToApplication':False,'publicTlsIssued':False,'dnsChanged':False,
+        'timings':timings,'elapsedSeconds':round(time.monotonic()-began,3)}
+    save(INPUT/'restore-result.json',result);progress('restore-accepted',elapsedSeconds=result['elapsedSeconds'])
+
+def diagnose_runtime():
+    """Read-only fixture diagnosis plus one isolated nonfinancial CPU probe."""
+    guard(True);progress('diagnosing-runtime');run(['systemctl','start','telomere-mainnet-docker.service'],timeout=240)
+    selected=json.loads((INPUT/'input.json').read_text());image=selected['images'][1]['reference']
+    version=run(['/opt/telomere-host-runtime/gvisor/runsc','--version'],check=False)
+    command=['/usr/sbin/runuser','-u','telomere-mainnet','--','/usr/bin/env','DOCKER_HOST=unix:///run/telomere-mainnet-docker/docker.sock',
+        '/usr/bin/docker','run','--rm','--runtime','runsc','--network','none','--read-only','--cap-drop','ALL','--security-opt','no-new-privileges:true',
+        '--user','10001:10001','--cpus','1','--memory','256m','--memory-swap','256m','--pids-limit','64','--entrypoint','node',image,'-e','process.stdout.write("probe-ok")']
+    probe=run(command,check=False,timeout=180)
+    result={'probeExitCode':probe.returncode,'probeStdout':probe.stdout.decode(errors='replace')[:16384],'probeStderr':probe.stderr.decode(errors='replace')[:32768],
+        'runscVersionExitCode':version.returncode,'runscVersionOutput':version.stdout.decode(errors='replace')[:8192],'runscVersionError':version.stderr.decode(errors='replace')[:8192],
+        'defaultRuntime':run(DOCKER+['info','--format','{{.DefaultRuntime}}']).stdout.decode().strip(),'mainnetTransactions':0,'externalInterfaces':[]}
+    save(INPUT/'runtime-diagnostic.json',result);progress('runtime-diagnostic-completed',probeExitCode=probe.returncode)
+
+def main():
+    os.umask(0o077);phase=sys.argv[1];assert phase in ('bootstrap','restore')
+    try:
+        if phase=='restore' and (INPUT/'diagnose-runtime.json').exists():diagnose_runtime()
+        else:{'bootstrap':bootstrap,'restore':restore}[phase]()
+    except Exception as error:
+        # Full diagnostics remain on the private disposable disk, never in public evidence.
+        import traceback
+        Path('/root/fresh-vm-error.log').write_text(traceback.format_exc());save(INPUT/'failure-private.json',{'trace':traceback.format_exc()})
+        save(INPUT/(phase+'-failed.json'),{'passed':False,'phase':phase,'errorType':type(error).__name__});progress(phase+'-failed',errorType=type(error).__name__)
+        raise
+    finally:
+        os.sync();subprocess.run(['systemctl','poweroff','--no-block'],capture_output=True,timeout=10)
+
+if __name__=='__main__':main()

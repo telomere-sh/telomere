@@ -61,6 +61,7 @@ def install_plan(expected,snapshot,pg_image,cpu_image,stage):
             {'from':'runtime/operator','to':str(BASE/'operator'),'owner':'root:root'},
             {'from':'runtime/binaries/node','to':'/opt/node-v22.23.3-linux-x64/bin/node','mode':'0755'},
             {'from':'runtime/binaries/runsc','to':'/opt/telomere-host-runtime/gvisor/runsc','mode':'0755'},
+            {'from':'runtime/binaries/gvisor','to':'/opt/telomere-host-runtime/gvisor','mode':'0755; retain STRICT sidecars; reject incomplete distribution before activation'},
             {'from':'runtime/website','to':'retained nginx root from verified runtime manifest','owner':'root:root'},
             {'from':'data/configuration','to':str(BASE/'private'),'mode':'0600; directory 0700'},
             {'from':'data/cysts','to':str(BASE/'data/cysts'),'owner':'995:993','mode':'0600; directory 0700'},

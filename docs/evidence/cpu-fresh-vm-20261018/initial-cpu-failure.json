@@ -1,0 +1,29 @@
+{
+  "failure": {
+    "passed": false,
+    "phase": "restore",
+    "errorType": "AssertionError"
+  },
+  "smoke": {
+    "state": "failed",
+    "phase": "deposit-and-cpu",
+    "errorType": "Error",
+    "message": "CPU terminal failure failed"
+  },
+  "diagnostic": {
+    "probeExitCode": 127,
+    "probeStdout": "",
+    "probeStderr": "docker: Error response from daemon: failed to create task for container: failed to create shim task: OCI runtime create failed: creating container: cannot create sandbox: cannot create sandbox process: sidecar \"gvisor_sentry\" not usable (stat /opt/telomere-host-runtime/gvisor/gvisor-bin/gvisor_sentry: no such file or directory) and --sidecar-usage-policy is set to STRICT\n\nRun 'docker run --help' for more information\n",
+    "runscVersionExitCode": 0,
+    "runscVersionOutput": "runsc version release-20261005.0\nspec: 1.2.1\n",
+    "runscVersionError": "",
+    "defaultRuntime": "runsc",
+    "mainnetTransactions": 0,
+    "externalInterfaces": []
+  },
+  "keyTransport": {
+    "delivered": true,
+    "keyWrittenToHostFile": false,
+    "observedAt": 1792337148.3559673
+  }
+}

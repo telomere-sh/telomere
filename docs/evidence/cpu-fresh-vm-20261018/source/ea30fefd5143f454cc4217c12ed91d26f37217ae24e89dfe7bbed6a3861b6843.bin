@@ -1,0 +1,55 @@
+"""Guard against running disposable provisioning/recovery on the wrong host."""
+import importlib.util,json,os,tempfile,unittest
+from pathlib import Path
+from unittest.mock import patch
+
+def module(name):
+    spec=importlib.util.spec_from_file_location(name.replace('-','_'),Path(__file__).with_name(name))
+    result=importlib.util.module_from_spec(spec);spec.loader.exec_module(result);return result
+guest=module('fresh-vm-guest.py');host=module('fresh-vm-acceptance.py')
+
+class GuestBoundaryTests(unittest.TestCase):
+    def setUp(self):self.marker={'kind':'telomere-disposable-clean-vm','namespace':'a'*16,'productionControllerAllowed':False,'mainnetTransactionsAllowed':False}
+    def test_networked_bootstrap_is_only_marker_authorized(self):guest.validate_marker(self.marker,False,['lo','ens3'])
+    def test_offline_restore_allows_only_local_owned_interfaces(self):guest.validate_marker(self.marker,True,['lo','docker0','tlmr-mainnet0'])
+    def test_external_nic_rejected_for_recovery(self):
+        for name in ('ens3','eth0','wlan0','veth123'):
+            with self.assertRaises(AssertionError):guest.validate_marker(self.marker,True,['lo',name])
+    def test_production_permission_flag_rejected(self):
+        self.marker['productionControllerAllowed']=True
+        with self.assertRaises(AssertionError):guest.validate_marker(self.marker)
+    def test_mainnet_permission_and_string_false_rejected(self):
+        for value in (True,'false',0,None):
+            self.marker['mainnetTransactionsAllowed']=value
+            with self.assertRaises(AssertionError):guest.validate_marker(self.marker)
+    def test_marker_namespace_is_bounded(self):
+        for value in ('','a'*15,'A'*16,'../'+'a'*16,'a'*17):
+            self.marker['namespace']=value
+            with self.assertRaises(AssertionError):guest.validate_marker(self.marker)
+    def test_unmarked_host_rejected_before_system_commands(self):
+        with tempfile.TemporaryDirectory() as folder,patch.object(guest,'MARKER',Path(folder)/'absent'),patch.object(guest,'run') as command:
+            with self.assertRaises(AssertionError):guest.guard()
+            command.assert_not_called()
+
+class HostBoundaryTests(unittest.TestCase):
+    def setUp(self):
+        self.tmp=tempfile.TemporaryDirectory();self.base=Path(self.tmp.name).resolve();(self.base/'private').mkdir(mode=0o700)
+        self.root=self.base/'private'/('fresh-vm-'+'a'*16);self.root.mkdir(mode=0o700)
+        self.scope=patch.object(host,'B',self.base);self.scope.start()
+    def tearDown(self):self.scope.stop();self.tmp.cleanup()
+    def test_owned_private_fixture_root_accepted(self):self.assertEqual(host.validated_root(str(self.root)),self.root)
+    def test_unrelated_directory_rejected(self):
+        other=self.base/'private/production';other.mkdir(mode=0o700)
+        with self.assertRaises(AssertionError):host.validated_root(str(other))
+    def test_weak_permissions_rejected(self):
+        self.root.chmod(0o755)
+        with self.assertRaises(AssertionError):host.validated_root(str(self.root))
+    def test_symlink_root_rejected(self):
+        target=self.base/'private'/('fresh-vm-'+'b'*16);target.symlink_to(self.root,target_is_directory=True)
+        with self.assertRaises(AssertionError):host.validated_root(str(target))
+    def test_dump_name_injection_rejected_before_command(self):
+        with patch.object(host,'run') as command:
+            with self.assertRaises(AssertionError):host.debug_dump(self.root/'disk','../secret',self.root/'result')
+            command.assert_not_called()
+
+if __name__=='__main__':unittest.main()

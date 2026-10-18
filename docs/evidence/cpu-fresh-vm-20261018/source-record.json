@@ -1,0 +1,257 @@
+{
+  "schemaVersion": 1,
+  "scope": "Final unit-verified recovery kit and signed Debian image builder; exact VM-integrated guest/test versions precede the separately checked entry guard and are retained as prior versions; all remaining integration function bodies match by AST comparison. Earlier failed setup versions are separately labelled.",
+  "files": [
+    {
+      "originalPath": "ops/cpu-launch/fresh-vm-acceptance.py",
+      "path": "source/01fd0b422d49b7267c2f9166e0077fb2edce72177e75e331bfe355ffd22770c8.bin",
+      "bytes": 17323,
+      "sha256": "01fd0b422d49b7267c2f9166e0077fb2edce72177e75e331bfe355ffd22770c8"
+    },
+    {
+      "originalPath": "ops/cpu-launch/fresh-vm-guest.py",
+      "path": "source/e45374bc22224c5e969a79a4c88da0647b58c56631b43fee54c30d445052459b.bin",
+      "bytes": 23296,
+      "sha256": "e45374bc22224c5e969a79a4c88da0647b58c56631b43fee54c30d445052459b"
+    },
+    {
+      "originalPath": "ops/cpu-launch/fresh-vm-image.py",
+      "path": "source/96f6f8e8c9e99149632ee4f4f15693bac9f9c7be79f4ae20655ec14c4013e078.bin",
+      "bytes": 5601,
+      "sha256": "96f6f8e8c9e99149632ee4f4f15693bac9f9c7be79f4ae20655ec14c4013e078"
+    },
+    {
+      "originalPath": "ops/cpu-launch/fresh-vm-smoke.mjs",
+      "path": "source/fe1fddbce98c06afdd860d689c80d76ee2f032d9b8f2e80bd40ad87363f3bd33.bin",
+      "bytes": 11975,
+      "sha256": "fe1fddbce98c06afdd860d689c80d76ee2f032d9b8f2e80bd40ad87363f3bd33"
+    },
+    {
+      "originalPath": "ops/cpu-launch/test_fresh_vm.py",
+      "path": "source/7baedb2406971235ed917364b619d6d01b0a22bbca7919d70268de22977f6a03.bin",
+      "bytes": 3968,
+      "sha256": "7baedb2406971235ed917364b619d6d01b0a22bbca7919d70268de22977f6a03"
+    },
+    {
+      "originalPath": "ops/cpu-launch/test_fresh_vm_key.py",
+      "path": "source/29cf2d3eb3b3254dc024489c0c43b6fd9fb6ef67aa5da87d4de287cb2f112a35.bin",
+      "bytes": 2246,
+      "sha256": "29cf2d3eb3b3254dc024489c0c43b6fd9fb6ef67aa5da87d4de287cb2f112a35"
+    },
+    {
+      "originalPath": "ops/cpu-launch/bootstrap-clean-host.sh",
+      "path": "source/8a6737f979a081be3217ce1e4101ca4fe10b126b551b95b564dc647869fa2350.bin",
+      "bytes": 1845,
+      "sha256": "8a6737f979a081be3217ce1e4101ca4fe10b126b551b95b564dc647869fa2350"
+    },
+    {
+      "originalPath": "ops/cpu-launch/clean-server-recovery.py",
+      "path": "source/6c71408951d482e4eee738679cea7e17ecf2c2e3733449ddf0f4aba8ab4713af.bin",
+      "bytes": 10656,
+      "sha256": "6c71408951d482e4eee738679cea7e17ecf2c2e3733449ddf0f4aba8ab4713af"
+    },
+    {
+      "originalPath": "ops/cpu-launch/restore-rehearsal.py",
+      "path": "source/0224573c3b615a5383ce442518bc722738d690089e7ccceb187f3cf0a6a8aa4f.bin",
+      "bytes": 21681,
+      "sha256": "0224573c3b615a5383ce442518bc722738d690089e7ccceb187f3cf0a6a8aa4f"
+    },
+    {
+      "originalPath": "ops/cpu-launch/restored-data-reader.mjs",
+      "path": "source/ae99f427b7204bbba65cfa1d5c46c60b94c5abadf274766f9f5533d456bf40e4.bin",
+      "bytes": 3574,
+      "sha256": "ae99f427b7204bbba65cfa1d5c46c60b94c5abadf274766f9f5533d456bf40e4"
+    },
+    {
+      "originalPath": "ops/cpu-launch/CLEAN-SERVER-RECOVERY.md",
+      "path": "source/5bd0914aeaf88d03403d94560faaf9da220042229f194e7cbbf5de8f728a2e19.bin",
+      "bytes": 9478,
+      "sha256": "5bd0914aeaf88d03403d94560faaf9da220042229f194e7cbbf5de8f728a2e19"
+    },
+    {
+      "originalPath": "ops/cpu-cloud/archive_policy.py",
+      "path": "source/d361420fdb96f7b3aeb2a180ab646772cc213bbde1dd4f54bc3455d803a427d0.bin",
+      "bytes": 5626,
+      "sha256": "d361420fdb96f7b3aeb2a180ab646772cc213bbde1dd4f54bc3455d803a427d0"
+    },
+    {
+      "originalPath": "ops/cpu-cloud/cyst-capacity.json",
+      "path": "source/0797a1cc6c77f7272b3bc3bccf0229711122720f2124051bd3724c77b705be0e.bin",
+      "bytes": 109,
+      "sha256": "0797a1cc6c77f7272b3bc3bccf0229711122720f2124051bd3724c77b705be0e"
+    },
+    {
+      "originalPath": "ops/cpu-launch/gvisor-runtime.py",
+      "path": "source/d4496514ff0afc25d38aeba4f935b06c7b53120cb3277cd4bd9712cd9a8f05e1.bin",
+      "bytes": 3863,
+      "sha256": "d4496514ff0afc25d38aeba4f935b06c7b53120cb3277cd4bd9712cd9a8f05e1"
+    },
+    {
+      "originalPath": "ops/cpu-launch/test_gvisor_runtime.py",
+      "path": "source/e3dedefd76668d7dabe8762069c3f9bb8bb768993f7ee047d277e8c30013df49.bin",
+      "bytes": 2840,
+      "sha256": "e3dedefd76668d7dabe8762069c3f9bb8bb768993f7ee047d277e8c30013df49"
+    },
+    {
+      "originalPath": "ops/cpu-launch/mainnet-ops.py",
+      "path": "source/b6aa7aff0e281d1dc43da944c6d429408e67c1546d50f8571b7d039d944d2ecd.bin",
+      "bytes": 32529,
+      "sha256": "b6aa7aff0e281d1dc43da944c6d429408e67c1546d50f8571b7d039d944d2ecd"
+    },
+    {
+      "originalPath": "ops/cpu-launch/README.md",
+      "path": "source/3fe360cf9c646bfe5dcf5b1552bcfcdec6ffaf5ec665a3c4c30289da77b19b59.bin",
+      "bytes": 33599,
+      "sha256": "3fe360cf9c646bfe5dcf5b1552bcfcdec6ffaf5ec665a3c4c30289da77b19b59"
+    }
+  ],
+  "priorVersions": [
+    {
+      "attempt": "99800d4cf110433f",
+      "originalPath": "ops/cpu-launch/fresh-vm-guest.py",
+      "path": "source/ab7a67ec45ab29ea4a8d898baa6f684c1fa534c8343dc89344ed8c1d917e23cc.bin",
+      "bytes": 19648,
+      "sha256": "ab7a67ec45ab29ea4a8d898baa6f684c1fa534c8343dc89344ed8c1d917e23cc"
+    },
+    {
+      "attempt": "99800d4cf110433f",
+      "originalPath": "ops/cpu-launch/fresh-vm-acceptance.py",
+      "path": "source/d3e9b5aeffac22d2f416a245aaebc03207ecd58c3833360e603956aa711c5e49.bin",
+      "bytes": 10895,
+      "sha256": "d3e9b5aeffac22d2f416a245aaebc03207ecd58c3833360e603956aa711c5e49"
+    },
+    {
+      "attempt": "99800d4cf110433f",
+      "originalPath": "ops/cpu-launch/fresh-vm-smoke.mjs",
+      "path": "source/c73bb28c2aaf53c82c9601278185d470723b4f6ee6476e9c4705cae012763fd8.bin",
+      "bytes": 11931,
+      "sha256": "c73bb28c2aaf53c82c9601278185d470723b4f6ee6476e9c4705cae012763fd8"
+    },
+    {
+      "attempt": "99800d4cf110433f",
+      "originalPath": "ops/cpu-launch/bootstrap-clean-host.sh",
+      "path": "source/9c0a78819d0ed231db7d20efdc0ee73a2db0474fb48c8a53ac9adb3fa96e3801.bin",
+      "bytes": 1385,
+      "sha256": "9c0a78819d0ed231db7d20efdc0ee73a2db0474fb48c8a53ac9adb3fa96e3801"
+    },
+    {
+      "attempt": "88a0b90c398b4d0d",
+      "originalPath": "ops/cpu-launch/fresh-vm-image.py",
+      "path": "source/52689237134094ab7a8c0c74f3200822acb727f6ea5891b0ca8816eb0d19ef03.bin",
+      "bytes": 5248,
+      "sha256": "52689237134094ab7a8c0c74f3200822acb727f6ea5891b0ca8816eb0d19ef03"
+    },
+    {
+      "attempt": "88a0b90c398b4d0d",
+      "originalPath": "ops/cpu-launch/fresh-vm-guest.py",
+      "path": "source/1f11e2f68240d77b1799926678de5c4bd60ab2fef8b97fd1b4b3154da5dc8ade.bin",
+      "bytes": 20617,
+      "sha256": "1f11e2f68240d77b1799926678de5c4bd60ab2fef8b97fd1b4b3154da5dc8ade"
+    },
+    {
+      "attempt": "88a0b90c398b4d0d",
+      "originalPath": "ops/cpu-launch/fresh-vm-acceptance.py",
+      "path": "source/2ff152b9857d65ebd060a2178720a383d309b42917f57a093352d46e80e5b9cd.bin",
+      "bytes": 11537,
+      "sha256": "2ff152b9857d65ebd060a2178720a383d309b42917f57a093352d46e80e5b9cd"
+    },
+    {
+      "attempt": "88a0b90c398b4d0d",
+      "originalPath": "ops/cpu-launch/fresh-vm-smoke.mjs",
+      "path": "source/fe1fddbce98c06afdd860d689c80d76ee2f032d9b8f2e80bd40ad87363f3bd33.bin",
+      "bytes": 11975,
+      "sha256": "fe1fddbce98c06afdd860d689c80d76ee2f032d9b8f2e80bd40ad87363f3bd33"
+    },
+    {
+      "attempt": "88a0b90c398b4d0d",
+      "originalPath": "ops/cpu-launch/bootstrap-clean-host.sh",
+      "path": "source/d6d22165916b5fed2030576f6b920ec9a6ead7f073faa3ab24f13cb1d254ec9e.bin",
+      "bytes": 1756,
+      "sha256": "d6d22165916b5fed2030576f6b920ec9a6ead7f073faa3ab24f13cb1d254ec9e"
+    },
+    {
+      "attempt": "30a9aecaebe8449e",
+      "originalPath": "ops/cpu-launch/fresh-vm-image.py",
+      "path": "source/c5df3fdfe1b92aee4de93b871056a184dd72aadae34565928842ca54621b63ad.bin",
+      "bytes": 5499,
+      "sha256": "c5df3fdfe1b92aee4de93b871056a184dd72aadae34565928842ca54621b63ad"
+    },
+    {
+      "attempt": "30a9aecaebe8449e",
+      "originalPath": "ops/cpu-launch/fresh-vm-guest.py",
+      "path": "source/1f11e2f68240d77b1799926678de5c4bd60ab2fef8b97fd1b4b3154da5dc8ade.bin",
+      "bytes": 20617,
+      "sha256": "1f11e2f68240d77b1799926678de5c4bd60ab2fef8b97fd1b4b3154da5dc8ade"
+    },
+    {
+      "attempt": "30a9aecaebe8449e",
+      "originalPath": "ops/cpu-launch/fresh-vm-acceptance.py",
+      "path": "source/2ff152b9857d65ebd060a2178720a383d309b42917f57a093352d46e80e5b9cd.bin",
+      "bytes": 11537,
+      "sha256": "2ff152b9857d65ebd060a2178720a383d309b42917f57a093352d46e80e5b9cd"
+    },
+    {
+      "attempt": "30a9aecaebe8449e",
+      "originalPath": "ops/cpu-launch/fresh-vm-smoke.mjs",
+      "path": "source/fe1fddbce98c06afdd860d689c80d76ee2f032d9b8f2e80bd40ad87363f3bd33.bin",
+      "bytes": 11975,
+      "sha256": "fe1fddbce98c06afdd860d689c80d76ee2f032d9b8f2e80bd40ad87363f3bd33"
+    },
+    {
+      "attempt": "30a9aecaebe8449e",
+      "originalPath": "ops/cpu-launch/bootstrap-clean-host.sh",
+      "path": "source/d6d22165916b5fed2030576f6b920ec9a6ead7f073faa3ab24f13cb1d254ec9e.bin",
+      "bytes": 1756,
+      "sha256": "d6d22165916b5fed2030576f6b920ec9a6ead7f073faa3ab24f13cb1d254ec9e"
+    },
+    {
+      "attempt": "772e1085572545b9-initial-offline",
+      "originalPath": "ops/cpu-launch/fresh-vm-guest.py",
+      "path": "source/ee466310726cdb55d71430250fa98e58d14c7c9cc686a51db1e04438f9e97dd2.bin",
+      "bytes": 20662,
+      "sha256": "ee466310726cdb55d71430250fa98e58d14c7c9cc686a51db1e04438f9e97dd2"
+    },
+    {
+      "attempt": "772e1085572545b9-cpu-failed",
+      "originalPath": "ops/cpu-launch/fresh-vm-guest.py",
+      "path": "source/353088e9a04e4b7f7472457cc6c3abda876fa89d54155e1ca41ce50e6ef16ef2.bin",
+      "bytes": 22617,
+      "sha256": "353088e9a04e4b7f7472457cc6c3abda876fa89d54155e1ca41ce50e6ef16ef2"
+    },
+    {
+      "attempt": "772e1085572545b9-initial-offline",
+      "originalPath": "ops/cpu-launch/fresh-vm-acceptance.py",
+      "path": "source/2234f0c2b9e3fbcc33b287d210934594b3a028a9501b7c5a6a4bb3b57327c756.bin",
+      "bytes": 11687,
+      "sha256": "2234f0c2b9e3fbcc33b287d210934594b3a028a9501b7c5a6a4bb3b57327c756"
+    },
+    {
+      "attempt": "772e1085572545b9-cpu-failed",
+      "originalPath": "ops/cpu-launch/fresh-vm-acceptance.py",
+      "path": "source/4414024aba69413982129e447a31e704eb5b4bb29bf0ea3c1aff77f911ab5472.bin",
+      "bytes": 16964,
+      "sha256": "4414024aba69413982129e447a31e704eb5b4bb29bf0ea3c1aff77f911ab5472"
+    },
+    {
+      "attempt": "772e1085572545b9-cpu-before-diagnosis",
+      "originalPath": "ops/cpu-launch/fresh-vm-guest.py",
+      "path": "source/5f279adda9a8a8915c2ca9cc5808ab534fe04c064b90a15d36f75ba1d1ddec67.bin",
+      "bytes": 20971,
+      "sha256": "5f279adda9a8a8915c2ca9cc5808ab534fe04c064b90a15d36f75ba1d1ddec67"
+    },
+    {
+      "attempt": "772e1085572545b9-integrated-before-final-guard",
+      "originalPath": "ops/cpu-launch/fresh-vm-guest.py",
+      "path": "source/c5f4d5b41249f5b001ea90c6e7a1889cf9413cdd2f78e1228740fab5f3ffd9f7.bin",
+      "bytes": 23113,
+      "sha256": "c5f4d5b41249f5b001ea90c6e7a1889cf9413cdd2f78e1228740fab5f3ffd9f7"
+    },
+    {
+      "attempt": "772e1085572545b9-integrated-before-final-guard",
+      "originalPath": "ops/cpu-launch/test_fresh_vm.py",
+      "path": "source/ea30fefd5143f454cc4217c12ed91d26f37217ae24e89dfe7bbed6a3861b6843.bin",
+      "bytes": 3587,
+      "sha256": "ea30fefd5143f454cc4217c12ed91d26f37217ae24e89dfe7bbed6a3861b6843"
+    }
+  ]
+}

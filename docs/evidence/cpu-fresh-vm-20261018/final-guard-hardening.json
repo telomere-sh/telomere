@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "integratedGuestSha256": "c5f4d5b41249f5b001ea90c6e7a1889cf9413cdd2f78e1228740fab5f3ffd9f7",
+  "finalGuestSha256": "e45374bc22224c5e969a79a4c88da0647b58c56631b43fee54c30d445052459b",
+  "onlyAstChange": "main() invokes the existing disposable-guest guard before entering the shutdown-handler try/finally",
+  "allIntegrationFunctionBodiesUnchanged": true,
+  "launchTests": 99,
+  "cloudTests": 29,
+  "total": 128,
+  "unmarkedHostEntryTestPassed": true
+}

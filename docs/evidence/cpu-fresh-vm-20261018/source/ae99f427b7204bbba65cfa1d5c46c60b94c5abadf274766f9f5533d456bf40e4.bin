@@ -1,0 +1,42 @@
+// Runs in a fresh network namespace with only a scratch PostgreSQL Unix socket.
+// Uses the archived modules; no production configuration or signer is loaded.
+import {pathToFileURL} from 'node:url';
+const root=process.argv[2],socket=process.argv[3];
+if(!/^\/opt\/telomere-mainnet-pilot\/rehearsals\/cpu-dr-[0-9a-f]{16}$/.test(root)||socket!==root+'/pg-socket')throw Error('Restore scope rejected');
+const archived=relative=>import(pathToFileURL(root+'/release/'+relative));
+const {openStore,jobs}=await archived('dist/src/store.js');
+const {Auth}=await archived('dist/src/auth.js');
+const {Service}=await archived('dist/src/service.js');
+const {ChainBridge}=await archived('dist/src/bridge.js');
+const {createApp}=await archived('dist/src/app.js');
+const {loadConfig}=await archived('dist/src/config.js');
+const {generatePrivateKey,privateKeyToAccount}=await archived('node_modules/viem/_esm/accounts/index.js');
+const {default:pino}=await archived('node_modules/pino/pino.js');
+const signer=generatePrivateKey(),owner=privateKeyToAccount(generatePrivateKey()),token=privateKeyToAccount(generatePrivateKey());
+const config=loadConfig({SIGNER_PRIVATE_KEY:signer,DEMO_PRIVATE_KEY:generatePrivateKey(),ESCROW_ADDRESS:owner.address,TOKEN_ADDRESS:token.address,
+  RPC_URL:'http://127.0.0.1:1',DATA_DIR:':memory:',DATABASE_URL:'postgresql://restore@localhost/restore?host='+encodeURIComponent(socket)});
+const store=await openStore(config);
+try{
+  let duplicateControllerRejected=false;
+  try{const duplicate=await openStore(config);await duplicate.close()}catch(error){duplicateControllerRejected=error.message==='A Telomere controller already owns this database'}
+  if(!duplicateControllerRejected)throw Error('Duplicate controller database ownership was accepted');
+  const auth=new Auth(store.db,config),app=createApp(new Service(store.db,new ChainBridge(config),config,false),auth,pino({level:'silent'}));
+  const all=await store.db.select().from(jobs),owners=[...new Set(all.map(job=>job.owner))];
+  let reads=0,restoredJobs=0;
+  for(const address of owners){
+    // Synthetic session in the isolated restored database, not a mainnet login.
+    const session=await auth.session(address);
+    try{
+      const headers={cookie:'telomere_session='+session};
+      const runs=await app.request('/api/runs',{headers});if(runs.status!==200)throw Error('Restored jobs API');
+      const data=await runs.json(),expected=all.filter(row=>row.owner===address);
+      if(data.runs.length!==expected.length)throw Error('Restored owner job count');
+      for(const row of expected){const actual=data.runs.find(item=>item.id===row.id);if(!actual||actual.charged!==row.charged||actual.refund!==row.refund||actual.settlementTxHash!==row.settlementTxHash||JSON.stringify(actual.receipt)!==JSON.stringify(row.receipt))throw Error('Restored finalized record changed')}
+      const workspace=await app.request('/api/workspace',{headers});if(workspace.status!==200||(await workspace.json()).owner!==address)throw Error('Restored workspace API');
+      reads+=2;restoredJobs+=expected.length;
+    }finally{await auth.logout(session)}
+  }
+  const unauth=await app.request('/api/runs');if(unauth.status!==401)throw Error('Restored authentication boundary');
+  process.stdout.write(JSON.stringify({passed:true,owners:owners.length,restoredJobs,authenticatedReads:reads,unauthenticatedStatus:unauth.status,
+    workerStarted:false,networkNamespace:'no interfaces or routes',productionSignerLoaded:false,syntheticSessionsRemoved:true,duplicateControllerRejected})+'\n');
+}finally{await store.close()}

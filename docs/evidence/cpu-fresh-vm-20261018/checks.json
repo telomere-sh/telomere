@@ -1,0 +1,19 @@
+{
+  "linuxOperatorTests": {
+    "launch": 99,
+    "cloud": 29,
+    "total": 128,
+    "passed": true
+  },
+  "preFinalGuardLinuxTests": {
+    "launch": 98,
+    "cloud": 29,
+    "total": 127,
+    "passed": true
+  },
+  "mainnetTransactions": 0,
+  "productionUpdated": false,
+  "gitPublished": false,
+  "nodeSyntaxCheckPassed": true,
+  "bashSyntaxCheckPassed": true
+}

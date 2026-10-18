@@ -1,0 +1,13 @@
+{
+  "id": "runtime-a75ee7bc44ff9aaa8964023975f0b7147c92fee4-0186b1f95b793944",
+  "sha256": "4c4332a2eac341c051deb7889c066a1c1c78e1753962425cdafd55accb8c8891",
+  "bytes": 445120197,
+  "runtimePinsVerified": 758,
+  "files": 22194,
+  "passed": true,
+  "maximumCiphertextBytes": 536870912,
+  "elapsedSeconds": 26.634,
+  "productionBackupReceiptChanged": false,
+  "productionOperatorUpdated": false,
+  "privateFixtureOnly": true
+}
