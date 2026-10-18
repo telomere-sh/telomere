@@ -1,0 +1,39 @@
+{
+  "namespace": "bc30e0c5ce514188",
+  "candidateDirectory": "/opt/telomere-mainnet-pilot/private/cyst-count-candidate-bc30e0c5ce514188",
+  "pythonTests": [
+    {
+      "suite": "operator/cpu-cloud",
+      "exitCode": 0,
+      "output": ".............................\n----------------------------------------------------------------------\nRan 29 tests in 0.568s\n\nOK\n"
+    },
+    {
+      "suite": "operator/cpu-launch",
+      "exitCode": 0,
+      "output": ".........................................................\n----------------------------------------------------------------------\nRan 57 tests in 0.032s\n\nOK\n"
+    }
+  ],
+  "productionApplicationChanged": false,
+  "patchedCandidateFiles": [
+    {
+      "path": "app/dist/src/config.js",
+      "sha256": "008d718853cffbd0d6b41076ace105e298f4f9e3d391395eb8dd7e386ad34ad1"
+    },
+    {
+      "path": "app/dist/src/cysts/service.js",
+      "sha256": "759b5dc3d18e71baf4d03f388ca1ebf2aebc655cf58f09db9f63226cdce50737"
+    },
+    {
+      "path": "app/dist/src/cysts/configured.js",
+      "sha256": "c7298d88282d193f2a03dbe09467e48dea7bef2204318172b55b6e760ecfb01c"
+    },
+    {
+      "path": "app/dist/src/cysts/capacity.js",
+      "sha256": "c6fc998f5e9c1ae8ca3f896c0919c6c531135d0d20e652f926053d3ef6f90567"
+    },
+    {
+      "path": "app/dist/ops/cpu-cloud/cyst-capacity.json",
+      "sha256": "7defbaf45ec24e87af18d08d927e99486ef6687b4dfff38b31865908f6731942"
+    }
+  ]
+}

@@ -14,7 +14,8 @@ const replication = z.object({ version: z.literal(1), destinations: z.tuple([des
 /** Operator-owned file only. Its credentials never enter API config, logs, checkpoints or backups. */
 export async function configuredCysts(db: Database, config: Config, options: { quotaPolicy?: CystQuotaPolicy } = {}): Promise<CystService | undefined> {
   if (!config.CYSTS_ENABLED) return undefined;
-  const boundedOptions = {...options, ...(config.WALLET_ACCESS === 'public' ? {globalBytes:config.CYSTS_GLOBAL_BYTES} : {})};
+  const boundedOptions = {...options, globalCheckpoints:config.CYSTS_GLOBAL_CHECKPOINTS,
+    ...(config.WALLET_ACCESS === 'public' ? {globalBytes:config.CYSTS_GLOBAL_BYTES} : {})};
   if (!config.CYSTS_REPLICATION_CONFIG) {
     if (!config.CYSTS_DIR) throw new Error('Private checkpoint storage is unconfigured');
     return new CystService(db, config.CYSTS_DIR, boundedOptions);

@@ -18,3 +18,4 @@ docs/evidence/cpu-journal-archive-20261017/source/*.bin -text -diff
 docs/evidence/cpu-archive-scale-20261017/source/*.bin -text -diff
 docs/evidence/cpu-infrastructure-20261018/source/*.bin -text -diff
 docs/evidence/cpu-backup-capacity-20261018/source/*.bin -text -diff
+docs/evidence/cpu-cyst-count-20261018/source/*.bin -text -diff

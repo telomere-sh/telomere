@@ -2,6 +2,7 @@ import { z } from 'zod';
 import { isAbsolute, relative, resolve, sep } from 'node:path';
 import { addressSchema, bytes32Schema, moneySchema } from './common.js';
 import { baseUsdcForChainId } from './chain/chains.js';
+import { CYST_BACKUP_CAPACITY } from './cysts/capacity.js';
 
 const schema = z.object({
   MODE: z.enum(['demo', 'testnet', 'mainnet']).default('demo'),
@@ -11,6 +12,7 @@ const schema = z.object({
   DATABASE_URL: z.string().url().optional(),
   DATA_DIR: z.string().default('.local/db'),
   CYSTS_GLOBAL_BYTES: z.coerce.number().int().min(33554432).max(107374182400).default(1073741824),
+  CYSTS_GLOBAL_CHECKPOINTS: z.coerce.number().int().min(1).max(CYST_BACKUP_CAPACITY.globalCheckpoints).default(CYST_BACKUP_CAPACITY.globalCheckpoints),
   CYSTS_ENABLED: z.enum(['true', 'false']).default('false').transform(value => value === 'true'),
   CYSTS_DIR: z.string().min(1).optional(),
   CYSTS_LARGE_DIR: z.string().min(1).optional(),

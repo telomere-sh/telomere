@@ -6,6 +6,7 @@ import { cysts, cystOwners, cystQuotaV2MigrationSQL, type CystRecord } from './s
 import { PrivateCystStorage, ciphertextDigest } from './storage.js';
 import { cystCapabilities, cystQuotaPolicySchema, type CystQuotaPolicy } from './quota.js';
 import type { CiphertextStore } from './replicated.js';
+import { CYST_BACKUP_CAPACITY, cystGlobalCheckpointLimit } from './capacity.js';
 import { CYST_CAPABILITIES, cystAddressSchema, cystEnvelopeSchema, cystIdSchema, cystIdempotencySchema,
   cystHeaderSchema, cystMetadataSchema, type CystEnvelope, type CystMetadata } from './types.js';
 
@@ -25,9 +26,11 @@ function requestDigest(input: CystEnvelope): string {
 export class CystService {
   readonly storage: CiphertextStore;
   private readonly quotaPolicy: CystQuotaPolicy | undefined;
-  constructor(private readonly db: Database, destination: string | CiphertextStore, private readonly options: { quotaPolicy?: CystQuotaPolicy; globalBytes?: number } = {}) {
+  private readonly globalCheckpoints: number;
+  constructor(private readonly db: Database, destination: string | CiphertextStore, private readonly options: { quotaPolicy?: CystQuotaPolicy; globalBytes?: number; globalCheckpoints?: number } = {}) {
     this.storage = typeof destination === 'string' ? new PrivateCystStorage(destination) : destination;
     this.quotaPolicy = options.quotaPolicy === undefined ? undefined : Object.freeze(cystQuotaPolicySchema.parse(options.quotaPolicy));
+    this.globalCheckpoints = cystGlobalCheckpointLimit.parse(options.globalCheckpoints ?? CYST_BACKUP_CAPACITY.globalCheckpoints);
   }
   capabilities(quotaVersion: 1 | 2 = 1) { return cystCapabilities(this.quotaPolicy, quotaVersion); }
   get privateDirectory(): string {
@@ -52,7 +55,11 @@ export class CystService {
     }
     const digest = requestDigest(input);
     const claimed = await this.db.transaction(async tx => {
-      if (this.options.globalBytes !== undefined) await tx.execute(sql`UPDATE quote_admission_lock SET id = id WHERE id = 1`);
+      // Serialize global reservations across owners and pooled PostgreSQL connections.
+      const locked: unknown = await tx.execute(sql`UPDATE quote_admission_lock SET id = id WHERE id = 1 RETURNING id`);
+      if (typeof locked !== 'object' || locked === null || !('rows' in locked) || !Array.isArray(locked.rows) || locked.rows.length !== 1) {
+        throw new Problem(503, 'cyst_storage_unavailable', 'Checkpoint admission is unavailable.');
+      }
       await tx.insert(cystOwners).values({ owner }).onConflictDoNothing();
       const [usage] = await tx.select().from(cystOwners).where(eq(cystOwners.owner, owner)).for('update');
       if (!usage) throw new Problem(503, 'cyst_storage_unavailable', 'Checkpoint metadata is unavailable.');
@@ -61,9 +68,13 @@ export class CystService {
         if (previous.requestHash !== digest) throw new Problem(409, 'cyst_idempotency_conflict', 'Reuse this key only for the original encrypted checkpoint.');
         return { record: previous, replayed: true };
       }
+      const aggregate = await tx.select({ bytes: sql<string>`coalesce(sum(${cystOwners.usedBytes}),0)::text`,
+        checkpoints: sql<string>`coalesce(sum(${cystOwners.checkpoints}),0)::text` }).from(cystOwners);
+      if (Number(aggregate[0]?.checkpoints ?? '0') >= this.globalCheckpoints) {
+        throw new Problem(503, 'cyst_global_checkpoint_capacity', 'Checkpoint storage is at capacity. Existing snapshots remain readable.');
+      }
       if (this.options.globalBytes !== undefined) {
-        const usage = await tx.select({bytes:sql<string>`coalesce(sum(${cystOwners.usedBytes}),0)::text`}).from(cystOwners);
-        if (Number(usage[0]?.bytes ?? '0') + bytes.byteLength > this.options.globalBytes) {
+        if (Number(aggregate[0]?.bytes ?? '0') + bytes.byteLength > this.options.globalBytes) {
           throw new Problem(503, 'cyst_global_capacity', 'Checkpoint storage is at capacity. Existing snapshots remain readable.');
         }
       }

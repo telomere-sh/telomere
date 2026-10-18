@@ -1,0 +1,13 @@
+{
+  "pathsAbsent": {
+    "fixture": true,
+    "sealed": true,
+    "recovered-data": true,
+    "recovered-cysts": true,
+    "fixture-age-identity": true,
+    "fixture-age-recipients": true,
+    "readback.tar.age": true
+  },
+  "containers": [],
+  "volumes": []
+}

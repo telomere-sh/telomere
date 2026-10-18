@@ -1,0 +1,34 @@
+{
+  "productionRelease": "a75ee7bc44ff9aaa8964023975f0b7147c92fee4",
+  "productionRuntimePinsVerified": 758,
+  "unchangedCandidatePins": 755,
+  "patches": [
+    {
+      "path": "app/dist/src/config.js",
+      "sha256": "008d718853cffbd0d6b41076ace105e298f4f9e3d391395eb8dd7e386ad34ad1"
+    },
+    {
+      "path": "app/dist/src/cysts/service.js",
+      "sha256": "759b5dc3d18e71baf4d03f388ca1ebf2aebc655cf58f09db9f63226cdce50737"
+    },
+    {
+      "path": "app/dist/src/cysts/configured.js",
+      "sha256": "c7298d88282d193f2a03dbe09467e48dea7bef2204318172b55b6e760ecfb01c"
+    },
+    {
+      "path": "app/dist/src/cysts/capacity.js",
+      "sha256": "c6fc998f5e9c1ae8ca3f896c0919c6c531135d0d20e652f926053d3ef6f90567"
+    },
+    {
+      "path": "app/dist/ops/cpu-cloud/cyst-capacity.json",
+      "sha256": "7defbaf45ec24e87af18d08d927e99486ef6687b4dfff38b31865908f6731942"
+    }
+  ],
+  "candidateOperatorHashes": {
+    "operator/cpu-cloud/archive_policy.py": "d361420fdb96f7b3aeb2a180ab646772cc213bbde1dd4f54bc3455d803a427d0",
+    "operator/cpu-cloud/cyst-capacity.json": "0797a1cc6c77f7272b3bc3bccf0229711122720f2124051bd3724c77b705be0e",
+    "operator/cpu-launch/mainnet-ops.py": "53dbb50d631239c95d1daf935b1a1e13324cfb517cdd38416f65e623be451012",
+    "operator/cpu-launch/cyst-count-fixture.mjs": "ae24941f02ddbb97939999f9a6a44d11302e34bcfe77ba805fae714e2a5379bf",
+    "operator/cpu-launch/cyst-count-acceptance.py": "dddbd79313d3791f7800b798d04194c7194f71944295fe458a87a8adb9671e73"
+  }
+}

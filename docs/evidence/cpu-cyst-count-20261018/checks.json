@@ -1,0 +1,27 @@
+{
+  "typescript": {
+    "command": "npx tsc",
+    "exitCode": 0,
+    "frontendBundlesRebuilt": false
+  },
+  "windowsCystRegression": {
+    "command": "npx vitest run tests/cyst-capacity.test.ts tests/cysts.test.ts tests/cyst-quota-v2.test.ts tests/cyst-backup.test.ts",
+    "exitCode": 0,
+    "filesPassed": 4,
+    "testsPassed": 58,
+    "posixOnlySkipped": 2,
+    "durationSeconds": 119.21
+  },
+  "linuxOperatorTests": [
+    {
+      "suite": "operator/cpu-cloud",
+      "exitCode": 0,
+      "output": ".............................\n----------------------------------------------------------------------\nRan 29 tests in 0.568s\n\nOK\n"
+    },
+    {
+      "suite": "operator/cpu-launch",
+      "exitCode": 0,
+      "output": ".........................................................\n----------------------------------------------------------------------\nRan 57 tests in 0.032s\n\nOK\n"
+    }
+  ]
+}

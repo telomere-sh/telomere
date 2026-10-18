@@ -1,0 +1,11 @@
+{
+  "localCommitPrepared": true,
+  "gitPushed": false,
+  "productionApplicationActivated": false,
+  "productionOperatorUpdated": false,
+  "privateCloudSourcesPublished": false,
+  "followUp": [
+    "Deploy reviewed controller with dist/ops/cpu-cloud/cyst-capacity.json and matched Python policy/JSON",
+    "Publish the matched private cloud sources separately and obtain a fresh cloud verification"
+  ]
+}

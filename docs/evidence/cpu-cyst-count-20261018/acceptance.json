@@ -1,0 +1,88 @@
+{
+  "scope": "candidate small Cyst admission and exact archive member limit",
+  "passed": true,
+  "candidateDirectory": "/opt/telomere-mainnet-pilot/private/cyst-count-candidate-bc30e0c5ce514188",
+  "productionApplicationChanged": false,
+  "productionBackupReceiptChanged": false,
+  "published": false,
+  "mainnetTransactions": 0,
+  "fixture": {
+    "scope": "synthetic small checkpoint history with actual default admission boundary",
+    "checkpoints": 49000,
+    "ciphertextBytes": 833000,
+    "seededHistoricalCheckpoints": 48998,
+    "competingFinalSlotUploads": 16,
+    "acceptedFinalSlotUploads": 1,
+    "rejectedFinalSlotUploads": 15,
+    "pendingRetryAtCapacity": true,
+    "replayAtCapacity": true,
+    "overflowRejectedAfterRestart": true,
+    "existingReadAtCapacity": true,
+    "defaultLimitUsed": true,
+    "elapsedSeconds": 20.83937651,
+    "mainnetTransactions": 0,
+    "mainnetSignerLoaded": false
+  },
+  "id": "backup-20261018T141121Z-1b6acfc3",
+  "sha256": "bad5defac35699943f8ab32028fea7f71213ba200f00c1a5617eb9aff82c00c6",
+  "bytes": 130704728,
+  "capacity": {
+    "files": 49999,
+    "cystFiles": 49000,
+    "otherFiles": 999,
+    "payloadBytes": 18765146,
+    "cystBytes": 833000,
+    "dumpBytes": 7563097,
+    "snapshotBytes": 10346118,
+    "configurationBytes": 22931
+  },
+  "archiveMembers": 50000,
+  "serverRestore": {
+    "passed": true,
+    "tables": 47,
+    "rows": 49105,
+    "elapsedSeconds": 7.154,
+    "network": "none",
+    "mainnetControllerStarted": false,
+    "databaseImage": "postgres@sha256:721873c34ceb9f8d8fc265984940dc982404c105f19ad51be9fdc5970a6080ea"
+  },
+  "cloudImplementationRestore": {
+    "passed": true,
+    "tables": 47,
+    "rows": 49105,
+    "elapsedSeconds": 6.865,
+    "network": "none",
+    "controllerStarted": false,
+    "cysts": {
+      "files": 49000,
+      "bytes": 833000,
+      "pendingWithoutBlob": 0,
+      "checksumsValid": true
+    }
+  },
+  "cloudRunnerExecuted": false,
+  "archiveCopyAndAuthenticatedReadback": true,
+  "restoredCheckpointDecryptions": 49000,
+  "oneAdditionalMemberRejected": true,
+  "acceptedArchiveUnchangedAfterRejectedOverflow": true,
+  "verification": {
+    "id": "backup-20261018T141121Z-1b6acfc3",
+    "verifiedFiles": 49999,
+    "authenticatedAgeDecryption": true,
+    "manifestChecksumsValid": true,
+    "verifiedAt": 1792332714.55202,
+    "capacity": {
+      "files": 49999,
+      "cystFiles": 49000,
+      "otherFiles": 999,
+      "payloadBytes": 18765146,
+      "cystBytes": 833000,
+      "dumpBytes": 7563097,
+      "snapshotBytes": 10346118,
+      "configurationBytes": 22931
+    }
+  },
+  "elapsedSeconds": 85.094,
+  "scratchResourcesRemoved": true,
+  "fixtureRecoveryKeysRemoved": true
+}

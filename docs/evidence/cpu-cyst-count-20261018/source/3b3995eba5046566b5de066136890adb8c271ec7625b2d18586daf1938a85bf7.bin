@@ -1,0 +1,11 @@
+import { z } from 'zod';
+import contract from '../../ops/cpu-cloud/cyst-capacity.json' with { type: 'json' };
+
+const parsed = z.object({
+  schemaVersion: z.literal(1), archiveMembers: z.number().int().positive(),
+  globalCheckpoints: z.number().int().positive(), reservedMembers: z.number().int().positive(),
+}).strict().refine(value => value.globalCheckpoints + value.reservedMembers === value.archiveMembers,
+  'Cyst checkpoint slots and recovery members must share one archive budget').parse(contract);
+
+export const CYST_BACKUP_CAPACITY = Object.freeze(parsed);
+export const cystGlobalCheckpointLimit = z.number().int().min(1).max(parsed.globalCheckpoints);

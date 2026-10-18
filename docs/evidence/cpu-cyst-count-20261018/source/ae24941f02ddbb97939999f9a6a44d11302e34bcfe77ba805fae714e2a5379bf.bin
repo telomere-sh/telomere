@@ -1,0 +1,101 @@
+// Synthetic historical ciphertexts seed the boundary; real service calls exercise admission/retry.
+import {randomBytes,createHash} from 'node:crypto';
+import {readFile,writeFile,readdir} from 'node:fs/promises';
+import {pathToFileURL} from 'node:url';
+import {join} from 'node:path';
+import {fingerprints} from './table-fingerprints.mjs';
+const [app,folder,url,mode,restoredDirectory]=process.argv.slice(2);
+if(!/^\/opt\/telomere-mainnet-pilot\/private\/cyst-count-candidate-[0-9a-f]{16}\/app$/.test(app)
+ ||folder!==app.replace(/\/app$/,'/fixture')||!/^postgresql:\/\/fixture@127\.0\.0\.1:[0-9]+\/fixture$/.test(url)
+ ||!['generate','verify'].includes(mode))throw Error('Isolated count fixture arguments');
+const load=relative=>import(pathToFileURL(app+'/'+relative));
+const {default:pg}=await load('node_modules/pg/lib/index.js');
+const {encryptCheckpoint,decryptCheckpoint}=await load('dist/src/sdk/cysts.js');
+const {cystHeaderSchema}=await load('dist/src/cysts/types.js');
+const {CYST_BACKUP_CAPACITY}=await load('dist/src/cysts/capacity.js');
+const {CystService}=await load('dist/src/cysts/service.js');
+const sha=value=>createHash('sha256').update(value).digest('hex');
+const check=(value,message)=>{if(!value)throw Error(message)};
+const owner=index=>'0x'+index.toString(16).padStart(40,'0');
+const header=value=>cystHeaderSchema.parse({version:value.version,algorithm:value.algorithm,id:value.id,owner:value.owner,agent:value.agent,
+ applicationSchema:value.applicationSchema,plaintextBytes:value.plaintextBytes,nonce:value.nonce});
+const filename=(address,checksum)=>sha('telomere-cyst-blob:'+address+':'+checksum)+'.blob';
+const client=new pg.Client({connectionString:url});await client.connect();
+let store;
+try{
+ if(mode==='generate'){
+  const {openStore}=await load('dist/src/store.js');store=await openStore({DATABASE_URL:url,DATA_DIR:folder});
+  const key=randomBytes(32);await writeFile(join(folder,'fixture-key'),key,{mode:0o600});
+  const directory=join(folder,'source-cysts');const service=new CystService(store.db,directory,{globalBytes:1073741824});await service.initialize();
+  const limit=CYST_BACKUP_CAPACITY.globalCheckpoints;check(limit===49000,'Reviewed default count');
+  const owners=new Map();let first;const began=performance.now();
+  for(let offset=0;offset<limit-2;offset+=128){
+   const count=Math.min(128,limit-2-offset),records=[],parameters=[],values=[];
+   for(let index=offset;index<offset+count;index++){
+    const address=owner(Math.floor(index/512)+1);
+    const {envelope}=await encryptCheckpoint(new Uint8Array([index%251]),{owner:address,applicationSchema:'count.v1'},key);
+    if(!first)first=envelope;
+    records.push(envelope);
+    if(!owners.has(address))await client.query('INSERT INTO cyst_owners(owner,used_bytes,checkpoints) VALUES($1,0,0)',[address]);
+    const used=owners.get(address)??0;owners.set(address,used+1);
+    const row=[envelope.owner,envelope.id,envelope.agent,'count-seed-'+index,sha(JSON.stringify([header(envelope),envelope.sha256])),
+     envelope.version,envelope.algorithm,envelope.applicationSchema,envelope.plaintextBytes,envelope.nonce,envelope.sha256,17,'ready'];
+    parameters.push('('+row.map((_,i)=>'$'+(values.length+i+1)).join(',')+')');values.push(...row);
+   }
+   await Promise.all(records.map(envelope=>writeFile(join(directory,filename(envelope.owner,envelope.sha256)),Buffer.from(envelope.ciphertext,'base64'),{mode:0o600})));
+   await client.query('INSERT INTO cysts(owner,id,agent,idem_key,request_hash,version,algorithm,application_schema,plaintext_bytes,nonce,sha256,ciphertext_bytes,state) VALUES '+parameters.join(','),values);
+   if(offset%4096===0)process.stdout.write(JSON.stringify({phase:'seeded-small-cysts',records:offset+count})+'\n');
+  }
+  for(const [address,count] of owners)await client.query('UPDATE cyst_owners SET used_bytes=$2,checkpoints=$3 WHERE owner=$1',[address,count*17,count]);
+  const second=new CystService(store.db,directory,{globalBytes:1073741824});await second.initialize();
+  const pending=await encryptCheckpoint(new Uint8Array([3]),{owner:owner(100),applicationSchema:'count.v1'},key);
+  const put=service.storage.put.bind(service.storage);service.storage.put=async()=>{throw Error('count-fixture-interruption')};
+  try{await service.upload(pending.envelope.owner,pending.envelope,'pending-count-retry');throw Error('Missing interruption')}
+  catch(error){check(error.message==='count-fixture-interruption','Pending upload fixture failure')}finally{service.storage.put=put}
+  check(Number((await client.query("SELECT count(*) FROM cysts WHERE state='pending'")).rows[0].count)===1,'Pending reservation persisted');
+  const attempts=await Promise.all(Array.from({length:16},(_,index)=>encryptCheckpoint(new Uint8Array([9]),{owner:owner(200+index),applicationSchema:'count.v1'},key)));
+  const results=await Promise.allSettled(attempts.map((item,index)=>(index%2?service:second).upload(item.envelope.owner,item.envelope,'race-count-'+index)));
+  check(results.filter(item=>item.status==='fulfilled').length===1,'Final slot concurrent admission');
+  for(const result of results)if(result.status==='rejected')check(result.reason.code==='cyst_global_checkpoint_capacity','Global count rejection');
+  const restarted=new CystService(store.db,directory,{globalBytes:1073741824});await restarted.initialize();
+  check((await restarted.upload(pending.envelope.owner,pending.envelope,'pending-count-retry')).replayed,'Pending retry at full capacity');
+  check((await restarted.upload(first.owner,first,'count-seed-0')).replayed,'Historical replay at full capacity');
+  const extra=await encryptCheckpoint(new Uint8Array([1]),{owner:owner(300),applicationSchema:'count.v1'},key);
+  let overflowRejected=false;
+  try{await restarted.upload(extra.envelope.owner,extra.envelope,'after-restart-overflow')}catch(error){check(error.code==='cyst_global_checkpoint_capacity','Restart count rejection');overflowRejected=true}
+  check(overflowRejected,'Restart preserves global bound');
+  check((await restarted.download(first.owner,first.id)).ciphertext===first.ciphertext,'Existing read at full count');
+  const usage=(await client.query('SELECT sum(checkpoints)::integer AS count,sum(used_bytes)::bigint::text AS bytes FROM cyst_owners')).rows[0];
+  const actual=Number((await client.query('SELECT count(*) FROM cysts')).rows[0].count);
+  check(usage.count===limit&&actual===limit&&Number(usage.bytes)===limit*17,'Record/byte counter conservation');
+  check((await readdir(directory)).length===limit,'Exact physical file count');
+  await client.query('BEGIN ISOLATION LEVEL REPEATABLE READ READ ONLY');
+  const snapshot={fingerprints:await fingerprints(client),references:(await client.query('SELECT owner,sha256,ciphertext_bytes,state FROM cysts ORDER BY owner,id')).rows};
+  await client.query('ROLLBACK');
+  await writeFile(join(folder,'snapshot.json'),JSON.stringify(snapshot,null,2)+'\n',{mode:0o600});key.fill(0);
+  const report={scope:'synthetic small checkpoint history with actual default admission boundary',checkpoints:actual,ciphertextBytes:Number(usage.bytes),
+   seededHistoricalCheckpoints:limit-2,competingFinalSlotUploads:16,acceptedFinalSlotUploads:1,rejectedFinalSlotUploads:15,
+   pendingRetryAtCapacity:true,replayAtCapacity:true,overflowRejectedAfterRestart:true,existingReadAtCapacity:true,
+   defaultLimitUsed:true,elapsedSeconds:(performance.now()-began)/1000,mainnetTransactions:0,mainnetSignerLoaded:false};
+  await writeFile(join(folder,'fixture.json'),JSON.stringify(report,null,2)+'\n',{mode:0o600});process.stdout.write(JSON.stringify(report)+'\n');
+ }else{
+  check(restoredDirectory===app.replace(/\/app$/,'/recovered-cysts'),'Restored ciphertext scope');
+  const key=await readFile(join(folder,'fixture-key'));let count=0;
+  try{
+   await client.query('BEGIN ISOLATION LEVEL REPEATABLE READ READ ONLY');
+   await client.query('DECLARE verify_cysts NO SCROLL CURSOR FOR SELECT * FROM cysts ORDER BY owner,id');
+   for(;;){
+    const rows=(await client.query('FETCH FORWARD 128 FROM verify_cysts')).rows;if(!rows.length)break;
+    await Promise.all(rows.map(async row=>{
+     const bytes=await readFile(join(restoredDirectory,filename(row.owner,row.sha256)));check(sha(bytes)===row.sha256,'Recovered ciphertext checksum');
+     const envelope={version:row.version,algorithm:row.algorithm,id:row.id,owner:row.owner,agent:row.agent,applicationSchema:row.application_schema,
+      plaintextBytes:row.plaintext_bytes,nonce:row.nonce,sha256:row.sha256,ciphertext:bytes.toString('base64')};
+     check((await decryptCheckpoint(envelope,key)).byteLength===1,'Recovered authenticated plaintext');
+    }));count+=rows.length;
+   }
+   await client.query('CLOSE verify_cysts');await client.query('ROLLBACK');
+   check(count===49000,'Full recovered checkpoint count');
+   process.stdout.write(JSON.stringify({passed:true,authenticatedCheckpointDecryptions:count,mainnetTransactions:0})+'\n');
+  }finally{key.fill(0)}
+ }
+}finally{await client.end();if(store)await store.close()}

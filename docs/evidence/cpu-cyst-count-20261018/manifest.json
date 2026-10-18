@@ -1,0 +1,172 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-18T14:24:35.169260+00:00",
+  "scope": "Local count-aware candidate; 49000 encrypted checkpoints, 50000 archive members, complete authenticated restore and atomic final-slot admission; no production activation or publication",
+  "report": {
+    "path": "docs/CPU-CYST-COUNT-20261018.md",
+    "bytes": 8585,
+    "sha256": "e7fa630a80390586181a4851f29c2ea68f3da18048514320e5641f9eeddc07a8"
+  },
+  "files": [
+    {
+      "path": "docs/evidence/cpu-cyst-count-20261018/acceptance.json",
+      "bytes": 2690,
+      "sha256": "bdeda198a5786facd469c44ba5361e9b95c1b2d0418217ad0ac97d5237effbe7"
+    },
+    {
+      "path": "docs/evidence/cpu-cyst-count-20261018/attempts.json",
+      "bytes": 6694,
+      "sha256": "819efd099548dd5add8e8e0d444c5bcea7265bb915c692210c8394a6e7d15359"
+    },
+    {
+      "path": "docs/evidence/cpu-cyst-count-20261018/candidate.json",
+      "bytes": 1435,
+      "sha256": "6b4f247950b5e532c071a54f39ddeb485a4c504137d84a2a794621ffa3161106"
+    },
+    {
+      "path": "docs/evidence/cpu-cyst-count-20261018/checks.json",
+      "bytes": 902,
+      "sha256": "6e654c511b86d6f1d4275e8ddb7c6837cf5df00b73c167f39dd51980727d574a"
+    },
+    {
+      "path": "docs/evidence/cpu-cyst-count-20261018/cleanup.json",
+      "bytes": 261,
+      "sha256": "eb782d76afff2252d3ec52ae09fdeebf8268aaeb555e838ddc3b1665f349b353"
+    },
+    {
+      "path": "docs/evidence/cpu-cyst-count-20261018/mainnet-audit.json",
+      "bytes": 454,
+      "sha256": "4cb9fdbb82fe71fd66a9cc5812275457112053215034812364bb9a4747a8243b"
+    },
+    {
+      "path": "docs/evidence/cpu-cyst-count-20261018/production-guard.json",
+      "bytes": 319,
+      "sha256": "4665956db74d753b9a892d8bd747bbd6e3cbb4c8ac5ed6508eb54a801e5c0a9f"
+    },
+    {
+      "path": "docs/evidence/cpu-cyst-count-20261018/provenance.json",
+      "bytes": 1494,
+      "sha256": "c5afb106a668b70de60c3e3fdb7664fbc87e7d20e178b7df4960ca5aa35fe072"
+    },
+    {
+      "path": "docs/evidence/cpu-cyst-count-20261018/publication.json",
+      "bytes": 404,
+      "sha256": "56cc20dbb4d34a238a7c82be76c92df6bb51b75127d3046787f341d4622d7b9c"
+    },
+    {
+      "path": "docs/evidence/cpu-cyst-count-20261018/source/008d718853cffbd0d6b41076ace105e298f4f9e3d391395eb8dd7e386ad34ad1.bin",
+      "bytes": 13036,
+      "sha256": "008d718853cffbd0d6b41076ace105e298f4f9e3d391395eb8dd7e386ad34ad1"
+    },
+    {
+      "path": "docs/evidence/cpu-cyst-count-20261018/source/05e4930a6069f84c3cbb7e5009d30b89e1df0df5a4ddfe94198b4e2fa61885fe.bin",
+      "bytes": 10942,
+      "sha256": "05e4930a6069f84c3cbb7e5009d30b89e1df0df5a4ddfe94198b4e2fa61885fe"
+    },
+    {
+      "path": "docs/evidence/cpu-cyst-count-20261018/source/0797a1cc6c77f7272b3bc3bccf0229711122720f2124051bd3724c77b705be0e.bin",
+      "bytes": 109,
+      "sha256": "0797a1cc6c77f7272b3bc3bccf0229711122720f2124051bd3724c77b705be0e"
+    },
+    {
+      "path": "docs/evidence/cpu-cyst-count-20261018/source/17cd296a15622525a0be654bd891bec71d5a868c24a51c154697c03ceae86299.bin",
+      "bytes": 8878,
+      "sha256": "17cd296a15622525a0be654bd891bec71d5a868c24a51c154697c03ceae86299"
+    },
+    {
+      "path": "docs/evidence/cpu-cyst-count-20261018/source/3b3995eba5046566b5de066136890adb8c271ec7625b2d18586daf1938a85bf7.bin",
+      "bytes": 662,
+      "sha256": "3b3995eba5046566b5de066136890adb8c271ec7625b2d18586daf1938a85bf7"
+    },
+    {
+      "path": "docs/evidence/cpu-cyst-count-20261018/source/53dbb50d631239c95d1daf935b1a1e13324cfb517cdd38416f65e623be451012.bin",
+      "bytes": 28415,
+      "sha256": "53dbb50d631239c95d1daf935b1a1e13324cfb517cdd38416f65e623be451012"
+    },
+    {
+      "path": "docs/evidence/cpu-cyst-count-20261018/source/561234b0f141765bbbed5b09e20a32ac16d4a8b8f4145168e44e649679e3f37a.bin",
+      "bytes": 10039,
+      "sha256": "561234b0f141765bbbed5b09e20a32ac16d4a8b8f4145168e44e649679e3f37a"
+    },
+    {
+      "path": "docs/evidence/cpu-cyst-count-20261018/source/67727001d7a389a58721bef0bf9e1450b9ae24b1b72c4222d9c293b40ad42654.bin",
+      "bytes": 2629,
+      "sha256": "67727001d7a389a58721bef0bf9e1450b9ae24b1b72c4222d9c293b40ad42654"
+    },
+    {
+      "path": "docs/evidence/cpu-cyst-count-20261018/source/759b5dc3d18e71baf4d03f388ca1ebf2aebc655cf58f09db9f63226cdce50737.bin",
+      "bytes": 11177,
+      "sha256": "759b5dc3d18e71baf4d03f388ca1ebf2aebc655cf58f09db9f63226cdce50737"
+    },
+    {
+      "path": "docs/evidence/cpu-cyst-count-20261018/source/7defbaf45ec24e87af18d08d927e99486ef6687b4dfff38b31865908f6731942.bin",
+      "bytes": 117,
+      "sha256": "7defbaf45ec24e87af18d08d927e99486ef6687b4dfff38b31865908f6731942"
+    },
+    {
+      "path": "docs/evidence/cpu-cyst-count-20261018/source/9d5c27042c1c6f84288f0ff3f8a816162e375b2f1bd4bf6b91395753ea739c3e.bin",
+      "bytes": 12557,
+      "sha256": "9d5c27042c1c6f84288f0ff3f8a816162e375b2f1bd4bf6b91395753ea739c3e"
+    },
+    {
+      "path": "docs/evidence/cpu-cyst-count-20261018/source/9e19e1d02ea338edf6d5ceccfbc824390bdf6c91ee8c4230665e308a087f9620.bin",
+      "bytes": 11195,
+      "sha256": "9e19e1d02ea338edf6d5ceccfbc824390bdf6c91ee8c4230665e308a087f9620"
+    },
+    {
+      "path": "docs/evidence/cpu-cyst-count-20261018/source/ae24941f02ddbb97939999f9a6a44d11302e34bcfe77ba805fae714e2a5379bf.bin",
+      "bytes": 9009,
+      "sha256": "ae24941f02ddbb97939999f9a6a44d11302e34bcfe77ba805fae714e2a5379bf"
+    },
+    {
+      "path": "docs/evidence/cpu-cyst-count-20261018/source/b13561807f43c83e4a195ea2e8b2cb8fe1c2d50330d20b41d580e2210d682378.bin",
+      "bytes": 30024,
+      "sha256": "b13561807f43c83e4a195ea2e8b2cb8fe1c2d50330d20b41d580e2210d682378"
+    },
+    {
+      "path": "docs/evidence/cpu-cyst-count-20261018/source/c02f4946acd2bf15c7e26235ac8e77b492897261831a9e4459b006a695524140.bin",
+      "bytes": 7128,
+      "sha256": "c02f4946acd2bf15c7e26235ac8e77b492897261831a9e4459b006a695524140"
+    },
+    {
+      "path": "docs/evidence/cpu-cyst-count-20261018/source/c193548eb9b3c77d9ae9a58903894d327fd9388cbe6bf5b1d7b94b0c744ab42e.bin",
+      "bytes": 5884,
+      "sha256": "c193548eb9b3c77d9ae9a58903894d327fd9388cbe6bf5b1d7b94b0c744ab42e"
+    },
+    {
+      "path": "docs/evidence/cpu-cyst-count-20261018/source/c6fc998f5e9c1ae8ca3f896c0919c6c531135d0d20e652f926053d3ef6f90567.bin",
+      "bytes": 662,
+      "sha256": "c6fc998f5e9c1ae8ca3f896c0919c6c531135d0d20e652f926053d3ef6f90567"
+    },
+    {
+      "path": "docs/evidence/cpu-cyst-count-20261018/source/c7298d88282d193f2a03dbe09467e48dea7bef2204318172b55b6e760ecfb01c.bin",
+      "bytes": 2547,
+      "sha256": "c7298d88282d193f2a03dbe09467e48dea7bef2204318172b55b6e760ecfb01c"
+    },
+    {
+      "path": "docs/evidence/cpu-cyst-count-20261018/source/c82bb599be6afc35d3c9960b977d3aa8b83eab61f931a4d661f7b7d8002a8222.bin",
+      "bytes": 5764,
+      "sha256": "c82bb599be6afc35d3c9960b977d3aa8b83eab61f931a4d661f7b7d8002a8222"
+    },
+    {
+      "path": "docs/evidence/cpu-cyst-count-20261018/source/d361420fdb96f7b3aeb2a180ab646772cc213bbde1dd4f54bc3455d803a427d0.bin",
+      "bytes": 5626,
+      "sha256": "d361420fdb96f7b3aeb2a180ab646772cc213bbde1dd4f54bc3455d803a427d0"
+    },
+    {
+      "path": "docs/evidence/cpu-cyst-count-20261018/source/dddbd79313d3791f7800b798d04194c7194f71944295fe458a87a8adb9671e73.bin",
+      "bytes": 8139,
+      "sha256": "dddbd79313d3791f7800b798d04194c7194f71944295fe458a87a8adb9671e73"
+    },
+    {
+      "path": "docs/evidence/cpu-cyst-count-20261018/source/edadd3da85aac9193a8929e20f59ddd0d117eb00388373c6ff624f4db3ab6953.bin",
+      "bytes": 4600,
+      "sha256": "edadd3da85aac9193a8929e20f59ddd0d117eb00388373c6ff624f4db3ab6953"
+    },
+    {
+      "path": "docs/evidence/cpu-cyst-count-20261018/source-record.json",
+      "bytes": 6083,
+      "sha256": "5044fb27d579a7a7d01d204b026ceae48b7ce8f1ac20043ab5d6b1f5bb7f45a1"
+    }
+  ]
+}

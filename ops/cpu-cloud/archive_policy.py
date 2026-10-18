@@ -1,6 +1,9 @@
 """Shared, bounded capacity contract for backup producers and consumers."""
 import hashlib,json,re,tarfile
-from pathlib import PurePosixPath
+from pathlib import Path,PurePosixPath
+_contract=json.loads(Path(__file__).with_name('cyst-capacity.json').read_text())
+if set(_contract)!={'schemaVersion','archiveMembers','globalCheckpoints','reservedMembers'} or _contract['schemaVersion']!=1 or any(type(_contract[key]) is not int or _contract[key]<=0 for key in ('archiveMembers','globalCheckpoints','reservedMembers')) or _contract['globalCheckpoints']+_contract['reservedMembers']!=_contract['archiveMembers']:
+    raise ValueError('Invalid shared Cyst backup capacity contract')
 MIB=1024**2
 MAX_DATA_ARCHIVE=1536*MIB
 MAX_RUNTIME_ARCHIVE=512*MIB
@@ -9,7 +12,9 @@ MAX_DUMP_BYTES=256*MIB
 MAX_METADATA_BYTES=16*MIB
 MAX_DATA_PAYLOAD=1408*MIB
 MAX_RUNTIME_PAYLOAD=2048*MIB
-MAX_MEMBERS=50000
+MAX_MEMBERS=_contract['archiveMembers']
+MAX_CYST_REFERENCES=_contract['globalCheckpoints']
+MAX_OTHER_FILES=_contract['reservedMembers']-1 # the manifest itself occupies one member
 TRANSFER_SECONDS=600
 CRYPTO_SECONDS=600
 RESTORE_SECONDS=600
@@ -26,7 +31,7 @@ def asset_limit(name):
     except ValueError:return MIB # small owner-recovery envelopes, never data/runtime
 def validate_files(files,runtime=False):
     if not isinstance(files,list) or not 1<=len(files)<MAX_MEMBERS:raise ValueError('Archive file-count budget')
-    names=set();totals={'cysts':0,'dump':0,'snapshot':0,'configuration':0,'other':0};size=0
+    names=set();totals={'cysts':0,'dump':0,'snapshot':0,'configuration':0,'other':0};size=0;cyst_files=0
     for item in files:
         name=item.get('path');number=item.get('bytes');checksum=item.get('sha256')
         if not isinstance(name,str) or not name or '\\' in name or PurePosixPath(name).is_absolute() or '..' in PurePosixPath(name).parts or str(PurePosixPath(name))!=name or name in names:
@@ -35,17 +40,19 @@ def validate_files(files,runtime=False):
         names.add(name);size+=number
         category='cysts' if name.startswith('cysts/') else 'dump' if name=='database.dump' else 'snapshot' if name=='snapshot.json' else 'configuration' if name.startswith('configuration/') else 'other'
         totals[category]+=number
+        if category=='cysts':cyst_files+=1
         if not runtime and category=='cysts' and (not re.fullmatch(r'cysts/[0-9a-f]{64}\.blob',name) or not 17<=number<=2*MIB+16):raise ValueError('Cyst member budget')
     if size>(MAX_RUNTIME_PAYLOAD if runtime else MAX_DATA_PAYLOAD):raise ValueError('Expanded archive budget')
     if not runtime:
+        if cyst_files>MAX_CYST_REFERENCES or len(files)-cyst_files>MAX_OTHER_FILES:raise ValueError('Reserved Cyst/non-Cyst file-count budget')
         for category,limit in [('cysts',MAX_CYST_BYTES),('dump',MAX_DUMP_BYTES),('snapshot',MAX_METADATA_BYTES),('configuration',MAX_METADATA_BYTES),('other',MAX_METADATA_BYTES)]:
             if totals[category]>limit:raise ValueError('Data member budget: '+category)
-    return {'files':len(files),'payloadBytes':size,'cystBytes':totals['cysts'],'dumpBytes':totals['dump'],
+    return {'files':len(files),'cystFiles':cyst_files,'otherFiles':len(files)-cyst_files,'payloadBytes':size,'cystBytes':totals['cysts'],'dumpBytes':totals['dump'],
         'snapshotBytes':totals['snapshot'],'configurationBytes':totals['configuration']}
 def restore_cysts(source,snapshot,directory):
     """Recreate every retained ciphertext; pending uploads may have no blob."""
     references=snapshot.get('references',[])
-    if not isinstance(references,list) or len(references)>=MAX_MEMBERS:raise ValueError('Cyst reference count')
+    if not isinstance(references,list) or len(references)>MAX_CYST_REFERENCES:raise ValueError('Cyst reference count')
     directory.mkdir(mode=0o700)
     members={m.name:m for m in source.getmembers()};seen=set();total=0;pending=0
     for item in references:

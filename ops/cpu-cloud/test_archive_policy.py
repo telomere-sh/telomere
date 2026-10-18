@@ -12,6 +12,22 @@ RUNTIME='runtime-'+'a'*40+'-'+'b'*16
 def entry(name,size):return {'path':name,'bytes':size,'sha256':'a'*64}
 
 class CapacityTests(unittest.TestCase):
+    def test_shared_file_budget_reserves_all_recovery_members(self):
+        cysts=[entry('cysts/'+format(n,'064x')+'.blob',17) for n in range(p.MAX_CYST_REFERENCES)]
+        others=[entry('configuration/'+str(n),0) for n in range(p.MAX_OTHER_FILES)]
+        checked=p.validate_files(cysts+others)
+        self.assertEqual(checked['files']+1,p.MAX_MEMBERS)
+        self.assertEqual(checked['cystFiles'],49000);self.assertEqual(checked['otherFiles'],999)
+        with self.assertRaises(ValueError):p.validate_files(cysts+[entry('cysts/'+'f'*64+'.blob',17)])
+        with self.assertRaises(ValueError):p.validate_files(others+[entry('configuration/overflow',0)])
+        with self.assertRaises(ValueError):p.validate_files(cysts+others+[entry('extra',0)])
+    def test_copy_and_restore_bound_pending_references_before_any_blob_access(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root=Path(folder).resolve();source=root/'source';source.mkdir();destination=root/'copy';destination.mkdir()
+            references=[{}]*(p.MAX_CYST_REFERENCES+1)
+            with self.assertRaises(AssertionError):ops.copy_cysts(source,destination,references)
+            with self.assertRaises(ValueError):p.restore_cysts(None,{'references':references},root/'restore')
+            self.assertFalse((root/'restore').exists());self.assertEqual(list(destination.iterdir()),[])
     def test_data_and_runtime_have_distinct_exact_bounds(self):
         for identifier,limit,runtime in ((DATA,p.MAX_DATA_ARCHIVE,False),(RUNTIME,p.MAX_RUNTIME_ARCHIVE,True)):
             cloud.validate_archive_metadata({'id':identifier,'bytes':limit,'sha256':'a'*64},runtime)

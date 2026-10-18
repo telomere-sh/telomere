@@ -1,0 +1,91 @@
+# Default development path: npm run demo (generates disposable local accounts).
+# For the closed Base Sepolia pilot, configure all values explicitly.
+MODE=testnet
+# Optional treasury credit stays disabled without both reviewed private pins.
+# Initial live profile supports Solana mainnet USDC to Base mainnet only.
+# TREASURY_TOPUP_CONFIG=/private/telomere/treasury-topups.json
+# TREASURY_TOPUP_CONFIG_SHA256=<64-character-lowercase-sha256>
+HOST=127.0.0.1
+PORT=3280
+PUBLIC_ORIGIN=https://telomere.example.com
+CHAIN_ID=84532
+RPC_URL=https://sepolia.base.org
+TOKEN_ADDRESS=0x036CbD53842c5426634e7929541eC2318f3dCF7e
+# Mainnet: MODE=mainnet, CHAIN_ID=8453, RPC_URL=https://mainnet.base.org,
+# TOKEN_ADDRESS=0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913.
+# Independently reviewed Circle proxy/implementation pins, required on both public chains.
+# Circle uses its zeppelinos implementation slot; do not supply EIP-1967 or old USDG facet pins.
+TOKEN_CODE_HASH=
+TOKEN_IMPLEMENTATION_ADDRESS=
+TOKEN_IMPLEMENTATION_CODE_HASH=
+ESCROW_ADDRESS=
+SIGNER_PRIVATE_KEY=
+PILOT_ALLOWED_OWNERS=
+DATABASE_URL=
+# Agent lifecycle financial namespace: legacy (default), platform (EOA), or platform_vault (per-agent Vault).
+# Persisted chain/deployment and lifecycle bindings cannot be switched. Base migration requires a fresh dedicated database.
+AGENT_RUNTIME=legacy
+# Optional private reviewed platform JSON (dedicated escrow/signer and HostKit capacity).
+# Both platform modes require this plus CYSTS_ENABLED=true and configured private Cysts storage.
+# platform_vault also requires the reviewed vaults registry/implementation pins in this private JSON.
+# Both modes use max 120s CPU leases and 30s rollover lead; owner runner executes transitions.
+PLATFORM_RUNTIME_CONFIG=
+# Enable application checkpoints only with a private ciphertext directory.
+CYSTS_ENABLED=false
+CYSTS_GLOBAL_CHECKPOINTS=49000
+# Includes pending records; reserves 1000 of the 50000 backup members for recovery files.
+CYSTS_DIR=
+CYSTS_REPLICATION_CONFIG=
+# Optional private JSON file with reviewed CystRegistry/Selection code pins and confirmation depth.
+# Requires CYSTS_ENABLED; this enables unsigned agent plans and read-only verification.
+CYST_REGISTRY_CONFIG=
+# Optional reviewed hourly receipt-root deployment (unsigned publication plans only).
+RECEIPT_ROOT_ADDRESS=
+# Optional read-only Selection indexer; all pins required when enabled.
+SELECTION_ENABLED=false
+SELECTION_REGISTRY_ADDRESS=
+SELECTION_CODE_HASH=
+SELECTION_START_BLOCK=
+SELECTION_CONFIRMATIONS=3
+# Optional private reviewed ERC-8004 publisher JSON with a separate private signer key file.
+# Requires SELECTION_ENABLED=true; publication runs after canonical Selection sync.
+REPUTATION_PUBLISHER_CONFIG=
+# Optional private JSON: reviewed Selection/Vault code pins, asset/network and exact endpoint origins.
+# Enables owner declarations and agent-signed endpoint control evidence; does not submit payments.
+INCOME_ENDPOINTS_CONFIG=
+# Optional absolute path to a reviewed Akash readiness-only profile. Enables an owner-scoped GET proof; never submits a lease.
+AKASH_READINESS_CONFIG=
+# Optional private reviewed exact EIP-3009 Vault intake profile and separate private facilitator key file.
+# Disabled by default. Fixed-price inbound payment receipt only; does not execute agent work.
+VAULT_INCOME_CONFIG=
+CPU_MODE=docker
+# CPU_MODE=hostkit also requires a reviewed HTTPS/loopback origin, host public key,
+# private controller PEM file (0600 on Unix), and a digest-pinned fixed-task CPU_IMAGE.
+HOST_KIT_URL=
+HOST_KIT_HOST_KEY=
+HOST_KIT_CONTROL_PEM=
+CPU_IMAGE=node@sha256:0a7108bf6c7bf5de370ffb1a3ed6be93d405b43ff159f681a8d18c0e2bc2e402
+# Integer token units; 6 decimals. Rates are pilot configuration, not provider tariffs.
+CPU_PRICE_PER_SECOND=100
+INFERENCE_FIXED_PRICE=10000
+MAX_TOKENS=256
+# Optional: omit all four to disable inference.
+NEAR_ENDPOINT=
+NEAR_MODEL=
+NEAR_ALLOWED_MODELS=
+NEAR_API_KEY=
+# Verified mode performs hardware, workload-policy, TLS and provider-signature checks.
+NEAR_VERIFICATION_MODE=enclave_verified
+NEAR_VERIFIER_PYTHON=
+NEAR_ATTESTATION_POLICY=
+NEAR_ATTESTATION_POLICY_SHA256=
+NEAR_VERIFIER_PATH=
+NEAR_NVIDIA_VERIFIER_MODE=nras
+# For independently pinned local NVIDIA verification, set mode=local and both paths.
+NEAR_NVAT_BINARY=
+NEAR_NVAT_LIBRARY=
+
+# Public wallet access is an explicit deployment choice. Keep allowlist for private installations.
+WALLET_ACCESS=allowlist
+# Enable only behind a loopback proxy overwriting X-Real-IP.
+TRUST_LOOPBACK_PROXY=false

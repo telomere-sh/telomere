@@ -30,7 +30,7 @@ def validate_recipients(text):
     assert all(re.fullmatch(r'age1[0-9a-z]{58}',recipient) for recipient in recipients)
 def copy_cysts(directory,target,references):
     assert directory.is_dir() and not directory.is_symlink() and directory.resolve()==directory
-    assert isinstance(references,list) and len(references)<policy.MAX_MEMBERS
+    assert isinstance(references,list) and len(references)<=policy.MAX_CYST_REFERENCES
     copied=0
     for entry in references:
         assert re.fullmatch('0x[0-9a-f]{40}',entry['owner']) and re.fullmatch('[0-9a-f]{64}',entry['sha256'])
