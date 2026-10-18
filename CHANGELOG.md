@@ -5,6 +5,10 @@
 - Make the lost-ack worker replay fixture independent of an external RPC while preserving signed-byte and single-execution assertions.
 - Reject `-O`, `-OO` and `PYTHONOPTIMIZE` before assert-based recovery tools perform imports or I/O.
 - Add seeded real-EVM cash-conservation campaigns and explicit PostgreSQL concurrency/isolation acceptance.
+- Add independently modeled native Solidity invariants, exact `uint96` edge checks and a completeness gate for both seeds and per-sequence exits.
+- Run HostKit/session and declared-state restoration on a separately pinned gVisor daemon with scoped teardown; exercise the actual LangGraph interrupt and 960-hop lifecycle fixtures.
+- Lock all LangGraph example dependencies with wheel hashes and measure the stated CPU financial/control-plane coverage separately from whole-repository testing.
+- Reject overflowing creation budgets before writing their database reference; retain exact-maximum preparation and unchanged-funds checks.
 - Lock the website builder, align esbuild versions and produce verifiable release manifests with third-party notices.
 - Update the verifier's pinned PyJWT wheel and retain exact dependency hashes.
 - Clarify the active CPU receipt/escrow trust model in Workspace and documentation; connect the GitHub community link.

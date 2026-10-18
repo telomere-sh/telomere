@@ -189,6 +189,24 @@ describe('owner budget changes through API, SDK and MCP on a disposable local ch
     expect(await tokenBalance(deployed.accounts.treasury.address)).toBe(0n);
   });
 
+  it('rejects overflowing create limits before persisting a phantom budget reference', async () => {
+    const before = await store.db.select().from(leashRefs);
+    for (const [hour, day] of [[2n ** 96n, 2n ** 96n], [1n, 2n ** 96n]] as const) {
+      await expect(service.createLeash(deployed.accounts.owner.address, deployed.accounts.outsider.address,
+        hour, day, BigInt(expiry))).rejects.toMatchObject({ status: 422, code: 'invalid_budget' });
+      expect(await store.db.select().from(leashRefs)).toEqual(before);
+    }
+    const max = 2n ** 96n - 1n;
+    const created = await service.createLeash(deployed.accounts.owner.address, deployed.accounts.outsider.address,
+      max, max, BigInt(expiry));
+    expect(decodeFunctionData({ abi: escrowAbi, data: created.transaction.data })).toEqual({
+      functionName: 'createLeash', args: [created.leashId, deployed.accounts.outsider.address, max, max, BigInt(expiry)],
+    });
+    // Preparation does not execute or reserve funds on the disposable chain.
+    expect(await available()).toBe(initialDeposit);
+    expect((await leash(created.leashId)).owner).toBe('0x0000000000000000000000000000000000000000');
+  });
+
   it('preserves settled spending, pending ceilings and funds when limits are lowered exactly to committed usage', async () => {
     const completed = await openRun(); await advance(5); await settle(completed, 4n, 50n);
     const pendingRun = await openRun();

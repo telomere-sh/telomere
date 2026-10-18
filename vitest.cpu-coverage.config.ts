@@ -15,5 +15,6 @@ const config = mergeConfig(base, defineConfig({ test: {
 config.test = { ...config.test, include: ['tests/contracts.test.ts', 'tests/service.test.ts', 'tests/worker.test.ts',
   'tests/workspace-auth.test.ts', 'tests/workspace-client.test.ts', 'tests/journal-archive.test.ts',
   'tests/chain-gateway.test.ts', 'tests/bridge-circle-usdc.test.ts', 'tests/postgres-admission.test.ts',
-  'tests/escrow-stateful.test.ts'] };
+  'tests/escrow-stateful.test.ts', 'tests/base-migration.test.ts', 'tests/leash-update.test.ts',
+  'tests/near-admission-readiness.test.ts', 'tests/retry-scheduling.test.ts', 'tests/receipt-pending.test.ts'] };
 export default config;

@@ -9642,8 +9642,8 @@
           "path": "tests/chain-gateway.test.ts",
           "bytes": 1905,
           "sha256": "becca5f67d16c0fe04f07f7a1fd48771abeb9f04a483bca10e2d991c61bae7bd",
-          "storage": "working-tree",
-          "storedPath": "tests/chain-gateway.test.ts"
+          "storage": "object",
+          "storedPath": "docs/evidence/public-source-archive/objects/becca5f67d16c0fe04f07f7a1fd48771abeb9f04a483bca10e2d991c61bae7bd.bin"
         },
         {
           "path": "tests/chunk-aead.test.ts",
@@ -10342,8 +10342,8 @@
           "path": "tests/leash-update.test.ts",
           "bytes": 22228,
           "sha256": "0ddf112a64cce1b77abc60ba8806d68b24efca83c87df146c3a127b7ae4cecf4",
-          "storage": "working-tree",
-          "storedPath": "tests/leash-update.test.ts"
+          "storage": "object",
+          "storedPath": "docs/evidence/public-source-archive/objects/0ddf112a64cce1b77abc60ba8806d68b24efca83c87df146c3a127b7ae4cecf4.bin"
         },
         {
           "path": "tests/mcp-http.test.ts",

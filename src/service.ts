@@ -135,7 +135,10 @@ export class Service {
   }
   async createLeash(owner: Address, agent: Address, hour: bigint, day: bigint, expiry: bigint) {
     const id = randomId();
-    if (hour <= 0n || day < hour || expiry <= BigInt(Math.floor(Date.now() / 1000)) || expiry > BigInt(Math.floor(Date.now() / 1000) + 30 * 86400)) throw new Problem(422, 'invalid_budget', 'Set positive limits and an expiry within 30 days.');
+    if (hour <= 0n || day < hour || hour >= 2n ** 96n || day >= 2n ** 96n
+      || expiry <= BigInt(Math.floor(Date.now() / 1000)) || expiry > BigInt(Math.floor(Date.now() / 1000) + 30 * 86400)) {
+      throw new Problem(422, 'invalid_budget', 'Set positive limits and an expiry within 30 days.');
+    }
     await this.db.insert(leashRefs).values({ id, owner: owner.toLowerCase() });
     return { leashId: id, transaction: this.bridge.createLeashTransaction(id, agent, hour, day, expiry) };
   }
