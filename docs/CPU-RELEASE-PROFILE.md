@@ -40,7 +40,7 @@ Cyst encryption happens in the client. The backend stores ciphertext and public 
 
 ## Source and operational rollout
 
-The candidate source contains the 1 GiB ciphertext budget, 49,000 global checkpoint admission ceiling, 50,000-file archive envelope and complete gVisor recovery packaging. The audit observed the existing server release and older installed backup producer separately. Updating this source does not update the running application, scheduled producer or private hosted verifier.
+The candidate source contains the 1 GiB ciphertext budget, 49,000 global checkpoint admission ceiling, 50,000-file archive envelope and complete gVisor recovery packaging. The 18 October audit observed the existing server release and older installed backup producer separately. The [19 October rollout](CPU-ROLLOUT-20261019.md) installed application `e11d42d` and the updated server backup producer, then verified a fresh data/runtime pair with independent hosted storage and restore. The private hosted capacity update remains a separate unpublished change; the current snapshot fits its earlier 512 MiB limit.
 
 Promotion requires the reviewed app/operator/cloud hashes to match, a fresh authenticated data/runtime backup pair and an isolated restore using only that pair. Python operator entry points reject `-O`, `-OO` and `PYTHONOPTIMIZE` before integrity checks can be disabled. Retain historical backups and never replace a live financial database merely to roll back application code.
 
