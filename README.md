@@ -1,150 +1,99 @@
-# Telomere
+<a href="https://telomere.sh/">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset=".github/assets/telomere-hero-dark.svg">
+    <img src=".github/assets/telomere-hero-light.svg" alt="Telomere. Compute for AI agents. By the second. Under your control. USDC on Base." width="100%">
+  </picture>
+</a>
 
-Telomere lets AI agents fund and manage their own compute. An agent can receive income, rent compute, preserve its application state, move between hosts and resume when its budget is replenished. Settlement uses **Base and native Circle USDC**, with owner-defined spending limits and shutdown control.
+<p align="center">
+  <a href="https://telomere.sh/">Website</a> &nbsp;·&nbsp;
+  <a href="https://telomere.sh/dashboard/">Open Workspace</a> &nbsp;·&nbsp;
+  <a href="docs/DEVELOPMENT.md">Developer guide</a> &nbsp;·&nbsp;
+  <a href="https://t.me/telomereonchain">Telegram</a> &nbsp;·&nbsp;
+  <a href="https://x.com/telomere_base">X</a>
+</p>
 
-This repository brings together the backend, smart contracts, HostKit integration, SDKs, MCP tools, operator tooling and the integrated website. The [CPU release profile](docs/CPU-RELEASE-PROFILE.md) separates the running service from the broader protocol components and records its trust boundaries.
+# Compute for agents. Control for owners.
 
-## CPU release profile
+Telomere lets AI agents fund and manage their own compute. Give an agent a budget, run work, settle measured usage in **USDC on Base**, and preserve encrypted application state between runs.
 
-The public service settles native USDC on Base through the legacy CPU escrow. It runs bounded `sha256`, `hash_chain`, `sort` and `primes` tasks for up to 120 seconds per reservation. Wallet sign-in scopes each owner's Workspace and execution records. Read `/api/config` for the actual configuration of the service you are using.
+An agent's budget acts like its lifespan. It can earn, spend, scale down, go dormant and resume when funded again. The owner sets the limits and keeps shutdown control.
 
-Receipts attest recorded usage through the operator's immutable signing authority. Check the signature and canonical settlement event; they do not prove the mathematical result of a computation. Unused funds return to the payer's **escrow balance**. A separate owner-approved withdrawal transfers available USDC to the wallet. Hourly root publication is a property of a configured ReceiptRoot profile, not an implication of a signed CPU receipt.
+## Four primitives, one lifecycle
 
-The operator can read CPU input/output. Cysts encrypt application state in the client, with a separately retained recovery key. Container isolation and remote provider attestation have distinct trust boundaries.
+| Primitive | What it gives an agent |
+| :--- | :--- |
+| **Cells** | Compute sessions with an agreed workload, duration and spending ceiling. |
+| **Leashes** | Owner-defined budgets, permissions and stop controls. |
+| **Run Receipts** | Signed usage records that can be checked against canonical settlement. |
+| **Cysts** | Client-encrypted application state for checkpointing, handoff and recovery. |
 
-## Implemented protocol components
+<picture>
+  <source media="(max-width: 600px) and (prefers-color-scheme: dark)" srcset=".github/assets/telomere-flow-mobile-dark.svg">
+  <source media="(max-width: 600px)" srcset=".github/assets/telomere-flow-mobile-light.svg">
+  <source media="(prefers-color-scheme: dark)" srcset=".github/assets/telomere-flow-dark.svg">
+  <img src=".github/assets/telomere-flow-light.svg" alt="Authorize with your wallet and Leash, execute bounded CPU work, settle signed usage in USDC, then preserve encrypted state. Unused funds return to escrow." width="100%">
+</picture>
 
-- **Owner control:** wallet authentication, scoped sessions, Leash budgets, spending caps, approvals and stop/kill controls.
-- **Compute orchestration:** host discovery, signed offers, lane-aware selection, HostKit admission, CPU jobs, execution sessions and verified model inference.
-- **Agent lifecycle:** durable job state, source-bound preemption replanning, checkpoint handoff and explicit owner/application completion.
-- **Payments:** Base USDC escrow, signed quotes, reservations, metering, fee-inclusive settlement, refunds, spend permissions, x402 and treasury top-ups.
-- **Application state:** client-encrypted Cysts, checkpoint coordination, registry bindings, replication and recovery.
-- **Verifiable evidence:** signed receipts, metering chains, canonical onchain checks, plus hourly roots and provider attestation in their configured profiles.
-- **Developer access:** HTTP APIs, TypeScript and Python clients, MCP tools and a working backend console.
-- **Operations:** database migrations, health checks, diagnostics, backups, restore verification and recovery tooling.
+Approve a ceiling before a run starts. Settlement charges receipted usage and releases the unused balance back to escrow. A separate wallet-approved withdrawal returns available USDC to the owner's wallet.
 
-## Public Workspace
+## Try Telomere
 
-Open [telomere.sh/dashboard](https://telomere.sh/dashboard/) and connect your wallet. A signed login opens your private server-backed Workspace. Balances, Leashes, CPU reservations, execution records, signed receipts and encrypted snapshots connect to the backend. Deposits, withdrawals, Leash changes and reservations request wallet approval. Settlement then follows the approved quote. See [launch and paid acceptance](docs/PUBLIC-WORKSPACE-LAUNCH.md).
+**In your browser:** open the [Workspace](https://telomere.sh/dashboard/) and sign in with your wallet to manage Leashes, run plans, balances, receipts and encrypted checkpoints.
 
-CPU launch operations, load acceptance, encrypted backups and recovery procedures are recorded in [CPU launch readiness](docs/CPU-LAUNCH-READINESS-20261017.md) and the [operations runbook](ops/cpu-launch/README.md).
-
-Primary off-site backup verification and incident delivery run independently of the owner's PC; see [cloud operations](docs/CPU-CLOUD-OPERATIONS-20261017.md).
-
-Financial journals retain their complete signed history through finalized archive checkpoints. The [archive acceptance](docs/CPU-JOURNAL-ARCHIVE-20261017.md) covers more than 2,000 settlements, crash recovery and replay protection.
-
-## Run locally
-
-Requires **Node.js 22.12+** and npm. On Windows and Linux x64, `npm ci` installs the platform-specific Anvil binary. On other platforms, install the appropriate Anvil binary.
+**On your machine:** start a disposable local demo with test funds. Requires Node.js 22.12+ and npm; the bundled local EVM supports Windows and Linux x64.
 
 ```sh
-npm ci
+npm ci --ignore-scripts
+npm --prefix website ci --ignore-scripts
+npm run build
 npm run demo
 ```
 
-Open:
+Open [localhost:3280](http://127.0.0.1:3280/) for the website or [localhost:3280/console](http://127.0.0.1:3280/console) for the developer console. The demo uses a fresh loopback chain and database on each invocation. Other platforms can supply their corresponding Anvil binary; see the [development guide](docs/DEVELOPMENT.md).
 
-- **Website:** `http://127.0.0.1:3280/`
-- **Backend console:** `http://127.0.0.1:3280/console`
+## Build with Telomere
 
-In the console, choose **Use demo account**, **Fund demo balance**, create a budget, request a CPU quote and approve it. Inspect execution results, returned funds and the signed receipt.
+Use the TypeScript or Python client, connect through MCP, or work directly with the HTTP APIs. The SDK prepares checked wallet actions; the owner's wallet signs them.
 
-The demo starts a disposable local EVM on chain 31337 and PostgreSQL through PGlite. It uses local child-process CPU execution and test funds. Each invocation creates a fresh chain and database.
+| Start here | Explore |
+| :--- | :--- |
+| **TypeScript** | [Client source](src/sdk/) · [Wallet SDK and MCP guide](docs/sdk-mcp.md) |
+| **Python** | [Python SDK](python/) · [Usage guide](docs/python-sdk.md) |
+| **Agent tools** | [Local MCP](docs/sdk-mcp.md) · [HTTP MCP](docs/mcp-http.md) |
+| **Payments** | [Base / USDC](docs/base-usdc-migration-2026-10-14.md) · [Spend permissions](docs/base-spend-permission-funding.md) · [x402](docs/x402-cpu-reservations-v1.md) |
+| **State** | [Cysts](docs/cysts.md) · [Checkpoint coordination](docs/cyst-checkpoints.md) |
+| **Execution** | [HostKit](docs/platform-runtime.md) · [Paid CPU jobs](docs/paid-cpu-jobs.md) |
 
-For the original standalone website preview:
+## Inside the repository
 
-```sh
-npm run build
-cd website
-node serve.mjs
-```
+| Path | Contents |
+| :--- | :--- |
+| [`src/`](src/) | API, authentication, scheduling, metering, settlement and agent lifecycle. |
+| [`contracts/`](contracts/) | Escrow, registries and protocol contracts. |
+| [`python/`](python/) | Python SDK and examples. |
+| [`website/`](website/) | Public website, Workspace and the original motion system. |
+| [`ops/`](ops/) | Monitoring, encrypted backups, recovery and acceptance tooling. |
+| [`tests/`](tests/) · [`solidity-tests/`](solidity-tests/) | Backend regression and Solidity conservation campaigns. |
 
-Open `http://127.0.0.1:4196/`.
+## Inspect the implementation
 
-## Build and run a configured deployment
+The [CPU release profile](docs/CPU-RELEASE-PROFILE.md) records the live configuration, receipt authority, privacy model and recovery boundaries. The [rollout record](docs/CPU-ROLLOUT-20261019.md) ties deployment checks to exact source and runtime hashes.
 
-```sh
-npm ci
-npm run build
-npm start
-```
-
-For development, use `npm run dev` after the build. Startup loads the website assets from `dist/website`; `npm run demo` prepares those assets itself.
-
-The build compiles contracts and TypeScript, bundles the backend console and Workspace client, and copies the frontend assets. The supplied CSS, HTML, animation modules and media retain their original bytes. The owner-authorized JavaScript integration is recorded separately in `docs/evidence/public-wallet-launch-20261017/frontend-integration.json`. The public website is served at `/`, with the backend console at `/console` and `/console/`.
-
-Use `.env.example` to configure the deployment:
-
-- `MODE=testnet` selects **Base Sepolia, chain 84532**.
-- `MODE=mainnet` selects **Base mainnet, chain 8453**.
-- Configure the native Circle USDC address and reviewed proxy/implementation code pins for the selected chain.
-- Supply the deployed escrow, dedicated PostgreSQL database, digest-pinned executor and wallet access policy. Use `WALLET_ACCESS=public` for public wallet sign-in, or the default `allowlist` with `PILOT_ALLOWED_OWNERS` for private access.
-- Configure private checkpoint storage, provider credentials and reviewed attestation policy for the selected services.
-
-Prepare a chain-specific deployment plan with:
-
-```sh
-npm run deploy:prepare -- --network base-sepolia --public-profile /private/reviewed-base-sepolia.json
-```
-
-The preparation command produces an unsigned plan for the external owner wallet workflow. See [network configuration](docs/network-preflight.md), [Base/USDC configuration](docs/base-usdc-migration-2026-10-14.md), [payment deployment](docs/platform-payment-deployment-v3.md) and [infrastructure](infra/README.md).
-
-## Execution, settlement and recovery
-
-A signed quote binds the payer, original workload, run identity, duration and maximum charge. Confirmed reservations enter the execution queue. Leash caps account for both completed charges and outstanding reservation ceilings.
-
-Metering observations are persisted before billing. Signed receipts bind execution evidence, output hashes and accounting. Settlement transactions are journaled before broadcast, and retries reuse the original signed bytes. Settlement pays the final charge and returns the unused reservation balance.
-
-HostKit hosts provide signed admission and execution evidence. Paid CPU jobs retain their original workload, deadline, budget and lane policy. The owner-side runners coordinate checkpoint capture, canonical settlement, replacement proposals and application completion through durable private journals.
-
-Cysts encrypt application state on the client with XChaCha20-Poly1305. Recovery keys stay with the client, while the service stores ciphertext and public metadata. Checkpoint coordinators, file vaults and registry bindings support durable capture, handoff and restore.
-
-The controller uses a PostgreSQL advisory lock for exclusive ownership. Recovery reconciles persisted execution observations, cleanup evidence, receipts and transaction journals. Operator tooling provides health checks, stopped-state backups and isolated restore verification.
-
-## Provider verification
-
-The inference adapter provides two configured modes:
-
-- `provider_tls` uses an allowlisted HTTPS endpoint and model with TLS evidence.
-- `enclave_verified` verifies TDX/NVIDIA attestation, reviewed workload policy, attested TLS SPKI and the provider response signature.
-
-```sh
-npm run near:readiness
-npm run near:preflight
-```
-
-Readiness checks the local configuration and policy. Preflight performs hardware verification. Provider evidence capture and policy review are documented in [provider verification](docs/near-verification.md) and [provider routing](docs/near-route-plan.md).
-
-## Developer tools and documentation
-
-The TypeScript and Python clients provide checked API access, checkpoint handling and exact unsigned wallet intents. Wallet signing and submission remain in the owner's chosen wallet workflow. MCP exposes the same controlled operations to agent runtimes.
-
-```sh
-npm run mcp
-npm run mcp:platform
-```
-
-| Area | Documentation |
-| --- | --- |
-| Runtime and host execution | [Platform runtime](docs/platform-runtime.md), [CPU commands](docs/platform-exec.md), [paid CPU jobs](docs/paid-cpu-jobs.md) |
-| Budgets and payments | [Selection](docs/platform-selection.md), [spend permissions](docs/base-spend-permission-funding.md), [x402](docs/x402-cpu-reservations-v1.md), [treasury](docs/treasury-solana-topups-v1.md) |
-| Receipts and evidence | [Financial receipts](docs/platform-receipts.md), [v2 issuance](docs/platform-v2-issuance.md) |
-| State and recovery | [Cysts](docs/cysts.md), [checkpoint coordination](docs/cyst-checkpoints.md), [file vault](docs/cyst-checkpoints-file-vault.md), [registry](docs/cyst-registry.md) |
-| APIs and clients | [SDK and MCP](docs/sdk-mcp.md), [financial MCP](docs/mcp-http.md), [Python SDK](docs/python-sdk.md) |
-| Operations | [Operator guide](docs/operator-guide.md), [backups](docs/cyst-backup.md), [restore](docs/restore-acceptance.md), [CPU infrastructure](infra/cpu/README.md) |
-| Website | [Original handoff](website/README.md), [integration record](docs/website-handoff-integration-2026-10-15.md) |
-
-## Validation
+Receipts verify signed usage and canonical settlement. The compute operator can read CPU input/output; Cyst state is encrypted by the client. Detailed configuration, provider verification and build instructions live in the [development guide](docs/DEVELOPMENT.md).
 
 ```sh
 npm run typecheck
 npm test
-npm run build
-npm audit
-node scripts/release-manifest.mjs --verify
-python docs/verify-evidence.py
+npm run release:verify
 ```
 
-Dated results retain their exact source cutoff under `docs/` and `docs/evidence/`. They are historical evidence, not an automatic result for a later commit. The review workflow runs clean builds, baseline regression, isolated PostgreSQL, Python and security gates on its exact SHA. `dist/release-manifest.json` binds delivered files and both npm locks to a source commit; `--require-clean` rejects a dirty release.
+See [CONTRIBUTING](CONTRIBUTING.md) for the full verification workflow, [SECURITY](SECURITY.md) for private vulnerability reporting, and the [operations runbook](ops/cpu-launch/README.md) for backup and recovery.
 
-Original Telomere code uses [MIT](LICENSE). Third-party runtime exports and media retain their [own terms](THIRD_PARTY_NOTICES.md). See [security reporting](SECURITY.md), [contribution checks](CONTRIBUTING.md) and [release changes](CHANGELOG.md).
+---
+
+**Set the ceiling. Keep control of the rest.**
+
+[Explore the protocol](https://telomere.sh/protocol/) · [Open Workspace](https://telomere.sh/dashboard/) · [Release notes](CHANGELOG.md)
+
+<sub>Original Telomere code: <a href="LICENSE">MIT</a>. Brand assets, third-party code and media retain their <a href="THIRD_PARTY_NOTICES.md">applicable terms</a>.</sub>

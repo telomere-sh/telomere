@@ -1,0 +1,74 @@
+{
+  "palette": {
+    "light": {
+      "bg": "#f0eee9",
+      "ink": "#191919",
+      "muted": "#66645f",
+      "line": "#d5d2cb",
+      "quiet": "#dfdcd5"
+    },
+    "dark": {
+      "bg": "#191919",
+      "ink": "#f0eee9",
+      "muted": "#aaa79e",
+      "line": "#3d3b36",
+      "quiet": "#33322e"
+    }
+  },
+  "accent": "#fc5d24",
+  "sourceMark": "website/dist/assets/brand/mark.svg",
+  "fonts": [
+    {
+      "path": "website/dist/assets/fonts/GrgcKwrN6d3Uz8EwcLHZxwEfC4.woff2",
+      "sha256": "362b168da82d69bc67d2a358fa20c59151cb4ceac8a5506be6baef5e6827fa42"
+    },
+    {
+      "path": "website/dist/assets/fonts/qITWJ2WdG0wrgQPDb8lvnYnTXDg.woff2",
+      "sha256": "f3e78bd72980a64f52acc2da4407c031dee9ad4f8dacaedc1934c4329e9e9748"
+    }
+  ],
+  "textOutlined": true,
+  "externalResources": false,
+  "files": [
+    {
+      "path": "social-preview.png",
+      "bytes": 43325,
+      "sha256": "8236401b248bc8de0253c217e44f34dba59c2ce2f00420fcbec74a66bd587040"
+    },
+    {
+      "path": "social-preview.svg",
+      "bytes": 38867,
+      "sha256": "b5c399aa149141ec2b0b075bec617517610ef6668001645cee0067a95cda11e9"
+    },
+    {
+      "path": "telomere-flow-dark.svg",
+      "bytes": 69488,
+      "sha256": "b834f9705956ac32935b287dbf18e5b2a0e24cc55e0be95530d0527fdea7a7bd"
+    },
+    {
+      "path": "telomere-flow-light.svg",
+      "bytes": 69488,
+      "sha256": "3519f7ea7523b4c7f680a79d7508e2e6863365dbffcd6471e4997faded986039"
+    },
+    {
+      "path": "telomere-flow-mobile-dark.svg",
+      "bytes": 69305,
+      "sha256": "2e72405546f791e2a35905a5d22426ad7797836fa2f6de717a01a17fe577a2a5"
+    },
+    {
+      "path": "telomere-flow-mobile-light.svg",
+      "bytes": 69305,
+      "sha256": "07bc0f35aee8a1e5d938ff51a2e4dbf97685d10d8fa27d38e0ae7e828c37621c"
+    },
+    {
+      "path": "telomere-hero-dark.svg",
+      "bytes": 50384,
+      "sha256": "6c52af03de3cb355f1b662c13784aa438abfc696f7269ddab2a2ec6b4494b98f"
+    },
+    {
+      "path": "telomere-hero-light.svg",
+      "bytes": 50384,
+      "sha256": "ac2d5b46e9f9b22561c3e357da6f8975cdff95b4ef9b4e59fd4897a946057dfa"
+    }
+  ]
+}
