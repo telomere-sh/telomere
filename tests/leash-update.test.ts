@@ -54,6 +54,10 @@ describe('owner budget changes through API, SDK and MCP on a disposable local ch
   }
   async function confirmed(transaction: Promise<Hex>) {
     const receipt = await local.publicClient.waitForTransactionReceipt({ hash: await transaction });
+    if (receipt.status !== 'success') {
+      const tx = await local.publicClient.getTransaction({ hash: receipt.transactionHash });
+      throw new Error(`Local budget transaction reverted: hash=${receipt.transactionHash}, gasUsed=${receipt.gasUsed}, gasLimit=${tx.gas}`);
+    }
     expect(receipt.status).toBe('success');
     return receipt;
   }
@@ -102,8 +106,13 @@ describe('owner budget changes through API, SDK and MCP on a disposable local ch
   async function settle(quote: Quote, seconds: bigint, inferenceCharge = 0n) {
     const settlement = { runId: quote.runId, billableSeconds: seconds, inferenceCharge, receiptHash: randomId() };
     const signature = await deployed.accounts.signer.signTypedData(settlementTypedData(31337, deployed.escrowAddress, settlement));
+    // A later timestamp can take a slightly more expensive elapsed-time branch
+    // than eth_estimateGas observed. Match the actual ChainBridge relay margin.
+    const estimate = await local.publicClient.estimateContractGas({ account: deployed.accounts.outsider,
+      address: deployed.escrowAddress, abi: escrowAbi, functionName: 'settleRun', args: [settlement, signature] });
     await confirmed(agentWallet.writeContract({ account: deployed.accounts.outsider, chain: localChain,
-      address: deployed.escrowAddress, abi: escrowAbi, functionName: 'settleRun', args: [settlement, signature] }));
+      address: deployed.escrowAddress, abi: escrowAbi, functionName: 'settleRun', args: [settlement, signature],
+      gas: estimate * 13n / 10n + 10_000n }));
   }
   function onlyTransaction(plan: WalletActionPlan): WalletTransaction {
     expect(plan.intents).toHaveLength(1);
@@ -191,6 +200,7 @@ describe('owner budget changes through API, SDK and MCP on a disposable local ch
 
   it('rejects overflowing create limits before persisting a phantom budget reference', async () => {
     const before = await store.db.select().from(leashRefs);
+    const visible = await service.listLeashes(deployed.accounts.owner.address);
     for (const [hour, day] of [[2n ** 96n, 2n ** 96n], [1n, 2n ** 96n]] as const) {
       await expect(service.createLeash(deployed.accounts.owner.address, deployed.accounts.outsider.address,
         hour, day, BigInt(expiry))).rejects.toMatchObject({ status: 422, code: 'invalid_budget' });
@@ -205,6 +215,35 @@ describe('owner budget changes through API, SDK and MCP on a disposable local ch
     // Preparation does not execute or reserve funds on the disposable chain.
     expect(await available()).toBe(initialDeposit);
     expect((await leash(created.leashId)).owner).toBe('0x0000000000000000000000000000000000000000');
+    expect(await service.listLeashes(deployed.accounts.owner.address)).toEqual(visible);
+  });
+
+  it('keeps funds reserved after exact-gas exhaustion and settles once with margin after timestamp drift', async () => {
+    await deployed.testClient.setBlockTimestampInterval({ interval: 0 });
+    try {
+      const quote = await openRun();
+      const settlement = { runId: quote.runId, billableSeconds: 0n, inferenceCharge: 0n, receiptHash: randomId() };
+      const signature = await deployed.accounts.signer.signTypedData(settlementTypedData(31337, deployed.escrowAddress, settlement));
+      const gas = await local.publicClient.estimateContractGas({ account: deployed.accounts.outsider,
+        address: deployed.escrowAddress, abi: escrowAbi, functionName: 'settleRun', args: [settlement, signature], blockTag: 'latest' });
+      const opened = await local.publicClient.getBlock();
+      await deployed.testClient.setNextBlockTimestamp({ timestamp: opened.timestamp + 2n });
+      await deployed.testClient.mine({ blocks: 1 });
+      const args = { account: deployed.accounts.outsider, chain: localChain, address: deployed.escrowAddress,
+        abi: escrowAbi, functionName: 'settleRun', args: [settlement, signature] } as const;
+      const failed = await local.publicClient.waitForTransactionReceipt({ hash: await agentWallet.writeContract({ ...args, gas }) });
+      expect(failed.status).toBe('reverted'); expect(failed.gasUsed).toBe(gas);
+      expect(await available()).toBe(initialDeposit - 150n);
+      expect(await local.publicClient.readContract({ address: deployed.escrowAddress, abi: escrowAbi,
+        functionName: 'usedReceiptHash', args: [settlement.receiptHash] })).toBe(false);
+      await confirmed(agentWallet.writeContract({ ...args, gas: gas * 13n / 10n + 10_000n }));
+      expect(await available()).toBe(initialDeposit);
+      expect(await tokenBalance(deployed.accounts.treasury.address)).toBe(0n);
+      expect(await local.publicClient.readContract({ address: deployed.escrowAddress, abi: escrowAbi,
+        functionName: 'usedReceiptHash', args: [settlement.receiptHash] })).toBe(true);
+      expect((await local.publicClient.readContract({ address: deployed.escrowAddress, abi: escrowAbi,
+        functionName: 'getRun', args: [quote.runId] })).status).toBe(2);
+    } finally { await deployed.testClient.removeBlockTimestampInterval(); }
   });
 
   it('preserves settled spending, pending ceilings and funds when limits are lowered exactly to committed usage', async () => {

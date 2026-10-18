@@ -110,6 +110,25 @@ describe('wallet → escrow → CPU → signed receipt → settlement', () => {
     expect((await service.requireJob(owner, quote.quote.runId)).status).toBe('prepared');
     expect(quoteSchema.parse(quote.quote).runId).toBe(quote.quote.runId);
   });
+  it('rejects malformed or elapsed quote deadline caps without persisting a quote', async () => {
+    const owner = deployed.accounts.owner.address;
+    const input = { leashId, task: { kind: 'sha256' as const, text: 'deadline-boundary' }, maxSeconds: 3 };
+    const before = await store.db.select({ id: jobs.id }).from(jobs);
+    for (const cap of [0, -1, 1.5, NaN, Number.MAX_SAFE_INTEGER + 1]) {
+      await expect(service.quote(owner, input, 'malformed-deadline-cap', { quoteExpiryCap: cap }))
+        .rejects.toMatchObject({ status: 422, code: 'invalid_quote_expiry' });
+    }
+    await expect(service.quote(owner, input, 'elapsed-deadline-cap', { quoteExpiryCap: Math.floor(Date.now() / 1000) - 1 }))
+      .rejects.toMatchObject({ status: 409, code: 'quote_expired' });
+    expect(await store.db.select({ id: jobs.id }).from(jobs)).toEqual(before);
+  });
+  it('signs the explicit bounded deadline and never silently extends it', async () => {
+    const cap = Math.floor(Date.now() / 1000) + 45;
+    const quoted = await service.quote(deployed.accounts.owner.address,
+      { leashId, task: { kind: 'sha256', text: 'bounded-deadline' }, maxSeconds: 3 }, 'bounded-deadline-cap', { quoteExpiryCap: cap });
+    expect(quoted.quote.quoteExpiry).toBe(cap);
+    expect((await service.requireJob(deployed.accounts.owner.address, quoted.quote.runId)).quote.quoteExpiry).toBe(cap);
+  });
   it('serializes public quote admission and preserves idempotent replay at capacity', async () => {
     const publicService = new Service(store.db, bridge, { ...service.config, WALLET_ACCESS: 'public' }, false);
     const input = { leashId, task: { kind: 'sha256' as const, text: 'bounded-public-queue' }, maxSeconds: 5 };
@@ -134,6 +153,7 @@ describe('wallet → escrow → CPU → signed receipt → settlement', () => {
     }finally{await store.db.delete(jobs).where(inArray(jobs.id,ids))}
     expect((await publicService.admit(owner,quoted.quote.runId,hash)).status).toBe('queued');
     expect((await publicService.admit(owner,quoted.quote.runId,hash)).status).toBe('queued');
+    await expect(publicService.admit(owner, quoted.quote.runId, randomId())).rejects.toMatchObject({ code: 'idempotency_conflict' });
     await send(bridge.stopTransaction(quoted.quote.runId));await worker.drainOnce();
     expect((await service.requireJob(owner,quoted.quote.runId)).charged).toBe('0');
   });
