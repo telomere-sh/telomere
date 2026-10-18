@@ -55,7 +55,7 @@ social_document = 'docs/evidence/domain-https-20261015/social-links-approved-cha
 approved_social_sha256 = '859669b4db1c9ba2061823769cbd80e1c38fc30be0bcbf71d4245318ab5e29ce'
 source_document = 'docs/evidence/legacy-mainnet-preparation-20261015/vps/vps-source-record.json'
 archive_document = 'docs/evidence/public-source-archive/manifest.json'
-archive_sha256 = '78e6120063068870d7767e3244b686bcab5432d9d4c7eb0305fdc751626c9273'
+archive_sha256 = 'e44c00fbf892e82a7e69dd5253b3e7ae3dade39839cc173fb7032bd249e18f68'
 used_archive_entries = set()
 
 
@@ -157,7 +157,7 @@ def verify_original_handoff_site(entry, document):
     """Keep the original bytes and require the independently pinned current edit."""
     assert document == handoff_document and entry.get('path') == 'dist/site.js'
     key = (document, handoff_import_commit)
-    assert key in public_archive and set(public_archive[key]) == {'website/dist/site.js'}
+    assert key in public_archive and set(public_archive[key]) == {'website/dist/site.js', 'website/README.md'}
     verify_archive_file(dict(entry, path='website/dist/site.js'), document, handoff_import_commit)
     approval = json.loads((root / social_document).read_bytes())
     verify_approved_social_change(approval)
@@ -189,6 +189,8 @@ def walk(value, document):
                 assert not relative.is_absolute() and '..' not in relative.parts and ':' not in name and '\\' not in name
                 if name == 'dist/site.js':
                     verify_original_handoff_site(value, document)
+                elif name == 'README.md':
+                    verify_archive_file(dict(value, path='website/README.md'), document, handoff_import_commit)
                 elif name == 'dist/dashboard.js':
                     verify_archive_file(dict(value, path='website/' + name), source_document, 'ee6169d1007b11f037fbc409dc1f7575f15117c9')
                 else:

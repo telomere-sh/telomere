@@ -6569,15 +6569,15 @@
           "path": "infra/near/requirements-linux.lock",
           "bytes": 1515,
           "sha256": "bdeeaa595eeffad3132113ff2116a8a197dab5ef038759578b5697faef45107d",
-          "storage": "working-tree",
-          "storedPath": "infra/near/requirements-linux.lock"
+          "storage": "object",
+          "storedPath": "docs/evidence/public-source-archive/objects/bdeeaa595eeffad3132113ff2116a8a197dab5ef038759578b5697faef45107d.bin"
         },
         {
           "path": "infra/near/requirements.txt",
           "bytes": 68,
           "sha256": "cdae047d1d5f6f7aff298008bbf4682081dc504e603d2323c7c2a3f58514624c",
-          "storage": "working-tree",
-          "storedPath": "infra/near/requirements.txt"
+          "storage": "object",
+          "storedPath": "docs/evidence/public-source-archive/objects/cdae047d1d5f6f7aff298008bbf4682081dc504e603d2323c7c2a3f58514624c.bin"
         },
         {
           "path": "infra/near/verifier.py",
@@ -6632,8 +6632,8 @@
           "path": "package-lock.json",
           "bytes": 124283,
           "sha256": "e8549c057c2e4a8a3808ae2a2b386e9a20d20711c696836dd483d4c8bc7c533d",
-          "storage": "working-tree",
-          "storedPath": "package-lock.json"
+          "storage": "object",
+          "storedPath": "docs/evidence/public-source-archive/objects/e8549c057c2e4a8a3808ae2a2b386e9a20d20711c696836dd483d4c8bc7c533d.bin"
         },
         {
           "path": "package.json",
@@ -11308,8 +11308,8 @@
           "path": "tests/worker.test.ts",
           "bytes": 25190,
           "sha256": "b4732e32ea461974f9f8f29c4ee7d661140f4221b8af5ecc0537b4f9ebf098f2",
-          "storage": "working-tree",
-          "storedPath": "tests/worker.test.ts"
+          "storage": "object",
+          "storedPath": "docs/evidence/public-source-archive/objects/b4732e32ea461974f9f8f29c4ee7d661140f4221b8af5ecc0537b4f9ebf098f2.bin"
         },
         {
           "path": "tests/x402-payments.test.ts",
@@ -11357,8 +11357,8 @@
           "path": "website/README.md",
           "bytes": 5219,
           "sha256": "aec86cb6d9bf25d014627b947dfd651d86c0517a4f5ca9f7162c3616bcc144a3",
-          "storage": "working-tree",
-          "storedPath": "website/README.md"
+          "storage": "object",
+          "storedPath": "docs/evidence/public-source-archive/objects/aec86cb6d9bf25d014627b947dfd651d86c0517a4f5ca9f7162c3616bcc144a3.bin"
         },
         {
           "path": "website/REVISION-2.md",
@@ -14221,6 +14221,13 @@
           "sha256": "9e8eb19cf38c72cccdd3765e9b498b9924cb851d5c4b222cfca00e64c0c434e6",
           "storage": "object",
           "storedPath": "docs/evidence/public-source-archive/objects/9e8eb19cf38c72cccdd3765e9b498b9924cb851d5c4b222cfca00e64c0c434e6.bin"
+        },
+        {
+          "path": "website/README.md",
+          "bytes": 5219,
+          "sha256": "aec86cb6d9bf25d014627b947dfd651d86c0517a4f5ca9f7162c3616bcc144a3",
+          "storage": "object",
+          "storedPath": "docs/evidence/public-source-archive/objects/aec86cb6d9bf25d014627b947dfd651d86c0517a4f5ca9f7162c3616bcc144a3.bin"
         }
       ]
     }
