@@ -1,0 +1,227 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-18T13:55:58.736489+00:00",
+  "scope": "Exact 1 GiB encrypted Cyst quota, near-budget database, encrypted archive copying and isolated restore; zero mainnet transactions; hosted capacity publication deferred by user",
+  "report": {
+    "path": "docs/CPU-BACKUP-CAPACITY-20261018.md",
+    "bytes": 7986,
+    "sha256": "767a1cf4aed6c6795a4dad133f6481737d8a0df4317acb78a4e2c4aa3810ace7"
+  },
+  "files": [
+    {
+      "path": "docs/evidence/cpu-backup-capacity-20261018/capacity-attempts.json",
+      "bytes": 7451,
+      "sha256": "d113684ae5c0bc08697e3f9106bc19e6e1fc78613fe719b745475b25279e430f"
+    },
+    {
+      "path": "docs/evidence/cpu-backup-capacity-20261018/cleanup.json",
+      "bytes": 511,
+      "sha256": "6c9e5120d8f01b312aeefba35169b26e653d3203a5a5d974fa358d90f56973e9"
+    },
+    {
+      "path": "docs/evidence/cpu-backup-capacity-20261018/completed-soaks.json",
+      "bytes": 3401,
+      "sha256": "c3f042d2f753ced5d6193e8be8b812d0ed3f60d862c40bdd6ab54618a0caee3e"
+    },
+    {
+      "path": "docs/evidence/cpu-backup-capacity-20261018/configuration-guard.json",
+      "bytes": 319,
+      "sha256": "4665956db74d753b9a892d8bd747bbd6e3cbb4c8ac5ed6508eb54a801e5c0a9f"
+    },
+    {
+      "path": "docs/evidence/cpu-backup-capacity-20261018/current-data-api-recovery.json",
+      "bytes": 765,
+      "sha256": "73d42bc49dd4b1a19151a277a5b3208d5083569c117c97a6dc558b33efedfc48"
+    },
+    {
+      "path": "docs/evidence/cpu-backup-capacity-20261018/deployment.json",
+      "bytes": 2699,
+      "sha256": "38348188a70799d9fc799a0f21a7dc628bc8dd595561e1422e061f182b37e344"
+    },
+    {
+      "path": "docs/evidence/cpu-backup-capacity-20261018/existing-cloud-receipt.json",
+      "bytes": 521,
+      "sha256": "949d49f3b8566b9adf06a0e052b79ced39243e1c08807441337da5f04ef94d17"
+    },
+    {
+      "path": "docs/evidence/cpu-backup-capacity-20261018/linux-tests.json",
+      "bytes": 446,
+      "sha256": "6075864ecffff5c4731162d53dbf604a7aa0adf63fb812331e616f9c3a1d84a0"
+    },
+    {
+      "path": "docs/evidence/cpu-backup-capacity-20261018/live-cyst-quota.json",
+      "bytes": 36,
+      "sha256": "46c19546c68f835c48c74582d91dd005e03912a2da50fe3361ef0da816c4c50a"
+    },
+    {
+      "path": "docs/evidence/cpu-backup-capacity-20261018/mainnet-audit.json",
+      "bytes": 454,
+      "sha256": "0482d6bc8c5454efe418c77e37edb7cdd772885ef4c23c06a465fa46aff776b3"
+    },
+    {
+      "path": "docs/evidence/cpu-backup-capacity-20261018/monitor.json",
+      "bytes": 1738,
+      "sha256": "cc22c8ffc1b018461781b952b62cc04207eb43104247e88af6bc3fb771340078"
+    },
+    {
+      "path": "docs/evidence/cpu-backup-capacity-20261018/production-backup.json",
+      "bytes": 956,
+      "sha256": "6641be8758e92508afee09e0dcfa18aa6b431a440b7402f628c3fee7ed77ec89"
+    },
+    {
+      "path": "docs/evidence/cpu-backup-capacity-20261018/publication.json",
+      "bytes": 512,
+      "sha256": "5bc43f9af7a6f588f6726d37fcf6716d76b9fd1936973597db78b6cf1610b07a"
+    },
+    {
+      "path": "docs/evidence/cpu-backup-capacity-20261018/restricted-transfer.json",
+      "bytes": 711,
+      "sha256": "0984a99bb9a1f2b4e8031925c58cfe8370e5c097d419c22fef9c28828c180d95"
+    },
+    {
+      "path": "docs/evidence/cpu-backup-capacity-20261018/server-capacity.json",
+      "bytes": 1154,
+      "sha256": "f595c2e90d367c2d697ecb29db53ab567a01e60f3672c9160e924a4e790a1006"
+    },
+    {
+      "path": "docs/evidence/cpu-backup-capacity-20261018/source/0224573c3b615a5383ce442518bc722738d690089e7ccceb187f3cf0a6a8aa4f.bin",
+      "bytes": 21681,
+      "sha256": "0224573c3b615a5383ce442518bc722738d690089e7ccceb187f3cf0a6a8aa4f"
+    },
+    {
+      "path": "docs/evidence/cpu-backup-capacity-20261018/source/070b0a68eacfe8a288ad951600c771290b15bfcc892753b60ec68a774288b146.bin",
+      "bytes": 10381,
+      "sha256": "070b0a68eacfe8a288ad951600c771290b15bfcc892753b60ec68a774288b146"
+    },
+    {
+      "path": "docs/evidence/cpu-backup-capacity-20261018/source/3558ccadedbec26a809d5e6ec50a81236dd1508697edbc026596934cff6f155a.bin",
+      "bytes": 4073,
+      "sha256": "3558ccadedbec26a809d5e6ec50a81236dd1508697edbc026596934cff6f155a"
+    },
+    {
+      "path": "docs/evidence/cpu-backup-capacity-20261018/source/3e19708798e774ec100ff3cc687b571f4511d3ce3e555fb14ed9b9d12bfdccdd.bin",
+      "bytes": 4665,
+      "sha256": "3e19708798e774ec100ff3cc687b571f4511d3ce3e555fb14ed9b9d12bfdccdd"
+    },
+    {
+      "path": "docs/evidence/cpu-backup-capacity-20261018/source/3ea0f7f7c07e136f2b4f7fa329d7bdd5c731801c9b0a48ff23148e4dd12409e1.bin",
+      "bytes": 473,
+      "sha256": "3ea0f7f7c07e136f2b4f7fa329d7bdd5c731801c9b0a48ff23148e4dd12409e1"
+    },
+    {
+      "path": "docs/evidence/cpu-backup-capacity-20261018/source/457b7caf56a3f8c59b125ed7ba897144d8c8b6be0a8ec0d0d427fc5a2083970b.bin",
+      "bytes": 3978,
+      "sha256": "457b7caf56a3f8c59b125ed7ba897144d8c8b6be0a8ec0d0d427fc5a2083970b"
+    },
+    {
+      "path": "docs/evidence/cpu-backup-capacity-20261018/source/53cc9fd40fcbad9d1b23ab5a464af7b32b9f24a5716e2330e2cb7b1a934f4d50.bin",
+      "bytes": 4702,
+      "sha256": "53cc9fd40fcbad9d1b23ab5a464af7b32b9f24a5716e2330e2cb7b1a934f4d50"
+    },
+    {
+      "path": "docs/evidence/cpu-backup-capacity-20261018/source/68f328c734a078be58acc238da83732f2d2ca909268d5992e2e55670b407fb1d.bin",
+      "bytes": 8862,
+      "sha256": "68f328c734a078be58acc238da83732f2d2ca909268d5992e2e55670b407fb1d"
+    },
+    {
+      "path": "docs/evidence/cpu-backup-capacity-20261018/source/6eeb6994857ed0b74ee52b73a90aa36cc4eb4d921ad615c65a6dd71fb84f5266.bin",
+      "bytes": 4697,
+      "sha256": "6eeb6994857ed0b74ee52b73a90aa36cc4eb4d921ad615c65a6dd71fb84f5266"
+    },
+    {
+      "path": "docs/evidence/cpu-backup-capacity-20261018/source/714dc3e4d5974b40ca4aef145508ece58bfc26e4cacdc136fb17169eed5dce3e.bin",
+      "bytes": 5843,
+      "sha256": "714dc3e4d5974b40ca4aef145508ece58bfc26e4cacdc136fb17169eed5dce3e"
+    },
+    {
+      "path": "docs/evidence/cpu-backup-capacity-20261018/source/76f347655038287c6d17036e39c95440dda0c243cd3836ea5b441986b6acc8ae.bin",
+      "bytes": 8699,
+      "sha256": "76f347655038287c6d17036e39c95440dda0c243cd3836ea5b441986b6acc8ae"
+    },
+    {
+      "path": "docs/evidence/cpu-backup-capacity-20261018/source/7ca6b2f6838d9c26994207c550874d13220000ed9954869872a7b80272e20e35.bin",
+      "bytes": 3032,
+      "sha256": "7ca6b2f6838d9c26994207c550874d13220000ed9954869872a7b80272e20e35"
+    },
+    {
+      "path": "docs/evidence/cpu-backup-capacity-20261018/source/87c99991d91937b895426a615149032c4a990611105297d485e3df0603550817.bin",
+      "bytes": 9166,
+      "sha256": "87c99991d91937b895426a615149032c4a990611105297d485e3df0603550817"
+    },
+    {
+      "path": "docs/evidence/cpu-backup-capacity-20261018/source/8c28131f6a33b7246ebb64cc501bd2e4615c31d97ff0ffa4fcdd6e325ec7cca8.bin",
+      "bytes": 28406,
+      "sha256": "8c28131f6a33b7246ebb64cc501bd2e4615c31d97ff0ffa4fcdd6e325ec7cca8"
+    },
+    {
+      "path": "docs/evidence/cpu-backup-capacity-20261018/source/8ee9bf9ed2c338d46f9a18720741ceb73febed942d2a6cc481c003b6dc0d0bef.bin",
+      "bytes": 4030,
+      "sha256": "8ee9bf9ed2c338d46f9a18720741ceb73febed942d2a6cc481c003b6dc0d0bef"
+    },
+    {
+      "path": "docs/evidence/cpu-backup-capacity-20261018/source/91e73f366db578a7322682e16379be7bc43407a0ac8480153a4c5ec2e97c2efb.bin",
+      "bytes": 1634,
+      "sha256": "91e73f366db578a7322682e16379be7bc43407a0ac8480153a4c5ec2e97c2efb"
+    },
+    {
+      "path": "docs/evidence/cpu-backup-capacity-20261018/source/9428d81d04080d0ef410b99b968a156d1bd410944697c52c07b0c91491e57692.bin",
+      "bytes": 12446,
+      "sha256": "9428d81d04080d0ef410b99b968a156d1bd410944697c52c07b0c91491e57692"
+    },
+    {
+      "path": "docs/evidence/cpu-backup-capacity-20261018/source/95dc51933a232420e86a2dabccdc5017eb5fbffff6358785bdd5679b6f4c3073.bin",
+      "bytes": 5749,
+      "sha256": "95dc51933a232420e86a2dabccdc5017eb5fbffff6358785bdd5679b6f4c3073"
+    },
+    {
+      "path": "docs/evidence/cpu-backup-capacity-20261018/source/a70b4a9fe07ec822eb86257e3800c562db426e6a09dfd4dcc9941478ebe1279b.bin",
+      "bytes": 543,
+      "sha256": "a70b4a9fe07ec822eb86257e3800c562db426e6a09dfd4dcc9941478ebe1279b"
+    },
+    {
+      "path": "docs/evidence/cpu-backup-capacity-20261018/source/ca8cac265e1b1a5e34d9f8225363f53b69a075af05ec16dc0ecf0a1df9a9c627.bin",
+      "bytes": 2813,
+      "sha256": "ca8cac265e1b1a5e34d9f8225363f53b69a075af05ec16dc0ecf0a1df9a9c627"
+    },
+    {
+      "path": "docs/evidence/cpu-backup-capacity-20261018/source/ccab1d28e49796a0673d826ca39cc2b392865263c355b9e84f1e0fdd63949103.bin",
+      "bytes": 28965,
+      "sha256": "ccab1d28e49796a0673d826ca39cc2b392865263c355b9e84f1e0fdd63949103"
+    },
+    {
+      "path": "docs/evidence/cpu-backup-capacity-20261018/source/d0dc388cf36c5c71105133176b4169a0198b9f4c7f8b0f4a169114c51343bcf4.bin",
+      "bytes": 23438,
+      "sha256": "d0dc388cf36c5c71105133176b4169a0198b9f4c7f8b0f4a169114c51343bcf4"
+    },
+    {
+      "path": "docs/evidence/cpu-backup-capacity-20261018/source/d12a56551dd9d372a302c8bd0fe269367122ae64add48d1cd4c4901c52393d04.bin",
+      "bytes": 3087,
+      "sha256": "d12a56551dd9d372a302c8bd0fe269367122ae64add48d1cd4c4901c52393d04"
+    },
+    {
+      "path": "docs/evidence/cpu-backup-capacity-20261018/source/eb1e7c12007b1616e9b2b7b243e61ef3592ad1693aaee9a4d95a86522f77cfdc.bin",
+      "bytes": 5457,
+      "sha256": "eb1e7c12007b1616e9b2b7b243e61ef3592ad1693aaee9a4d95a86522f77cfdc"
+    },
+    {
+      "path": "docs/evidence/cpu-backup-capacity-20261018/source/fde4ab6fde31fda2339d129039605a5fab63d64d6cdc8062def30ec7f7c3ee0e.bin",
+      "bytes": 2716,
+      "sha256": "fde4ab6fde31fda2339d129039605a5fab63d64d6cdc8062def30ec7f7c3ee0e"
+    },
+    {
+      "path": "docs/evidence/cpu-backup-capacity-20261018/source/ff958e240974eaac2ffa317975e36d15060babde4f773107650a2cd45e015cec.bin",
+      "bytes": 2973,
+      "sha256": "ff958e240974eaac2ffa317975e36d15060babde4f773107650a2cd45e015cec"
+    },
+    {
+      "path": "docs/evidence/cpu-backup-capacity-20261018/source-record.json",
+      "bytes": 6944,
+      "sha256": "e70232aa1c6030c5ae090912da19978d4ec45bd4a3e885c5a2c5f7a8c75ba049"
+    },
+    {
+      "path": "docs/evidence/cpu-backup-capacity-20261018/vps-hosted-implementation-restore.json",
+      "bytes": 1111,
+      "sha256": "a9093e2fee05ae84d0a5dd82a4bd03412d24d60a1591f73de94917ffb1cb14b3"
+    }
+  ]
+}

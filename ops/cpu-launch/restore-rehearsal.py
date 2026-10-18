@@ -6,6 +6,8 @@ Pass an age identity on stdin. It is not written to disk or passed as an argumen
 """
 import hashlib, http.client, importlib.util, json, os, re, shutil, socket, ssl, subprocess, sys, tarfile, tempfile, time, uuid
 from pathlib import Path, PurePosixPath
+_spec=importlib.util.spec_from_file_location('restore_capacity_policy',Path(__file__).parent.parent/'cpu-cloud/archive_policy.py')
+policy=importlib.util.module_from_spec(_spec);_spec.loader.exec_module(policy)
 
 BASE = Path('/opt/telomere-mainnet-pilot')
 PRIVATE = BASE / 'private'
@@ -13,7 +15,7 @@ NODE = '/opt/node-v22.23.3-linux-x64/bin/node'
 SOCKET = 'unix:///run/telomere-mainnet-docker/docker.sock'
 
 def run(args, **kwargs):
-    return subprocess.run(args, check=True, capture_output=True, timeout=120, **kwargs)
+    return subprocess.run(args, check=True, capture_output=True, **{'timeout':120,**kwargs})
 
 def digest(path):
     value = hashlib.sha256()
@@ -27,7 +29,7 @@ def unpack(cipher, expected_hash, identity, target):
         raise ValueError('Ciphertext hash differs')
     plain = target.parent / (target.name + '.plain')
     try:
-        run(['/usr/bin/age', '--decrypt', '-i', '/dev/stdin', '-o', str(plain), str(cipher)], input=identity)
+        run(['/usr/bin/age', '--decrypt', '-i', '/dev/stdin', '-o', str(plain), str(cipher)], input=identity,timeout=policy.CRYPTO_SECONDS)
         with tarfile.open(plain) as source:
             members = source.getmembers()
             if not 1 <= len(members) <= 50000:
@@ -41,6 +43,9 @@ def unpack(cipher, expected_hash, identity, target):
             if 'manifest.json' not in indexed or indexed['manifest.json'].size > 16 * 1024**2:
                 raise ValueError('Missing archive manifest')
             manifest = json.load(source.extractfile('manifest.json'))
+            policy.validate_files(manifest['files'],runtime=bool(policy.RUNTIME_ID.fullmatch(manifest['id'])))
+            if cipher.stat().st_size>policy.archive_limit(manifest['id']):
+                raise ValueError('Encrypted archive capacity exceeded')
             if set(indexed) != {'manifest.json'} | {item['path'] for item in manifest['files']}:
                 raise ValueError('Manifest member set differs')
             if sum(item['bytes'] for item in manifest['files']) > 2 * 1024**3:
@@ -127,9 +132,12 @@ def restored_data_api(stage, runtime, snapshot):
     if not image:
         image = json.loads((stage / 'data/manifest.json').read_text())['restoreRehearsal']['databaseImage']
     assert re.fullmatch(r'postgres@sha256:[0-9a-f]{64}', image)
+    volume=name+'-data';volume_created=False
     try:
+        assert shutil.disk_usage(stage).free>policy.MIN_FREE_BYTES
+        run(docker+['volume','create','--label','telomere.dr.data='+name,volume]);volume_created=True
         run(docker + ['run', '-d', '--name', name, '--label', 'telomere.dr.data=' + name, '--runtime', 'runc', '--network', 'none',
-            '--cpus', '0.5', '--memory', '512m', '--pids-limit', '128', '--tmpfs', '/var/lib/postgresql/data:rw,size=512m',
+            '--cpus', '0.5', '--memory', '512m', '--pids-limit', '128', '--mount','type=volume,source='+volume+',target=/var/lib/postgresql/data',
             '--mount', 'type=bind,source=' + str(socket_folder) + ',target=/var/run/postgresql',
             '-e', 'POSTGRES_USER=restore', '-e', 'POSTGRES_DB=restore', '-e', 'POSTGRES_HOST_AUTH_METHOD=trust', image])
         for attempt in range(60):
@@ -140,7 +148,7 @@ def restored_data_api(stage, runtime, snapshot):
             time.sleep(.5)
         else: raise RuntimeError('Restored API database did not start')
         with (stage / 'data/database.dump').open('rb') as dump:
-            run(docker + ['exec', '-i', name, 'pg_restore', '-U', 'restore', '-d', 'restore', '--exit-on-error', '--no-owner', '--no-acl'], stdin=dump)
+            run(docker + ['exec', '-i', name, 'pg_restore', '-U', 'restore', '-d', 'restore', '--exit-on-error', '--no-owner', '--no-acl'], stdin=dump,timeout=policy.RESTORE_SECONDS)
         reader = runtime / 'data-reader.mjs'
         shutil.copyfile(BASE / 'operator/cpu-launch/restored-data-reader.mjs', reader)
         reader.chmod(0o640); os.chown(reader, 0, 993)
@@ -150,8 +158,11 @@ def restored_data_api(stage, runtime, snapshot):
         for entry in snapshot['fingerprints']:
             table = entry['table']; assert re.fullmatch('[a-z][a-z0-9_]*', table)
             query = 'SELECT to_jsonb(t)::text FROM public."' + table + '" t ORDER BY to_jsonb(t)::text;'
-            rows = run(docker + ['exec', name, 'psql', '-X', '-q', '-A', '-t', '-U', 'restore', '-d', 'restore', '-v', 'ON_ERROR_STOP=1', '-c', query]).stdout
-            assert hashlib.sha256(rows).hexdigest() == entry['sha256'], 'Archived API changed a restored table'
+            with tempfile.TemporaryFile() as output:
+                subprocess.run(docker+['exec',name,'psql','-X','-q','-A','-t','-U','restore','-d','restore','-v','ON_ERROR_STOP=1','-v','FETCH_COUNT=256','-c',query],check=True,stdout=output,stderr=subprocess.PIPE,timeout=policy.RESTORE_SECONDS)
+                output.seek(0);checksum=hashlib.sha256()
+                for part in iter(lambda:output.read(1024**2),b''):checksum.update(part)
+            assert checksum.hexdigest()==entry['sha256'],'Archived API changed a restored table'
         observed['allOriginalTableFingerprintsPreserved'] = True
         return observed
     finally:
@@ -159,6 +170,10 @@ def restored_data_api(stage, runtime, snapshot):
         if inspected.returncode == 0:
             assert inspected.stdout.decode().strip() == name
             run(docker + ['rm', '-f', name])
+        if volume_created:
+            label=run(docker+['volume','inspect','--format','{{index .Labels "telomere.dr.data"}}',volume]).stdout.decode().strip()
+            assert label==name
+            run(docker+['volume','rm',volume])
         # PostgreSQL owns its socket directory; its contents are disposable.
         shutil.rmtree(socket_folder)
 

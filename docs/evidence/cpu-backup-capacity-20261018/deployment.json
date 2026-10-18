@@ -1,0 +1,81 @@
+{
+  "operatorFilesMatchSource": true,
+  "backupUnitMatchesSource": true,
+  "files": [
+    {
+      "originalPath": "ops/cpu-cloud/archive_policy.py",
+      "bytes": 4697,
+      "sha256": "6eeb6994857ed0b74ee52b73a90aa36cc4eb4d921ad615c65a6dd71fb84f5266"
+    },
+    {
+      "originalPath": "ops/cpu-cloud/cloud.py",
+      "bytes": 23438,
+      "sha256": "d0dc388cf36c5c71105133176b4169a0198b9f4c7f8b0f4a169114c51343bcf4"
+    },
+    {
+      "originalPath": "ops/cpu-cloud/github_store.py",
+      "bytes": 8699,
+      "sha256": "76f347655038287c6d17036e39c95440dda0c243cd3836ea5b441986b6acc8ae"
+    },
+    {
+      "originalPath": "ops/cpu-cloud/export.py",
+      "bytes": 5457,
+      "sha256": "eb1e7c12007b1616e9b2b7b243e61ef3592ad1693aaee9a4d95a86522f77cfdc"
+    },
+    {
+      "originalPath": "ops/cpu-cloud/capacity.py",
+      "bytes": 3087,
+      "sha256": "d12a56551dd9d372a302c8bd0fe269367122ae64add48d1cd4c4901c52393d04"
+    },
+    {
+      "originalPath": "ops/cpu-cloud/README.md",
+      "bytes": 9166,
+      "sha256": "87c99991d91937b895426a615149032c4a990611105297d485e3df0603550817"
+    },
+    {
+      "originalPath": "ops/cpu-launch/mainnet-ops.py",
+      "bytes": 28406,
+      "sha256": "8c28131f6a33b7246ebb64cc501bd2e4615c31d97ff0ffa4fcdd6e325ec7cca8"
+    },
+    {
+      "originalPath": "ops/cpu-launch/restore-rehearsal.py",
+      "bytes": 21681,
+      "sha256": "0224573c3b615a5383ce442518bc722738d690089e7ccceb187f3cf0a6a8aa4f"
+    },
+    {
+      "originalPath": "ops/cpu-launch/offhost.py",
+      "bytes": 8862,
+      "sha256": "68f328c734a078be58acc238da83732f2d2ca909268d5992e2e55670b407fb1d"
+    },
+    {
+      "originalPath": "ops/cpu-launch/backup-capacity.py",
+      "bytes": 4702,
+      "sha256": "53cc9fd40fcbad9d1b23ab5a464af7b32b9f24a5716e2330e2cb7b1a934f4d50"
+    },
+    {
+      "originalPath": "ops/cpu-launch/backup-capacity-fixture.mjs",
+      "bytes": 4073,
+      "sha256": "3558ccadedbec26a809d5e6ec50a81236dd1508697edbc026596934cff6f155a"
+    },
+    {
+      "originalPath": "ops/cpu-launch/capacity-restore.py",
+      "bytes": 2716,
+      "sha256": "fde4ab6fde31fda2339d129039605a5fab63d64d6cdc8062def30ec7f7c3ee0e"
+    },
+    {
+      "originalPath": "ops/cpu-launch/README.md",
+      "bytes": 28965,
+      "sha256": "ccab1d28e49796a0673d826ca39cc2b392865263c355b9e84f1e0fdd63949103"
+    },
+    {
+      "originalPath": "ops/cpu-launch/CLEAN-SERVER-RECOVERY.md",
+      "bytes": 5843,
+      "sha256": "714dc3e4d5974b40ca4aef145508ece58bfc26e4cacdc136fb17169eed5dce3e"
+    },
+    {
+      "originalPath": "ops/cpu-launch/telomere-mainnet-backup.service",
+      "bytes": 543,
+      "sha256": "a70b4a9fe07ec822eb86257e3800c562db426e6a09dfd4dcc9941478ebe1279b"
+    }
+  ]
+}

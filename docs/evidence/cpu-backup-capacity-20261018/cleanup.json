@@ -1,0 +1,20 @@
+{
+  "ownedCapacityContainers": [],
+  "ownedCapacityVolumes": [],
+  "otherOwnedRestoreResources": {
+    "telomere.cloud.restore": {
+      "containers": [],
+      "volumes": []
+    },
+    "telomere.dr.data": {
+      "containers": [],
+      "volumes": []
+    },
+    "telomere.backup.exercise": {
+      "containers": [],
+      "volumes": []
+    }
+  },
+  "productionController": "NRestarts=0\nExecMainStartTimestamp=Sat 2026-10-17 22:19:23 CEST\nActiveState=active\nSubState=running\n",
+  "mainnetTransactions": 0
+}

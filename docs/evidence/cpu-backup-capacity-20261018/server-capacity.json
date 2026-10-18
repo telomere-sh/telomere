@@ -1,0 +1,39 @@
+{
+  "scope": "full Cyst backup capacity acceptance",
+  "passed": true,
+  "id": "backup-20261018T134213Z-5ac8888a",
+  "sha256": "4998bde8e843d769f1be18ef0128801b1ca810104b3abef9897263ce416f6192",
+  "bytes": 1324007290,
+  "capacity": {
+    "files": 514,
+    "payloadBytes": 1322780597,
+    "cystBytes": 1073741824,
+    "dumpBytes": 248920914,
+    "snapshotBytes": 117859,
+    "configurationBytes": 0
+  },
+  "serverRestore": {
+    "passed": true,
+    "tables": 48,
+    "rows": 3879,
+    "elapsedSeconds": 23.005,
+    "network": "none",
+    "mainnetControllerStarted": false,
+    "databaseImage": "postgres@sha256:721873c34ceb9f8d8fc265984940dc982404c105f19ad51be9fdc5970a6080ea"
+  },
+  "fixture": {
+    "scope": "full Cyst backup quota fixture",
+    "cystBytes": 1073741824,
+    "checkpoints": 512,
+    "owners": 32,
+    "quotaOverflowRejected": true,
+    "existingCheckpointDecryptedAtFullQuota": true,
+    "randomDatabasePayloadBytes": 218103808,
+    "mainnetTransactions": 0,
+    "mainnetSignerLoaded": false
+  },
+  "elapsedSeconds": 222.649,
+  "releaseTag": "capacity-5b3c1fbd8755460f",
+  "productionReceiptChanged": false,
+  "mainnetTransactions": 0
+}

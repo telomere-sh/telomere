@@ -6,7 +6,7 @@ The recovery kit targets Debian 12 / x86_64 with systemd/cgroup v2, Docker 29.8.
 
 Download the selected data snapshot and its exact referenced runtime bundle from the private operations repository. Keep the sanitized backup receipt containing both ciphertext SHA-256 values. The runtime bundle must match the snapshot's `runtimeBundle.id` and checksum; choosing the newest unrelated runtime is not sufficient. Obtain an age identity using the existing independent owner-recovery workflow and a fresh trusted recovery-device public recipient. Never place the plaintext identity, decrypted configuration, database or Cyst files in Git.
 
-Also retain this directory's `clean-server-recovery.py`, `restore-rehearsal.py`, `bootstrap-clean-host.sh` and this runbook. The final production backup includes them in its authenticated operator runtime tree. The backup does not contain the Debian operating system or Docker images. The install plan lists pinned CPU/PostgreSQL image references: either pull those exact digests or supply separately verified offline image exports, then check the loaded identities. Do not substitute mutable image tags.
+Also retain this directory's `clean-server-recovery.py`, `restore-rehearsal.py`, `bootstrap-clean-host.sh` and this runbook, together with ../cpu-cloud/archive_policy.py in its original relative layout. The final production backup includes them in its authenticated operator runtime tree. The backup does not contain the Debian operating system or Docker images. The install plan lists pinned CPU/PostgreSQL image references: either pull those exact digests or supply separately verified offline image exports, then check the loaded identities. Do not substitute mutable image tags.
 
 ## Prepare dependencies on the new host
 

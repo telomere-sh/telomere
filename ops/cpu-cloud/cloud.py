@@ -3,8 +3,8 @@ import argparse, datetime, hashlib, json, math, os, re, select, shutil, subproce
 from pathlib import Path, PurePosixPath
 from github_store import GitHubStore, digest
 from pager import delivery_plan, send
+from archive_policy import archive_limit,validate_files,restore_cysts,TRANSFER_SECONDS,CRYPTO_SECONDS,RESTORE_SECONDS,MIN_FREE_BYTES,MAX_DUMP_BYTES,MAX_METADATA_BYTES
 
-MAX_ARCHIVE = 512 * 1024**2
 DELIVERY_ATTEMPTED = False
 BACKUP_ID = re.compile(r'backup-[0-9]{8}T[0-9]{6}Z-[0-9a-f]{8}')
 RUNTIME_ID = re.compile(r'runtime-[0-9a-f]{40}-[0-9a-f]{16}')
@@ -59,7 +59,7 @@ def archive_soak_observations(monitor):
 def validate_archive_metadata(value, runtime=False):
     if not isinstance(value, dict) or not isinstance(value.get('id'), str) or not (RUNTIME_ID if runtime else BACKUP_ID).fullmatch(value['id']):
         raise ValueError('Invalid backup identity')
-    if not re.fullmatch(r'[0-9a-f]{64}', value.get('sha256', '')) or type(value.get('bytes')) is not int or not 100 <= value['bytes'] <= MAX_ARCHIVE:
+    if not re.fullmatch(r'[0-9a-f]{64}', value.get('sha256', '')) or type(value.get('bytes')) is not int or not 100 <= value['bytes'] <= archive_limit(value['id']):
         raise ValueError('Invalid backup checksum or size')
 
 
@@ -67,7 +67,7 @@ def verify_archive(archive, identity, directory):
     plain = directory / (archive.name + '.plain')
     try:
         subprocess.run(['age', '--decrypt', '-i', str(identity), '-o', str(plain), str(archive)],
-            check=True, stdout=subprocess.DEVNULL, stderr=subprocess.PIPE, timeout=90)
+            check=True, stdout=subprocess.DEVNULL, stderr=subprocess.PIPE, timeout=CRYPTO_SECONDS)
         with tarfile.open(plain) as source:
             members = source.getmembers()
             if not 1 <= len(members) <= 50000:
@@ -78,6 +78,7 @@ def verify_archive(archive, identity, directory):
             if len(indexed) != len(members) or 'manifest.json' not in indexed or indexed['manifest.json'].size > 16 * 1024**2:
                 raise ValueError('Invalid archive manifest')
             manifest = json.load(source.extractfile('manifest.json'))
+            capacity=validate_files(manifest['files'],runtime=manifest.get('kind')=='exact-reviewed-runtime' or bool(RUNTIME_ID.fullmatch(manifest.get('id',''))))
             if set(indexed) != {'manifest.json'} | {entry['path'] for entry in manifest['files']}:
                 raise ValueError('Manifest file set differs')
             for entry in manifest['files']:
@@ -91,7 +92,7 @@ def verify_archive(archive, identity, directory):
                 if checksum.hexdigest() != entry['sha256']:
                     raise ValueError('Manifest checksum differs')
         proof = {'id': manifest['id'], 'verifiedFiles': len(manifest['files']),
-            'authenticatedAgeDecryption': True, 'manifestChecksumsValid': True, 'verifiedAt': time.time()}
+            'authenticatedAgeDecryption': True, 'manifestChecksumsValid': True, 'verifiedAt': time.time(),'capacity':capacity}
         if 'runtimeBundle' in manifest:
             proof['runtimeBundle'] = manifest['runtimeBundle']
         return proof
@@ -127,7 +128,7 @@ class ExportClient:
             child.stdin.write(request)
             child.stdin.close()
             # One byte at a time only for the bounded JSON header; archive data streams.
-            header, deadline = bytearray(), time.monotonic() + 180
+            header, deadline = bytearray(), time.monotonic() + TRANSFER_SECONDS
             while not header.endswith(b'\n'):
                 if len(header) >= 4096 or time.monotonic() > deadline:
                     raise RuntimeError('Restricted backup header deadline')
@@ -236,17 +237,18 @@ def _rehearse_restore(store, backup, identity, folder):
     asset = next(item for item in store.assets(release) if item['name'] == backup['id'] + '.tar.age')
     archive, plain = folder / 'restore-source.tar.age', folder / 'restore-source.tar'
     store.download(asset, archive, backup['sha256'])
-    subprocess.run(['age', '-d', '-i', str(identity), '-o', str(plain), str(archive)], check=True, capture_output=True, timeout=60)
+    subprocess.run(['age', '-d', '-i', str(identity), '-o', str(plain), str(archive)], check=True, capture_output=True, timeout=CRYPTO_SECONDS)
     dump = folder / 'database.dump'
     with tarfile.open(plain) as tar:
         member = tar.getmember('database.dump')
-        if not member.isfile() or member.size > 256 * 1024**2 or tar.getmember('snapshot.json').size > 16 * 1024**2:
+        if not member.isfile() or member.size > MAX_DUMP_BYTES or tar.getmember('snapshot.json').size > MAX_METADATA_BYTES:
             raise ValueError('Restore member bounds exceeded')
         with dump.open('xb') as output:
             stream = tar.extractfile(member)
             for part in iter(lambda: stream.read(1024 * 1024), b''):
                 output.write(part)
         snapshot = json.load(tar.extractfile('snapshot.json'))
+        cyst_restore=restore_cysts(tar,snapshot,folder/'restored-cysts')
     plain.unlink()
     run_id = os.environ['GITHUB_RUN_ID']
     if not re.fullmatch(r'[0-9]{1,20}', run_id):
@@ -254,14 +256,14 @@ def _rehearse_restore(store, backup, identity, folder):
     name = 'telomere-cloud-restore-' + run_id
     docker = ['docker', '--host', 'unix:///var/run/docker.sock']
     def command(arguments, **kwargs):
-        options={'check':True,'capture_output':True,'timeout':120}
+        options={'check':True,'capture_output':True,'timeout':RESTORE_SECONDS}
         if 'stdout' in kwargs:
             options.pop('capture_output');options['stderr']=subprocess.PIPE
         return subprocess.run(docker + arguments, **options, **kwargs)
     created = False; volume=name+'-data';volume_created=False
     started = time.monotonic()
     try:
-        if shutil.disk_usage(folder).free<4*1024**3:
+        if shutil.disk_usage(folder).free<MIN_FREE_BYTES:
             raise RuntimeError('Insufficient isolated restore disk')
         command(['volume','create','--label','telomere.cloud.restore='+name,volume]);volume_created=True
         command(['run', '-d', '--name', name, '--label', 'telomere.cloud.restore=' + name,
@@ -292,7 +294,7 @@ def _rehearse_restore(store, backup, identity, folder):
                 raise RuntimeError('Cloud-restored table differs')
             rows += entry['rows']
         return {'passed': True, 'tables': len(snapshot['fingerprints']), 'rows': rows,
-            'elapsedSeconds': round(time.monotonic() - started, 3), 'network': 'none', 'controllerStarted': False}
+            'elapsedSeconds': round(time.monotonic() - started, 3), 'network': 'none', 'controllerStarted': False,'cysts':cyst_restore}
     finally:
         if created:
             label = command(['inspect', '--format', '{{index .Config.Labels "telomere.cloud.restore"}}', name]).stdout.decode().strip()

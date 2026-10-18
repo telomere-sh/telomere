@@ -1,0 +1,67 @@
+name: Independent CPU backup and monitoring
+on:
+  schedule:
+    - cron: '17,47 * * * *'
+    - cron: '7 3 * * *'
+  workflow_dispatch:
+    inputs:
+      test_delivery:
+        description: Send an explicit delivery test from the hosted runner
+        type: boolean
+        default: false
+      restore_rehearsal:
+        description: Restore the verified dump into an isolated hosted PostgreSQL container
+        type: boolean
+        default: false
+      simulate_ssh_outage:
+        description: Exercise outage paging against an intentionally closed local port
+        type: boolean
+        default: false
+permissions:
+  contents: write
+concurrency:
+  group: telomere-production-operations
+  cancel-in-progress: false
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Install authenticated archive verifier
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq age
+      - name: Verify independent backups and report incidents
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TELOMERE_SSH_KEY: ${{ secrets.TELOMERE_SSH_KEY }}
+          TELOMERE_KNOWN_HOSTS: ${{ secrets.TELOMERE_KNOWN_HOSTS }}
+          TELOMERE_AGE_IDENTITY: ${{ secrets.TELOMERE_AGE_IDENTITY }}
+          TELOMERE_TELEGRAM_TOKEN: ${{ secrets.TELOMERE_TELEGRAM_TOKEN }}
+          TELOMERE_TELEGRAM_CHAT_ID: ${{ secrets.TELOMERE_TELEGRAM_CHAT_ID }}
+          TELOMERE_TEST_DELIVERY: ${{ inputs.test_delivery }}
+          TELOMERE_RESTORE_REHEARSAL: ${{ inputs.restore_rehearsal || github.event.schedule == '7 3 * * *' }}
+          TELOMERE_SIMULATE_SSH_OUTAGE: ${{ inputs.simulate_ssh_outage }}
+        run: python3 cloud.py
+      - name: Notify if a setup step failed before the pager ran
+        if: ${{ failure() }}
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELOMERE_TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELOMERE_TELEGRAM_CHAT_ID }}
+        run: |
+          python3 - <<'PY'
+          import json, os, urllib.request
+          from pathlib import Path
+          if Path('cloud-pager-attempted').exists():
+              raise SystemExit(0)
+          try:
+              message={'chat_id':os.environ['TELEGRAM_CHAT_ID'],'text':'Telomere CPU: ALERT\nSource: external\nCLOUD_WORKFLOW_SETUP_FAILED'}
+              request=urllib.request.Request('https://api.telegram.org/bot'+os.environ['TELEGRAM_TOKEN']+'/sendMessage',data=json.dumps(message).encode(),headers={'Content-Type':'application/json'})
+              with urllib.request.urlopen(request,timeout=15) as response:
+                  assert json.load(response)['ok']
+              print(json.dumps({'fallbackAlertDelivered':True}))
+          except Exception as error:
+              print(json.dumps({'fallbackAlertDelivered':False,'errorType':type(error).__name__}))
+              raise SystemExit(1)
+          PY

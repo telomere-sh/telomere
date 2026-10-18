@@ -1,0 +1,39 @@
+import json,shlex
+from pathlib import Path
+import offhost
+source=r'''
+import importlib.util,json,os,re,shutil,sys,tempfile,uuid
+from pathlib import Path
+B=Path('/opt/telomere-mainnet-pilot');P=B/'private'
+spec=importlib.util.spec_from_file_location('rehearsal',B/'operator/cpu-launch/restore-rehearsal.py')
+module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
+identity=sys.stdin.buffer.read(4097);assert len(identity)<=4096 and b'AGE-SECRET-KEY-' in identity
+status=json.loads((P/'cpu-backup-status.json').read_text());runtime=status['runtimeBundle']
+assert re.fullmatch('backup-[0-9]{8}T[0-9]{6}Z-[0-9a-f]{8}',status['id'])
+assert re.fullmatch('runtime-[0-9a-f]{40}-[0-9a-f]{16}',runtime['id'])
+parent=B/'rehearsals';assert parent.resolve()==parent and parent.stat().st_uid==0 and not parent.is_symlink()
+root=parent/('cpu-dr-'+uuid.uuid4().hex[:16]);root.mkdir(mode=0o750);os.chown(root,0,993)
+try:
+ with tempfile.TemporaryDirectory(prefix='capacity-data-api-',dir=P) as name:
+  stage=Path(name)
+  data=module.unpack(B/'backups'/(status['id']+'.tar.age'),status['sha256'],identity,stage/'data')
+  archived=module.unpack(B/'backups'/(runtime['id']+'.tar.age'),runtime['sha256'],identity,stage/'runtime');identity=b''
+  assert data['runtimeBundle']['id']==runtime['id']==archived['id'] and data['runtimeBundle']['sha256']==runtime['sha256']
+  expected=json.loads((stage/'data/configuration/expected.json').read_text())
+  for pin in expected['runtimePins']:assert module.digest(stage/'runtime/release'/pin['path'])==pin['sha256']
+  for part in ('release','binaries'):shutil.copytree(stage/'runtime'/part,root/part)
+  for path in [root,*root.rglob('*')]:
+   assert not path.is_symlink();os.chown(path,0,993);path.chmod(0o750 if path.is_dir() else 0o640)
+  (root/'binaries/node').chmod(0o750)
+  checked=module.restored_data_api(stage,root,json.loads((stage/'data/snapshot.json').read_text()))
+  result={'scope':'owner-authenticated current backup data API recovery with disk-backed PostgreSQL','passed':True,'backupId':status['id'],
+   'runtimeId':runtime['id'],'verifiedRuntimePins':len(expected['runtimePins']),'api':checked,'cloudAcknowledgementChanged':False,'mainnetTransactions':0}
+finally:
+ assert root.parent==parent and not root.is_symlink();shutil.rmtree(root)
+result['scratchRuntimeRemoved']=not root.exists();print(json.dumps(result))
+'''
+identity=offhost.dpapi((offhost.ROOT/'identity.dpapi').read_bytes(),True)
+completed=offhost.run(offhost.SSH+['python3 -c '+shlex.quote(source)],input=identity)
+result=json.loads(completed.stdout);assert result['passed']
+output=Path('C:/Users/Administrator/Downloads/telomere/docs/evidence/cpu-backup-capacity-20261018/current-data-api-recovery.json')
+output.write_bytes((json.dumps(result,indent=2)+'\n').encode());print(json.dumps(result))

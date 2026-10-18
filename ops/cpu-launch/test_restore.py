@@ -14,7 +14,7 @@ class ArchiveBoundaries(unittest.TestCase):
     def tearDown(self): self.temporary.cleanup()
     def fixture(self, name='release/app.js', content=b'checked', kind=tarfile.REGTYPE, duplicate=False, **overrides):
         entry = {'path': name, 'bytes': len(content), 'sha256': hashlib.sha256(content).hexdigest(), **overrides}
-        manifest = json.dumps({'id': 'fixture', 'files': [entry]}).encode()
+        manifest = json.dumps({'id': 'backup-20261018T000000Z-1234abcd', 'files': [entry]}).encode()
         with tarfile.open(self.archive, 'w') as output:
             metadata = tarfile.TarInfo('manifest.json'); metadata.size = len(manifest); output.addfile(metadata, io.BytesIO(manifest))
             member = tarfile.TarInfo(name); member.type = kind
@@ -28,7 +28,7 @@ class ArchiveBoundaries(unittest.TestCase):
             return rehearsal.unpack(self.cipher, self.checksum, b'fixture identity', self.target)
     def test_verified_regular_member_round_trip(self):
         self.fixture(); result = self.unpack()
-        self.assertEqual(result['id'], 'fixture'); self.assertEqual((self.target / 'release/app.js').read_bytes(), b'checked')
+        self.assertEqual(result['id'], 'backup-20261018T000000Z-1234abcd'); self.assertEqual((self.target / 'release/app.js').read_bytes(), b'checked')
         self.assertFalse((self.root / 'unpacked.plain').exists())
     def test_ciphertext_changed_before_decryption(self):
         self.fixture(); self.cipher.write_bytes(b'changed')

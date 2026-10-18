@@ -1,0 +1,32 @@
+{
+  "id": "backup-20261018T134432Z-bd98efda",
+  "createdAt": "2026-10-18T13:44:57.886937+00:00",
+  "sha256": "413a7caae1911a1afb12dbeafed555615e3d319522e0c8791a792d36ec76ad78",
+  "bytes": 430474,
+  "capacity": {
+    "files": 20,
+    "payloadBytes": 382653,
+    "cystBytes": 0,
+    "dumpBytes": 88392,
+    "snapshotBytes": 7371,
+    "configurationBytes": 286890
+  },
+  "encryption": "age X25519",
+  "restore": {
+    "passed": true,
+    "tables": 47,
+    "rows": 44,
+    "elapsedSeconds": 4.669,
+    "network": "none",
+    "mainnetControllerStarted": false,
+    "databaseImage": "postgres@sha256:721873c34ceb9f8d8fc265984940dc982404c105f19ad51be9fdc5970a6080ea"
+  },
+  "runtimeBundle": {
+    "id": "runtime-a75ee7bc44ff9aaa8964023975f0b7147c92fee4-b08590b94b797fd9",
+    "sha256": "3ddc782f8f770f2e0eb05f04e65e2a950367c787ef500564f27e9b9e72054ba0",
+    "bytes": 344371515,
+    "runtimePinsVerified": 758,
+    "files": 22188
+  },
+  "elapsedSeconds": 25.081
+}

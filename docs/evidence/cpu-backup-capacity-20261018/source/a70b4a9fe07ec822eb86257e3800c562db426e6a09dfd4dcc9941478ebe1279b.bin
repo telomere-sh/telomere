@@ -1,0 +1,21 @@
+[Unit]
+Description=Encrypted Telomere mainnet snapshot and isolated restore rehearsal
+After=telomere-mainnet-postgres.service
+Requires=telomere-mainnet-postgres.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/python3 /opt/telomere-mainnet-pilot/operator/cpu-launch/mainnet-ops.py backup
+User=root
+Group=root
+UMask=0077
+TimeoutStartSec=1800
+MemoryMax=1536M
+CPUQuota=50%
+Nice=15
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/opt/telomere-mainnet-pilot/private /opt/telomere-mainnet-pilot/backups
+

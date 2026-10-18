@@ -1,0 +1,46 @@
+name: Full Cyst backup capacity acceptance
+on:
+  workflow_dispatch:
+    inputs:
+      backup_id:
+        description: Synthetic full-quota archive identifier
+        required: true
+      sha256:
+        description: Reviewed ciphertext checksum
+        required: true
+      bytes:
+        description: Reviewed ciphertext byte count
+        required: true
+      database_image:
+        description: Exact PostgreSQL image digest
+        required: true
+      release_tag:
+        description: Separate capacity acceptance release tag
+        required: true
+permissions:
+  contents: write
+concurrency:
+  group: telomere-backup-capacity-acceptance
+  cancel-in-progress: false
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Install authenticated archive verifier
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq age
+      - name: Export, store, read back and restore full-quota fixture
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TELOMERE_SSH_KEY: ${{ secrets.TELOMERE_SSH_KEY }}
+          TELOMERE_KNOWN_HOSTS: ${{ secrets.TELOMERE_KNOWN_HOSTS }}
+          TELOMERE_AGE_IDENTITY: ${{ secrets.TELOMERE_AGE_IDENTITY }}
+          CAPACITY_BACKUP_ID: ${{ inputs.backup_id }}
+          CAPACITY_SHA256: ${{ inputs.sha256 }}
+          CAPACITY_BYTES: ${{ inputs.bytes }}
+          CAPACITY_DATABASE_IMAGE: ${{ inputs.database_image }}
+          CAPACITY_RELEASE_TAG: ${{ inputs.release_tag }}
+        run: python3 capacity.py

@@ -1,0 +1,41 @@
+import hashlib,json,shutil,subprocess,threading,time
+from pathlib import Path
+import offhost
+from archive_policy import archive_limit,MIN_FREE_BYTES
+started=time.monotonic();root=offhost.ROOT
+report=json.loads(offhost.run(offhost.SSH+['cat /opt/telomere-mainnet-pilot/private/cpu-capacity-acceptance.json']).stdout)
+assert report['passed'] and 1024**3<report['bytes']<=archive_limit(report['id'])
+folder=root/report['releaseTag'];folder.mkdir(mode=0o700,exist_ok=True)
+(folder/'server-production-path.json').write_text(json.dumps(report,indent=2)+'\n')
+assert shutil.disk_usage(root).free>MIN_FREE_BYTES
+target=folder/(report['id']+'.tar.age')
+restricted=['ssh','-T','-i',str(root/'cpu-cloud-export-ed25519'),'-o','BatchMode=yes','-o','IdentitiesOnly=yes','-o','StrictHostKeyChecking=yes','-o','ConnectTimeout=12','root@2.27.12.39']
+if not target.exists():
+    process=subprocess.Popen(restricted,stdin=subprocess.PIPE,stdout=subprocess.PIPE,stderr=subprocess.PIPE,creationflags=subprocess.CREATE_NO_WINDOW)
+    timer=threading.Timer(660,process.kill);timer.start()
+    try:
+        process.stdin.write((json.dumps({'schemaVersion':1,'operation':'download','id':report['id']})+'\n').encode());process.stdin.close()
+        header=process.stdout.readline(4097);assert len(header)<=4096 and header.endswith(b'\n')
+        metadata=json.loads(header);assert all(metadata[key]==report[key] for key in ('id','sha256','bytes'))
+        remaining=report['bytes'];checksum=hashlib.sha256()
+        with target.with_suffix('.partial').open('xb') as outgoing:
+            while remaining:
+                part=process.stdout.read(min(1024**2,remaining));assert part
+                outgoing.write(part);checksum.update(part);remaining-=len(part)
+        assert process.stdout.read(1)==b'' and process.wait(timeout=10)==0 and checksum.hexdigest()==report['sha256']
+        target.with_suffix('.partial').replace(target)
+    finally:
+        timer.cancel()
+        if process.poll() is None:process.kill()
+        process.wait()
+        for stream in (process.stdin,process.stdout,process.stderr):
+            if stream and not stream.closed:stream.close()
+assert offhost.digest(target)==report['sha256']
+proof=offhost.verify(target)
+result={'scope':'full quota restricted SSH transfer to private recovery device','passed':True,'id':report['id'],'bytes':report['bytes'],'sha256':report['sha256'],
+    'verification':proof,'elapsedSeconds':round(time.monotonic()-started,3),'productionReceiptChanged':False,'mainnetTransactions':0}
+(folder/'restricted-transfer.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result),flush=True)
+identity=offhost.dpapi((root/'cloud-age-identity.dpapi').read_bytes(),True)
+restored=offhost.run(offhost.SSH+['python3 -B /opt/telomere-mainnet-pilot/operator/cpu-launch/capacity-restore.py'],input=identity)
+value=json.loads(restored.stdout);assert value['passed']
+(folder/'vps-hosted-implementation-restore.json').write_text(json.dumps(value,indent=2)+'\n');print(json.dumps(value),flush=True)

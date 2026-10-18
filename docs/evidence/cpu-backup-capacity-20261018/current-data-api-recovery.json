@@ -1,0 +1,23 @@
+{
+  "scope": "owner-authenticated current backup data API recovery with disk-backed PostgreSQL",
+  "passed": true,
+  "backupId": "backup-20261018T134432Z-bd98efda",
+  "runtimeId": "runtime-a75ee7bc44ff9aaa8964023975f0b7147c92fee4-b08590b94b797fd9",
+  "verifiedRuntimePins": 758,
+  "api": {
+    "passed": true,
+    "owners": 1,
+    "restoredJobs": 2,
+    "authenticatedReads": 2,
+    "unauthenticatedStatus": 401,
+    "workerStarted": false,
+    "networkNamespace": "no interfaces or routes",
+    "productionSignerLoaded": false,
+    "syntheticSessionsRemoved": true,
+    "duplicateControllerRejected": true,
+    "allOriginalTableFingerprintsPreserved": true
+  },
+  "cloudAcknowledgementChanged": false,
+  "mainnetTransactions": 0,
+  "scratchRuntimeRemoved": true
+}

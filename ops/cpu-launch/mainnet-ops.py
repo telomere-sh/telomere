@@ -1,6 +1,8 @@
 """Root-owned mainnet backup and read-only restore rehearsal. Never starts a restored controller."""
-import argparse,datetime,fcntl,hashlib,json,os,re,select,shutil,socket,ssl,stat,subprocess,tarfile,tempfile,time,uuid,urllib.request
+import argparse,datetime,fcntl,hashlib,importlib.util,json,os,re,select,shutil,socket,ssl,stat,subprocess,tarfile,tempfile,time,uuid,urllib.request
 from pathlib import Path
+_spec=importlib.util.spec_from_file_location('backup_capacity_policy',Path(__file__).parent.parent/'cpu-cloud/archive_policy.py')
+policy=importlib.util.module_from_spec(_spec);_spec.loader.exec_module(policy)
 BASE=Path('/opt/telomere-mainnet-pilot');PRIVATE=BASE/'private';BACKUPS=BASE/'backups'
 DOCKER=['/usr/bin/docker','--host','unix:///run/telomere-mainnet-docker/docker.sock']
 NODE='/opt/node-v22.23.3-linux-x64/bin/node'
@@ -28,6 +30,8 @@ def validate_recipients(text):
     assert all(re.fullmatch(r'age1[0-9a-z]{58}',recipient) for recipient in recipients)
 def copy_cysts(directory,target,references):
     assert directory.is_dir() and not directory.is_symlink() and directory.resolve()==directory
+    assert isinstance(references,list) and len(references)<policy.MAX_MEMBERS
+    copied=0
     for entry in references:
         assert re.fullmatch('0x[0-9a-f]{40}',entry['owner']) and re.fullmatch('[0-9a-f]{64}',entry['sha256'])
         assert entry['state'] in ('pending','ready') and 17<=entry['ciphertext_bytes']<=2097168
@@ -38,6 +42,7 @@ def copy_cysts(directory,target,references):
         with os.fdopen(fd,'rb') as incoming:
             metadata=os.fstat(incoming.fileno());assert stat.S_ISREG(metadata.st_mode) and metadata.st_nlink==1 and metadata.st_size==entry['ciphertext_bytes']
             if not destination.exists():
+                copied+=entry['ciphertext_bytes'];assert copied<=policy.MAX_CYST_BYTES,'Cyst backup budget exceeded'
                 remaining=entry['ciphertext_bytes'];h=hashlib.sha256()
                 with destination.open('xb') as out:
                     while remaining:
@@ -45,6 +50,36 @@ def copy_cysts(directory,target,references):
                         remaining-=len(chunk);h.update(chunk);out.write(chunk)
                     assert not incoming.read(1) and h.hexdigest()==entry['sha256']
             assert destination.stat().st_size==entry['ciphertext_bytes'] and digest(destination)==entry['sha256']
+
+def encrypt_archive(archive,recipient,output,identifier):
+    """Publish only a complete ciphertext accepted by every downstream consumer."""
+    temporary=output.with_name(identifier+'.partial')
+    assert not temporary.exists() and not temporary.is_symlink()
+    try:
+        subprocess.run(['/usr/bin/age','-R',str(recipient),'-o',str(temporary),str(archive)],
+            check=True,capture_output=True,timeout=policy.CRYPTO_SECONDS)
+        assert 100<=temporary.stat().st_size<=policy.archive_limit(identifier),'Encrypted archive capacity exceeded'
+        temporary.chmod(0o600);os.replace(temporary,output)
+    finally:temporary.unlink(missing_ok=True)
+
+def seal_data_archive(stage,identifier,recipient,output,metadata):
+    assert policy.BACKUP_ID.fullmatch(identifier)
+    files=[]
+    for path in sorted(stage.rglob('*')):
+        assert not path.is_symlink()
+        if path.is_file():
+            path.chmod(0o600);files.append({'path':path.relative_to(stage).as_posix(),'bytes':path.stat().st_size,'sha256':digest(path)})
+    capacity=policy.validate_files(files)
+    manifest={**metadata,'schemaVersion':1,'id':identifier,'files':files,'capacity':capacity}
+    manifest_path=stage/'manifest.json';manifest_path.write_text(json.dumps(manifest,indent=2)+'\n')
+    assert manifest_path.stat().st_size<=policy.MAX_METADATA_BYTES
+    archive=stage/'snapshot.tar'
+    with tarfile.open(archive,'w') as tar:
+        for entry in files:tar.add(stage/entry['path'],arcname=entry['path'],recursive=False)
+        tar.add(manifest_path,arcname='manifest.json')
+    assert archive.stat().st_size<policy.MAX_DATA_ARCHIVE-1024**2,'Archive envelope budget exceeded'
+    encrypt_archive(archive,recipient,output,identifier)
+    return capacity
 def runtime_bundle():
     expected=json.loads((PRIVATE/'expected.json').read_text());release=Path(expected['releaseDirectory']).resolve()
     assert release.parent==BASE/'releases' and (BASE/'app').resolve()==release
@@ -69,6 +104,7 @@ def runtime_bundle():
                 if child.is_file() and not child.is_symlink():entries.append((child,'systemd/'+path.name+'/'+child.name))
     entries.extend([(Path(NODE),'binaries/node'),(Path('/opt/telomere-host-runtime/gvisor/runsc'),'binaries/runsc')])
     files=[{'path':name,'bytes':path.stat().st_size,'sha256':digest(path),'mode':path.stat().st_mode&0o777} for path,name in entries]
+    capacity=policy.validate_files(files,runtime=True)
     for pin in expected['runtimePins']:
         found=next((f for f in files if f['path']=='release/'+pin['path']),None)
         assert found and found['sha256']==pin['sha256'],'Runtime pin differs during backup'
@@ -83,6 +119,7 @@ def runtime_bundle():
         # is keyed by identity, rather than assuming it was the latest bundle.
         receipt=PRIVATE/(identifier+'.json')
         old=json.loads(receipt.read_text());assert old['id']==identifier and old['sha256']==digest(target)
+        assert target.stat().st_size<=policy.MAX_RUNTIME_ARCHIVE
         atomic(status_file,old);return old
     with tempfile.TemporaryDirectory(prefix='runtime-snapshot-',dir=PRIVATE) as temp:
         stage=Path(temp).resolve();assert stage.parent==PRIVATE
@@ -91,8 +128,7 @@ def runtime_bundle():
         with tarfile.open(archive,'w:gz',compresslevel=1) as tar:
             for path,name in entries:assert path.is_file() and not path.is_symlink();tar.add(path,arcname=name,recursive=False)
             tar.add(metadata,arcname='manifest.json')
-        temporary=BACKUPS/(identifier+'.partial')
-        run(['/usr/bin/age','-R',str(PRIVATE/'backup-recipient.txt'),'-o',str(temporary),str(archive)]);temporary.chmod(0o600);os.replace(temporary,target)
+        encrypt_archive(archive,PRIVATE/'backup-recipient.txt',target,identifier)
     result={'id':identifier,'sha256':digest(target),'bytes':target.stat().st_size,'runtimePinsVerified':len(expected['runtimePins']),'files':len(files)}
     atomic(PRIVATE/(identifier+'.json'),result);atomic(status_file,result);return result
 def restore(stage,snapshot):
@@ -105,7 +141,7 @@ def restore(stage,snapshot):
     pull_image=next(value for value in digests if re.fullmatch(r'postgres@sha256:[0-9a-f]{64}',value))
     began=time.monotonic()
     try:
-        assert shutil.disk_usage(BASE).free>4*1024**3,'Insufficient scratch restore disk'
+        assert shutil.disk_usage(BASE).free>policy.MIN_FREE_BYTES,'Insufficient scratch restore disk'
         run(DOCKER+['volume','create','--label','telomere.backup.exercise='+name,volume]);volume_created=True
         run(DOCKER+['run','-d','--name',name,'--label','telomere.backup.exercise='+name,'--runtime','runc','--network','none',
             '--cpus','0.5','--memory','512m','--pids-limit','128','--mount','type=volume,source='+volume+',target=/var/lib/postgresql/data',
@@ -117,7 +153,7 @@ def restore(stage,snapshot):
         else:raise RuntimeError('Isolated restore PostgreSQL did not start')
         PHASE='restore_archive'
         with (stage/'database.dump').open('rb') as f:
-            p=subprocess.run(DOCKER+['exec','-i',name,'pg_restore','-U','restore','-d','restore','--exit-on-error','--no-owner','--no-acl'],stdin=f,stdout=subprocess.DEVNULL,stderr=subprocess.PIPE,timeout=120)
+            p=subprocess.run(DOCKER+['exec','-i',name,'pg_restore','-U','restore','-d','restore','--exit-on-error','--no-owner','--no-acl'],stdin=f,stdout=subprocess.DEVNULL,stderr=subprocess.PIPE,timeout=policy.RESTORE_SECONDS)
         assert p.returncode==0,'Scratch database restore failed'
         tables=0;rows=0
         for entry in snapshot['fingerprints']:
@@ -125,7 +161,7 @@ def restore(stage,snapshot):
             query='SELECT to_jsonb(t)::text FROM public."'+table+'" t ORDER BY to_jsonb(t)::text;'
             with tempfile.TemporaryFile() as output:
                 subprocess.run(DOCKER+['exec',name,'psql','-X','-q','-A','-t','-U','restore','-d','restore','-v','ON_ERROR_STOP=1','-v','FETCH_COUNT=256','-c',query],
-                    check=True,stdout=output,stderr=subprocess.PIPE,timeout=120)
+                    check=True,stdout=output,stderr=subprocess.PIPE,timeout=policy.RESTORE_SECONDS)
                 output.seek(0);checksum,count=fingerprint_file(output)
             assert checksum==entry['sha256'],'Restored table fingerprint differs'
             assert count==entry['rows']
@@ -148,7 +184,7 @@ def backup():
     with (PRIVATE/'cpu-backup.lock').open('a') as lock:
         fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
         started=time.monotonic();identifier='backup-'+datetime.datetime.now(datetime.timezone.utc).strftime('%Y%m%dT%H%M%SZ')+'-'+uuid.uuid4().hex[:8]
-        assert shutil.disk_usage(BASE).free>4*1024**3
+        assert shutil.disk_usage(BASE).free>policy.MIN_FREE_BYTES
         recipient=PRIVATE/'backup-recipient.txt';validate_recipients(recipient.read_text())
         with tempfile.TemporaryDirectory(prefix='cpu-snapshot-',dir=PRIVATE) as temp:
             stage=Path(temp).resolve();assert stage.parent==PRIVATE
@@ -161,7 +197,7 @@ def backup():
                 PHASE='database_dump'
                 with (stage/'database.dump').open('wb') as out:
                     args=DOCKER+['exec','telomere-mainnet-postgres','sh','-c','PGPASSWORD="$POSTGRES_PASSWORD" exec pg_dump -h 127.0.0.1 -p 15435 -U "$POSTGRES_USER" -d telomere_mainnet -Fc --snapshot "$1"','backup',snapshot['snapshot']]
-                    result=subprocess.run(args,stdout=out,stderr=subprocess.PIPE,timeout=120);assert result.returncode==0 and out.tell()>0
+                    result=subprocess.run(args,stdout=out,stderr=subprocess.PIPE,timeout=policy.RESTORE_SECONDS);assert result.returncode==0 and 0<out.tell()<=policy.MAX_DUMP_BYTES
                 PHASE='cyst_copy'
                 (stage/'snapshot.json').write_text(json.dumps(snapshot,indent=2)+'\n')
                 (stage/'cysts').mkdir()
@@ -195,18 +231,9 @@ def backup():
                 if source.exists():assert source.is_file() and not source.is_symlink();shutil.copyfile(source,stage/'configuration'/name)
             rehearsal=restore(stage,snapshot)
             PHASE='runtime_bundle';runtime=runtime_bundle()
-            files=[]
-            for path in sorted(stage.rglob('*')):
-                if path.is_file():path.chmod(0o600);files.append({'path':path.relative_to(stage).as_posix(),'bytes':path.stat().st_size,'sha256':digest(path)})
-            manifest={'schemaVersion':1,'id':identifier,'createdAt':now(),'kind':'mainnet-cpu-encrypted-backup','chainId':8453,'consistentExportedDatabaseSnapshot':True,'restoreRehearsal':rehearsal,'runtimeBundle':runtime,'files':files}
-            (stage/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
-            archive=stage/'snapshot.tar'
-            with tarfile.open(archive,'w') as tar:
-                for entry in files:tar.add(stage/entry['path'],arcname=entry['path'],recursive=False)
-                tar.add(stage/'manifest.json',arcname='manifest.json')
-            output=BACKUPS/(identifier+'.tar.age');temporary=BACKUPS/(identifier+'.partial')
-            run(['/usr/bin/age','-R',str(recipient),'-o',str(temporary),str(archive)]);temporary.chmod(0o600);os.replace(temporary,output)
-            result={'id':identifier,'createdAt':now(),'sha256':digest(output),'bytes':output.stat().st_size,'encryption':'age X25519','restore':rehearsal,'runtimeBundle':runtime,'elapsedSeconds':round(time.monotonic()-started,3)}
+            output=BACKUPS/(identifier+'.tar.age')
+            capacity=seal_data_archive(stage,identifier,recipient,output,{'createdAt':now(),'kind':'mainnet-cpu-encrypted-backup','chainId':8453,'consistentExportedDatabaseSnapshot':True,'restoreRehearsal':rehearsal,'runtimeBundle':runtime})
+            result={'id':identifier,'createdAt':now(),'sha256':digest(output),'bytes':output.stat().st_size,'capacity':capacity,'encryption':'age X25519','restore':rehearsal,'runtimeBundle':runtime,'elapsedSeconds':round(time.monotonic()-started,3)}
             atomic(PRIVATE/'cpu-backup-status.json',result)
             # Retain 24 hourly snapshots and one older snapshot per day for seven days.
             snapshots=sorted([p for p in BACKUPS.iterdir() if p.is_file() and re.fullmatch(r'backup-[0-9]{8}T[0-9]{6}Z-[0-9a-f]{8}\.tar\.age',p.name)],reverse=True)
@@ -255,7 +282,11 @@ def evaluate_health(observation):
     if observation.get('backupAgeSeconds',float('inf'))>7200:alerts.append('BACKUP_STALE')
     if observation.get('offhostAgeSeconds',float('inf'))>10800:alerts.append('OFFHOST_BACKUP_STALE')
     if not observation.get('offhostRuntimeValid',True):alerts.append('OFFHOST_RUNTIME_NOT_VERIFIED')
-    if observation.get('diskFreeBytes',0)<5*1024**3:alerts.append('DISK_SPACE_LOW')
+    if observation.get('diskFreeBytes',0)<policy.MIN_FREE_BYTES:alerts.append('DISK_SPACE_LOW')
+    capacity=observation.get('backupCapacity',{})
+    if capacity.get('dumpBytes',0)>=policy.MAX_DUMP_BYTES*.9:alerts.append('BACKUP_DATABASE_CAPACITY_REVIEW')
+    if capacity.get('files',0)>=45000:alerts.append('BACKUP_FILE_COUNT_REVIEW')
+    if observation.get('backupCipherBytes',0)>=policy.MAX_DATA_ARCHIVE*.9:alerts.append('BACKUP_ARCHIVE_CAPACITY_REVIEW')
     if observation.get('tlsRemainingDays',0)<14:alerts.append('TLS_EXPIRY_NEAR')
     if observation.get('cpuSoakState')=='failed':alerts.append('CPU_SOAK_FAILED')
     if observation.get('cpuSoakState')=='invalid':alerts.append('CPU_SOAK_OBSERVATION_INVALID')
@@ -309,6 +340,7 @@ def monitor():
         except Exception:pass
     try:
         backup=json.loads((PRIVATE/'cpu-backup-status.json').read_text());offhost=json.loads((PRIVATE/offhost_file).read_text())
+        observed['backupCapacity']=backup.get('capacity',{});observed['backupCipherBytes']=backup['bytes']
         expected=backup.get('runtimeBundle');observed['offhostRuntimeValid']=not expected or (offhost.get('runtimeBundleId')==expected['id'] and offhost.get('runtimeBundleSha256')==expected['sha256'])
     except Exception:observed['offhostRuntimeValid']=False
     try:

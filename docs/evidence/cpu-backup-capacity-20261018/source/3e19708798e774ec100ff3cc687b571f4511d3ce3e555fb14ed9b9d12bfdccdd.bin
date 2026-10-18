@@ -1,0 +1,49 @@
+import datetime,hashlib,json,subprocess
+from pathlib import Path
+B=Path('/opt/telomere-mainnet-pilot');P=B/'private'
+def command(args):return subprocess.check_output(args,timeout=90)
+result={'observedAt':datetime.datetime.now(datetime.timezone.utc).isoformat()}
+result['configurationGuard']=json.loads(command(['/opt/node-v22.23.3-linux-x64/bin/node',str(B/'operator/preflight-public.mjs'),'--configuration-only']))
+result['mainnetAudit']=json.loads(command(['/opt/node-v22.23.3-linux-x64/bin/node',str(B/'operator/cpu-launch/audit-journal.mjs')]))
+monitored=subprocess.run(['python3','-B',str(B/'operator/cpu-launch/mainnet-ops.py'),'monitor'],capture_output=True,timeout=90)
+assert monitored.returncode in (0,2);result['monitor']=json.loads(monitored.stdout)
+result['backup']=json.loads((P/'cpu-backup-status.json').read_text())
+result['cloudReceipt']=json.loads((P/'cpu-cloud-offhost-status.json').read_text())
+result['deploymentFiles']=[]
+for relative in ['cpu-cloud/'+name for name in ('archive_policy.py','cloud.py','github_store.py','export.py','capacity.py','README.md')]+['cpu-launch/'+name for name in ('mainnet-ops.py','restore-rehearsal.py','offhost.py','backup-capacity.py','backup-capacity-fixture.mjs','capacity-restore.py','README.md','CLEAN-SERVER-RECOVERY.md','telomere-mainnet-backup.service')]:
+    path=B/'operator'/relative;assert path.is_file() and not path.is_symlink()
+    result['deploymentFiles'].append({'path':'ops/'+relative,'bytes':path.stat().st_size,'sha256':hashlib.sha256(path.read_bytes()).hexdigest()})
+unit=Path('/etc/systemd/system/telomere-mainnet-backup.service')
+result['backupUnitMatchesSource']=unit.read_bytes()==(B/'operator/cpu-launch/telomere-mainnet-backup.service').read_bytes()
+assert result['backupUnitMatchesSource']
+result['linuxTests']=[]
+for directory in ('ops/cpu-cloud','ops/cpu-launch'):
+    checked=subprocess.run(['python3','-B','-m','unittest','discover','-s',directory,'-p','test_*.py'],cwd=P/'backup-capacity-candidate-20261018',capture_output=True,text=True,timeout=90)
+    result['linuxTests'].append({'suite':directory,'exitCode':checked.returncode,'output':checked.stdout+checked.stderr})
+    assert checked.returncode==0
+result['capacity']=json.loads((P/'cpu-capacity-acceptance.json').read_text())
+restored=P/'cpu-capacity-restore.json'
+if restored.exists():result['capacityRestore']=json.loads(restored.read_text())
+result['soaks']={}
+for namespace,unit in [('0edc56ed5ba346ae','telomere-cpu-soak-0edc56ed5ba346ae.service'),('ee847b083532475b','telomere-cpu-journal-soak-ee847b083532475b.service')]:
+    progress=json.loads((B/'data/cpu-launch-acceptance-20261017'/('soak-'+namespace+'.json')).read_text())
+    systemd=command(['systemctl','show',unit,'-p','Result','-p','ActiveState','-p','SubState','-p','NRestarts']).decode()
+    cleanup=[]
+    for line in command(['journalctl','-u',unit,'--no-pager','-o','cat']).decode().splitlines():
+        if 'cleanupPassed' in line:
+            try:cleanup.append(json.loads(line))
+            except json.JSONDecodeError:pass
+    result['soaks'][namespace]={'progress':progress,'systemd':systemd,'cleanup':cleanup}
+result['capacityLogs']={}
+for unit in ['telomere-backup-capacity-1792330702.service','telomere-backup-capacity-1792330933.service']:
+    result['capacityLogs'][unit]={'systemd':command(['systemctl','show',unit,'-p','Result','-p','ActiveState','-p','SubState','-p','MemoryPeak','-p','CPUUsageNSec']).decode(),
+        'log':command(['journalctl','-u',unit,'--no-pager','-o','cat']).decode()}
+result['ownedCapacityContainers']=command(['/usr/bin/docker','--host','unix:///run/telomere-mainnet-docker/docker.sock','ps','-a','--filter','label=telomere.capacity','--format','{{.Names}}']).decode().splitlines()
+result['ownedCapacityVolumes']=command(['/usr/bin/docker','--host','unix:///run/telomere-mainnet-docker/docker.sock','volume','ls','--filter','label=telomere.capacity','--format','{{.Name}}']).decode().splitlines()
+result['otherOwnedRestoreResources']={}
+for label in ('telomere.cloud.restore','telomere.dr.data','telomere.backup.exercise'):
+    docker=['/usr/bin/docker','--host','unix:///run/telomere-mainnet-docker/docker.sock']
+    result['otherOwnedRestoreResources'][label]={'containers':command(docker+['ps','-a','--filter','label='+label,'--format','{{.Names}}']).decode().splitlines(),
+        'volumes':command(docker+['volume','ls','--filter','label='+label,'--format','{{.Name}}']).decode().splitlines()}
+result['productionController']=command(['systemctl','show','telomere-mainnet-pilot.service','-p','ActiveState','-p','SubState','-p','NRestarts','-p','ExecMainStartTimestamp']).decode()
+print(json.dumps(result))

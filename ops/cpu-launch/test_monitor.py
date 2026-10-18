@@ -17,6 +17,11 @@ class HealthTests(unittest.TestCase):
     def setUp(self):self.good={'ready':True,'databaseAvailable':True,'rpc':{'available':True,'operatorGasWei':'100000000000000'},'invalidFinancialRows':0,'states':[],
         'backupAgeSeconds':100,'offhostAgeSeconds':100,'diskFreeBytes':10*1024**3,'tlsRemainingDays':60}
     def test_ready(self):self.assertEqual(ops.evaluate_health(self.good),[])
+    def test_backup_capacity_warning_precedes_an_unexportable_backup(self):
+        self.good.update(backupCapacity={'files':44999,'dumpBytes':int(ops.policy.MAX_DUMP_BYTES*.89)},backupCipherBytes=int(ops.policy.MAX_DATA_ARCHIVE*.89))
+        self.assertEqual(ops.evaluate_health(self.good),[])
+        self.good.update(backupCapacity={'files':45000,'dumpBytes':int(ops.policy.MAX_DUMP_BYTES*.9)+1},backupCipherBytes=int(ops.policy.MAX_DATA_ARCHIVE*.9)+1)
+        self.assertEqual(ops.evaluate_health(self.good),['BACKUP_ARCHIVE_CAPACITY_REVIEW','BACKUP_DATABASE_CAPACITY_REVIEW','BACKUP_FILE_COUNT_REVIEW'])
     def test_journal_history_warning_precedes_the_runtime_cap(self):
         self.good['settlementJournalRows']=1499;self.assertNotIn('SETTLEMENT_HISTORY_REVIEW_DUE',ops.evaluate_health(self.good))
         self.good['settlementJournalRows']=1500;self.assertIn('SETTLEMENT_HISTORY_REVIEW_DUE',ops.evaluate_health(self.good))

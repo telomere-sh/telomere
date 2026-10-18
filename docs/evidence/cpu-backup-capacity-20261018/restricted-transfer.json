@@ -1,0 +1,24 @@
+{
+  "scope": "full quota restricted SSH transfer to private recovery device",
+  "passed": true,
+  "id": "backup-20261018T134213Z-5ac8888a",
+  "bytes": 1324007290,
+  "sha256": "4998bde8e843d769f1be18ef0128801b1ca810104b3abef9897263ce416f6192",
+  "verification": {
+    "id": "backup-20261018T134213Z-5ac8888a",
+    "verifiedFiles": 514,
+    "authenticatedAgeDecryption": true,
+    "manifestChecksumsValid": true,
+    "capacity": {
+      "files": 514,
+      "payloadBytes": 1322780597,
+      "cystBytes": 1073741824,
+      "dumpBytes": 248920914,
+      "snapshotBytes": 117859,
+      "configurationBytes": 0
+    }
+  },
+  "elapsedSeconds": 446.288,
+  "productionReceiptChanged": false,
+  "mainnetTransactions": 0
+}

@@ -1,0 +1,106 @@
+{
+  "0edc56ed5ba346ae": {
+    "progress": {
+      "schemaVersion": 1,
+      "state": "completed",
+      "startedAt": "2026-10-17T18:44:59.179Z",
+      "observedAt": "2026-10-18T06:44:59.875Z",
+      "targetSeconds": 43200,
+      "elapsedSeconds": 43200.69655197,
+      "scope": "exact deployed runtime, isolated PostgreSQL, local chain 31337, actual gVisor CPU",
+      "users": 50,
+      "burst": {
+        "users": 50,
+        "requests": 1000,
+        "concurrency": 50,
+        "elapsedSeconds": 1.7586757340000003,
+        "requestsPerSecond": 568.6096536543216,
+        "p50Ms": 91.0080539999999,
+        "p95Ms": 172.19851199999994,
+        "p99Ms": 178.60418300000038,
+        "errors": 0
+      },
+      "requests": 432000,
+      "writes": 43200,
+      "cpuRuns": 144,
+      "chargedAtomicTestTokens": "27000",
+      "sessionRefreshes": 100,
+      "readsWhileCpuPending": 4570,
+      "readsWhileCpuRunning": 3470,
+      "errors": 0,
+      "p95UpperBoundMs": 10,
+      "p99UpperBoundMs": 10,
+      "maxLatencyMs": 223.6277820020914,
+      "maxWorkerRssKiB": 159460,
+      "mainnetTransactions": 0,
+      "mainnetSignerLoaded": false,
+      "reportDirectory": "/opt/telomere-mainnet-pilot/data/cpu-launch-acceptance-20261017/http-load-UwX7KC"
+    },
+    "systemd": "Result=success\nNRestarts=0\nActiveState=inactive\nSubState=dead\n",
+    "cleanup": [
+      {
+        "namespace": "0edc56ed5ba346ae",
+        "serviceResult": "success",
+        "observedAtUnix": 1792305909.9817612,
+        "removedContainers": 0,
+        "cleanupPassed": true
+      }
+    ]
+  },
+  "ee847b083532475b": {
+    "progress": {
+      "schemaVersion": 1,
+      "state": "completed",
+      "startedAt": "2026-10-17T20:35:01.961Z",
+      "observedAt": "2026-10-18T08:35:02.615Z",
+      "targetSeconds": 43200,
+      "elapsedSeconds": 43200.653778853,
+      "scope": "pinned archive release; 256 genuine historical local settlements; automatic archival; gVisor CPU",
+      "releaseId": "a75ee7bc44ff9aaa8964023975f0b7147c92fee4",
+      "archive": {
+        "retainedRows": 400,
+        "archivedRows": 272,
+        "activeRows": 128,
+        "batches": 34
+      },
+      "users": 50,
+      "burst": {
+        "users": 50,
+        "requests": 1000,
+        "concurrency": 50,
+        "elapsedSeconds": 1.5876809519999988,
+        "requestsPerSecond": 629.8494661287596,
+        "p50Ms": 85.42952800000057,
+        "p95Ms": 114.10460799999964,
+        "p99Ms": 170.70823100000052,
+        "errors": 0
+      },
+      "requests": 432000,
+      "writes": 43200,
+      "cpuRuns": 144,
+      "chargedAtomicTestTokens": "25400",
+      "historicalChargeAtomicTestTokens": "256",
+      "sessionRefreshes": 100,
+      "readsWhileCpuPending": 8170,
+      "readsWhileCpuRunning": 3290,
+      "errors": 0,
+      "p95UpperBoundMs": 10,
+      "p99UpperBoundMs": 10,
+      "maxLatencyMs": 504.90434100001585,
+      "maxWorkerRssKiB": 152472,
+      "mainnetTransactions": 0,
+      "mainnetSignerLoaded": false,
+      "reportDirectory": "/opt/telomere-mainnet-pilot/data/cpu-launch-acceptance-20261017/http-load-hAllG5"
+    },
+    "systemd": "Result=success\nNRestarts=0\nActiveState=inactive\nSubState=dead\n",
+    "cleanup": [
+      {
+        "namespace": "ee847b083532475b",
+        "serviceResult": "success",
+        "observedAtUnix": 1792312512.733903,
+        "removedContainers": 0,
+        "cleanupPassed": true
+      }
+    ]
+  }
+}

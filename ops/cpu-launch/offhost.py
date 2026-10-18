@@ -3,8 +3,12 @@
 Uses the official age executable, strict SSH host checking and private local ACLs.
 Never prints, uploads or writes an unprotected age identity.
 """
-import argparse,ctypes,hashlib,json,os,re,shutil,subprocess,tarfile,tempfile,datetime,time
+import argparse,ctypes,hashlib,importlib.util,json,os,re,shutil,subprocess,tarfile,tempfile,datetime,time
 from pathlib import Path
+_policy_path=Path(__file__).parent.parent/'cpu-cloud/archive_policy.py'
+if not _policy_path.is_file():_policy_path=Path(__file__).with_name('archive_policy.py')
+_spec=importlib.util.spec_from_file_location('offhost_capacity_policy',_policy_path)
+policy=importlib.util.module_from_spec(_spec);_spec.loader.exec_module(policy)
 
 SSH=['ssh','-i',str(Path.home()/'.ssh/enclave_pilot_ed25519'),'-o','BatchMode=yes','-o','StrictHostKeyChecking=yes','-o','ConnectTimeout=12','root@2.27.12.39']
 ROOT=Path.home()/'Documents/Telomere-private-backups/mainnet-cpu'
@@ -36,6 +40,7 @@ def init():
     (ROOT/'recipient.txt').write_text(match[0].decode()+'\n',encoding='ascii')
     print(json.dumps({'initialized':True,'identityProtectedWith':'Windows current-user DPAPI'}))
 def verify(archive):
+    assert shutil.disk_usage(ROOT).free>policy.MIN_FREE_BYTES
     identity=dpapi((ROOT/'identity.dpapi').read_bytes(),True)
     with tempfile.TemporaryDirectory(prefix='verify-',dir=ROOT) as temp:
         folder=Path(temp).resolve();assert folder.is_relative_to(ROOT.resolve())
@@ -44,7 +49,10 @@ def verify(archive):
         with tarfile.open(plain) as tar:
             members=tar.getmembers();assert len(members)<50000
             assert all(m.isfile() and not Path(m.name).is_absolute() and '..' not in Path(m.name).parts and '\\' not in m.name for m in members)
+            assert tar.getmember('manifest.json').size<=policy.MAX_METADATA_BYTES
             manifest=json.load(tar.extractfile('manifest.json'))
+            capacity=policy.validate_files(manifest['files'],runtime=bool(policy.RUNTIME_ID.fullmatch(manifest['id'])))
+            assert archive.stat().st_size<=policy.archive_limit(manifest['id'])
             indexed={m.name:m for m in members};assert len(indexed)==len(members)
             assert set(indexed)=={'manifest.json'}|{e['path'] for e in manifest['files']}
             for e in manifest['files']:
@@ -52,12 +60,12 @@ def verify(archive):
                 h=hashlib.sha256();f=tar.extractfile(member)
                 for chunk in iter(lambda:f.read(1024*1024),b''):h.update(chunk)
                 assert h.hexdigest()==e['sha256']
-    return {'id':manifest['id'],'verifiedFiles':len(manifest['files']),'authenticatedAgeDecryption':True,'manifestChecksumsValid':True}
+    return {'id':manifest['id'],'verifiedFiles':len(manifest['files']),'authenticatedAgeDecryption':True,'manifestChecksumsValid':True,'capacity':capacity}
 def pull_unlocked():
     status=json.loads(run(SSH+['python3 /opt/telomere-mainnet-pilot/operator/cpu-launch/mainnet-ops.py status']).stdout)
     name=status['id'];assert re.fullmatch(r'backup-[0-9]{8}T[0-9]{6}Z-[0-9a-f]{8}',name)
     archive=ROOT/(name+'.tar.age')
-    assert shutil.disk_usage(ROOT).free>max(2*status['bytes'],2*1024**3)
+    assert shutil.disk_usage(ROOT).free>policy.MIN_FREE_BYTES
     if not archive.exists():
         temporary=archive.with_suffix('.partial')
         run(['scp','-i',str(Path.home()/'.ssh/enclave_pilot_ed25519'),'-o','BatchMode=yes','-o','StrictHostKeyChecking=yes',

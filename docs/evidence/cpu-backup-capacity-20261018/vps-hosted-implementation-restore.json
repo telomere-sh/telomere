@@ -1,0 +1,40 @@
+{
+  "scope": "full quota restore through hosted implementation on VPS",
+  "passed": true,
+  "id": "backup-20261018T134213Z-5ac8888a",
+  "sha256": "4998bde8e843d769f1be18ef0128801b1ca810104b3abef9897263ce416f6192",
+  "bytes": 1324007290,
+  "verification": {
+    "id": "backup-20261018T134213Z-5ac8888a",
+    "verifiedFiles": 514,
+    "authenticatedAgeDecryption": true,
+    "manifestChecksumsValid": true,
+    "verifiedAt": 1792331618.1330924,
+    "capacity": {
+      "files": 514,
+      "payloadBytes": 1322780597,
+      "cystBytes": 1073741824,
+      "dumpBytes": 248920914,
+      "snapshotBytes": 117859,
+      "configurationBytes": 0
+    }
+  },
+  "restore": {
+    "passed": true,
+    "tables": 48,
+    "rows": 3879,
+    "elapsedSeconds": 21.162,
+    "network": "none",
+    "controllerStarted": false,
+    "cysts": {
+      "files": 512,
+      "bytes": 1073741824,
+      "pendingWithoutBlob": 0,
+      "checksumsValid": true
+    }
+  },
+  "transportAdapter": "local immutable encrypted fixture; dedicated Docker socket",
+  "cloudRunnerExecuted": false,
+  "identityRetained": false,
+  "mainnetTransactions": 0
+}

@@ -2,8 +2,10 @@
 
 No shell commands, keys, environment, arbitrary paths, or plaintext DB exports.
 """
-import datetime, hashlib, json, os, re, signal, stat, sys
+import datetime, hashlib, importlib.util, json, os, re, signal, stat, sys
 from pathlib import Path
+_spec=importlib.util.spec_from_file_location('backup_archive_policy',Path(__file__).with_name('archive_policy.py'))
+policy=importlib.util.module_from_spec(_spec);_spec.loader.exec_module(policy)
 
 BASE = Path('/opt/telomere-mainnet-pilot')
 PRIVATE, BACKUPS = BASE / 'private', BASE / 'backups'
@@ -44,10 +46,10 @@ def open_archive(identifier):
         raise ValueError('Invalid archive identity')
     if not BACKUPS.is_dir() or BACKUPS.is_symlink() or BACKUPS.resolve() != BACKUPS:
         raise ValueError('Untrusted backup directory')
-    descriptor = os.open(BACKUPS / (identifier + '.tar.age'), os.O_RDONLY | os.O_NOFOLLOW)
+    descriptor = os.open(BACKUPS / (identifier + '.tar.age'), os.O_RDONLY | os.O_NOFOLLOW | os.O_NONBLOCK)
     stream = os.fdopen(descriptor, 'rb')
     metadata = os.fstat(descriptor)
-    if not stat.S_ISREG(metadata.st_mode) or metadata.st_nlink != 1 or metadata.st_size > 512 * 1024**2 or metadata.st_size < 100:
+    if not stat.S_ISREG(metadata.st_mode) or metadata.st_nlink != 1 or metadata.st_size > policy.archive_limit(identifier) or metadata.st_size < 100:
         stream.close()
         raise ValueError('Invalid archive file')
     return stream, metadata.st_size
@@ -96,7 +98,7 @@ def main():
 
 if __name__ == '__main__':
     os.umask(0o077)
-    signal.alarm(180)
+    signal.alarm(policy.TRANSFER_SECONDS+60)
     try:
         main()
     except Exception as error:

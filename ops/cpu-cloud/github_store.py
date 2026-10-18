@@ -1,5 +1,6 @@
 """Private GitHub release storage; ciphertext only, no financial execution."""
-import hashlib, http.client, json, os, re, urllib.error, urllib.parse, urllib.request
+import hashlib, http.client, json, os, re, time, urllib.error, urllib.parse, urllib.request
+from archive_policy import asset_limit,TRANSFER_SECONDS
 
 
 def digest(path):
@@ -70,14 +71,15 @@ class GitHubStore:
         return assets
 
     def download(self, asset, target, checksum):
-        if not re.fullmatch(r'[0-9a-f]{64}', checksum) or not 0 < asset['size'] <= 512 * 1024**2:
+        if not re.fullmatch(r'[0-9a-f]{64}', checksum) or type(asset['size']) is not int or not 0 < asset['size'] <= asset_limit(asset.get('name','')):
             raise ValueError('Invalid asset metadata')
         path = self.prefix + '/releases/assets/' + str(int(asset['id']))
         request = urllib.request.Request('https://api.github.com' + path,
             headers={**self.headers, 'Accept': 'application/octet-stream'})
-        count = 0
+        count = 0;deadline=time.monotonic()+TRANSFER_SECONDS
         with self.opener.open(request, timeout=90) as response, target.open('xb') as output:
             while part := response.read(1024 * 1024):
+                if time.monotonic()>deadline:raise RuntimeError('Release download deadline')
                 count += len(part)
                 if count > asset['size']:
                     raise RuntimeError('Release download exceeded reviewed size')
@@ -89,6 +91,7 @@ class GitHubStore:
         name = path.name
         if not re.fullmatch(r'[A-Za-z0-9_.-]{1,180}', name):
             raise ValueError('Invalid asset name')
+        if not 0<path.stat().st_size<=asset_limit(name):raise ValueError('Asset exceeds scoped capacity')
         expected = digest(path)
         found = next((item for item in self.assets(release) if item['name'] == name), None)
         if found:
@@ -105,8 +108,10 @@ class GitHubStore:
                 'Content-Length': str(path.stat().st_size)}.items():
                 connection.putheader(key, value)
             connection.endheaders()
+            deadline=time.monotonic()+TRANSFER_SECONDS
             with path.open('rb') as stream:
                 for part in iter(lambda: stream.read(1024 * 1024), b''):
+                    if time.monotonic()>deadline:raise RuntimeError('Release upload deadline')
                     connection.send(part)
             response = connection.getresponse()
             if response.status != 201:

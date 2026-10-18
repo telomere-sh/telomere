@@ -52,7 +52,8 @@ class ProtocolTests(unittest.TestCase):
     def test_metadata_size_identity_and_checksum(self):
         good={'id':'backup-20261017T120000Z-'+'a'*8,'sha256':'b'*64,'bytes':200}
         cloud.validate_archive_metadata(good)
-        for replacement in ({'bytes':True},{'bytes':513*1024**2},{'sha256':'x'},{'id':'/etc/passwd'}):
+        cloud.validate_archive_metadata({**good,'bytes':1536*1024**2})
+        for replacement in ({'bytes':True},{'bytes':1536*1024**2+1},{'sha256':'x'},{'id':'/etc/passwd'}):
             with self.assertRaises(ValueError):cloud.validate_archive_metadata({**good,**replacement})
 
     @unittest.skipUnless(hasattr(os,'O_NOFOLLOW'),'POSIX descriptor safety')

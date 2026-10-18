@@ -1,0 +1,5 @@
+import json,subprocess,time
+name='telomere-backup-capacity-'+str(int(time.time()))
+subprocess.run(['systemd-run','--unit',name,'--property','CPUQuota=50%','--property','MemoryMax=1536M','--property','TasksMax=128','--property','RuntimeMaxSec=2400','--property','UMask=0077',
+    '/usr/bin/python3','-B','/opt/telomere-mainnet-pilot/operator/cpu-launch/backup-capacity.py'],check=True,capture_output=True)
+print(json.dumps({'unit':name+'.service','mainnetTransactions':0}))

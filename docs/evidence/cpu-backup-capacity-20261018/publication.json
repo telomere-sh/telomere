@@ -1,0 +1,16 @@
+{
+  "applicationRepositoryCommitPreparedLocally": true,
+  "applicationRepositoryPushed": false,
+  "privateCloudCapacitySourcesPublished": false,
+  "privateCloudCapacityWorkflowExecuted": false,
+  "userDeferredPublication": true,
+  "ordinaryScheduledCloudBackupsContinueWithPreviouslyPublishedVersion": true,
+  "requiredPrivateRepositoryFiles": [
+    "archive_policy.py",
+    "cloud.py",
+    "github_store.py",
+    "capacity.py",
+    ".github/workflows/operations.yml",
+    ".github/workflows/capacity.yml"
+  ]
+}
