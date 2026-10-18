@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "tsx src/main.ts",
     "start": "node dist/src/main.js",
-    "build": "tsx scripts/compile-contracts.ts && tsc && node scripts/build-browser.mjs && node scripts/copy-public.mjs && node scripts/release-manifest.mjs",
+    "build": "npm --prefix website run build && tsx scripts/compile-contracts.ts && tsc && node scripts/build-browser.mjs && node scripts/copy-public.mjs && node scripts/release-manifest.mjs",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "contracts:compile": "tsx scripts/compile-contracts.ts",

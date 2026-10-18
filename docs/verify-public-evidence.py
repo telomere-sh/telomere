@@ -55,7 +55,7 @@ social_document = 'docs/evidence/domain-https-20261015/social-links-approved-cha
 approved_social_sha256 = '859669b4db1c9ba2061823769cbd80e1c38fc30be0bcbf71d4245318ab5e29ce'
 source_document = 'docs/evidence/legacy-mainnet-preparation-20261015/vps/vps-source-record.json'
 archive_document = 'docs/evidence/public-source-archive/manifest.json'
-archive_sha256 = '9c8751e193e9352d078bad9cab444bf9ae95c3305d314556374b08df11097bc8'
+archive_sha256 = '69929b06578fe6214c349712493afbcf5b169b34010c58d465b69d272198e2a4'
 used_archive_entries = set()
 
 
@@ -157,7 +157,7 @@ def verify_original_handoff_site(entry, document):
     """Keep the original bytes and require the independently pinned current edit."""
     assert document == handoff_document and entry.get('path') == 'dist/site.js'
     key = (document, handoff_import_commit)
-    assert key in public_archive and set(public_archive[key]) == {'website/dist/site.js', 'website/README.md'}
+    assert key in public_archive and {'website/dist/site.js', 'website/README.md'} <= set(public_archive[key])
     verify_archive_file(dict(entry, path='website/dist/site.js'), document, handoff_import_commit)
     approval = json.loads((root / social_document).read_bytes())
     verify_approved_social_change(approval)
@@ -193,6 +193,8 @@ def walk(value, document):
                     verify_archive_file(dict(value, path='website/README.md'), document, handoff_import_commit)
                 elif name == 'dist/dashboard.js':
                     verify_archive_file(dict(value, path='website/' + name), source_document, 'ee6169d1007b11f037fbc409dc1f7575f15117c9')
+                elif 'website/' + name in public_archive[(document, handoff_import_commit)]:
+                    verify_archive_file(dict(value, path='website/' + name), document, handoff_import_commit)
                 else:
                     target = root / 'website' / relative
             elif name.startswith(('docs/', 'ops/legacy-mainnet/')):
@@ -229,7 +231,7 @@ assert {entry['path'] for entry in integration['files']} == {'website/dist/dashb
 remediation_document = 'docs/evidence/audit-remediation-20261018/frontend-source.json'
 assert remediation_document in tracked
 remediation_bytes = (root / remediation_document).read_bytes()
-assert hashlib.sha256(remediation_bytes).hexdigest() == '3b32ef868857eecd36618d5cb9627102755a50268cf9d56c6afd400a3c9bbbe5'
+assert hashlib.sha256(remediation_bytes).hexdigest() == '08802fd1f63b4fc7cbaae136383327709e3a4f43d8b8cdca2d89ec00de869702'
 remediation = json.loads(remediation_bytes)
 assert remediation['schemaVersion'] == 1 and remediation['previousIntegrationRecord'] == integration_document
 assert {entry['path'] for entry in remediation['files']} == {entry['path'] for entry in integration['files']}

@@ -33,6 +33,7 @@ export async function buildManifest() {
   const manifest = { schemaVersion: 1, sourceCommit, sourceDirty, node: process.versions.node,
     packageLockSha256: sha256(await readFile(resolve(root, 'package-lock.json'))),
     websiteLockSha256: sha256(await readFile(resolve(root, 'website/package-lock.json'))),
+    websiteCmsSha256: sha256(await readFile(resolve(root, 'website/cms-manifest.json'))),
     esbuild: lock.packages['node_modules/esbuild'].version, files };
   await writeFile(resolve(output, 'release-manifest.json'), JSON.stringify(manifest, null, 2) + '\n');
   return manifest;
@@ -46,7 +47,8 @@ export async function verifyManifest(requireClean = false) {
   if (JSON.stringify(actual) !== JSON.stringify(manifest.files)) throw new Error('Release bytes or inventory differ from the manifest');
   const head = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim();
   if (head !== manifest.sourceCommit || (process.env.GITHUB_SHA && process.env.GITHUB_SHA !== head)) throw new Error('Release source commit differs');
-  for (const [name, expected] of [['package-lock.json', manifest.packageLockSha256], ['website/package-lock.json', manifest.websiteLockSha256]]) {
+  for (const [name, expected] of [['package-lock.json', manifest.packageLockSha256], ['website/package-lock.json', manifest.websiteLockSha256],
+    ['website/cms-manifest.json', manifest.websiteCmsSha256]]) {
     if (sha256(await readFile(resolve(root, name))) !== expected) throw new Error('Release lockfile differs');
   }
   if (requireClean && (manifest.sourceDirty || execFileSync('git', ['status', '--porcelain=v1'], { cwd: root, encoding: 'utf8' }).trim())) {

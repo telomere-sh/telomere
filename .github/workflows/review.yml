@@ -151,7 +151,7 @@ jobs:
         with:
           python-version: '3.11'
       - run: npm ci --ignore-scripts && npm --prefix website ci --ignore-scripts
-      - run: npm audit --audit-level=low && npm --prefix website audit --audit-level=low
+      - run: npm audit --audit-level=low && npm audit --omit=dev --audit-level=low && npm --prefix website audit --audit-level=low && npm --prefix website audit --omit=dev --audit-level=low
       - run: |
           python -m venv .local/tools-env
           .local/tools-env/bin/python -m pip install --only-binary=:all: --require-hashes -r security/requirements-tools.lock

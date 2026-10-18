@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "kind": "audit-remediation-source-boundary",
   "previousIntegrationRecord": "docs/evidence/public-wallet-launch-20261017/frontend-integration.json",
-  "changes": "Reviewed receipt, escrow and privacy copy; inherited agency counters now show CPU limits, billing resolution, global Cyst quota and Base chain ID in the same animated spans. Actual repository link and compatible config fields. No CSS, HTML, font, animation module or media bytes changed.",
+  "changes": "Reviewed CPU disclosures and factual counters in existing animated spans. Runtime rebuild localizes 16 pinned public CMS assets under the same origin; HTML changes reference the rebuilt runtime. No CSS, fonts, animation modules or media bytes edited.",
   "files": [
     {
       "path": "website/dist/dashboard.js",

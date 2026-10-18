@@ -32,6 +32,8 @@ describe('unchanged website deployment boundary', () => {
       writeFile(join(site, 'index.html'), index), writeFile(join(site, 'page.html'), fallback),
       writeFile(join(site, 'protocol', 'index.html'), '<!doctype html><html>protocol entry</html>'),
       writeFile(join(site, 'assets', 'film.mp4'), Buffer.from('0123456789')),
+      writeFile(join(site, 'assets', 'public.framercms'), Buffer.from('0123456789')),
+      writeFile(join(site, 'assets', 'large.framercms'), Buffer.alloc(600000, 7)),
       writeFile(join(site, 'site.js'), 'export const unchanged = true;\r\n'),
       writeFile(join(site, 'site.js.LEGAL.txt'), 'Third-party license notice <script>not executable</script>'),
       writeFile(join(publicRoot, 'index.html'), '<!doctype html><html>backend console</html>'),
@@ -74,6 +76,30 @@ describe('unchanged website deployment boundary', () => {
     expect(response.headers.get('content-type')).toBe('text/plain; charset=utf-8');
     expect(response.headers.get('x-content-type-options')).toBe('nosniff');
     expect(await response.text()).toBe('Third-party license notice <script>not executable</script>');
+  });
+
+  it('serves exact local CMS query slices in client order with the exported 200 semantics', async () => {
+    const response = await app.request('/assets/public.framercms?range=7-9,0-1');
+    expect(response.status).toBe(200);
+    expect(response.headers.get('content-type')).toBe('application/octet-stream');
+    expect(response.headers.get('content-length')).toBe('5');
+    expect(await response.text()).toBe('78901');
+    const head = await app.request('/assets/public.framercms?range=7-9,0-1', { method: 'HEAD' });
+    expect(head.headers.get('content-length')).toBe('5'); expect(await head.text()).toBe('');
+    expect(await (await app.request('/assets/public.framercms')).text()).toBe('0123456789');
+  });
+
+  it.each(['', '-2', '1-', '8-2', '0-10', '0-9007199254740993', '0-1&range=2-3',
+    Array.from({ length: 65 }, () => '0-0').join(',')])('rejects invalid or excessive CMS query range %s', async range => {
+    const response = await app.request('/assets/public.framercms?range=' + range);
+    expect(response.status).toBe(416); expect(await response.text()).toBe('');
+  });
+
+  it('bounds total CMS query allocation and rejects ambiguous header/query ranges', async () => {
+    expect((await app.request('/assets/large.framercms?range=0-524288')).status).toBe(416);
+    expect((await app.request('/assets/large.framercms?range=0-299999,0-299999')).status).toBe(416);
+    expect((await app.request('/assets/public.framercms?range=0-1', { headers: { Range: 'bytes=0-1' } })).status).toBe(416);
+    expect(await (await app.request('/site.js?range=0-1')).text()).toBe('export const unchanged = true;\r\n');
   });
 
   it('keeps the original console and assets under strict CSP and retains legacy createApp behavior', async () => {

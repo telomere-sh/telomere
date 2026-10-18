@@ -2,6 +2,8 @@
 
 The root MIT grant covers original Telomere code. It does not relicense third-party material or grant use of another project's trademarks.
 
+The public Framer CMS export under `website/dist/assets/cms` retains the original template's conditions. `website/cms-manifest.json` records its public source URLs, sizes and SHA-256 hashes. The builder localizes those fixed references without changing the imported motion source. These data files are outside the MIT grant for original Telomere code.
+
 | Material | Source of applicable terms |
 | --- | --- |
 | npm dependencies | The exact root and website lockfiles, each installed package's license and copyright notices |

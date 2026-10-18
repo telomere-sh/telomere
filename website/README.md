@@ -6,6 +6,8 @@ Complete multi-page frontend and editable source for Telomere. It includes the l
 
 Use the repository's reviewed Node.js 22 runtime. From this folder:
 
+The root build also rebuilds the animation runtime and verifies 16 local public CMS exports against `cms-manifest.json`. CMS data stays on the same origin, including bounded byte-slice queries; the page does not need an external CMS connection. The original imported animation modules, CSS, fonts and media remain intact.
+
 ```sh
 npm ci --ignore-scripts
 npm run dev

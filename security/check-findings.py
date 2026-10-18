@@ -34,7 +34,11 @@ def slither_rows(report):
         if any(not re.fullmatch(r'contracts/[A-Za-z][A-Za-z0-9_]*\.sol', name) for name in files):
             raise ValueError('Unexpected project source path')
         description = finding['description'].replace('\\', '/').replace(ROOT.as_posix() + '/', '')
-        identifier = digest((finding['check'] + '\n' + finding['impact'] + '\n' + description).encode())
+        # Slither iterates sets when emitting call/event diagnostic lines. Keep
+        # every line and its raw report, but stabilize their order for identity.
+        # Exact source hashes still reject any change to the reviewed contract.
+        canonical = '\n'.join(sorted(description.splitlines()))
+        identifier = digest((finding['check'] + '\n' + finding['impact'] + '\n' + canonical).encode())
         result[identifier] = {'id': identifier, 'detector': finding['check'], 'severity': finding['impact'],
                               'description': description, 'sourceHashes': {name: digest((ROOT / name).read_bytes()) for name in files}}
     return result

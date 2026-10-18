@@ -9,6 +9,7 @@
 - Update the verifier's pinned PyJWT wheel and retain exact dependency hashes.
 - Clarify the active CPU receipt/escrow trust model in Workspace and documentation; connect the GitHub community link.
 - Add security, contribution and licensing policies with explicit third-party scope.
+- Keep Framer CMS data on the same origin with pinned export hashes and bounded byte-slice responses; preserve imported animation sources and remove inherited agency statistics from active CPU copy.
 
 This section describes source changes. It is not evidence of publication, successful hosted CI, contract migration or production installation. Those steps have their own acceptance records.
 

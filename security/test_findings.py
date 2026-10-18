@@ -67,6 +67,15 @@ class FindingGateTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'fully redacted'):
             gate.gitleaks_rows([{'Secret': 'fixture-not-redacted'}])
 
+    def test_scanner_set_order_does_not_invalidate_unchanged_source(self):
+        left = copy.deepcopy(self.report)
+        right = copy.deepcopy(self.report)
+        left['results']['detectors'][0]['description'] = 'Finding\n\t- first\n\t- second\n'
+        right['results']['detectors'][0]['description'] = 'Finding\n\t- second\n\t- first\n'
+        self.assertEqual(set(gate.slither_rows(left)), set(gate.slither_rows(right)))
+        right['results']['detectors'][0]['description'] += '\t- new path\n'
+        self.assertNotEqual(set(gate.slither_rows(left)), set(gate.slither_rows(right)))
+
 
 if __name__ == '__main__':
     unittest.main()

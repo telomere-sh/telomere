@@ -20,6 +20,7 @@ const mimeTypes: Readonly<Record<string, string>> = {
   '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8',
   '.mjs': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8',
   '.json': 'application/json; charset=utf-8', '.svg': 'image/svg+xml',
+  '.framercms': 'application/octet-stream',
   '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.png': 'image/png',
   '.webp': 'image/webp', '.avif': 'image/avif', '.gif': 'image/gif',
   '.woff2': 'font/woff2', '.woff': 'font/woff', '.mp4': 'video/mp4', '.wav': 'audio/wav',
@@ -68,6 +69,25 @@ function rangeFor(value: string, size: number): { start: number; end: number } |
   const start = Number(match[1]), end = match[2] ? Number(match[2]) : size - 1;
   if (!Number.isSafeInteger(start) || !Number.isSafeInteger(end) || start >= size || end < start) return undefined;
   return { start, end: Math.min(end, size - 1) };
+}
+
+// Framer's exported datastore requests concatenated byte slices using a query,
+// rather than HTTP multipart ranges. This applies only to public CMS assets.
+function cmsRanges(value: string, size: number): { start: number; end: number }[] | undefined {
+  if (value.length > 2048) return undefined;
+  const parts = value.split(',');
+  if (parts.length < 1 || parts.length > 64) return undefined;
+  const result = []; let bytes = 0;
+  for (const part of parts) {
+    if (!/^\d+-\d+$/.test(part)) return undefined;
+    const range = rangeFor('bytes=' + part, size);
+    // Reject truncation: the exported client expects the exact requested bytes.
+    if (!range || Number(part.split('-')[1]) !== range.end) return undefined;
+    bytes += range.end - range.start + 1;
+    if (bytes > 512 * 1024) return undefined;
+    result.push(range);
+  }
+  return result;
 }
 
 /** Load a finite, read-only deployment inventory. Only small HTML files are read at startup for CSP hashes. */
@@ -132,6 +152,28 @@ export async function loadWebsite(directory: string): Promise<Website> {
         const headers = new Headers({ 'Content-Type': asset.type, 'Content-Length': String(size),
           'Cache-Control': 'no-cache', 'Accept-Ranges': 'bytes',
           'Last-Modified': new Date(Number(asset.identity.mtimeMs)).toUTCString() });
+        const cmsQuery = new URL(request.url).searchParams.getAll('range');
+        if (asset.path.endsWith('.framercms') && cmsQuery.length) {
+          const ranges = cmsQuery.length === 1 && !request.headers.has('range') ? cmsRanges(cmsQuery[0]!, size) : undefined;
+          if (!ranges) {
+            await file.close(); headers.set('Content-Range', 'bytes */' + size); headers.set('Content-Length', '0');
+            return new Response(null, { status: 416, headers });
+          }
+          const length = ranges.reduce((sum, item) => sum + item.end - item.start + 1, 0);
+          headers.set('Content-Length', String(length));
+          if (request.method === 'HEAD') { await file.close(); return new Response(null, { headers }); }
+          const bytes = Buffer.alloc(length); let offset = 0;
+          for (const item of ranges) {
+            let position = item.start;
+            while (position <= item.end) {
+              const result = await file.read(bytes, offset, item.end - position + 1, position);
+              if (result.bytesRead === 0) throw new Error('CMS asset truncated');
+              offset += result.bytesRead; position += result.bytesRead;
+            }
+          }
+          await file.close();
+          return new Response(new Uint8Array(bytes), { headers });
+        }
         if (request.method === 'HEAD') { await file.close(); return new Response(null, { status: 200, headers }); }
         const range = request.headers.get('range');
         let selected: { start: number; end: number } | undefined;
