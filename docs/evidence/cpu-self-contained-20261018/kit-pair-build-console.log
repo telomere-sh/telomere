@@ -1,0 +1,9 @@
+/dev/vda: clean, 25681/2097152 files, 621213/8388608 blocks
+[   12.874894] platform regulatory.0: firmware: failed to load regulatory.db (-2)
+[   12.875319] firmware_class: See https://wiki.debian.org/Firmware for information about missing firmware
+[   12.875555] platform regulatory.0: firmware: failed to load regulatory.db (-2)
+
+
+Debian GNU/Linux 12 telomere-recovery-34a9445b0e564933 ttyS0
+
+telomere-recovery-34a9445b0e564933 login: [  440.362080] reboot: Power down

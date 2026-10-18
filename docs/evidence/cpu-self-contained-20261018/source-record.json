@@ -1,0 +1,484 @@
+{
+  "schemaVersion": 1,
+  "scope": "Exact final frozen producer, sealed verifier/driver, authenticated embedded operator tools and clean guest acceptance. Initial failed builder version retained separately.",
+  "files": [
+    {
+      "originalPath": "ops/cpu-cloud/test_cloud_ops.py",
+      "path": "source/9428d81d04080d0ef410b99b968a156d1bd410944697c52c07b0c91491e57692.bin",
+      "bytes": 12446,
+      "sha256": "9428d81d04080d0ef410b99b968a156d1bd410944697c52c07b0c91491e57692"
+    },
+    {
+      "originalPath": "ops/cpu-cloud/cyst-capacity.json",
+      "path": "source/0797a1cc6c77f7272b3bc3bccf0229711122720f2124051bd3724c77b705be0e.bin",
+      "bytes": 109,
+      "sha256": "0797a1cc6c77f7272b3bc3bccf0229711122720f2124051bd3724c77b705be0e"
+    },
+    {
+      "originalPath": "ops/cpu-cloud/cloud.py",
+      "path": "source/d0dc388cf36c5c71105133176b4169a0198b9f4c7f8b0f4a169114c51343bcf4.bin",
+      "bytes": 23438,
+      "sha256": "d0dc388cf36c5c71105133176b4169a0198b9f4c7f8b0f4a169114c51343bcf4"
+    },
+    {
+      "originalPath": "ops/cpu-cloud/capacity.py",
+      "path": "source/d12a56551dd9d372a302c8bd0fe269367122ae64add48d1cd4c4901c52393d04.bin",
+      "bytes": 3087,
+      "sha256": "d12a56551dd9d372a302c8bd0fe269367122ae64add48d1cd4c4901c52393d04"
+    },
+    {
+      "originalPath": "ops/cpu-cloud/pager.py",
+      "path": "source/7ea8e57084de173c95ed32250868d80701ff9b19715665807058dd9fbaa7b4b5.bin",
+      "bytes": 5945,
+      "sha256": "7ea8e57084de173c95ed32250868d80701ff9b19715665807058dd9fbaa7b4b5"
+    },
+    {
+      "originalPath": "ops/cpu-cloud/archive_policy.py",
+      "path": "source/d361420fdb96f7b3aeb2a180ab646772cc213bbde1dd4f54bc3455d803a427d0.bin",
+      "bytes": 5626,
+      "sha256": "d361420fdb96f7b3aeb2a180ab646772cc213bbde1dd4f54bc3455d803a427d0"
+    },
+    {
+      "originalPath": "ops/cpu-cloud/test_archive_policy.py",
+      "path": "source/c02f4946acd2bf15c7e26235ac8e77b492897261831a9e4459b006a695524140.bin",
+      "bytes": 7128,
+      "sha256": "c02f4946acd2bf15c7e26235ac8e77b492897261831a9e4459b006a695524140"
+    },
+    {
+      "originalPath": "ops/cpu-cloud/github_store.py",
+      "path": "source/76f347655038287c6d17036e39c95440dda0c243cd3836ea5b441986b6acc8ae.bin",
+      "bytes": 8699,
+      "sha256": "76f347655038287c6d17036e39c95440dda0c243cd3836ea5b441986b6acc8ae"
+    },
+    {
+      "originalPath": "ops/cpu-cloud/recover_key.py",
+      "path": "source/9f68e516fb0ce159f945e2f68514b2d5a746ab9d2b13a3d5f5ad8051b4411239.bin",
+      "bytes": 1786,
+      "sha256": "9f68e516fb0ce159f945e2f68514b2d5a746ab9d2b13a3d5f5ad8051b4411239"
+    },
+    {
+      "originalPath": "ops/cpu-cloud/export.py",
+      "path": "source/eb1e7c12007b1616e9b2b7b243e61ef3592ad1693aaee9a4d95a86522f77cfdc.bin",
+      "bytes": 5457,
+      "sha256": "eb1e7c12007b1616e9b2b7b243e61ef3592ad1693aaee9a4d95a86522f77cfdc"
+    },
+    {
+      "originalPath": "ops/cpu-launch/test_gvisor_runtime.py",
+      "path": "source/e3dedefd76668d7dabe8762069c3f9bb8bb768993f7ee047d277e8c30013df49.bin",
+      "bytes": 2840,
+      "sha256": "e3dedefd76668d7dabe8762069c3f9bb8bb768993f7ee047d277e8c30013df49"
+    },
+    {
+      "originalPath": "ops/cpu-launch/seed-history.mjs",
+      "path": "source/50f73d220b114eb247fc0dc61b97259c8f850ec4ac97069959cd443fe6ebfe5e.bin",
+      "bytes": 4271,
+      "sha256": "50f73d220b114eb247fc0dc61b97259c8f850ec4ac97069959cd443fe6ebfe5e"
+    },
+    {
+      "originalPath": "ops/cpu-launch/journal-stress.mjs",
+      "path": "source/ff479999926fe90c8b84d97b2c40de157778d53e568d322e9b8f4750b34b83d6.bin",
+      "bytes": 14107,
+      "sha256": "ff479999926fe90c8b84d97b2c40de157778d53e568d322e9b8f4750b34b83d6"
+    },
+    {
+      "originalPath": "ops/cpu-launch/fresh-vm-acceptance.py",
+      "path": "source/01fd0b422d49b7267c2f9166e0077fb2edce72177e75e331bfe355ffd22770c8.bin",
+      "bytes": 17323,
+      "sha256": "01fd0b422d49b7267c2f9166e0077fb2edce72177e75e331bfe355ffd22770c8"
+    },
+    {
+      "originalPath": "ops/cpu-launch/resilience-scenarios.mjs",
+      "path": "source/b516045790b8eede4ef684c501e5d06b71550338ae69823f9abebfbab66e0c9d.bin",
+      "bytes": 24097,
+      "sha256": "b516045790b8eede4ef684c501e5d06b71550338ae69823f9abebfbab66e0c9d"
+    },
+    {
+      "originalPath": "ops/cpu-launch/fixture-rpc-proxy.mjs",
+      "path": "source/95cbfb071e3b69911bb6159f1a8738365ae8331ddf959a67c53f42ab037ef8ed.bin",
+      "bytes": 1688,
+      "sha256": "95cbfb071e3b69911bb6159f1a8738365ae8331ddf959a67c53f42ab037ef8ed"
+    },
+    {
+      "originalPath": "ops/cpu-launch/journal-soak.mjs",
+      "path": "source/704880662d98ce5f707ceb9b97d84af773c527043993076bd23f1c961f985043.bin",
+      "bytes": 18714,
+      "sha256": "704880662d98ce5f707ceb9b97d84af773c527043993076bd23f1c961f985043"
+    },
+    {
+      "originalPath": "ops/cpu-launch/public-api-readonly-load.mjs",
+      "path": "source/69f52fd6792ab38fca4dabf75419e586f9cd46c701a5cb983b8715a081b780a1.bin",
+      "bytes": 1357,
+      "sha256": "69f52fd6792ab38fca4dabf75419e586f9cd46c701a5cb983b8715a081b780a1"
+    },
+    {
+      "originalPath": "ops/cpu-launch/test_clean_server.py",
+      "path": "source/01ff75a831d90c668b2f1c4e2718f3730e0e913bca30f20887153c8421d6d376.bin",
+      "bytes": 3999,
+      "sha256": "01ff75a831d90c668b2f1c4e2718f3730e0e913bca30f20887153c8421d6d376"
+    },
+    {
+      "originalPath": "ops/cpu-launch/promote-journal.py",
+      "path": "source/740cc3b928335e6cfc7df2df22ec006450e60799feb9e05891487a8782ba1edc.bin",
+      "bytes": 7445,
+      "sha256": "740cc3b928335e6cfc7df2df22ec006450e60799feb9e05891487a8782ba1edc"
+    },
+    {
+      "originalPath": "ops/cpu-launch/test_fresh_vm.py",
+      "path": "source/7baedb2406971235ed917364b619d6d01b0a22bbca7919d70268de22977f6a03.bin",
+      "bytes": 3968,
+      "sha256": "7baedb2406971235ed917364b619d6d01b0a22bbca7919d70268de22977f6a03"
+    },
+    {
+      "originalPath": "ops/cpu-launch/table-fingerprints.mjs",
+      "path": "source/cec50b4bf2215852dee7c4e2ecdab39ae8602dba4bb45ac5834ae742d0985432.bin",
+      "bytes": 989,
+      "sha256": "cec50b4bf2215852dee7c4e2ecdab39ae8602dba4bb45ac5834ae742d0985432"
+    },
+    {
+      "originalPath": "ops/cpu-launch/backup-capacity.py",
+      "path": "source/53cc9fd40fcbad9d1b23ab5a464af7b32b9f24a5716e2330e2cb7b1a934f4d50.bin",
+      "bytes": 4702,
+      "sha256": "53cc9fd40fcbad9d1b23ab5a464af7b32b9f24a5716e2330e2cb7b1a934f4d50"
+    },
+    {
+      "originalPath": "ops/cpu-launch/resilience-worker.mjs",
+      "path": "source/0fe206a12a9bc1c4e3fc42889abf1cf3531d9c18f2c15e93174533a58a10970d.bin",
+      "bytes": 1446,
+      "sha256": "0fe206a12a9bc1c4e3fc42889abf1cf3531d9c18f2c15e93174533a58a10970d"
+    },
+    {
+      "originalPath": "ops/cpu-launch/health.mjs",
+      "path": "source/62c95cc1efea8716152f6bb41e2303e1326f65efafb455c2b6c747f0bdaab971.bin",
+      "bytes": 2100,
+      "sha256": "62c95cc1efea8716152f6bb41e2303e1326f65efafb455c2b6c747f0bdaab971"
+    },
+    {
+      "originalPath": "ops/cpu-launch/security-probe.py",
+      "path": "source/e0ad94f1432bc2947ca8c24eac3964861edf278d755b12cc3695c147cf2284d8.bin",
+      "bytes": 2423,
+      "sha256": "e0ad94f1432bc2947ca8c24eac3964861edf278d755b12cc3695c147cf2284d8"
+    },
+    {
+      "originalPath": "ops/cpu-launch/backup-reboot-acceptance.py",
+      "path": "source/e88bb66328bc7b602b1aafd3afcfffa471dc4d59a1bea2bdd740457ba9a9cee4.bin",
+      "bytes": 6145,
+      "sha256": "e88bb66328bc7b602b1aafd3afcfffa471dc4d59a1bea2bdd740457ba9a9cee4"
+    },
+    {
+      "originalPath": "ops/cpu-launch/clean-server-recovery.py",
+      "path": "source/6c71408951d482e4eee738679cea7e17ecf2c2e3733449ddf0f4aba8ab4713af.bin",
+      "bytes": 10656,
+      "sha256": "6c71408951d482e4eee738679cea7e17ecf2c2e3733449ddf0f4aba8ab4713af"
+    },
+    {
+      "originalPath": "ops/cpu-launch/gvisor-runtime.py",
+      "path": "source/d4496514ff0afc25d38aeba4f935b06c7b53120cb3277cd4bd9712cd9a8f05e1.bin",
+      "bytes": 3863,
+      "sha256": "d4496514ff0afc25d38aeba4f935b06c7b53120cb3277cd4bd9712cd9a8f05e1"
+    },
+    {
+      "originalPath": "ops/cpu-launch/test_fresh_vm_key.py",
+      "path": "source/29cf2d3eb3b3254dc024489c0c43b6fd9fb6ef67aa5da87d4de287cb2f112a35.bin",
+      "bytes": 2246,
+      "sha256": "29cf2d3eb3b3254dc024489c0c43b6fd9fb6ef67aa5da87d4de287cb2f112a35"
+    },
+    {
+      "originalPath": "ops/cpu-launch/seal-journal-proof.py",
+      "path": "source/5c5fcae6d2add6ab0b446203edcdc7fa5c56d7a40c40e13187c21a31331dfe4a.bin",
+      "bytes": 2712,
+      "sha256": "5c5fcae6d2add6ab0b446203edcdc7fa5c56d7a40c40e13187c21a31331dfe4a"
+    },
+    {
+      "originalPath": "ops/cpu-launch/capacity-restore.py",
+      "path": "source/fde4ab6fde31fda2339d129039605a5fab63d64d6cdc8062def30ec7f7c3ee0e.bin",
+      "bytes": 2716,
+      "sha256": "fde4ab6fde31fda2339d129039605a5fab63d64d6cdc8062def30ec7f7c3ee0e"
+    },
+    {
+      "originalPath": "ops/cpu-launch/infrastructure.mjs",
+      "path": "source/4c1aa846a09d8fa7fd34a961e60a8d167a1ada1dd14c18da0697855495ee73b9.bin",
+      "bytes": 11762,
+      "sha256": "4c1aa846a09d8fa7fd34a961e60a8d167a1ada1dd14c18da0697855495ee73b9"
+    },
+    {
+      "originalPath": "ops/cpu-launch/load-worker.mjs",
+      "path": "source/e41467dc99285deb09819792f959a44acd499ce3f1dc21f24fbc76e8dedc9efb.bin",
+      "bytes": 743,
+      "sha256": "e41467dc99285deb09819792f959a44acd499ce3f1dc21f24fbc76e8dedc9efb"
+    },
+    {
+      "originalPath": "ops/cpu-launch/test-fixture-rpc.mjs",
+      "path": "source/ce19b15ae284d1d43b0f0fd8829b15055e05e91d5336d96f114c0f3bfa627855.bin",
+      "bytes": 1982,
+      "sha256": "ce19b15ae284d1d43b0f0fd8829b15055e05e91d5336d96f114c0f3bfa627855"
+    },
+    {
+      "originalPath": "ops/cpu-launch/backup-crash-acceptance.py",
+      "path": "source/ffce7c46dd0372927fa884b02c910794c3444194563caee216c72e87b1a80124.bin",
+      "bytes": 16338,
+      "sha256": "ffce7c46dd0372927fa884b02c910794c3444194563caee216c72e87b1a80124"
+    },
+    {
+      "originalPath": "ops/cpu-launch/self-contained-recovery.py",
+      "path": "source/b8dd626ef5c6797808096b7c8510d2e9f4e24381952f693d6e56a905a08bf5a0.bin",
+      "bytes": 24454,
+      "sha256": "b8dd626ef5c6797808096b7c8510d2e9f4e24381952f693d6e56a905a08bf5a0"
+    },
+    {
+      "originalPath": "ops/cpu-launch/recovery-audit.mjs",
+      "path": "source/57e2d5b2aa959b9b1817d5444aa46c9f6730b68c7726606d8fc162f9b499e073.bin",
+      "bytes": 1980,
+      "sha256": "57e2d5b2aa959b9b1817d5444aa46c9f6730b68c7726606d8fc162f9b499e073"
+    },
+    {
+      "originalPath": "ops/cpu-launch/scale-restore.py",
+      "path": "source/6276b5b49d7520d8e9badd5e4e6d55360494b4919c4b09996af34b811b2a3e80.bin",
+      "bytes": 3986,
+      "sha256": "6276b5b49d7520d8e9badd5e4e6d55360494b4919c4b09996af34b811b2a3e80"
+    },
+    {
+      "originalPath": "ops/cpu-launch/restored-data-reader.mjs",
+      "path": "source/ae99f427b7204bbba65cfa1d5c46c60b94c5abadf274766f9f5533d456bf40e4.bin",
+      "bytes": 3574,
+      "sha256": "ae99f427b7204bbba65cfa1d5c46c60b94c5abadf274766f9f5533d456bf40e4"
+    },
+    {
+      "originalPath": "ops/cpu-launch/infrastructure-control.py",
+      "path": "source/00cedd2555bf5a1350c1cca54f9c2fcc53d980059e7dc79dfbc84330232cf88a.bin",
+      "bytes": 5613,
+      "sha256": "00cedd2555bf5a1350c1cca54f9c2fcc53d980059e7dc79dfbc84330232cf88a"
+    },
+    {
+      "originalPath": "ops/cpu-launch/backup-capacity-fixture.mjs",
+      "path": "source/3558ccadedbec26a809d5e6ec50a81236dd1508697edbc026596934cff6f155a.bin",
+      "bytes": 4073,
+      "sha256": "3558ccadedbec26a809d5e6ec50a81236dd1508697edbc026596934cff6f155a"
+    },
+    {
+      "originalPath": "ops/cpu-launch/launch-acceptance.py",
+      "path": "source/988e5fa6f8943956a25e3cf7df98cf835cb163aafb330edecb17648361b8cf46.bin",
+      "bytes": 7618,
+      "sha256": "988e5fa6f8943956a25e3cf7df98cf835cb163aafb330edecb17648361b8cf46"
+    },
+    {
+      "originalPath": "ops/cpu-launch/stage-journal-candidate.py",
+      "path": "source/3abc1b2bdc392d2f90ed8ff7d4fe41376918c1dde889d28280383ba42cf7cb58.bin",
+      "bytes": 2262,
+      "sha256": "3abc1b2bdc392d2f90ed8ff7d4fe41376918c1dde889d28280383ba42cf7cb58"
+    },
+    {
+      "originalPath": "ops/cpu-launch/archive-load-worker.mjs",
+      "path": "source/3ef502642111577a644bd8587d7977949d999a614cf82227f29cd1a9146a6ec6.bin",
+      "bytes": 2007,
+      "sha256": "3ef502642111577a644bd8587d7977949d999a614cf82227f29cd1a9146a6ec6"
+    },
+    {
+      "originalPath": "ops/cpu-launch/fresh-vm-guest.py",
+      "path": "source/d24c18cfaddc334d80bbe73086501f8126c5f180ea1898a194bee513e53077f2.bin",
+      "bytes": 23941,
+      "sha256": "d24c18cfaddc334d80bbe73086501f8126c5f180ea1898a194bee513e53077f2"
+    },
+    {
+      "originalPath": "ops/cpu-launch/test_backup_crash.py",
+      "path": "source/a3432421299afe1047a438ffc8d96be19cbd17877bb4d3fea46685ff4d63186a.bin",
+      "bytes": 7791,
+      "sha256": "a3432421299afe1047a438ffc8d96be19cbd17877bb4d3fea46685ff4d63186a"
+    },
+    {
+      "originalPath": "ops/cpu-launch/backup-reboot-guest.py",
+      "path": "source/496c76847fc0e58a0467c0474a2ba95dc4a5d2e8acda14880ebe2cbb58ecf6d5.bin",
+      "bytes": 6348,
+      "sha256": "496c76847fc0e58a0467c0474a2ba95dc4a5d2e8acda14880ebe2cbb58ecf6d5"
+    },
+    {
+      "originalPath": "ops/cpu-launch/journal-stress-scenarios.mjs",
+      "path": "source/9b69644519df46e82e14d93f6119fda21fe29881855cb0a8ba83c5c3acdee583.bin",
+      "bytes": 14198,
+      "sha256": "9b69644519df46e82e14d93f6119fda21fe29881855cb0a8ba83c5c3acdee583"
+    },
+    {
+      "originalPath": "ops/cpu-launch/resilience.mjs",
+      "path": "source/66c906070467afa1097a1542b705432b451cb5ffe79b796681d9c85a09bf07a0.bin",
+      "bytes": 10447,
+      "sha256": "66c906070467afa1097a1542b705432b451cb5ffe79b796681d9c85a09bf07a0"
+    },
+    {
+      "originalPath": "ops/cpu-launch/snapshot.mjs",
+      "path": "source/5659ea93ce9dc61f9e167cdd673547be7c7c9054456d62d15c2c91577177279e.bin",
+      "bytes": 1795,
+      "sha256": "5659ea93ce9dc61f9e167cdd673547be7c7c9054456d62d15c2c91577177279e"
+    },
+    {
+      "originalPath": "ops/cpu-launch/docker-load.py",
+      "path": "source/6e3d716245f3fb432d8240d279799b0c9d5e6b1ad4968d54aee80956a37651dc.bin",
+      "bytes": 1064,
+      "sha256": "6e3d716245f3fb432d8240d279799b0c9d5e6b1ad4968d54aee80956a37651dc"
+    },
+    {
+      "originalPath": "ops/cpu-launch/load.mjs",
+      "path": "source/0e0da9cd5a1d03abb2ee591e8ec00be2c7bc969e362d7ed53f6e6e08d81b425f.bin",
+      "bytes": 23090,
+      "sha256": "0e0da9cd5a1d03abb2ee591e8ec00be2c7bc969e362d7ed53f6e6e08d81b425f"
+    },
+    {
+      "originalPath": "ops/cpu-launch/chain-recovery-audit.mjs",
+      "path": "source/a231623eaea5ec47f8a5df89592de230f2e1f8884e828d0f733810ded425e223.bin",
+      "bytes": 2163,
+      "sha256": "a231623eaea5ec47f8a5df89592de230f2e1f8884e828d0f733810ded425e223"
+    },
+    {
+      "originalPath": "ops/cpu-launch/fresh-vm-smoke.mjs",
+      "path": "source/fe1fddbce98c06afdd860d689c80d76ee2f032d9b8f2e80bd40ad87363f3bd33.bin",
+      "bytes": 11975,
+      "sha256": "fe1fddbce98c06afdd860d689c80d76ee2f032d9b8f2e80bd40ad87363f3bd33"
+    },
+    {
+      "originalPath": "ops/cpu-launch/archive-journal.mjs",
+      "path": "source/33b522806cb4042b387bf91a85db79b00f065dd6833b590b48dd1dda68ad25c6.bin",
+      "bytes": 1483,
+      "sha256": "33b522806cb4042b387bf91a85db79b00f065dd6833b590b48dd1dda68ad25c6"
+    },
+    {
+      "originalPath": "ops/cpu-launch/journal-acceptance.mjs",
+      "path": "source/b5da44f6379c2c4ff6c8c0a69efdda528a58b2645e8378e6ddef874efb5f18e1.bin",
+      "bytes": 22380,
+      "sha256": "b5da44f6379c2c4ff6c8c0a69efdda528a58b2645e8378e6ddef874efb5f18e1"
+    },
+    {
+      "originalPath": "ops/cpu-launch/soak-cleanup.py",
+      "path": "source/e664ebc959f1a31f4e874f8dde66a2a75986ac62c5d0b6252903166af15564f1.bin",
+      "bytes": 1885,
+      "sha256": "e664ebc959f1a31f4e874f8dde66a2a75986ac62c5d0b6252903166af15564f1"
+    },
+    {
+      "originalPath": "ops/cpu-launch/audit-journal.mjs",
+      "path": "source/5bcf17045f85358e48ba42a0a467fee64b06e179623f3345fa1424e816c6c51a.bin",
+      "bytes": 2472,
+      "sha256": "5bcf17045f85358e48ba42a0a467fee64b06e179623f3345fa1424e816c6c51a"
+    },
+    {
+      "originalPath": "ops/cpu-launch/archive-fault-worker.mjs",
+      "path": "source/3027d5a2d83f1a8a83d6bcd5f48c6fb8c92f77abd5a02904c46a120672cdba23.bin",
+      "bytes": 1708,
+      "sha256": "3027d5a2d83f1a8a83d6bcd5f48c6fb8c92f77abd5a02904c46a120672cdba23"
+    },
+    {
+      "originalPath": "ops/cpu-launch/test_monitor.py",
+      "path": "source/070b0a68eacfe8a288ad951600c771290b15bfcc892753b60ec68a774288b146.bin",
+      "bytes": 10381,
+      "sha256": "070b0a68eacfe8a288ad951600c771290b15bfcc892753b60ec68a774288b146"
+    },
+    {
+      "originalPath": "ops/cpu-launch/https-load-client.mjs",
+      "path": "source/fd8d458788aa915f32fb22f0ee41cd73e2af542a37785d02d45033a830ab6029.bin",
+      "bytes": 6280,
+      "sha256": "fd8d458788aa915f32fb22f0ee41cd73e2af542a37785d02d45033a830ab6029"
+    },
+    {
+      "originalPath": "ops/cpu-launch/cyst-posix.mjs",
+      "path": "source/8467d0b5a9b8becb31168e8b09024ea4413a8d9fb3e8d1967f33d4fba6866682.bin",
+      "bytes": 2825,
+      "sha256": "8467d0b5a9b8becb31168e8b09024ea4413a8d9fb3e8d1967f33d4fba6866682"
+    },
+    {
+      "originalPath": "ops/cpu-launch/restore-rehearsal.py",
+      "path": "source/0224573c3b615a5383ce442518bc722738d690089e7ccceb187f3cf0a6a8aa4f.bin",
+      "bytes": 21681,
+      "sha256": "0224573c3b615a5383ce442518bc722738d690089e7ccceb187f3cf0a6a8aa4f"
+    },
+    {
+      "originalPath": "ops/cpu-launch/infrastructure-scenarios.mjs",
+      "path": "source/c47c49fa149d89a9f02871911741513370a146778dce81dda9d161c4b89afaf3.bin",
+      "bytes": 13138,
+      "sha256": "c47c49fa149d89a9f02871911741513370a146778dce81dda9d161c4b89afaf3"
+    },
+    {
+      "originalPath": "ops/cpu-launch/test_restore.py",
+      "path": "source/8ee9bf9ed2c338d46f9a18720741ceb73febed942d2a6cc481c003b6dc0d0bef.bin",
+      "bytes": 4030,
+      "sha256": "8ee9bf9ed2c338d46f9a18720741ceb73febed942d2a6cc481c003b6dc0d0bef"
+    },
+    {
+      "originalPath": "ops/cpu-launch/fresh-vm-image.py",
+      "path": "source/96f6f8e8c9e99149632ee4f4f15693bac9f9c7be79f4ae20655ec14c4013e078.bin",
+      "bytes": 5601,
+      "sha256": "96f6f8e8c9e99149632ee4f4f15693bac9f9c7be79f4ae20655ec14c4013e078"
+    },
+    {
+      "originalPath": "ops/cpu-launch/cyst-count-acceptance.py",
+      "path": "source/dddbd79313d3791f7800b798d04194c7194f71944295fe458a87a8adb9671e73.bin",
+      "bytes": 8139,
+      "sha256": "dddbd79313d3791f7800b798d04194c7194f71944295fe458a87a8adb9671e73"
+    },
+    {
+      "originalPath": "ops/cpu-launch/cyst-count-fixture.mjs",
+      "path": "source/ae24941f02ddbb97939999f9a6a44d11302e34bcfe77ba805fae714e2a5379bf.bin",
+      "bytes": 9009,
+      "sha256": "ae24941f02ddbb97939999f9a6a44d11302e34bcfe77ba805fae714e2a5379bf"
+    },
+    {
+      "originalPath": "ops/cpu-launch/test_infrastructure_control.py",
+      "path": "source/d7baaeb5ea06bf61e059888d5a3b38e99c449ba92774d745f820457ea488d2c4.bin",
+      "bytes": 4385,
+      "sha256": "d7baaeb5ea06bf61e059888d5a3b38e99c449ba92774d745f820457ea488d2c4"
+    },
+    {
+      "originalPath": "ops/cpu-launch/offhost.py",
+      "path": "source/68f328c734a078be58acc238da83732f2d2ca909268d5992e2e55670b407fb1d.bin",
+      "bytes": 8862,
+      "sha256": "68f328c734a078be58acc238da83732f2d2ca909268d5992e2e55670b407fb1d"
+    },
+    {
+      "originalPath": "ops/cpu-launch/test-recovery-audit.mjs",
+      "path": "source/19dc8e409827aeb1334fd46b6fe43aca47329f3fda989fbfb04044ab4248ad06.bin",
+      "bytes": 2772,
+      "sha256": "19dc8e409827aeb1334fd46b6fe43aca47329f3fda989fbfb04044ab4248ad06"
+    },
+    {
+      "originalPath": "ops/cpu-launch/mainnet-ops.py",
+      "path": "source/b6aa7aff0e281d1dc43da944c6d429408e67c1546d50f8571b7d039d944d2ecd.bin",
+      "bytes": 32529,
+      "sha256": "b6aa7aff0e281d1dc43da944c6d429408e67c1546d50f8571b7d039d944d2ecd"
+    },
+    {
+      "originalPath": "ops/cpu-launch/test_self_contained.py",
+      "path": "source/0a8becde862b96de6901b6c656dcc7bfffdac1fce735c32e83e030c96044a58b.bin",
+      "bytes": 5102,
+      "sha256": "0a8becde862b96de6901b6c656dcc7bfffdac1fce735c32e83e030c96044a58b"
+    },
+    {
+      "originalPath": "ops/cpu-launch/soak.mjs",
+      "path": "source/8d7865f0faba13dccecfe88ed4f02d2794cce1c420a96e746ff91013752c18b3.bin",
+      "bytes": 16917,
+      "sha256": "8d7865f0faba13dccecfe88ed4f02d2794cce1c420a96e746ff91013752c18b3"
+    },
+    {
+      "originalPath": "ops/cpu-launch/test-fingerprints.mjs",
+      "path": "source/9f7087d4a8d1dadea94f21496a47e34e0b1375857bbb8dc1b0f7588339f21f1b.bin",
+      "bytes": 1638,
+      "sha256": "9f7087d4a8d1dadea94f21496a47e34e0b1375857bbb8dc1b0f7588339f21f1b"
+    },
+    {
+      "originalPath": "ops/cpu-launch/bootstrap-clean-host.sh",
+      "path": "source/8a6737f979a081be3217ce1e4101ca4fe10b126b551b95b564dc647869fa2350.bin",
+      "bytes": 1845,
+      "sha256": "8a6737f979a081be3217ce1e4101ca4fe10b126b551b95b564dc647869fa2350"
+    }
+  ],
+  "priorVersions": [
+    {
+      "attempt": "initial-builder-cross-device-rename-failure",
+      "originalPath": "ops/cpu-launch/self-contained-recovery.py",
+      "path": "source/e90578dec28da12976471b276dce115f65af08433cefd3be49871b726128d7cc.bin",
+      "bytes": 20399,
+      "sha256": "e90578dec28da12976471b276dce115f65af08433cefd3be49871b726128d7cc"
+    },
+    {
+      "attempt": "initial-builder-cross-device-rename-failure",
+      "originalPath": "ops/cpu-launch/test_self_contained.py",
+      "path": "source/98802fefa31a1be1994defa26578606a2b029452bc7808bd860ebb828b361bbd.bin",
+      "bytes": 3709,
+      "sha256": "98802fefa31a1be1994defa26578606a2b029452bc7808bd860ebb828b361bbd"
+    }
+  ]
+}

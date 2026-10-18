@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "localDirectory": "C:\\Users\\Administrator\\Documents\\Telomere-private-backups\\mainnet-cpu\\self-contained-kit-34a9445b0e564933",
+  "manifestSha256": "c10288b254ae1ffeed5fee163c3a77a03ed38952f92f6cf5c778bca99310604d",
+  "membersVerified": 88,
+  "totalArtifactBytes": 1382107528,
+  "elapsedCopyAndVerifySeconds": 713.447,
+  "resumedTransferAndVerifySeconds": 416.889,
+  "resumedPrefixes": [
+    {
+      "path": "runtime-a75ee7bc44ff9aaa8964023975f0b7147c92fee4-553a1a38e36f2566.tar.age",
+      "prefixBytes": 440991744
+    }
+  ],
+  "alreadyVerifiedFilesSkipped": 0,
+  "sftpRequests": 256,
+  "sftpBufferBytes": 262144,
+  "encryptedDataAndRuntimeCopied": true,
+  "identityIncluded": false,
+  "gitPublished": false
+}

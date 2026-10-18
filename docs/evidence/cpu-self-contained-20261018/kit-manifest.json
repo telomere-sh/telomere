@@ -1,0 +1,450 @@
+{
+  "schemaVersion": 1,
+  "kind": "telomere-self-contained-cpu-recovery",
+  "namespace": "34a9445b0e564933",
+  "releaseId": "a75ee7bc44ff9aaa8964023975f0b7147c92fee4",
+  "dependencyImageCapturedBeforeKey": true,
+  "sourceSnapshotId": "backup-20261018T160112Z-83e2cd3d",
+  "files": [
+    {
+      "path": "RECOVERY.md",
+      "bytes": 565,
+      "sha256": "6d3abdeeb2cf73c6e90e3d236b41ccec290016cfdc87cc9d7b42a3fc56d8756e"
+    },
+    {
+      "path": "backup-20261018T162623Z-812d6863.tar.age",
+      "bytes": 430474,
+      "sha256": "cb990fe4591b9f749461e48a0de6524876144f21dc2aced5cbbcf7c8737c0207"
+    },
+    {
+      "path": "boot.json",
+      "bytes": 533,
+      "sha256": "9c3b5b642d7c015afb23987eeee7d2899c223c68c77b7eb915a7a8b311061540"
+    },
+    {
+      "path": "dependencies.qcow2",
+      "bytes": 896139264,
+      "sha256": "e457ba90da1f7961c42f3021b2c2614c76f367010065c8055b291d3fdf2780c3"
+    },
+    {
+      "path": "initrd",
+      "bytes": 31623635,
+      "sha256": "1d20632671ce4bc95fe30478762fc1d14a2d40a7b32dd8426970d5409b21bd2e"
+    },
+    {
+      "path": "operator/cpu-cloud/README.md",
+      "bytes": 10039,
+      "sha256": "561234b0f141765bbbed5b09e20a32ac16d4a8b8f4145168e44e649679e3f37a"
+    },
+    {
+      "path": "operator/cpu-cloud/archive_policy.py",
+      "bytes": 5626,
+      "sha256": "d361420fdb96f7b3aeb2a180ab646772cc213bbde1dd4f54bc3455d803a427d0"
+    },
+    {
+      "path": "operator/cpu-cloud/capacity.py",
+      "bytes": 3087,
+      "sha256": "d12a56551dd9d372a302c8bd0fe269367122ae64add48d1cd4c4901c52393d04"
+    },
+    {
+      "path": "operator/cpu-cloud/cloud.py",
+      "bytes": 23438,
+      "sha256": "d0dc388cf36c5c71105133176b4169a0198b9f4c7f8b0f4a169114c51343bcf4"
+    },
+    {
+      "path": "operator/cpu-cloud/cyst-capacity.json",
+      "bytes": 109,
+      "sha256": "0797a1cc6c77f7272b3bc3bccf0229711122720f2124051bd3724c77b705be0e"
+    },
+    {
+      "path": "operator/cpu-cloud/export.py",
+      "bytes": 5457,
+      "sha256": "eb1e7c12007b1616e9b2b7b243e61ef3592ad1693aaee9a4d95a86522f77cfdc"
+    },
+    {
+      "path": "operator/cpu-cloud/github_store.py",
+      "bytes": 8699,
+      "sha256": "76f347655038287c6d17036e39c95440dda0c243cd3836ea5b441986b6acc8ae"
+    },
+    {
+      "path": "operator/cpu-cloud/pager.py",
+      "bytes": 5945,
+      "sha256": "7ea8e57084de173c95ed32250868d80701ff9b19715665807058dd9fbaa7b4b5"
+    },
+    {
+      "path": "operator/cpu-cloud/recover_key.py",
+      "bytes": 1786,
+      "sha256": "9f68e516fb0ce159f945e2f68514b2d5a746ab9d2b13a3d5f5ad8051b4411239"
+    },
+    {
+      "path": "operator/cpu-cloud/test_archive_policy.py",
+      "bytes": 7128,
+      "sha256": "c02f4946acd2bf15c7e26235ac8e77b492897261831a9e4459b006a695524140"
+    },
+    {
+      "path": "operator/cpu-cloud/test_cloud_ops.py",
+      "bytes": 12446,
+      "sha256": "9428d81d04080d0ef410b99b968a156d1bd410944697c52c07b0c91491e57692"
+    },
+    {
+      "path": "operator/cpu-launch/CLEAN-SERVER-RECOVERY.md",
+      "bytes": 9478,
+      "sha256": "5bd0914aeaf88d03403d94560faaf9da220042229f194e7cbbf5de8f728a2e19"
+    },
+    {
+      "path": "operator/cpu-launch/README.md",
+      "bytes": 33599,
+      "sha256": "3fe360cf9c646bfe5dcf5b1552bcfcdec6ffaf5ec665a3c4c30289da77b19b59"
+    },
+    {
+      "path": "operator/cpu-launch/archive-fault-worker.mjs",
+      "bytes": 1708,
+      "sha256": "3027d5a2d83f1a8a83d6bcd5f48c6fb8c92f77abd5a02904c46a120672cdba23"
+    },
+    {
+      "path": "operator/cpu-launch/archive-journal.mjs",
+      "bytes": 1483,
+      "sha256": "33b522806cb4042b387bf91a85db79b00f065dd6833b590b48dd1dda68ad25c6"
+    },
+    {
+      "path": "operator/cpu-launch/archive-load-worker.mjs",
+      "bytes": 2007,
+      "sha256": "3ef502642111577a644bd8587d7977949d999a614cf82227f29cd1a9146a6ec6"
+    },
+    {
+      "path": "operator/cpu-launch/audit-journal.mjs",
+      "bytes": 2472,
+      "sha256": "5bcf17045f85358e48ba42a0a467fee64b06e179623f3345fa1424e816c6c51a"
+    },
+    {
+      "path": "operator/cpu-launch/backup-capacity-fixture.mjs",
+      "bytes": 4073,
+      "sha256": "3558ccadedbec26a809d5e6ec50a81236dd1508697edbc026596934cff6f155a"
+    },
+    {
+      "path": "operator/cpu-launch/backup-capacity.py",
+      "bytes": 4702,
+      "sha256": "53cc9fd40fcbad9d1b23ab5a464af7b32b9f24a5716e2330e2cb7b1a934f4d50"
+    },
+    {
+      "path": "operator/cpu-launch/backup-crash-acceptance.py",
+      "bytes": 16338,
+      "sha256": "ffce7c46dd0372927fa884b02c910794c3444194563caee216c72e87b1a80124"
+    },
+    {
+      "path": "operator/cpu-launch/backup-reboot-acceptance.py",
+      "bytes": 6145,
+      "sha256": "e88bb66328bc7b602b1aafd3afcfffa471dc4d59a1bea2bdd740457ba9a9cee4"
+    },
+    {
+      "path": "operator/cpu-launch/backup-reboot-guest.py",
+      "bytes": 6348,
+      "sha256": "496c76847fc0e58a0467c0474a2ba95dc4a5d2e8acda14880ebe2cbb58ecf6d5"
+    },
+    {
+      "path": "operator/cpu-launch/bootstrap-clean-host.sh",
+      "bytes": 1845,
+      "sha256": "8a6737f979a081be3217ce1e4101ca4fe10b126b551b95b564dc647869fa2350"
+    },
+    {
+      "path": "operator/cpu-launch/capacity-restore.py",
+      "bytes": 2716,
+      "sha256": "fde4ab6fde31fda2339d129039605a5fab63d64d6cdc8062def30ec7f7c3ee0e"
+    },
+    {
+      "path": "operator/cpu-launch/chain-recovery-audit.mjs",
+      "bytes": 2163,
+      "sha256": "a231623eaea5ec47f8a5df89592de230f2e1f8884e828d0f733810ded425e223"
+    },
+    {
+      "path": "operator/cpu-launch/clean-server-recovery.py",
+      "bytes": 10656,
+      "sha256": "6c71408951d482e4eee738679cea7e17ecf2c2e3733449ddf0f4aba8ab4713af"
+    },
+    {
+      "path": "operator/cpu-launch/cyst-count-acceptance.py",
+      "bytes": 8139,
+      "sha256": "dddbd79313d3791f7800b798d04194c7194f71944295fe458a87a8adb9671e73"
+    },
+    {
+      "path": "operator/cpu-launch/cyst-count-fixture.mjs",
+      "bytes": 9009,
+      "sha256": "ae24941f02ddbb97939999f9a6a44d11302e34bcfe77ba805fae714e2a5379bf"
+    },
+    {
+      "path": "operator/cpu-launch/cyst-posix.mjs",
+      "bytes": 2825,
+      "sha256": "8467d0b5a9b8becb31168e8b09024ea4413a8d9fb3e8d1967f33d4fba6866682"
+    },
+    {
+      "path": "operator/cpu-launch/docker-load.py",
+      "bytes": 1064,
+      "sha256": "6e3d716245f3fb432d8240d279799b0c9d5e6b1ad4968d54aee80956a37651dc"
+    },
+    {
+      "path": "operator/cpu-launch/fixture-rpc-proxy.mjs",
+      "bytes": 1688,
+      "sha256": "95cbfb071e3b69911bb6159f1a8738365ae8331ddf959a67c53f42ab037ef8ed"
+    },
+    {
+      "path": "operator/cpu-launch/fresh-vm-acceptance.py",
+      "bytes": 17323,
+      "sha256": "01fd0b422d49b7267c2f9166e0077fb2edce72177e75e331bfe355ffd22770c8"
+    },
+    {
+      "path": "operator/cpu-launch/fresh-vm-guest.py",
+      "bytes": 23941,
+      "sha256": "d24c18cfaddc334d80bbe73086501f8126c5f180ea1898a194bee513e53077f2"
+    },
+    {
+      "path": "operator/cpu-launch/fresh-vm-image.py",
+      "bytes": 5601,
+      "sha256": "96f6f8e8c9e99149632ee4f4f15693bac9f9c7be79f4ae20655ec14c4013e078"
+    },
+    {
+      "path": "operator/cpu-launch/fresh-vm-smoke.mjs",
+      "bytes": 11975,
+      "sha256": "fe1fddbce98c06afdd860d689c80d76ee2f032d9b8f2e80bd40ad87363f3bd33"
+    },
+    {
+      "path": "operator/cpu-launch/gvisor-runtime.py",
+      "bytes": 3863,
+      "sha256": "d4496514ff0afc25d38aeba4f935b06c7b53120cb3277cd4bd9712cd9a8f05e1"
+    },
+    {
+      "path": "operator/cpu-launch/health.mjs",
+      "bytes": 2100,
+      "sha256": "62c95cc1efea8716152f6bb41e2303e1326f65efafb455c2b6c747f0bdaab971"
+    },
+    {
+      "path": "operator/cpu-launch/https-load-client.mjs",
+      "bytes": 6280,
+      "sha256": "fd8d458788aa915f32fb22f0ee41cd73e2af542a37785d02d45033a830ab6029"
+    },
+    {
+      "path": "operator/cpu-launch/infrastructure-control.py",
+      "bytes": 5613,
+      "sha256": "00cedd2555bf5a1350c1cca54f9c2fcc53d980059e7dc79dfbc84330232cf88a"
+    },
+    {
+      "path": "operator/cpu-launch/infrastructure-scenarios.mjs",
+      "bytes": 13138,
+      "sha256": "c47c49fa149d89a9f02871911741513370a146778dce81dda9d161c4b89afaf3"
+    },
+    {
+      "path": "operator/cpu-launch/infrastructure.mjs",
+      "bytes": 11762,
+      "sha256": "4c1aa846a09d8fa7fd34a961e60a8d167a1ada1dd14c18da0697855495ee73b9"
+    },
+    {
+      "path": "operator/cpu-launch/journal-acceptance.mjs",
+      "bytes": 22380,
+      "sha256": "b5da44f6379c2c4ff6c8c0a69efdda528a58b2645e8378e6ddef874efb5f18e1"
+    },
+    {
+      "path": "operator/cpu-launch/journal-soak.mjs",
+      "bytes": 18714,
+      "sha256": "704880662d98ce5f707ceb9b97d84af773c527043993076bd23f1c961f985043"
+    },
+    {
+      "path": "operator/cpu-launch/journal-stress-scenarios.mjs",
+      "bytes": 14198,
+      "sha256": "9b69644519df46e82e14d93f6119fda21fe29881855cb0a8ba83c5c3acdee583"
+    },
+    {
+      "path": "operator/cpu-launch/journal-stress.mjs",
+      "bytes": 14107,
+      "sha256": "ff479999926fe90c8b84d97b2c40de157778d53e568d322e9b8f4750b34b83d6"
+    },
+    {
+      "path": "operator/cpu-launch/launch-acceptance.py",
+      "bytes": 7618,
+      "sha256": "988e5fa6f8943956a25e3cf7df98cf835cb163aafb330edecb17648361b8cf46"
+    },
+    {
+      "path": "operator/cpu-launch/load-worker.mjs",
+      "bytes": 743,
+      "sha256": "e41467dc99285deb09819792f959a44acd499ce3f1dc21f24fbc76e8dedc9efb"
+    },
+    {
+      "path": "operator/cpu-launch/load.mjs",
+      "bytes": 23090,
+      "sha256": "0e0da9cd5a1d03abb2ee591e8ec00be2c7bc969e362d7ed53f6e6e08d81b425f"
+    },
+    {
+      "path": "operator/cpu-launch/mainnet-ops.py",
+      "bytes": 32529,
+      "sha256": "b6aa7aff0e281d1dc43da944c6d429408e67c1546d50f8571b7d039d944d2ecd"
+    },
+    {
+      "path": "operator/cpu-launch/offhost.py",
+      "bytes": 8862,
+      "sha256": "68f328c734a078be58acc238da83732f2d2ca909268d5992e2e55670b407fb1d"
+    },
+    {
+      "path": "operator/cpu-launch/promote-journal.py",
+      "bytes": 7445,
+      "sha256": "740cc3b928335e6cfc7df2df22ec006450e60799feb9e05891487a8782ba1edc"
+    },
+    {
+      "path": "operator/cpu-launch/public-api-readonly-load.mjs",
+      "bytes": 1357,
+      "sha256": "69f52fd6792ab38fca4dabf75419e586f9cd46c701a5cb983b8715a081b780a1"
+    },
+    {
+      "path": "operator/cpu-launch/recovery-audit.mjs",
+      "bytes": 1980,
+      "sha256": "57e2d5b2aa959b9b1817d5444aa46c9f6730b68c7726606d8fc162f9b499e073"
+    },
+    {
+      "path": "operator/cpu-launch/resilience-scenarios.mjs",
+      "bytes": 24097,
+      "sha256": "b516045790b8eede4ef684c501e5d06b71550338ae69823f9abebfbab66e0c9d"
+    },
+    {
+      "path": "operator/cpu-launch/resilience-worker.mjs",
+      "bytes": 1446,
+      "sha256": "0fe206a12a9bc1c4e3fc42889abf1cf3531d9c18f2c15e93174533a58a10970d"
+    },
+    {
+      "path": "operator/cpu-launch/resilience.mjs",
+      "bytes": 10447,
+      "sha256": "66c906070467afa1097a1542b705432b451cb5ffe79b796681d9c85a09bf07a0"
+    },
+    {
+      "path": "operator/cpu-launch/restore-rehearsal.py",
+      "bytes": 21681,
+      "sha256": "0224573c3b615a5383ce442518bc722738d690089e7ccceb187f3cf0a6a8aa4f"
+    },
+    {
+      "path": "operator/cpu-launch/restored-data-reader.mjs",
+      "bytes": 3574,
+      "sha256": "ae99f427b7204bbba65cfa1d5c46c60b94c5abadf274766f9f5533d456bf40e4"
+    },
+    {
+      "path": "operator/cpu-launch/scale-restore.py",
+      "bytes": 3986,
+      "sha256": "6276b5b49d7520d8e9badd5e4e6d55360494b4919c4b09996af34b811b2a3e80"
+    },
+    {
+      "path": "operator/cpu-launch/seal-journal-proof.py",
+      "bytes": 2712,
+      "sha256": "5c5fcae6d2add6ab0b446203edcdc7fa5c56d7a40c40e13187c21a31331dfe4a"
+    },
+    {
+      "path": "operator/cpu-launch/security-probe.py",
+      "bytes": 2423,
+      "sha256": "e0ad94f1432bc2947ca8c24eac3964861edf278d755b12cc3695c147cf2284d8"
+    },
+    {
+      "path": "operator/cpu-launch/seed-history.mjs",
+      "bytes": 4271,
+      "sha256": "50f73d220b114eb247fc0dc61b97259c8f850ec4ac97069959cd443fe6ebfe5e"
+    },
+    {
+      "path": "operator/cpu-launch/self-contained-recovery.py",
+      "bytes": 24454,
+      "sha256": "b8dd626ef5c6797808096b7c8510d2e9f4e24381952f693d6e56a905a08bf5a0"
+    },
+    {
+      "path": "operator/cpu-launch/snapshot.mjs",
+      "bytes": 1795,
+      "sha256": "5659ea93ce9dc61f9e167cdd673547be7c7c9054456d62d15c2c91577177279e"
+    },
+    {
+      "path": "operator/cpu-launch/soak-cleanup.py",
+      "bytes": 1885,
+      "sha256": "e664ebc959f1a31f4e874f8dde66a2a75986ac62c5d0b6252903166af15564f1"
+    },
+    {
+      "path": "operator/cpu-launch/soak.mjs",
+      "bytes": 16917,
+      "sha256": "8d7865f0faba13dccecfe88ed4f02d2794cce1c420a96e746ff91013752c18b3"
+    },
+    {
+      "path": "operator/cpu-launch/stage-journal-candidate.py",
+      "bytes": 2262,
+      "sha256": "3abc1b2bdc392d2f90ed8ff7d4fe41376918c1dde889d28280383ba42cf7cb58"
+    },
+    {
+      "path": "operator/cpu-launch/table-fingerprints.mjs",
+      "bytes": 989,
+      "sha256": "cec50b4bf2215852dee7c4e2ecdab39ae8602dba4bb45ac5834ae742d0985432"
+    },
+    {
+      "path": "operator/cpu-launch/test-fingerprints.mjs",
+      "bytes": 1638,
+      "sha256": "9f7087d4a8d1dadea94f21496a47e34e0b1375857bbb8dc1b0f7588339f21f1b"
+    },
+    {
+      "path": "operator/cpu-launch/test-fixture-rpc.mjs",
+      "bytes": 1982,
+      "sha256": "ce19b15ae284d1d43b0f0fd8829b15055e05e91d5336d96f114c0f3bfa627855"
+    },
+    {
+      "path": "operator/cpu-launch/test-recovery-audit.mjs",
+      "bytes": 2772,
+      "sha256": "19dc8e409827aeb1334fd46b6fe43aca47329f3fda989fbfb04044ab4248ad06"
+    },
+    {
+      "path": "operator/cpu-launch/test_backup_crash.py",
+      "bytes": 7791,
+      "sha256": "a3432421299afe1047a438ffc8d96be19cbd17877bb4d3fea46685ff4d63186a"
+    },
+    {
+      "path": "operator/cpu-launch/test_clean_server.py",
+      "bytes": 3999,
+      "sha256": "01ff75a831d90c668b2f1c4e2718f3730e0e913bca30f20887153c8421d6d376"
+    },
+    {
+      "path": "operator/cpu-launch/test_fresh_vm.py",
+      "bytes": 3968,
+      "sha256": "7baedb2406971235ed917364b619d6d01b0a22bbca7919d70268de22977f6a03"
+    },
+    {
+      "path": "operator/cpu-launch/test_fresh_vm_key.py",
+      "bytes": 2246,
+      "sha256": "29cf2d3eb3b3254dc024489c0c43b6fd9fb6ef67aa5da87d4de287cb2f112a35"
+    },
+    {
+      "path": "operator/cpu-launch/test_gvisor_runtime.py",
+      "bytes": 2840,
+      "sha256": "e3dedefd76668d7dabe8762069c3f9bb8bb768993f7ee047d277e8c30013df49"
+    },
+    {
+      "path": "operator/cpu-launch/test_infrastructure_control.py",
+      "bytes": 4385,
+      "sha256": "d7baaeb5ea06bf61e059888d5a3b38e99c449ba92774d745f820457ea488d2c4"
+    },
+    {
+      "path": "operator/cpu-launch/test_monitor.py",
+      "bytes": 10381,
+      "sha256": "070b0a68eacfe8a288ad951600c771290b15bfcc892753b60ec68a774288b146"
+    },
+    {
+      "path": "operator/cpu-launch/test_restore.py",
+      "bytes": 4030,
+      "sha256": "8ee9bf9ed2c338d46f9a18720741ceb73febed942d2a6cc481c003b6dc0d0bef"
+    },
+    {
+      "path": "operator/cpu-launch/test_self_contained.py",
+      "bytes": 5102,
+      "sha256": "0a8becde862b96de6901b6c656dcc7bfffdac1fce735c32e83e030c96044a58b"
+    },
+    {
+      "path": "receipt.json",
+      "bytes": 617,
+      "sha256": "bc560bda39d8bd01bb0f73d36431c86af2da05ced1d1f256c25c165683bc320b"
+    },
+    {
+      "path": "runtime-a75ee7bc44ff9aaa8964023975f0b7147c92fee4-553a1a38e36f2566.tar.age",
+      "bytes": 445052970,
+      "sha256": "9a3d070c8ce39e40c039e7710a49485391b1b28b3134aa4ee6c3156e3b59ad5d"
+    },
+    {
+      "path": "vmlinuz",
+      "bytes": 8218560,
+      "sha256": "86986a74ded29f6a246f51f28589fb08c8da5635664411e5659a0118b8138568"
+    }
+  ]
+}

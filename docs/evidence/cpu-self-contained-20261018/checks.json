@@ -1,0 +1,14 @@
+{
+  "linuxTests": {
+    "launch": 112,
+    "cloud": 29,
+    "total": 141,
+    "passed": true
+  },
+  "initialBuilderLinuxTests": 139,
+  "bashSyntaxPassed": true,
+  "nodeSyntaxPassed": true,
+  "mainnetTransactions": 0,
+  "productionUpdated": false,
+  "gitPublished": false
+}

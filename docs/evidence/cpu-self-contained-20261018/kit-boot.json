@@ -1,0 +1,14 @@
+{
+  "namespace": "34a9445b0e564933",
+  "productionRelease": "a75ee7bc44ff9aaa8964023975f0b7147c92fee4",
+  "images": [
+    {
+      "reference": "postgres@sha256:721873c34ceb9f8d8fc265984940dc982404c105f19ad51be9fdc5970a6080ea",
+      "imageId": "sha256:721873c34ceb9f8d8fc265984940dc982404c105f19ad51be9fdc5970a6080ea"
+    },
+    {
+      "reference": "node@sha256:0a7108bf6c7bf5de370ffb1a3ed6be93d405b43ff159f681a8d18c0e2bc2e402",
+      "imageId": "sha256:0a7108bf6c7bf5de370ffb1a3ed6be93d405b43ff159f681a8d18c0e2bc2e402"
+    }
+  ]
+}

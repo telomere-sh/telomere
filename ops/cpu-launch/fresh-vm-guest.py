@@ -131,6 +131,11 @@ def restore():
     elapsed('archiveAuthenticationSeconds')
     data=json.loads((stage/'data/manifest.json').read_text());archived=json.loads((stage/'runtime/manifest.json').read_text())
     expected,snapshot,pg_image,cpu_image=recovery.validate_pair(data,archived,receipt,stage/'data',stage/'runtime')
+    settings=json.loads((INPUT/'input.json').read_text());self_contained=settings.get('selfContainedKit') is True
+    if self_contained:
+        assert not settings.get('runtimeDependencySupplement') and not (INPUT/'gvisor-runtime').exists()
+        embedded_tools=load('self-contained-recovery.py').assert_embedded_tools(stage/'runtime',INPUT/'operator')
+    else:embedded_tools=0
     B.chmod(0o755)
     release=B/'releases'/expected['releaseId'];release.parent.mkdir(mode=0o755);release.parent.chmod(0o755);shutil.copytree(stage/'runtime/release',release);private_tree(release)
     (B/'app').symlink_to(release,target_is_directory=True)
@@ -240,6 +245,7 @@ def restore():
         'retainedDockerAndNetworkUnitsStarted':True,'restoredDatabaseSystemdServiceActive':True,'mainnetControllerMasked':True,
         'nodeVersion':run([NODE,'--version']).stdout.decode().strip(),'gvisorExecutable':run(['/opt/telomere-host-runtime/gvisor/runsc','--version']).returncode==0,
         'gvisorDistributionFiles':gvisor_files,'legacyRuntimeSupplementUsed':bool(descriptor),'legacyRuntimeSupplement':descriptor,
+        'selfContainedKitVerified':self_contained,'embeddedRecoveryToolsVerified':embedded_tools,
         'externalInterfaces':[],'mainnetTransactions':0,'mainnetSignerPassedToApplication':False,'publicTlsIssued':False,'dnsChanged':False,
         'timings':timings,'elapsedSeconds':round(time.monotonic()-began,3)}
     save(INPUT/'restore-result.json',result);progress('restore-accepted',elapsedSeconds=result['elapsedSeconds'])
@@ -264,7 +270,8 @@ def main():
     # A direct invocation on an unmarked host must not reach poweroff on error.
     guard(phase=='restore')
     try:
-        if phase=='restore' and (INPUT/'diagnose-runtime.json').exists():diagnose_runtime()
+        if phase=='restore' and json.loads((INPUT/'input.json').read_text()).get('buildSelfContainedPair') is True:load('self-contained-recovery.py').build_pair()
+        elif phase=='restore' and (INPUT/'diagnose-runtime.json').exists():diagnose_runtime()
         else:{'bootstrap':bootstrap,'restore':restore}[phase]()
     except Exception as error:
         # Full diagnostics remain on the private disposable disk, never in public evidence.

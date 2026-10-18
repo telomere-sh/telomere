@@ -1,0 +1,54 @@
+{
+  "passed": true,
+  "sourceSnapshotId": "backup-20261018T160112Z-83e2cd3d",
+  "sourceRuntimeId": "runtime-a75ee7bc44ff9aaa8964023975f0b7147c92fee4-b08590b94b797fd9",
+  "receipt": {
+    "id": "backup-20261018T162623Z-812d6863",
+    "sha256": "cb990fe4591b9f749461e48a0de6524876144f21dc2aced5cbbcf7c8737c0207",
+    "bytes": 430474,
+    "runtimeBundle": {
+      "id": "runtime-a75ee7bc44ff9aaa8964023975f0b7147c92fee4-553a1a38e36f2566",
+      "sha256": "9a3d070c8ce39e40c039e7710a49485391b1b28b3134aa4ee6c3156e3b59ad5d",
+      "bytes": 445052970,
+      "runtimePinsVerified": 758,
+      "files": 22216
+    },
+    "sourceSnapshotId": "backup-20261018T160112Z-83e2cd3d",
+    "sourceSnapshotSha256": "26a8568e3a532f95bfb7de25a9758194baa7002a90172a6645f6a19752975af0",
+    "recoveryKitOnly": true,
+    "cloudAcknowledged": false
+  },
+  "authenticatedNewPair": {
+    "passed": true,
+    "releaseId": "a75ee7bc44ff9aaa8964023975f0b7147c92fee4",
+    "verifiedRuntimePins": 758,
+    "tables": 47,
+    "rows": 47,
+    "authenticatedDecryption": true,
+    "fileHashesVerified": true,
+    "installPlanPrepared": true,
+    "restoredExecutableRun": false,
+    "controllerStarted": false,
+    "mainnetTransactions": 0,
+    "stage": "/root/verified-complete-kit"
+  },
+  "originalPayloadFileHashesUnchanged": true,
+  "dataCapacity": {
+    "files": 20,
+    "cystFiles": 0,
+    "otherFiles": 20,
+    "payloadBytes": 382692,
+    "cystBytes": 0,
+    "dumpBytes": 88431,
+    "snapshotBytes": 7371,
+    "configurationBytes": 286890
+  },
+  "embeddedRecoveryTools": 80,
+  "gvisorDistributionFiles": 7,
+  "looseSupplementRequiredForFinalRestore": false,
+  "mainnetTransactions": 0,
+  "productionBackupReceiptChanged": false,
+  "sameFilesystemAtomicSealing": true,
+  "verifiedCrossFilesystemExport": true,
+  "elapsedSeconds": 406.849
+}

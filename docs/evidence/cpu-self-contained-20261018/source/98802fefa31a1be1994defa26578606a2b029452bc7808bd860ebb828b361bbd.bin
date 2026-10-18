@@ -1,0 +1,55 @@
+import hashlib,importlib.util,json,os,tempfile,unittest
+from pathlib import Path
+
+spec=importlib.util.spec_from_file_location('self_contained_recovery',Path(__file__).with_name('self-contained-recovery.py'))
+kit=importlib.util.module_from_spec(spec);spec.loader.exec_module(kit)
+
+class KitBoundaryTests(unittest.TestCase):
+    def setUp(self):
+        self.tmp=tempfile.TemporaryDirectory();self.root=Path(self.tmp.name)/'kit';self.root.mkdir()
+        names=('dependencies.qcow2','vmlinuz','initrd','boot.json','operator/cpu-launch/fresh-vm-guest.py','operator/cpu-launch/gvisor-runtime.py')
+        for name in names:
+            path=self.root/name;path.parent.mkdir(parents=True,exist_ok=True);path.write_bytes(name.encode())
+        receipts=[]
+        for name in ('backup-20261018T000000Z-12345678','runtime-'+'a'*40+'-'+'b'*16):
+            path=self.root/(name+'.tar.age');path.write_bytes(name.encode());receipts.append({'id':name,'sha256':kit.digest(path)})
+        (self.root/'receipt.json').write_text(json.dumps({**receipts[0],'runtimeBundle':receipts[1]}))
+    def tearDown(self):self.tmp.cleanup()
+    def seal(self):self.checksum=kit.seal_kit(self.root,{'namespace':'c'*16});return self.checksum
+    def test_exact_complete_manifest_is_verified(self):
+        self.seal();self.assertEqual(len(kit.verify_kit(self.root,self.checksum)['files']),9)
+    def test_wrong_outer_seal_rejected(self):
+        self.seal()
+        with self.assertRaises(AssertionError):kit.verify_kit(self.root,'0'*64)
+    def test_modified_kernel_rejected(self):
+        self.seal();(self.root/'vmlinuz').write_bytes(b'changed')
+        with self.assertRaises(AssertionError):kit.verify_kit(self.root,self.checksum)
+    def test_missing_sidecar_helper_rejected(self):
+        (self.root/'operator/cpu-launch/gvisor-runtime.py').unlink()
+        with self.assertRaises(AssertionError):self.seal()
+    def test_unlisted_file_rejected(self):
+        self.seal();(self.root/'loose-file').write_bytes(b'x')
+        with self.assertRaises(AssertionError):kit.verify_kit(self.root,self.checksum)
+    def test_loose_runtime_supplement_rejected(self):
+        (self.root/'gvisor-runtime').mkdir();(self.root/'gvisor-runtime/runsc').write_bytes(b'x')
+        with self.assertRaises(AssertionError):self.seal()
+    @unittest.skipUnless(os.name=='posix','Real symlink boundary is exercised on Linux')
+    def test_symlink_member_rejected(self):
+        (self.root/'vmlinuz').unlink();(self.root/'vmlinuz').symlink_to(self.root/'initrd')
+        with self.assertRaises(AssertionError):self.seal()
+    def test_traversal_noncanonical_and_windows_names_rejected(self):
+        for name in ('../outside','/absolute','a/../b','a//b','a\\b','C:outside','a\nfile'):
+            with self.assertRaises(AssertionError):kit.checked_name(name)
+    def test_runtime_receipt_binding_rejected(self):
+        receipt=json.loads((self.root/'receipt.json').read_text());receipt['runtimeBundle']['sha256']='0'*64
+        (self.root/'receipt.json').write_text(json.dumps(receipt))
+        with self.assertRaises(AssertionError):self.seal()
+    def test_external_tool_substitution_rejected(self):
+        runtime=self.root/'runtime';operator=self.root/'outside';(runtime/'operator').mkdir(parents=True);operator.mkdir()
+        (runtime/'operator/tool.py').write_text('original');(operator/'tool.py').write_text('changed')
+        with self.assertRaises(AssertionError):kit.assert_embedded_tools(runtime,operator)
+    def test_empty_external_tools_rejected(self):
+        operator=self.root/'empty';operator.mkdir()
+        with self.assertRaises(AssertionError):kit.assert_embedded_tools(self.root,operator)
+
+if __name__=='__main__':unittest.main()

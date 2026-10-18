@@ -1,0 +1,6 @@
+{
+  "passed": true,
+  "builderDisksRemoved": true,
+  "looseSupplementsRemoved": true,
+  "onlyKitUsedForFinalBoot": true
+}

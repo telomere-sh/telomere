@@ -1,0 +1,128 @@
+{
+  "passed": true,
+  "namespace": "34a9445b0e564933",
+  "releaseId": "a75ee7bc44ff9aaa8964023975f0b7147c92fee4",
+  "backupId": "backup-20261018T162623Z-812d6863",
+  "runtimeId": "runtime-a75ee7bc44ff9aaa8964023975f0b7147c92fee4-553a1a38e36f2566",
+  "runtimePinsVerified": 758,
+  "freshOs": true,
+  "dependencyBootstrapExecuted": true,
+  "archiveVerification": {
+    "passed": true,
+    "releaseId": "a75ee7bc44ff9aaa8964023975f0b7147c92fee4",
+    "verifiedRuntimePins": 758,
+    "tables": 47,
+    "rows": 47,
+    "authenticatedDecryption": true,
+    "fileHashesVerified": true,
+    "installPlanPrepared": true,
+    "restoredExecutableRun": false,
+    "controllerStarted": false,
+    "mainnetTransactions": 0,
+    "stage": "/root/verified-recovery"
+  },
+  "database": {
+    "passed": true,
+    "tables": 47,
+    "rows": 47
+  },
+  "restoredDataApi": {
+    "passed": true,
+    "owners": 1,
+    "restoredJobs": 2,
+    "authenticatedReads": 2,
+    "unauthenticatedStatus": 401,
+    "workerStarted": false,
+    "networkNamespace": "no interfaces or routes",
+    "productionSignerLoaded": false,
+    "syntheticSessionsRemoved": true,
+    "duplicateControllerRejected": true
+  },
+  "restoredCystFiles": 0,
+  "restoredHttps": {
+    "passed": true,
+    "checks": [
+      {
+        "path": "/",
+        "status": 200
+      },
+      {
+        "path": "/page.html",
+        "status": 200
+      },
+      {
+        "path": "/api/me",
+        "status": 401
+      },
+      {
+        "path": "/.env",
+        "status": 404
+      },
+      {
+        "path": "/src/main.ts",
+        "status": 404
+      }
+    ],
+    "privateLoopbackOnly": true,
+    "ephemeralTestCertificate": true,
+    "productionTlsOrDnsChanged": false
+  },
+  "paidCpuSmoke": {
+    "passed": true,
+    "chainId": 31337,
+    "generatedAccounts": true,
+    "mainnetTransactions": 0,
+    "mainnetSignerLoaded": false,
+    "realGvisorCpuRuns": 1,
+    "authenticatedOwners": 2,
+    "workspaceIsolation": true,
+    "restoredApplicationRestart": true,
+    "originalSettlementHashPreserved": true,
+    "anchoredReceipt": true,
+    "depositAtomicTestTokens": "1000000",
+    "chargedAtomicTestTokens": "800",
+    "withdrawnAtomicTestTokens": "999200",
+    "remainingEscrowAtomicTestTokens": "0",
+    "elapsedSeconds": 95.59560383
+  },
+  "retainedDockerAndNetworkUnitsStarted": true,
+  "restoredDatabaseSystemdServiceActive": true,
+  "mainnetControllerMasked": true,
+  "nodeVersion": "v22.23.3",
+  "gvisorExecutable": true,
+  "gvisorDistributionFiles": 7,
+  "legacyRuntimeSupplementUsed": false,
+  "legacyRuntimeSupplement": null,
+  "selfContainedKitVerified": true,
+  "embeddedRecoveryToolsVerified": 80,
+  "externalInterfaces": [],
+  "mainnetTransactions": 0,
+  "mainnetSignerPassedToApplication": false,
+  "publicTlsIssued": false,
+  "dnsChanged": false,
+  "timings": {
+    "keyWaitSeconds": 19.278,
+    "archiveAuthenticationSeconds": 126.651,
+    "runtimeAndServicesInstallSeconds": 42.335,
+    "databaseRestoreAndFingerprintsSeconds": 87.067,
+    "restoredDataApiSeconds": 65.456,
+    "httpsAndPaidCpuSmokeSeconds": 112.216
+  },
+  "elapsedSeconds": 454.823,
+  "kitManifestSha256": "c10288b254ae1ffeed5fee163c3a77a03ed38952f92f6cf5c778bca99310604d",
+  "kitOnlyHostElapsedSeconds": 584.029,
+  "externalNetworkDevices": 0,
+  "sourceHostMounts": 0,
+  "cleanDependencyImageHasNoBackingFile": true,
+  "kitMembersVerified": 88,
+  "productionGuardsUnchanged": true,
+  "productionUpdated": false,
+  "gitPublished": false,
+  "hostPackagesInstalled": false,
+  "dependencyBootHostSeconds": null,
+  "dependencyGuestElapsedSeconds": 365.118,
+  "cleanDependencyBootReused": true,
+  "offlinePairBuildHostSeconds": 442.57,
+  "totalExerciseHostSeconds": 1038.391,
+  "guestDiskAndPrivateStagingRemoved": true
+}

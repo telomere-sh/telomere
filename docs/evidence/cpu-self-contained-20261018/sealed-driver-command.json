@@ -1,0 +1,13 @@
+{
+  "arguments": [
+    "/usr/bin/python3",
+    "-B",
+    "/opt/telomere-mainnet-pilot/private/fresh-vm-34a9445b0e564933/kit/operator/cpu-launch/self-contained-recovery.py",
+    "restore-kit",
+    "/opt/telomere-mainnet-pilot/private/fresh-vm-34a9445b0e564933/kit",
+    "--manifest-sha256",
+    "c10288b254ae1ffeed5fee163c3a77a03ed38952f92f6cf5c778bca99310604d",
+    "--root",
+    "/opt/telomere-mainnet-pilot/private/fresh-vm-34a9445b0e564933"
+  ]
+}

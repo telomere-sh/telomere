@@ -21,3 +21,4 @@ docs/evidence/cpu-backup-capacity-20261018/source/*.bin -text -diff
 docs/evidence/cpu-cyst-count-20261018/source/*.bin -text -diff
 docs/evidence/cpu-backup-crash-20261018/source/*.bin -text -diff
 docs/evidence/cpu-fresh-vm-20261018/source/*.bin -text -diff
+docs/evidence/cpu-self-contained-20261018/source/*.bin -text -diff

@@ -1,0 +1,60 @@
+import importlib.util,json,os,stat,tempfile,unittest
+from pathlib import Path
+from types import SimpleNamespace
+from unittest.mock import patch
+spec=importlib.util.spec_from_file_location('infrastructure_control',Path(__file__).with_name('infrastructure-control.py'))
+control=importlib.util.module_from_spec(spec);spec.loader.exec_module(control)
+launcher_spec=importlib.util.spec_from_file_location('infrastructure_launcher',Path(__file__).with_name('launch-acceptance.py'))
+launcher=importlib.util.module_from_spec(launcher_spec);launcher_spec.loader.exec_module(launcher)
+class FixtureBoundaries(unittest.TestCase):
+    def setUp(self):self.tmp=tempfile.TemporaryDirectory();self.root=Path(self.tmp.name)
+    def tearDown(self):self.tmp.cleanup()
+    def metadata(self,port):
+        return {'namespace':'a'*16,'port':port}
+    def test_invalid_port_rejected_before_nginx_write(self):
+        for port in ['3282;include /private',3282.5,0,65536,True]:
+            with self.subTest(port=port),patch.object(control,'read_progress',return_value=self.metadata(port)),patch.object(control,'run') as run:
+                with self.assertRaises(AssertionError):control.expose('a'*16,'http-load-abc123')
+                run.assert_not_called()
+    def test_work_path_traversal_rejected(self):
+        with patch.object(control,'read_progress') as read:
+            with self.assertRaises(AssertionError):control.expose('a'*16,'../../private')
+            read.assert_not_called()
+    def test_nonmatching_namespace_rejected(self):
+        with patch.object(control,'read_progress',return_value=self.metadata(12345)):
+            with self.assertRaises(AssertionError):control.expose('b'*16,'http-load-abc123')
+    def test_oversized_progress_rejected(self):
+        p=self.root/'progress';p.write_text('x'*4096)
+        real=os.stat(p)
+        info=SimpleNamespace(st_mode=real.st_mode,st_uid=995,st_nlink=1,st_size=4096)
+        with patch.object(control.os,'fstat',return_value=info):
+            with self.assertRaises(AssertionError):control.read_progress(p)
+    def test_foreign_review_change_is_preserved(self):
+        private=self.root/'private';private.mkdir();site=self.root/'review';site.write_bytes(b'foreign updated site')
+        original=b'original site';namespace='a'*16
+        (private/('https-fixture-'+namespace+'.original')).write_bytes(original)
+        (private/('https-fixture-'+namespace+'.json')).write_text(json.dumps({'originalSha256':control.digest(original),'siteSha256':control.digest(b'our route')}))
+        with patch.object(control,'P',private),patch.object(control,'SITE',site):
+            with self.assertRaises(AssertionError):control.hide(namespace)
+        self.assertEqual(site.read_bytes(),b'foreign updated site')
+    def test_cleanup_removes_owned_resources_even_if_route_changed(self):
+        with patch.object(control,'B',self.root),patch.object(control,'hide',side_effect=ValueError('Foreign configuration')),patch.object(control,'run') as run:
+            with self.assertRaises(ValueError):control.cleanup('a'*16)
+            self.assertEqual(run.call_count,1);self.assertIn('soak-cleanup.py',run.call_args.args[0][1])
+    @unittest.skipUnless(os.name=='posix','O_NOFOLLOW filesystem behavior requires Linux')
+    def test_symlink_progress_rejected(self):
+        target=self.root/'target';target.write_text('{}');link=self.root/'link';link.symlink_to(target)
+        with self.assertRaises(OSError):control.read_progress(link)
+    @unittest.skipUnless(os.name=='posix','Bounded root file descriptor behavior requires Linux')
+    def test_reused_report_fifo_is_nonblocking_and_rejected(self):
+        fifo=self.root/'report';os.mkfifo(fifo)
+        with self.assertRaises(AssertionError):launcher.read_https_report(fifo)
+    @unittest.skipUnless(os.name=='posix','O_NOFOLLOW requires Linux')
+    def test_reused_report_symlink_is_rejected(self):
+        target=self.root/'target';target.write_text('{}');link=self.root/'report';link.symlink_to(target)
+        with self.assertRaises(OSError):launcher.read_https_report(link)
+    @unittest.skipUnless(os.name=='posix','Root descriptor behavior requires Linux')
+    def test_reused_report_oversized_is_rejected(self):
+        p=self.root/'report';p.write_bytes(b'x'*32768)
+        with self.assertRaises(AssertionError):launcher.read_https_report(p)
+if __name__=='__main__':unittest.main()

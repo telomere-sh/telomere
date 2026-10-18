@@ -1,0 +1,318 @@
+"""Build an authenticated recovery pair offline; replay a sealed VM kit only.
+
+Only the disposable guest decrypts source data. The source server's installed
+operator, backup receipts, controller, packages and network are never replaced.
+"""
+import argparse,datetime,hashlib,importlib.util,json,os,re,shutil,subprocess,tarfile,time,uuid
+from pathlib import Path,PurePosixPath
+
+def load(name):
+    spec=importlib.util.spec_from_file_location(name.replace('-','_'),Path(__file__).with_name(name))
+    module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module);return module
+
+def digest(path):
+    checksum=hashlib.sha256()
+    with path.open('rb') as stream:
+        for part in iter(lambda:stream.read(1024**2),b''):checksum.update(part)
+    return checksum.hexdigest()
+
+def save(path,value):
+    path.write_text(json.dumps(value,indent=2)+'\n');path.chmod(0o600)
+
+def checked_name(name):
+    assert isinstance(name,str) and name and '\\' not in name and ':' not in name
+    path=PurePosixPath(name)
+    assert not path.is_absolute() and '..' not in path.parts and str(path)==name
+    assert not any(c in name for c in '\r\n\0')
+    return path
+
+def seal_kit(kit,metadata):
+    assert not (kit/'manifest.json').exists()
+    files=[]
+    for path in sorted(kit.rglob('*')):
+        assert not path.is_symlink()
+        if path.is_file():
+            files.append({'path':path.relative_to(kit).as_posix(),'bytes':path.stat().st_size,'sha256':digest(path)})
+    save(kit/'manifest.json',{'schemaVersion':1,'kind':'telomere-self-contained-cpu-recovery',**metadata,'files':files})
+    checksum=digest(kit/'manifest.json');verify_kit(kit,checksum);return checksum
+
+def verify_kit(kit,manifest_hash):
+    assert re.fullmatch('[0-9a-f]{64}',manifest_hash) and not kit.is_symlink()
+    assert digest(kit/'manifest.json')==manifest_hash,'Recovery kit seal differs'
+    manifest=json.loads((kit/'manifest.json').read_text())
+    assert manifest['schemaVersion']==1 and manifest['kind']=='telomere-self-contained-cpu-recovery'
+    assert isinstance(manifest['files'],list) and 1<=len(manifest['files'])<=512
+    names=set();total=0
+    for row in manifest['files']:
+        name=checked_name(row['path']);assert row['path'] not in names and row['path']!='manifest.json'
+        assert type(row['bytes']) is int and 0<=row['bytes']<=16*1024**3
+        assert re.fullmatch('[0-9a-f]{64}',row['sha256'])
+        path=kit.joinpath(*name.parts)
+        assert path.is_file() and not path.is_symlink() and all(not p.is_symlink() for p in path.parents if p!=kit.parent)
+        assert path.stat().st_size==row['bytes'] and digest(path)==row['sha256'],'Recovery kit member differs'
+        names.add(row['path']);total+=row['bytes']
+    assert total<=32*1024**3
+    for path in kit.rglob('*'):assert not path.is_symlink()
+    assert {p.relative_to(kit).as_posix() for p in kit.rglob('*') if p.is_file()}==names|{'manifest.json'}
+    required={'dependencies.qcow2','vmlinuz','initrd','boot.json','receipt.json','operator/cpu-launch/fresh-vm-guest.py','operator/cpu-launch/gvisor-runtime.py'}
+    assert required<=names,'Recovery kit prerequisite missing'
+    receipt=json.loads((kit/'receipt.json').read_text())
+    for row in (receipt,receipt['runtimeBundle']):
+        name=row['id']+'.tar.age';assert name in names and digest(kit/name)==row['sha256']
+    assert not any(name.startswith('gvisor-runtime/') for name in names),'Loose runtime supplements are forbidden'
+    return manifest
+
+def assert_embedded_tools(runtime,operator):
+    count=0
+    for path in operator.rglob('*'):
+        assert not path.is_symlink()
+        if path.is_file():
+            name=path.relative_to(operator);retained=runtime/'operator'/name
+            assert retained.is_file() and digest(path)==digest(retained),'Recovery tool differs from authenticated runtime'
+            count+=1
+    assert count>0
+    return count
+
+def export_pair(output,medium):
+    """Publish only complete verified ciphertexts across a filesystem boundary."""
+    receipt=json.loads((output/'receipt.json').read_text());names=['receipt.json']
+    for row in (receipt,receipt['runtimeBundle']):
+        assert re.fullmatch(r'(backup-[0-9]{8}T[0-9]{6}Z-[0-9a-f]{8}|runtime-[0-9a-f]{40}-[0-9a-f]{16})',row['id'])
+        name=row['id']+'.tar.age';assert digest(output/name)==row['sha256'];names.append(name)
+    assert {p.name for p in output.iterdir()}==set(names)
+    assert not medium.exists();medium.mkdir(mode=0o700)
+    for name in names:
+        source=output/name;assert source.is_file() and not source.is_symlink()
+        target=medium/name;shutil.copyfile(source,target);target.chmod(0o600)
+        assert digest(source)==digest(target)
+        with target.open('rb') as stream:os.fsync(stream.fileno())
+    if os.name=='posix':
+        descriptor=os.open(medium,os.O_RDONLY|os.O_DIRECTORY)
+        try:os.fsync(descriptor)
+        finally:os.close(descriptor)
+
+def build_pair():
+    """Called only by the marked, NIC-free guest, before any app is started."""
+    guest=load('fresh-vm-guest.py');guest.guard(True);began=time.monotonic();source=guest.INPUT
+    recovery=load('clean-server-recovery.py');ops=load('mainnet-ops.py');gvisor=load('gvisor-runtime.py')
+    receipt=json.loads((source/'receipt.json').read_text());stage=Path('/root/recovery-kit-build')
+    identity=guest.read_identity()
+    try:
+        guest.progress('kit-authenticating-source-pair')
+        recovery.stage_pair(source/'receipt.json',source/(receipt['id']+'.tar.age'),source/(receipt['runtimeBundle']['id']+'.tar.age'),stage,identity)
+        data=json.loads((stage/'data/manifest.json').read_text());runtime=json.loads((stage/'runtime/manifest.json').read_text())
+        expected,snapshot,_,_=recovery.validate_pair(data,runtime,receipt,stage/'data',stage/'runtime')
+        old_files={row['path']:row for row in runtime['files']}
+        descriptor=json.loads((source/'input.json').read_text())['runtimeDependencySupplement']
+        gvisor.verify_supplement(source/'gvisor-runtime',descriptor,stage/'runtime/binaries/runsc')
+        shutil.copytree(source/'gvisor-runtime/binaries',stage/'runtime/binaries',dirs_exist_ok=True)
+        shutil.copytree(source/'operator',stage/'runtime/operator',dirs_exist_ok=True)
+        tools=assert_embedded_tools(stage/'runtime',source/'operator')
+        files=[]
+        for path in sorted((stage/'runtime').rglob('*')):
+            assert not path.is_symlink()
+            if not path.is_file() or path==stage/'runtime/manifest.json':continue
+            name=path.relative_to(stage/'runtime').as_posix()
+            mode=0o755 if name.startswith('binaries/') else old_files.get(name,{}).get('mode',0o644)
+            files.append({'path':name,'bytes':path.stat().st_size,'sha256':digest(path),'mode':mode})
+        ops.policy.validate_files(files,runtime=True)
+        identifier='runtime-'+expected['releaseId']+'-'+hashlib.sha256(json.dumps(files,sort_keys=True).encode()).hexdigest()[:16]
+        runtime.update(id=identifier,files=files,recoveryKitComplete=True,embeddedRecoveryTools=tools)
+        save(stage/'runtime/manifest.json',runtime)
+        # encrypt_archive uses an atomic rename next to its plaintext archive.
+        # Keep sealing and its destination on the same guest root filesystem.
+        output=stage/'sealed-output';assert not output.exists();output.mkdir(mode=0o700)
+        archive=stage/'complete-runtime.tar.gz';guest.progress('kit-sealing-complete-runtime')
+        with tarfile.open(archive,'w:gz',compresslevel=1) as tar:
+            for row in files:tar.add(stage/'runtime'/row['path'],arcname=row['path'],recursive=False)
+            tar.add(stage/'runtime/manifest.json',arcname='manifest.json')
+        runtime_cipher=output/(identifier+'.tar.age')
+        ops.encrypt_archive(archive,source/'backup-recipient.txt',runtime_cipher,identifier);archive.unlink()
+        bundle={'id':identifier,'sha256':digest(runtime_cipher),'bytes':runtime_cipher.stat().st_size,'runtimePinsVerified':len(expected['runtimePins']),'files':len(files)}
+        data_id='backup-'+datetime.datetime.now(datetime.timezone.utc).strftime('%Y%m%dT%H%M%SZ')+'-'+uuid.uuid4().hex[:8]
+        metadata={k:v for k,v in data.items() if k not in ('schemaVersion','id','files','capacity')}
+        metadata.update(runtimeBundle=bundle,sourceSnapshotId=receipt['id'],recoveryKitRepacked=True)
+        # The original dump/configuration/Cyst bytes remain exactly unchanged.
+        (stage/'data/manifest.json').unlink();data_cipher=output/(data_id+'.tar.age')
+        capacity=ops.seal_data_archive(stage/'data',data_id,source/'backup-recipient.txt',data_cipher,metadata)
+        new_receipt={'id':data_id,'sha256':digest(data_cipher),'bytes':data_cipher.stat().st_size,'runtimeBundle':bundle,
+            'sourceSnapshotId':receipt['id'],'sourceSnapshotSha256':receipt['sha256'],'recoveryKitOnly':True,'cloudAcknowledged':False}
+        save(output/'receipt.json',new_receipt)
+        guest.progress('kit-verifying-new-pair')
+        verified=Path('/root/verified-complete-kit')
+        proof=recovery.stage_pair(output/'receipt.json',data_cipher,runtime_cipher,verified,identity)
+        rebound=json.loads((verified/'data/manifest.json').read_text());assert rebound['files']==data['files'],'Source payload changed during rebind'
+        assert_embedded_tools(verified/'runtime',source/'operator')
+        assert (verified/'runtime/binaries/gvisor/gvisor-bin/gvisor_sentry').is_file()
+        export_pair(output,source/'kit-output')
+        result={'passed':True,'sourceSnapshotId':receipt['id'],'sourceRuntimeId':receipt['runtimeBundle']['id'],'receipt':new_receipt,
+            'authenticatedNewPair':proof,'originalPayloadFileHashesUnchanged':True,'dataCapacity':capacity,'embeddedRecoveryTools':tools,
+            'gvisorDistributionFiles':descriptor['files'],'looseSupplementRequiredForFinalRestore':False,'mainnetTransactions':0,
+            'productionBackupReceiptChanged':False,'sameFilesystemAtomicSealing':True,'verifiedCrossFilesystemExport':True,'elapsedSeconds':round(time.monotonic()-began,3)}
+        save(source/'pair-build-result.json',result);guest.progress('kit-pair-built')
+    finally:identity=b''
+
+def vm_environment(fresh):
+    return {**os.environ,'LD_LIBRARY_PATH':str(fresh.TOOLS/'usr/lib/x86_64-linux-gnu')+':'+str(fresh.TOOLS/'lib/x86_64-linux-gnu'),
+        'QEMU_MODULE_DIR':str(fresh.TOOLS/'usr/lib/x86_64-linux-gnu/qemu')}
+
+def command(fresh,root,base,kernel,initrd,network=False):
+    result=[str(fresh.TOOLS/'usr/bin/qemu-system-x86_64'),'-no-user-config','-nodefaults','-machine','pc,accel=tcg','-cpu','max','-smp','2','-m','4096',
+        '-L',str(fresh.TOOLS/'usr/share/qemu'),'-display','none','-serial','stdio','-monitor','none',
+        '-drive','file='+str(base)+',format=qcow2,if=virtio,cache=writeback','-drive','file='+str(root/'input.ext4')+',format=raw,if=virtio,cache=writeback',
+        '-object','rng-random,id=rng0,filename=/dev/urandom','-device','virtio-rng-pci,rng=rng0',
+        '-kernel',str(kernel),'-initrd',str(initrd),'-append','console=ttyS0 root=/dev/vda rw quiet']
+    if network:return result+['-netdev','user,id=provision','-device','virtio-net-pci,netdev=provision']
+    return result+['-nic','none','-device','virtio-serial-pci','-chardev','socket,id=recoverykey,path='+str(root/'key.sock')+',server=on,wait=off',
+        '-device','virtserialport,chardev=recoverykey,name=telomere.recovery-key']
+
+def input_disk(fresh,root,folder):
+    disk=root/'input.ext4';assert not disk.exists()
+    with disk.open('wb') as out:out.truncate(2*1024**3)
+    fresh.run(['/usr/sbin/mkfs.ext4','-F','-q','-L','TELOMERE_INPUT','-d',str(folder),str(disk)],timeout=240)
+
+def boot(fresh,root,arguments,label):
+    save(root/'progress.json',{'phase':label})
+    if '-chardev' in arguments:
+        assert not (root/'key-delivered.json').exists()
+        save(root/'waiting-for-key.json',{'phase':'offline-restore-boot','networkDevices':0,'purpose':label})
+    save(root/(label+'-command.json'),{'arguments':arguments,'externalNetwork': '-nic' not in arguments})
+    began=time.monotonic()
+    with (root/(label+'-console.log')).open('wb') as out:
+        result=subprocess.run(arguments,env=vm_environment(fresh),stdout=out,stderr=subprocess.STDOUT,timeout=5400)
+    assert result.returncode==0
+    return round(time.monotonic()-began,3)
+
+def restore_kit(root,kit,seal):
+    fresh=load('fresh-vm-acceptance.py');root=fresh.validated_root(root);os.umask(0o077)
+    manifest=verify_kit(kit,seal);settings=json.loads((kit/'boot.json').read_text())
+    assert settings['namespace']==root.name.rsplit('-',1)[1]
+    assert not any((root/name).exists() for name in ('input','input.ext4','guest.qcow2','key.sock','key-delivered.json'))
+    folder=root/'input';folder.mkdir(mode=0o700)
+    shutil.copytree(kit/'operator',folder/'operator')
+    receipt=json.loads((kit/'receipt.json').read_text())
+    for row in (receipt,receipt['runtimeBundle']):shutil.copyfile(kit/(row['id']+'.tar.age'),folder/(row['id']+'.tar.age'))
+    shutil.copyfile(kit/'receipt.json',folder/'receipt.json')
+    save(folder/'input.json',{**settings,'selfContainedKit':True,'kitManifestSha256':seal})
+    assert not (folder/'gvisor-runtime').exists()
+    input_disk(fresh,root,folder)
+    info=json.loads(fresh.run([str(fresh.TOOLS/'usr/bin/qemu-img'),'info','--output=json',str(kit/'dependencies.qcow2')],env=vm_environment(fresh)).stdout)
+    assert 'backing-filename' not in info and info['format']=='qcow2'
+    fresh.run([str(fresh.TOOLS/'usr/bin/qemu-img'),'create','-f','qcow2','-F','qcow2','-b',str(kit/'dependencies.qcow2'),str(root/'guest.qcow2')],env=vm_environment(fresh))
+    arguments=command(fresh,root,root/'guest.qcow2',kit/'vmlinuz',kit/'initrd')
+    elapsed=boot(fresh,root,arguments,'kit-only-restore')
+    result=fresh.debug_dump(root/'input.ext4','restore-result.json',root/'restore-result.json')
+    if not result or not result['passed']:
+        for name in ('restore-failed.json','failure-private.json','smoke-state.json'):fresh.debug_dump(root/'input.ext4',name,root/name)
+        raise RuntimeError('Kit-only recovery failed; inspect private fixture diagnostics')
+    assert result['legacyRuntimeSupplementUsed'] is False and result['selfContainedKitVerified'] is True
+    verify_kit(kit,seal) # The read-only backing/media must remain byte-identical.
+    result.update(kitManifestSha256=seal,kitOnlyHostElapsedSeconds=elapsed,externalNetworkDevices=0,sourceHostMounts=0,
+        cleanDependencyImageHasNoBackingFile=True,kitMembersVerified=len(manifest['files']))
+    return result
+
+def run(root):
+    fresh=load('fresh-vm-acceptance.py');root=fresh.validated_root(root);os.umask(0o077);began=time.monotonic()
+    assert not (root/'input').exists() and shutil.disk_usage(root).free>40*1024**3
+    before=fresh.guard();save(root/'production-before.json',before)
+    prepared=json.loads((root/'prepare-result.json').read_text());assert prepared['passed']
+    image=root/prepared['imageFile'];check=hashlib.sha512()
+    with image.open('rb') as stream:
+        for part in iter(lambda:stream.read(1024**2),b''):check.update(part)
+    assert check.hexdigest()==prepared['sha512']
+    folder=root/'input';folder.mkdir(mode=0o700);shutil.copytree(root/'operator',folder/'operator')
+    receipt=json.loads((fresh.B/'private/cpu-backup-status.json').read_text())
+    for row in (receipt,receipt['runtimeBundle']):
+        assert re.fullmatch(r'(backup-[0-9]{8}T[0-9]{6}Z-[0-9a-f]{8}|runtime-[0-9a-f]{40}-[0-9a-f]{16})',row['id'])
+        path=fresh.B/'backups'/(row['id']+'.tar.age');assert digest(path)==row['sha256'];shutil.copyfile(path,folder/path.name)
+    save(folder/'receipt.json',receipt)
+    shutil.copyfile(fresh.B/'private/backup-recipient.txt',folder/'backup-recipient.txt')
+    shutil.copyfile(fresh.B/'private/docker-daemon.json',folder/'dependency-daemon.json')
+    profile=(fresh.B/'private/mainnet.env').read_text();cpu=re.search(r'^CPU_IMAGE=[\'\"]?([^\s\'\"]+)[\'\"]?$',profile,re.M)[1];profile=''
+    assert re.fullmatch(r'[a-zA-Z0-9_./:-]+@sha256:[0-9a-f]{64}',cpu)
+    pg_id=fresh.run(fresh.DOCKER+['inspect','--format','{{.Image}}','telomere-mainnet-postgres']).stdout.decode().strip()
+    pg=next(v for v in json.loads(fresh.run(fresh.DOCKER+['image','inspect','--format','{{json .RepoDigests}}',pg_id]).stdout) if v.startswith('postgres@sha256:'))
+    settings={'namespace':root.name.rsplit('-',1)[1],'productionRelease':before['releaseId'],'images':[{'reference':pg,'imageId':pg_id},
+        {'reference':cpu,'imageId':fresh.run(fresh.DOCKER+['image','inspect','--format','{{.Id}}',cpu]).stdout.decode().strip()}]}
+    supplement=load('gvisor-runtime.py').capture_supplement(folder/'gvisor-runtime')
+    save(folder/'input.json',{**settings,'buildSelfContainedPair':True,'runtimeDependencySupplement':supplement})
+    save(root/'candidate-sources.json',{str(p.relative_to(root/'operator')):digest(p) for p in (root/'operator').rglob('*') if p.is_file()})
+    input_disk(fresh,root,folder)
+    fresh.run([str(fresh.TOOLS/'usr/bin/qemu-img'),'create','-f','qcow2','-F','raw','-b',str(image),str(root/'guest.qcow2'),'32G'],env=vm_environment(fresh))
+    kernel=Path('/boot/vmlinuz-'+os.uname().release);initrd=Path('/boot/initrd.img-'+os.uname().release)
+    dependency_seconds=boot(fresh,root,command(fresh,root,root/'guest.qcow2',kernel,initrd,True),'kit-dependencies')
+    bootstrap=fresh.debug_dump(root/'input.ext4','bootstrap-result.json',root/'bootstrap-result.json');assert bootstrap and bootstrap['passed']
+    kit=root/'kit';kit.mkdir(mode=0o700)
+    # Offline copy made before the first recovery identity is delivered.
+    fresh.run([str(fresh.TOOLS/'usr/bin/qemu-img'),'convert','-c','-O','qcow2',str(root/'guest.qcow2'),str(kit/'dependencies.qcow2')],env=vm_environment(fresh),timeout=600)
+    shutil.copyfile(kernel,kit/'vmlinuz');shutil.copyfile(initrd,kit/'initrd');shutil.copytree(root/'operator',kit/'operator');save(kit/'boot.json',settings)
+    return complete(fresh,root,kit,settings,before,began,dependency_seconds,False)
+
+def complete(fresh,root,kit,settings,before,began,dependency_seconds,reused):
+    folder=root/'input';receipt=json.loads((folder/'receipt.json').read_text());kernel=kit/'vmlinuz';initrd=kit/'initrd'
+    build_seconds=boot(fresh,root,command(fresh,root,root/'guest.qcow2',kernel,initrd),'kit-pair-build')
+    built=fresh.debug_dump(root/'input.ext4','pair-build-result.json',root/'pair-build-result.json')
+    if not built or not built['passed']:
+        for name in ('restore-failed.json','failure-private.json'):fresh.debug_dump(root/'input.ext4',name,root/name)
+        raise RuntimeError('Offline pair construction failed; inspect private guest diagnostics')
+    for name in ('receipt.json',built['receipt']['id']+'.tar.age',built['receipt']['runtimeBundle']['id']+'.tar.age'):
+        fresh.run(['/usr/sbin/debugfs','-R','dump /kit-output/'+name+' '+str(kit/name),str(root/'input.ext4')],timeout=240)
+    (kit/'RECOVERY.md').write_text('Telomere CPU recovery kit. Keep the age identity separately. Verify manifest.json against its independently retained SHA-256 before running any code.\nThe dependency image is a clean Debian VM with pinned Docker images, captured before any recovery identity or production data was present.\nRun the supplied self-contained-recovery.py restore-kit with a fresh private fixture root and this kit; supply the key only over the protected virtio channel.\nMainnet activation, signer fencing, chain reconciliation, public TLS and DNS remain explicit operator cutover steps.\n')
+    seal=seal_kit(kit,{'namespace':settings['namespace'],'releaseId':before['releaseId'],'dependencyImageCapturedBeforeKey':True,'sourceSnapshotId':receipt['id']})
+    save(root/'kit-seal.json',{'manifestSha256':seal,'kit':str(kit)})
+    # Delete all builder media and loose source supplements before replay.
+    for name in ('guest.qcow2','input.ext4','key.sock'):(root/name).unlink(missing_ok=True)
+    shutil.rmtree(folder);(root/'key-delivered.json').rename(root/'builder-key-delivered.json')
+    save(root/'builder-media-removed.json',{'passed':True,'builderDisksRemoved':True,'looseSupplementsRemoved':True,'onlyKitUsedForFinalBoot':True})
+    # Execute the final driver from the sealed kit, not the construction tree.
+    replay=['/usr/bin/python3','-B',str(kit/'operator/cpu-launch/self-contained-recovery.py'),'restore-kit',str(kit),'--manifest-sha256',seal,'--root',str(root)]
+    save(root/'sealed-driver-command.json',{'arguments':replay})
+    fresh.run(replay,timeout=6000)
+    result=json.loads((root/'kit-replay-result.json').read_text())
+    after=fresh.guard();save(root/'production-after.json',after)
+    for name in ('bootId','releaseId','controller'):assert before[name]==after[name]
+    for name in ('signerNonce','originalJournalSha256','operatorEthWei','ownerUsdcAtomic','escrowUsdcAtomic'):assert before['audit'][name]==after['audit'][name]
+    result.update(productionGuardsUnchanged=True,productionUpdated=False,gitPublished=False,hostPackagesInstalled=False,
+        dependencyBootHostSeconds=dependency_seconds,dependencyGuestElapsedSeconds=json.loads((root/'bootstrap-result.json').read_text())['elapsedSeconds'],
+        cleanDependencyBootReused=reused,offlinePairBuildHostSeconds=build_seconds,totalExerciseHostSeconds=round(time.monotonic()-began,3))
+    for name in ('guest.qcow2','input.ext4','key.sock'):(root/name).unlink(missing_ok=True)
+    shutil.rmtree(root/'input');result['guestDiskAndPrivateStagingRemoved']=True
+    save(root/'result.json',result);save(root/'progress.json',{'phase':'completed','passed':True});print(json.dumps(result),flush=True)
+
+def resume_build(root):
+    """Discard a failed builder and repeat from the pre-key clean base only."""
+    fresh=load('fresh-vm-acceptance.py');root=fresh.validated_root(root);os.umask(0o077);began=time.monotonic()
+    assert not (root/'result.json').exists() and (root/'first-build-failure.json').exists()
+    for process in Path('/proc').iterdir():
+        if not process.name.isdecimal():continue
+        try:args=(process/'cmdline').read_bytes()
+        except (FileNotFoundError,PermissionError,ProcessLookupError):continue
+        assert not (b'qemu-system-x86_64\x00' in args and str(root/'guest.qcow2').encode() in args)
+    kit=root/'kit';assert {p.name for p in kit.iterdir()}=={'dependencies.qcow2','vmlinuz','initrd','operator','boot.json'}
+    assert json.loads((root/'bootstrap-result.json').read_text())['passed']
+    before=json.loads((root/'production-before.json').read_text());current=fresh.guard()
+    for name in ('bootId','releaseId','controller'):assert before[name]==current[name]
+    settings=json.loads((kit/'boot.json').read_text())
+    assert not (kit/'operator').is_symlink();shutil.rmtree(kit/'operator');shutil.copytree(root/'operator',kit/'operator')
+    for name in ('guest.qcow2','input.ext4','key.sock'):(root/name).unlink(missing_ok=True)
+    assert not (root/'key-delivered.json').exists(),'Archive the failed key-transport receipt first'
+    save(root/'candidate-sources.json',{str(p.relative_to(root/'operator')):digest(p) for p in (root/'operator').rglob('*') if p.is_file()})
+    input_disk(fresh,root,root/'input')
+    fresh.run([str(fresh.TOOLS/'usr/bin/qemu-img'),'create','-f','qcow2','-F','qcow2','-b',str(kit/'dependencies.qcow2'),str(root/'guest.qcow2')],env=vm_environment(fresh))
+    return complete(fresh,root,kit,settings,before,began,None,True)
+
+def main():
+    parser=argparse.ArgumentParser();sub=parser.add_subparsers(dest='mode',required=True)
+    run_parser=sub.add_parser('run');run_parser.add_argument('root',type=Path)
+    resume_parser=sub.add_parser('resume-build');resume_parser.add_argument('root',type=Path)
+    for mode in ('verify-kit','restore-kit'):
+        p=sub.add_parser(mode);p.add_argument('kit',type=Path);p.add_argument('--manifest-sha256',required=True)
+        if mode=='restore-kit':p.add_argument('--root',type=Path,required=True)
+    args=parser.parse_args()
+    if args.mode=='run':run(args.root)
+    elif args.mode=='resume-build':resume_build(args.root)
+    elif args.mode=='verify-kit':print(json.dumps({'passed':True,'members':len(verify_kit(args.kit,args.manifest_sha256)['files'])}))
+    else:
+        result=restore_kit(args.root,args.kit,args.manifest_sha256);save(args.root/'kit-replay-result.json',result);print(json.dumps(result))
+
+if __name__=='__main__':main()

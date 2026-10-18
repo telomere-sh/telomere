@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "cleanDependencyImageNoBackingFile": true,
+  "absentFromBase": [
+    "/opt/telomere-mainnet-pilot/app",
+    "/opt/telomere-mainnet-pilot/private/mainnet.env",
+    "/opt/telomere-mainnet-pilot/data",
+    "/opt/telomere-host-runtime/gvisor/runsc",
+    "/opt/node-v22.23.3-linux-x64/bin/node"
+  ],
+  "capturedBeforeFirstKey": true,
+  "dependencyImageModifiedAt": 1792340031.9293535,
+  "firstKeyAcknowledgedAt": 1792340080.4512737,
+  "successfulBuilderKeyAcknowledgedAt": 1792340531.0865264,
+  "virtualDiskBytes": 34359738368,
+  "diskFormat": "qcow2",
+  "inspectionRawRemoved": true
+}

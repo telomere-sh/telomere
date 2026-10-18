@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "kind": "signed-debootstrap-minimal",
+  "format": "raw",
+  "imageFile": "debian-12-minimal.ext4",
+  "os": "Debian 12 bookworm amd64",
+  "repository": "https://deb.debian.org/debian",
+  "aptSignaturesVerifiedByDebootstrap": true,
+  "sha512": "560415092b8f42577e580a9723cf01d5caf1352b1654c67d303dc6e22d1f32136210c21ed337f0398fc0ee6a3af6b0c108032b5b375f7bf906bb5dc4f0d09fd1",
+  "bytes": 4294967296,
+  "osPackagesSha256": "b2f20ab17acb2bedb012674378e4312d4c961efe353e30877dd7025f3f182f9f",
+  "kernel": "6.1.0-45-amd64",
+  "kernelSha256": "86986a74ded29f6a246f51f28589fb08c8da5635664411e5659a0118b8138568",
+  "initrdSha256": "1d20632671ce4bc95fe30478762fc1d14a2d40a7b32dd8426970d5409b21bd2e",
+  "hostPackagesInstalled": false,
+  "elapsedSeconds": 40.657
+}

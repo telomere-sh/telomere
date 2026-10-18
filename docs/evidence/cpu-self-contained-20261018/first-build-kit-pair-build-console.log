@@ -1,0 +1,23 @@
+/dev/vda: clean, 25681/2097152 files, 621213/8388608 blocks
+[   16.131111] platform regulatory.0: firmware: failed to load regulatory.db (-2)
+[   16.131629] firmware_class: See https://wiki.debian.org/Firmware for information about missing firmware
+[   16.131854] platform regulatory.0: firmware: failed to load regulatory.db (-2)
+
+
+Debian GNU/Linux 12 telomere-recovery-34a9445b0e564933 ttyS0
+
+telomere-recovery-34a9445b0e564933 login: [  293.995974] sh[582]: Traceback (most recent call last):
+[  294.018462] sh[582]:   File "/root/recovery-kit/cpu-launch/fresh-vm-guest.py", line 285, in <module>
+[  294.019859] sh[582]:     if __name__=='__main__':main()
+[  294.041999] sh[582]:                             ^^^^^^
+[  294.043160] sh[582]:   File "/root/recovery-kit/cpu-launch/fresh-vm-guest.py", line 273, in main
+[  294.044553] sh[582]:     if phase=='restore' and json.loads((INPUT/'input.json').read_text()).get('buildSelfContainedPair') is True:load('self-contained-recovery.py').build_pair()
+[  294.045756] sh[582]:                                                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[  294.046823] sh[582]:   File "/root/recovery-kit/cpu-launch/self-contained-recovery.py", line 110, in build_pair
+[  294.047628] sh[582]:     ops.encrypt_archive(archive,source/'backup-recipient.txt',runtime_cipher,identifier);archive.unlink()
+[  294.061579] sh[582]:     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[  294.062660] sh[582]:   File "/root/recovery-kit/cpu-launch/mainnet-ops.py", line 122, in encrypt_archive
+[  294.063464] sh[582]:     os.replace(temporary,output);sync_directory(output.parent)
+[  294.107498] sh[582]:     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[  294.113946] sh[582]: OSError: [Errno 18] Invalid cross-device link: '/root/recovery-kit-build/runtime-a75ee7bc44ff9aaa8964023975f0b7147c92fee4-aab0afeff5f79b0f.partial' -> '/mnt/recovery/kit-output/runtime-a75ee7bc44ff9aaa8964023975f0b7147c92fee4-aab0afeff5f79b0f.tar.age'
+[  295.841546] reboot: Power down
