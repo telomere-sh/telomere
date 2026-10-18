@@ -1,15 +1,36 @@
 import { parentPort, workerData } from 'node:worker_threads';
+import { createHash } from 'node:crypto';
 import { constants, closeSync, fstatSync, lstatSync, openSync, readSync, type BigIntStats } from 'node:fs';
 import { dirname } from 'node:path';
 import { DatabaseSync } from 'node:sqlite';
 import { z } from 'zod';
 import { GOLEM_ATTRIBUTION_TABLES, golemAttributionPolicySchema, golemAttributionSchemaHash,
   golemAttributionSnapshotSchema } from './golem-allocation-attribution.js';
+import { sameGolemWalSnapshot } from './golem-allocation-attribution.js';
 import { golemFinanceIdSchema } from './golem-finance-types.js';
 
 const input = z.object({ policy: golemAttributionPolicySchema, paymentId: golemFinanceIdSchema }).strict();
 const same = (a: BigIntStats | undefined, b: BigIntStats | undefined, mutable: boolean) => !a && !b || !!a && !!b
   && a.dev === b.dev && a.ino === b.ino && a.size === b.size && (mutable || a.mtimeNs === b.mtimeNs && a.ctimeNs === b.ctimeNs);
+
+function walHash(path: string, expected: BigIntStats): string {
+  if (expected.size > 67_108_864n) throw new Error('WAL exceeds bound');
+  const fd = openSync(path, constants.O_RDONLY | (process.platform === 'win32' ? 0 : constants.O_NOFOLLOW) | (constants.O_NONBLOCK ?? 0));
+  const bytes = Buffer.alloc(65_536);
+  try {
+    const unchanged = () => {
+      const current = fstatSync(fd, { bigint: true });
+      if (!same(expected, current, false) || expected.mode !== current.mode || expected.uid !== current.uid
+        || expected.gid !== current.gid || current.nlink !== 1n) throw new Error('WAL changed while hashing');
+    };
+    unchanged(); const hash = createHash('sha256'); let offset = 0;
+    while (offset < Number(expected.size)) {
+      const count = readSync(fd, bytes, 0, Math.min(bytes.length, Number(expected.size) - offset), offset);
+      if (!count) throw new Error('WAL truncated'); hash.update(bytes.subarray(0, count)); offset += count;
+    }
+    unchanged(); return hash.digest('hex');
+  } finally { bytes.fill(0); closeSync(fd); }
+}
 
 try {
   const { policy: p, paymentId } = input.parse(workerData), path = p.databasePath, directory = dirname(path);
@@ -35,7 +56,8 @@ try {
     if (journal || Boolean(wal) !== Boolean(shm)) throw new Error('Incomplete source sidecars');
     return { database, wal, shm };
   };
-  const before = guard(), fd = openSync(path, constants.O_RDONLY | (process.platform === 'win32' ? 0 : constants.O_NOFOLLOW) | (constants.O_NONBLOCK ?? 0));
+  const before = guard(), beforeWalHash = before.wal ? walHash(path + '-wal', before.wal) : undefined;
+  const fd = openSync(path, constants.O_RDONLY | (process.platform === 'win32' ? 0 : constants.O_NOFOLLOW) | (constants.O_NONBLOCK ?? 0));
   let result: unknown;
   try {
     const stat = fstatSync(fd, { bigint: true }); check(stat, false, p.maxDatabaseBytes);
@@ -76,7 +98,8 @@ try {
       db.exec('COMMIT'); snapshot = { schemaHash, payments, items, documents, paymentDocuments };
     } finally { db?.close(); }
     const after = guard();
-    if (!same(before.database, after.database, false) || !same(before.wal, after.wal, false)
+    const afterWalHash = after.wal ? walHash(path + '-wal', after.wal) : undefined;
+    if (!same(before.database, after.database, false) || !sameGolemWalSnapshot(before.wal, after.wal, beforeWalHash, afterWalHash)
       || !same(before.shm, after.shm, true) || !same(fstatSync(fd, { bigint: true }), after.database, false)) throw new Error('Source changed during snapshot');
     // Reject oversized native fields inside this worker before copying any
     // snapshot into the control-plane thread. Close all native handles before

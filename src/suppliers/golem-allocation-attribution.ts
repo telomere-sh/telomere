@@ -1,4 +1,5 @@
 import { Worker } from 'node:worker_threads';
+import type { BigIntStats } from 'node:fs';
 import { isAbsolute, resolve } from 'node:path';
 import { z } from 'zod';
 import { addressSchema, bytes32Schema, hashJson, Problem } from '../common.js';
@@ -45,6 +46,16 @@ export const golemAttributionSnapshotSchema = z.object({ schemaHash: bytes32Sche
 export type GolemAttributionSnapshot = z.infer<typeof golemAttributionSnapshotSchema>;
 const refused = () => new Problem(503, 'golem_allocation_attribution_unavailable',
   'Original Yagna payment allocation attribution is unavailable, changed or ambiguous.');
+
+/** SQLite can fchmod an unchanged WAL during a read-only attachment on Linux.
+ * Its ctime alone is not a content mutation. Keep identity, permission, owner,
+ * size and mtime checks and additionally bind the complete bounded WAL bytes. */
+export function sameGolemWalSnapshot(before: BigIntStats | undefined, after: BigIntStats | undefined,
+  beforeHash: string | undefined, afterHash: string | undefined): boolean {
+  if (!before || !after) return !before && !after && beforeHash === undefined && afterHash === undefined;
+  return typeof beforeHash === 'string' && /^[a-f0-9]{64}$/.test(beforeHash) && beforeHash === afterHash
+    && (['dev', 'ino', 'size', 'mtimeNs', 'mode', 'nlink', 'uid', 'gid'] as const).every(key => before[key] === after[key]);
+}
 
 /** Installed local DB trust, not provider/chain/physical-stop authority. Windows
  * ACLs must be installed by the operator; POSIX private ownership/modes are checked.

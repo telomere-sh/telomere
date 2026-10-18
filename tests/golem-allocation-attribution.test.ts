@@ -1,4 +1,5 @@
 import { createServer } from 'node:http';
+import type { BigIntStats } from 'node:fs';
 import { DatabaseSync } from 'node:sqlite';
 import { chmod, copyFile, link, lstat, mkdtemp, readFile, rename, rm, symlink } from 'node:fs/promises';
 import { join } from 'node:path';
@@ -6,7 +7,7 @@ import { tmpdir } from 'node:os';
 import { afterEach, expect, it } from 'vitest';
 import { hashJson, randomId } from '../src/common.js';
 import { GolemAllocationAttributionReader, GolemAttributedFinanceProtocol, GOLEM_ATTRIBUTION_TABLES,
-  golemAttributionSchemaHash, type GolemAttributionPolicy } from '../src/suppliers/golem-allocation-attribution.js';
+  golemAttributionSchemaHash, sameGolemWalSnapshot, type GolemAttributionPolicy } from '../src/suppliers/golem-allocation-attribution.js';
 import { GolemFinanceHttpProtocol } from '../src/suppliers/golem-finance-http.js';
 import { GolemFinancialLifecycle } from '../src/suppliers/golem-finance.js';
 import { FileGolemFinanceLedger } from '../src/suppliers/golem-finance-ledger.js';
@@ -19,6 +20,20 @@ const cleanups: (() => Promise<void>)[] = [];
 afterEach(async () => { for (const cleanup of cleanups.splice(0).reverse()) await cleanup(); });
 const signal = () => new AbortController().signal;
 const root = new URL('../docs/evidence/golem-allocation-upstream-20261015/', import.meta.url);
+
+it('permits SQLite WAL ctime refresh only with identical bytes and unchanged private identity', async () => {
+  const f = await setup(true), before = await lstat(f.path + '-wal', { bigint: true }), digest = 'a'.repeat(64);
+  const after = { ...before, ctimeNs: before.ctimeNs + 1n } as BigIntStats;
+  expect(sameGolemWalSnapshot(before, after, digest, digest)).toBe(true);
+  expect(sameGolemWalSnapshot(before, after, digest, 'b'.repeat(64))).toBe(false);
+  expect(sameGolemWalSnapshot(before, after, undefined, undefined)).toBe(false);
+  for (const key of ['dev', 'ino', 'size', 'mtimeNs', 'mode', 'nlink', 'uid', 'gid'] as const) {
+    expect(sameGolemWalSnapshot(before, { ...after, [key]: after[key] + 1n } as BigIntStats, digest, digest), key).toBe(false);
+  }
+  expect(sameGolemWalSnapshot(undefined, undefined, undefined, undefined)).toBe(true);
+  expect(sameGolemWalSnapshot(before, undefined, digest, undefined)).toBe(false);
+  expect(sameGolemWalSnapshot(undefined, after, undefined, digest)).toBe(false);
+});
 async function setup(wal = false) {
   const directory = await mkdtemp(join(tmpdir(), 'telomere-native-yagna-')), path = join(directory, 'payment.db');
   await chmod(directory, 0o700); let db: DatabaseSync | undefined;

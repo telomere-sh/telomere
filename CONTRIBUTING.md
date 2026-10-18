@@ -4,7 +4,7 @@ Use a focused branch and describe the observable behavior changed. Preserve owne
 
 Install dependencies from both locks using `npm ci --ignore-scripts` and `npm --prefix website ci --ignore-scripts`. Run `npm run typecheck`, `npm run build`, `npm test`, `npm run release:verify`, the relevant Python suites and `python -B docs/verify-evidence.py`. The CI workflow documents isolated Linux/PostgreSQL and security gates.
 
-Allow at least 4 GiB RAM for the full protocol TypeScript build. CI sets `NODE_OPTIONS=--max-old-space-size=3072`; a smaller container can otherwise exhaust V8's automatically selected heap before checking the complete tree. This build-time requirement is separate from the running CPU worker's workload limits.
+Allow at least 6 GiB RAM for a complete build/test process. CI sets `NODE_OPTIONS=--max-old-space-size=4096`; the largest encrypted-checkpoint fixtures need more than a 2 GiB heap. This verification requirement is separate from the running CPU worker's workload limits.
 
 Tests use disposable loopback EVM accounts. PostgreSQL acceptance accepts only an explicitly selected loopback `telomere_ci` or `telomere_audit` database. Never copy production `.env`, wallet keys, recovery identities or database backups into a checkout or test report.
 

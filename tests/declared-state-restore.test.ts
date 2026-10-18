@@ -1,7 +1,7 @@
 import { createHash } from 'node:crypto';
 import { execFileSync, spawn } from 'node:child_process';
-import { existsSync, mkdirSync, readdirSync, writeFileSync } from 'node:fs';
-import { chmod, link, lstat, mkdir, mkdtemp, readFile, readdir, rmdir, symlink, unlink, writeFile } from 'node:fs/promises';
+import { existsSync, mkdirSync, readdirSync, statSync, writeFileSync } from 'node:fs';
+import { chmod, link, lstat, mkdir, mkdtemp, readFile, readdir, rmdir, symlink, unlink, utimes, writeFile } from 'node:fs/promises';
 import { open, type FileHandle } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { basename, dirname, join, resolve } from 'node:path';
@@ -175,14 +175,20 @@ describe('bounded declared state restore inside the application Cell', () => {
   });
 
   it('refuses a source rewritten with identical bytes while reading because its original inode metadata changed', async () => {
-    const f = await fixture(), controller = new AbortController(); let changed = false;
+    const f = await fixture(), controller = new AbortController(); let changed = false, rewrittenAt: bigint | undefined;
+    // A same-byte write inside one Linux filesystem clock tick can preserve
+    // both timestamps. Make the test's stated metadata-change precondition real.
+    await utimes(f.bundlePath, new Date('2000-01-01T00:00:00Z'), new Date('2000-01-01T00:00:00Z'));
+    const originalTime = (await lstat(f.bundlePath, { bigint: true })).mtimeNs;
     vi.spyOn(controller.signal, 'throwIfAborted').mockImplementation(() => {
       if (!changed && (existsSync(join(f.root, 'restored')) || (requireStage(f.root)))) {
-        changed = true; writeFileSync(f.bundlePath, f.contents);
+        writeFileSync(f.bundlePath, f.contents);
+        rewrittenAt = statSync(f.bundlePath, { bigint: true }).mtimeNs; changed = true;
       }
     });
     await expect(restoreDeclaredStateBundle({ ...f.options, signal: controller.signal })).rejects.toThrow('restore refused');
-    expect(changed).toBe(true); await nothingPublished(f.root, f.destinationDirectory);
+    expect(changed).toBe(true); expect(rewrittenAt).toBeTypeOf('bigint'); expect(rewrittenAt).not.toBe(originalTime);
+    await nothingPublished(f.root, f.destinationDirectory);
   });
 
   it('never replaces a destination created by another actor after its initial absence check', async () => {

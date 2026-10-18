@@ -9425,15 +9425,15 @@
           "path": "src/suppliers/golem-allocation-attribution-worker.ts",
           "bytes": 7409,
           "sha256": "0e07056bae0ea1230d02d8ec813338dee080938e32ea47b16b75e221c61470fa",
-          "storage": "working-tree",
-          "storedPath": "src/suppliers/golem-allocation-attribution-worker.ts"
+          "storage": "object",
+          "storedPath": "docs/evidence/public-source-archive/objects/0e07056bae0ea1230d02d8ec813338dee080938e32ea47b16b75e221c61470fa.bin"
         },
         {
           "path": "src/suppliers/golem-allocation-attribution.ts",
           "bytes": 13760,
           "sha256": "8872e2479750616cfe5607a190d03838b427971dad1a4d28fbf3005efaf82a90",
-          "storage": "working-tree",
-          "storedPath": "src/suppliers/golem-allocation-attribution.ts"
+          "storage": "object",
+          "storedPath": "docs/evidence/public-source-archive/objects/8872e2479750616cfe5607a190d03838b427971dad1a4d28fbf3005efaf82a90.bin"
         },
         {
           "path": "src/suppliers/golem-finance-http.ts",
@@ -9796,8 +9796,8 @@
           "path": "tests/declared-state-restore.test.ts",
           "bytes": 18515,
           "sha256": "66eafebd3b5199dd19d9e94c6431c4f07eec9b01f4055b3605d593afa342870d",
-          "storage": "working-tree",
-          "storedPath": "tests/declared-state-restore.test.ts"
+          "storage": "object",
+          "storedPath": "docs/evidence/public-source-archive/objects/66eafebd3b5199dd19d9e94c6431c4f07eec9b01f4055b3605d593afa342870d.bin"
         },
         {
           "path": "tests/declared-state-session-checkpoint.test.ts",
@@ -10118,8 +10118,8 @@
           "path": "tests/golem-allocation-attribution.test.ts",
           "bytes": 21106,
           "sha256": "26e5ba627f783c166ceca879e871e773066b412712cc890c656cd9adc2672f64",
-          "storage": "working-tree",
-          "storedPath": "tests/golem-allocation-attribution.test.ts"
+          "storage": "object",
+          "storedPath": "docs/evidence/public-source-archive/objects/26e5ba627f783c166ceca879e871e773066b412712cc890c656cd9adc2672f64.bin"
         },
         {
           "path": "tests/golem-finance-http.test.ts",

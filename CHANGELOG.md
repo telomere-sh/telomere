@@ -11,6 +11,8 @@
 - Add security, contribution and licensing policies with explicit third-party scope.
 - Keep Framer CMS data on the same origin with pinned export hashes and bounded byte-slice responses; preserve imported animation sources and remove inherited agency statistics from active CPU copy.
 
+- Bind read-only SQLite WAL snapshots to bounded content hashes so Linux metadata refreshes do not reject unchanged payments; retain inode, permission, owner, size and mtime guards. Make the same-byte restore mutation fixture explicitly change its source timestamp.
+
 This section describes source changes. It is not evidence of publication, successful hosted CI, contract migration or production installation. Those steps have their own acceptance records.
 
 ## 2026-10-18 — self-contained CPU recovery candidate
