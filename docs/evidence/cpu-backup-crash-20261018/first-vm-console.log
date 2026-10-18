@@ -1,0 +1,11 @@
+[    0.008000] ..MP-BIOS bug: 8254 timer not connected to IO-APIC
+/dev/vda: clean, 832/98304 files, 111125/393216 blocks
+mount: mounting sysfs on /sys failed: Device or resource busy
+mount: mounting devtmpfs on /dev failed: Device or resource busy
+[   27.224686] sysrq: Resetting
+/dev/vda: recovering journal
+/dev/vda: clean, 847/98304 files, 117160/393216 blocks
+mount: mounting sysfs on /sys failed: Device or resource busy
+mount: mounting devtmpfs on /dev failed: Device or resource busy
+TELOMERE_GUEST_REBOOT_PASSED {"passed": true, "firstBootId": "a00e7d85-9da0-4d28-8c86-bbd3ee1d2053", "secondBootId": "77054d20-4457-4d10-a259-cb26a15f347d", "interruption": "Linux emergency SysRq b; no orderly worker shutdown", "stalePartialAndPlaintextExistedAfterKernelReboot": true, "previousSuccessfulReceiptAndArchivePreserved": true, "staleWorkspaceRemovedOnNextBackup": true, "nextBackupAuthenticatedAndFilesVerified": true, "nextBackup": {"id": "backup-20261018T000000Z-946cbd46", "sha256": "770e39eb36a36227417673c444cbf6aec37a27f8a377304883bc94ea97ed2fb7", "bytes": 5254600, "capacity": {"files": 3, "cystFiles": 1, "otherFiles": 2, "payloadBytes": 5242919, "cystBytes": 1048576, "dumpBytes": 4194304, "snapshotBytes": 39, "configurationBytes": 0}}, "mainnetTransactions": 0, "network": "none", "databasePayload": "synthetic binary disk fixture; SQL restore covered separately by full backup crash acceptance", "ageIdentityRemovedFromGuestFilesystem": true}
+[   27.092748] reboot: Power down

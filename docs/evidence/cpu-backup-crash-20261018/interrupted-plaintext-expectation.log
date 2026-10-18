@@ -1,0 +1,14 @@
+/dev/vda: clean, 832/98304 files, 111125/393216 blocks
+mount: mounting sysfs on /sys failed: Device or resource busy
+mount: mounting devtmpfs on /dev failed: Device or resource busy
+[   24.711168] sysrq: Resetting
+/dev/vda: recovering journal
+/dev/vda: clean, 847/98304 files, 117160/393216 blocks
+mount: mounting sysfs on /sys failed: Device or resource busy
+mount: mounting devtmpfs on /dev failed: Device or resource busy
+Traceback (most recent call last):
+  File "/fixture/operator/cpu-launch/backup-reboot-guest.py", line 66, in <module>
+    assert ops.digest(old_stage/'data/database.dump')==ops.digest(ops.BASE/'source.dump')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
+[   27.068585] reboot: Power down

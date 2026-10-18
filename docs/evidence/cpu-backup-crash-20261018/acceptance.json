@@ -1,0 +1,153 @@
+{
+  "passed": true,
+  "mainnetTransactions": 0,
+  "mainnetSignerLoaded": false,
+  "productionApplicationChanged": false,
+  "productionBackupStatusChanged": false,
+  "hostRebooted": false,
+  "restartScope": "disposable Docker PID namespace with persistent bind-mounted fixture storage; host kernel and production services remain running",
+  "fixtureAdapters": [
+    "synthetic exported PostgreSQL snapshot and pg_dump target",
+    "synthetic private configuration",
+    "synthetic runtime payload",
+    "age stdin prefix barrier only for fault injection"
+  ],
+  "realImplementation": [
+    "backup lock and stale recovery",
+    "Cyst copying",
+    "PostgreSQL dump and isolated restore",
+    "age encryption and atomic publication",
+    "archive authentication and restored file hashes"
+  ],
+  "baseline": {
+    "id": "backup-20261018T143507Z-e09562d3",
+    "sha256": "b29dfa60dfc1a0270cced97f8c083195f34cf71cf0df47a80a13baf678bb5cae",
+    "bytes": 16931048,
+    "restoredRows": 100,
+    "restoredCystFiles": 64,
+    "instance": "931c8b1d73dc427e88eea575cf0e20e6"
+  },
+  "cases": [
+    {
+      "phase": "cyst-copy",
+      "interruption": "SIGKILL",
+      "barrier": {
+        "phase": "cyst-copy",
+        "instance": "b40f2d3c8dc14ccfa4e8e7bb938c9982",
+        "filesCopied": 1
+      },
+      "previousSuccessfulArchiveUnchanged": true,
+      "previousReceiptUnchangedBeforeRestart": true,
+      "staleAttemptRemoved": true,
+      "ownedDockerResourcesRemoved": true,
+      "partialCiphertextsRemoved": true,
+      "abandonedSnapshotTransactions": 0,
+      "nextBackup": {
+        "id": "backup-20261018T143514Z-8e5a9fa9",
+        "sha256": "19b210f616a36e4e084247a848fb043034bea9cb7ee0040faac9b4e971134b5b",
+        "bytes": 16931048,
+        "restoredRows": 100,
+        "restoredCystFiles": 64,
+        "instance": "15858ce6b06a470eb5815f49e8e6e59e"
+      }
+    },
+    {
+      "phase": "restore-created",
+      "interruption": "SIGKILL",
+      "barrier": {
+        "phase": "restore-created",
+        "instance": "4d7a0cb165b5415889ef1bb250515657",
+        "restoreContainer": "eb163447bb905f945dcb0612aad3e450dd60b764713d4766b7623ff82516c91d"
+      },
+      "previousSuccessfulArchiveUnchanged": true,
+      "previousReceiptUnchangedBeforeRestart": true,
+      "staleAttemptRemoved": true,
+      "ownedDockerResourcesRemoved": true,
+      "partialCiphertextsRemoved": true,
+      "abandonedSnapshotTransactions": 0,
+      "nextBackup": {
+        "id": "backup-20261018T143521Z-e6c1c78f",
+        "sha256": "2bb44fa958a94d7a11373920d3e13db131e18444a15ee279870fdf8d81770c49",
+        "bytes": 16931048,
+        "restoredRows": 100,
+        "restoredCystFiles": 64,
+        "instance": "5b31b029516c417ea377f893d1687e6c"
+      }
+    },
+    {
+      "phase": "runtime-encrypt",
+      "interruption": "SIGKILL",
+      "barrier": {
+        "phase": "runtime-encrypt",
+        "instance": "cf4057fe0e9645e3b622881e79cedfd8",
+        "partialBytes": 983464,
+        "ageAlive": true
+      },
+      "previousSuccessfulArchiveUnchanged": true,
+      "previousReceiptUnchangedBeforeRestart": true,
+      "staleAttemptRemoved": true,
+      "ownedDockerResourcesRemoved": true,
+      "partialCiphertextsRemoved": true,
+      "abandonedSnapshotTransactions": 0,
+      "nextBackup": {
+        "id": "backup-20261018T143529Z-cc65ab12",
+        "sha256": "c6e4fd39e0768b441b0d25a2c39288500d51bdab69f7d2259e6929a3d876ceb6",
+        "bytes": 16931048,
+        "restoredRows": 100,
+        "restoredCystFiles": 64,
+        "instance": "587825ce747a463c9d2bcdfa0e4447e5"
+      }
+    },
+    {
+      "phase": "data-published",
+      "interruption": "SIGKILL",
+      "barrier": {
+        "phase": "data-published",
+        "instance": "930ff4373e7c4f85a336d3ec508cdd72",
+        "publishedArchive": "backup-20261018T143535Z-21279100.tar.age",
+        "publishedSha256": "c3795b0ae41a33a1f1a5e68581280f5e91f3f709c8756060526c83733116cb90"
+      },
+      "previousSuccessfulArchiveUnchanged": true,
+      "previousReceiptUnchangedBeforeRestart": true,
+      "staleAttemptRemoved": true,
+      "ownedDockerResourcesRemoved": true,
+      "partialCiphertextsRemoved": true,
+      "abandonedSnapshotTransactions": 0,
+      "nextBackup": {
+        "id": "backup-20261018T143538Z-790e5aff",
+        "sha256": "5ad41cb3f3154150f987a2e516686df6e7e8809e0fe4f9abccd3683a3535cc48",
+        "bytes": 16931048,
+        "restoredRows": 100,
+        "restoredCystFiles": 64,
+        "instance": "fbca4ee0304843d59db721a9c8bc0679"
+      }
+    },
+    {
+      "phase": "data-encrypt",
+      "interruption": "isolated-container-restart",
+      "barrier": {
+        "phase": "data-encrypt",
+        "instance": "ad238098d4b84d918f5737f262c4b0c0",
+        "partialBytes": 983464,
+        "ageAlive": true
+      },
+      "previousSuccessfulArchiveUnchanged": true,
+      "previousReceiptUnchangedBeforeRestart": true,
+      "staleAttemptRemoved": true,
+      "ownedDockerResourcesRemoved": true,
+      "partialCiphertextsRemoved": true,
+      "abandonedSnapshotTransactions": 0,
+      "nextBackup": {
+        "id": "backup-20261018T143547Z-9626d7f8",
+        "sha256": "bdc699e9b9ce2e8c656b1038ae5f55ec1631f92e0e738e7959ae0a71d1275682",
+        "bytes": 16931048,
+        "restoredRows": 100,
+        "restoredCystFiles": 64,
+        "instance": "2615f967e55a4a1b9d9cdddd24139290"
+      }
+    }
+  ],
+  "elapsedSeconds": 48.405,
+  "scratchResourcesRemoved": true,
+  "fixtureKeysAndPlaintextRemoved": true
+}

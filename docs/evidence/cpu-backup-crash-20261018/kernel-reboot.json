@@ -1,0 +1,43 @@
+{
+  "passed": true,
+  "firstBootId": "e66f73ef-5d0c-4455-97b6-d5ea0dfa5bcb",
+  "secondBootId": "d95e4743-c5f0-4dcb-be85-394e0483f9db",
+  "interruption": "Linux emergency SysRq b; no orderly worker shutdown",
+  "stalePartialAndPlaintextExistedAfterKernelReboot": true,
+  "previousSuccessfulReceiptAndArchivePreserved": true,
+  "staleWorkspaceRemovedOnNextBackup": true,
+  "interruptedPlaintextHashMatchedSourceAfterReboot": false,
+  "interruptedPlaintextReused": false,
+  "nextBackupAuthenticatedAndFilesVerified": true,
+  "nextBackup": {
+    "id": "backup-20261018T000000Z-4628a34e",
+    "sha256": "5646ad4ec06b6ab9a4bfc968c9dba7b966294dc09d430d4b9b557799d1a34412",
+    "bytes": 5254600,
+    "capacity": {
+      "files": 3,
+      "cystFiles": 1,
+      "otherFiles": 2,
+      "payloadBytes": 5242919,
+      "cystBytes": 1048576,
+      "dumpBytes": 4194304,
+      "snapshotBytes": 39,
+      "configurationBytes": 0
+    }
+  },
+  "mainnetTransactions": 0,
+  "network": "none",
+  "databasePayload": "synthetic binary disk fixture; SQL restore covered separately by full backup crash acceptance",
+  "ageIdentityRemovedFromGuestFilesystem": true,
+  "hostKernelBootIdUnchanged": true,
+  "hostRebooted": false,
+  "qemu": "QEMU emulator version 7.2.22 (Debian 1:7.2+dfsg-7+deb12u18+b3)",
+  "guestKernel": "6.1.0-45-amd64",
+  "guestKernelSha256": "86986a74ded29f6a246f51f28589fb08c8da5635664411e5659a0118b8138568",
+  "guestInitrdSha256": "1d20632671ce4bc95fe30478762fc1d14a2d40a7b32dd8426970d5409b21bd2e",
+  "guestVcpus": 1,
+  "guestMemoryMiB": 512,
+  "scratchDiskMiB": 384,
+  "virtualization": "QEMU TCG; no KVM or production hardware passthrough",
+  "elapsedSeconds": 72.246,
+  "scratchDiskRootfsAndSyntheticKeysRemoved": true
+}

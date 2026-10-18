@@ -1,0 +1,18 @@
+{
+  "linuxOperatorTests": {
+    "cpuLaunch": 74,
+    "cpuCloud": 29,
+    "total": 103,
+    "passed": true
+  },
+  "productionApplicationActivated": false,
+  "productionOperatorUpdated": false,
+  "privateCloudSourcesPublished": false,
+  "gitPushed": false,
+  "pythonSyntaxCompilationPassed": true,
+  "gitDiffWhitespacePassed": true,
+  "systemdUnitVerification": {
+    "command": "systemd-analyze verify <candidate>/operator/cpu-launch/telomere-mainnet-backup.service",
+    "exitCode": 0
+  }
+}

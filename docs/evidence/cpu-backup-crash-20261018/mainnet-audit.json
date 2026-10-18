@@ -1,0 +1,19 @@
+{
+  "readOnly": true,
+  "observedAt": "2026-10-18T14:42:22.419Z",
+  "chainId": 8453,
+  "journalRows": "2",
+  "originalJournalSha256": "d26dcd891a949f492e0457fb8bc94f06ded34993caf1724dc27389098143593e",
+  "states": [
+    {
+      "status": "completed",
+      "count": 2
+    }
+  ],
+  "signerNonce": 2,
+  "operatorEthWei": "98462564567330",
+  "ownerUsdcAtomic": "2422567",
+  "escrowUsdcAtomic": "0",
+  "ownerAvailableUsdcAtomic": "0",
+  "broadcast": false
+}

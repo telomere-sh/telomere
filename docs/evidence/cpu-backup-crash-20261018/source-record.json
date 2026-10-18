@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "scope": "Exact tested backup recovery, deterministic fault fixtures and real kernel reboot guest; operator docs describe local candidate scope.",
+  "files": [
+    {
+      "originalPath": "ops/cpu-launch/mainnet-ops.py",
+      "path": "source/ce60c19361e707644edb45843970c7f621a7bfe7fa9ca7409502be6234c13fb1.bin",
+      "bytes": 32354,
+      "sha256": "ce60c19361e707644edb45843970c7f621a7bfe7fa9ca7409502be6234c13fb1"
+    },
+    {
+      "originalPath": "ops/cpu-launch/test_backup_crash.py",
+      "path": "source/a3432421299afe1047a438ffc8d96be19cbd17877bb4d3fea46685ff4d63186a.bin",
+      "bytes": 7791,
+      "sha256": "a3432421299afe1047a438ffc8d96be19cbd17877bb4d3fea46685ff4d63186a"
+    },
+    {
+      "originalPath": "ops/cpu-launch/backup-crash-acceptance.py",
+      "path": "source/ffce7c46dd0372927fa884b02c910794c3444194563caee216c72e87b1a80124.bin",
+      "bytes": 16338,
+      "sha256": "ffce7c46dd0372927fa884b02c910794c3444194563caee216c72e87b1a80124"
+    },
+    {
+      "originalPath": "ops/cpu-launch/backup-reboot-guest.py",
+      "path": "source/496c76847fc0e58a0467c0474a2ba95dc4a5d2e8acda14880ebe2cbb58ecf6d5.bin",
+      "bytes": 6348,
+      "sha256": "496c76847fc0e58a0467c0474a2ba95dc4a5d2e8acda14880ebe2cbb58ecf6d5"
+    },
+    {
+      "originalPath": "ops/cpu-launch/backup-reboot-acceptance.py",
+      "path": "source/e88bb66328bc7b602b1aafd3afcfffa471dc4d59a1bea2bdd740457ba9a9cee4.bin",
+      "bytes": 6145,
+      "sha256": "e88bb66328bc7b602b1aafd3afcfffa471dc4d59a1bea2bdd740457ba9a9cee4"
+    },
+    {
+      "originalPath": "ops/cpu-launch/telomere-mainnet-backup.service",
+      "path": "source/11598ff2f99a91e061b7d1c8b5e32591d14c691fc235e7f67d56ab399f54f971.bin",
+      "bytes": 600,
+      "sha256": "11598ff2f99a91e061b7d1c8b5e32591d14c691fc235e7f67d56ab399f54f971"
+    },
+    {
+      "originalPath": "ops/cpu-launch/README.md",
+      "path": "source/bf3a4883c0b920437088b07b4018a5d9c27ad8278c69f0a0e44f11c0cb2e9bf7.bin",
+      "bytes": 33020,
+      "sha256": "bf3a4883c0b920437088b07b4018a5d9c27ad8278c69f0a0e44f11c0cb2e9bf7"
+    },
+    {
+      "originalPath": "ops/cpu-cloud/archive_policy.py",
+      "path": "source/d361420fdb96f7b3aeb2a180ab646772cc213bbde1dd4f54bc3455d803a427d0.bin",
+      "bytes": 5626,
+      "sha256": "d361420fdb96f7b3aeb2a180ab646772cc213bbde1dd4f54bc3455d803a427d0"
+    },
+    {
+      "originalPath": "ops/cpu-cloud/cyst-capacity.json",
+      "path": "source/0797a1cc6c77f7272b3bc3bccf0229711122720f2124051bd3724c77b705be0e.bin",
+      "bytes": 109,
+      "sha256": "0797a1cc6c77f7272b3bc3bccf0229711122720f2124051bd3724c77b705be0e"
+    }
+  ],
+  "priorVersions": [
+    {
+      "originalPath": "ops/cpu-launch/backup-reboot-guest.py",
+      "path": "source/16dee8fa3849e5d33706da8cafc03361deebd4c4a080bd2bdc502d3d273d235d.bin",
+      "bytes": 5878,
+      "sha256": "16dee8fa3849e5d33706da8cafc03361deebd4c4a080bd2bdc502d3d273d235d",
+      "attempt": "initial passing kernel reboot smoke before strengthening the unpublished plaintext assertion"
+    },
+    {
+      "originalPath": "ops/cpu-launch/backup-reboot-guest.py",
+      "attempt": "fixture incorrectly required unpublished plaintext checksum persistence; rejected expectation corrected to discard interrupted scratch data",
+      "path": "source/9e1341cc586ec77eb1a9257353378c349d5104761ed51421e21e404de9119d39.bin",
+      "bytes": 5972,
+      "sha256": "9e1341cc586ec77eb1a9257353378c349d5104761ed51421e21e404de9119d39"
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 """Root-owned mainnet backup and read-only restore rehearsal. Never starts a restored controller."""
-import argparse,datetime,fcntl,hashlib,importlib.util,json,os,re,select,shutil,socket,ssl,stat,subprocess,tarfile,tempfile,time,uuid,urllib.request
+import argparse,contextlib,datetime,fcntl,hashlib,importlib.util,json,os,re,select,shutil,socket,ssl,stat,subprocess,tarfile,tempfile,time,uuid,urllib.request
 from pathlib import Path
 _spec=importlib.util.spec_from_file_location('backup_capacity_policy',Path(__file__).parent.parent/'cpu-cloud/archive_policy.py')
 policy=importlib.util.module_from_spec(_spec);_spec.loader.exec_module(policy)
@@ -21,7 +21,64 @@ def fingerprint_file(source):
         checksum.update(chunk);rows+=chunk.count(b'\n')
     return checksum.hexdigest(),rows
 def atomic(path,value):
-    temp=path.with_name(path.name+'.next');temp.write_text(json.dumps(value,indent=2)+'\n');temp.chmod(0o600);os.replace(temp,path)
+    temp=path.with_name(path.name+'.next')
+    descriptor=os.open(temp,os.O_WRONLY|os.O_CREAT|os.O_NOFOLLOW|os.O_NONBLOCK,0o600)
+    with os.fdopen(descriptor,'w') as stream:
+        info=os.fstat(stream.fileno());assert stat.S_ISREG(info.st_mode) and info.st_nlink==1 and info.st_uid==os.geteuid()
+        os.fchmod(stream.fileno(),0o600);os.ftruncate(stream.fileno(),0);stream.write(json.dumps(value,indent=2)+'\n');stream.flush();os.fsync(stream.fileno())
+    os.replace(temp,path);sync_directory(path.parent)
+
+def sync_directory(path):
+    descriptor=os.open(path,os.O_RDONLY|os.O_DIRECTORY|os.O_NOFOLLOW)
+    try:os.fsync(descriptor)
+    finally:os.close(descriptor)
+
+def private_directory(path):
+    info=path.lstat()
+    assert stat.S_ISDIR(info.st_mode) and info.st_uid==os.geteuid() and info.st_mode&0o077==0 and path.resolve()==path
+
+def attempt_labels(stage):
+    assert stage.parent==PRIVATE/'cpu-backup-work' and re.fullmatch('attempt-[0-9a-f]{32}',stage.name)
+    return {'telomere.backup.root':hashlib.sha256(str(PRIVATE).encode()).hexdigest(),'telomere.backup.attempt':stage.name}
+
+def remove_attempt(stage):
+    """Only the exclusive backup-lock holder may reclaim this private namespace."""
+    private_directory(stage);labels=attempt_labels(stage)
+    filters=[value for key,value in labels.items() for value in ('--filter','label='+key+'='+value)]
+    for kind in ('container','volume'):
+        listed=run(DOCKER+[kind,'ls','-aq' if kind=='container' else '-q']+filters).stdout.decode().splitlines();assert len(listed)<=4
+        for identity in listed:
+            assert re.fullmatch('[0-9a-f]{12,64}',identity) if kind=='container' else re.fullmatch('telomere-backup-restore-[0-9a-f]{32}-data',identity)
+            value=json.loads(run(DOCKER+[kind,'inspect',identity]).stdout);assert len(value)==1
+            found=value[0]['Config']['Labels'] if kind=='container' else value[0]['Labels']
+            assert all(found.get(key)==expected for key,expected in labels.items())
+            run(DOCKER+(['rm','-f',identity] if kind=='container' else ['volume','rm',identity]))
+    assert shutil.rmtree.avoids_symlink_attacks
+    shutil.rmtree(stage);sync_directory(stage.parent)
+
+@contextlib.contextmanager
+def backup_workspace():
+    """Recover interrupted attempts before creating a new one, never during a live backup."""
+    private_directory(PRIVATE)
+    descriptor=os.open(PRIVATE/'cpu-backup.lock',os.O_RDWR|os.O_CREAT|os.O_NOFOLLOW|os.O_NONBLOCK,0o600)
+    with os.fdopen(descriptor,'a') as lock:
+        info=os.fstat(lock.fileno());assert stat.S_ISREG(info.st_mode) and info.st_nlink==1 and info.st_uid==os.geteuid()
+        fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
+        root=PRIVATE/'cpu-backup-work';root.mkdir(mode=0o700,exist_ok=True);private_directory(root);sync_directory(PRIVATE)
+        stale=list(root.iterdir());assert len(stale)<=8
+        for stage in stale:attempt_labels(stage);private_directory(stage)
+        for stage in stale:remove_attempt(stage)
+        # Publication scratch files are never receipts. Do not touch successful receipts.
+        names=['cpu-backup-status.json.next','cpu-runtime-backup-status.json.next']
+        names.extend(path.name for path in PRIVATE.glob('runtime-*.json.next') if policy.RUNTIME_ID.fullmatch(path.name[:-10]))
+        for name in names:
+            path=PRIVATE/name
+            if path.exists() or path.is_symlink():
+                info=path.lstat();assert stat.S_ISREG(info.st_mode) and info.st_nlink==1 and info.st_uid==os.geteuid()
+                path.unlink()
+        stage=root/('attempt-'+uuid.uuid4().hex);stage.mkdir(mode=0o700);sync_directory(root)
+        try:yield stage
+        finally:remove_attempt(stage)
 def now():return datetime.datetime.now(datetime.timezone.utc).isoformat()
 
 def validate_recipients(text):
@@ -53,13 +110,16 @@ def copy_cysts(directory,target,references):
 
 def encrypt_archive(archive,recipient,output,identifier):
     """Publish only a complete ciphertext accepted by every downstream consumer."""
-    temporary=output.with_name(identifier+'.partial')
+    # Plaintext and partial ciphertext share the reclaimable attempt directory.
+    temporary=archive.parent/(identifier+'.partial')
     assert not temporary.exists() and not temporary.is_symlink()
     try:
         subprocess.run(['/usr/bin/age','-R',str(recipient),'-o',str(temporary),str(archive)],
             check=True,capture_output=True,timeout=policy.CRYPTO_SECONDS)
         assert 100<=temporary.stat().st_size<=policy.archive_limit(identifier),'Encrypted archive capacity exceeded'
-        temporary.chmod(0o600);os.replace(temporary,output)
+        temporary.chmod(0o600)
+        with temporary.open('rb') as stream:os.fsync(stream.fileno())
+        os.replace(temporary,output);sync_directory(output.parent)
     finally:temporary.unlink(missing_ok=True)
 
 def seal_data_archive(stage,identifier,recipient,output,metadata):
@@ -80,7 +140,7 @@ def seal_data_archive(stage,identifier,recipient,output,metadata):
     assert archive.stat().st_size<policy.MAX_DATA_ARCHIVE-1024**2,'Archive envelope budget exceeded'
     encrypt_archive(archive,recipient,output,identifier)
     return capacity
-def runtime_bundle():
+def runtime_bundle(workspace=None):
     expected=json.loads((PRIVATE/'expected.json').read_text());release=Path(expected['releaseDirectory']).resolve()
     assert release.parent==BASE/'releases' and (BASE/'app').resolve()==release
     entries=[]
@@ -114,15 +174,17 @@ def runtime_bundle():
     manifest={'schemaVersion':1,'id':identifier,'kind':'exact-reviewed-runtime','runtimePinsVerified':len(expected['runtimePins']),'recipientSha256':recipient_hash,
         'layout':{'releaseDirectory':str(release),'publicWebroot':str(website),'nodeBinary':NODE,'runscBinary':'/opt/telomere-host-runtime/gvisor/runsc'},'files':files}
     status_file=PRIVATE/'cpu-runtime-backup-status.json'
-    if target.exists():
+    if target.exists() and (PRIVATE/(identifier+'.json')).exists():
         # A rollback may select a previously archived bundle. Its private receipt
         # is keyed by identity, rather than assuming it was the latest bundle.
         receipt=PRIVATE/(identifier+'.json')
         old=json.loads(receipt.read_text());assert old['id']==identifier and old['sha256']==digest(target)
         assert target.stat().st_size<=policy.MAX_RUNTIME_ARCHIVE
         atomic(status_file,old);return old
-    with tempfile.TemporaryDirectory(prefix='runtime-snapshot-',dir=PRIVATE) as temp:
-        stage=Path(temp).resolve();assert stage.parent==PRIVATE
+    context=tempfile.TemporaryDirectory(prefix='runtime-snapshot-',dir=PRIVATE) if workspace is None else contextlib.nullcontext(workspace/'runtime')
+    with context as temp:
+        stage=Path(temp).resolve()
+        if workspace is not None:stage.mkdir(mode=0o700)
         metadata=stage/'manifest.json';metadata.write_text(json.dumps(manifest,indent=2)+'\n')
         archive=stage/'runtime.tar.gz'
         with tarfile.open(archive,'w:gz',compresslevel=1) as tar:
@@ -131,7 +193,7 @@ def runtime_bundle():
         encrypt_archive(archive,PRIVATE/'backup-recipient.txt',target,identifier)
     result={'id':identifier,'sha256':digest(target),'bytes':target.stat().st_size,'runtimePinsVerified':len(expected['runtimePins']),'files':len(files)}
     atomic(PRIVATE/(identifier+'.json'),result);atomic(status_file,result);return result
-def restore(stage,snapshot):
+def restore(stage,snapshot,attempt=None):
     global PHASE
     PHASE="restore_create"
     name='telomere-backup-restore-'+uuid.uuid4().hex;owned=False;volume=name+'-data';volume_created=False
@@ -142,8 +204,9 @@ def restore(stage,snapshot):
     began=time.monotonic()
     try:
         assert shutil.disk_usage(BASE).free>policy.MIN_FREE_BYTES,'Insufficient scratch restore disk'
-        run(DOCKER+['volume','create','--label','telomere.backup.exercise='+name,volume]);volume_created=True
-        run(DOCKER+['run','-d','--name',name,'--label','telomere.backup.exercise='+name,'--runtime','runc','--network','none',
+        labels=[] if attempt is None else [value for key,value in attempt_labels(attempt).items() for value in ('--label',key+'='+value)]
+        run(DOCKER+['volume','create','--label','telomere.backup.exercise='+name]+labels+[volume]);volume_created=True
+        run(DOCKER+['run','-d','--name',name,'--label','telomere.backup.exercise='+name]+labels+['--runtime','runc','--network','none',
             '--cpus','0.5','--memory','512m','--pids-limit','128','--mount','type=volume,source='+volume+',target=/var/lib/postgresql/data',
             '-e','POSTGRES_USER=restore','-e','POSTGRES_DB=restore','-e','POSTGRES_HOST_AUTH_METHOD=trust',image]);owned=True
         for attempt in range(60):
@@ -181,13 +244,12 @@ def backup():
     PHASE="backup_setup"
     assert os.geteuid()==0
     BACKUPS.mkdir(mode=0o700,exist_ok=True);assert not BACKUPS.is_symlink()
-    with (PRIVATE/'cpu-backup.lock').open('a') as lock:
-        fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
+    with backup_workspace() as workspace:
         started=time.monotonic();identifier='backup-'+datetime.datetime.now(datetime.timezone.utc).strftime('%Y%m%dT%H%M%SZ')+'-'+uuid.uuid4().hex[:8]
         assert shutil.disk_usage(BASE).free>policy.MIN_FREE_BYTES
         recipient=PRIVATE/'backup-recipient.txt';validate_recipients(recipient.read_text())
-        with tempfile.TemporaryDirectory(prefix='cpu-snapshot-',dir=PRIVATE) as temp:
-            stage=Path(temp).resolve();assert stage.parent==PRIVATE
+        with contextlib.nullcontext(workspace/'data') as stage:
+            stage.mkdir(mode=0o700)
             helper=BASE/'operator/cpu-launch/snapshot.mjs'
             PHASE='export_snapshot'
             proc=subprocess.Popen([NODE,str(helper)],cwd=BASE/'app',stdin=subprocess.PIPE,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
@@ -208,29 +270,9 @@ def backup():
                     except subprocess.TimeoutExpired:proc.kill();proc.communicate()
                 assert proc.returncode==0,'Snapshot transaction failed'
             PHASE='configuration_copy'
-            (stage/'configuration').mkdir()
-            sources={'mainnet.env':PRIVATE/'mainnet.env','expected.json':PRIVATE/'expected.json','activation.json':PRIVATE/'activation.json',
-                'ownership.json':PRIVATE/'ownership.json','docker-daemon.json':PRIVATE/'docker-daemon.json',
-                'deployment-plan-base-mainnet.json':PRIVATE/'deployment-plan-base-mainnet.json','backup-recipient.txt':PRIVATE/'backup-recipient.txt',
-                'source-snapshot.json':BASE/'app/source-snapshot.json','package-lock.json':BASE/'app/package-lock.json',
-                'controller.service':Path('/etc/systemd/system/telomere-mainnet-pilot.service'),
-                'rpc.service':Path('/etc/systemd/system/telomere-mainnet-rpc.service'),'nginx.conf':Path('/etc/nginx/sites-available/telomere-apex-static'),
-                'nginx-csp.conf':Path('/etc/nginx/snippets/telomere-website-csp.conf'),
-                'nginx-http-acme.conf':Path('/etc/nginx/sites-available/telomere-http-acme')}
-            for name,source in sources.items():assert source.is_file() and not source.is_symlink();shutil.copyfile(source,stage/'configuration'/name)
-            for unit in ('telomere-mainnet-postgres.service','telomere-mainnet-docker.service'):
-                for line in Path('/etc/systemd/system',unit).read_text().splitlines():
-                    if line.startswith('EnvironmentFile='):
-                        location=Path(line.split('=',1)[1]);assert location.parent==PRIVATE and location.is_file() and not location.is_symlink()
-                        sources['service-'+location.name]=location
-            for name,source in sources.items():
-                target=stage/'configuration'/name
-                if not target.exists():shutil.copyfile(source,target)
-            for name in ('telegram-bot-token','cpu-telegram.json','cpu-cloud-config.json','cpu-cloud-required.json'):
-                source=PRIVATE/name
-                if source.exists():assert source.is_file() and not source.is_symlink();shutil.copyfile(source,stage/'configuration'/name)
-            rehearsal=restore(stage,snapshot)
-            PHASE='runtime_bundle';runtime=runtime_bundle()
+            copy_configuration(stage)
+            rehearsal=restore(stage,snapshot,attempt=workspace)
+            PHASE='runtime_bundle';runtime=runtime_bundle(workspace)
             output=BACKUPS/(identifier+'.tar.age')
             capacity=seal_data_archive(stage,identifier,recipient,output,{'createdAt':now(),'kind':'mainnet-cpu-encrypted-backup','chainId':8453,'consistentExportedDatabaseSnapshot':True,'restoreRehearsal':rehearsal,'runtimeBundle':runtime})
             result={'id':identifier,'createdAt':now(),'sha256':digest(output),'bytes':output.stat().st_size,'capacity':capacity,'encryption':'age X25519','restore':rehearsal,'runtimeBundle':runtime,'elapsedSeconds':round(time.monotonic()-started,3)}
@@ -244,6 +286,30 @@ def backup():
             for path in snapshots:
                 if path not in keep:assert path.resolve().parent==BACKUPS;path.unlink()
             print(json.dumps(result))
+
+def copy_configuration(stage):
+    (stage/'configuration').mkdir()
+    sources={'mainnet.env':PRIVATE/'mainnet.env','expected.json':PRIVATE/'expected.json','activation.json':PRIVATE/'activation.json',
+        'ownership.json':PRIVATE/'ownership.json','docker-daemon.json':PRIVATE/'docker-daemon.json',
+        'deployment-plan-base-mainnet.json':PRIVATE/'deployment-plan-base-mainnet.json','backup-recipient.txt':PRIVATE/'backup-recipient.txt',
+        'source-snapshot.json':BASE/'app/source-snapshot.json','package-lock.json':BASE/'app/package-lock.json',
+        'controller.service':Path('/etc/systemd/system/telomere-mainnet-pilot.service'),
+        'rpc.service':Path('/etc/systemd/system/telomere-mainnet-rpc.service'),'nginx.conf':Path('/etc/nginx/sites-available/telomere-apex-static'),
+        'nginx-csp.conf':Path('/etc/nginx/snippets/telomere-website-csp.conf'),
+        'nginx-http-acme.conf':Path('/etc/nginx/sites-available/telomere-http-acme')}
+    for name,source in sources.items():assert source.is_file() and not source.is_symlink();shutil.copyfile(source,stage/'configuration'/name)
+    for unit in ('telomere-mainnet-postgres.service','telomere-mainnet-docker.service'):
+        for line in Path('/etc/systemd/system',unit).read_text().splitlines():
+            if line.startswith('EnvironmentFile='):
+                location=Path(line.split('=',1)[1]);assert location.parent==PRIVATE and location.is_file() and not location.is_symlink()
+                sources['service-'+location.name]=location
+    for name,source in sources.items():
+        target=stage/'configuration'/name
+        if not target.exists():shutil.copyfile(source,target)
+    for name in ('telegram-bot-token','cpu-telegram.json','cpu-cloud-config.json','cpu-cloud-required.json'):
+        source=PRIVATE/name
+        if source.exists():assert source.is_file() and not source.is_symlink();shutil.copyfile(source,stage/'configuration'/name)
+
 def ack(identifier,checksum,*runtime):
     assert IDENTIFIER.fullmatch(identifier) and re.fullmatch('[0-9a-f]{64}',checksum)
     path=BACKUPS/(identifier+'.tar.age');assert path.is_file() and not path.is_symlink() and digest(path)==checksum

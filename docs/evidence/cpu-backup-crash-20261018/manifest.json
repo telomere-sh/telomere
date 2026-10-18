@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-18T14:42:23.718305+00:00",
+  "scope": "Local backup crash recovery candidate: five real process/container interruptions, real offline Linux emergency reboot, next-run authenticated restore and 103 regression checks; no production activation or publication",
+  "report": {
+    "path": "docs/CPU-BACKUP-CRASH-20261018.md",
+    "bytes": 9679,
+    "sha256": "427c99b8ff3898325fdee5ce2b571da16c16083429527b27cb50ca41b4a715f4"
+  },
+  "files": [
+    {
+      "path": "docs/evidence/cpu-backup-crash-20261018/acceptance.json",
+      "bytes": 5460,
+      "sha256": "7ae4f8b6e155f6078194bf50ef803f92299b463f35dc92ae8a87bdaebe5f21e2"
+    },
+    {
+      "path": "docs/evidence/cpu-backup-crash-20261018/checks.json",
+      "bytes": 491,
+      "sha256": "bc217ccb638bfbaef1b2b5f685603b9fd933d478db5355540e35cd67579b4c6d"
+    },
+    {
+      "path": "docs/evidence/cpu-backup-crash-20261018/cleanup.json",
+      "bytes": 81,
+      "sha256": "5a8eaebc3870f4ad5612668dfae3dd93e6ac7c20369bc3c56c3e78b95753589d"
+    },
+    {
+      "path": "docs/evidence/cpu-backup-crash-20261018/cpu-cloud-unit-tests.log",
+      "bytes": 4241,
+      "sha256": "d2ad3862a66f1b13b58b9aade42981a677b8aa6c73b059c5e04d1175fd962d85"
+    },
+    {
+      "path": "docs/evidence/cpu-backup-crash-20261018/cpu-launch-unit-tests.log",
+      "bytes": 9348,
+      "sha256": "ac7c44f132257eb01e999a9027e5d35cae0d2fe23fdc45d1d4eaad9b796ae641"
+    },
+    {
+      "path": "docs/evidence/cpu-backup-crash-20261018/first-vm-console.log",
+      "bytes": 1493,
+      "sha256": "7dfb4c15b07e0638740da8fe99ec37bcdf26547562176b94be15fedf99051821"
+    },
+    {
+      "path": "docs/evidence/cpu-backup-crash-20261018/initial-kernel-smoke.json",
+      "bytes": 1619,
+      "sha256": "b6afb367140887f6922cf29513670c852bd56c5d891674d1492037d3c0adbf4f"
+    },
+    {
+      "path": "docs/evidence/cpu-backup-crash-20261018/interrupted-plaintext-expectation.log",
+      "bytes": 772,
+      "sha256": "600bad91ba3dc8e3232334ca10408fe135c6e7832d94242fe1d5e5264b4b3777"
+    },
+    {
+      "path": "docs/evidence/cpu-backup-crash-20261018/kernel-reboot.json",
+      "bytes": 1720,
+      "sha256": "fac0ecd571fdbb7761da27731e63ab24cfee100aa6dd6a83e522252bcf705c65"
+    },
+    {
+      "path": "docs/evidence/cpu-backup-crash-20261018/mainnet-audit.json",
+      "bytes": 454,
+      "sha256": "e3671b1d314e8c397e5a21900afaab4139b1ddb1e1f7e45714adfcf52c4a1a41"
+    },
+    {
+      "path": "docs/evidence/cpu-backup-crash-20261018/production-guard.json",
+      "bytes": 319,
+      "sha256": "4665956db74d753b9a892d8bd747bbd6e3cbb4c8ac5ed6508eb54a801e5c0a9f"
+    },
+    {
+      "path": "docs/evidence/cpu-backup-crash-20261018/provenance.json",
+      "bytes": 4672,
+      "sha256": "f883e568c5920bdb6ea9cb96036fec87dd9ab682b68a24970215f081392c4f88"
+    },
+    {
+      "path": "docs/evidence/cpu-backup-crash-20261018/source/0797a1cc6c77f7272b3bc3bccf0229711122720f2124051bd3724c77b705be0e.bin",
+      "bytes": 109,
+      "sha256": "0797a1cc6c77f7272b3bc3bccf0229711122720f2124051bd3724c77b705be0e"
+    },
+    {
+      "path": "docs/evidence/cpu-backup-crash-20261018/source/11598ff2f99a91e061b7d1c8b5e32591d14c691fc235e7f67d56ab399f54f971.bin",
+      "bytes": 600,
+      "sha256": "11598ff2f99a91e061b7d1c8b5e32591d14c691fc235e7f67d56ab399f54f971"
+    },
+    {
+      "path": "docs/evidence/cpu-backup-crash-20261018/source/16dee8fa3849e5d33706da8cafc03361deebd4c4a080bd2bdc502d3d273d235d.bin",
+      "bytes": 5878,
+      "sha256": "16dee8fa3849e5d33706da8cafc03361deebd4c4a080bd2bdc502d3d273d235d"
+    },
+    {
+      "path": "docs/evidence/cpu-backup-crash-20261018/source/496c76847fc0e58a0467c0474a2ba95dc4a5d2e8acda14880ebe2cbb58ecf6d5.bin",
+      "bytes": 6348,
+      "sha256": "496c76847fc0e58a0467c0474a2ba95dc4a5d2e8acda14880ebe2cbb58ecf6d5"
+    },
+    {
+      "path": "docs/evidence/cpu-backup-crash-20261018/source/9e1341cc586ec77eb1a9257353378c349d5104761ed51421e21e404de9119d39.bin",
+      "bytes": 5972,
+      "sha256": "9e1341cc586ec77eb1a9257353378c349d5104761ed51421e21e404de9119d39"
+    },
+    {
+      "path": "docs/evidence/cpu-backup-crash-20261018/source/a3432421299afe1047a438ffc8d96be19cbd17877bb4d3fea46685ff4d63186a.bin",
+      "bytes": 7791,
+      "sha256": "a3432421299afe1047a438ffc8d96be19cbd17877bb4d3fea46685ff4d63186a"
+    },
+    {
+      "path": "docs/evidence/cpu-backup-crash-20261018/source/bf3a4883c0b920437088b07b4018a5d9c27ad8278c69f0a0e44f11c0cb2e9bf7.bin",
+      "bytes": 33020,
+      "sha256": "bf3a4883c0b920437088b07b4018a5d9c27ad8278c69f0a0e44f11c0cb2e9bf7"
+    },
+    {
+      "path": "docs/evidence/cpu-backup-crash-20261018/source/ce60c19361e707644edb45843970c7f621a7bfe7fa9ca7409502be6234c13fb1.bin",
+      "bytes": 32354,
+      "sha256": "ce60c19361e707644edb45843970c7f621a7bfe7fa9ca7409502be6234c13fb1"
+    },
+    {
+      "path": "docs/evidence/cpu-backup-crash-20261018/source/d361420fdb96f7b3aeb2a180ab646772cc213bbde1dd4f54bc3455d803a427d0.bin",
+      "bytes": 5626,
+      "sha256": "d361420fdb96f7b3aeb2a180ab646772cc213bbde1dd4f54bc3455d803a427d0"
+    },
+    {
+      "path": "docs/evidence/cpu-backup-crash-20261018/source/e88bb66328bc7b602b1aafd3afcfffa471dc4d59a1bea2bdd740457ba9a9cee4.bin",
+      "bytes": 6145,
+      "sha256": "e88bb66328bc7b602b1aafd3afcfffa471dc4d59a1bea2bdd740457ba9a9cee4"
+    },
+    {
+      "path": "docs/evidence/cpu-backup-crash-20261018/source/ffce7c46dd0372927fa884b02c910794c3444194563caee216c72e87b1a80124.bin",
+      "bytes": 16338,
+      "sha256": "ffce7c46dd0372927fa884b02c910794c3444194563caee216c72e87b1a80124"
+    },
+    {
+      "path": "docs/evidence/cpu-backup-crash-20261018/source-record.json",
+      "bytes": 3477,
+      "sha256": "61fa365df70c899f96e1f2b86b8cc3190be1d21e21c4b490c5741e075c3af4f4"
+    },
+    {
+      "path": "docs/evidence/cpu-backup-crash-20261018/vm-console.log",
+      "bytes": 1523,
+      "sha256": "9b028f8beecdce64bf4d66143de13789234ee0bea896efe5c6e9d8ca99797feb"
+    },
+    {
+      "path": "docs/evidence/cpu-backup-crash-20261018/worker.log",
+      "bytes": 5190,
+      "sha256": "016bda5d5c2f3744a48e5f1d425845dbad36eab83e27ad0bd1dc0e5d8cf8a7d9"
+    }
+  ]
+}

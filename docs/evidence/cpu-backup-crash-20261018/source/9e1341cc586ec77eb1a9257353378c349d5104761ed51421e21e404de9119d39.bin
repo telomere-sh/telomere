@@ -1,0 +1,81 @@
+"""Boot twice on a disposable ext4 disk; force a real kernel reboot mid-encryption.
+
+This narrow disk/crypto test complements the full PostgreSQL backup SIGKILL suite.
+The guest has no network, Docker daemon, application profile or mainnet signer.
+"""
+import hashlib,importlib.util,json,os,shutil,subprocess,sys,time
+from pathlib import Path
+from types import SimpleNamespace
+from unittest.mock import patch
+
+spec=importlib.util.spec_from_file_location('guest_ops',Path('/fixture/operator/cpu-launch/mainnet-ops.py'))
+ops=importlib.util.module_from_spec(spec);spec.loader.exec_module(ops)
+ops.BASE=Path('/fixture');ops.PRIVATE=ops.BASE/'private';ops.BACKUPS=ops.BASE/'backups'
+boot_id=Path('/proc/sys/kernel/random/boot_id').read_text().strip()
+intent=ops.BASE/'reboot-intent.json';original_run=subprocess.run
+os.umask(0o077)
+
+def docker_free(args,**kwargs):
+    assert args[:len(ops.DOCKER)]==ops.DOCKER
+    assert args[len(ops.DOCKER):len(ops.DOCKER)+2] in (['container','ls'],['volume','ls'])
+    return SimpleNamespace(stdout=b'')
+
+def copy_fixture(stage):
+    shutil.copyfile('/fixture/source.dump',stage/'database.dump')
+    (stage/'snapshot.json').write_text('{"kind":"synthetic disk crash fixture"}')
+    (stage/'cysts').mkdir(mode=0o700)
+    shutil.copyfile('/fixture/source.blob',stage/'cysts'/('a'*64+'.blob'))
+
+def successful_backup():
+    with ops.backup_workspace() as workspace:
+        stage=workspace/'data';stage.mkdir(mode=0o700);copy_fixture(stage)
+        identifier='backup-20261018T000000Z-'+os.urandom(4).hex();target=ops.BACKUPS/(identifier+'.tar.age')
+        capacity=ops.seal_data_archive(stage,identifier,ops.PRIVATE/'backup-recipient.txt',target,{'kind':'synthetic kernel reboot disk fixture'})
+        result={'id':identifier,'sha256':ops.digest(target),'bytes':target.stat().st_size,'capacity':capacity}
+        ops.atomic(ops.PRIVATE/'cpu-backup-status.json',result)
+    return result
+
+with patch.object(ops,'run',side_effect=docker_free):
+    if not intent.exists():
+        baseline=successful_backup()
+        with ops.backup_workspace() as workspace:
+            stage=workspace/'data';stage.mkdir(mode=0o700);copy_fixture(stage)
+            identifier='backup-20261018T000001Z-'+os.urandom(4).hex()
+            def interrupt(args,**kwargs):
+                assert args[:2]==['/usr/bin/age','-R']
+                child=subprocess.Popen(args[:-1]+['-'],stdin=subprocess.PIPE,stdout=subprocess.DEVNULL,stderr=subprocess.PIPE)
+                with Path(args[-1]).open('rb') as stream:child.stdin.write(stream.read(1024*1024));child.stdin.flush()
+                partial=Path(args[args.index('-o')+1]);deadline=time.monotonic()+30
+                while not partial.exists() or partial.stat().st_size<=100:
+                    assert time.monotonic()<deadline;time.sleep(.01)
+                assert child.poll() is None
+                with partial.open('rb') as stream:os.fsync(stream.fileno())
+                ops.sync_directory(stage);ops.sync_directory(workspace)
+                ops.atomic(intent,{'firstBootId':boot_id,'attempt':workspace.name,'partialBytes':partial.stat().st_size,'baseline':baseline,
+                    'plaintextPresent':(stage/'database.dump').exists(),'ageAlive':True,'method':'Linux emergency SysRq b; no orderly worker shutdown'})
+                print('TELOMERE_GUEST_EMERGENCY_REBOOT '+json.dumps(json.loads(intent.read_text())),flush=True)
+                # Kernel emergency_restart; no Python finally block or service
+                # stop handler can run. The persistent ext4 disk is reused.
+                Path('/proc/sysrq-trigger').write_text('b')
+                raise RuntimeError('Kernel reboot returned unexpectedly')
+            with patch.object(ops.subprocess,'run',side_effect=interrupt):
+                ops.seal_data_archive(stage,identifier,ops.PRIVATE/'backup-recipient.txt',ops.BACKUPS/(identifier+'.tar.age'),{'kind':'interrupted kernel reboot fixture'})
+    else:
+        before=json.loads(intent.read_text());assert before['firstBootId']!=boot_id
+        old_stage=ops.PRIVATE/'cpu-backup-work'/before['attempt'];assert old_stage.exists() and list(old_stage.rglob('*.partial'))
+        assert ops.digest(old_stage/'data/database.dump')==ops.digest(ops.BASE/'source.dump')
+        assert json.loads((ops.PRIVATE/'cpu-backup-status.json').read_text())==before['baseline']
+        assert ops.digest(ops.BACKUPS/(before['baseline']['id']+'.tar.age'))==before['baseline']['sha256']
+        result=successful_backup();assert not old_stage.exists() and not list((ops.PRIVATE/'cpu-backup-work').iterdir())
+        spec=importlib.util.spec_from_file_location('guest_recovery',Path('/fixture/operator/cpu-launch/restore-rehearsal.py'))
+        recovery=importlib.util.module_from_spec(spec);spec.loader.exec_module(recovery)
+        target=ops.BASE/'authenticated-readback'
+        manifest=recovery.unpack(ops.BACKUPS/(result['id']+'.tar.age'),result['sha256'],(ops.BASE/'identity').read_bytes(),target)
+        assert ops.digest(target/'database.dump')==ops.digest(ops.BASE/'source.dump')
+        assert ops.digest(target/'cysts'/('a'*64+'.blob'))==ops.digest(ops.BASE/'source.blob')
+        shutil.rmtree(target);(ops.BASE/'identity').unlink();(ops.PRIVATE/'backup-recipient.txt').unlink()
+        proof={'passed':True,'firstBootId':before['firstBootId'],'secondBootId':boot_id,'interruption':before['method'],
+            'stalePartialAndPlaintextExistedAfterKernelReboot':True,'previousSuccessfulReceiptAndArchivePreserved':True,'staleWorkspaceRemovedOnNextBackup':True,
+            'nextBackupAuthenticatedAndFilesVerified':True,'nextBackup':result,'mainnetTransactions':0,'network':'none',
+            'databasePayload':'synthetic binary disk fixture; SQL restore covered separately by full backup crash acceptance','ageIdentityRemovedFromGuestFilesystem':True}
+        ops.atomic(ops.BASE/'reboot-result.json',proof);print('TELOMERE_GUEST_REBOOT_PASSED '+json.dumps(proof),flush=True)
