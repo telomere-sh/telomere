@@ -4,6 +4,10 @@ Debian QEMU packages are downloaded/extracted privately, never installed on the
 production host. The guest has one scratch disk, one vCPU and no network/device
 passthrough. Source disk files, generated identity and disk image are removed.
 """
+import sys as _runtime_sys
+if _runtime_sys.flags.optimize:
+    raise RuntimeError('Telomere recovery tooling requires checked Python; remove -O/-OO and PYTHONOPTIMIZE.')
+
 import hashlib,json,os,re,shutil,subprocess,sys,time
 from pathlib import Path
 

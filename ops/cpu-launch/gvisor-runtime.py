@@ -1,4 +1,8 @@
 """Retain the complete gVisor distribution, including STRICT sidecars."""
+import sys as _runtime_sys
+if _runtime_sys.flags.optimize:
+    raise RuntimeError('Telomere recovery tooling requires checked Python; remove -O/-OO and PYTHONOPTIMIZE.')
+
 import hashlib,json,shutil
 from pathlib import Path,PurePosixPath
 

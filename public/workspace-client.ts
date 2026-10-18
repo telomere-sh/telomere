@@ -16,7 +16,9 @@ const configSchema = z.object({mode:z.string(),chain:z.object({id:z.number(),nam
 
   token:z.object({address,symbol:z.string(),decimals:z.literal(6)}),escrowAddress:address,cpuMode:z.string(),
 
-  prices:z.object({cpuPerSecond:z.string(),maxSeconds:z.number()}),platform:z.object({agentLifecycle:z.boolean()}),cystsAvailable:z.boolean()});
+  prices:z.object({cpuPerSecond:z.string(),maxSeconds:z.number().int().min(1).max(120)}),
+  receiptSigner:address.optional(),nearAvailable:z.boolean().default(false),
+  platform:z.object({agentLifecycle:z.boolean(),receiptRootAddress:address.nullable().default(null)}),cystsAvailable:z.boolean()});
 
 type Config = z.infer<typeof configSchema>;
 

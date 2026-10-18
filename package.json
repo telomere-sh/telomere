@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "tsx src/main.ts",
     "start": "node dist/src/main.js",
-    "build": "tsx scripts/compile-contracts.ts && tsc && esbuild public/app.ts --bundle --format=esm --outfile=dist/public/app.js && esbuild public/workspace-client.ts --bundle --format=esm --outfile=website/dist/workspace-client.js && node scripts/copy-public.mjs",
+    "build": "tsx scripts/compile-contracts.ts && tsc && node scripts/build-browser.mjs && node scripts/copy-public.mjs && node scripts/release-manifest.mjs",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "contracts:compile": "tsx scripts/compile-contracts.ts",
@@ -43,7 +43,8 @@
     "acceptance:usdc-vault-fork": "tsx scripts/usdc-vault-fork-acceptance.ts",
     "preflight:usdc-archive": "tsx scripts/usdc-archive-preflight.ts",
     "acceptance:receipt-recovery": "tsx scripts/receipt-recovery-acceptance.ts",
-    "acceptance:paid-gvisor": "tsx scripts/platform-paid-gvisor-acceptance.ts"
+    "acceptance:paid-gvisor": "tsx scripts/platform-paid-gvisor-acceptance.ts",
+    "release:verify": "node scripts/release-manifest.mjs --verify"
   },
   "dependencies": {
     "@electric-sql/pglite": "0.5.8",
@@ -62,7 +63,7 @@
   "devDependencies": {
     "@types/node": "22.19.15",
     "@types/pg": "8.15.6",
-    "esbuild": "0.28.1",
+    "esbuild": "0.28.2",
     "solc": "0.8.28",
     "tsx": "4.21.0",
     "typescript": "5.9.3",
@@ -70,7 +71,7 @@
   },
   "overrides": {
     "tmp": "0.2.7",
-    "esbuild": "0.28.1"
+    "esbuild": "0.28.2"
   },
   "optionalDependencies": {
     "@foundry-rs/anvil-linux-amd64": "1.7.1",

@@ -5,6 +5,10 @@ arrives once over virtio serial and is never written to an identity file.
 The restored mainnet data is read without a worker. Paid execution uses a new
 empty database, generated accounts and loopback chain 31337.
 """
+import sys as _runtime_sys
+if _runtime_sys.flags.optimize:
+    raise RuntimeError('Telomere recovery tooling requires checked Python; remove -O/-OO and PYTHONOPTIMIZE.')
+
 import grp,hashlib,importlib.util,json,os,pwd,re,shutil,stat,struct,subprocess,sys,tempfile,time,uuid
 from pathlib import Path
 

@@ -1,4 +1,8 @@
 """Root-only rehearsal clone; never edits the active alias, profile or database."""
+import sys as _runtime_sys
+if _runtime_sys.flags.optimize:
+    raise RuntimeError('Telomere recovery tooling requires checked Python; remove -O/-OO and PYTHONOPTIMIZE.')
+
 from pathlib import Path
 import hashlib,json,os,subprocess,sys,tarfile
 BASE=Path('/opt/telomere-mainnet-pilot')

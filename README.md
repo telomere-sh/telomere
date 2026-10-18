@@ -2,16 +2,24 @@
 
 Telomere lets AI agents fund and manage their own compute. An agent can receive income, rent compute, preserve its application state, move between hosts and resume when its budget is replenished. Settlement uses **Base and native Circle USDC**, with owner-defined spending limits and shutdown control.
 
-The complete project implementation is maintained in the CEO's development environment. This repository brings together the backend, smart contracts, HostKit integration, SDKs, MCP tools, operator tooling and original website handoff.
+This repository brings together the backend, smart contracts, HostKit integration, SDKs, MCP tools, operator tooling and the integrated website. The [CPU release profile](docs/CPU-RELEASE-PROFILE.md) separates the running service from the broader protocol components and records its trust boundaries.
 
-## Capabilities
+## CPU release profile
+
+The public service settles native USDC on Base through the legacy CPU escrow. It runs bounded `sha256`, `hash_chain`, `sort` and `primes` tasks for up to 120 seconds per reservation. Wallet sign-in scopes each owner's Workspace and execution records. Read `/api/config` for the actual configuration of the service you are using.
+
+Receipts attest recorded usage through the operator's immutable signing authority. Check the signature and canonical settlement event; they do not prove the mathematical result of a computation. Unused funds return to the payer's **escrow balance**. A separate owner-approved withdrawal transfers available USDC to the wallet. Hourly root publication is a property of a configured ReceiptRoot profile, not an implication of a signed CPU receipt.
+
+The operator can read CPU input/output. Cysts encrypt application state in the client, with a separately retained recovery key. Container isolation and remote provider attestation have distinct trust boundaries.
+
+## Implemented protocol components
 
 - **Owner control:** wallet authentication, scoped sessions, Leash budgets, spending caps, approvals and stop/kill controls.
 - **Compute orchestration:** host discovery, signed offers, lane-aware selection, HostKit admission, CPU jobs, execution sessions and verified model inference.
 - **Agent lifecycle:** durable job state, source-bound preemption replanning, checkpoint handoff and explicit owner/application completion.
 - **Payments:** Base USDC escrow, signed quotes, reservations, metering, fee-inclusive settlement, refunds, spend permissions, x402 and treasury top-ups.
 - **Application state:** client-encrypted Cysts, checkpoint coordination, registry bindings, replication and recovery.
-- **Verifiable evidence:** signed receipts, metering chains, hourly roots, canonical onchain checks and provider attestation.
+- **Verifiable evidence:** signed receipts, metering chains, canonical onchain checks, plus hourly roots and provider attestation in their configured profiles.
 - **Developer access:** HTTP APIs, TypeScript and Python clients, MCP tools and a working backend console.
 - **Operations:** database migrations, health checks, diagnostics, backups, restore verification and recovery tooling.
 
@@ -133,7 +141,10 @@ npm run typecheck
 npm test
 npm run build
 npm audit
+node scripts/release-manifest.mjs --verify
 python docs/verify-evidence.py
 ```
 
-The latest focused integration cohort passed **124/124 tests**. The complete application build passed, all 411 imported website files matched the original archive and all 312 copied public assets matched their source bytes. The evidence verifier checked 718 retained records and 1,250 references. Dated commands, source cutoffs and results are retained under `docs/` and `docs/evidence/`.
+Dated results retain their exact source cutoff under `docs/` and `docs/evidence/`. They are historical evidence, not an automatic result for a later commit. The review workflow runs clean builds, baseline regression, isolated PostgreSQL, Python and security gates on its exact SHA. `dist/release-manifest.json` binds delivered files and both npm locks to a source commit; `--require-clean` rejects a dirty release.
+
+Original Telomere code uses [MIT](LICENSE). Third-party runtime exports and media retain their [own terms](THIRD_PARTY_NOTICES.md). See [security reporting](SECURITY.md), [contribution checks](CONTRIBUTING.md) and [release changes](CHANGELOG.md).

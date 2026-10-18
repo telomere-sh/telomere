@@ -4,6 +4,10 @@ Never changes production services, packages, network, DNS, backups or receipts.
 The OS checksum is checked before use. A networked dependency-only boot has no
 key. The recovery boot has no NIC and receives a key once over virtio serial.
 """
+import sys as _runtime_sys
+if _runtime_sys.flags.optimize:
+    raise RuntimeError('Telomere recovery tooling requires checked Python; remove -O/-OO and PYTHONOPTIMIZE.')
+
 import hashlib,json,os,re,shutil,socket,struct,subprocess,sys,time
 from pathlib import Path
 

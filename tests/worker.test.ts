@@ -305,6 +305,9 @@ describe("durable worker with real disposable PostgreSQL semantics", () => {
   it("replays the identical durable settlement transaction after a lost acknowledgement without repeating CPU", async () => {
     await insertJob();
     vi.mocked(bridge.settle).mockRestore();
+    // The durable journal checks the mined nonce before preparing or replaying bytes.
+    // This transport fixture owns that boundary; it must never contact a local RPC.
+    const nonce = vi.spyOn(bridge.public, "getTransactionCount").mockResolvedValue(0);
     type Prepared = Awaited<ReturnType<typeof bridge.wallet.prepareTransactionRequest>>;
     const signed: { raw?: TransactionSerialized; hash?: Hex } = {};
     // REASON: this local fixture supplies the nonce and gas while preserving the actual settlement call data.
@@ -357,6 +360,7 @@ describe("durable worker with real disposable PostgreSQL semantics", () => {
     await worker().recover(); await worker().drainOnce();
     expect(await job()).toMatchObject({ status: "completed", settlementTxHash: signedHash, charged: "500", refund: "2500" });
     expect(prepare).toHaveBeenCalledTimes(1); expect(signing).toHaveBeenCalledTimes(1); expect(broadcast).toHaveBeenCalledTimes(2);
+    expect(nonce).toHaveBeenCalledWith({ address: bridge.account.address, blockTag: 'latest' });
     expect(cpu.run).toHaveBeenCalledTimes(1);
   });
 

@@ -1,0 +1,728 @@
+{
+  "schemaVersion": 1,
+  "tool": "gitleaks",
+  "reviewedAt": "2026-10-18",
+  "scope": "All reachable commits, redacted scan; exact Git blob binding, no rule/path allowlist.",
+  "findings": [
+    {
+      "id": "40fa1755f9430f40b16a379d94bc38f618826b83:docs/evidence/cpu-self-contained-20261018/candidate-sources.json:generic-api-key:11",
+      "detector": "generic-api-key",
+      "commit": "40fa1755f9430f40b16a379d94bc38f618826b83",
+      "file": "docs/evidence/cpu-self-contained-20261018/candidate-sources.json",
+      "sourceBlobSha256": "2545faa1fc58676b6dc3d0e43ddfefa4db6ff2be9d872b534592a4cd9bde2a80",
+      "classification": "false_positive",
+      "rationale": "Reviewed exact historical blob: matching public contract/host identity, SHA-256 provenance fingerprint, test marker or explanatory prose; not a reusable credential. Full blob hash binds this review to the inspected version."
+    },
+    {
+      "id": "40fa1755f9430f40b16a379d94bc38f618826b83:docs/evidence/cpu-self-contained-20261018/candidate-sources.json:generic-api-key:21",
+      "detector": "generic-api-key",
+      "commit": "40fa1755f9430f40b16a379d94bc38f618826b83",
+      "file": "docs/evidence/cpu-self-contained-20261018/candidate-sources.json",
+      "sourceBlobSha256": "2545faa1fc58676b6dc3d0e43ddfefa4db6ff2be9d872b534592a4cd9bde2a80",
+      "classification": "false_positive",
+      "rationale": "Reviewed exact historical blob: matching public contract/host identity, SHA-256 provenance fingerprint, test marker or explanatory prose; not a reusable credential. Full blob hash binds this review to the inspected version."
+    },
+    {
+      "id": "40fa1755f9430f40b16a379d94bc38f618826b83:docs/evidence/cpu-self-contained-20261018/candidate-sources.json:generic-api-key:34",
+      "detector": "generic-api-key",
+      "commit": "40fa1755f9430f40b16a379d94bc38f618826b83",
+      "file": "docs/evidence/cpu-self-contained-20261018/candidate-sources.json",
+      "sourceBlobSha256": "2545faa1fc58676b6dc3d0e43ddfefa4db6ff2be9d872b534592a4cd9bde2a80",
+      "classification": "false_positive",
+      "rationale": "Reviewed exact historical blob: matching public contract/host identity, SHA-256 provenance fingerprint, test marker or explanatory prose; not a reusable credential. Full blob hash binds this review to the inspected version."
+    },
+    {
+      "id": "49563bbdb8cb30d44499eca13dba23393d6ae89f:docs/evidence/base-withdrawal-20261017/verification.json:generic-api-key:8",
+      "detector": "generic-api-key",
+      "commit": "49563bbdb8cb30d44499eca13dba23393d6ae89f",
+      "file": "docs/evidence/base-withdrawal-20261017/verification.json",
+      "sourceBlobSha256": "1dfd4f45b6344cc844722c9bc6b43ba2a9d8f01bd79c983e29f1bf4f81de0843",
+      "classification": "false_positive",
+      "rationale": "Reviewed exact historical blob: matching public contract/host identity, SHA-256 provenance fingerprint, test marker or explanatory prose; not a reusable credential. Full blob hash binds this review to the inspected version."
+    },
+    {
+      "id": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1:.env.example:generic-api-key:13",
+      "detector": "generic-api-key",
+      "commit": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1",
+      "file": ".env.example",
+      "sourceBlobSha256": "78879ce0f0fc77ebb714050f62f04308581b15da0293a7f910dcdeea69f35900",
+      "classification": "false_positive",
+      "rationale": "Reviewed matching public payment-token contract address in an example/configuration; not a signer private key or bearer credential."
+    },
+    {
+      "id": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1:.env.example:generic-api-key:15",
+      "detector": "generic-api-key",
+      "commit": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1",
+      "file": ".env.example",
+      "sourceBlobSha256": "78879ce0f0fc77ebb714050f62f04308581b15da0293a7f910dcdeea69f35900",
+      "classification": "false_positive",
+      "rationale": "Reviewed matching public payment-token contract address in an example/configuration; not a signer private key or bearer credential."
+    },
+    {
+      "id": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1:contracts/TlmrBurnableToken.sol:generic-api-key:8",
+      "detector": "generic-api-key",
+      "commit": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1",
+      "file": "contracts/TlmrBurnableToken.sol",
+      "sourceBlobSha256": "e53420dbfe2ca7e33a7c66248486677f540aba098df13a797b2f0cc2de045ea6",
+      "classification": "false_positive",
+      "rationale": "Reviewed matching Solidity declaration/inheritance identifiers; not a credential."
+    },
+    {
+      "id": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1:deployment/testnet-public.json:generic-api-key:7",
+      "detector": "generic-api-key",
+      "commit": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1",
+      "file": "deployment/testnet-public.json",
+      "sourceBlobSha256": "85bb6b9f562ea91fd30197f96c8659386fe749c02c4148146beff2127792cef8",
+      "classification": "false_positive",
+      "rationale": "Reviewed exact historical blob: matching public contract/host identity, SHA-256 provenance fingerprint, test marker or explanatory prose; not a reusable credential. Full blob hash binds this review to the inspected version."
+    },
+    {
+      "id": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1:docs/backup-validation.json:generic-api-key:6",
+      "detector": "generic-api-key",
+      "commit": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1",
+      "file": "docs/backup-validation.json",
+      "sourceBlobSha256": "8a9b5498a58ab9b085c3a1e3375e1329b4b03c96b88a7065e379ee6975280468",
+      "classification": "false_positive",
+      "rationale": "Reviewed exact historical blob: matching public contract/host identity, SHA-256 provenance fingerprint, test marker or explanatory prose; not a reusable credential. Full blob hash binds this review to the inspected version."
+    },
+    {
+      "id": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1:docs/evidence/backend-completion-linux-20261015/image-build-attempt02-failed.json:generic-api-key:74",
+      "detector": "generic-api-key",
+      "commit": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1",
+      "file": "docs/evidence/backend-completion-linux-20261015/image-build-attempt02-failed.json",
+      "sourceBlobSha256": "d7e7feb9d279bbb43b38ddbde02565cf0dce2b9f62f09f2b7b0103244a0ef440",
+      "classification": "false_positive",
+      "rationale": "Reviewed exact historical blob: matching public contract/host identity, SHA-256 provenance fingerprint, test marker or explanatory prose; not a reusable credential. Full blob hash binds this review to the inspected version."
+    },
+    {
+      "id": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1:docs/evidence/backend-completion-linux-20261015/image-build-attempt03-failed.json:generic-api-key:89",
+      "detector": "generic-api-key",
+      "commit": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1",
+      "file": "docs/evidence/backend-completion-linux-20261015/image-build-attempt03-failed.json",
+      "sourceBlobSha256": "9233cf4717682abf35c75be30cbfbbb7a817506844edafa1c9c7f5a03c7213af",
+      "classification": "false_positive",
+      "rationale": "Reviewed exact historical blob: matching public contract/host identity, SHA-256 provenance fingerprint, test marker or explanatory prose; not a reusable credential. Full blob hash binds this review to the inspected version."
+    },
+    {
+      "id": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1:docs/evidence/backend-completion-linux-20261015/image-build-initial.json:generic-api-key:63",
+      "detector": "generic-api-key",
+      "commit": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1",
+      "file": "docs/evidence/backend-completion-linux-20261015/image-build-initial.json",
+      "sourceBlobSha256": "af6736c04d41c8a3c3366dea9297cd72fe08dbb466c29692037dd488e22cc150",
+      "classification": "false_positive",
+      "rationale": "Reviewed exact historical blob: matching public contract/host identity, SHA-256 provenance fingerprint, test marker or explanatory prose; not a reusable credential. Full blob hash binds this review to the inspected version."
+    },
+    {
+      "id": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1:docs/evidence/base-mainnet-asset-observation-20261015/review-legacy-plan.mjs:generic-api-key:15",
+      "detector": "generic-api-key",
+      "commit": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1",
+      "file": "docs/evidence/base-mainnet-asset-observation-20261015/review-legacy-plan.mjs",
+      "sourceBlobSha256": "3caecde69ab3bf7fa195c668985c9e6ae58ffce501a8a9143d8112d6daa81b3b",
+      "classification": "false_positive",
+      "rationale": "Reviewed exact historical blob: matching public contract/host identity, SHA-256 provenance fingerprint, test marker or explanatory prose; not a reusable credential. Full blob hash binds this review to the inspected version."
+    },
+    {
+      "id": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1:docs/evidence/historical/usdg-archive-preflight-2026-10-13.ts.txt:generic-api-key:19",
+      "detector": "generic-api-key",
+      "commit": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1",
+      "file": "docs/evidence/historical/usdg-archive-preflight-2026-10-13.ts.txt",
+      "sourceBlobSha256": "e955ed253ae6af4edac38bc2cb5aad43f476ad5cc714b5a991848fef0f4aa39f",
+      "classification": "false_positive",
+      "rationale": "Reviewed exact historical blob: matching public contract/host identity, SHA-256 provenance fingerprint, test marker or explanatory prose; not a reusable credential. Full blob hash binds this review to the inspected version."
+    },
+    {
+      "id": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1:docs/evidence/legacy-mainnet-preparation-20261015/deployment-prepare.stdout.txt:generic-api-key:5",
+      "detector": "generic-api-key",
+      "commit": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1",
+      "file": "docs/evidence/legacy-mainnet-preparation-20261015/deployment-prepare.stdout.txt",
+      "sourceBlobSha256": "f663a9d21cf53dea05a1afeda973c82be8c085a69f2ceb827701296e5204261d",
+      "classification": "false_positive",
+      "rationale": "Reviewed exact historical blob: matching public contract/host identity, SHA-256 provenance fingerprint, test marker or explanatory prose; not a reusable credential. Full blob hash binds this review to the inspected version."
+    },
+    {
+      "id": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1:docs/evidence/platform-payment-deployment-typecheck-retry-20261015.json:generic-api-key:22",
+      "detector": "generic-api-key",
+      "commit": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1",
+      "file": "docs/evidence/platform-payment-deployment-typecheck-retry-20261015.json",
+      "sourceBlobSha256": "5fe7b994831ee111e70bdfb4c4ff48fd70d71ce6585c8f2a36b7fcf66b37a417",
+      "classification": "false_positive",
+      "rationale": "Reviewed exact historical blob: matching public contract/host identity, SHA-256 provenance fingerprint, test marker or explanatory prose; not a reusable credential. Full blob hash binds this review to the inspected version."
+    },
+    {
+      "id": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1:docs/evidence/platform-payment-deployment-typecheck-retry-20261015.json:generic-api-key:32",
+      "detector": "generic-api-key",
+      "commit": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1",
+      "file": "docs/evidence/platform-payment-deployment-typecheck-retry-20261015.json",
+      "sourceBlobSha256": "5fe7b994831ee111e70bdfb4c4ff48fd70d71ce6585c8f2a36b7fcf66b37a417",
+      "classification": "false_positive",
+      "rationale": "Reviewed exact historical blob: matching public contract/host identity, SHA-256 provenance fingerprint, test marker or explanatory prose; not a reusable credential. Full blob hash binds this review to the inspected version."
+    },
+    {
+      "id": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1:docs/evidence/platform-payment-deployment-typecheck-retry-20261015.json:generic-api-key:35",
+      "detector": "generic-api-key",
+      "commit": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1",
+      "file": "docs/evidence/platform-payment-deployment-typecheck-retry-20261015.json",
+      "sourceBlobSha256": "5fe7b994831ee111e70bdfb4c4ff48fd70d71ce6585c8f2a36b7fcf66b37a417",
+      "classification": "false_positive",
+      "rationale": "Reviewed exact historical blob: matching public contract/host identity, SHA-256 provenance fingerprint, test marker or explanatory prose; not a reusable credential. Full blob hash binds this review to the inspected version."
+    },
+    {
+      "id": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1:docs/evidence/platform-payment-deployment-typecheck-retry-20261015.json:generic-api-key:40",
+      "detector": "generic-api-key",
+      "commit": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1",
+      "file": "docs/evidence/platform-payment-deployment-typecheck-retry-20261015.json",
+      "sourceBlobSha256": "5fe7b994831ee111e70bdfb4c4ff48fd70d71ce6585c8f2a36b7fcf66b37a417",
+      "classification": "false_positive",
+      "rationale": "Reviewed exact historical blob: matching public contract/host identity, SHA-256 provenance fingerprint, test marker or explanatory prose; not a reusable credential. Full blob hash binds this review to the inspected version."
+    },
+    {
+      "id": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1:docs/evidence/platform-payment-deployment-typecheck-retry-20261015.json:generic-api-key:71",
+      "detector": "generic-api-key",
+      "commit": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1",
+      "file": "docs/evidence/platform-payment-deployment-typecheck-retry-20261015.json",
+      "sourceBlobSha256": "5fe7b994831ee111e70bdfb4c4ff48fd70d71ce6585c8f2a36b7fcf66b37a417",
+      "classification": "false_positive",
+      "rationale": "Reviewed exact historical blob: matching public contract/host identity, SHA-256 provenance fingerprint, test marker or explanatory prose; not a reusable credential. Full blob hash binds this review to the inspected version."
+    },
+    {
+      "id": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1:docs/evidence/platform-payment-deployment-typecheck-retry-20261015.json:generic-api-key:72",
+      "detector": "generic-api-key",
+      "commit": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1",
+      "file": "docs/evidence/platform-payment-deployment-typecheck-retry-20261015.json",
+      "sourceBlobSha256": "5fe7b994831ee111e70bdfb4c4ff48fd70d71ce6585c8f2a36b7fcf66b37a417",
+      "classification": "false_positive",
+      "rationale": "Reviewed exact historical blob: matching public contract/host identity, SHA-256 provenance fingerprint, test marker or explanatory prose; not a reusable credential. Full blob hash binds this review to the inspected version."
+    },
+    {
+      "id": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1:docs/evidence/private-staging-attempt04-runtime-20261015/fresh-final/clone/latest-acceptance.json:generic-api-key:1",
+      "detector": "generic-api-key",
+      "commit": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1",
+      "file": "docs/evidence/private-staging-attempt04-runtime-20261015/fresh-final/clone/latest-acceptance.json",
+      "sourceBlobSha256": "68baae093718567967b8e930def50d3b701b2fc8db319d4e719b6af76b8c01a3",
+      "classification": "false_positive",
+      "rationale": "Reviewed exact historical blob: matching public contract/host identity, SHA-256 provenance fingerprint, test marker or explanatory prose; not a reusable credential. Full blob hash binds this review to the inspected version."
+    },
+    {
+      "id": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1:docs/evidence/private-staging-attempt04-runtime-20261015/fresh-final/clone/old-acceptance.json:generic-api-key:1",
+      "detector": "generic-api-key",
+      "commit": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1",
+      "file": "docs/evidence/private-staging-attempt04-runtime-20261015/fresh-final/clone/old-acceptance.json",
+      "sourceBlobSha256": "3d7b34bc2fc89fb8545c113f0071fa2494e79c43f8602c33f623f2483f291a47",
+      "classification": "false_positive",
+      "rationale": "Reviewed exact historical blob: matching public contract/host identity, SHA-256 provenance fingerprint, test marker or explanatory prose; not a reusable credential. Full blob hash binds this review to the inspected version."
+    },
+    {
+      "id": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1:docs/evidence/private-staging-attempt04-runtime-20261015/fresh-final/preactivation-fingerprint.json:generic-api-key:1",
+      "detector": "generic-api-key",
+      "commit": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1",
+      "file": "docs/evidence/private-staging-attempt04-runtime-20261015/fresh-final/preactivation-fingerprint.json",
+      "sourceBlobSha256": "04ece5b612115bb71f515b819d150da58c97a1446e6bb39914d1c7338cd4526f",
+      "classification": "false_positive",
+      "rationale": "Reviewed exact historical blob: matching public contract/host identity, SHA-256 provenance fingerprint, test marker or explanatory prose; not a reusable credential. Full blob hash binds this review to the inspected version."
+    },
+    {
+      "id": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1:docs/evidence/private-staging-attempt04-runtime-20261015/fresh-final/snapshot-fingerprint.json:generic-api-key:1",
+      "detector": "generic-api-key",
+      "commit": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1",
+      "file": "docs/evidence/private-staging-attempt04-runtime-20261015/fresh-final/snapshot-fingerprint.json",
+      "sourceBlobSha256": "04ece5b612115bb71f515b819d150da58c97a1446e6bb39914d1c7338cd4526f",
+      "classification": "false_positive",
+      "rationale": "Reviewed exact historical blob: matching public contract/host identity, SHA-256 provenance fingerprint, test marker or explanatory prose; not a reusable credential. Full blob hash binds this review to the inspected version."
+    },
+    {
+      "id": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1:docs/evidence/private-staging-attempt04-runtime-20261015/rehearsal/clone/latest-acceptance.json:generic-api-key:1",
+      "detector": "generic-api-key",
+      "commit": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1",
+      "file": "docs/evidence/private-staging-attempt04-runtime-20261015/rehearsal/clone/latest-acceptance.json",
+      "sourceBlobSha256": "68baae093718567967b8e930def50d3b701b2fc8db319d4e719b6af76b8c01a3",
+      "classification": "false_positive",
+      "rationale": "Reviewed exact historical blob: matching public contract/host identity, SHA-256 provenance fingerprint, test marker or explanatory prose; not a reusable credential. Full blob hash binds this review to the inspected version."
+    },
+    {
+      "id": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1:docs/evidence/private-staging-attempt04-runtime-20261015/rehearsal/clone/old-acceptance.json:generic-api-key:1",
+      "detector": "generic-api-key",
+      "commit": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1",
+      "file": "docs/evidence/private-staging-attempt04-runtime-20261015/rehearsal/clone/old-acceptance.json",
+      "sourceBlobSha256": "3d7b34bc2fc89fb8545c113f0071fa2494e79c43f8602c33f623f2483f291a47",
+      "classification": "false_positive",
+      "rationale": "Reviewed exact historical blob: matching public contract/host identity, SHA-256 provenance fingerprint, test marker or explanatory prose; not a reusable credential. Full blob hash binds this review to the inspected version."
+    },
+    {
+      "id": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1:docs/evidence/private-staging-attempt04-runtime-20261015/rehearsal/snapshot-fingerprint.json:generic-api-key:1",
+      "detector": "generic-api-key",
+      "commit": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1",
+      "file": "docs/evidence/private-staging-attempt04-runtime-20261015/rehearsal/snapshot-fingerprint.json",
+      "sourceBlobSha256": "942af5f662fe4cb68bdf2ba7f6da09f0b331260d8321311f614e72f69507a4c4",
+      "classification": "false_positive",
+      "rationale": "Reviewed exact historical blob: matching public contract/host identity, SHA-256 provenance fingerprint, test marker or explanatory prose; not a reusable credential. Full blob hash binds this review to the inspected version."
+    },
+    {
+      "id": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1:docs/evidence/private-staging-postoperation-independent-proof-20261015.json:generic-api-key:1",
+      "detector": "generic-api-key",
+      "commit": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1",
+      "file": "docs/evidence/private-staging-postoperation-independent-proof-20261015.json",
+      "sourceBlobSha256": "247a838370b845edeef678d8c25bacc2156faf91ad6a5baebfaa8ad6084a91ef",
+      "classification": "false_positive",
+      "rationale": "Reviewed exact historical blob: matching public contract/host identity, SHA-256 provenance fingerprint, test marker or explanatory prose; not a reusable credential. Full blob hash binds this review to the inspected version."
+    },
+    {
+      "id": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1:docs/evidence/private-staging-root-postactivation-20261015/collection.json:generic-api-key:174",
+      "detector": "generic-api-key",
+      "commit": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1",
+      "file": "docs/evidence/private-staging-root-postactivation-20261015/collection.json",
+      "sourceBlobSha256": "b7368dbde08ec73986e23742885e231022fab6e160d4b46fba75b5c0216b1960",
+      "classification": "false_positive",
+      "rationale": "Reviewed exact historical blob: matching public contract/host identity, SHA-256 provenance fingerprint, test marker or explanatory prose; not a reusable credential. Full blob hash binds this review to the inspected version."
+    },
+    {
+      "id": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1:docs/evidence/private-staging-root-postactivation-20261015/collection.json:generic-api-key:175",
+      "detector": "generic-api-key",
+      "commit": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1",
+      "file": "docs/evidence/private-staging-root-postactivation-20261015/collection.json",
+      "sourceBlobSha256": "b7368dbde08ec73986e23742885e231022fab6e160d4b46fba75b5c0216b1960",
+      "classification": "false_positive",
+      "rationale": "Reviewed exact historical blob: matching public contract/host identity, SHA-256 provenance fingerprint, test marker or explanatory prose; not a reusable credential. Full blob hash binds this review to the inspected version."
+    },
+    {
+      "id": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1:docs/evidence/private-staging-root-postactivation-20261015/original-data.json:generic-api-key:1",
+      "detector": "generic-api-key",
+      "commit": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1",
+      "file": "docs/evidence/private-staging-root-postactivation-20261015/original-data.json",
+      "sourceBlobSha256": "e7ba1200c4b7302a4c60664f727ee6fefea6641fc65111ef59d8461166a8fb20",
+      "classification": "false_positive",
+      "rationale": "Reviewed exact historical blob: matching public contract/host identity, SHA-256 provenance fingerprint, test marker or explanatory prose; not a reusable credential. Full blob hash binds this review to the inspected version."
+    },
+    {
+      "id": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1:docs/large-cyst-2gib-local-acceptance.json:generic-api-key:11",
+      "detector": "generic-api-key",
+      "commit": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1",
+      "file": "docs/large-cyst-2gib-local-acceptance.json",
+      "sourceBlobSha256": "a99552e8866dd6b46be874a20031407beef91d140d7a52dfe8fa40c72a2767f9",
+      "classification": "false_positive",
+      "rationale": "Reviewed exact historical blob: matching public contract/host identity, SHA-256 provenance fingerprint, test marker or explanatory prose; not a reusable credential. Full blob hash binds this review to the inspected version."
+    },
+    {
+      "id": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1:docs/near-image-provenance-review.json:generic-api-key:216",
+      "detector": "generic-api-key",
+      "commit": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1",
+      "file": "docs/near-image-provenance-review.json",
+      "sourceBlobSha256": "4b721381db948bc23345d831034d131bc8b6113af5143c2b2956eabb787d65a8",
+      "classification": "false_positive",
+      "rationale": "Reviewed exact historical blob: matching public contract/host identity, SHA-256 provenance fingerprint, test marker or explanatory prose; not a reusable credential. Full blob hash binds this review to the inspected version."
+    },
+    {
+      "id": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1:docs/near-image-provenance-review.json:generic-api-key:640",
+      "detector": "generic-api-key",
+      "commit": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1",
+      "file": "docs/near-image-provenance-review.json",
+      "sourceBlobSha256": "4b721381db948bc23345d831034d131bc8b6113af5143c2b2956eabb787d65a8",
+      "classification": "false_positive",
+      "rationale": "Reviewed exact historical blob: matching public contract/host identity, SHA-256 provenance fingerprint, test marker or explanatory prose; not a reusable credential. Full blob hash binds this review to the inspected version."
+    },
+    {
+      "id": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1:docs/near-image-provenance-review.json:generic-api-key:90",
+      "detector": "generic-api-key",
+      "commit": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1",
+      "file": "docs/near-image-provenance-review.json",
+      "sourceBlobSha256": "4b721381db948bc23345d831034d131bc8b6113af5143c2b2956eabb787d65a8",
+      "classification": "false_positive",
+      "rationale": "Reviewed exact historical blob: matching public contract/host identity, SHA-256 provenance fingerprint, test marker or explanatory prose; not a reusable credential. Full blob hash binds this review to the inspected version."
+    },
+    {
+      "id": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1:docs/operator-status-validation.json:generic-api-key:8",
+      "detector": "generic-api-key",
+      "commit": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1",
+      "file": "docs/operator-status-validation.json",
+      "sourceBlobSha256": "5186532625ac152566c3c24f9be23ca40b762c47fc187a5fa8dbb2a153762dde",
+      "classification": "false_positive",
+      "rationale": "Reviewed exact historical blob: matching public contract/host identity, SHA-256 provenance fingerprint, test marker or explanatory prose; not a reusable credential. Full blob hash binds this review to the inspected version."
+    },
+    {
+      "id": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1:docs/paid-preemption-gvisor-20261013-evidence.json:generic-api-key:33",
+      "detector": "generic-api-key",
+      "commit": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1",
+      "file": "docs/paid-preemption-gvisor-20261013-evidence.json",
+      "sourceBlobSha256": "a7cea78cc8cd27068f6380707001f9cb3bc4b95c1f839cee31da62bd4c34e906",
+      "classification": "false_positive",
+      "rationale": "Reviewed exact historical blob: matching public contract/host identity, SHA-256 provenance fingerprint, test marker or explanatory prose; not a reusable credential. Full blob hash binds this review to the inspected version."
+    },
+    {
+      "id": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1:docs/paid-preemption-gvisor-20261013-raw.json:generic-api-key:1",
+      "detector": "generic-api-key",
+      "commit": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1",
+      "file": "docs/paid-preemption-gvisor-20261013-raw.json",
+      "sourceBlobSha256": "09c975d368e5394c4085d90816e7ae0453214245b209b1712089290d79d52ba5",
+      "classification": "false_positive",
+      "rationale": "Reviewed exact historical blob: matching public contract/host identity, SHA-256 provenance fingerprint, test marker or explanatory prose; not a reusable credential. Full blob hash binds this review to the inspected version."
+    },
+    {
+      "id": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1:docs/platform-deployment-plan.md:generic-api-key:17",
+      "detector": "generic-api-key",
+      "commit": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1",
+      "file": "docs/platform-deployment-plan.md",
+      "sourceBlobSha256": "6d40b7658e77741e235304125e62db1d85459f958114c3c8ecf8fc359eda4b63",
+      "classification": "false_positive",
+      "rationale": "Reviewed exact historical blob: matching public contract/host identity, SHA-256 provenance fingerprint, test marker or explanatory prose; not a reusable credential. Full blob hash binds this review to the inspected version."
+    },
+    {
+      "id": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1:docs/platform-selection.md:generic-api-key:7",
+      "detector": "generic-api-key",
+      "commit": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1",
+      "file": "docs/platform-selection.md",
+      "sourceBlobSha256": "61e0f6a2a13c1706424ce9d639b17453569777dd63cf55095077368cc8e1bfd6",
+      "classification": "false_positive",
+      "rationale": "Reviewed exact historical blob: matching public contract/host identity, SHA-256 provenance fingerprint, test marker or explanatory prose; not a reusable credential. Full blob hash binds this review to the inspected version."
+    },
+    {
+      "id": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1:docs/python-full-validation-2026-10-14.json:generic-api-key:134",
+      "detector": "generic-api-key",
+      "commit": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1",
+      "file": "docs/python-full-validation-2026-10-14.json",
+      "sourceBlobSha256": "853ebc43fa361f8c35bec0b66a976b043f03da7c96e44bf4c3ec2213a8efc55f",
+      "classification": "false_positive",
+      "rationale": "Reviewed exact historical blob: matching public contract/host identity, SHA-256 provenance fingerprint, test marker or explanatory prose; not a reusable credential. Full blob hash binds this review to the inspected version."
+    },
+    {
+      "id": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1:docs/python-full-validation-2026-10-14.json:generic-api-key:215",
+      "detector": "generic-api-key",
+      "commit": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1",
+      "file": "docs/python-full-validation-2026-10-14.json",
+      "sourceBlobSha256": "853ebc43fa361f8c35bec0b66a976b043f03da7c96e44bf4c3ec2213a8efc55f",
+      "classification": "false_positive",
+      "rationale": "Reviewed exact historical blob: matching public contract/host identity, SHA-256 provenance fingerprint, test marker or explanatory prose; not a reusable credential. Full blob hash binds this review to the inspected version."
+    },
+    {
+      "id": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1:docs/python-full-validation-2026-10-14.json:generic-api-key:255",
+      "detector": "generic-api-key",
+      "commit": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1",
+      "file": "docs/python-full-validation-2026-10-14.json",
+      "sourceBlobSha256": "853ebc43fa361f8c35bec0b66a976b043f03da7c96e44bf4c3ec2213a8efc55f",
+      "classification": "false_positive",
+      "rationale": "Reviewed exact historical blob: matching public contract/host identity, SHA-256 provenance fingerprint, test marker or explanatory prose; not a reusable credential. Full blob hash binds this review to the inspected version."
+    },
+    {
+      "id": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1:docs/python-full-validation-2026-10-14.json:generic-api-key:328",
+      "detector": "generic-api-key",
+      "commit": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1",
+      "file": "docs/python-full-validation-2026-10-14.json",
+      "sourceBlobSha256": "853ebc43fa361f8c35bec0b66a976b043f03da7c96e44bf4c3ec2213a8efc55f",
+      "classification": "false_positive",
+      "rationale": "Reviewed exact historical blob: matching public contract/host identity, SHA-256 provenance fingerprint, test marker or explanatory prose; not a reusable credential. Full blob hash binds this review to the inspected version."
+    },
+    {
+      "id": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1:docs/python-full-validation-2026-10-14.json:generic-api-key:496",
+      "detector": "generic-api-key",
+      "commit": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1",
+      "file": "docs/python-full-validation-2026-10-14.json",
+      "sourceBlobSha256": "853ebc43fa361f8c35bec0b66a976b043f03da7c96e44bf4c3ec2213a8efc55f",
+      "classification": "false_positive",
+      "rationale": "Reviewed exact historical blob: matching public contract/host identity, SHA-256 provenance fingerprint, test marker or explanatory prose; not a reusable credential. Full blob hash binds this review to the inspected version."
+    },
+    {
+      "id": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1:docs/python-full-validation-2026-10-14.json:generic-api-key:629",
+      "detector": "generic-api-key",
+      "commit": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1",
+      "file": "docs/python-full-validation-2026-10-14.json",
+      "sourceBlobSha256": "853ebc43fa361f8c35bec0b66a976b043f03da7c96e44bf4c3ec2213a8efc55f",
+      "classification": "false_positive",
+      "rationale": "Reviewed exact historical blob: matching public contract/host identity, SHA-256 provenance fingerprint, test marker or explanatory prose; not a reusable credential. Full blob hash binds this review to the inspected version."
+    },
+    {
+      "id": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1:docs/python-full-validation-2026-10-14.json:generic-api-key:643",
+      "detector": "generic-api-key",
+      "commit": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1",
+      "file": "docs/python-full-validation-2026-10-14.json",
+      "sourceBlobSha256": "853ebc43fa361f8c35bec0b66a976b043f03da7c96e44bf4c3ec2213a8efc55f",
+      "classification": "false_positive",
+      "rationale": "Reviewed exact historical blob: matching public contract/host identity, SHA-256 provenance fingerprint, test marker or explanatory prose; not a reusable credential. Full blob hash binds this review to the inspected version."
+    },
+    {
+      "id": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1:docs/python-full-validation-2026-10-14.json:generic-api-key:668",
+      "detector": "generic-api-key",
+      "commit": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1",
+      "file": "docs/python-full-validation-2026-10-14.json",
+      "sourceBlobSha256": "853ebc43fa361f8c35bec0b66a976b043f03da7c96e44bf4c3ec2213a8efc55f",
+      "classification": "false_positive",
+      "rationale": "Reviewed exact historical blob: matching public contract/host identity, SHA-256 provenance fingerprint, test marker or explanatory prose; not a reusable credential. Full blob hash binds this review to the inspected version."
+    },
+    {
+      "id": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1:docs/python-full-validation-2026-10-14.json:generic-api-key:679",
+      "detector": "generic-api-key",
+      "commit": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1",
+      "file": "docs/python-full-validation-2026-10-14.json",
+      "sourceBlobSha256": "853ebc43fa361f8c35bec0b66a976b043f03da7c96e44bf4c3ec2213a8efc55f",
+      "classification": "false_positive",
+      "rationale": "Reviewed exact historical blob: matching public contract/host identity, SHA-256 provenance fingerprint, test marker or explanatory prose; not a reusable credential. Full blob hash binds this review to the inspected version."
+    },
+    {
+      "id": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1:docs/python-full-validation-2026-10-14.json:generic-api-key:680",
+      "detector": "generic-api-key",
+      "commit": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1",
+      "file": "docs/python-full-validation-2026-10-14.json",
+      "sourceBlobSha256": "853ebc43fa361f8c35bec0b66a976b043f03da7c96e44bf4c3ec2213a8efc55f",
+      "classification": "false_positive",
+      "rationale": "Reviewed exact historical blob: matching public contract/host identity, SHA-256 provenance fingerprint, test marker or explanatory prose; not a reusable credential. Full blob hash binds this review to the inspected version."
+    },
+    {
+      "id": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1:docs/python-full-validation-2026-10-14.json:generic-api-key:786",
+      "detector": "generic-api-key",
+      "commit": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1",
+      "file": "docs/python-full-validation-2026-10-14.json",
+      "sourceBlobSha256": "853ebc43fa361f8c35bec0b66a976b043f03da7c96e44bf4c3ec2213a8efc55f",
+      "classification": "false_positive",
+      "rationale": "Reviewed exact historical blob: matching public contract/host identity, SHA-256 provenance fingerprint, test marker or explanatory prose; not a reusable credential. Full blob hash binds this review to the inspected version."
+    },
+    {
+      "id": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1:docs/python-sdk-smoke.json:generic-api-key:10",
+      "detector": "generic-api-key",
+      "commit": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1",
+      "file": "docs/python-sdk-smoke.json",
+      "sourceBlobSha256": "499db3edc0016919565cf632f15301a458af2ece86024b93a181aa10aa1c5f85",
+      "classification": "false_positive",
+      "rationale": "Reviewed exact historical blob: matching public contract/host identity, SHA-256 provenance fingerprint, test marker or explanatory prose; not a reusable credential. Full blob hash binds this review to the inspected version."
+    },
+    {
+      "id": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1:docs/tlmr-economics-v2-validation-2026-10-14.json:generic-api-key:190",
+      "detector": "generic-api-key",
+      "commit": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1",
+      "file": "docs/tlmr-economics-v2-validation-2026-10-14.json",
+      "sourceBlobSha256": "073d510f512a5524ac3c80dc7f17a6981589bc461d06a076450f32304c4de671",
+      "classification": "false_positive",
+      "rationale": "Reviewed exact historical blob: matching public contract/host identity, SHA-256 provenance fingerprint, test marker or explanatory prose; not a reusable credential. Full blob hash binds this review to the inspected version."
+    },
+    {
+      "id": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1:docs/tlmr-economics-v2-validation-2026-10-14.json:generic-api-key:384",
+      "detector": "generic-api-key",
+      "commit": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1",
+      "file": "docs/tlmr-economics-v2-validation-2026-10-14.json",
+      "sourceBlobSha256": "073d510f512a5524ac3c80dc7f17a6981589bc461d06a076450f32304c4de671",
+      "classification": "false_positive",
+      "rationale": "Reviewed exact historical blob: matching public contract/host identity, SHA-256 provenance fingerprint, test marker or explanatory prose; not a reusable credential. Full blob hash binds this review to the inspected version."
+    },
+    {
+      "id": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1:docs/tlmr-economics-v2-validation-2026-10-14.json:generic-api-key:63",
+      "detector": "generic-api-key",
+      "commit": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1",
+      "file": "docs/tlmr-economics-v2-validation-2026-10-14.json",
+      "sourceBlobSha256": "073d510f512a5524ac3c80dc7f17a6981589bc461d06a076450f32304c4de671",
+      "classification": "false_positive",
+      "rationale": "Reviewed exact historical blob: matching public contract/host identity, SHA-256 provenance fingerprint, test marker or explanatory prose; not a reusable credential. Full blob hash binds this review to the inspected version."
+    },
+    {
+      "id": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1:docs/tlmr-economics-v2-validation-2026-10-14.json:generic-api-key:71",
+      "detector": "generic-api-key",
+      "commit": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1",
+      "file": "docs/tlmr-economics-v2-validation-2026-10-14.json",
+      "sourceBlobSha256": "073d510f512a5524ac3c80dc7f17a6981589bc461d06a076450f32304c4de671",
+      "classification": "false_positive",
+      "rationale": "Reviewed exact historical blob: matching public contract/host identity, SHA-256 provenance fingerprint, test marker or explanatory prose; not a reusable credential. Full blob hash binds this review to the inspected version."
+    },
+    {
+      "id": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1:docs/tlmr-economics-v2-validation-2026-10-14.json:generic-api-key:74",
+      "detector": "generic-api-key",
+      "commit": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1",
+      "file": "docs/tlmr-economics-v2-validation-2026-10-14.json",
+      "sourceBlobSha256": "073d510f512a5524ac3c80dc7f17a6981589bc461d06a076450f32304c4de671",
+      "classification": "false_positive",
+      "rationale": "Reviewed exact historical blob: matching public contract/host identity, SHA-256 provenance fingerprint, test marker or explanatory prose; not a reusable credential. Full blob hash binds this review to the inspected version."
+    },
+    {
+      "id": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1:docs/tlmr-economics-v2-validation-2026-10-14.json:generic-api-key:79",
+      "detector": "generic-api-key",
+      "commit": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1",
+      "file": "docs/tlmr-economics-v2-validation-2026-10-14.json",
+      "sourceBlobSha256": "073d510f512a5524ac3c80dc7f17a6981589bc461d06a076450f32304c4de671",
+      "classification": "false_positive",
+      "rationale": "Reviewed exact historical blob: matching public contract/host identity, SHA-256 provenance fingerprint, test marker or explanatory prose; not a reusable credential. Full blob hash binds this review to the inspected version."
+    },
+    {
+      "id": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1:infra/telomere-staging-watchdog.service:generic-api-key:11",
+      "detector": "generic-api-key",
+      "commit": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1",
+      "file": "infra/telomere-staging-watchdog.service",
+      "sourceBlobSha256": "5682c0f8ce16e5a08c2427b787345adb2d44f580b28784a99e8a952c4d4c5ef2",
+      "classification": "false_positive",
+      "rationale": "Reviewed command-line pathname for an auth-token file, not that file contents."
+    },
+    {
+      "id": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1:ops/legacy-mainnet/activation.json.template:generic-api-key:8",
+      "detector": "generic-api-key",
+      "commit": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1",
+      "file": "ops/legacy-mainnet/activation.json.template",
+      "sourceBlobSha256": "79208a8a12c1d3ef568413664798f90371f6763d2dfd801b9a6e56715990d672",
+      "classification": "false_positive",
+      "rationale": "Reviewed matching public payment-token contract address in an example/configuration; not a signer private key or bearer credential."
+    },
+    {
+      "id": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1:ops/legacy-mainnet/mainnet.env.template:generic-api-key:9",
+      "detector": "generic-api-key",
+      "commit": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1",
+      "file": "ops/legacy-mainnet/mainnet.env.template",
+      "sourceBlobSha256": "ee92c342a40c0553a7fbaab8e47626cb008dfa9d629b73ea22dd3d6e569d47ca",
+      "classification": "false_positive",
+      "rationale": "Reviewed matching public payment-token contract address in an example/configuration; not a signer private key or bearer credential."
+    },
+    {
+      "id": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1:python/tests/test_cyst_registry.py:generic-api-key:216",
+      "detector": "generic-api-key",
+      "commit": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1",
+      "file": "python/tests/test_cyst_registry.py",
+      "sourceBlobSha256": "0536aa250264f22b1b599f5406f30374a51bb9565b19c946a781fbbf1a53d881",
+      "classification": "false_positive",
+      "rationale": "Reviewed exact historical blob: matching public contract/host identity, SHA-256 provenance fingerprint, test marker or explanatory prose; not a reusable credential. Full blob hash binds this review to the inspected version."
+    },
+    {
+      "id": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1:python/tests/test_cysts.py:generic-api-key:296",
+      "detector": "generic-api-key",
+      "commit": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1",
+      "file": "python/tests/test_cysts.py",
+      "sourceBlobSha256": "b44e7b174588e02b7252385a5a027ed598d95db9caf1f229717a18a25220b1b9",
+      "classification": "false_positive",
+      "rationale": "Reviewed exact historical blob: matching public contract/host identity, SHA-256 provenance fingerprint, test marker or explanatory prose; not a reusable credential. Full blob hash binds this review to the inspected version."
+    },
+    {
+      "id": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1:python/tests/test_platform.py:generic-api-key:121",
+      "detector": "generic-api-key",
+      "commit": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1",
+      "file": "python/tests/test_platform.py",
+      "sourceBlobSha256": "a04166ba427dfcf3f15eba42131136829b8d2bcc53be7d810768b0ea25f68b2a",
+      "classification": "false_positive",
+      "rationale": "Reviewed exact historical blob: matching public contract/host identity, SHA-256 provenance fingerprint, test marker or explanatory prose; not a reusable credential. Full blob hash binds this review to the inspected version."
+    },
+    {
+      "id": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1:scripts/host-text-acceptance.ts:generic-api-key:17",
+      "detector": "generic-api-key",
+      "commit": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1",
+      "file": "scripts/host-text-acceptance.ts",
+      "sourceBlobSha256": "f71d1139e1fb0cc05ef4a0778738b71322e2a67aa472029b28d96c88b198e00a",
+      "classification": "false_positive",
+      "rationale": "Reviewed exact historical blob: matching public contract/host identity, SHA-256 provenance fingerprint, test marker or explanatory prose; not a reusable credential. Full blob hash binds this review to the inspected version."
+    },
+    {
+      "id": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1:scripts/platform-runtime-acceptance.ts:generic-api-key:27",
+      "detector": "generic-api-key",
+      "commit": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1",
+      "file": "scripts/platform-runtime-acceptance.ts",
+      "sourceBlobSha256": "47a85c4ec6afef2141d755856ec63721392a0663bd7c767e9fced5ca1da80786",
+      "classification": "false_positive",
+      "rationale": "Reviewed exact historical blob: matching public contract/host identity, SHA-256 provenance fingerprint, test marker or explanatory prose; not a reusable credential. Full blob hash binds this review to the inspected version."
+    },
+    {
+      "id": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1:tests/controller-platform.test.ts:generic-api-key:147",
+      "detector": "generic-api-key",
+      "commit": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1",
+      "file": "tests/controller-platform.test.ts",
+      "sourceBlobSha256": "e41e5c9f5a406db736154003b57942d0f1ee59cf8c6176d791cd0394c4a5a022",
+      "classification": "false_positive",
+      "rationale": "Reviewed matching deterministic test idempotency marker or public identifier; no authentication authority."
+    },
+    {
+      "id": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1:tests/fixtures/spend-permissions/provenance.json:coinbase-access-token:40",
+      "detector": "coinbase-access-token",
+      "commit": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1",
+      "file": "tests/fixtures/spend-permissions/provenance.json",
+      "sourceBlobSha256": "ce0f0d4dd619a9a19431d89cc6fc3f35ee3063a1eaf37425b777c048921e0d25",
+      "classification": "false_positive",
+      "rationale": "Reviewed matching deterministic test idempotency marker or public identifier; no authentication authority."
+    },
+    {
+      "id": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1:tests/fixtures/spend-permissions/provenance.json:generic-api-key:55",
+      "detector": "generic-api-key",
+      "commit": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1",
+      "file": "tests/fixtures/spend-permissions/provenance.json",
+      "sourceBlobSha256": "ce0f0d4dd619a9a19431d89cc6fc3f35ee3063a1eaf37425b777c048921e0d25",
+      "classification": "false_positive",
+      "rationale": "Reviewed matching deterministic test idempotency marker or public identifier; no authentication authority."
+    },
+    {
+      "id": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1:tests/framework-starters.test.ts:generic-api-key:143",
+      "detector": "generic-api-key",
+      "commit": "5e89820a66086a8dca0d42b9a99b1e0f49676ae1",
+      "file": "tests/framework-starters.test.ts",
+      "sourceBlobSha256": "1cb41fce0a56d26218b470c46f72b0bc527376aca21c7841a65cfc0b3c49eae7",
+      "classification": "false_positive",
+      "rationale": "Reviewed matching deterministic test idempotency marker or public identifier; no authentication authority."
+    },
+    {
+      "id": "844b14d2ebf242f1f376756435958a0c103e622d:docs/evidence/cpu-fresh-vm-20261018/prior-attempts.json:generic-api-key:63",
+      "detector": "generic-api-key",
+      "commit": "844b14d2ebf242f1f376756435958a0c103e622d",
+      "file": "docs/evidence/cpu-fresh-vm-20261018/prior-attempts.json",
+      "sourceBlobSha256": "f9a067aceacf56a11d37e677838a5cf3ab9eb09226f254c1a9a585b793cb3565",
+      "classification": "false_positive",
+      "rationale": "Reviewed exact historical blob: matching public contract/host identity, SHA-256 provenance fingerprint, test marker or explanatory prose; not a reusable credential. Full blob hash binds this review to the inspected version."
+    },
+    {
+      "id": "844b14d2ebf242f1f376756435958a0c103e622d:docs/evidence/cpu-fresh-vm-20261018/provenance.json:generic-api-key:12",
+      "detector": "generic-api-key",
+      "commit": "844b14d2ebf242f1f376756435958a0c103e622d",
+      "file": "docs/evidence/cpu-fresh-vm-20261018/provenance.json",
+      "sourceBlobSha256": "c91abf0857e3fc1cf6869607b16a98a6150644142dd466de29e7a5bfc16dba07",
+      "classification": "false_positive",
+      "rationale": "Reviewed exact historical blob: matching public contract/host identity, SHA-256 provenance fingerprint, test marker or explanatory prose; not a reusable credential. Full blob hash binds this review to the inspected version."
+    },
+    {
+      "id": "844b14d2ebf242f1f376756435958a0c103e622d:docs/evidence/cpu-fresh-vm-20261018/provenance.json:generic-api-key:21",
+      "detector": "generic-api-key",
+      "commit": "844b14d2ebf242f1f376756435958a0c103e622d",
+      "file": "docs/evidence/cpu-fresh-vm-20261018/provenance.json",
+      "sourceBlobSha256": "c91abf0857e3fc1cf6869607b16a98a6150644142dd466de29e7a5bfc16dba07",
+      "classification": "false_positive",
+      "rationale": "Reviewed exact historical blob: matching public contract/host identity, SHA-256 provenance fingerprint, test marker or explanatory prose; not a reusable credential. Full blob hash binds this review to the inspected version."
+    },
+    {
+      "id": "844b14d2ebf242f1f376756435958a0c103e622d:docs/evidence/cpu-fresh-vm-20261018/provenance.json:generic-api-key:33",
+      "detector": "generic-api-key",
+      "commit": "844b14d2ebf242f1f376756435958a0c103e622d",
+      "file": "docs/evidence/cpu-fresh-vm-20261018/provenance.json",
+      "sourceBlobSha256": "c91abf0857e3fc1cf6869607b16a98a6150644142dd466de29e7a5bfc16dba07",
+      "classification": "false_positive",
+      "rationale": "Reviewed exact historical blob: matching public contract/host identity, SHA-256 provenance fingerprint, test marker or explanatory prose; not a reusable credential. Full blob hash binds this review to the inspected version."
+    },
+    {
+      "id": "97c2827b451e2ee5b004039d5cc7baa503a4a3a1:docs/evidence/base-paid-cpu-positive-20261017/signed-receipt.json:generic-api-key:29",
+      "detector": "generic-api-key",
+      "commit": "97c2827b451e2ee5b004039d5cc7baa503a4a3a1",
+      "file": "docs/evidence/base-paid-cpu-positive-20261017/signed-receipt.json",
+      "sourceBlobSha256": "68c4020ffa0779c8221c912117582256c0552bea7d0c2cd02a63d98674fba937",
+      "classification": "false_positive",
+      "rationale": "Reviewed exact historical blob: matching public contract/host identity, SHA-256 provenance fingerprint, test marker or explanatory prose; not a reusable credential. Full blob hash binds this review to the inspected version."
+    },
+    {
+      "id": "97c2827b451e2ee5b004039d5cc7baa503a4a3a1:docs/evidence/base-paid-cpu-positive-20261017/verification.json:generic-api-key:8",
+      "detector": "generic-api-key",
+      "commit": "97c2827b451e2ee5b004039d5cc7baa503a4a3a1",
+      "file": "docs/evidence/base-paid-cpu-positive-20261017/verification.json",
+      "sourceBlobSha256": "ad1044d8b170886187cd6de85086da0537baed20017ddbfcec609dc5058d7392",
+      "classification": "false_positive",
+      "rationale": "Reviewed exact historical blob: matching public contract/host identity, SHA-256 provenance fingerprint, test marker or explanatory prose; not a reusable credential. Full blob hash binds this review to the inspected version."
+    },
+    {
+      "id": "b41cda8fddd31f119ecea9818ebc46268f12eaab:docs/evidence/cpu-backup-crash-20261018/provenance.json:generic-api-key:15",
+      "detector": "generic-api-key",
+      "commit": "b41cda8fddd31f119ecea9818ebc46268f12eaab",
+      "file": "docs/evidence/cpu-backup-crash-20261018/provenance.json",
+      "sourceBlobSha256": "f883e568c5920bdb6ea9cb96036fec87dd9ab682b68a24970215f081392c4f88",
+      "classification": "false_positive",
+      "rationale": "Reviewed exact historical blob: matching public contract/host identity, SHA-256 provenance fingerprint, test marker or explanatory prose; not a reusable credential. Full blob hash binds this review to the inspected version."
+    },
+    {
+      "id": "ce7911a03441449e5c6f1da3a9cea8a9a4a839c5:docs/evidence/base-paid-cpu-20261017/signed-receipt.json:generic-api-key:29",
+      "detector": "generic-api-key",
+      "commit": "ce7911a03441449e5c6f1da3a9cea8a9a4a839c5",
+      "file": "docs/evidence/base-paid-cpu-20261017/signed-receipt.json",
+      "sourceBlobSha256": "94e1da54dfcf6feee0a2464b9dec5d53da626a56cf788a62b0a04892dfdb21e5",
+      "classification": "false_positive",
+      "rationale": "Reviewed exact historical blob: matching public contract/host identity, SHA-256 provenance fingerprint, test marker or explanatory prose; not a reusable credential. Full blob hash binds this review to the inspected version."
+    },
+    {
+      "id": "ce7911a03441449e5c6f1da3a9cea8a9a4a839c5:docs/evidence/base-paid-cpu-20261017/verification.json:generic-api-key:8",
+      "detector": "generic-api-key",
+      "commit": "ce7911a03441449e5c6f1da3a9cea8a9a4a839c5",
+      "file": "docs/evidence/base-paid-cpu-20261017/verification.json",
+      "sourceBlobSha256": "b6a157c79d2ff5d0efbb601cb0f98a4226bc4b89563cb6794d2cf7662d669069",
+      "classification": "false_positive",
+      "rationale": "Reviewed exact historical blob: matching public contract/host identity, SHA-256 provenance fingerprint, test marker or explanatory prose; not a reusable credential. Full blob hash binds this review to the inspected version."
+    }
+  ]
+}

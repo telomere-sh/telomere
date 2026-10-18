@@ -1,4 +1,8 @@
 """Root operator seals a completed exact-candidate acceptance from its unit journal."""
+import sys as _runtime_sys
+if _runtime_sys.flags.optimize:
+    raise RuntimeError('Telomere recovery tooling requires checked Python; remove -O/-OO and PYTHONOPTIMIZE.')
+
 from pathlib import Path
 import hashlib,json,os,re,stat,subprocess,sys
 BASE=Path('/opt/telomere-mainnet-pilot');assert os.geteuid()==0 and len(sys.argv)==3

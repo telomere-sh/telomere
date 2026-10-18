@@ -1,0 +1,11 @@
+# Source security gates
+
+`review.yml` runs reproducible installs, the complete portable Vitest suite, a separate real PostgreSQL admission gate, Python recovery and wallet tests, dependency audits and source-bound static analysis. Its jobs require no project secrets and perform no deployment. A prepared workflow is not evidence of a completed GitHub run: inspect the actual Actions result after publication.
+
+Slither 0.11.6 uses pinned native solc 0.8.28, optimizer 200, Paris EVM and excludes dependency findings. The raw project report retains all severities. The baseline contains 199 distinct reviewed project findings (including 12 High and 40 Medium); acceptance is not a clean-scan or formal-verification claim. Integration assumptions, forced ETH and batch gas risks remain recorded beside each exact finding and source hash. Broader platform contracts are source profiles, not evidence that they are deployed in the CPU pilot.
+
+Gitleaks scans all reachable Git history with full redaction. Its baseline binds each reviewed match to an immutable commit, filename and complete blob hash. Public token addresses, provenance hashes and test markers are not live credentials. No folder or detector is globally ignored. New findings, changed source, stale reviews, failed scanner execution and unredacted reports block the gate. Baselines must be deliberately reviewed after changes, never regenerated automatically by CI.
+
+Use `python security/install-tools.py`, then the hash-locked tools environment to run `python security/run-scans.py`. Raw redacted JSON, scanner logs and acceptance summaries are under ignored `.local/security-reports`. Dependency locks cover the SDK, optional NEAR verifier and scanner environment separately. Optional live provider, archive RPC and host-specific gVisor acceptance require their own reviewed environment; portable CI does not pretend to execute them.
+
+Release inventory binds source commit, dirty-state flag, both npm locks and every generated file to SHA-256. Run `npm run release:verify -- --require-clean` from a clean checkout. Preserve the manifest and SBOM beside the release. Immutable deployed signer/treasury roles are a remaining operational trust boundary, documented in `docs/CPU-RELEASE-PROFILE.md`; changing source does not rotate those roles.

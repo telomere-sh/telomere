@@ -4,10 +4,10 @@ Complete multi-page frontend and editable source for Telomere. It includes the l
 
 ## Start
 
-Use Node.js 18 or later. From this folder:
+Use the repository's reviewed Node.js 22 runtime. From this folder:
 
 ```sh
-npm install
+npm ci --ignore-scripts
 npm run dev
 ```
 
@@ -41,7 +41,9 @@ npm run build
 
 ## Backend integration
 
-Read `docs/BACKEND-HANDOFF.md` first. The current workspace stores configurations on the device; backend execution, settlement and cryptographic receipt verification are integration work. Public copy distinguishes prepared configurations from executed compute. The original overview and backend specifications are included in `docs/reference/`.
+`docs/BACKEND-HANDOFF.md` records the original design handoff. The integrated Workspace now uses `../public/workspace-client.ts`: signed wallet sessions, private server-backed documents, revision compare-and-swap, confirmed balances and wallet-approved fund movements. Prepared plans remain distinct from admitted CPU runs and signed receipts. The active CPU profile and receipt trust model are described in `../docs/CPU-RELEASE-PROFILE.md` and shown before approving a reservation.
+
+`npm run build` rebuilds the retained landing runtime. The root `npm run build` builds the backend and workspace client, preserves third-party legal notices and creates `dist/release-manifest.json`. A standalone static preview needs a configured backend to perform account and compute operations; serving the assets alone provides the public pages and motion preview.
 
 ## Time and responsive navigation
 

@@ -3,6 +3,10 @@
 This narrow disk/crypto test complements the full PostgreSQL backup SIGKILL suite.
 The guest has no network, Docker daemon, application profile or mainnet signer.
 """
+import sys as _runtime_sys
+if _runtime_sys.flags.optimize:
+    raise RuntimeError('Telomere recovery tooling requires checked Python; remove -O/-OO and PYTHONOPTIMIZE.')
+
 import hashlib,importlib.util,json,os,shutil,subprocess,sys,time
 from pathlib import Path
 from types import SimpleNamespace

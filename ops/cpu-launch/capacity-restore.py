@@ -1,4 +1,8 @@
 """Full Cyst fixture restore using the hosted implementation and a local ciphertext-store adapter."""
+import sys as _runtime_sys
+if _runtime_sys.flags.optimize:
+    raise RuntimeError('Telomere recovery tooling requires checked Python; remove -O/-OO and PYTHONOPTIMIZE.')
+
 import importlib.util,json,os,re,shutil,subprocess,sys,tempfile,time
 from pathlib import Path
 from unittest.mock import patch

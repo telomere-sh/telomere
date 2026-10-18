@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "gitleaks": {
+    "version": "8.30.1",
+    "linux-x64": {
+      "url": "https://github.com/gitleaks/gitleaks/releases/download/v8.30.1/gitleaks_8.30.1_linux_x64.tar.gz",
+      "sha256": "551f6fc83ea457d62a0d98237cbad105af8d557003051f41f3e7ca7b3f2470eb",
+      "member": "gitleaks"
+    },
+    "win32-x64": {
+      "url": "https://github.com/gitleaks/gitleaks/releases/download/v8.30.1/gitleaks_8.30.1_windows_x64.zip",
+      "sha256": "d29144deff3a68aa93ced33dddf84b7fdc26070add4aa0f4513094c8332afc4e",
+      "member": "gitleaks.exe"
+    }
+  },
+  "solc": {
+    "version": "0.8.28",
+    "linux-x64": {
+      "url": "https://raw.githubusercontent.com/ethereum/solc-bin/gh-pages/linux-amd64/solc-linux-amd64-v0.8.28+commit.7893614a",
+      "sha256": "9a0fb7e0db2c0641dbae1c5cc645dc686820c83af516226abb1c0a2f76636f25"
+    },
+    "win32-x64": {
+      "url": "https://raw.githubusercontent.com/ethereum/solc-bin/gh-pages/windows-amd64/solc-windows-amd64-v0.8.28+commit.7893614a.exe",
+      "sha256": "76a71001309810aafd0462d9b2f2612bf19b89550c866140edca26e533de06bc"
+    }
+  }
+}

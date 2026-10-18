@@ -1,4 +1,8 @@
 """Bounded tmpfs and temporary authenticated review-domain fixture routing."""
+import sys as _runtime_sys
+if _runtime_sys.flags.optimize:
+    raise RuntimeError('Telomere recovery tooling requires checked Python; remove -O/-OO and PYTHONOPTIMIZE.')
+
 import argparse,hashlib,json,os,re,stat,subprocess,uuid
 from pathlib import Path
 B=Path('/opt/telomere-mainnet-pilot');P=B/'private'

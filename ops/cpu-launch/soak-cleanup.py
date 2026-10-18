@@ -1,4 +1,8 @@
 """ExecStopPost cleanup of one disposable namespace, including forced termination."""
+import sys as _runtime_sys
+if _runtime_sys.flags.optimize:
+    raise RuntimeError('Telomere recovery tooling requires checked Python; remove -O/-OO and PYTHONOPTIMIZE.')
+
 import json, os, re, subprocess, sys, time
 from pathlib import Path
 

@@ -3,6 +3,10 @@
 Uses the official age executable, strict SSH host checking and private local ACLs.
 Never prints, uploads or writes an unprotected age identity.
 """
+import sys as _runtime_sys
+if _runtime_sys.flags.optimize:
+    raise RuntimeError('Telomere recovery tooling requires checked Python; remove -O/-OO and PYTHONOPTIMIZE.')
+
 import argparse,ctypes,hashlib,importlib.util,json,os,re,shutil,subprocess,tarfile,tempfile,datetime,time
 from pathlib import Path
 _policy_path=Path(__file__).parent.parent/'cpu-cloud/archive_policy.py'

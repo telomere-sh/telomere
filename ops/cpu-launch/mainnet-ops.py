@@ -1,4 +1,8 @@
 """Root-owned mainnet backup and read-only restore rehearsal. Never starts a restored controller."""
+import sys as _runtime_sys
+if _runtime_sys.flags.optimize:
+    raise RuntimeError('Telomere recovery tooling requires checked Python; remove -O/-OO and PYTHONOPTIMIZE.')
+
 import argparse,contextlib,datetime,fcntl,hashlib,importlib.util,json,os,re,select,shutil,socket,ssl,stat,subprocess,tarfile,tempfile,time,uuid,urllib.request
 from pathlib import Path
 _spec=importlib.util.spec_from_file_location('backup_capacity_policy',Path(__file__).parent.parent/'cpu-cloud/archive_policy.py')

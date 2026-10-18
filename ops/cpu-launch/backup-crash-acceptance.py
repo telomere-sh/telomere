@@ -4,6 +4,10 @@ Run from a root-only backup-crash-candidate-<16 hex> directory on the VPS.
 The container restart is an isolated environment restart, not a host/kernel reboot.
 No mainnet profile, signer, database URL or private backup is supplied to a worker.
 """
+import sys as _runtime_sys
+if _runtime_sys.flags.optimize:
+    raise RuntimeError('Telomere recovery tooling requires checked Python; remove -O/-OO and PYTHONOPTIMIZE.')
+
 import hashlib,importlib.util,json,os,re,shutil,signal,subprocess,sys,time,uuid
 from pathlib import Path
 from unittest.mock import patch

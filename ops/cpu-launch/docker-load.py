@@ -1,5 +1,9 @@
 #!/usr/bin/python3
 """Acceptance-only Docker namespace; cannot inspect/remove production Cells."""
+import sys as _runtime_sys
+if _runtime_sys.flags.optimize:
+    raise RuntimeError('Telomere recovery tooling requires checked Python; remove -O/-OO and PYTHONOPTIMIZE.')
+
 import os,re,subprocess,sys
 namespace=os.environ.get('TELOMERE_ACCEPTANCE_NAMESPACE','')
 assert re.fullmatch('[0-9a-f]{16}',namespace)
