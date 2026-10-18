@@ -3,14 +3,15 @@ import { chmod, mkdtemp, rm } from 'node:fs/promises';
 import { basename, dirname, join, resolve } from 'node:path';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { executeCommand } from '../src/runtime/command.js';
+import { reviewedGvisorFixture } from './fixtures/isolated-gvisor.js';
 import { DockerSessionBackend, FileSessionJournal, SessionRuntime, sessionContainerName,
   type SessionSpec } from '../src/host-kit/sessions/index.js';
 
 // Deliberately explicit: the normal test command never starts Docker. No
-// inherited Docker socket/image override or fallback runtime is accepted.
+// implicit Docker socket/image override or fallback runtime is accepted. A
+// complete pinned isolated profile is checked against the actual daemon.
 const enabled = process.platform === 'linux' && process.env.TELOMERE_SESSION_DOCKER_ACCEPTANCE === '1';
-const image = '127.0.0.1:15002/telomere-cpu@sha256:6839949540d11906cbdbc614867ac3a825fa0e6f8cbed90c79773979517b4bbe';
-const socket = '/var/run/telomere-host-docker/docker.sock', parent = '/opt/telomere-host-runtime';
+const { image, socket, parent } = await reviewedGvisorFixture(enabled);
 const wait = async (predicate: () => boolean, timeout = 10_000) => {
   const limit = Date.now() + timeout;
   while (!predicate()) { if (Date.now() >= limit) throw new Error('Owned session acceptance timed out'); await new Promise(done => setTimeout(done, 20)); }

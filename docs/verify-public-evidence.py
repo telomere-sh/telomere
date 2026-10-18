@@ -55,7 +55,7 @@ social_document = 'docs/evidence/domain-https-20261015/social-links-approved-cha
 approved_social_sha256 = '859669b4db1c9ba2061823769cbd80e1c38fc30be0bcbf71d4245318ab5e29ce'
 source_document = 'docs/evidence/legacy-mainnet-preparation-20261015/vps/vps-source-record.json'
 archive_document = 'docs/evidence/public-source-archive/manifest.json'
-archive_sha256 = '70c2fcf095cde7e9591ae151683c400524e54c3efb53dd37853536ddd2d94968'
+archive_sha256 = 'ea2abcc8634e5505aa0fd1c792ee5475509d881441b65f67b39e906d35119b5a'
 used_archive_entries = set()
 
 

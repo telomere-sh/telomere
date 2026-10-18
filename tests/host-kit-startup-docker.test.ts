@@ -14,11 +14,11 @@ import { Ed25519Identity, hostMessageHash, signedLeaseSchema, verifyHostMessage,
   type HostLease, type SignedHostLease } from '../src/host-kit/protocol.js';
 import type { HostCell, HostCellRuntime, InitHeartbeat } from '../src/host-kit/runtime.js';
 import { executeCommand } from '../src/runtime/command.js';
+import { reviewedGvisorFixture } from './fixtures/isolated-gvisor.js';
 
-// Explicit acceptance only: no inherited socket/image override or Docker fallback.
+// Explicit acceptance only: an isolated override needs a complete reviewed profile.
 const enabled = process.platform === 'linux' && process.env.TELOMERE_HOST_STARTUP_DOCKER_ACCEPTANCE === '1';
-const image = '127.0.0.1:15002/telomere-cpu@sha256:6839949540d11906cbdbc614867ac3a825fa0e6f8cbed90c79773979517b4bbe';
-const socket = '/var/run/telomere-host-docker/docker.sock', parent = '/opt/telomere-host-runtime';
+const { image, socket, parent } = await reviewedGvisorFixture(enabled);
 const owner = '0x1111111111111111111111111111111111111111';
 const nextOwner = '0x2222222222222222222222222222222222222222';
 const pause = (ms: number) => new Promise<void>(done => setTimeout(done, ms));

@@ -17,12 +17,12 @@ import { Ed25519Identity, hostMessageHash, verifyHostMessage, type SignedHostLea
 import { sessionContainerName } from '../src/host-kit/sessions/backends.js';
 import type { SessionCommand, SessionSpec } from '../src/host-kit/sessions/types.js';
 import { executeCommand } from '../src/runtime/command.js';
+import { reviewedGvisorFixture } from './fixtures/isolated-gvisor.js';
 
-// Explicit isolated acceptance only. No inherited image/socket override and no
+// Explicit isolated acceptance only. No implicit image/socket override and no
 // fixture runtime can satisfy these actual Docker/gVisor assertions.
 const enabled = process.platform === 'linux' && process.env.TELOMERE_HOST_ADMISSION_DOCKER_ACCEPTANCE === '1';
-const image = '127.0.0.1:15002/telomere-cpu@sha256:6839949540d11906cbdbc614867ac3a825fa0e6f8cbed90c79773979517b4bbe';
-const socket = '/var/run/telomere-host-docker/docker.sock', parent = '/opt/telomere-host-runtime';
+const { image, socket, parent } = await reviewedGvisorFixture(enabled);
 const owner = '0x1111111111111111111111111111111111111111', nextOwner = '0x2222222222222222222222222222222222222222';
 const ownershipLog = resolve('.local/host-kit-admission-owned.jsonl');
 const pause = (ms: number) => new Promise<void>(done => setTimeout(done, ms));

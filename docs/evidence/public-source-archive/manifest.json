@@ -10153,8 +10153,8 @@
           "path": "tests/host-kit-admission-docker.test.ts",
           "bytes": 24589,
           "sha256": "45ef0dd75510588e3dbefec602d399ea7bc8b00d035e72e7171b7181b123cc29",
-          "storage": "working-tree",
-          "storedPath": "tests/host-kit-admission-docker.test.ts"
+          "storage": "object",
+          "storedPath": "docs/evidence/public-source-archive/objects/45ef0dd75510588e3dbefec602d399ea7bc8b00d035e72e7171b7181b123cc29.bin"
         },
         {
           "path": "tests/host-kit-admission.test.ts",
@@ -10209,8 +10209,8 @@
           "path": "tests/host-kit-startup-docker.test.ts",
           "bytes": 15905,
           "sha256": "bc15b739cf283ec679dcbccbcd5eebcf7200d078acdd2a6d21f761d9a44c2435",
-          "storage": "working-tree",
-          "storedPath": "tests/host-kit-startup-docker.test.ts"
+          "storage": "object",
+          "storedPath": "docs/evidence/public-source-archive/objects/bc15b739cf283ec679dcbccbcd5eebcf7200d078acdd2a6d21f761d9a44c2435.bin"
         },
         {
           "path": "tests/host-kit-timing.test.ts",
@@ -11091,8 +11091,8 @@
           "path": "tests/session-runtime-docker.test.ts",
           "bytes": 10377,
           "sha256": "42b60c45d239dacabf6c4570b0f83c08f8b41d75a675c09bcd7bf69146a0db86",
-          "storage": "working-tree",
-          "storedPath": "tests/session-runtime-docker.test.ts"
+          "storage": "object",
+          "storedPath": "docs/evidence/public-source-archive/objects/42b60c45d239dacabf6c4570b0f83c08f8b41d75a675c09bcd7bf69146a0db86.bin"
         },
         {
           "path": "tests/session-runtime.test.ts",
