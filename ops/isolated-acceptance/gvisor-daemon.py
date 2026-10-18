@@ -19,6 +19,19 @@ def locations(identifier):
     prefix='telomere-audit-'+identifier
     return Path('/run')/prefix,Path('/var/tmp')/prefix,Path('/opt')/prefix,'telomere-audit-docker-'+identifier
 def execute(args,**options):return subprocess.run(args,check=True,capture_output=True,text=True,timeout=options.pop('timeout',60),**options)
+def install_archive(archive,runtime,pins):
+    require(digest(archive,'sha512')==pins['archiveSha512'],'Official runtime archive checksum')
+    expected={row['path']:row for row in pins['files']};seen=set()
+    with tarfile.open(archive,'r:bz2') as tar:
+        for member in tar:
+            name=member.name.removeprefix('./');p=PurePosixPath(name)
+            require(not p.is_absolute() and '..' not in p.parts,'Runtime archive path')
+            if member.isdir():continue
+            require(member.isfile() and name in expected and name not in seen and member.size==expected[name]['bytes'],'Runtime archive member')
+            seen.add(name);out=runtime/name;out.parent.mkdir(parents=True,exist_ok=True);out.parent.chmod(0o755)
+            with tar.extractfile(member) as stream,out.open('xb') as target:shutil.copyfileobj(stream,target)
+            out.chmod(0o755);require(digest(out)==expected[name]['sha256'],'Runtime member checksum')
+    require(seen==set(expected),'Complete runtime required')
 def start(identifier,source):
     require(os.geteuid()==0 and os.uname().machine=='x86_64','Linux x86_64 root fixture required')
     pins=json.loads(PINS.read_text());run,root,public,unit=locations(identifier)
@@ -38,18 +51,7 @@ def start(identifier,source):
             total=0
             while data:=response.read(1024*1024):
                 total+=len(data);require(total<=268435456,'Runtime archive bound');out.write(data)
-        require(digest(archive,'sha512')==pins['archiveSha512'],'Official runtime archive checksum')
-        expected={row['path']:row for row in pins['files']};seen=set()
-        with tarfile.open(archive,'r:bz2') as tar:
-            for member in tar:
-                name=member.name.removeprefix('./');p=PurePosixPath(name)
-                require(not p.is_absolute() and '..' not in p.parts,'Runtime archive path')
-                if member.isdir():continue
-                require(member.isfile() and name in expected and name not in seen and member.size==expected[name]['bytes'],'Runtime archive member')
-                seen.add(name);out=runtime/name;out.parent.mkdir(parents=True,exist_ok=True);out.parent.chmod(0o755)
-                with tar.extractfile(member) as stream,out.open('xb') as target:shutil.copyfileobj(stream,target)
-                out.chmod(0o755);require(digest(out)==expected[name]['sha256'],'Runtime member checksum')
-        require(seen==set(expected),'Complete runtime required')
+        install_archive(archive,runtime,pins)
     sessions=root/'sessions';sessions.mkdir(mode=0o700)
     config={'hosts':['unix://'+str(run/'docker.sock')],'data-root':str(root/'data'),'exec-root':str(run/'exec'),
             'pidfile':str(run/'dockerd.pid'),'group':'root','iptables':False,'ip6tables':False,'bridge':'none',

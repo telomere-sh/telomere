@@ -109,6 +109,7 @@ jobs:
           node --import tsx --test ops/legacy-mainnet/preflight-fixture.test.mjs
           python -B docs/verify-evidence.py
           python -B -m unittest discover -s security -p 'test_*.py' -v
+          python -B -m unittest discover -s ops/isolated-acceptance -p 'test_*.py' -v
       - run: |
           cd infra/near
           sha256sum --check requirements-linux.lock.sha256
@@ -240,7 +241,7 @@ jobs:
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
         with:
           python-version: '3.11'
-      - run: npm ci --ignore-scripts
+      - run: npm ci --ignore-scripts && npm --prefix website ci --ignore-scripts && npm run build
       - run: |
           python -m venv .local/langgraph-env
           .local/langgraph-env/bin/python -m pip install --only-binary=:all: --require-hashes -r python/examples/requirements-langgraph.lock

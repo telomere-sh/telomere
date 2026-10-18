@@ -12,6 +12,7 @@
     "build": "npm --prefix website run build && tsx scripts/compile-contracts.ts && tsc && node scripts/build-browser.mjs && node scripts/copy-public.mjs && node scripts/release-manifest.mjs",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
+    "test:coverage:cpu": "vitest run --config vitest.cpu-coverage.config.ts",
     "contracts:compile": "tsx scripts/compile-contracts.ts",
     "demo": "tsx scripts/demo.ts",
     "chain:local": "tsx scripts/local-chain.ts",
@@ -63,6 +64,7 @@
   "devDependencies": {
     "@types/node": "22.19.15",
     "@types/pg": "8.15.6",
+    "@vitest/coverage-v8": "4.1.11",
     "esbuild": "0.28.2",
     "solc": "0.8.28",
     "tsx": "4.21.0",
