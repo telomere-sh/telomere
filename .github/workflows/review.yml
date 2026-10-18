@@ -104,7 +104,6 @@ jobs:
           for suite in cpu-launch cpu-cloud owner-review-mobile staging-chain-checkpoint; do
             python -B -m unittest discover -s "ops/$suite" -p 'test_*.py' -v || exit 1
           done
-          python -B -m unittest discover -s tests -p 'test_near*.py' -v
           python -B ops/legacy-mainnet/network-fixture.test.py
           node --test ops/cpu-launch/test-fingerprints.mjs ops/cpu-launch/test-fixture-rpc.mjs ops/cpu-launch/test-recovery-audit.mjs
           node --import tsx --test ops/legacy-mainnet/preflight-fixture.test.mjs
@@ -116,6 +115,8 @@ jobs:
           python -m venv ../../.local/near-env
           ../../.local/near-env/bin/python -m pip install --only-binary=:all: --require-hashes -r requirements-linux.lock
           ../../.local/near-env/bin/python -m unittest test_jwt -v
+          cd ../..
+          .local/near-env/bin/python -B -m unittest discover -s tests -p 'test_near*.py' -v
   windows-wallet-journal:
     runs-on: windows-2025
     timeout-minutes: 25
