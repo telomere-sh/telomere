@@ -1,3 +1,4 @@
-# Optional LangGraph paid-CPU starter dependencies; install the local SDK separately.
+# Top-level optional LangGraph inputs. CI installs requirements-langgraph.lock
+# with --only-binary=:all: --require-hashes and PYTHONPATH=python/src.
 langgraph==1.2.12
 eth-account==0.13.7

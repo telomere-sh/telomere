@@ -10,8 +10,11 @@ import { escrowAbi, tokenAbi, localChain, quoteTypedData, settlementTypedData, t
 
 // A separate cash-flow ledger derives every expected balance and pending amount
 // from accepted operations. It never initializes expected values from contract storage.
-const seeds = [0x71a4c901, 0xc0ffee19, 0x5eed2026];
-const steps = 240;
+const extended = process.env.TELOMERE_ESCROW_EXTENDED_ACCEPTANCE === '1';
+const seeds = [0x71a4c901, 0xc0ffee19, 0x5eed2026, ...(extended ? [0x10203040, 0xabcdef01, 0x76543210,
+  0x31337001, 0x84530001, 0xdeadbeef, 0xf00dcafe, 0x6a09e667, 0xbb67ae85, 0x3c6ef372,
+  0xa54ff53a, 0x510e527f, 0x9b05688c] : [])];
+const steps = extended ? 512 : 240;
 const supply = 1_000_000n;
 type Leash = { id: Hex; owner: number; hour: bigint; day: bigint; expiry: bigint; killedAt?: bigint };
 type Run = { quote: Quote; owner: number; openedAt: bigint; expiry: bigint; stopAt?: bigint;
@@ -49,7 +52,7 @@ describe('seeded real-EVM escrow campaigns with independent cash accounting', ()
   }, 60_000);
   afterAll(async () => { await local?.close(); });
 
-  it.each(seeds)('preserves funds and reservation authority through 240 mixed calls, seed %s', async seed => {
+  it.each(seeds)(`preserves funds and reservation authority through ${steps} mixed steps, seed %s`, async seed => {
     const test = createTestClient({ chain: localChain, mode: 'anvil', transport: http(local.rpcUrl) });
     await test.revert({ id: snapshot }); snapshot = await test.snapshot();
     // A snapshot may rewind block numbers and repeat otherwise identical tx hashes.
@@ -62,7 +65,7 @@ describe('seeded real-EVM escrow campaigns with independent cash accounting', ()
     const wallets = owners.map(account => createWalletClient({ account, chain: localChain, transport: http(local.rpcUrl), cacheTime: 0 }));
     const available = [0n, 0n], walletCash = [supply, supply], leashes: Leash[] = [], runs: Run[] = [];
     let earned = 0n, deposits = 0n, withdrawals = 0n;
-    const trace: { handler: string; accepted: boolean; hash: Hex; timestamp: string }[] = [];
+    const trace: { handler: string; accepted: boolean; observedStatus: 'success' | 'reverted'; hash: Hex; timestamp: string }[] = [];
     const handlers: Record<string, { calls: number; accepted: number; reverted: number }> = {};
     const choose = <T>(values: readonly T[]): T => values[random(values.length)]!;
     const pending = (leash: Leash) => runs.filter(run => run.quote.leashId === leash.id && run.state === 'open')
@@ -77,7 +80,7 @@ describe('seeded real-EVM escrow campaigns with independent cash accounting', ()
       const receipt = await publicClient.waitForTransactionReceipt({ hash, timeout: 15_000 });
       const block = await publicClient.getBlock({ blockNumber: receipt.blockNumber });
       expect(block.timestamp, `seed=${seed} handler=${handler} time`).toBe(next); clock = next;
-      trace.push({ handler, accepted, hash, timestamp: clock.toString() });
+      trace.push({ handler, accepted, observedStatus: receipt.status, hash, timestamp: clock.toString() });
       const record = handlers[handler] ??= { calls: 0, accepted: 0, reverted: 0 };
       record.calls++; record[accepted ? 'accepted' : 'reverted']++;
       expect(receipt.status, `seed=${seed} call=${trace.length} handler=${handler}`).toBe(accepted ? 'success' : 'reverted');
@@ -162,66 +165,76 @@ describe('seeded real-EVM escrow campaigns with independent cash accounting', ()
       if (accepted) { run.state = 'refunded'; available[run.owner]! += ceiling(run.quote); }
     }
 
-    for (let owner = 0; owner < 2; owner++) { await deposit(owner, 10_000n); await create(owner); }
-    await open(leashes[0]!, true); await open(leashes[1]!, true); await advance(8); await settle(runs[0]!, true);
-    await advance(21631); await refund(runs[1]!); await check();
-    const schedule = ['open', 'open', 'settle', 'deposit', 'withdraw', 'update', 'stop', 'refund', 'advance', 'create', 'kill', 'replay'];
-    for (let step = 0; step < steps; step++) {
-      const handler = choose(schedule), owner = random(2);
-      const active = leashes.filter(leash => leash.killedAt === undefined && leash.expiry > clock + 1n);
-      const leash = choose(active.length ? active : leashes);
-      const run = runs.length ? choose(runs) : undefined;
-      if (handler === 'deposit') await deposit(owner, BigInt(1 + random(500)));
-      else if (handler === 'create') await create(owner);
-      else if (handler === 'advance') await advance(choose([1, 30, 3601, 21631, 86401]));
-      else if (handler === 'open') await open(leash);
-      else if (handler === 'settle' && run) await settle(run);
-      else if (handler === 'refund' && run) await refund(run);
-      else if (handler === 'withdraw') {
-        const amount = random(3) ? BigInt(1 + random(600)) : available[owner]! + 1n;
-        const accepted = available[owner]! >= amount;
-        await transaction(handler, owner, encodeFunctionData({ abi: escrowAbi, functionName: 'withdraw', args: [amount] }), accepted);
-        if (accepted) { available[owner]! -= amount; walletCash[owner]! += amount; withdrawals += amount; }
-      } else if (handler === 'update') {
-        const hour = BigInt(50 + random(1400)), day = BigInt(100 + random(3000)), at = clock + 1n;
-        const caller = random(4) ? leash.owner : 1 - leash.owner, expiry = clock + 200_000n;
-        const accepted = caller === leash.owner && leash.killedAt === undefined
-          && spent(leash, 3600n, at) + pending(leash) <= hour && spent(leash, 86400n, at) + pending(leash) <= day;
-        await transaction(handler, caller, encodeFunctionData({ abi: escrowAbi, functionName: 'updateLeash',
-          args: [leash.id, owners[leash.owner]!.address, hour, day, expiry] }), accepted);
-        if (accepted) Object.assign(leash, { hour, day, expiry });
-      } else if (handler === 'kill') {
-        const caller = random(4) ? leash.owner : 1 - leash.owner;
-        const accepted = caller === leash.owner && leash.killedAt === undefined;
-        await transaction(handler, caller, encodeFunctionData({ abi: escrowAbi, functionName: 'killLeash', args: [leash.id] }), accepted);
-        if (accepted) leash.killedAt = clock;
-      } else if (handler === 'stop' && run) {
-        const caller = random(4) ? run.owner : 1 - run.owner;
-        const accepted = caller === run.owner && run.state === 'open';
-        await transaction(handler, caller, encodeFunctionData({ abi: escrowAbi, functionName: 'requestStop', args: [run.quote.runId] }), accepted);
-        if (accepted && run.stopAt === undefined) run.stopAt = clock;
-      } else if (handler === 'replay' && run) {
-        const signature = await signer.signTypedData(quoteTypedData(31337, escrow, run.quote));
-        await transaction(handler, run.owner, encodeFunctionData({ abi: escrowAbi, functionName: 'openRun', args: [run.quote, signature] }), false);
+    let campaignPassed = false, completedSteps = 0;
+    try {
+      for (let owner = 0; owner < 2; owner++) { await deposit(owner, 10_000n); await create(owner); }
+      await open(leashes[0]!, true); await open(leashes[1]!, true); await advance(8); await settle(runs[0]!, true);
+      await advance(21631); await refund(runs[1]!); await check();
+      if (extended) for (let index = 0; index < 3; index++) {
+        await open(leashes[index % 2]!, true); await settle(runs.at(-1)!, true); await check();
       }
-      await check();
+      const schedule = ['open', 'open', 'settle', 'deposit', 'withdraw', 'update', 'stop', 'refund', 'advance', 'create', 'kill', 'replay'];
+      for (let step = 0; step < steps; step++) {
+        const handler = choose(schedule), owner = random(2);
+        const active = leashes.filter(leash => leash.killedAt === undefined && leash.expiry > clock + 1n);
+        const leash = choose(active.length ? active : leashes);
+        const run = runs.length ? choose(runs) : undefined;
+        if (handler === 'deposit') await deposit(owner, BigInt(1 + random(500)));
+        else if (handler === 'create') await create(owner);
+        else if (handler === 'advance') await advance(choose([1, 30, 3601, 21631, 86401]));
+        else if (handler === 'open') await open(leash);
+        else if (handler === 'settle' && run) await settle(run);
+        else if (handler === 'refund' && run) await refund(run);
+        else if (handler === 'withdraw') {
+          const amount = random(3) ? BigInt(1 + random(600)) : available[owner]! + 1n;
+          const accepted = available[owner]! >= amount;
+          await transaction(handler, owner, encodeFunctionData({ abi: escrowAbi, functionName: 'withdraw', args: [amount] }), accepted);
+          if (accepted) { available[owner]! -= amount; walletCash[owner]! += amount; withdrawals += amount; }
+        } else if (handler === 'update') {
+          const hour = BigInt(50 + random(1400)), day = BigInt(100 + random(3000)), at = clock + 1n;
+          const caller = random(4) ? leash.owner : 1 - leash.owner, expiry = clock + 200_000n;
+          const accepted = caller === leash.owner && leash.killedAt === undefined
+            && spent(leash, 3600n, at) + pending(leash) <= hour && spent(leash, 86400n, at) + pending(leash) <= day;
+          await transaction(handler, caller, encodeFunctionData({ abi: escrowAbi, functionName: 'updateLeash',
+            args: [leash.id, owners[leash.owner]!.address, hour, day, expiry] }), accepted);
+          if (accepted) Object.assign(leash, { hour, day, expiry });
+        } else if (handler === 'kill') {
+          const caller = random(4) ? leash.owner : 1 - leash.owner;
+          const accepted = caller === leash.owner && leash.killedAt === undefined;
+          await transaction(handler, caller, encodeFunctionData({ abi: escrowAbi, functionName: 'killLeash', args: [leash.id] }), accepted);
+          if (accepted) leash.killedAt = clock;
+        } else if (handler === 'stop' && run) {
+          const caller = random(4) ? run.owner : 1 - run.owner;
+          const accepted = caller === run.owner && run.state === 'open';
+          await transaction(handler, caller, encodeFunctionData({ abi: escrowAbi, functionName: 'requestStop', args: [run.quote.runId] }), accepted);
+          if (accepted && run.stopAt === undefined) run.stopAt = clock;
+        } else if (handler === 'replay' && run) {
+          const signature = await signer.signTypedData(quoteTypedData(31337, escrow, run.quote));
+          await transaction(handler, run.owner, encodeFunctionData({ abi: escrowAbi, functionName: 'openRun', args: [run.quote, signature] }), false);
+        }
+        await check(); completedSteps = step + 1;
+      }
+      await advance(300_000);
+      for (const run of runs.filter(item => item.state === 'open')) { await refund(run); await check(); }
+      for (let owner = 0; owner < 2; owner++) if (available[owner]! > 0n) {
+        const amount = available[owner]!;
+        await transaction('final-withdraw', owner, encodeFunctionData({ abi: escrowAbi, functionName: 'withdraw', args: [amount] }), true);
+        available[owner] = 0n; walletCash[owner]! += amount; withdrawals += amount; await check();
+      }
+      expect(handlers.open!.accepted).toBeGreaterThanOrEqual(5);
+      expect(handlers.settle!.accepted).toBeGreaterThanOrEqual(1); expect(handlers.refund!.accepted).toBeGreaterThanOrEqual(1);
+      for (const name of new Set(schedule)) expect(handlers[name]?.calls, `seed=${seed} handler=${name}`).toBeGreaterThan(0);
+      expect(runs.every(item => item.state !== 'open')).toBe(true);
+      campaignPassed = true;
+    } finally {
+      const directory = resolve('.local/audit-remediation/' + (extended ? 'stateful-extended' : 'stateful')); await mkdir(directory, { recursive: true });
+      await writeFile(resolve(directory, `seed-${seed}.json`), JSON.stringify({ schemaVersion: 2, seed, scheduledSteps: steps,
+        completedScheduledSteps: completedSteps, passed: campaignPassed,
+        handlers, transactionCalls: trace.length, expectedReverts: trace.filter(item => !item.accepted).length, discardedCalls: 0,
+        observedReverts: trace.filter(item => item.observedStatus === 'reverted').length,
+        ghostAccounting: 'Independent owner wallet/escrow/reservation/treasury cash-flow ledger; per-leash spending derived from settlement history',
+        invariantsCheckedAfterEveryScheduledStep: campaignPassed, finalEscrowBalance: campaignPassed ? '0' : null, earned: earned.toString(), deposits: deposits.toString(),
+        withdrawals: withdrawals.toString(), trace }, null, 2) + '\n');
     }
-    await advance(300_000);
-    for (const run of runs.filter(item => item.state === 'open')) { await refund(run); await check(); }
-    for (let owner = 0; owner < 2; owner++) if (available[owner]! > 0n) {
-      const amount = available[owner]!;
-      await transaction('final-withdraw', owner, encodeFunctionData({ abi: escrowAbi, functionName: 'withdraw', args: [amount] }), true);
-      available[owner] = 0n; walletCash[owner]! += amount; withdrawals += amount; await check();
-    }
-    expect(handlers.open!.accepted).toBeGreaterThanOrEqual(5);
-    expect(handlers.settle!.accepted).toBeGreaterThanOrEqual(1); expect(handlers.refund!.accepted).toBeGreaterThanOrEqual(1);
-    for (const name of new Set(schedule)) expect(handlers[name]?.calls, `seed=${seed} handler=${name}`).toBeGreaterThan(0);
-    expect(runs.every(item => item.state !== 'open')).toBe(true);
-    const directory = resolve('.local/audit-remediation/stateful'); await mkdir(directory, { recursive: true });
-    await writeFile(resolve(directory, `seed-${seed}.json`), JSON.stringify({ schemaVersion: 1, seed, scheduledSteps: steps,
-      handlers, transactionCalls: trace.length, expectedReverts: trace.filter(item => !item.accepted).length, discardedCalls: 0,
-      ghostAccounting: 'Independent owner wallet/escrow/reservation/treasury cash-flow ledger; per-leash spending derived from settlement history',
-      invariantsCheckedAfterEveryScheduledStep: true, finalEscrowBalance: '0', earned: earned.toString(), deposits: deposits.toString(),
-      withdrawals: withdrawals.toString(), trace }, null, 2) + '\n');
   }, 180_000);
 });

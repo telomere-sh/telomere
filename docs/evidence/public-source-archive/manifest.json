@@ -6695,8 +6695,8 @@
           "path": "python/examples/requirements-langgraph.txt",
           "bytes": 124,
           "sha256": "b4362357e9a30d95d03b31f395afa90e118a6ea6fa7be58278082f48420c909f",
-          "storage": "working-tree",
-          "storedPath": "python/examples/requirements-langgraph.txt"
+          "storage": "object",
+          "storedPath": "docs/evidence/public-source-archive/objects/b4362357e9a30d95d03b31f395afa90e118a6ea6fa7be58278082f48420c909f.bin"
         },
         {
           "path": "python/pyproject.toml",
@@ -10251,8 +10251,8 @@
           "path": "tests/langgraph-starter.test.ts",
           "bytes": 6097,
           "sha256": "9ee651e9b2c3865860c93aecd15f93c765921d146a8537dce78d72989cc7a216",
-          "storage": "working-tree",
-          "storedPath": "tests/langgraph-starter.test.ts"
+          "storage": "object",
+          "storedPath": "docs/evidence/public-source-archive/objects/9ee651e9b2c3865860c93aecd15f93c765921d146a8537dce78d72989cc7a216.bin"
         },
         {
           "path": "tests/large-cyst-agent-manifest.test.ts",
@@ -10496,8 +10496,8 @@
           "path": "tests/paid-cyst-file-restore.test.ts",
           "bytes": 32749,
           "sha256": "c6262036d2239afc3e9fc5fa47db0f1c8e796464f80e6f22d7309cd0c9b7adb0",
-          "storage": "working-tree",
-          "storedPath": "tests/paid-cyst-file-restore.test.ts"
+          "storage": "object",
+          "storedPath": "docs/evidence/public-source-archive/objects/c6262036d2239afc3e9fc5fa47db0f1c8e796464f80e6f22d7309cd0c9b7adb0.bin"
         },
         {
           "path": "tests/paid-cyst-input-app.test.ts",

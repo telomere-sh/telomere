@@ -49,7 +49,8 @@ it.skipIf(!python)('runs the LangGraph wallet interrupt against the actual paid 
       '--leash-id', leash.leashId, '--idempotency-key', 'langgraph_actual_cell_001',
       '--text', 'LangGraph local paid Cell', '--max-seconds', '5', '--poll-seconds', '20', '--demo-auth'],
     { cwd: resolve('.'), stdio: ['pipe', 'pipe', 'pipe'], env: { ...process.env,
-      SIGNER_PRIVATE_KEY: '', DEMO_PRIVATE_KEY: '', PYTHONUNBUFFERED: '1' } });
+      SIGNER_PRIVATE_KEY: '', DEMO_PRIVATE_KEY: '', PYTHONUNBUFFERED: '1',
+      LANGSMITH_TRACING: 'false', LANGCHAIN_TRACING_V2: 'false', LANGSMITH_API_KEY: '', LANGCHAIN_API_KEY: '' } });
     const { stdin, stdout, stderr } = child;
     if (!stdin || !stdout || !stderr) throw new Error('LangGraph process pipes unavailable');
     const processExit = once(child, 'exit');

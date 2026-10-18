@@ -73,7 +73,25 @@ describe('declared multi-chunk current Cyst into an actual locally paid CPU appl
   let hostServer: Server, apiServer: Server, privateVault: CystCheckpointFileVault | undefined;
   let restore: AgentCurrentCystPaidFileRestore | undefined;
   let encryptedStore: LargeCystPrivateStore | undefined;
-  beforeAll(() => { artifacts = compileContracts(['PlatformRunEscrow.sol', 'HostRegistry.sol', 'ReceiptRoot.sol', 'FeeRouter.sol',
+  beforeAll(async () => {
+    if (declaredStateCell) {
+      const reportPath = process.env.TELOMERE_ACCEPTANCE_DECLARED_STATE_IMAGE_REPORT;
+      if (!reportPath) throw new Error('Reviewed declared-state image build report required');
+      const report = z.object({ sourceCommit: z.string().regex(/^[a-f0-9]{40}$/), image: z.literal(actualImage!),
+        dockerfileSha256: z.string(), esbuild: z.literal('0.28.2'), bundles: z.record(z.string().regex(/^[a-f0-9]{64}$/)),
+        publicPushes: z.literal(0), productionChanged: z.literal(false) }).passthrough().parse(JSON.parse(await readFile(reportPath, 'utf8')));
+      const revision = await executeCommand('git', ['-c', 'safe.directory=' + process.cwd(), 'rev-parse', 'HEAD'], { signal: AbortSignal.timeout(5000), maxOutputBytes: 128 });
+      if (revision.exitCode !== 0 || revision.stdout.trim() !== report.sourceCommit
+        || report.dockerfileSha256 !== hash(await readFile('infra/host-kit/Dockerfile.declared-state'))) throw new Error('Declared image source binding differs');
+      const names = ['declared-state-cell.cjs', 'declared-state-cell-capture.cjs'];
+      const program = `const fs=require('node:fs'),c=require('node:crypto'),r={};for(const n of ${JSON.stringify(names)}){const p='/opt/telomere/'+n,s=fs.lstatSync(p);if(!s.isFile()||s.isSymbolicLink()||s.uid!==0||(s.mode&0o022)!==0)throw Error('Unreviewed Cell adapter');r[n]=c.createHash('sha256').update(fs.readFileSync(p)).digest('hex')}process.stdout.write(JSON.stringify(r))`;
+      const inspected = await executeCommand('docker', ['--host', 'unix://' + socket, 'run', '--rm', '--pull=never', '--runtime=runsc',
+        '--network=none', '--read-only', '--user=10001:10001', '--cap-drop=ALL', '--security-opt=no-new-privileges:true',
+        '--memory=256m', '--pids-limit=64', '--entrypoint=/usr/local/bin/node', actualImage!, '-e', program],
+        { signal: AbortSignal.timeout(15_000), maxOutputBytes: 2048 });
+      if (inspected.exitCode !== 0 || canonical(JSON.parse(inspected.stdout)) !== canonical(report.bundles)) throw new Error('Actual Cell adapter bytes differ');
+    }
+    artifacts = compileContracts(['PlatformRunEscrow.sol', 'HostRegistry.sol', 'ReceiptRoot.sol', 'FeeRouter.sol',
     'MockToken.sol', 'PlatformAgentVault.sol', 'PlatformSelectionRegistry.sol', 'TlmrToken.sol', 'TlmrStaking.sol', 'CystRegistry.sol']);
     artifacts.PlatformRuntimeIdentityFixture = platformVaultIdentityArtifact(); }, 90_000);
   afterEach(async () => {
