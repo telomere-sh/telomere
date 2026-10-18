@@ -33,6 +33,7 @@ describe('unchanged website deployment boundary', () => {
       writeFile(join(site, 'protocol', 'index.html'), '<!doctype html><html>protocol entry</html>'),
       writeFile(join(site, 'assets', 'film.mp4'), Buffer.from('0123456789')),
       writeFile(join(site, 'site.js'), 'export const unchanged = true;\r\n'),
+      writeFile(join(site, 'site.js.LEGAL.txt'), 'Third-party license notice <script>not executable</script>'),
       writeFile(join(publicRoot, 'index.html'), '<!doctype html><html>backend console</html>'),
       writeFile(join(publicRoot, 'styles.css'), 'body{color:black}'), writeFile(join(publicRoot, 'app.js'), 'export {};'),
     ]);
@@ -65,6 +66,14 @@ describe('unchanged website deployment boundary', () => {
     const script = await app.request('/site.js?version=one');
     expect(script.headers.get('content-type')).toBe('text/javascript; charset=utf-8');
     expect(await script.text()).toBe('export const unchanged = true;\r\n');
+  });
+
+  it('accepts bundled license sidecars as plain text without an HTML fallback', async () => {
+    const response = await app.request('/site.js.LEGAL.txt');
+    expect(response.status).toBe(200);
+    expect(response.headers.get('content-type')).toBe('text/plain; charset=utf-8');
+    expect(response.headers.get('x-content-type-options')).toBe('nosniff');
+    expect(await response.text()).toBe('Third-party license notice <script>not executable</script>');
   });
 
   it('keeps the original console and assets under strict CSP and retains legacy createApp behavior', async () => {

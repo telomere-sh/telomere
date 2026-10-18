@@ -11301,8 +11301,8 @@
           "path": "tests/website.test.ts",
           "bytes": 12153,
           "sha256": "735ecf5487bb93d91ad7133367b734e840d20f005104e78a5785952e0285d2d5",
-          "storage": "working-tree",
-          "storedPath": "tests/website.test.ts"
+          "storage": "object",
+          "storedPath": "docs/evidence/public-source-archive/objects/735ecf5487bb93d91ad7133367b734e840d20f005104e78a5785952e0285d2d5.bin"
         },
         {
           "path": "tests/worker.test.ts",

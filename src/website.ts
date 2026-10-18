@@ -85,7 +85,9 @@ export async function loadWebsite(directory: string): Promise<Website> {
       const path = join(root, local), identity = await lstat(path, { bigint: true });
       if (identity.isSymbolicLink()) throw new Error('Website links are forbidden');
       if (identity.isDirectory()) { await visit(local, depth + 1); continue; }
-      const type = mimeTypes[extname(item.name).toLowerCase()];
+      // esbuild emits license notices beside its bundle. Serve only that named
+      // text sidecar; keep rejecting other unreviewed file types at startup.
+      const type = item.name.endsWith('.LEGAL.txt') ? 'text/plain; charset=utf-8' : mimeTypes[extname(item.name).toLowerCase()];
       if (!identity.isFile() || !type || identity.size > 32n * 1024n * 1024n) throw new Error('Invalid website asset');
       bytes += identity.size;
       if (bytes > 256n * 1024n * 1024n) throw new Error('Website size exceeds limit');
