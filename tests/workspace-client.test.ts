@@ -68,7 +68,7 @@ describe('workspace wallet safety',()=>{
     const {client,provider}=setup();vi.stubGlobal('fetch',vi.fn(async()=>Response.json({detail:'Controller unavailable'},{status:503})));
     await expect(client.transaction({to:escrow},'reserve',txHash)).rejects.toThrow('Controller unavailable');
     expect(client.pending()).toMatchObject([{hash:txHash,runId:txHash}]);
-    vi.stubGlobal('fetch',vi.fn(async()=>Response.json({status:'queued'})));await client.recover();expect(client.pending()).toEqual([]);
+    vi.stubGlobal('fetch',vi.fn(async path=>Response.json(String(path).startsWith('/api/transactions/')?{hash:txHash,owner,chainId:8453,status:'confirmed',method:'openRun',runId:txHash,transaction:{to:escrow,data:'0x',value:'0x0'}}:{status:'queued'})));await client.recover();expect(client.pending()).toEqual([]);
     expect(provider.request.mock.calls.filter(([p])=>p.method==='eth_sendTransaction')).toHaveLength(1);
   });
   it('discards an old account response after switching and skips queued old saves',async()=>{
@@ -121,5 +121,70 @@ describe('workspace sign-in lifecycle',()=>{
     try{const {client,provider,selected}=login();provider.request.mockImplementation(()=>new Promise(()=>{}));
       const pending=expect(client.connect(selected)).rejects.toThrow('timed out');await vi.advanceTimersByTimeAsync(90001);await pending;expect(client.connecting).toBe(false);
     }finally{vi.useRealTimers()}
+  });
+});
+
+
+describe('pending wallet recovery without rebroadcast',()=>{
+  function recovery(entry:object={operation:'Leash first',hash:txHash}){
+    const fixture=setup();fixture.entries.set(fixture.client.journalKey(),JSON.stringify([entry]));
+    const result={hash:txHash,owner,chainId:8453,status:'confirmed',method:'createLeash',leashId:txHash,transaction:{to:escrow,data:'0x1234',value:'0x0'}};
+    const state={owner,chainId:8453,latestNonce:'0',pendingNonce:'0',ethBalanceWei:'0'};
+    const request=vi.spyOn(fixture.client,'request').mockImplementation(async path=>path.endsWith('/recovery-state')?state:result);
+    return {...fixture,result,state,request};
+  }
+  it('verifies a confirmed legacy Leash without asking the wallet to send anything',async()=>{
+    const {client,provider,entries}=recovery();expect(await client.recover()).toMatchObject([{status:'confirmed',method:'createLeash'}]);
+    expect(client.pending()).toEqual([]);expect(provider.request).not.toHaveBeenCalled();
+    expect(entries.get(client.journalKey()+':resolved')).toContain(txHash);
+  });
+  it('recovers a missing hash only after matching the original calldata',async()=>{
+    const {client,provider}=recovery({operation:'Leash first',intent:{to:escrow,data:'0x1234'}});
+    await expect(client.recover()).rejects.toThrow('did not return');expect(client.pending()).toHaveLength(1);
+    await client.recover(txHash);expect(client.pending()).toEqual([]);expect(provider.request).not.toHaveBeenCalled();
+  });
+  it('keeps an unrelated hash out of a hashless entry',async()=>{
+    const {client}=recovery({operation:'Leash first',intent:{to:escrow,data:'0x9999'}});
+    await expect(client.recover(txHash)).rejects.toThrow('original transaction');expect(client.pending()[0]?.hash).toBeUndefined();
+  });
+  it.each([{owner:'0x3333333333333333333333333333333333333333'},{chainId:1},{hash:'0x'+'cd'.repeat(32)}])('retains the journal for a mismatched recovery identity %j',async wrong=>{
+    const {client,result}=recovery();Object.assign(result,wrong);await expect(client.recover()).rejects.toThrow('identity');expect(client.pending()).toHaveLength(1);
+  });
+  it('rejects a different action for an old entry with no calldata',async()=>{
+    const {client,result}=recovery();result.method='withdraw';await expect(client.recover()).rejects.toThrow('different wallet action');expect(client.pending()).toHaveLength(1);
+  });
+  it('retains pending and RPC-failed operations without another send',async()=>{
+    const {client,result,request,provider}=recovery();result.status='pending';await expect(client.recover()).rejects.toThrow('still pending');
+    request.mockRejectedValue(Error('RPC offline'));await expect(client.recover()).rejects.toThrow('RPC offline');expect(client.pending()).toHaveLength(1);expect(provider.request).not.toHaveBeenCalled();
+  });
+  it('archives a reverted operation, allowing only a subsequent explicit retry',async()=>{
+    const {client,result,provider}=recovery();result.status='reverted';expect(await client.recover()).toMatchObject([{status:'reverted'}]);expect(client.pending()).toEqual([]);expect(provider.request).not.toHaveBeenCalled();
+  });
+  it('does not erase a journal changed while verification was in progress',async()=>{
+    const {client,entries,request,result}=recovery();request.mockImplementation(async()=>{entries.set(client.journalKey(),JSON.stringify([{operation:'Leash another'}]));return result});
+    await expect(client.recover()).rejects.toThrow('another tab');expect(client.pending()).toMatchObject([{operation:'Leash another'}]);
+  });
+  it('requires explicit acknowledgement to clear an old hashless Leash',async()=>{
+    const {client,provider,entries}=recovery({operation:'Leash first'});
+    await expect(client.discardUnsentLeash(false)).rejects.toThrow('Confirm');expect(client.pending()).toHaveLength(1);
+    await client.discardUnsentLeash(true);expect(client.pending()).toEqual([]);expect(provider.request).not.toHaveBeenCalled();expect(entries.get(client.journalKey()+':resolved')).toContain('not_broadcast_reported');
+  });
+  it.each([{operation:'deposit USDC'},{operation:'Leash first',hash:txHash},{operation:'Leash first',runId:txHash}])('does not clear a submitted or monetary operation %j',async entry=>{
+    const {client}=recovery(entry);await expect(client.discardUnsentLeash(true)).rejects.toThrow('Only an unsent Leash');expect(client.pending()).toHaveLength(1);
+  });
+  it('retains the failed request if Base still reports a pending nonce',async()=>{
+    const {client,state}=recovery({operation:'Leash first'});state.pendingNonce='1';await expect(client.discardUnsentLeash(true)).rejects.toThrow('pending wallet transaction');expect(client.pending()).toHaveLength(1);
+  });
+  it('checks ETH before preparing a new Leash without writing a pending entry',async()=>{
+    const {client,state,provider}=recovery();await client.recover();await expect(client.ensureGas()).rejects.toThrow('Add ETH');expect(client.pending()).toEqual([]);state.ethBalanceWei='100000000000000';await client.ensureGas();expect(provider.request).not.toHaveBeenCalled();
+  });
+  it('records an insufficient-gas rejection as unsent rather than blocking all future actions',async()=>{
+    const {client,provider,entries}=setup();const original=provider.request.getMockImplementation()!;
+    provider.request.mockImplementation(async args=>{if(args.method==='eth_sendTransaction')throw Object.assign(Error('insufficient funds for gas * price + value'),{code:-32000});return original(args)});
+    await expect(client.transaction({to:escrow,data:'0x1234'},'Leash first')).rejects.toThrow('Insufficient ETH');expect(client.pending()).toEqual([]);expect(entries.get(client.journalKey()+':resolved')).toContain('insufficient_gas');
+  });
+  it('uses the same cross-tab lock for recovery and submission',async()=>{
+    const {client,request}=recovery();vi.stubGlobal('navigator',{locks:{request:async(_n:unknown,_o:unknown,run:(lock:null)=>unknown)=>run(null)}});
+    await expect(client.recover()).rejects.toThrow('Another tab');expect(request).not.toHaveBeenCalled();expect(client.pending()).toHaveLength(1);
   });
 });

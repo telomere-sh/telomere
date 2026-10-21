@@ -1,4 +1,5 @@
 import { createWorkspaceRoutes } from './workspace/routes.js';
+import { inspectWalletTransaction, walletRecoveryState } from './chain/wallet-recovery.js';
 import { Hono, type MiddlewareHandler } from 'hono';
 import { bodyLimit } from 'hono/body-limit';
 import { secureHeaders } from 'hono/secure-headers';
@@ -291,6 +292,11 @@ export function createApp(service: Service, auth: Auth, logger: Logger, publicRo
   });
   app.get('/api/transactions/deposit', async context => { await auth.owner(getCookie(context, cookie)); return context.json({ transactions: service.bridge.depositTransactions(BigInt(moneySchema.parse(context.req.query('amount')))) }); });
   app.get('/api/transactions/withdraw', async context => { await auth.owner(getCookie(context, cookie)); return context.json({ transaction: service.bridge.withdrawTransaction(BigInt(moneySchema.parse(context.req.query('amount')))) }); });
+  app.get('/api/transactions/recovery-state', async context => context.json(await walletRecoveryState(service.bridge, await auth.owner(getCookie(context, cookie)))));
+  app.get('/api/transactions/:hash', async context => {
+    const owner = await auth.owner(getCookie(context, cookie));
+    return context.json(await inspectWalletTransaction(service.bridge, owner, bytes32Schema.parse(context.req.param('hash'))));
+  });
   app.post('/api/receipts/verify', async context => {
     await auth.owner(getCookie(context, cookie));
     const { receipt } = z.object({ receipt: z.unknown() }).strict().parse(await context.req.json());

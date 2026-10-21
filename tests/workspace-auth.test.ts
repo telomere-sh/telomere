@@ -1,4 +1,4 @@
-import { beforeAll, afterAll, describe, it, expect } from 'vitest';
+import { beforeAll, afterAll, describe, it, expect, vi } from 'vitest';
 import { generatePrivateKey, privateKeyToAccount } from 'viem/accounts';
 import { eq } from 'drizzle-orm';
 import pino from 'pino';
@@ -16,6 +16,7 @@ describe('public wallet accounts and private workspace repository', () => {
   const config = {...base, MODE:'testnet' as const, WALLET_ACCESS:'public' as const};
   let store:Awaited<ReturnType<typeof openStore>>, auth:Auth, app:ReturnType<typeof createApp>;
   let aliceCookie:string,bobCookie:string;
+  let bridge:ChainBridge;
   const request=(path:string,method='GET',body?:unknown,cookie='',origin=config.PUBLIC_ORIGIN)=>app.request(path,{method,headers:{cookie,origin,'Content-Type':'application/json'},...(body===undefined?{}:{body:JSON.stringify(body)})});
   async function login(account:typeof alice){
     const c=await request('/api/auth/challenge','POST',{address:account.address});expect(c.status).toBe(200);
@@ -24,7 +25,7 @@ describe('public wallet accounts and private workspace repository', () => {
     const r=await request('/api/auth/verify','POST',{address:account.address,nonce:challenge.nonce,signature});
     expect(r.status).toBe(200);return r.headers.get('set-cookie')!.split(';')[0]!;
   }
-  beforeAll(async()=>{store=await openStore(config);auth=new Auth(store.db,config);app=createApp(new Service(store.db,new ChainBridge(base),config,false),auth,pino({level:'silent'}));aliceCookie=await login(alice);bobCookie=await login(bob)},30000);
+  beforeAll(async()=>{store=await openStore(config);auth=new Auth(store.db,config);bridge=new ChainBridge(base);app=createApp(new Service(store.db,bridge,config,false),auth,pino({level:'silent'}));aliceCookie=await login(alice);bobCookie=await login(bob)},30000);
   afterAll(async()=>store?.close());
   it('allows a new independently signed wallet without a pilot entry',async()=>{expect((await request('/api/me','GET',undefined,bobCookie)).status).toBe(200)});
   it('keeps allowlist mode closed and denies unapproved sessions too',async()=>{
@@ -62,6 +63,15 @@ describe('public wallet accounts and private workspace repository', () => {
       expect(r.status).toBe(409);expect(await r.json()).toMatchObject({title:'session_owner_changed'});
     }
     expect(await (await request('/api/workspace','GET',undefined,bobCookie)).json()).toMatchObject({document:{budget:0}});
+  });
+  it('protects the read-only recovery routes and validates hashes before RPC calls',async()=>{
+    expect((await request('/api/transactions/recovery-state')).status).toBe(401);
+    expect((await request('/api/transactions/0x'+'ab'.repeat(32))).status).toBe(401);
+    expect((await request('/api/transactions/not-a-hash','GET',undefined,aliceCookie)).status).toBe(422);
+  });
+  it('returns authenticated wallet gas and nonce state through the recovery-state route',async()=>{
+    const chain=vi.spyOn(bridge.public,'getChainId').mockResolvedValue(base.CHAIN_ID),balance=vi.spyOn(bridge.public,'getBalance').mockResolvedValue(0n),nonce=vi.spyOn(bridge.public,'getTransactionCount').mockResolvedValue(0);
+    try{const response=await request('/api/transactions/recovery-state','GET',undefined,aliceCookie);expect(response.status).toBe(200);expect(await response.json()).toMatchObject({chainId:base.CHAIN_ID,latestNonce:'0',pendingNonce:'0',ethBalanceWei:'0'});}finally{chain.mockRestore();balance.mockRestore();nonce.mockRestore()}
   });
   it('requires same-origin JSON and authenticated sessions; revokes on logout',async()=>{
     expect((await request('/api/workspace')).status).toBe(401);

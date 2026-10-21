@@ -13,6 +13,23 @@ const hex = z.string().regex(/^0x[0-9a-fA-F]*$/).transform(v => v as Hex);
 
 const txSchema = z.object({to:address,data:hex.optional(),value:z.enum(['0','0x0']).optional()});
 
+const transactionHash = z.string().regex(/^0x[0-9a-fA-F]{64}$/).transform(v => v as Hex);
+const journalEntry = z.object({operation:z.string().min(1).max(160),hash:transactionHash.optional(),runId:transactionHash.optional(),intent:txSchema.optional()}).strict();
+const recoveryResult = z.object({hash:transactionHash,owner:address,chainId:z.number().int(),transaction:txSchema,method:z.string(),status:z.enum(['pending','confirmed','reverted']),leashId:transactionHash.optional(),runId:transactionHash.optional()});
+type JournalEntry = z.infer<typeof journalEntry>;
+const recoveryState = z.object({owner:address,chainId:z.number().int(),latestNonce:z.string().regex(/^\d+$/),pendingNonce:z.string().regex(/^\d+$/),ethBalanceWei:z.string().regex(/^\d+$/)});
+function rejectedForGas(error:unknown):boolean {
+  const seen=new Set<object>();
+  const visit=(value:unknown,depth:number):boolean=>{
+    if(!value||typeof value!=='object'||depth>4||seen.has(value))return false;
+    seen.add(value);const code:unknown=Reflect.get(value,'code'),message:unknown=Reflect.get(value,'message');
+    if([-32000,-32003,-32603].includes(Number(code))&&typeof message==='string'&&/\binsufficient funds\b|not enough ETH (?:for|to pay).*gas/i.test(message))return true;
+    return ['cause','data','originalError','error'].some(key=>visit(Reflect.get(value,key),depth+1));
+  };
+  return visit(error,0);
+}
+
+
 const configSchema = z.object({mode:z.string(),chain:z.object({id:z.number(),name:z.string(),rpcUrl:z.string(),explorerUrl:z.string().optional()}),
 
   token:z.object({address,symbol:z.string(),decimals:z.literal(6)}),escrowAddress:address,cpuMode:z.string(),
@@ -175,7 +192,7 @@ export class WorkspaceClient {
 
   journalKey(){if(!this.address||!this.config)throw Error('Sign in first.');return `telomere-transactions-v1:${this.config.chain.id}:${this.address.toLowerCase()}`}
 
-  pending(){return JSON.parse(localStorage.getItem(this.journalKey())??'[]') as {operation:string;hash?:Hex;runId?:Hex}[]}
+  pending(){const raw=localStorage.getItem(this.journalKey())??'[]';if(raw.length>65536)throw Error('The wallet journal needs review before continuing.');return z.array(journalEntry).max(10).parse(JSON.parse(raw))}
 
   async transaction(raw:unknown,operation:string,runId?:Hex){
 
@@ -195,15 +212,15 @@ export class WorkspaceClient {
 
       const entries=this.pending();if(entries.length)throw Error('A previous transaction needs confirmation. Use Check pending transactions first.');
 
-      const entry:{operation:string;hash?:Hex;runId?:Hex}={operation,...(runId?{runId}:{})};entries.push(entry);
+      const entry:JournalEntry={operation,intent:tx,...(runId?{runId}:{})};entries.push(entry);
 
       localStorage.setItem(key,JSON.stringify(entries));
 
       let hash:Hex;
 
-      try{hash=hex.parse(await identity.provider.request({method:'eth_sendTransaction',params:[{from:identity.owner,to:tx.to,data:tx.data??'0x',value:'0x0',chainId:toHex(this.config!.chain.id)}]}))}
+      try{hash=transactionHash.parse(await identity.provider.request({method:'eth_sendTransaction',params:[{from:identity.owner,to:tx.to,data:tx.data??'0x',value:'0x0',chainId:toHex(this.config!.chain.id)}]}))}
 
-      catch(error){if((error as {code?:number}).code===4001)localStorage.removeItem(key);throw error}
+      catch(error){const gas=rejectedForGas(error);if((error as {code?:number}).code===4001||gas){this.archivePending(key,entry,gas?'insufficient_gas':'wallet_cancelled','wallet_rejected');localStorage.removeItem(key)}if(gas)throw Error('Insufficient ETH on Base for network fees. Add ETH, then retry. The wallet rejected this request before sending.');throw error}
 
       entry.hash=hash;localStorage.setItem(key,JSON.stringify(entries));
 
@@ -217,7 +234,7 @@ export class WorkspaceClient {
 
   }
 
-  async confirm(entry:{operation:string;hash?:Hex;runId?:Hex}){
+  async confirm(entry:Pick<JournalEntry,'hash'|'runId'>){
 
     if(!entry.hash)throw Error('Wallet submission outcome is unknown. Inspect wallet history before retrying.');
 
@@ -241,7 +258,72 @@ export class WorkspaceClient {
 
   }
 
-  async recover(){const key=this.journalKey();for(const entry of this.pending())await this.confirm(entry);localStorage.removeItem(key);this.notice('Pending transactions checked. Refreshing workspace.')}
+  private archivePending(key:string,entry:JournalEntry,status:string,method:string){
+    const historyKey=key+':resolved',raw=localStorage.getItem(historyKey)??'[]';
+    if(raw.length>262144)throw Error('Recovery history needs review before continuing.');
+    const history=z.array(z.record(z.unknown())).max(100).parse(JSON.parse(raw));
+    localStorage.setItem(historyKey,JSON.stringify([...history.filter(item=>!entry.hash||item.hash!==entry.hash).slice(-99),{...entry,status,method,resolvedAt:new Date().toISOString()}]));
+  }
+  async walletRecoveryState(){
+    const owner=this.address,chainId=this.config?.chain.id;if(!owner||!chainId)throw Error('Sign in before reviewing a wallet request.');
+    const state=recoveryState.parse(await this.request('/api/transactions/recovery-state'));
+    if(state.owner.toLowerCase()!==owner.toLowerCase()||state.chainId!==chainId)throw Error('Wallet recovery state does not match this account.');
+    return state;
+  }
+  async ensureGas(){if(BigInt((await this.walletRecoveryState()).ethBalanceWei)===0n)throw Error('Add ETH on Base for network fees before creating a Leash. USDC is not used to pay gas. No transaction was requested.')}
+  async discardUnsentLeash(confirmed:boolean){
+    if(!confirmed)throw Error('Confirm that the wallet rejected the request before sending and that you closed it.');
+    if(this.financialBusy)throw Error('Another wallet operation is pending.');
+    if(!navigator.locks)throw Error('Use a current wallet browser to lock transaction recovery.');
+    this.financialBusy=true;
+    try{return await navigator.locks.request('telomere-wallet-transaction',{ifAvailable:true},async lock=>{
+      if(!lock)throw Error('Another tab is using the wallet.');
+      const key=this.journalKey(),snapshot=localStorage.getItem(key),entries=this.pending(),entry=entries[0];
+      if(entries.length!==1||!entry||entry.hash||entry.runId||!entry.operation.startsWith('Leash '))throw Error('Only an unsent Leash request without a hash can be cleared here.');
+      const state=await this.walletRecoveryState();
+      if(state.pendingNonce!==state.latestNonce)throw Error('Base reports a pending wallet transaction. Verify its hash before clearing this request.');
+      if(localStorage.getItem(key)!==snapshot)throw Error('The wallet journal changed in another tab. Check it again.');
+      this.archivePending(key,entry,'not_broadcast_reported','user_confirmed_wallet_rejection');
+      localStorage.removeItem(key);this.notice('Failed Leash request cleared and retained in history. No transaction was sent.');
+      return state;
+    })}finally{this.financialBusy=false}
+  }
+
+  async recover(suppliedHash?:string){
+    if(this.financialBusy)throw Error('Another wallet operation is pending.');
+    if(!navigator.locks)throw Error('Use a current wallet browser to lock transaction recovery.');
+    this.financialBusy=true;
+    try{return await navigator.locks.request('telomere-wallet-transaction',{ifAvailable:true},async lock=>{
+      if(!lock)throw Error('Another tab is using the wallet.');
+      const key=this.journalKey(),owner=this.address!,chainId=this.config!.chain.id;
+      let snapshot=localStorage.getItem(key)??'[]';const entries=this.pending(),results=[];
+      if(suppliedHash&&(entries.length!==1||entries[0]!.hash))throw Error('A hash can only recover one operation that is missing its wallet response.');
+      for(const entry of entries){
+        const hash=entry.hash??(suppliedHash?transactionHash.parse(suppliedHash.trim()):undefined);
+        if(!hash)throw Error('The wallet did not return a transaction hash. Paste its Base transaction hash from wallet history. Nothing will be sent again.');
+        const result=recoveryResult.parse(await this.request('/api/transactions/'+hash));
+        if(result.hash.toLowerCase()!==hash.toLowerCase()||result.owner.toLowerCase()!==owner.toLowerCase()||result.chainId!==chainId)throw Error('Recovered transaction identity does not match this session.');
+        if(entry.intent){
+          if(entry.intent.to.toLowerCase()!==result.transaction.to.toLowerCase()||(entry.intent.data??'0x').toLowerCase()!==(result.transaction.data??'0x').toLowerCase())throw Error('This hash does not match the original transaction. The journal is retained.');
+        }else{
+          const allowed=entry.operation.startsWith('Leash ')?['createLeash','updateLeash']:entry.operation==='Revoke Leash'?['killLeash']:entry.operation==='deposit USDC'?['approve','deposit']:entry.operation==='withdraw USDC'?['withdraw']:entry.operation==='CPU reservation'?['openRun']:entry.operation==='stop run'?['requestStop']:entry.operation==='refund run'?['refundRun']:[];
+          if(!allowed.includes(result.method))throw Error('This hash belongs to a different wallet action. The journal is retained.');
+        }
+        if(entry.runId&&(result.method!=='openRun'||result.runId?.toLowerCase()!==entry.runId.toLowerCase()))throw Error('Recovered transaction belongs to a different CPU reservation.');
+        if((localStorage.getItem(key)??'[]')!==snapshot)throw Error('The wallet journal changed in another tab. Check it again.');
+        if(!entry.hash){entry.hash=hash;const current=this.pending();current[0]!.hash=hash;localStorage.setItem(key,JSON.stringify(current));snapshot=localStorage.getItem(key)!}
+        if(result.status==='pending')throw Error('This transaction is still pending on Base. No new transaction was sent. Check again after confirmation.');
+        if(result.status==='confirmed'&&entry.runId)await this.request('/api/runs',{runId:entry.runId,txHash:hash});
+        if((localStorage.getItem(key)??'[]')!==snapshot)throw Error('The wallet journal changed in another tab. Check it again.');
+        this.archivePending(key,entry,result.status,result.method);
+        const remaining=this.pending();remaining.shift();
+        if(remaining.length)localStorage.setItem(key,JSON.stringify(remaining));else localStorage.removeItem(key);
+        snapshot=localStorage.getItem(key)??'[]';results.push(result);
+      }
+      this.notice(results.some(result=>result.status==='reverted')?'A reverted transaction was resolved. No automatic retry was sent.':'Existing transactions verified. No new transaction was sent.');
+      return results;
+    })}finally{this.financialBusy=false}
+  }
 
 }
 

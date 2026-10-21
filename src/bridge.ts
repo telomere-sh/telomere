@@ -54,7 +54,7 @@ export class ChainBridge {
     const block = await this.public.getBlock({ blockTag: 'latest' });
     await this.assertAssetPins(block.hash, block.number);
   }
-  private async assertReceiptAssetPins(blockHash: Hex, blockNumber: bigint): Promise<void> {
+  async assertReceiptAssetPins(blockHash: Hex, blockNumber: bigint): Promise<void> {
     if (this.config.MODE === 'demo') return;
     await this.assertAssetPins(blockHash, blockNumber);
     if (!this.config.TOKEN_CODE_HASH || !this.config.TOKEN_IMPLEMENTATION_ADDRESS
