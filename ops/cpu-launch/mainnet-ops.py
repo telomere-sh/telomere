@@ -364,6 +364,43 @@ def read_soak_progress(folder,namespace,expected_uid=995):
         assert stat.S_ISREG(info.st_mode) and info.st_uid==expected_uid and info.st_nlink==1 and 0<info.st_size<=16384
         raw=source.read(16385);assert len(raw)<=16384
     return json.loads(raw)
+RUNTIME_VERIFICATION_WINDOW_SECONDS=3600
+
+def runtime_publication_time(expected,directory=None):
+    """Use the immutable ciphertext's clock, never the hourly data receipt's clock."""
+    identifier=expected['id'];assert policy.RUNTIME_ID.fullmatch(identifier)
+    descriptor=os.open((BACKUPS if directory is None else directory)/(identifier+'.tar.age'),os.O_RDONLY|os.O_NOFOLLOW|os.O_NONBLOCK)
+    with os.fdopen(descriptor,'rb') as source:
+        info=os.fstat(source.fileno())
+        assert stat.S_ISREG(info.st_mode) and info.st_nlink==1 and info.st_uid==os.geteuid() and info.st_mode&0o022==0
+        assert 100<=info.st_size==expected['bytes']<=policy.MAX_RUNTIME_ARCHIVE
+    return datetime.datetime.fromtimestamp(info.st_mtime,datetime.timezone.utc)
+
+def offhost_runtime_observation(expected,offhost,current,directory=None):
+    """A previous authenticated copy permits one bounded transfer window, not verification."""
+    result={'offhostRuntimeValid':False,'offhostRuntimeState':'unverified'}
+    try:
+        assert policy.RUNTIME_ID.fullmatch(expected['id']) and re.fullmatch('[0-9a-f]{64}',expected['sha256'])
+        assert offhost['authenticatedDecryptionVerifiedByClient'] is True
+        assert policy.RUNTIME_ID.fullmatch(offhost['runtimeBundleId']) and re.fullmatch('[0-9a-f]{64}',offhost['runtimeBundleSha256'])
+        verified=datetime.datetime.fromisoformat(offhost['verifiedAt'])
+        proof_age=(current-verified).total_seconds();assert proof_age>=0
+        if offhost['runtimeBundleId']==expected['id']:
+            if offhost['runtimeBundleSha256']==expected['sha256']:
+                result.update(offhostRuntimeValid=True,offhostRuntimeState='verified')
+            else:result['offhostRuntimeState']='checksum_mismatch'
+            return result
+        published=runtime_publication_time(expected,directory)
+        deadline=published+datetime.timedelta(seconds=RUNTIME_VERIFICATION_WINDOW_SECONDS)
+        result.update(offhostRuntimePublishedAt=published.isoformat(),offhostRuntimeVerificationDeadline=deadline.isoformat())
+        # Fresh prior proof must predate the new bundle. Rollbacks, missing proof,
+        # clock errors and same-ID hash mismatches never receive an extension.
+        if 0<=proof_age<=10800 and verified<=published<=current<deadline:
+            result.update(offhostRuntimeState='pending',offhostRuntimeWaitSeconds=round((deadline-current).total_seconds(),3))
+        elif published<=current and current>=deadline:result['offhostRuntimeState']='overdue'
+    except (KeyError,TypeError,ValueError,AssertionError,OSError,OverflowError):pass
+    return result
+
 def evaluate_health(observation):
     alerts=[]
     if not observation.get('ready'):alerts.append('CONTROLLER_NOT_READY')
@@ -383,7 +420,7 @@ def evaluate_health(observation):
         if entry['status']=='running' and entry['oldest_seconds']>180:alerts.append('CPU_RUN_STALLED')
     if observation.get('backupAgeSeconds',float('inf'))>7200:alerts.append('BACKUP_STALE')
     if observation.get('offhostAgeSeconds',float('inf'))>10800:alerts.append('OFFHOST_BACKUP_STALE')
-    if not observation.get('offhostRuntimeValid',True):alerts.append('OFFHOST_RUNTIME_NOT_VERIFIED')
+    if not observation.get('offhostRuntimeValid',True) and observation.get('offhostRuntimeState')!='pending':alerts.append('OFFHOST_RUNTIME_NOT_VERIFIED')
     if observation.get('diskFreeBytes',0)<policy.MIN_FREE_BYTES:alerts.append('DISK_SPACE_LOW')
     capacity=observation.get('backupCapacity',{})
     if capacity.get('dumpBytes',0)>=policy.MAX_DUMP_BYTES*.9:alerts.append('BACKUP_DATABASE_CAPACITY_REVIEW')
@@ -443,7 +480,7 @@ def monitor():
     try:
         backup=json.loads((PRIVATE/'cpu-backup-status.json').read_text());offhost=json.loads((PRIVATE/offhost_file).read_text())
         observed['backupCapacity']=backup.get('capacity',{});observed['backupCipherBytes']=backup['bytes']
-        expected=backup.get('runtimeBundle');observed['offhostRuntimeValid']=not expected or (offhost.get('runtimeBundleId')==expected['id'] and offhost.get('runtimeBundleSha256')==expected['sha256'])
+        observed.update(offhost_runtime_observation(backup.get('runtimeBundle'),offhost,current))
     except Exception:observed['offhostRuntimeValid']=False
     try:
         context=ssl.create_default_context()
@@ -451,7 +488,8 @@ def monitor():
             with context.wrap_socket(raw,server_hostname='telomere.sh') as conn:expires=conn.getpeercert()['notAfter']
         observed['tlsRemainingDays']=(ssl.cert_time_to_seconds(expires)-time.time())/86400
     except Exception:observed['tlsRemainingDays']=0
-    observed['alerts']=evaluate_health(observed);observed['status']='ok' if not observed['alerts'] else 'attention'
+    observed['alerts']=evaluate_health(observed)
+    observed['status']='attention' if observed['alerts'] else ('pending' if observed.get('offhostRuntimeState')=='pending' else 'ok')
     atomic(PRIVATE/'cpu-monitor-status.json',observed)
     print(json.dumps(observed))
     if observed['alerts']:raise SystemExit(2)

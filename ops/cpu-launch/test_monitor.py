@@ -48,6 +48,14 @@ class HealthTests(unittest.TestCase):
     def test_offhost_runtime_must_match_current_bundle(self):
         self.good['offhostRuntimeValid']=False
         self.assertIn('OFFHOST_RUNTIME_NOT_VERIFIED',ops.evaluate_health(self.good))
+    def test_pending_runtime_does_not_hide_other_incidents(self):
+        self.good.update(offhostRuntimeValid=False,offhostRuntimeState='pending',databaseAvailable=False,offhostAgeSeconds=10801,invalidFinancialRows=1)
+        self.assertEqual(ops.evaluate_health(self.good),['DATABASE_UNAVAILABLE','FINANCIAL_INVARIANT_FAILED','OFFHOST_BACKUP_STALE'])
+    def test_every_non_pending_unverified_state_pages(self):
+        for state in ['overdue','checksum_mismatch','unverified','verified',None]:
+            with self.subTest(state=state):
+                self.good.update(offhostRuntimeValid=False,offhostRuntimeState=state)
+                self.assertIn('OFFHOST_RUNTIME_NOT_VERIFIED',ops.evaluate_health(self.good))
     def test_cpu_exceeding_maximum_runtime_without_updates(self):
         self.good['states']=[{'status':'running','count':1,'oldest_seconds':181}]
         self.assertIn('CPU_RUN_STALLED',ops.evaluate_health(self.good))
@@ -64,6 +72,75 @@ class HealthTests(unittest.TestCase):
         self.good['additionalCpuSoaks'][0].update(state='failed');self.assertIn('CPU_SOAK_FAILED',ops.evaluate_health(self.good))
         self.good['additionalCpuSoaks'][0].update(state='running',progressAgeSeconds=181);self.assertIn('CPU_SOAK_STALE',ops.evaluate_health(self.good))
         self.good['additionalCpuSoaks'][0].update(state='invalid');self.assertIn('CPU_SOAK_OBSERVATION_INVALID',ops.evaluate_health(self.good))
+class RuntimeVerificationTests(unittest.TestCase):
+    def setUp(self):
+        self.temp=tempfile.TemporaryDirectory();self.root=Path(self.temp.name).resolve()
+        self.published=datetime.datetime(2026,10,21,23,1,tzinfo=datetime.timezone.utc)
+        self.current=self.published+datetime.timedelta(minutes=20)
+        self.expected={'id':'runtime-'+'a'*40+'-'+'b'*16,'sha256':'c'*64,'bytes':100}
+        self.proof={'runtimeBundleId':'runtime-'+'d'*40+'-'+'e'*16,'runtimeBundleSha256':'f'*64,
+            'authenticatedDecryptionVerifiedByClient':True,'verifiedAt':(self.published-datetime.timedelta(minutes=10)).isoformat()}
+        self.archive=self.root/(self.expected['id']+'.tar.age');self.archive.write_bytes(b'x'*100);self.archive.chmod(0o600)
+        os.utime(self.archive,(self.published.timestamp(),self.published.timestamp()))
+    def tearDown(self):self.temp.cleanup()
+    def observe(self):return ops.offhost_runtime_observation(self.expected,self.proof,self.current,self.root)
+    def test_fresh_previous_proof_reports_pending_not_verified(self):
+        result=self.observe()
+        self.assertFalse(result['offhostRuntimeValid']);self.assertEqual(result['offhostRuntimeState'],'pending')
+        self.assertEqual(result['offhostRuntimeWaitSeconds'],2400)
+        self.assertEqual(result['offhostRuntimeVerificationDeadline'],(self.published+datetime.timedelta(hours=1)).isoformat())
+    def test_exact_acknowledgment_completes_verification(self):
+        self.proof.update(runtimeBundleId=self.expected['id'],runtimeBundleSha256=self.expected['sha256'])
+        self.assertEqual(self.observe(),{'offhostRuntimeValid':True,'offhostRuntimeState':'verified'})
+    def test_deadline_is_exclusive_and_does_not_reset_on_later_observations(self):
+        self.current=self.published+datetime.timedelta(seconds=3599);self.assertEqual(self.observe()['offhostRuntimeState'],'pending')
+        for seconds in [3600,3601,7200]:
+            self.current=self.published+datetime.timedelta(seconds=seconds)
+            result=self.observe();self.assertFalse(result['offhostRuntimeValid']);self.assertEqual(result['offhostRuntimeState'],'overdue')
+            self.assertEqual(result['offhostRuntimeVerificationDeadline'],(self.published+datetime.timedelta(hours=1)).isoformat())
+    def test_hourly_data_receipt_timestamp_is_not_a_window_input(self):
+        # A newly created data receipt still references exactly this older archive.
+        self.current=self.published+datetime.timedelta(minutes=61)
+        self.assertEqual(self.observe()['offhostRuntimeState'],'overdue')
+    def test_same_id_checksum_mismatch_is_immediate(self):
+        self.proof['runtimeBundleId']=self.expected['id']
+        self.assertEqual(self.observe(),{'offhostRuntimeValid':False,'offhostRuntimeState':'checksum_mismatch'})
+    def test_missing_or_unauthenticated_proof_has_no_window(self):
+        for key in ['authenticatedDecryptionVerifiedByClient','verifiedAt','runtimeBundleId','runtimeBundleSha256']:
+            original=self.proof.copy();self.proof.pop(key)
+            self.assertEqual(self.observe()['offhostRuntimeState'],'unverified');self.proof=original
+        self.proof['authenticatedDecryptionVerifiedByClient']=False
+        self.assertEqual(self.observe()['offhostRuntimeState'],'unverified')
+    def test_stale_and_future_proof_and_rollback_have_no_window(self):
+        for timestamp in [self.current-datetime.timedelta(seconds=10801),self.current+datetime.timedelta(seconds=1),self.published+datetime.timedelta(seconds=1)]:
+            self.proof['verifiedAt']=timestamp.isoformat();self.assertEqual(self.observe()['offhostRuntimeState'],'unverified')
+    def test_malformed_timestamps_have_no_window(self):
+        for timestamp in ['invalid','2026-10-21T23:00:00',None]:
+            self.proof['verifiedAt']=timestamp;self.assertEqual(self.observe()['offhostRuntimeState'],'unverified')
+    def test_future_archive_has_no_window(self):
+        timestamp=(self.current+datetime.timedelta(seconds=1)).timestamp();os.utime(self.archive,(timestamp,timestamp))
+        self.assertEqual(self.observe()['offhostRuntimeState'],'unverified')
+    def test_missing_archive_and_wrong_size_have_no_window(self):
+        self.expected['bytes']=101;self.assertEqual(self.observe()['offhostRuntimeState'],'unverified')
+        self.archive.unlink();self.assertEqual(self.observe()['offhostRuntimeState'],'unverified')
+    def test_unsafe_archive_id_does_not_open_a_file(self):
+        self.expected['id']='../outside'
+        with patch.object(ops.os,'open',side_effect=AssertionError('Should not open')) as opened:
+            self.assertEqual(self.observe()['offhostRuntimeState'],'unverified');opened.assert_not_called()
+    def test_symlink_and_hardlink_have_no_window(self):
+        original=self.root/'original';self.archive.rename(original);self.archive.symlink_to(original)
+        self.assertEqual(self.observe()['offhostRuntimeState'],'unverified');self.archive.unlink()
+        os.link(original,self.archive);self.assertEqual(self.observe()['offhostRuntimeState'],'unverified')
+    def test_fifo_has_no_window_without_waiting_for_writer(self):
+        self.archive.unlink();os.mkfifo(self.archive)
+        self.assertEqual(self.observe()['offhostRuntimeState'],'unverified')
+    def test_foreign_owner_or_writable_archive_has_no_window(self):
+        with patch.object(ops.os,'geteuid',return_value=os.geteuid()+1):self.assertEqual(self.observe()['offhostRuntimeState'],'unverified')
+        self.archive.chmod(0o622);self.assertEqual(self.observe()['offhostRuntimeState'],'unverified')
+    def test_bad_expected_metadata_has_no_window(self):
+        for expected in [None,{},{'id':self.expected['id'],'sha256':'bad'}]:
+            self.assertEqual(ops.offhost_runtime_observation(expected,self.proof,self.current,self.root)['offhostRuntimeState'],'unverified')
+
 class AdditionalSoakTests(unittest.TestCase):
     def test_completed_archive_soak_requires_actual_archive_and_full_duration(self):
         current=datetime.datetime.now(datetime.timezone.utc);watch={'namespace':'a'*16,'additionalNamespaces':['b'*16]}
