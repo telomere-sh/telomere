@@ -105,7 +105,12 @@ export function chooseWallet(): Promise<WalletOption | undefined> {
       const row = (name: string, option?: WalletOption) => {
         const button = document.createElement('button'); button.type = 'button'; button.className = 'wallet-picker-option';
         button.dataset.wallet = option?.id ?? name;
-        const badge = document.createElement('span'); badge.className = 'wallet-picker-badge'; badge.textContent = name.slice(0,2).toUpperCase(); badge.setAttribute('aria-hidden','true');
+        const badge = document.createElement('span'); badge.className = 'wallet-picker-badge'; badge.setAttribute('aria-hidden','true');
+        const brand = brands.find(([,label]) => label.toLowerCase().replace(/ wallet$/, '') === name.toLowerCase().replace(/ wallet$/, ''));
+        if (brand) {
+          const icon = document.createElement('img'); icon.src = '/assets/wallets/' + brand[0] + '.svg';
+          icon.alt = ''; icon.width = 36; icon.height = 36; icon.decoding = 'async'; badge.append(icon);
+        } else badge.textContent = name.slice(0,2).toUpperCase();
         const label = document.createElement('span'); label.textContent = name;
         const state = document.createElement('small'); state.textContent = option ? 'Detected ↗' : 'Not detected';
         button.append(badge,label,state);
