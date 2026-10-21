@@ -1,8 +1,9 @@
 import { z } from 'zod';
 
-import { getAddress, isAddress, toHex, type EIP1193Provider, type Address, type Hex } from 'viem';
+import { getAddress, isAddress, toHex, type Address, type Hex } from 'viem';
 
 import type { workspaceSchema } from '../src/workspace/routes.js';
+import { chooseWallet, rememberWallet, savedWallet, walletError, type WalletOption, type WalletProvider } from './wallet-picker.js';
 
 type Document = z.infer<typeof workspaceSchema>;
 
@@ -22,7 +23,7 @@ const configSchema = z.object({mode:z.string(),chain:z.object({id:z.number(),nam
 
 type Config = z.infer<typeof configSchema>;
 
-type EventProvider = EIP1193Provider & {on?:(name:string,handler:(data:unknown)=>void)=>void;removeListener?:(name:string,handler:(data:unknown)=>void)=>void};
+type EventProvider = WalletProvider;
 
 declare global { interface Window { okxwallet?: EventProvider } }
 
@@ -43,6 +44,8 @@ export class WorkspaceClient {
   saveFailed = false;
 
   financialBusy = false;
+  connecting = false;
+  private connectionOwner: Address | undefined;
 
   document: Document | undefined;
   readonly channel = typeof window !== 'undefined' && typeof BroadcastChannel !== 'undefined' ? new BroadcastChannel('telomere-wallet-session-v1') : undefined;
@@ -53,7 +56,7 @@ export class WorkspaceClient {
 
     const version=this.version;
 
-    const r=await fetch(path,{credentials:'same-origin',cache:'no-store',headers:{...(this.address?{'X-Telomere-Owner':this.address}:{})},...(body===undefined?{}:{method,headers:{...(this.address?{'X-Telomere-Owner':this.address}:{}),'Content-Type':'application/json','Idempotency-Key':path==='/api/cysts'?'checkpoint-'+z.object({id:z.string()}).parse(body).id:crypto.randomUUID()},body:JSON.stringify(body)})});
+    const r=await fetch(path,{signal:AbortSignal.timeout(30000),credentials:'same-origin',cache:'no-store',headers:{...(this.address?{'X-Telomere-Owner':this.address}:{})},...(body===undefined?{}:{method,headers:{...(this.address?{'X-Telomere-Owner':this.address}:{}),'Content-Type':'application/json','Idempotency-Key':path==='/api/cysts'?'checkpoint-'+z.object({id:z.string()}).parse(body).id:crypto.randomUUID()},body:JSON.stringify(body)})});
 
     const data:unknown=await r.json();
 
@@ -67,7 +70,7 @@ export class WorkspaceClient {
 
   clear(){this.version++;this.address=undefined;this.document=undefined;this.revision=0;this.saveFailed=false;this.changed(undefined)}
 
-  async start(){this.config=configSchema.parse(await this.request('/api/config'));try{const me=z.object({address}).parse(await this.request('/api/me'));await this.load(me.address)}catch(error){if(this.address)throw error;this.changed(undefined)}}
+  async start(){const generation=this.version;try{this.config=configSchema.parse(await this.request('/api/config'));if(this.connecting)return;const me=z.object({address}).parse(await this.request('/api/me'));await this.load(me.address)}catch(error){if(generation!==this.version||this.connecting)return;if(this.address)throw error;this.changed(undefined)}}
 
   async load(owner:Address){const doc=z.object({owner:address,revision:z.number(),document:z.unknown()}).parse(await this.request('/api/workspace'));
 
@@ -75,40 +78,38 @@ export class WorkspaceClient {
 
     this.address=owner;this.revision=doc.revision;this.document=doc.document as Document;this.changed(this.document)}
 
-  accountChanged=()=>{this.clear();void this.request('/api/auth/logout',{}).catch(()=>{});this.notice('Wallet changed. Sign in again to open its workspace.')};
+  accountChanged=(accounts:unknown)=>{const expected=this.address??this.connectionOwner;if(Array.isArray(accounts)&&typeof accounts[0]==='string'&&accounts[0].toLowerCase()===expected?.toLowerCase())return;this.clear();void this.request('/api/auth/logout',{}).catch(()=>{});this.notice('Wallet changed. Sign in again to open its workspace.')};
 
-  async connect(){
-
+  async connect(selection?:WalletOption){
     if(this.financialBusy)throw Error('Wait for the pending wallet operation.');
-
-    const found=window.okxwallet??window.ethereum;
-
-    if(!found)throw Error('Open this page in OKX Wallet’s DApp browser, or enable your browser wallet.');
-
-    const provider=found as EventProvider;
-
-    this.provider?.removeListener?.('accountsChanged',this.accountChanged);
-
-    this.clear();this.provider=provider;provider.on?.('accountsChanged',this.accountChanged);
-
-    const accounts=z.array(address).parse(await provider.request({method:'eth_requestAccounts'}));const owner=accounts[0];if(!owner)throw Error('No wallet selected.');
-
-    const generation=this.version;
-
-    const challenge=z.object({nonce:z.string(),message:z.string()}).parse(await this.request('/api/auth/challenge',{address:owner}));
-
-    const signature=await provider.request({method:'personal_sign',params:[toHex(challenge.message),owner]});
-
-    if(generation!==this.version)throw Error('Wallet changed during sign-in.');
-
-    await this.request('/api/auth/verify',{address:owner,nonce:challenge.nonce,signature});
-
-    const current=z.array(address).parse(await provider.request({method:'eth_accounts'}));
-
-    if(current[0]?.toLowerCase()!==owner.toLowerCase()){this.accountChanged();throw Error('Wallet changed during sign-in.')}
-
-    await this.load(owner);this.channel?.postMessage({owner:owner.toLowerCase()});this.notice('Signed in. Your workspace is private to this wallet.');
-
+    if(this.connecting)throw Error('A wallet connection is already open. Complete or close it first.');
+    this.connecting=true;
+    try{
+      const chosen=selection??await chooseWallet();if(!chosen)return;
+      this.provider?.removeListener?.('accountsChanged',this.accountChanged);
+      this.clear();this.provider=chosen.provider;const provider=chosen.provider,generation=this.version;
+      if(!this.config)this.config=configSchema.parse(await this.request('/api/config'));
+      this.notice('Unlock '+chosen.name+' and approve the connection request.');
+      const accounts=z.array(address).parse(await this.signInRequest(()=>provider.request({method:'eth_requestAccounts'})));
+      if(generation!==this.version)throw Error('Wallet changed during sign-in.');
+      const owner=accounts[0];if(!owner)throw Error('No wallet account selected. Unlock your wallet and try again.');
+      this.connectionOwner=owner;provider.on?.('accountsChanged',this.accountChanged);
+      const challenge=z.object({nonce:z.string(),message:z.string()}).parse(await this.request('/api/auth/challenge',{address:owner}));
+      this.notice('Sign the login message in '+chosen.name+'. No transaction is requested.');
+      const signature=await this.signInRequest(()=>provider.request({method:'personal_sign',params:[toHex(challenge.message),owner]}));
+      if(generation!==this.version)throw Error('Wallet changed during sign-in.');
+      await this.request('/api/auth/verify',{address:owner,nonce:challenge.nonce,signature});
+      const current=z.array(address).parse(await this.signInRequest(()=>provider.request({method:'eth_accounts'})));
+      if(generation!==this.version)throw Error('Wallet changed during sign-in.');
+      if(current[0]?.toLowerCase()!==owner.toLowerCase()){this.accountChanged(current);throw Error('Wallet changed during sign-in.')}
+      await this.load(owner);rememberWallet(chosen);this.channel?.postMessage({owner:owner.toLowerCase()});this.notice('Signed in. Your workspace is private to this wallet.');
+    }catch(error){throw Error(walletError(error))}
+    finally{this.connectionOwner=undefined;this.connecting=false}
+  }
+  private async signInRequest(request:()=>Promise<unknown>):Promise<unknown>{
+    let timer:ReturnType<typeof setTimeout>|undefined;
+    try{return await Promise.race([request(),new Promise<never>((_,reject)=>{timer=setTimeout(()=>reject(Error('Wallet request timed out. Open your wallet, dismiss any old request, then connect again.')),90000)})])}
+    finally{if(timer)clearTimeout(timer)}
   }
 
   async demo(){if(this.config?.mode!=='demo')throw Error('Demo login is disabled.');const me=z.object({address}).parse(await this.request('/api/auth/demo',{}));await this.load(me.address)}
@@ -141,8 +142,8 @@ export class WorkspaceClient {
     if(!this.address||!this.config)throw Error('Connect your wallet to approve this action.');
     // A signed session survives reloads; recover the already connected injected wallet.
     if(!this.provider && typeof window !== 'undefined') {
-      const injected=window.okxwallet??window.ethereum;
-      if(injected){this.provider=injected as EventProvider;this.provider.on?.('accountsChanged',this.accountChanged)}
+      const chosen=savedWallet()??await chooseWallet();
+      if(chosen){this.provider=chosen.provider;rememberWallet(chosen);this.provider.on?.('accountsChanged',this.accountChanged)}
     }
     if(!this.provider)throw Error('Connect your wallet to approve this action.');
 

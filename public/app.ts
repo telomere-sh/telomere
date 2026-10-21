@@ -2,6 +2,7 @@ import { createPublicClient, createWalletClient, custom, defineChain, encodeFunc
 import { z } from 'zod';
 import { escrowAbi } from '../src/chain/abi.js';
 import { CystPanel } from './cysts.js';
+import { chooseWallet, rememberWallet, savedWallet, walletError } from './wallet-picker.js';
 
 // REASON: these assertions only brand strings after runtime address/hex validation.
 const addressSchema = z.string().refine(isAddress, 'Expected an EVM address').transform(value => value as Address);
@@ -161,6 +162,14 @@ async function ensureChain() {
 }
 async function transact(transaction: Transaction, onSubmitted?: (hash: `0x${string}`) => void, beforeSubmit?: () => Promise<void>) {
   requireAccount();
+  if (!state.demo && !state.provider) {
+    const chosen = savedWallet() ?? await chooseWallet();
+    if (!chosen) throw new Error('Choose a wallet to approve this action.');
+    const accounts = await chosen.provider.request({method:'eth_accounts'});
+    if (accounts[0]?.toLowerCase() !== state.address?.toLowerCase()) throw new Error('Wallet account changed. Connect and sign in again.');
+    state.provider = chosen.provider; rememberWallet(chosen);
+    state.provider.on?.('accountsChanged', handleAccountsChanged);
+  }
   const identity = { version: sessionVersion, address: state.address!, demo: state.demo, provider: state.provider };
   const unchanged = () => {
     if (identity.version !== sessionVersion || identity.address !== state.address || identity.demo !== state.demo || identity.provider !== state.provider) {
@@ -249,20 +258,27 @@ function updateAuth() {
   cystPanel.sync();
 }
 async function connect() {
+  const chosen = await chooseWallet(); if (!chosen) return;
   sessionVersion++;
   clearFieldErrors();
-  const provider = window.ethereum;
-  if (!provider) throw new Error('Install an EVM browser wallet, then refresh this page. The local demo account is also available in demo mode.');
+  const provider = chosen.provider;
+  const generation = sessionVersion;
+  state.provider?.removeListener?.('accountsChanged', handleAccountsChanged);
+  try {
   const accounts = await provider.request({ method: 'eth_requestAccounts' });
+  if (generation !== sessionVersion) throw new Error('Wallet changed during sign-in.');
   if (!accounts[0]) throw new Error('Choose an account in your wallet.');
   const address = addressSchema.parse(accounts[0]); state.provider = provider;
   const challenge = challengeSchema.parse(await post('/api/auth/challenge', { address }));
   const wallet = createWalletClient({ transport: custom(provider) });
   const signature = await wallet.signMessage({ account: address, message: challenge.message });
+  if (generation !== sessionVersion) throw new Error('Wallet changed during sign-in.');
   accountSchema.parse(await post('/api/auth/verify', { address, nonce: challenge.nonce, signature }));
   state.address = address; state.demo = false; state.quote = undefined; $('quote-panel').hidden = true;
   updateAuth(); await refresh(); startPolling(); notice('Wallet signed in. Create a leash or select an existing one.');
   provider.removeListener?.('accountsChanged', handleAccountsChanged); provider.on?.('accountsChanged', handleAccountsChanged);
+  rememberWallet(chosen);
+  } catch (error) { throw new Error(walletError(error)); }
 }
 function handleAccountsChanged() {
   sessionVersion++; state.address = undefined; state.quote = undefined; $('quote-panel').hidden = true; updateAuth(); stopPolling();

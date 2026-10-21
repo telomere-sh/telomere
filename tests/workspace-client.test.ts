@@ -22,7 +22,7 @@ afterEach(()=>vi.unstubAllGlobals());
 describe('workspace wallet safety',()=>{
   it('restores the injected wallet after page reload without requiring a second login',async()=>{
     const {client,provider}=setup();client.provider=undefined;
-    const on=vi.fn();vi.stubGlobal('window',{okxwallet:Object.assign(provider,{on})});
+    const on=vi.fn();vi.stubGlobal('window',Object.assign(new EventTarget(),{okxwallet:Object.assign(provider,{on})}));
     await client.transaction({to:escrow,value:'0x0'},'restored session');
     expect(on).toHaveBeenCalledWith('accountsChanged',client.accountChanged);
     expect(provider.request.mock.calls.filter(([p])=>p.method==='eth_sendTransaction')).toHaveLength(1);
@@ -76,5 +76,50 @@ describe('workspace wallet safety',()=>{
     vi.stubGlobal('fetch',vi.fn(()=>new Promise<Response>(r=>{complete=r})));
     const read=client.request('/api/workspace');client.clear();complete(Response.json({owner,document:emptyWorkspace(),revision:1}));await expect(read).rejects.toThrow('account changed');expect(changed).toHaveBeenLastCalledWith(undefined);
     client.address=owner;const fetcher=vi.fn();vi.stubGlobal('fetch',fetcher);const save=client.save(emptyWorkspace());client.clear();await save;expect(fetcher).not.toHaveBeenCalled();
+  });
+});
+
+describe('workspace sign-in lifecycle',()=>{
+  function login(){
+    const fixture=setup();fixture.client.address=undefined;
+    let changed:((data:unknown)=>void)|undefined;
+    const on=vi.fn((_name:string,handler:(data:unknown)=>void)=>{changed=handler});
+    const selected={id:'chosen',key:'chosen',name:'Selected wallet',provider:Object.assign(fixture.provider,{on,removeListener:vi.fn()}) as never};
+    fixture.provider.request.mockImplementation(async({method})=>{
+      if(method==='eth_requestAccounts'||method==='eth_accounts')return [owner];
+      if(method==='personal_sign'){changed?.([owner]);return '0x1234' as never;}
+      throw Error('Unexpected method');
+    });
+    const request=vi.spyOn(fixture.client,'request').mockImplementation(async path=>{
+      if(path==='/api/auth/challenge')return {nonce:'nonce',message:'Sign in'};
+      if(path==='/api/workspace')return {owner,revision:1,document:emptyWorkspace()};
+      return {};
+    });
+    return {...fixture,selected,request,emit:(accounts:unknown)=>changed?.(accounts)};
+  }
+  it('keeps the session when the wallet repeats its selected accounts during signing',async()=>{
+    const {client,selected,request}=login();await client.connect(selected);
+    expect(client.address).toBe(owner);expect(client.connecting).toBe(false);
+    expect(request.mock.calls.some(([path])=>path==='/api/auth/logout')).toBe(false);
+  });
+  it('rejects a changed owner during signing before verification or document loading',async()=>{
+    const {client,provider,selected,request,emit}=login();provider.request.mockImplementation(async({method})=>{
+      if(method==='eth_requestAccounts')return [owner];emit(['0x3333333333333333333333333333333333333333']);return '0x1234' as never;
+    });
+    await expect(client.connect(selected)).rejects.toThrow('changed');
+    expect(request.mock.calls.some(([path])=>path==='/api/auth/verify')).toBe(false);expect(client.connecting).toBe(false);
+  });
+  it('serializes repeated clicks and releases the connection lock after rejection',async()=>{
+    const {client,provider,selected}=login();let reject!:(reason:unknown)=>void;
+    provider.request.mockImplementation(()=>new Promise((_,r)=>{reject=r}));
+    const original=client.connect(selected);await expect(client.connect(selected)).rejects.toThrow('already open');
+    reject({code:4001});await expect(original).rejects.toThrow('cancelled');expect(client.connecting).toBe(false);
+    expect(provider.request).toHaveBeenCalledOnce();
+  });
+  it('does not let a stuck wallet leave the connect button busy indefinitely',async()=>{
+    vi.useFakeTimers();
+    try{const {client,provider,selected}=login();provider.request.mockImplementation(()=>new Promise(()=>{}));
+      const pending=expect(client.connect(selected)).rejects.toThrow('timed out');await vi.advanceTimersByTimeAsync(90001);await pending;expect(client.connecting).toBe(false);
+    }finally{vi.useRealTimers()}
   });
 });
