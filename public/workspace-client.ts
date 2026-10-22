@@ -15,7 +15,7 @@ const hex = z.string().regex(/^0x[0-9a-fA-F]*$/).transform(v => v as Hex);
 const txSchema = z.object({to:address,data:hex.optional(),value:z.enum(['0','0x0']).optional()});
 
 const transactionHash = z.string().regex(/^0x[0-9a-fA-F]{64}$/).transform(v => v as Hex);
-const journalEntry = z.object({operation:z.string().min(1).max(160),hash:transactionHash.optional(),runId:transactionHash.optional(),intent:txSchema.optional()}).strict();
+const journalEntry = z.object({operation:z.string().min(1).max(160),hash:transactionHash.optional(),runId:transactionHash.optional(),intent:txSchema.optional(),submittedAt:z.number().int().nonnegative().safe().optional()}).strict();
 const recoveryResult = z.object({hash:transactionHash,owner:address,chainId:z.number().int(),transaction:txSchema,method:z.string(),status:z.enum(['pending','confirmed','reverted']),leashId:transactionHash.optional(),runId:transactionHash.optional()});
 type JournalEntry = z.infer<typeof journalEntry>;
 const recoveryState = z.object({owner:address,chainId:z.number().int(),latestNonce:z.string().regex(/^\d+$/),pendingNonce:z.string().regex(/^\d+$/),ethBalanceWei:z.string().regex(/^\d+$/)});
@@ -30,6 +30,15 @@ function rejectedForGas(error:unknown):boolean {
     if(!value||typeof value!=='object'||depth>4||seen.has(value))return false;
     seen.add(value);const code:unknown=Reflect.get(value,'code'),message:unknown=Reflect.get(value,'message');
     if([-32000,-32003,-32603].includes(Number(code))&&typeof message==='string'&&/\binsufficient funds\b|not enough ETH (?:for|to pay).*gas/i.test(message))return true;
+    return ['cause','data','originalError','error'].some(key=>visit(Reflect.get(value,key),depth+1));
+  };
+  return visit(error,0);
+}
+function rejectedByWallet(error:unknown):boolean {
+  const seen=new Set<object>();
+  const visit=(value:unknown,depth:number):boolean=>{
+    if(!value||typeof value!=='object'||depth>4||seen.has(value))return false;
+    seen.add(value);if(Reflect.get(value,'code')===4001)return true;
     return ['cause','data','originalError','error'].some(key=>visit(Reflect.get(value,key),depth+1));
   };
   return visit(error,0);
@@ -243,15 +252,15 @@ export class WorkspaceClient {
 
       try{hash=transactionHash.parse(await identity.provider.request({method:'eth_sendTransaction',params:[{from:identity.owner,to:tx.to,data:tx.data??'0x',value:'0x0',chainId:toHex(this.config!.chain.id)}]}))}
 
-      catch(error){const gas=rejectedForGas(error);if((error as {code?:number}).code===4001||gas){this.archivePending(key,entry,gas?'insufficient_gas':'wallet_cancelled','wallet_rejected');localStorage.removeItem(key)}if(gas)throw Error('Insufficient ETH on Base for network fees. Add ETH, then retry. The wallet rejected this request before sending.');throw error}
+      catch(error){const gas=rejectedForGas(error),cancelled=rejectedByWallet(error);if(cancelled||gas){this.archivePending(key,entry,gas?'insufficient_gas':'wallet_cancelled','wallet_rejected');localStorage.removeItem(key)}if(gas)throw Error('Insufficient ETH on Base for network fees. Add ETH, then retry. The wallet rejected this request before sending.');if(cancelled)throw Error('Wallet request rejected or cancelled before sending. The failed request was closed automatically.');throw error}
 
-      entry.hash=hash;localStorage.setItem(key,JSON.stringify(entries));
+      entry.hash=hash;entry.submittedAt=Date.now();localStorage.setItem(key,JSON.stringify(entries));
 
       this.notice(`Transaction submitted: ${hash}. Waiting for confirmation.`);
 
       if(identity.version!==this.version)throw Error('Account changed. The submitted transaction is retained for review.');
 
-      await this.confirm(entry);localStorage.removeItem(key);return hash;
+      await this.confirm(entry);this.archivePending(key,entry,'confirmed','wallet_receipt');localStorage.removeItem(key);return hash;
 
     })}finally{this.financialBusy=false}
 
@@ -285,7 +294,8 @@ export class WorkspaceClient {
     const historyKey=key+':resolved',raw=localStorage.getItem(historyKey)??'[]';
     if(raw.length>262144)throw Error('Recovery history needs review before continuing.');
     const history=z.array(z.record(z.unknown())).max(100).parse(JSON.parse(raw));
-    localStorage.setItem(historyKey,JSON.stringify([...history.filter(item=>!entry.hash||item.hash!==entry.hash).slice(-99),{...entry,status,method,resolvedAt:new Date().toISOString()}]));
+    const confirmationMs=status==='confirmed'&&entry.submittedAt!==undefined?Math.max(0,Date.now()-entry.submittedAt):undefined;
+    localStorage.setItem(historyKey,JSON.stringify([...history.filter(item=>!entry.hash||item.hash!==entry.hash).slice(-99),{...entry,status,method,resolvedAt:new Date().toISOString(),...(confirmationMs!==undefined?{confirmationMs}:{})}]));
   }
   async walletRecoveryState(){
     const owner=this.address,chainId=this.config?.chain.id;if(!owner||!chainId)throw Error('Sign in before reviewing a wallet request.');
@@ -324,6 +334,9 @@ export class WorkspaceClient {
   }
   async discardExpiredReservation(confirmed:boolean){
     if(!confirmed)throw Error('Close the old wallet request and confirm before clearing it.');
+    return this.expireUnusedReservation();
+  }
+  private async expireUnusedReservation(){
     if(this.financialBusy)throw Error('Another wallet operation is pending.');
     if(!navigator.locks)throw Error('Use a current wallet browser to lock transaction recovery.');
     this.financialBusy=true;
@@ -338,6 +351,21 @@ export class WorkspaceClient {
       this.archivePending(key,entry,'expired_quote_not_reserved','canonical_quote_expiry');localStorage.removeItem(key);
       return result;
     })}finally{this.financialBusy=false}
+  }
+  async reconcilePending(){
+    if(this.financialBusy||this.connecting)return {state:'busy' as const};
+    const entries=this.pending();if(!entries.length)return {state:'none' as const};
+    if(entries.every(entry=>!!entry.hash)){const results=await this.recover();return {state:'resolved' as const,results}}
+    const entry=entries[0];
+    if(entries.length===1&&entry?.operation==='CPU reservation'&&entry.runId&&!entry.hash){
+      const result=await this.checkPendingCpu();
+      if(result.state==='transaction_found'){const results=await this.recover(result.hash);return {state:'resolved' as const,results}}
+      // Expiry makes this exact signed quote unusable, even if an old wallet
+      // prompt is approved later. Timeouts alone never release a deposit.
+      if(result.state==='expired_unused'&&result.latestNonce===result.pendingNonce){await this.expireUnusedReservation();return {state:'expired_unused' as const}}
+      return {state:'awaiting_wallet' as const};
+    }
+    return {state:'unknown_submission' as const};
   }
   async discardUnsentLeash(confirmed:boolean){
     if(!confirmed)throw Error('Confirm that the wallet rejected the request before sending and that you closed it.');
