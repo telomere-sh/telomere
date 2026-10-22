@@ -1,6 +1,7 @@
 import { z } from 'zod';
 
-import { formatUnits, getAddress, isAddress, toHex, type Address, type Hex } from 'viem';
+import { decodeFunctionData, formatUnits, getAddress, isAddress, toHex, type Address, type Hex } from 'viem';
+import { escrowAbi, tokenAbi } from '../src/chain/abi.js';
 
 import type { workspaceSchema } from '../src/workspace/routes.js';
 import { chooseWallet, rememberWallet, savedWallet, walletError, type WalletOption, type WalletProvider } from './wallet-picker.js';
@@ -70,6 +71,7 @@ export class WorkspaceClient {
   private connectionOwner: Address | undefined;
   private workspaceMutation = 0;
   private workspaceRead = 0;
+  private unsentReview: { key:string; snapshot:string; nonce:string; balance:string; since:number } | undefined;
 
   document: Document | undefined;
   readonly channel = typeof window !== 'undefined' && typeof BroadcastChannel !== 'undefined' ? new BroadcastChannel('telomere-wallet-session-v1') : undefined;
@@ -92,7 +94,7 @@ export class WorkspaceClient {
 
   }
 
-  clear(){this.version++;this.workspaceMutation++;this.workspaceRead++;this.address=undefined;this.document=undefined;this.revision=0;this.saveFailed=false;this.changed(undefined)}
+  clear(){this.version++;this.workspaceMutation++;this.workspaceRead++;this.unsentReview=undefined;this.address=undefined;this.document=undefined;this.revision=0;this.saveFailed=false;this.changed(undefined)}
   cancelWorkspaceReload(){this.workspaceRead++}
 
   async start(){if(this.connecting||this.financialBusy)return;const generation=this.version,read=this.workspaceRead;try{this.config=configSchema.parse(await this.request('/api/config'));if(this.connecting||read!==this.workspaceRead)return;const me=z.object({address}).parse(await this.request('/api/me'));if(read!==this.workspaceRead)return;await this.load(me.address)}catch(error){if(generation!==this.version||this.connecting)return;if(this.address)throw error;this.changed(undefined)}}
@@ -207,7 +209,13 @@ export class WorkspaceClient {
 
   journalKey(){if(!this.address||!this.config)throw Error('Sign in first.');return `telomere-transactions-v1:${this.config.chain.id}:${this.address.toLowerCase()}`}
 
-  pending(){const raw=localStorage.getItem(this.journalKey())??'[]';if(raw.length>65536)throw Error('The wallet journal needs review before continuing.');return z.array(journalEntry).max(10).parse(JSON.parse(raw))}
+  pending(){const raw=localStorage.getItem(this.journalKey())??'[]';if(raw.length>65536)throw Error('The wallet journal needs review before continuing.');return z.array(journalEntry).max(10).parse(JSON.parse(raw)).map(entry=>{
+    // Older journals can retain the exact openRun call without its runId field.
+    if(!entry.hash&&!entry.runId&&entry.operation==='CPU reservation'&&entry.intent&&this.config&&entry.intent.to.toLowerCase()===this.config.escrowAddress.toLowerCase()){
+      try{const call=decodeFunctionData({abi:escrowAbi,data:entry.intent.data??'0x'});if(call.functionName==='openRun'&&call.args[0].payer.toLowerCase()===this.address?.toLowerCase())return {...entry,runId:call.args[0].runId}}catch{}
+    }
+    return entry;
+  })}
 
   async transaction(raw:unknown,operation:string,runId?:Hex){
 
@@ -346,6 +354,49 @@ export class WorkspaceClient {
       this.archivePending(key,entry,'not_broadcast_reported','user_confirmed_wallet_rejection');
       localStorage.removeItem(key);this.notice('Failed Leash request cleared and retained in history. No transaction was sent.');
       return state;
+    })}finally{this.financialBusy=false}
+  }
+
+  private unsentEntry(){
+    const entries=this.pending(),entry=entries[0];
+    if(entries.length!==1||!entry||entry.hash||entry.runId||!(entry.operation.startsWith('Leash ')||['Revoke Leash','deposit USDC','withdraw USDC'].includes(entry.operation)))throw Error('This request needs its original transaction or CPU reservation check. The journal is retained.');
+    if(entry.intent){
+      const token=entry.intent.to.toLowerCase()===this.config?.token.address.toLowerCase(),escrow=entry.intent.to.toLowerCase()===this.config?.escrowAddress.toLowerCase();
+      try{
+        if(token){const call=decodeFunctionData({abi:tokenAbi,data:entry.intent.data??'0x'});if(entry.operation!=='deposit USDC'||call.functionName!=='approve'||call.args[0].toLowerCase()!==this.config!.escrowAddress.toLowerCase())throw Error('action')}
+        else if(escrow){const call=decodeFunctionData({abi:escrowAbi,data:entry.intent.data??'0x'});const allowed=entry.operation.startsWith('Leash ')?['createLeash','updateLeash']:entry.operation==='Revoke Leash'?['killLeash']:entry.operation==='deposit USDC'?['deposit']:['withdraw'];if(!allowed.includes(call.functionName))throw Error('action')}
+        else throw Error('destination');
+      }catch{throw Error('The saved request does not match this wallet action. The journal is retained.')}
+    }
+    return entry;
+  }
+  async checkUnsentRequest(){
+    this.unsentEntry();const key=this.journalKey(),snapshot=localStorage.getItem(key)??'[]';
+    try{
+      const state=await this.walletRecoveryState();
+      const balance=z.object({available:z.string().regex(/^\d+$/),reserved:z.string().regex(/^\d+$/).default('0')}).parse(await this.request('/api/balance'));
+      if(key!==this.journalKey()||(localStorage.getItem(key)??'[]')!==snapshot)throw Error('The wallet journal changed. Check the current request again.');
+      const encoded=JSON.stringify(balance),prior=this.unsentReview;
+      const same=prior?.key===key&&prior.snapshot===snapshot&&prior.nonce===state.latestNonce&&prior.balance===encoded;
+      this.unsentReview=state.pendingNonce===state.latestNonce?{key,snapshot,nonce:state.latestNonce,balance:encoded,since:same?prior.since:Date.now()}:undefined;
+      return {...state,...balance,canClose:!!this.unsentReview&&Date.now()-this.unsentReview.since>=10000};
+    }catch(error){this.unsentReview=undefined;throw error}
+  }
+  async discardUnsentRequest(confirmed:boolean){
+    if(!confirmed)throw Error('Confirm that the wallet rejected or cancelled this request before sending, and that you closed it.');
+    if(this.financialBusy)throw Error('Another wallet operation is pending.');
+    if(!navigator.locks)throw Error('Use a current wallet browser to lock transaction recovery.');
+    this.financialBusy=true;
+    try{return await navigator.locks.request('telomere-wallet-transaction',{ifAvailable:true},async lock=>{
+      if(!lock)throw Error('Another tab is using the wallet.');
+      const entry=this.unsentEntry(),key=this.journalKey(),snapshot=localStorage.getItem(key);
+      const state=await this.checkUnsentRequest();
+      if(!state.canClose)throw Error('Wait for two consistent Base checks with no pending transaction. The request is retained.');
+      if(key!==this.journalKey()||localStorage.getItem(key)!==snapshot)throw Error('The wallet journal changed. Check it again.');
+      // A quiet nonce is not proof of non-broadcast. Record the owner's explicit
+      // report, never label this as a chain-confirmed cancellation or retry it.
+      this.archivePending(key,entry,'user_reported_not_sent','user_confirmed_wallet_rejection');
+      localStorage.removeItem(key);this.unsentReview=undefined;return state;
     })}finally{this.financialBusy=false}
   }
 
