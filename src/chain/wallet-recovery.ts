@@ -68,6 +68,17 @@ export async function walletRecoveryState(bridge: ChainBridge, owner: Address) {
   return { owner, chainId: bridge.config.CHAIN_ID, latestNonce: String(latestNonce), pendingNonce: String(pendingNonce), ethBalanceWei: ethBalanceWei.toString() };
 }
 
+// Advisory funding checks never request a signature or move funds.
+export async function walletFundingState(bridge: ChainBridge, owner: Address) {
+  if (await bridge.public.getChainId() !== bridge.config.CHAIN_ID) throw new Problem(503, 'rpc_chain', 'Wallet funding verification is temporarily unavailable.');
+  const [ethBalanceWei, usdcAtomic] = await Promise.all([
+    bridge.public.getBalance({ address: owner }),
+    bridge.public.readContract({ address: bridge.config.TOKEN_ADDRESS, abi: tokenAbi, functionName: 'balanceOf', args: [owner] }),
+  ]);
+  return { owner, chainId: bridge.config.CHAIN_ID, tokenAddress: bridge.config.TOKEN_ADDRESS,
+    ethBalanceWei: ethBalanceWei.toString(), usdcAtomic: usdcAtomic.toString() };
+}
+
 // Read-only recovery: this path never signs, broadcasts, or retries a transaction.
 export async function inspectWalletTransaction(bridge: ChainBridge, owner: Address, hash: Hex) {
   if (await bridge.public.getChainId() !== bridge.config.CHAIN_ID) throw new Problem(503, 'rpc_chain', 'Transaction verification is temporarily unavailable.');

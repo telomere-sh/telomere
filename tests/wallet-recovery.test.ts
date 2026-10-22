@@ -4,7 +4,7 @@ import { generatePrivateKey } from 'viem/accounts';
 import { ChainBridge } from '../src/bridge.js';
 import { loadConfig } from '../src/config.js';
 import { escrowAbi, tokenAbi } from '../src/chain/abi.js';
-import { inspectWalletTransaction, walletRecoveryState } from '../src/chain/wallet-recovery.js';
+import { inspectWalletTransaction, walletFundingState, walletRecoveryState } from '../src/chain/wallet-recovery.js';
 
 const owner='0x1111111111111111111111111111111111111111', escrow='0x2222222222222222222222222222222222222222',token='0x3333333333333333333333333333333333333333';
 const hash=`0x${'ab'.repeat(32)}` as const, blockHash=`0x${'cd'.repeat(32)}` as const;
@@ -55,4 +55,9 @@ describe('read-only wallet transaction recovery',()=>{
     vi.spyOn(bridge.public,'getTransactionCount').mockImplementation(async args=>args?.blockTag==='latest'?2:1);
     await expect(walletRecoveryState(bridge,owner)).rejects.toMatchObject({code:'rpc_state'});
   });
+});
+
+describe('wallet funding reads',()=>{
+ it('reads the configured USDC token for the authenticated owner',async()=>{const {bridge}=setup();vi.spyOn(bridge.public,'getBalance').mockResolvedValue(12n);const tokenRead=vi.spyOn(bridge.public,'readContract').mockResolvedValue(999999n as never);expect(await walletFundingState(bridge,owner)).toEqual({owner,chainId:31337,tokenAddress:token,ethBalanceWei:'12',usdcAtomic:'999999'});expect(tokenRead).toHaveBeenCalledWith(expect.objectContaining({address:token,functionName:'balanceOf',args:[owner]}))});
+ it('fails closed on the wrong chain or a token RPC failure',async()=>{const {bridge}=setup();vi.spyOn(bridge.public,'getChainId').mockResolvedValue(1);await expect(walletFundingState(bridge,owner)).rejects.toMatchObject({code:'rpc_chain'});vi.spyOn(bridge.public,'getChainId').mockResolvedValue(31337);vi.spyOn(bridge.public,'getBalance').mockResolvedValue(0n);vi.spyOn(bridge.public,'readContract').mockRejectedValue(Error('RPC offline'));await expect(walletFundingState(bridge,owner)).rejects.toThrow('RPC offline')});
 });

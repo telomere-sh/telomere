@@ -76,6 +76,19 @@ describe('public wallet accounts and private workspace repository', () => {
     const chain=vi.spyOn(bridge.public,'getChainId').mockResolvedValue(base.CHAIN_ID),balance=vi.spyOn(bridge.public,'getBalance').mockResolvedValue(0n),nonce=vi.spyOn(bridge.public,'getTransactionCount').mockResolvedValue(0);
     try{const response=await request('/api/transactions/recovery-state','GET',undefined,aliceCookie);expect(response.status).toBe(200);expect(await response.json()).toMatchObject({chainId:base.CHAIN_ID,latestNonce:'0',pendingNonce:'0',ethBalanceWei:'0'});}finally{chain.mockRestore();balance.mockRestore();nonce.mockRestore()}
   });
+  it('checks wallet USDC and ETH before preparing deposit transactions',async()=>{
+    expect((await request('/api/wallet/funding')).status).toBe(401);
+    expect((await request('/api/transactions/deposit?amount=1000000')).status).toBe(401);
+    const chain=vi.spyOn(bridge.public,'getChainId').mockResolvedValue(base.CHAIN_ID),eth=vi.spyOn(bridge.public,'getBalance').mockResolvedValue(100000000000000n),usdc=vi.spyOn(bridge.public,'readContract').mockResolvedValue(0n as never);
+    try{
+      const funds=await request('/api/wallet/funding','GET',undefined,aliceCookie);expect(await funds.json()).toMatchObject({owner:alice.address.toLowerCase(),chainId:base.CHAIN_ID,tokenAddress:base.TOKEN_ADDRESS,usdcAtomic:'0'});
+      const missing=await request('/api/transactions/deposit?amount=1000000','GET',undefined,aliceCookie);expect(missing.status).toBe(409);expect(await missing.json()).toMatchObject({title:'wallet_usdc_insufficient'});
+      usdc.mockResolvedValue(1000000n as never);eth.mockResolvedValue(0n);
+      const noGas=await request('/api/transactions/deposit?amount=1000000','GET',undefined,aliceCookie);expect(noGas.status).toBe(409);expect(await noGas.json()).toMatchObject({title:'wallet_eth_insufficient'});
+      eth.mockResolvedValue(100000000000000n);
+      const valid=await request('/api/transactions/deposit?amount=1000000','GET',undefined,aliceCookie);expect(valid.status).toBe(200);expect(await valid.json()).toMatchObject({transactions:bridge.depositTransactions(1000000n)});
+    }finally{chain.mockRestore();eth.mockRestore();usdc.mockRestore()}
+  });
   it('requires same-origin JSON and authenticated sessions; revokes on logout',async()=>{
     expect((await request('/api/workspace')).status).toBe(401);
     expect((await request('/api/workspace','PUT',{revision:1,document:emptyWorkspace()},bobCookie,'https://attacker.invalid')).status).toBe(403);

@@ -1,5 +1,5 @@
 import { createWorkspaceRoutes } from './workspace/routes.js';
-import { inspectCpuReservation, inspectWalletTransaction, walletRecoveryState } from './chain/wallet-recovery.js';
+import { inspectCpuReservation, inspectWalletTransaction, walletFundingState, walletRecoveryState } from './chain/wallet-recovery.js';
 import { Hono, type MiddlewareHandler } from 'hono';
 import { bodyLimit } from 'hono/body-limit';
 import { secureHeaders } from 'hono/secure-headers';
@@ -290,7 +290,14 @@ export function createApp(service: Service, auth: Auth, logger: Logger, publicRo
     await service.requireJob(await auth.owner(getCookie(context, cookie)), context.req.param('id'));
     return context.json({ transaction: service.bridge.refundTransaction(bytes32Schema.parse(context.req.param('id'))) });
   });
-  app.get('/api/transactions/deposit', async context => { await auth.owner(getCookie(context, cookie)); return context.json({ transactions: service.bridge.depositTransactions(BigInt(moneySchema.parse(context.req.query('amount')))) }); });
+  app.get('/api/wallet/funding', async context => context.json(await walletFundingState(service.bridge, await auth.owner(getCookie(context, cookie)))));
+  app.get('/api/transactions/deposit', async context => {
+    const owner = await auth.owner(getCookie(context, cookie)), amount = BigInt(moneySchema.parse(context.req.query('amount')));
+    const funding = await walletFundingState(service.bridge, owner);
+    if (BigInt(funding.usdcAtomic) < amount) throw new Problem(409, 'wallet_usdc_insufficient', 'Not enough USDC in your wallet on Base. ETH pays network fees only. No transaction was requested.');
+    if (BigInt(funding.ethBalanceWei) === 0n) throw new Problem(409, 'wallet_eth_insufficient', 'Add ETH on Base for network fees. USDC funds your compute balance. No transaction was requested.');
+    return context.json({ transactions: service.bridge.depositTransactions(amount) });
+  });
   app.get('/api/transactions/withdraw', async context => { await auth.owner(getCookie(context, cookie)); return context.json({ transaction: service.bridge.withdrawTransaction(BigInt(moneySchema.parse(context.req.query('amount')))) }); });
   app.get('/api/transactions/recovery-state', async context => context.json(await walletRecoveryState(service.bridge, await auth.owner(getCookie(context, cookie)))));
   app.get('/api/runs/:id/recovery', async context => context.json(await inspectCpuReservation(service,

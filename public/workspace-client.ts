@@ -285,6 +285,18 @@ export class WorkspaceClient {
     if(state.owner.toLowerCase()!==owner.toLowerCase()||state.chainId!==chainId)throw Error('Wallet recovery state does not match this account.');
     return state;
   }
+  async fundingState(){
+    const owner=this.address,chainId=this.config?.chain.id,token=this.config?.token.address;if(!owner||!chainId||!token)throw Error('Sign in before checking wallet funds.');
+    const state=z.object({owner:address,chainId:z.number().int(),tokenAddress:address,ethBalanceWei:z.string().regex(/^\d+$/),usdcAtomic:z.string().regex(/^\d+$/)}).parse(await this.request('/api/wallet/funding'));
+    if(state.owner.toLowerCase()!==owner.toLowerCase()||state.chainId!==chainId||state.tokenAddress.toLowerCase()!==token.toLowerCase())throw Error('Wallet funding state does not match this account.');
+    return state;
+  }
+  async ensureDepositFunds(amount:string){
+    const required=BigInt(z.string().regex(/^[1-9]\d*$/).parse(amount)),state=await this.fundingState();
+    if(BigInt(state.usdcAtomic)<required)throw Error('Your wallet has '+formatUnits(BigInt(state.usdcAtomic),6)+' USDC on Base. Add at least '+formatUnits(required,6)+' USDC before depositing. ETH only pays network fees. No transaction was requested.');
+    if(BigInt(state.ethBalanceWei)===0n)throw Error('Add ETH on Base for network fees before depositing USDC. No transaction was requested.');
+    return state;
+  }
   async ensureGas(){if(BigInt((await this.walletRecoveryState()).ethBalanceWei)===0n)throw Error('Add ETH on Base for network fees before creating a Leash. USDC is not used to pay gas. No transaction was requested.')}
   async ensureCpuFunds(ceiling:string){
     const required=BigInt(z.string().regex(/^\d+$/).parse(ceiling));

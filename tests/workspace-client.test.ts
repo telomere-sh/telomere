@@ -302,3 +302,16 @@ describe('hashless CPU request recovery and funding preflight',()=>{
     const f=setup();vi.spyOn(f.client,'request').mockResolvedValue({available:'12000',reserved:'999999'});await f.client.ensureCpuFunds('12000');expect(f.provider.request).not.toHaveBeenCalled();
   });
 });
+
+describe('deposit funding preflight',()=>{
+  function funds(){const f=setup(),state={owner,chainId:8453,tokenAddress:owner,ethBalanceWei:'100000000000000',usdcAtomic:'1000000'};const request=vi.spyOn(f.client,'request').mockImplementation(async()=>state);return {...f,state,request}}
+  it('stops a deposit with ETH but no USDC before requesting any wallet transaction',async()=>{
+    const f=funds();f.state.usdcAtomic='0';await expect(f.client.ensureDepositFunds('1000000')).rejects.toThrow('ETH only pays');expect(f.client.pending()).toEqual([]);expect(f.provider.request).not.toHaveBeenCalled();
+  });
+  it('stops a deposit without ETH, even when USDC is available',async()=>{
+    const f=funds();f.state.ethBalanceWei='0';await expect(f.client.ensureDepositFunds('1000000')).rejects.toThrow('Add ETH');expect(f.client.pending()).toEqual([]);expect(f.provider.request).not.toHaveBeenCalled();
+  });
+  it('accepts an exact six-decimal USDC balance',async()=>{const f=funds();await f.client.ensureDepositFunds('1000000');f.state.usdcAtomic='999999';await expect(f.client.ensureDepositFunds('1000000')).rejects.toThrow('0.999999 USDC');expect(f.provider.request).not.toHaveBeenCalled()});
+  it.each([{owner:escrow},{chainId:1},{tokenAddress:escrow}])('rejects a funding response from the wrong account or network %j',async wrong=>{const f=funds();Object.assign(f.state,wrong);await expect(f.client.ensureDepositFunds('1000000')).rejects.toThrow('does not match');expect(f.client.pending()).toEqual([])});
+  it('retains the journal unchanged when funding RPC fails',async()=>{const f=funds();f.request.mockRejectedValue(Error('RPC offline'));await expect(f.client.ensureDepositFunds('1')).rejects.toThrow('RPC offline');expect(f.client.pending()).toEqual([]);expect(f.provider.request).not.toHaveBeenCalled()});
+});
