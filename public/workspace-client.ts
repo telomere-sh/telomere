@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-import { getAddress, isAddress, toHex, type Address, type Hex } from 'viem';
+import { formatUnits, getAddress, isAddress, toHex, type Address, type Hex } from 'viem';
 
 import type { workspaceSchema } from '../src/workspace/routes.js';
 import { chooseWallet, rememberWallet, savedWallet, walletError, type WalletOption, type WalletProvider } from './wallet-picker.js';
@@ -18,6 +18,11 @@ const journalEntry = z.object({operation:z.string().min(1).max(160),hash:transac
 const recoveryResult = z.object({hash:transactionHash,owner:address,chainId:z.number().int(),transaction:txSchema,method:z.string(),status:z.enum(['pending','confirmed','reverted']),leashId:transactionHash.optional(),runId:transactionHash.optional()});
 type JournalEntry = z.infer<typeof journalEntry>;
 const recoveryState = z.object({owner:address,chainId:z.number().int(),latestNonce:z.string().regex(/^\d+$/),pendingNonce:z.string().regex(/^\d+$/),ethBalanceWei:z.string().regex(/^\d+$/)});
+const reservationRecovery = z.discriminatedUnion('state',[
+  z.object({state:z.literal('transaction_found'),owner:address,chainId:z.number().int(),runId:transactionHash,transaction:txSchema,hash:transactionHash}),
+  z.object({state:z.enum(['expired_unused','awaiting_wallet']),owner:address,chainId:z.number().int(),runId:transactionHash,transaction:txSchema,
+    quoteExpiry:z.string().regex(/^\d+$/),chainTimestamp:z.string().regex(/^\d+$/),latestNonce:z.string().regex(/^\d+$/),pendingNonce:z.string().regex(/^\d+$/)})
+]);
 function rejectedForGas(error:unknown):boolean {
   const seen=new Set<object>();
   const visit=(value:unknown,depth:number):boolean=>{
@@ -271,6 +276,39 @@ export class WorkspaceClient {
     return state;
   }
   async ensureGas(){if(BigInt((await this.walletRecoveryState()).ethBalanceWei)===0n)throw Error('Add ETH on Base for network fees before creating a Leash. USDC is not used to pay gas. No transaction was requested.')}
+  async ensureCpuFunds(ceiling:string){
+    const required=BigInt(z.string().regex(/^\d+$/).parse(ceiling));
+    const balance=z.object({available:z.string().regex(/^\d+$/)}).parse(await this.request('/api/balance'));
+    if(BigInt(balance.available)<required)throw Error('Deposit at least '+formatUnits(required,6)+' USDC into your Base account before approving this CPU reservation. No wallet transaction was requested.');
+  }
+  private async reservationRecovery(entry:JournalEntry){
+    if(!entry.runId||entry.hash||entry.operation!=='CPU reservation')throw Error('Choose the CPU reservation without a transaction hash.');
+    const result=reservationRecovery.parse(await this.request('/api/runs/'+entry.runId+'/recovery'));
+    if(result.owner.toLowerCase()!==this.address?.toLowerCase()||result.chainId!==this.config?.chain.id||result.runId.toLowerCase()!==entry.runId.toLowerCase())throw Error('Reservation recovery identity does not match this account.');
+    if(entry.intent&&(entry.intent.to.toLowerCase()!==result.transaction.to.toLowerCase()||(entry.intent.data??'0x').toLowerCase()!==(result.transaction.data??'0x').toLowerCase()))throw Error('Recovery does not match the original transaction. The journal is retained.');
+    return result;
+  }
+  async checkPendingCpu(){
+    const entry=this.pending()[0];if(!entry||this.pending().length!==1)throw Error('Review one CPU reservation at a time.');
+    return this.reservationRecovery(entry);
+  }
+  async discardExpiredReservation(confirmed:boolean){
+    if(!confirmed)throw Error('Close the old wallet request and confirm before clearing it.');
+    if(this.financialBusy)throw Error('Another wallet operation is pending.');
+    if(!navigator.locks)throw Error('Use a current wallet browser to lock transaction recovery.');
+    this.financialBusy=true;
+    try{return await navigator.locks.request('telomere-wallet-transaction',{ifAvailable:true},async lock=>{
+      if(!lock)throw Error('Another tab is using the wallet.');
+      const key=this.journalKey(),snapshot=localStorage.getItem(key),entries=this.pending(),entry=entries[0];
+      if(entries.length!==1||!entry)throw Error('Review one CPU reservation at a time.');
+      const result=await this.reservationRecovery(entry);
+      if(result.state!=='expired_unused'||BigInt(result.chainTimestamp)<=BigInt(result.quoteExpiry))throw Error('This reservation is still active or already submitted. Check its existing transaction.');
+      if(result.pendingNonce!==result.latestNonce)throw Error('Base reports a pending wallet transaction. Wait for it to finish before clearing this request.');
+      if(localStorage.getItem(key)!==snapshot)throw Error('The wallet journal changed in another tab. Check it again.');
+      this.archivePending(key,entry,'expired_quote_not_reserved','canonical_quote_expiry');localStorage.removeItem(key);
+      return result;
+    })}finally{this.financialBusy=false}
+  }
   async discardUnsentLeash(confirmed:boolean){
     if(!confirmed)throw Error('Confirm that the wallet rejected the request before sending and that you closed it.');
     if(this.financialBusy)throw Error('Another wallet operation is pending.');
@@ -299,7 +337,12 @@ export class WorkspaceClient {
       let snapshot=localStorage.getItem(key)??'[]';const entries=this.pending(),results=[];
       if(suppliedHash&&(entries.length!==1||entries[0]!.hash))throw Error('A hash can only recover one operation that is missing its wallet response.');
       for(const entry of entries){
-        const hash=entry.hash??(suppliedHash?transactionHash.parse(suppliedHash.trim()):undefined);
+        let hash=entry.hash??(suppliedHash?transactionHash.parse(suppliedHash.trim()):undefined);
+        if(!hash&&entry.runId&&entry.operation==='CPU reservation'){
+          const reservation=await this.reservationRecovery(entry);
+          if(reservation.state==='transaction_found')hash=reservation.hash;
+          else throw Error(reservation.state==='expired_unused'?'The quote expired without an on-chain reservation. Check the reservation and clear the expired request.':'No reservation found yet. Close or complete the wallet request, then check again. No new transaction was sent.');
+        }
         if(!hash)throw Error('The wallet did not return a transaction hash. Paste its Base transaction hash from wallet history. Nothing will be sent again.');
         const result=recoveryResult.parse(await this.request('/api/transactions/'+hash));
         if(result.hash.toLowerCase()!==hash.toLowerCase()||result.owner.toLowerCase()!==owner.toLowerCase()||result.chainId!==chainId)throw Error('Recovered transaction identity does not match this session.');

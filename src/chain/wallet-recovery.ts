@@ -1,7 +1,61 @@
-import { decodeFunctionData, TransactionNotFoundError, TransactionReceiptNotFoundError, type Address, type Hex } from 'viem';
+import { decodeFunctionData, getAbiItem, zeroAddress, TransactionNotFoundError, TransactionReceiptNotFoundError, type Address, type Hex } from 'viem';
 import type { ChainBridge } from '../bridge.js';
-import { Problem, sameAddress } from '../common.js';
+import { Problem, sameAddress, typedQuote, signatureSchema, bytes32Schema } from '../common.js';
 import { escrowAbi, tokenAbi } from './abi.js';
+import type { Service } from '../service.js';
+
+// A hashless reservation is releasable only after its exact signed quote has
+// expired on the canonical chain and getRun still proves it was never opened.
+export async function inspectCpuReservation(service: Service, owner: Address, runId: Hex) {
+  const job = await service.requireJob(owner, runId), bridge = service.bridge;
+  if (await bridge.public.getChainId() !== bridge.config.CHAIN_ID) throw new Problem(503, 'rpc_chain', 'Reservation verification is temporarily unavailable.');
+  const transaction = bridge.openTransaction(typedQuote(job.quote), signatureSchema.parse(job.signature));
+  const identity = { owner, chainId: bridge.config.CHAIN_ID, runId, transaction };
+  if (job.txHash) {
+    const result = await inspectWalletTransaction(bridge, owner, bytes32Schema.parse(job.txHash));
+    if (result.runId !== runId || result.method !== 'openRun') throw new Problem(409, 'reservation_scope', 'The saved transaction does not match this CPU reservation.');
+    return { ...identity, state: 'transaction_found' as const, hash: result.hash };
+  }
+  const block = await bridge.public.getBlock({ blockTag: 'latest' });
+  if (block.number === null || block.hash === null) throw new Problem(503, 'rpc_state', 'A confirmed Base block is required.');
+  const blockNumber = block.number;
+  await bridge.assertReceiptAssetPins(block.hash, block.number);
+  const run = await bridge.public.readContract({ address: bridge.config.ESCROW_ADDRESS, abi: escrowAbi, functionName: 'getRun', args: [runId], blockNumber: block.number });
+  const canonical = async () => {
+    if ((await bridge.public.getBlock({ blockNumber })).hash !== block.hash) throw new Problem(409, 'chain_reorg', 'Base confirmation changed. Check the reservation again.');
+  };
+  if (run.status !== 0 || run.payer !== zeroAddress) {
+    if (!sameAddress(run.payer, owner) || run.leashId !== job.leashId || run.workloadHash !== job.quote.workloadHash || run.ceiling.toString() !== job.ceiling) {
+      throw new Problem(409, 'reservation_scope', 'The on-chain reservation differs from this signed quote.');
+    }
+    // RunOpened carries the block timestamp. Locate that exact block with a
+    // bounded binary search, instead of an unbounded scan of wallet history.
+    let low = 0n, high = block.number;
+    for (let steps = 0; low < high && steps < 40; steps++) {
+      const middle = (low + high) / 2n;
+      const candidate = await bridge.public.getBlock({ blockNumber: middle });
+      if (candidate.timestamp < run.openedAt) low = middle + 1n; else high = middle;
+    }
+    if (low !== high) throw new Problem(503, 'reservation_lookup', 'Reservation lookup is incomplete. Keep the existing request and check again.');
+    const opened = await bridge.public.getBlock({ blockNumber: low });
+    if (!opened.hash || opened.timestamp !== run.openedAt) throw new Problem(503, 'reservation_lookup', 'The reservation block could not be verified.');
+    // Permit adjacent blocks with an equal timestamp (e.g. local EVMs), while
+    // keeping the indexed event lookup bounded to 64 blocks.
+    const logs = await bridge.public.getLogs({ address: bridge.config.ESCROW_ADDRESS,
+      event: getAbiItem({ abi: escrowAbi, name: 'RunOpened' }), args: { runId, payer: owner },
+      fromBlock: low, toBlock: low + 63n < block.number ? low + 63n : block.number, strict: true });
+    if (logs.length !== 1 || !logs[0]?.transactionHash) throw new Problem(503, 'reservation_lookup', 'The original reservation transaction could not be verified.');
+    const result = await inspectWalletTransaction(bridge, owner, logs[0].transactionHash);
+    if (result.status !== 'confirmed' || result.method !== 'openRun' || result.runId !== runId) throw new Problem(409, 'reservation_scope', 'The original reservation transaction has not been confirmed.');
+    await canonical();
+    return { ...identity, state: 'transaction_found' as const, hash: result.hash };
+  }
+  const wallet = await walletRecoveryState(bridge, owner);
+  await canonical();
+  const quoteExpiry = BigInt(job.quote.quoteExpiry);
+  return { ...identity, state: job.status === 'prepared' && block.timestamp > quoteExpiry ? 'expired_unused' as const : 'awaiting_wallet' as const,
+    quoteExpiry: quoteExpiry.toString(), chainTimestamp: block.timestamp.toString(), latestNonce: wallet.latestNonce, pendingNonce: wallet.pendingNonce };
+}
 
 export async function walletRecoveryState(bridge: ChainBridge, owner: Address) {
   if (await bridge.public.getChainId() !== bridge.config.CHAIN_ID) throw new Problem(503, 'rpc_chain', 'Wallet verification is temporarily unavailable.');

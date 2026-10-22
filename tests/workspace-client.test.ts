@@ -188,3 +188,50 @@ describe('pending wallet recovery without rebroadcast',()=>{
     await expect(client.recover()).rejects.toThrow('Another tab');expect(request).not.toHaveBeenCalled();expect(client.pending()).toHaveLength(1);
   });
 });
+
+describe('hashless CPU request recovery and funding preflight',()=>{
+  function cpu(){
+    const fixture=setup(),entry={operation:'CPU reservation',runId:txHash,intent:{to:escrow,data:'0x1234'}};
+    fixture.entries.set(fixture.client.journalKey(),JSON.stringify([entry]));
+    const result={state:'expired_unused',owner,chainId:8453,runId:txHash,transaction:entry.intent,quoteExpiry:'1000',chainTimestamp:'1001',latestNonce:'2',pendingNonce:'2',hash:txHash};
+    const request=vi.spyOn(fixture.client,'request').mockImplementation(async()=>result);
+    return {...fixture,entry,result,request};
+  }
+  it('checks Base without requiring a hash, asking the wallet or clearing the journal',async()=>{
+    const f=cpu();expect(await f.client.checkPendingCpu()).toMatchObject({state:'expired_unused'});
+    expect(f.request).toHaveBeenCalledWith('/api/runs/'+txHash+'/recovery');expect(f.provider.request).not.toHaveBeenCalled();expect(f.client.pending()).toHaveLength(1);
+  });
+  it('only clears an expired unused quote after explicit acknowledgement and fresh verification',async()=>{
+    const f=cpu();await expect(f.client.discardExpiredReservation(false)).rejects.toThrow('Close');
+    await f.client.discardExpiredReservation(true);expect(f.client.pending()).toEqual([]);expect(f.entries.get(f.client.journalKey()+':resolved')).toContain('expired_quote_not_reserved');
+    expect(f.provider.request).not.toHaveBeenCalled();
+  });
+  it.each([{state:'awaiting_wallet'},{state:'transaction_found'},{chainTimestamp:'1000'},{pendingNonce:'3'},
+    {owner:'0x3333333333333333333333333333333333333333'},{chainId:1},{runId:'0x'+'cd'.repeat(32)},{transaction:{to:escrow,data:'0x9999'}}])('retains the journal for an unsafe clear %j',async wrong=>{
+    const f=cpu();Object.assign(f.result,wrong);await expect(f.client.discardExpiredReservation(true)).rejects.toThrow();expect(f.client.pending()).toHaveLength(1);expect(f.provider.request).not.toHaveBeenCalled();
+  });
+  it('retains the journal on RPC failure or a concurrent journal change',async()=>{
+    const f=cpu();f.request.mockRejectedValueOnce(Error('RPC offline'));await expect(f.client.discardExpiredReservation(true)).rejects.toThrow('RPC offline');
+    f.request.mockImplementation(async()=>{f.entries.set(f.client.journalKey(),JSON.stringify([{...f.entry,operation:'another action'}]));return f.result});
+    await expect(f.client.discardExpiredReservation(true)).rejects.toThrow('another tab');expect(f.client.pending()).toHaveLength(1);
+  });
+  it('recovers the original CPU transaction automatically and resumes admission exactly once',async()=>{
+    const f=cpu();f.result.state='transaction_found';f.request.mockImplementation(async path=>path.endsWith('/recovery')?f.result:path.startsWith('/api/transactions/')?
+      {hash:txHash,owner,chainId:8453,method:'openRun',status:'confirmed',runId:txHash,transaction:f.entry.intent}:{status:'queued'});
+    expect(await f.client.recover()).toMatchObject([{status:'confirmed',method:'openRun'}]);expect(f.client.pending()).toEqual([]);
+    expect(f.request.mock.calls.filter(([path])=>path==='/api/runs')).toHaveLength(1);expect(f.provider.request).not.toHaveBeenCalled();
+  });
+  it('leaves a found hash in the journal if admission is temporarily unavailable',async()=>{
+    const f=cpu();f.result.state='transaction_found';f.request.mockImplementation(async path=>{
+      if(path.endsWith('/recovery'))return f.result;if(path==='/api/runs')throw Error('Admission offline');
+      return {hash:txHash,owner,chainId:8453,method:'openRun',status:'confirmed',runId:txHash,transaction:f.entry.intent};
+    });await expect(f.client.recover()).rejects.toThrow('Admission offline');expect(f.client.pending()).toMatchObject([{hash:txHash}]);expect(f.provider.request).not.toHaveBeenCalled();
+  });
+  it('blocks insufficient escrow funding before any wallet request or pending journal entry',async()=>{
+    const f=setup();vi.spyOn(f.client,'request').mockResolvedValue({available:'0'});
+    await expect(f.client.ensureCpuFunds('12000')).rejects.toThrow('0.012 USDC');expect(f.client.pending()).toEqual([]);expect(f.provider.request).not.toHaveBeenCalled();
+  });
+  it('uses the exact available amount and accepts a fully funded ceiling',async()=>{
+    const f=setup();vi.spyOn(f.client,'request').mockResolvedValue({available:'12000',reserved:'999999'});await f.client.ensureCpuFunds('12000');expect(f.provider.request).not.toHaveBeenCalled();
+  });
+});

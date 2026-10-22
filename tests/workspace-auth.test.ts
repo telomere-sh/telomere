@@ -65,6 +65,9 @@ describe('public wallet accounts and private workspace repository', () => {
     expect(await (await request('/api/workspace','GET',undefined,bobCookie)).json()).toMatchObject({document:{budget:0}});
   });
   it('protects the read-only recovery routes and validates hashes before RPC calls',async()=>{
+    expect((await request('/api/runs/0x'+'ab'.repeat(32)+'/recovery')).status).toBe(401);
+    expect((await request('/api/runs/not-a-hash/recovery','GET',undefined,aliceCookie)).status).toBe(422);
+    expect((await request('/api/runs/0x'+'ab'.repeat(32)+'/recovery','GET',undefined,aliceCookie)).status).toBe(404);
     expect((await request('/api/transactions/recovery-state')).status).toBe(401);
     expect((await request('/api/transactions/0x'+'ab'.repeat(32))).status).toBe(401);
     expect((await request('/api/transactions/not-a-hash','GET',undefined,aliceCookie)).status).toBe(422);
