@@ -102,6 +102,12 @@ describe('workspace sign-in lifecycle',()=>{
     expect(client.address).toBe(owner);expect(client.connecting).toBe(false);
     expect(request.mock.calls.some(([path])=>path==='/api/auth/logout')).toBe(false);
   });
+  it('publishes the connected workspace after the Phantom sign-in lock is released',async()=>{
+    const {client,selected,changed}=login();const phases:boolean[]=[];
+    changed.mockImplementation(doc=>{if(doc)phases.push(client.connecting)});
+    await client.connect({...selected,name:'Phantom'});
+    expect(phases).toEqual([false]);expect(changed).toHaveBeenLastCalledWith(emptyWorkspace(),'session-ready');
+  });
   it('rejects a changed owner during signing before verification or document loading',async()=>{
     const {client,provider,selected,request,emit}=login();provider.request.mockImplementation(async({method})=>{
       if(method==='eth_requestAccounts')return [owner];emit(['0x3333333333333333333333333333333333333333']);return '0x1234' as never;
@@ -121,6 +127,67 @@ describe('workspace sign-in lifecycle',()=>{
     try{const {client,provider,selected}=login();provider.request.mockImplementation(()=>new Promise(()=>{}));
       const pending=expect(client.connect(selected)).rejects.toThrow('timed out');await vi.advanceTimersByTimeAsync(90001);await pending;expect(client.connecting).toBe(false);
     }finally{vi.useRealTimers()}
+  });
+});
+
+describe('workspace updates without a page reload',()=>{
+  it('publishes the saved document to the UI after the write is confirmed',async()=>{
+    const f=setup(),document={...emptyWorkspace(),budget:42};vi.spyOn(f.client,'request').mockResolvedValue({revision:1});
+    await f.client.save(document);expect(f.client.document).toEqual(document);expect(f.changed).toHaveBeenLastCalledWith(document,'saved');
+  });
+  it('does not let an old background read overwrite a newly saved object',async()=>{
+    const f=setup(),saved={...emptyWorkspace(),budget:42};let finishRead!:(value:unknown)=>void;
+    vi.spyOn(f.client,'request').mockImplementation(async(_path,body)=>body===undefined?new Promise(resolve=>{finishRead=resolve}):{revision:2});
+    const reading=f.client.load(owner);await Promise.resolve();await f.client.save(saved);
+    finishRead({owner,revision:1,document:emptyWorkspace()});await reading;
+    expect(f.client.revision).toBe(2);expect(f.client.document).toEqual(saved);expect(f.changed).toHaveBeenCalledOnce();
+  });
+  it('does not apply a focus-triggered reload after the user opens an editor',async()=>{
+    const f=setup();let finishRead!:(value:unknown)=>void;
+    vi.spyOn(f.client,'request').mockImplementation(async()=>new Promise(resolve=>{finishRead=resolve}));
+    const reading=f.client.load(owner);await Promise.resolve();f.client.cancelWorkspaceReload();
+    finishRead({owner,revision:10,document:{...emptyWorkspace(),budget:42}});await reading;
+    expect(f.changed).not.toHaveBeenCalled();expect(f.client.revision).toBe(0);
+  });
+  it('cancels the startup read even if an editor opens before the workspace request begins',async()=>{
+    const f=setup(),config=f.client.config;let finishMe!:(value:unknown)=>void;
+    const request=vi.spyOn(f.client,'request').mockImplementation(async path=>path==='/api/config'?config:path==='/api/me'?new Promise(resolve=>{finishMe=resolve}):{owner,revision:1,document:emptyWorkspace()});
+    const reading=f.client.start();await Promise.resolve();await Promise.resolve();f.client.cancelWorkspaceReload();finishMe({address:owner});await reading;
+    expect(request.mock.calls.some(([path])=>path==='/api/workspace')).toBe(false);expect(f.changed).not.toHaveBeenCalled();
+  });
+  it('still reports an authenticated workspace reload failure',async()=>{
+    const f=setup(),config=f.client.config;
+    vi.spyOn(f.client,'request').mockImplementation(async path=>{if(path==='/api/config')return config;if(path==='/api/me')return {address:owner};throw Error('Workspace unavailable')});
+    await expect(f.client.start()).rejects.toThrow('Workspace unavailable');
+  });
+  it('publishes only the newest of overlapping reloads',async()=>{
+    const f=setup();const reads:Array<(value:unknown)=>void>=[];
+    vi.spyOn(f.client,'request').mockImplementation(async()=>new Promise(resolve=>reads.push(resolve)));
+    const first=f.client.load(owner);await Promise.resolve();const second=f.client.load(owner);await Promise.resolve();
+    reads[1]!({owner,revision:2,document:{...emptyWorkspace(),budget:42}});await second;
+    reads[0]!({owner,revision:1,document:emptyWorkspace()});await first;
+    expect(f.client.revision).toBe(2);expect(f.client.document?.budget).toBe(42);expect(f.changed).toHaveBeenCalledOnce();
+  });
+  it('waits for queued saves before requesting a fresh document',async()=>{
+    const f=setup();let finishWrite!:(value:unknown)=>void;
+    const request=vi.spyOn(f.client,'request').mockImplementation(async(_path,body)=>body?new Promise(resolve=>{finishWrite=resolve}):{owner,revision:1,document:{...emptyWorkspace(),budget:42}});
+    const saving=f.client.save({...emptyWorkspace(),budget:42});await Promise.resolve();const reading=f.client.load(owner);await Promise.resolve();
+    expect(request).toHaveBeenCalledOnce();finishWrite({revision:1});await saving;await reading;expect(f.client.document?.budget).toBe(42);
+  });
+  it('does not publish an earlier queued save over a newer one',async()=>{
+    const f=setup();let revision=0;vi.spyOn(f.client,'request').mockImplementation(async()=>({revision:++revision}));
+    const first=f.client.save({...emptyWorkspace(),budget:10}),second=f.client.save({...emptyWorkspace(),budget:20});await Promise.all([first,second]);
+    expect(f.changed).toHaveBeenCalledOnce();expect(f.client.document?.budget).toBe(20);expect(f.client.revision).toBe(2);
+  });
+  it('preserves the previous UI document if a save fails and marks the failure',async()=>{
+    const f=setup();vi.spyOn(f.client,'request').mockRejectedValue(Error('Save failed'));await f.client.save({...emptyWorkspace(),budget:42});
+    expect(f.client.saveFailed).toBe(true);expect(f.changed).not.toHaveBeenCalled();
+  });
+  it('allows saving again after an explicit successful reload resolves a previous conflict',async()=>{
+    const f=setup();f.client.saveFailed=true;
+    vi.spyOn(f.client,'request').mockImplementation(async(_path,body)=>body?{revision:4}:{owner,revision:3,document:emptyWorkspace()});
+    await f.client.load(owner);expect(f.client.saveFailed).toBe(false);await f.client.save({...emptyWorkspace(),budget:42});
+    expect(f.client.document?.budget).toBe(42);expect(f.client.revision).toBe(4);
   });
 });
 

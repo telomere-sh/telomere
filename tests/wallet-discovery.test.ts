@@ -28,6 +28,16 @@ describe('explicit wallet discovery',()=>{
     const target=host();target.ethereum={providers:[wallet({isMetaMask:true,isRainbow:true}),wallet({isMetaMask:true})]};
     expect(new WalletRegistry(target).list().map(x=>x.name)).toEqual(['MetaMask','Rainbow']);
   });
+  it('detects Phantom independently of a different default ethereum wallet',()=>{
+    const target=host(),phantom=wallet({isPhantom:true,isMetaMask:true});target.phantom={ethereum:phantom};target.ethereum=wallet({isMetaMask:true});
+    const registry=new WalletRegistry(target);expect(registry.list().map(x=>x.name)).toEqual(['MetaMask','Phantom']);
+    expect(registry.list().find(x=>x.name==='Phantom')?.provider).toBe(phantom);
+  });
+  it('detects a late Phantom injection and notifies only on an actual discovery change',()=>{
+    const target=host(),registry=new WalletRegistry(target),listener=vi.fn();registry.subscribe(listener);
+    registry.refresh();expect(listener).not.toHaveBeenCalled();target.phantom={ethereum:wallet({isPhantom:true})};registry.refresh();
+    expect(listener).toHaveBeenCalledOnce();registry.refresh();expect(listener).toHaveBeenCalledOnce();
+  });
   it('rediscovers a replaced legacy injection rather than retaining the old default',()=>{
     const target=host();target.ethereum=wallet({isRainbow:true});const registry=new WalletRegistry(target);
     target.ethereum=wallet({isMetaMask:true});registry.refresh();expect(registry.list().map(x=>x.name)).toEqual(['MetaMask']);

@@ -68,11 +68,13 @@ export class WorkspaceClient {
   financialBusy = false;
   connecting = false;
   private connectionOwner: Address | undefined;
+  private workspaceMutation = 0;
+  private workspaceRead = 0;
 
   document: Document | undefined;
   readonly channel = typeof window !== 'undefined' && typeof BroadcastChannel !== 'undefined' ? new BroadcastChannel('telomere-wallet-session-v1') : undefined;
 
-  constructor(readonly changed:(doc:Document|undefined)=>void,readonly notice:(text:string)=>void) {if(this.channel)this.channel.onmessage=event=>{if(this.address && event.data?.owner!==this.address.toLowerCase()){this.clear();this.notice('Wallet session changed in another tab. Sign in again.')}}}
+  constructor(readonly changed:(doc:Document|undefined,reason?:'saved'|'session-ready')=>void,readonly notice:(text:string)=>void) {if(this.channel)this.channel.onmessage=event=>{if(this.address && event.data?.owner!==this.address.toLowerCase()){this.clear();this.notice('Wallet session changed in another tab. Sign in again.')}}}
 
   async request(path:string,body?:unknown,method='POST'):Promise<unknown> {
 
@@ -90,15 +92,21 @@ export class WorkspaceClient {
 
   }
 
-  clear(){this.version++;this.address=undefined;this.document=undefined;this.revision=0;this.saveFailed=false;this.changed(undefined)}
+  clear(){this.version++;this.workspaceMutation++;this.workspaceRead++;this.address=undefined;this.document=undefined;this.revision=0;this.saveFailed=false;this.changed(undefined)}
+  cancelWorkspaceReload(){this.workspaceRead++}
 
-  async start(){const generation=this.version;try{this.config=configSchema.parse(await this.request('/api/config'));if(this.connecting)return;const me=z.object({address}).parse(await this.request('/api/me'));await this.load(me.address)}catch(error){if(generation!==this.version||this.connecting)return;if(this.address)throw error;this.changed(undefined)}}
+  async start(){if(this.connecting||this.financialBusy)return;const generation=this.version,read=this.workspaceRead;try{this.config=configSchema.parse(await this.request('/api/config'));if(this.connecting||read!==this.workspaceRead)return;const me=z.object({address}).parse(await this.request('/api/me'));if(read!==this.workspaceRead)return;await this.load(me.address)}catch(error){if(generation!==this.version||this.connecting)return;if(this.address)throw error;this.changed(undefined)}}
 
-  async load(owner:Address){const doc=z.object({owner:address,revision:z.number(),document:z.unknown()}).parse(await this.request('/api/workspace'));
+  async load(owner:Address){
+    const generation=this.version,read=++this.workspaceRead,mutation=this.workspaceMutation;
+    await this.saving;
+    if(generation!==this.version||read!==this.workspaceRead||mutation!==this.workspaceMutation)return;
+    const doc=z.object({owner:address,revision:z.number(),document:z.unknown()}).parse(await this.request('/api/workspace'));
 
     if(doc.owner.toLowerCase()!==owner.toLowerCase())throw Error('Session owner mismatch.');
 
-    this.address=owner;this.revision=doc.revision;this.document=doc.document as Document;this.changed(this.document)}
+    if(generation!==this.version||read!==this.workspaceRead||mutation!==this.workspaceMutation)return;
+    this.address=owner;this.revision=doc.revision;this.document=doc.document as Document;this.saveFailed=false;if(!this.connecting)this.changed(this.document)}
 
   accountChanged=(accounts:unknown)=>{const expected=this.address??this.connectionOwner;if(Array.isArray(accounts)&&typeof accounts[0]==='string'&&accounts[0].toLowerCase()===expected?.toLowerCase())return;this.clear();void this.request('/api/auth/logout',{}).catch(()=>{});this.notice('Wallet changed. Sign in again to open its workspace.')};
 
@@ -126,7 +134,7 @@ export class WorkspaceClient {
       if(current[0]?.toLowerCase()!==owner.toLowerCase()){this.accountChanged(current);throw Error('Wallet changed during sign-in.')}
       await this.load(owner);rememberWallet(chosen);this.channel?.postMessage({owner:owner.toLowerCase()});this.notice('Signed in. Your workspace is private to this wallet.');
     }catch(error){throw Error(walletError(error))}
-    finally{this.connectionOwner=undefined;this.connecting=false}
+    finally{this.connectionOwner=undefined;this.connecting=false;if(this.address&&this.document)this.changed(this.document,'session-ready')}
   }
   private async signInRequest(request:()=>Promise<unknown>):Promise<unknown>{
     let timer:ReturnType<typeof setTimeout>|undefined;
@@ -141,7 +149,7 @@ export class WorkspaceClient {
 
     if(!this.address)throw Error('Connect and sign in to save your workspace.');
 
-    const generation=this.version,copy=structuredClone(document);
+    const generation=this.version,mutation=++this.workspaceMutation,copy=structuredClone(document);
 
     this.saving=this.saving.then(async()=>{
 
@@ -151,7 +159,9 @@ export class WorkspaceClient {
 
       const result=z.object({revision:z.number()}).parse(await this.request('/api/workspace',{revision:this.revision,document:copy},'PUT'));
 
-      this.revision=result.revision;this.document=copy;
+      if(generation!==this.version)return;
+      this.revision=result.revision;
+      if(mutation===this.workspaceMutation){this.document=copy;this.changed(copy,'saved')}
 
     }).catch(error=>{if(generation===this.version){this.saveFailed=true;this.notice(error instanceof Error?error.message:'Workspace save failed.')}});
 

@@ -8,7 +8,7 @@ export interface WalletOption { id: string; key: string; name: string; provider:
 export interface WalletHost {
   addEventListener(type: string, listener: EventListener): void;
   dispatchEvent(event: Event): boolean;
-  ethereum?: unknown; okxwallet?: unknown; coinbaseWalletExtension?: unknown;
+  ethereum?: unknown; okxwallet?: unknown; coinbaseWalletExtension?: unknown; phantom?: unknown;
 }
 function object(value: unknown): Record<string, unknown> | undefined {
   return value !== null && typeof value === 'object' ? value as Record<string, unknown> : undefined;
@@ -25,6 +25,7 @@ function legacyName(value: WalletProvider): string {
   if (flags?.isRainbow) return 'Rainbow';
   if (flags?.isCoinbaseWallet) return 'Coinbase Wallet';
   if (flags?.isTrust || flags?.isTrustWallet) return 'Trust Wallet';
+  if (flags?.isPhantom) return 'Phantom';
   if (flags?.isMetaMask) return 'MetaMask';
   return 'Browser wallet';
 }
@@ -32,6 +33,7 @@ function legacyName(value: WalletProvider): string {
 export class WalletRegistry {
   private readonly entries = new Map<string, WalletOption>();
   private readonly listeners = new Set<() => void>();
+  private refreshing = false;
   constructor(private readonly host: WalletHost) {
     host.addEventListener('eip6963:announceProvider', event => {
       const detail = object(Reflect.get(event, 'detail')), info = object(detail?.info);
@@ -53,18 +55,24 @@ export class WalletRegistry {
     // Announced icons and names are untrusted; the UI renders names as text only.
     if (this.entries.has(id) || this.entries.size >= 32) return;
     this.entries.set(id, {id, key, name: name.trim().slice(0, 60), provider: value});
-    this.listeners.forEach(listener => listener());
+    if (!this.refreshing) this.listeners.forEach(listener => listener());
   }
   refresh(): void {
+    const before = this.list();this.refreshing = true;
+    try {
     for (const id of this.entries.keys()) if (id.startsWith('legacy:')) this.entries.delete(id);
     this.add('legacy:okx', 'okx', 'OKX Wallet', this.host.okxwallet);
     this.add('legacy:coinbase', 'coinbase', 'Coinbase Wallet', this.host.coinbaseWalletExtension);
+    this.add('legacy:phantom', 'phantom', 'Phantom', object(this.host.phantom)?.ethereum);
     const ethereum = this.host.ethereum, multiple = object(ethereum)?.providers;
     if (Array.isArray(multiple) && multiple.length) multiple.slice(0, 32).forEach((value: unknown, index: number) => {
       if (provider(value)) { const name = legacyName(value); this.add('legacy:' + index, name.toLowerCase(), name, value); }
     });
     else if (provider(ethereum)) { const name = legacyName(ethereum); this.add('legacy:ethereum', name.toLowerCase(), name, ethereum); }
     this.host.dispatchEvent(new Event('eip6963:requestProvider'));
+    } finally { this.refreshing = false; }
+    const after = this.list();
+    if (before.length !== after.length || before.some((item,index) => item.id !== after[index]?.id || item.provider !== after[index]?.provider || item.name !== after[index]?.name || item.key !== after[index]?.key)) this.listeners.forEach(listener => listener());
   }
   list(): WalletOption[] { return [...this.entries.values()].sort((a,b) => a.name.localeCompare(b.name)); }
   subscribe(listener: () => void): () => void { this.listeners.add(listener); return () => this.listeners.delete(listener); }
@@ -125,10 +133,13 @@ export function chooseWallet(): Promise<WalletOption | undefined> {
       if (focused) [...list.querySelectorAll<HTMLButtonElement>('button')].find(button => button.dataset.wallet === focused)?.focus();
     };
     const unsubscribe = wallets.subscribe(render);
+    const refresh = () => wallets.refresh();
+    const discoveryTimer = window.setInterval(refresh, 750);
+    window.addEventListener('focus', refresh);
     closeButton.onclick = () => dialog.close();
     dialog.querySelector<HTMLButtonElement>('.wallet-picker-refresh')!.onclick = () => { wallets.refresh(); render(); help.textContent = 'Choose a detected wallet. For mobile, open this site inside your wallet’s browser.'; };
     dialog.addEventListener('click', event => { if (event.target === dialog) { const r = dialog.getBoundingClientRect(); if (event.clientX < r.left || event.clientX > r.right || event.clientY < r.top || event.clientY > r.bottom) dialog.close(); } });
-    dialog.addEventListener('close', () => { unsubscribe(); dialog.remove(); if (previous instanceof HTMLElement && previous.isConnected) previous.focus(); resolve(selected); }, {once:true});
+    dialog.addEventListener('close', () => { window.clearInterval(discoveryTimer);window.removeEventListener('focus', refresh);unsubscribe(); dialog.remove(); if (previous instanceof HTMLElement && previous.isConnected) previous.focus(); resolve(selected); }, {once:true});
     document.body.append(dialog); render(); dialog.showModal(); closeButton.focus(); wallets.refresh();
   });
   choosing = task.finally(() => { choosing = undefined; });
