@@ -64,12 +64,12 @@
   "devDependencies": {
     "@types/node": "22.19.15",
     "@types/pg": "8.15.6",
-    "@vitest/coverage-v8": "4.1.11",
+    "@vitest/coverage-v8": "4.1.12",
     "esbuild": "0.28.2",
     "solc": "0.8.28",
     "tsx": "4.21.0",
     "typescript": "5.9.3",
-    "vitest": "4.1.11"
+    "vitest": "4.1.12"
   },
   "overrides": {
     "tmp": "0.2.7",
