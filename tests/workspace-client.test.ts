@@ -343,3 +343,56 @@ describe('automatic pending request reconciliation',()=>{
 });
 
 it('automatically archives a nested wallet rejection without creating a new payment',async()=>{const f=setup();const original=f.provider.request.getMockImplementation()!;f.provider.request.mockImplementation(async args=>{if(args.method==='eth_sendTransaction')throw {code:-32603,cause:{data:{originalError:{code:4001,message:'Rejected'}}}};return original(args)});await expect(f.client.transaction({to:escrow},'deposit USDC')).rejects.toThrow('closed automatically');expect(f.client.pending()).toEqual([]);expect(f.entries.get(f.client.journalKey()+':resolved')).toContain('wallet_cancelled')});
+
+
+describe('workspace HTTP response recovery',()=>{
+  it.each([502,503])('handles an HTML HTTP %s response without leaking HTML or retrying',async status=>{
+    const {client}=setup();const fetcher=vi.fn(async()=>new Response('<html><h1>private proxy error</h1></html>',{status,headers:{'Content-Type':'text/html'}}));
+    vi.stubGlobal('fetch',fetcher);
+    await expect(client.request('/api/auth/verify',{signature:'0x1234'})).rejects.toThrow(`temporarily unavailable (HTTP ${status})`);
+    expect(fetcher).toHaveBeenCalledOnce();expect(client.address).toBe(owner);
+  });
+  it.each(['<html>wrong upstream</html>','{"truncated":'])('handles malformed successful replies without exposing their body',async body=>{
+    const {client}=setup();vi.stubGlobal('fetch',vi.fn(async()=>new Response(body,{headers:{'Content-Type':'application/json'}})));
+    await expect(client.request('/api/workspace')).rejects.toThrow('unexpected response');
+  });
+  it('accepts application/problem+json and preserves the application error',async()=>{
+    const {client}=setup();vi.stubGlobal('fetch',vi.fn(async()=>Response.json({detail:'Review the existing reservation.'},{status:409,headers:{'Content-Type':'application/problem+json'}})));
+    await expect(client.request('/api/runs',{})).rejects.toThrow('Review the existing reservation.');
+  });
+  it('clears an expired session even if a proxy replaces the 401 body with HTML',async()=>{
+    const {client,changed}=setup();vi.stubGlobal('fetch',vi.fn(async()=>new Response('<html>expired</html>',{status:401,headers:{'Content-Type':'text/html'}})));
+    await expect(client.request('/api/me')).rejects.toThrow('session expired');
+    expect(client.address).toBeUndefined();expect(changed).toHaveBeenLastCalledWith(undefined);
+  });
+  it('does not clear a new account when a stale HTML 401 response arrives',async()=>{
+    const {client}=setup();let finish!:(r:Response)=>void;vi.stubGlobal('fetch',vi.fn(()=>new Promise<Response>(r=>{finish=r})));
+    const request=client.request('/api/me');client.clear();const next='0x3333333333333333333333333333333333333333';client.address=next;
+    finish(new Response('<html>expired</html>',{status:401,headers:{'Content-Type':'text/html'}}));
+    await expect(request).rejects.toThrow('account changed');expect(client.address).toBe(next);
+  });
+  it('retains a paid reservation after an HTML admission error and never sends it again',async()=>{
+    const {client,provider}=setup();vi.stubGlobal('fetch',vi.fn(async()=>new Response('<html>upstream unavailable</html>',{status:502,headers:{'Content-Type':'text/html'}})));
+    await expect(client.transaction({to:escrow},'reserve',txHash)).rejects.toThrow('temporarily unavailable');
+    expect(client.pending()).toMatchObject([{hash:txHash,runId:txHash}]);
+    await expect(client.transaction({to:escrow},'reserve',txHash)).rejects.toThrow('previous transaction');
+    expect(provider.request.mock.calls.filter(([p])=>p.method==='eth_sendTransaction')).toHaveLength(1);
+  });
+  it('releases sign-in after an HTML verify failure and allows an explicit fresh sign-in',async()=>{
+    const {client,provider}=setup();client.clear();
+    provider.request.mockImplementation(async({method})=>{if(method==='eth_requestAccounts'||method==='eth_accounts')return [owner];if(method==='personal_sign')return '0x1234' as never;throw Error('Unexpected wallet request')});
+    let attempts=0;const fetcher=vi.fn(async path=>{
+      if(path==='/api/auth/challenge')return Response.json({nonce:'nonce-'+attempts,message:'Sign in'});
+      if(path==='/api/auth/verify'&&attempts++===0)return new Response('<html>bad gateway</html>',{status:502,headers:{'Content-Type':'text/html'}});
+      if(path==='/api/workspace')return Response.json({owner,revision:1,document:emptyWorkspace()});
+      return Response.json({});
+    });vi.stubGlobal('fetch',fetcher);
+    const selection={id:'phantom',key:'phantom',name:'Phantom',provider:provider as never};
+    await expect(client.connect(selection)).rejects.toThrow('temporarily unavailable');
+    expect(client.connecting).toBe(false);expect(client.address).toBeUndefined();
+    expect(provider.request.mock.calls.filter(([p])=>p.method==='personal_sign')).toHaveLength(1);
+    await client.connect(selection);expect(client.address).toBe(owner);expect(client.connecting).toBe(false);
+    expect(fetcher.mock.calls.filter(([path])=>path==='/api/auth/verify')).toHaveLength(2);
+    expect(provider.request.mock.calls.filter(([p])=>p.method==='eth_sendTransaction')).toHaveLength(0);
+  });
+});

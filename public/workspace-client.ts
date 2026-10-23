@@ -93,7 +93,20 @@ export class WorkspaceClient {
 
     const r=await fetch(path,{signal:AbortSignal.timeout(30000),credentials:'same-origin',cache:'no-store',headers:{...(this.address?{'X-Telomere-Owner':this.address}:{})},...(body===undefined?{}:{method,headers:{...(this.address?{'X-Telomere-Owner':this.address}:{}),'Content-Type':'application/json','Idempotency-Key':path==='/api/cysts'?'checkpoint-'+z.object({id:z.string()}).parse(body).id:crypto.randomUUID()},body:JSON.stringify(body)})});
 
-    const data:unknown=await r.json();
+    const contentType=r.headers.get('content-type')?.split(';')[0]?.trim().toLowerCase();
+    let data:unknown;
+    if(contentType==='application/json'||contentType?.startsWith('application/')&&contentType.endsWith('+json')){
+      try{data=await r.json()}catch{data=undefined}
+    }
+    // A proxy can return HTML, including HTTP 200. Never display that body or retry a mutation.
+    if(version!==this.version)throw Error('The account changed. Review the action again.');
+    if(r.status===401&&this.address)this.clear();
+    if(data===undefined){
+      if(r.status===401)throw Error('Your session expired. Connect your wallet and sign in again.');
+      if(r.status===429)throw Error('Too many requests. Wait a moment before trying again.');
+      if(r.status>=500)throw Error(`The service is temporarily unavailable (HTTP ${r.status}). Try again shortly.`);
+      throw Error('The service returned an unexpected response. Reload this page before continuing.');
+    }
 
     if(version!==this.version)throw Error('The account changed. Review the action again.');
 

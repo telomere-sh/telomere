@@ -29,6 +29,12 @@ export async function buildManifest() {
   if (!/^[a-f0-9]{40}$/.test(sourceCommit)) throw new Error('Missing source commit');
   const sourceDirty = execFileSync('git', ['status', '--porcelain=v1'], { cwd: root, encoding: 'utf8' }).trim() !== '';
   const lock = JSON.parse(await readFile(resolve(root, 'package-lock.json'), 'utf8'));
+  const assets = {};
+  for (const name of ['index.html', 'dashboard.js', 'workspace-client.js', 'site.js', 'agent-panels.js']) {
+    assets[name] = sha256(await readFile(resolve(output, 'website', name)));
+  }
+  await writeFile(resolve(output, 'release-info.json'), JSON.stringify({ schemaVersion: 1, sourceCommit, sourceDirty,
+    packageLockSha256: sha256(await readFile(resolve(root, 'package-lock.json'))), assets }, null, 2) + '\n');
   const files = (await inventory(output)).filter(row => row.path !== 'release-manifest.json');
   const manifest = { schemaVersion: 1, sourceCommit, sourceDirty, node: process.versions.node,
     packageLockSha256: sha256(await readFile(resolve(root, 'package-lock.json'))),

@@ -53,13 +53,14 @@ import type { TreasuryTopUpService } from './treasury/service.js';
 import type { PaidCystInputService } from './platform-runtime/paid-cyst-input.js';
 import { createPaidCystInputRoutes } from './platform-runtime/paid-cyst-input-routes.js';
 import type { Website } from './website.js';
+import { unversionedRelease, type PublicRelease } from './release.js';
 
 const cookie = 'telomere_session';
 export function createApp(service: Service, auth: Auth, logger: Logger, publicRoot = './dist/public', operations?: (owner?: Address) => Promise<Operations>, cysts?: CystService, platform?: ControllerPlatform,
   mcpHttp?: { handle(request: Request): Promise<Response> }, platformRuntime?: PlatformRuntimeService, platformVaultRuntime?: PlatformVaultRuntimeService,
   platformMcpHttp?: { handle(request: Request): Promise<Response> }, cystRegistry?: CystRegistryService, incomeEndpoints?: IncomeEndpointService, vaultIncome?: ConfiguredVaultIncome,
   largeCysts?: LargeCystStore, largePublication?: LargeCystPublicationService, akashReadiness?: AkashControllerReadiness,
-  treasuryTopUps?: TreasuryTopUpService, paidCystInputs?: Pick<PaidCystInputService, 'status' | 'upload'>, website?: Website) {
+  treasuryTopUps?: TreasuryTopUpService, paidCystInputs?: Pick<PaidCystInputService, 'status' | 'upload'>, website?: Website, release: PublicRelease = unversionedRelease) {
   const app = new Hono();
   const rateBuckets = new Map<string, { count: number; expires: number }>();
   let demoQueue = Promise.resolve();
@@ -153,6 +154,7 @@ export function createApp(service: Service, auth: Auth, logger: Logger, publicRo
       detail: known ? error.message : status === 422 ? 'Check the request fields.' : 'The service is temporarily unavailable.' }, status, { 'Content-Type': 'application/problem+json' });
   });
   app.get('/health/live', context => context.json({ status: 'ok' }));
+  app.get('/api/version', context => context.json(release, 200, { 'Cache-Control': 'no-store' }));
   if (platformRuntime) app.route('/api/platform/public', createPlatformPublicFinancialRoutes(new PlatformPublicFinancialReader(platformRuntime.bridge, 12,
     runId => platformRuntime.cpuLaneAttribution(runId))));
   if (platformRuntime) app.route('/api/platform/public/presented-meter', createPlatformPresentedMeterRoutes(

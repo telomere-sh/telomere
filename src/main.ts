@@ -14,6 +14,7 @@ import { Auth } from './auth.js';
 import { Service } from './service.js';
 import { Worker } from './worker.js';
 import { createApp } from './app.js';
+import { readPublicRelease } from './release.js';
 import { loadWebsite } from './website.js';
 import { createDemoCpuExecutor, createDockerCpuExecutor } from './runtime/index.js';
 import { configuredNearProvider } from './providers/configured.js';
@@ -178,7 +179,7 @@ export async function startPilot(config: Config) {
         baseUrl: config.PUBLIC_ORIGIN, sessionToken, pins: fullPlatform.bridge.pins, vaultPins: platformVaultPins, vault }) } : {}),
     }) }) : undefined;
   const platformVaultRuntime = platformRuntime?.vaults ? new PlatformVaultRuntimeService(platformRuntime, platformRuntime.vaults) : undefined;
-  const app = createApp(service, auth, logger, './dist/public', createOperations(store.db, worker, config, !!near, nearReadiness), cysts, platform, mcpHttp, platformRuntime, platformVaultRuntime, platformMcpHttp, cystRegistry, incomeEndpoints, vaultIncome, largeCysts, largePublication, akashReadiness, treasuryTopUps, paidCystInputs, website);
+  const app = createApp(service, auth, logger, './dist/public', createOperations(store.db, worker, config, !!near, nearReadiness), cysts, platform, mcpHttp, platformRuntime, platformVaultRuntime, platformMcpHttp, cystRegistry, incomeEndpoints, vaultIncome, largeCysts, largePublication, akashReadiness, treasuryTopUps, paidCystInputs, website, await readPublicRelease());
   const server = serve({ fetch: app.fetch, port: config.PORT, hostname: config.HOST });
   try {
     await new Promise<void>((resolveListening, reject) => {

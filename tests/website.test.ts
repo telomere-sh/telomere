@@ -70,6 +70,12 @@ describe('unchanged website deployment boundary', () => {
     expect(await script.text()).toBe('export const unchanged = true;\r\n');
   });
 
+  it('exposes only safe release metadata without authentication or caching', async () => {
+    const response = await app.request('/api/version');
+    expect(response.status).toBe(200); expect(response.headers.get('cache-control')).toBe('no-store');
+    expect(await response.json()).toEqual({ schemaVersion: 1, sourceCommit: null, sourceDirty: null, packageLockSha256: null, assets: {} });
+  });
+
   it('accepts bundled license sidecars as plain text without an HTML fallback', async () => {
     const response = await app.request('/site.js.LEGAL.txt');
     expect(response.status).toBe(200);
