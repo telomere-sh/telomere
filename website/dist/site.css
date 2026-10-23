@@ -38,3 +38,6 @@ body.tl-page{background:var(--paper)!important}#framer-badge-container,#__framer
 
 /* Mobile controls retain the existing silhouette with room for touch and wrapping. */
 @media(max-width:809px){.menu-button:before{content:"";position:absolute;inset:-10px 0}.tl-menu{padding-bottom:calc(32px + env(safe-area-inset-bottom));overscroll-behavior:contain}.tl-menu-links>div,.tl-menu-social>div{min-width:0}.tl-menu a{overflow-wrap:anywhere}.tl-menu-links a,.tl-menu-social a{min-height:44px}.field,.form-row>*{min-width:0}.form-summary{flex-wrap:wrap;gap:12px}.form-summary strong{max-width:100%;overflow-wrap:anywhere}.pill{max-width:100%;white-space:normal;overflow-wrap:anywhere}.pill .arrow,.pill>span:last-child{flex-shrink:0}.tabs button{min-height:44px}.code-block{overflow-wrap:anywhere}.article-body,.article-body h2{min-width:0;overflow-wrap:break-word}}
+
+/* A route opened from the Framer landing inherits its base font size. */
+@media(max-width:900px),(max-height:600px){.field input,.field select,.field textarea{font-size:16px}}
