@@ -20,3 +20,13 @@ svg:has(h1) foreignObject h1{font-size:calc(var(--framer-font-size)*.865)!import
 
 /* Hide legacy Framer social links before its hydration enhancement pass. */
 #main a[href$="#coming-soon-github"]{display:none!important}
+
+/* Keep landing copy inside the narrowest mobile column. */
+@media(max-width:809px){#main .framer-dorji8{width:100%!important;max-width:100%!important;min-width:0!important}#main .framer-dorji8 .framer-text{white-space:normal!important;overflow-wrap:break-word}}
+
+@media(max-width:809px){#main .framer-1035lth-container> *::before{content:"";position:absolute;inset:-10px 0}}
+
+/* The exported mobile menu must scroll independently on short screens. */
+@media(max-width:809px),(max-height:600px){#main .framer-2uznpr-container>nav[data-framer-name*="Opened"]{height:100dvh!important;max-height:100dvh;overflow-y:auto!important;overflow-x:clip!important;overscroll-behavior:contain;scroll-padding-top:96px;padding-bottom:env(safe-area-inset-bottom)}}
+
+@media(max-width:600px){#main div:has(>.framer-z1Vmi),#main .framer-z1Vmi,#main .framer-z1Vmi [data-framer-component-type="RichTextContainer"]{width:100%!important;min-width:0!important;max-width:100%!important}#main .framer-z1Vmi .framer-text{font-size:clamp(28px,9vw,40px)!important;white-space:normal!important;overflow-wrap:break-word}}
