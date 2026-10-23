@@ -255,12 +255,37 @@ for entry in latest['previousSources']:
     references += 1
 expected_historical = {entry['path'] for entry in remediation['files']} | {entry['path'] for entry in integration['preserved']}
 assert set(historical_sources) == expected_historical
+performance_document = 'docs/evidence/website-performance-20261023/frontend-source.json'
+assert performance_document in tracked
+performance_bytes = (root / performance_document).read_bytes()
+assert hashlib.sha256(performance_bytes).hexdigest() == '91c98d1dea8cd99aff56d75ec056da0d1e00629fd513e355ea84924c95591cab'
+performance = json.loads(performance_bytes)
+assert performance['schemaVersion'] == 1 and performance['previousRecord'] == latest_document
+performance_previous = {}
+for entry in performance['preservedSources']:
+    name, digest = validate_source_entry(entry)
+    stored = entry['storedPath']
+    assert stored == 'docs/evidence/website-performance-20261023/source/' + digest + '.bin' and stored in tracked
+    raw = (root / stored).read_bytes()
+    assert name not in performance_previous and len(raw) == entry['bytes'] and hashlib.sha256(raw).hexdigest() == digest
+    performance_previous[name] = raw
+    references += 1
+assert set(performance_previous) == {'website/dist/site.js'}
+performance_names = set()
+for entry in performance['files']:
+    name, digest = validate_source_entry(entry)
+    assert name in tracked and name not in performance_names
+    performance_names.add(name)
+    raw = (root / name).read_bytes()
+    assert len(raw) == entry['bytes'] and hashlib.sha256(raw).hexdigest() == digest, 'Approved loading fix changed: ' + name
+    references += 1
+assert performance_names == {'website/dist/site.js', 'website/dist/preload.js', 'ops/website-performance/static-compression.conf'}
 latest_names = set()
 for entry in latest['files']:
     name, digest = validate_source_entry(entry)
     assert name in tracked and name.startswith(('public/', 'website/dist/')) and name not in latest_names
     latest_names.add(name)
-    raw = (root / name).read_bytes()
+    raw = performance_previous.get(name, (root / name).read_bytes())
     assert len(raw) == entry['bytes'] and hashlib.sha256(raw).hexdigest() == digest, 'Approved frontend changed: ' + name
     references += 1
 assert expected_historical <= latest_names

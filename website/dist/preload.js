@@ -1,12 +1,27 @@
 (()=>{
- const root=document.documentElement;root.classList.add('assets-pending');let done=0,total=1,loader;
- function mount(){if(loader)return;loader=document.createElement('div');loader.id='tl-asset-loader';loader.setAttribute('role','status');loader.innerHTML='<div class="asset-loader-brand"><img src="/assets/brand/mark.svg" alt=""><span>TELOMERE</span></div><div class="asset-loader-track"><i></i></div><div class="asset-loader-caption"><span>ONE SECOND, PLEASE.</span><b>00</b></div>';document.body.append(loader);progress()}
- function progress(){if(!loader)return;const p=Math.min(100,Math.round(done/total*100));loader.querySelector('i').style.width=p+'%';loader.querySelector('b').textContent=String(p).padStart(2,'0')}
+ const root=document.documentElement;root.classList.add('assets-pending');let loader,revealed=false;
+ // Readiness belongs to the current viewport, not the site's complete asset library.
+ const downloaded=Promise.resolve([]);
+ function mount(){if(loader||revealed)return;loader=document.createElement('div');loader.id='tl-asset-loader';loader.setAttribute('role','status');loader.innerHTML='<style>#tl-asset-loader .asset-loader-track{overflow:hidden}#tl-asset-loader .asset-loader-track i{width:35%;animation:tl-loader-pass .9s ease-in-out infinite}@keyframes tl-loader-pass{from{transform:translateX(-100%)}to{transform:translateX(300%)}}@media(prefers-reduced-motion:reduce){#tl-asset-loader .asset-loader-track i{animation:none;width:100%}}</style><div class="asset-loader-brand"><img src="/assets/brand/mark.svg" alt=""><span>TELOMERE</span></div><div class="asset-loader-track"><i></i></div><div class="asset-loader-caption"><span>ONE SECOND, PLEASE.</span><b>...</b></div>';document.body.append(loader)}
+ function reveal(){if(revealed)return;revealed=true;clearTimeout(deadline);root.classList.remove('assets-pending');root.classList.add('assets-ready');loader?.remove();document.dispatchEvent(new Event('telomere-assets-ready'))}
+ // A failed image, font, or module must never leave the whole site behind a loader.
+ const deadline=setTimeout(reveal,4000);
  if(document.body)mount();else document.addEventListener('DOMContentLoaded',mount,{once:true});
- const downloads=new Map(),decoded=new Map();
- async function download(url){if(downloads.has(url))return downloads.get(url);const pending=(async()=>{for(let i=0;i<2;i++){try{const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),20000);try{const r=await fetch(url,{cache:'force-cache',signal:controller.signal});if(!r.ok||!r.headers.get('content-type')?.includes('image/'))throw Error('Image unavailable');await r.arrayBuffer();return true}finally{clearTimeout(timer)}}catch{}}return false})();downloads.set(url,pending);return pending}
- const downloaded=fetch('/image-manifest.json',{cache:'no-cache'}).then(r=>r.json()).then(async manifest=>{const urls=manifest.images;total=urls.length;let cursor=0;const failed=[];async function worker(){while(cursor<urls.length){const url=urls[cursor++];if(!await download(url))failed.push(url);done++;progress()}}await Promise.all(Array.from({length:8},worker));root.dataset.assetCount=String(urls.length);root.dataset.assetFailures=String(failed.length);return failed}).catch(()=>[]);
- async function prepare(scope){if(!scope)return;await downloaded;const urls=new Set();for(const img of scope.querySelectorAll('img')){let url=img.getAttribute('src');if(!url||!url.startsWith('/assets/'))continue;url=url.split('?')[0];img.src=url;img.removeAttribute('srcset');img.loading='eager';urls.add(url)}await Promise.all([...urls].map(url=>{if(decoded.has(url))return decoded.get(url);const promise=(async()=>{await download(url);const image=new Image();image.src=url;try{await image.decode()}catch{}})();decoded.set(url,promise);return promise}));await document.fonts.ready;scope.dataset.imagesReady='true'}
- function reveal(){root.classList.remove('assets-pending');root.classList.add('assets-ready');loader?.remove();document.dispatchEvent(new Event('telomere-assets-ready'))}
+ async function prepare(scope){
+  if(!scope)return;
+  const visible=[];
+  for(const img of scope.querySelectorAll('img')){
+   const box=img.getBoundingClientRect();
+   if(box.width<=0||box.height<=0||box.bottom<0||box.top>innerHeight+160)continue;
+   // Keep native srcset/sizes selection and let the browser load off-screen media.
+   img.loading='eager';
+   if(visible.length<4&&typeof img.decode==='function')visible.push(Promise.resolve().then(()=>img.decode()));
+  }
+  if(visible.length){
+   let timer;
+   try{await Promise.race([Promise.allSettled(visible),new Promise(resolve=>{timer=setTimeout(resolve,800)})])}finally{clearTimeout(timer)}
+  }
+  scope.dataset.imagesReady='true';
+ }
  window.TelomereAssets={downloaded,prepare,reveal};
 })();
