@@ -13506,8 +13506,8 @@
           "path": "website/dist/preload.js",
           "bytes": 2720,
           "sha256": "f32224b21a04108cc031ad253a45be497ab33276694d220268249b5a4fde95b8",
-          "storage": "working-tree",
-          "storedPath": "website/dist/preload.js"
+          "storage": "object",
+          "storedPath": "docs/evidence/public-source-archive/objects/f32224b21a04108cc031ad253a45be497ab33276694d220268249b5a4fde95b8.bin"
         },
         {
           "path": "website/dist/privacy/index.html",
@@ -14494,6 +14494,13 @@
           "sha256": "164f9e14c05bb23f6d341974ee12d1f5117e8400f88f24054d5511ff85e3d439",
           "storage": "object",
           "storedPath": "docs/evidence/public-source-archive/objects/164f9e14c05bb23f6d341974ee12d1f5117e8400f88f24054d5511ff85e3d439.bin"
+        },
+        {
+          "path": "website/dist/preload.js",
+          "bytes": 2720,
+          "sha256": "f32224b21a04108cc031ad253a45be497ab33276694d220268249b5a4fde95b8",
+          "storage": "object",
+          "storedPath": "docs/evidence/public-source-archive/objects/f32224b21a04108cc031ad253a45be497ab33276694d220268249b5a4fde95b8.bin"
         },
         {
           "path": "website/dist/site.css",
