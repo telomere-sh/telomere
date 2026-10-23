@@ -26,3 +26,6 @@ docs/evidence/cpu-self-contained-20261018/source/*.bin -text -diff
 # Retain the prior Workspace source separately from current audit disclosures.
 docs/evidence/audit-remediation-20261018/source/*.bin -text -diff
 docs/evidence/public-source-archive/objects/*.bin -text -diff
+
+# Preserve pre-update review snapshots without requiring old Git objects.
+docs/evidence/review-remediation-20261023/source/*.bin -text -diff

@@ -235,6 +235,36 @@ assert hashlib.sha256(remediation_bytes).hexdigest() == '0edcccdbe6817a71ea13b85
 remediation = json.loads(remediation_bytes)
 assert remediation['schemaVersion'] == 1 and remediation['previousIntegrationRecord'] == integration_document
 assert {entry['path'] for entry in remediation['files']} == {entry['path'] for entry in integration['files']} | {'website/dist/agent-panels.js'}
+# Preserve the exact reviewed October 18 bytes before checking later approved changes.
+latest_document = 'docs/evidence/review-remediation-20261023/frontend-source.json'
+assert latest_document in tracked
+latest_bytes = (root / latest_document).read_bytes()
+assert hashlib.sha256(latest_bytes).hexdigest() == '17304f0a06acf8bdb31a24bbe8c0d8b4f132d83f69ce3401084357c93479fe7c'
+latest = json.loads(latest_bytes)
+assert latest['schemaVersion'] == 1 and latest['previousRecord'] == remediation_document
+historical_sources = {}
+for entry in latest['previousSources']:
+    name, digest = validate_source_entry(entry)
+    assert name not in historical_sources
+    stored = entry['storedPath']
+    assert stored == 'docs/evidence/review-remediation-20261023/source/' + digest + '.bin'
+    assert stored in tracked
+    raw = (root / stored).read_bytes()
+    assert len(raw) == entry['bytes'] and hashlib.sha256(raw).hexdigest() == digest
+    historical_sources[name] = raw
+    references += 1
+expected_historical = {entry['path'] for entry in remediation['files']} | {entry['path'] for entry in integration['preserved']}
+assert set(historical_sources) == expected_historical
+latest_names = set()
+for entry in latest['files']:
+    name, digest = validate_source_entry(entry)
+    assert name in tracked and name.startswith(('public/', 'website/dist/')) and name not in latest_names
+    latest_names.add(name)
+    raw = (root / name).read_bytes()
+    assert len(raw) == entry['bytes'] and hashlib.sha256(raw).hexdigest() == digest, 'Approved frontend changed: ' + name
+    references += 1
+assert expected_historical <= latest_names
+
 prior = {entry['path']: entry for entry in integration['files'] + integration['preserved']}
 for entry in remediation['files']:
     name, digest = validate_source_entry(entry)
@@ -245,13 +275,13 @@ for entry in remediation['files']:
     assert stored in tracked and name in tracked
     archived = (root / stored).read_bytes()
     assert len(archived) == previous['bytes'] and hashlib.sha256(archived).hexdigest() == previous['sha256']
-    current = (root / name).read_bytes()
+    current = historical_sources[name]
     assert len(current) == entry['bytes'] and hashlib.sha256(current).hexdigest() == digest, 'Reviewed frontend changed: ' + name
     references += 2
 for entry in [item for item in integration['preserved'] if item['path'] != 'website/dist/agent-panels.js'] + [integration['historicalSocial']]:
     name, digest = validate_source_entry(entry)
     assert name in tracked
-    actual = (root / name).read_bytes()
+    actual = historical_sources.get(name, (root / name).read_bytes())
     assert len(actual) == entry['bytes'] and hashlib.sha256(actual).hexdigest() == digest, 'Preserved frontend changed: ' + name
     references += 1
 

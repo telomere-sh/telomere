@@ -1,0 +1,169 @@
+{
+  "schemaVersion": 1,
+  "previousRecord": "docs/evidence/audit-remediation-20261018/frontend-source.json",
+  "baselineSourceCommit": "55e129517e998ba5ec68b0c72004f1051c4540f7",
+  "reviewedSourceCommit": "1fd94b0076052deb4d1c0eb5201ee6a0d2280cd7",
+  "scope": "User-requested wallet recovery, icons, host/workspace updates, navigation removal, mobile layout and HTTP error handling. Original handoff and earlier review bytes remain independently preserved.",
+  "previousSources": [
+    {
+      "path": "website/dist/dashboard.js",
+      "bytes": 53895,
+      "sha256": "9eec189ddbeaaaa7694be40c5450789a9acd1b4960f72fe79d57f03f94cf4ff9",
+      "storedPath": "docs/evidence/review-remediation-20261023/source/9eec189ddbeaaaa7694be40c5450789a9acd1b4960f72fe79d57f03f94cf4ff9.bin"
+    },
+    {
+      "path": "website/dist/site.js",
+      "bytes": 49798,
+      "sha256": "7eef33d6ac874bb8fa3d47e96086478ce3eee708cf9a4101790ac76869b05b85",
+      "storedPath": "docs/evidence/review-remediation-20261023/source/7eef33d6ac874bb8fa3d47e96086478ce3eee708cf9a4101790ac76869b05b85.bin"
+    },
+    {
+      "path": "public/workspace-client.ts",
+      "bytes": 11799,
+      "sha256": "72f75822f9cedcd782c8a99b0c29664063338afa639f869b83f972e827af73f2",
+      "storedPath": "docs/evidence/review-remediation-20261023/source/72f75822f9cedcd782c8a99b0c29664063338afa639f869b83f972e827af73f2.bin"
+    },
+    {
+      "path": "website/dist/agent-panels.js",
+      "bytes": 5893,
+      "sha256": "d4d6bde495803dbb16e0561c20a3337ae0eb0ae67b93b29bd610a99c6337457d",
+      "storedPath": "docs/evidence/review-remediation-20261023/source/d4d6bde495803dbb16e0561c20a3337ae0eb0ae67b93b29bd610a99c6337457d.bin"
+    },
+    {
+      "path": "website/dist/dashboard.css",
+      "bytes": 18735,
+      "sha256": "dec701274db677963c49cc1ff01287f51d7335455cdbd1c2886fd16fdc91aeca",
+      "storedPath": "docs/evidence/review-remediation-20261023/source/dec701274db677963c49cc1ff01287f51d7335455cdbd1c2886fd16fdc91aeca.bin"
+    },
+    {
+      "path": "website/dist/dashboard/index.html",
+      "bytes": 1553,
+      "sha256": "77a5d0ac5869c50d0c176966147fa6f937d200075f2f7a24b3374995ad2bb369",
+      "storedPath": "docs/evidence/review-remediation-20261023/source/77a5d0ac5869c50d0c176966147fa6f937d200075f2f7a24b3374995ad2bb369.bin"
+    },
+    {
+      "path": "website/dist/motion.js",
+      "bytes": 10537,
+      "sha256": "685747daff17d7ea001a9d0d2b977af1736e37fb8b21c85f1b1c75e5218e96aa",
+      "storedPath": "docs/evidence/review-remediation-20261023/source/685747daff17d7ea001a9d0d2b977af1736e37fb8b21c85f1b1c75e5218e96aa.bin"
+    },
+    {
+      "path": "website/dist/proof-chain.js",
+      "bytes": 8527,
+      "sha256": "f1009bf38c2b0b80c97cba8f01fd05b4ad637639eb28b69e08e70c99f76ad6ac",
+      "storedPath": "docs/evidence/review-remediation-20261023/source/f1009bf38c2b0b80c97cba8f01fd05b4ad637639eb28b69e08e70c99f76ad6ac.bin"
+    }
+  ],
+  "files": [
+    {
+      "path": "public/app.ts",
+      "bytes": 56715,
+      "sha256": "4d5c5cefe462b80eac13128a66ed1068dd53313349a1b2fdaeec058fb08e68c4"
+    },
+    {
+      "path": "public/index.html",
+      "bytes": 16330,
+      "sha256": "746a559ab0e9b5acc2ee0fa5fc82d91e90d788ff4da6e7963e555c3ab4945ff2"
+    },
+    {
+      "path": "public/wallet-picker.ts",
+      "bytes": 10580,
+      "sha256": "9e3fee9e243d48b5c88080a9fc1d42142e14e5e429104a803ce5ea7c650f3166"
+    },
+    {
+      "path": "public/workspace-client.ts",
+      "bytes": 34691,
+      "sha256": "ef2d905e06dd6fe0a0589b8370b274fa4e60afe57f8b300a79bb23273c9fb3c2"
+    },
+    {
+      "path": "website/dist/agent-panels.js",
+      "bytes": 5893,
+      "sha256": "d4d6bde495803dbb16e0561c20a3337ae0eb0ae67b93b29bd610a99c6337457d"
+    },
+    {
+      "path": "website/dist/assets/wallets/coinbase.svg",
+      "bytes": 538,
+      "sha256": "74b55347075cbbb2a0292cca0f94459d531afd23586ecfd2fcc670236c590439"
+    },
+    {
+      "path": "website/dist/assets/wallets/metamask.svg",
+      "bytes": 1665,
+      "sha256": "892c7dfab8c4ca5682878dda3f42f55a75195d7d365e4adb0832845f3a0a2135"
+    },
+    {
+      "path": "website/dist/assets/wallets/okx.svg",
+      "bytes": 844,
+      "sha256": "d82233b20d10010ec65342951b5ae99b11baaef7e7c3ca3af516c82124589422"
+    },
+    {
+      "path": "website/dist/assets/wallets/rabby.svg",
+      "bytes": 2290,
+      "sha256": "dcae4de88ebfa10cffa1fe28df13d7c8c0b40736ef2b704f1f2fc348e777e443"
+    },
+    {
+      "path": "website/dist/assets/wallets/rainbow.svg",
+      "bytes": 3428,
+      "sha256": "5291dafe28cd6feba0c9ab6d28b5861ce72c7a517647fb25055aa67ce820e3ce"
+    },
+    {
+      "path": "website/dist/assets/wallets/trust.svg",
+      "bytes": 690,
+      "sha256": "3e99b0e4a9f77b026affd8b5eabefc015e648d8a9532879c888a61b4b584e615"
+    },
+    {
+      "path": "website/dist/dashboard.css",
+      "bytes": 24766,
+      "sha256": "9f0577983277e000075136c8a8f0c828ad2fa974c363be0cc27bb8f4bd1df9c0"
+    },
+    {
+      "path": "website/dist/dashboard.js",
+      "bytes": 70995,
+      "sha256": "b6c4d81a07c88ed6f062160d17e932959f18d5469ebb5d31ed333b8a0ef36785"
+    },
+    {
+      "path": "website/dist/dashboard/index.html",
+      "bytes": 1602,
+      "sha256": "1269af1d7fc1b204b33e4c628c53dc93950a485817c04db46c931da132916d80"
+    },
+    {
+      "path": "website/dist/home.css",
+      "bytes": 7529,
+      "sha256": "64c5d4719c2dba4649188e1ebd442e4c0ba55e1c7379f68d3b7568c9154f226f"
+    },
+    {
+      "path": "website/dist/image-manifest.json",
+      "bytes": 3684,
+      "sha256": "8e8cb9daee5ade222fe0510070d4c744e24c742b4e0e6ec358daf95ce8e69967"
+    },
+    {
+      "path": "website/dist/index.html",
+      "bytes": 1364041,
+      "sha256": "ec295a7762b1e876f8ca750c9ca4bc61d38090f13218b95ae02102f5c20030d7"
+    },
+    {
+      "path": "website/dist/motion.js",
+      "bytes": 10537,
+      "sha256": "685747daff17d7ea001a9d0d2b977af1736e37fb8b21c85f1b1c75e5218e96aa"
+    },
+    {
+      "path": "website/dist/proof-chain.js",
+      "bytes": 8527,
+      "sha256": "f1009bf38c2b0b80c97cba8f01fd05b4ad637639eb28b69e08e70c99f76ad6ac"
+    },
+    {
+      "path": "website/dist/site.css",
+      "bytes": 29569,
+      "sha256": "b87d6dd4a759627307dddae33935e2148d36cfdaf8c8db1d206a604a9561fa7a"
+    },
+    {
+      "path": "website/dist/site.js",
+      "bytes": 49852,
+      "sha256": "78b5ab040cad66a5d59849b34546e0becb352aa183e53380ee921878837bdb47"
+    },
+    {
+      "path": "website/dist/wallet-picker.css",
+      "bytes": 2310,
+      "sha256": "67a33450cac754a07b8f719309b8b0f4db2119ea4ecba1fdfcd63356a69d88e3"
+    }
+  ]
+}
