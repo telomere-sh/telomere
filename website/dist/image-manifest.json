@@ -82,6 +82,12 @@
     "/assets/tech/typescript.svg",
     "/assets/tech/usdc.svg",
     "/assets/video/telomere-protocol-poster.jpg",
-    "/assets/video/telomere-reel-poster.jpg"
+    "/assets/video/telomere-reel-poster.jpg",
+    "/assets/wallets/coinbase.svg",
+    "/assets/wallets/metamask.svg",
+    "/assets/wallets/okx.svg",
+    "/assets/wallets/rabby.svg",
+    "/assets/wallets/rainbow.svg",
+    "/assets/wallets/trust.svg"
   ]
 }
