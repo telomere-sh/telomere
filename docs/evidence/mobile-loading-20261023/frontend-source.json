@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "previousRecord": "docs/evidence/website-performance-20261023/frontend-source.json",
+  "previousSourceCommit": "ff1df39790a5746c08270aaccf3348fcea78749b",
+  "scope": "Stack wallet availability below the name on screens at most 360px wide; preserve button silhouette, artwork and desktop layout. Validate bounded readiness on mobile heights, late image resolution and subsequent routes.",
+  "preservedSources": [
+    {
+      "path": "website/dist/wallet-picker.css",
+      "bytes": 2310,
+      "sha256": "67a33450cac754a07b8f719309b8b0f4db2119ea4ecba1fdfcd63356a69d88e3",
+      "storedPath": "docs/evidence/mobile-loading-20261023/source/67a33450cac754a07b8f719309b8b0f4db2119ea4ecba1fdfcd63356a69d88e3.bin"
+    }
+  ],
+  "files": [
+    {
+      "path": "website/dist/wallet-picker.css",
+      "bytes": 2701,
+      "sha256": "74f840e304b4d93e85a47fe1d28bedce0cee70d1edff1ab625c71938bbb63e51"
+    }
+  ]
+}

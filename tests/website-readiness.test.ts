@@ -12,12 +12,12 @@ describe('bounded, viewport-only website readiness', () => {
   let source: string;
   beforeAll(async () => { source = await readFile('website/dist/preload.js', 'utf8'); });
   afterEach(() => { vi.useRealTimers(); });
-  function fixture(bodyReady = true) {
+  function fixture(bodyReady = true, viewportHeight = 800) {
     vi.useFakeTimers();
     const classes = new Set<string>(), events: string[] = [], append = vi.fn(), remove = vi.fn();
     const listeners = new Map<string, () => void>(), network = vi.fn(() => { throw new Error('Unexpected speculative download'); });
     const window: { TelomereAssets?: Runtime } = {};
-    runInNewContext(source, { window, innerHeight: 800, setTimeout, clearTimeout, fetch: network,
+    runInNewContext(source, { window, innerHeight: viewportHeight, setTimeout, clearTimeout, fetch: network,
       Event: class { constructor(public type: string) {} },
       document: { documentElement: { classList: { add: (name: string) => classes.add(name), remove: (name: string) => classes.delete(name) } },
         body: bodyReady ? { append } : null, fonts: { ready: new Promise(() => {}) },
@@ -64,5 +64,33 @@ describe('bounded, viewport-only website readiness', () => {
     const f = fixture(false);
     await vi.advanceTimersByTimeAsync(4000); f.listeners.get('DOMContentLoaded')?.();
     expect(f.append).not.toHaveBeenCalled(); expect(f.classes.has('assets-pending')).toBe(false);
+  });
+  it.each([568, 667, 800, 844, 932])('preserves lazy loading below a %i px mobile viewport', async height => {
+    const f = fixture(true, height), visible = image(height - 50), below = image(height + 2000);
+    await f.runtime.prepare({ querySelectorAll: () => [visible, below], dataset: {} });
+    expect(visible.decode).toHaveBeenCalledOnce(); expect(below.decode).not.toHaveBeenCalled();
+    expect(below.loading).toBe('lazy'); expect(f.network).not.toHaveBeenCalled();
+  });
+  it('does not restore the overlay when a late image finally resolves', async () => {
+    const f = fixture(); let complete!: () => void;
+    const slow = image(0, vi.fn(() => new Promise<void>(resolve => { complete = resolve; })));
+    const ready = f.runtime.prepare({ querySelectorAll: () => [slow], dataset: {} });
+    await vi.advanceTimersByTimeAsync(4000); await ready; complete();
+    await vi.advanceTimersByTimeAsync(1000);
+    expect(f.classes.has('assets-pending')).toBe(false); expect(f.append).toHaveBeenCalledOnce();
+    expect(f.events).toEqual(['telomere-assets-ready']);
+  });
+  it('keeps subsequent route preparation bounded without remounting the loader', async () => {
+    const f = fixture(); f.runtime.reveal();
+    const stuck = image(0, vi.fn(() => new Promise<void>(() => {})));
+    const next = { querySelectorAll: () => [stuck], dataset: {} };
+    const ready = f.runtime.prepare(next); await vi.advanceTimersByTimeAsync(800); await ready;
+    expect(next.dataset).toEqual({ imagesReady: 'true' }); expect(f.classes.has('assets-pending')).toBe(false);
+    expect(f.append).toHaveBeenCalledOnce(); expect(f.remove).toHaveBeenCalledOnce();
+  });
+  it('handles a synchronous image decode failure without leaving preparation pending', async () => {
+    const f = fixture(), broken = image(0, vi.fn((): Promise<void> => { throw new Error('Decoder unavailable'); }));
+    const scope = { querySelectorAll: () => [broken], dataset: {} };
+    await f.runtime.prepare(scope); expect(scope.dataset).toEqual({ imagesReady: 'true' });
   });
 });
