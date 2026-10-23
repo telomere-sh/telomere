@@ -14,7 +14,8 @@ const config = mergeConfig(base, defineConfig({ test: {
 // mergeConfig concatenates include arrays. Assign this list after merging;
 // the ordinary portable/sharded workflow continues to execute all test files.
 config.test = { ...config.test, include: ['tests/contracts.test.ts', 'tests/service.test.ts', 'tests/worker.test.ts',
-  'tests/workspace-auth.test.ts', 'tests/workspace-client.test.ts', 'tests/journal-archive.test.ts',
+  'tests/workspace-auth.test.ts', 'tests/workspace-client.test.ts', 'tests/workspace-deposit-lifecycle.test.ts',
+  'tests/wallet-recovery.test.ts', 'tests/cpu-reservation-recovery.test.ts', 'tests/journal-archive.test.ts',
   'tests/chain-gateway.test.ts', 'tests/bridge-circle-usdc.test.ts', 'tests/postgres-admission.test.ts',
   'tests/escrow-stateful.test.ts', 'tests/base-migration.test.ts', 'tests/leash-update.test.ts',
   'tests/near-admission-readiness.test.ts', 'tests/retry-scheduling.test.ts', 'tests/receipt-pending.test.ts',
