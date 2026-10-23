@@ -34,6 +34,7 @@ jobs:
           name: source-build-manifest
           path: |
             dist/release-manifest.json
+            dist/release-info.json
             .local/*-sbom.json
   contracts-backend:
     runs-on: ubuntu-24.04
