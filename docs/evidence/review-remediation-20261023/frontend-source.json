@@ -2,7 +2,6 @@
   "schemaVersion": 1,
   "previousRecord": "docs/evidence/audit-remediation-20261018/frontend-source.json",
   "baselineSourceCommit": "55e129517e998ba5ec68b0c72004f1051c4540f7",
-  "reviewedSourceCommit": "1fd94b0076052deb4d1c0eb5201ee6a0d2280cd7",
   "scope": "User-requested wallet recovery, icons, host/workspace updates, navigation removal, mobile layout and HTTP error handling. Original handoff and earlier review bytes remain independently preserved.",
   "previousSources": [
     {
@@ -72,8 +71,8 @@
     },
     {
       "path": "public/workspace-client.ts",
-      "bytes": 34691,
-      "sha256": "ef2d905e06dd6fe0a0589b8370b274fa4e60afe57f8b300a79bb23273c9fb3c2"
+      "bytes": 34598,
+      "sha256": "3331d5c9c322dc319966e26d46d2f42d282873b99e3b430fb704546dff7025ce"
     },
     {
       "path": "website/dist/agent-panels.js",
@@ -165,5 +164,6 @@
       "bytes": 2310,
       "sha256": "67a33450cac754a07b8f719309b8b0f4db2119ea4ecba1fdfcd63356a69d88e3"
     }
-  ]
+  ],
+  "recordedAgainstParent": "0d3c50ea5240eea8b6db0c1e8807a25ade221179"
 }

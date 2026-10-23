@@ -365,6 +365,14 @@ describe('workspace HTTP response recovery',()=>{
     await expect(client.request('/api/me')).rejects.toThrow('session expired');
     expect(client.address).toBeUndefined();expect(changed).toHaveBeenLastCalledWith(undefined);
   });
+  it('preserves a JSON 401 explanation while clearing only its own expired session',async()=>{
+    const {client}=setup();vi.stubGlobal('fetch',vi.fn(async()=>Response.json({detail:'Sign in again.'},{status:401})));
+    await expect(client.request('/api/me')).rejects.toThrow('Sign in again.');expect(client.address).toBeUndefined();
+  });
+  it('handles an HTML success response as an invalid service reply',async()=>{
+    const {client}=setup();vi.stubGlobal('fetch',vi.fn(async()=>new Response('<html>wrong route</html>',{headers:{'Content-Type':'text/html'}})));
+    await expect(client.request('/api/workspace')).rejects.toThrow('unexpected response');
+  });
   it('does not clear a new account when a stale HTML 401 response arrives',async()=>{
     const {client}=setup();let finish!:(r:Response)=>void;vi.stubGlobal('fetch',vi.fn(()=>new Promise<Response>(r=>{finish=r})));
     const request=client.request('/api/me');client.clear();const next='0x3333333333333333333333333333333333333333';client.address=next;

@@ -108,8 +108,6 @@ export class WorkspaceClient {
       throw Error('The service returned an unexpected response. Reload this page before continuing.');
     }
 
-    if(version!==this.version)throw Error('The account changed. Review the action again.');
-
     if(!r.ok){if(this.address&&(r.status===401||z.object({title:z.literal('session_owner_changed')}).safeParse(data).success))this.clear();throw Error(z.object({detail:z.string()}).safeParse(data).data?.detail??`Request failed (${r.status}).`)}
 
     return data;

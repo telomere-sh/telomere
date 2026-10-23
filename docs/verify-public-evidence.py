@@ -239,7 +239,7 @@ assert {entry['path'] for entry in remediation['files']} == {entry['path'] for e
 latest_document = 'docs/evidence/review-remediation-20261023/frontend-source.json'
 assert latest_document in tracked
 latest_bytes = (root / latest_document).read_bytes()
-assert hashlib.sha256(latest_bytes).hexdigest() == '17304f0a06acf8bdb31a24bbe8c0d8b4f132d83f69ce3401084357c93479fe7c'
+assert hashlib.sha256(latest_bytes).hexdigest() == '1ea9919e6fa3417669b2b1791f901f10f302803be931ce37c5be673af4b2f29e'
 latest = json.loads(latest_bytes)
 assert latest['schemaVersion'] == 1 and latest['previousRecord'] == remediation_document
 historical_sources = {}
