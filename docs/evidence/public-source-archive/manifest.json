@@ -6660,8 +6660,8 @@
           "path": "public/index.html",
           "bytes": 16278,
           "sha256": "e1d49b06134f04c12239a6827bd67f6026beb1e03589934078a7d2f96747fd9f",
-          "storage": "working-tree",
-          "storedPath": "public/index.html"
+          "storage": "object",
+          "storedPath": "docs/evidence/public-source-archive/objects/e1d49b06134f04c12239a6827bd67f6026beb1e03589934078a7d2f96747fd9f.bin"
         },
         {
           "path": "public/styles.css",
@@ -6912,8 +6912,8 @@
           "path": "python/tests/test_vault_income_journal.py",
           "bytes": 23679,
           "sha256": "4ac6ea4d0de93a0a00a2fc2e65414730bd16773e04c80c6a64956aa6cb072cb9",
-          "storage": "working-tree",
-          "storedPath": "python/tests/test_vault_income_journal.py"
+          "storage": "object",
+          "storedPath": "docs/evidence/public-source-archive/objects/4ac6ea4d0de93a0a00a2fc2e65414730bd16773e04c80c6a64956aa6cb072cb9.bin"
         },
         {
           "path": "python/tests/test_vault_income_rpc.py",
@@ -9670,8 +9670,8 @@
           "path": "tests/contracts.test.ts",
           "bytes": 19756,
           "sha256": "cc903f8e5d0277b159631c25304975beefef52dff34ed608bbe51f639f264cbb",
-          "storage": "working-tree",
-          "storedPath": "tests/contracts.test.ts"
+          "storage": "object",
+          "storedPath": "docs/evidence/public-source-archive/objects/cc903f8e5d0277b159631c25304975beefef52dff34ed608bbe51f639f264cbb.bin"
         },
         {
           "path": "tests/controller-host-kit.test.ts",
@@ -13366,8 +13366,8 @@
           "path": "website/dist/dashboard.css",
           "bytes": 18735,
           "sha256": "dec701274db677963c49cc1ff01287f51d7335455cdbd1c2886fd16fdc91aeca",
-          "storage": "working-tree",
-          "storedPath": "website/dist/dashboard.css"
+          "storage": "object",
+          "storedPath": "docs/evidence/public-source-archive/objects/dec701274db677963c49cc1ff01287f51d7335455cdbd1c2886fd16fdc91aeca.bin"
         },
         {
           "path": "website/dist/dashboard.js",
@@ -13380,8 +13380,8 @@
           "path": "website/dist/dashboard/index.html",
           "bytes": 1553,
           "sha256": "77a5d0ac5869c50d0c176966147fa6f937d200075f2f7a24b3374995ad2bb369",
-          "storage": "working-tree",
-          "storedPath": "website/dist/dashboard/index.html"
+          "storage": "object",
+          "storedPath": "docs/evidence/public-source-archive/objects/77a5d0ac5869c50d0c176966147fa6f937d200075f2f7a24b3374995ad2bb369.bin"
         },
         {
           "path": "website/dist/developers/index.html",
@@ -13394,8 +13394,8 @@
           "path": "website/dist/home.css",
           "bytes": 5905,
           "sha256": "31d26c053e09a05f5a37e4f71eecf253d0cf6e653cab8bbdd78e1e77f413a0fc",
-          "storage": "working-tree",
-          "storedPath": "website/dist/home.css"
+          "storage": "object",
+          "storedPath": "docs/evidence/public-source-archive/objects/31d26c053e09a05f5a37e4f71eecf253d0cf6e653cab8bbdd78e1e77f413a0fc.bin"
         },
         {
           "path": "website/dist/hosts/index.html",
@@ -13408,8 +13408,8 @@
           "path": "website/dist/image-manifest.json",
           "bytes": 3480,
           "sha256": "6464709b0f3afdba4dde68a149c42828092d7844bbd3fce655ee3e2919712be0",
-          "storage": "working-tree",
-          "storedPath": "website/dist/image-manifest.json"
+          "storage": "object",
+          "storedPath": "docs/evidence/public-source-archive/objects/6464709b0f3afdba4dde68a149c42828092d7844bbd3fce655ee3e2919712be0.bin"
         },
         {
           "path": "website/dist/index.html",
@@ -13548,8 +13548,8 @@
           "path": "website/dist/site.css",
           "bytes": 28613,
           "sha256": "a6e4db7b38e30baf340df7b99aac575070c9499b597d9935388b945e07cab630",
-          "storage": "working-tree",
-          "storedPath": "website/dist/site.css"
+          "storage": "object",
+          "storedPath": "docs/evidence/public-source-archive/objects/a6e4db7b38e30baf340df7b99aac575070c9499b597d9935388b945e07cab630.bin"
         },
         {
           "path": "website/dist/site.js",
@@ -14216,11 +14216,11 @@
       "sourceCommit": "9823db6fb9d2c2e70d636358c458eb96e4f2e625",
       "files": [
         {
-          "path": "website/dist/site.js",
-          "bytes": 43961,
-          "sha256": "9e8eb19cf38c72cccdd3765e9b498b9924cb851d5c4b222cfca00e64c0c434e6",
+          "path": "website/BUNDLE-REPORT.json",
+          "bytes": 86,
+          "sha256": "4c298aaee5990c2ff93acfba39a23fda565a09a14d4d4694da668696c23897a0",
           "storage": "object",
-          "storedPath": "docs/evidence/public-source-archive/objects/9e8eb19cf38c72cccdd3765e9b498b9924cb851d5c4b222cfca00e64c0c434e6.bin"
+          "storedPath": "docs/evidence/public-source-archive/objects/4c298aaee5990c2ff93acfba39a23fda565a09a14d4d4694da668696c23897a0.bin"
         },
         {
           "path": "website/README.md",
@@ -14230,18 +14230,18 @@
           "storedPath": "docs/evidence/public-source-archive/objects/aec86cb6d9bf25d014627b947dfd651d86c0517a4f5ca9f7162c3616bcc144a3.bin"
         },
         {
-          "path": "website/BUNDLE-REPORT.json",
-          "bytes": 86,
-          "sha256": "4c298aaee5990c2ff93acfba39a23fda565a09a14d4d4694da668696c23897a0",
-          "storage": "object",
-          "storedPath": "docs/evidence/public-source-archive/objects/4c298aaee5990c2ff93acfba39a23fda565a09a14d4d4694da668696c23897a0.bin"
-        },
-        {
           "path": "website/build-runtime.mjs",
           "bytes": 1210,
           "sha256": "649e65b0da60980be6ac015f6cde11382a8881420362b6737bfacf3444821fd9",
           "storage": "object",
           "storedPath": "docs/evidence/public-source-archive/objects/649e65b0da60980be6ac015f6cde11382a8881420362b6737bfacf3444821fd9.bin"
+        },
+        {
+          "path": "website/dist/agent-panels.js",
+          "bytes": 5900,
+          "sha256": "4ccf437775bad45832ec887561667eef697a91f0b4464c214148c4731e4200ea",
+          "storage": "object",
+          "storedPath": "docs/evidence/public-source-archive/objects/4ccf437775bad45832ec887561667eef697a91f0b4464c214148c4731e4200ea.bin"
         },
         {
           "path": "website/dist/assets/app/module-2LSGFSQX.js",
@@ -14461,6 +14461,34 @@
           "storedPath": "docs/evidence/public-source-archive/objects/7cc074ff652f6773847f62a14c983fbcce37e25999a788c45e09eba88e5d9473.bin"
         },
         {
+          "path": "website/dist/dashboard.css",
+          "bytes": 18735,
+          "sha256": "dec701274db677963c49cc1ff01287f51d7335455cdbd1c2886fd16fdc91aeca",
+          "storage": "object",
+          "storedPath": "docs/evidence/public-source-archive/objects/dec701274db677963c49cc1ff01287f51d7335455cdbd1c2886fd16fdc91aeca.bin"
+        },
+        {
+          "path": "website/dist/dashboard/index.html",
+          "bytes": 1553,
+          "sha256": "77a5d0ac5869c50d0c176966147fa6f937d200075f2f7a24b3374995ad2bb369",
+          "storage": "object",
+          "storedPath": "docs/evidence/public-source-archive/objects/77a5d0ac5869c50d0c176966147fa6f937d200075f2f7a24b3374995ad2bb369.bin"
+        },
+        {
+          "path": "website/dist/home.css",
+          "bytes": 5905,
+          "sha256": "31d26c053e09a05f5a37e4f71eecf253d0cf6e653cab8bbdd78e1e77f413a0fc",
+          "storage": "object",
+          "storedPath": "docs/evidence/public-source-archive/objects/31d26c053e09a05f5a37e4f71eecf253d0cf6e653cab8bbdd78e1e77f413a0fc.bin"
+        },
+        {
+          "path": "website/dist/image-manifest.json",
+          "bytes": 3480,
+          "sha256": "6464709b0f3afdba4dde68a149c42828092d7844bbd3fce655ee3e2919712be0",
+          "storage": "object",
+          "storedPath": "docs/evidence/public-source-archive/objects/6464709b0f3afdba4dde68a149c42828092d7844bbd3fce655ee3e2919712be0.bin"
+        },
+        {
           "path": "website/dist/index.html",
           "bytes": 1367731,
           "sha256": "164f9e14c05bb23f6d341974ee12d1f5117e8400f88f24054d5511ff85e3d439",
@@ -14468,11 +14496,18 @@
           "storedPath": "docs/evidence/public-source-archive/objects/164f9e14c05bb23f6d341974ee12d1f5117e8400f88f24054d5511ff85e3d439.bin"
         },
         {
-          "path": "website/dist/agent-panels.js",
-          "bytes": 5900,
-          "sha256": "4ccf437775bad45832ec887561667eef697a91f0b4464c214148c4731e4200ea",
+          "path": "website/dist/site.css",
+          "bytes": 28613,
+          "sha256": "a6e4db7b38e30baf340df7b99aac575070c9499b597d9935388b945e07cab630",
           "storage": "object",
-          "storedPath": "docs/evidence/public-source-archive/objects/4ccf437775bad45832ec887561667eef697a91f0b4464c214148c4731e4200ea.bin"
+          "storedPath": "docs/evidence/public-source-archive/objects/a6e4db7b38e30baf340df7b99aac575070c9499b597d9935388b945e07cab630.bin"
+        },
+        {
+          "path": "website/dist/site.js",
+          "bytes": 43961,
+          "sha256": "9e8eb19cf38c72cccdd3765e9b498b9924cb851d5c4b222cfca00e64c0c434e6",
+          "storage": "object",
+          "storedPath": "docs/evidence/public-source-archive/objects/9e8eb19cf38c72cccdd3765e9b498b9924cb851d5c4b222cfca00e64c0c434e6.bin"
         }
       ]
     }
