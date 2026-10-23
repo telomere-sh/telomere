@@ -40,7 +40,19 @@ class HostBoundaryTests(unittest.TestCase):
         self.tmp=tempfile.TemporaryDirectory();self.base=Path(self.tmp.name).resolve();(self.base/'private').mkdir(mode=0o700)
         self.root=self.base/'private'/('fresh-vm-'+'a'*16);self.root.mkdir(mode=0o700)
         self.scope=patch.object(host,'B',self.base);self.scope.start()
-    def tearDown(self):self.scope.stop();self.tmp.cleanup()
+        # Only fixture metadata is root-owned; production still requires UID 0.
+        real_lstat=Path.lstat
+        def fixture_stat(path):
+            info=real_lstat(path)
+            if path==self.root:
+                values=list(info);values[4]=0;return os.stat_result(values)
+            return info
+        self.ownership=patch.object(Path,'lstat',autospec=True,side_effect=fixture_stat);self.ownership.start()
+    def tearDown(self):self.ownership.stop();self.scope.stop();self.tmp.cleanup()
+    def test_non_root_owner_rejected(self):
+        info=self.root.lstat();values=list(info);values[4]=12345
+        with patch.object(Path,'lstat',return_value=os.stat_result(values)):
+            with self.assertRaises(AssertionError):host.validated_root(str(self.root))
     def test_owned_private_fixture_root_accepted(self):self.assertEqual(host.validated_root(str(self.root)),self.root)
     def test_unrelated_directory_rejected(self):
         other=self.base/'private/production';other.mkdir(mode=0o700)

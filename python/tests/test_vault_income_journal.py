@@ -4,6 +4,7 @@ import ctypes
 import json
 import os
 import pathlib
+import stat
 import subprocess
 import sys
 import tempfile
@@ -96,7 +97,7 @@ class WindowsAclTests(unittest.TestCase):
                                 capture_output=True, text=True, timeout=10)
         self.assertEqual(result.returncode, 0, result.stderr)
         try:
-            self.assertTrue(os.path.isjunction(alias))
+            self.assertTrue(alias.lstat().st_file_attributes & stat.FILE_ATTRIBUTE_REPARSE_POINT)
             for path in (alias, alias / "journal"):
                 with self.subTest(path=path.name):
                     with self.assertRaisesRegex(VaultIncomeError, "vault_income_journal_private_required"):

@@ -59,7 +59,7 @@ describe("Telomere escrow on a real disposable local EVM", () => {
   }
 
   beforeAll(async () => {
-    local = await startLocalChain();
+    local = await startLocalChain({ timestamp: Date.parse("2026-01-15T12:00:00Z") / 1_000 });
     deployment = await deployLocalContracts(local);
     owner = createWalletClient({ chain: localChain, transport: http(local.rpcUrl), account: deployment.accounts.owner });
     outsider = createWalletClient({ chain: localChain, transport: http(local.rpcUrl), account: deployment.accounts.outsider });
@@ -119,6 +119,21 @@ describe("Telomere escrow on a real disposable local EVM", () => {
     for (const q of [first, second]) { const s = await settlement(q.runId, 10n, 50n); await settle(s.data, s.signature); }
     await advance(3_601);
     await open(await quote());
+    await expect(simulateOpen(await quote())).rejects.toThrow(/BudgetExceeded/);
+  });
+
+  it("resets the day bucket when an hour advance crosses UTC midnight", async () => {
+    const day = (await local.publicClient.getBlock()).timestamp / 86_400n * 86_400n;
+    await deployment.testClient.setNextBlockTimestamp({ timestamp: day + 23n * 3_600n + 30n * 60n });
+    await deployment.testClient.mine({ blocks: 1 });
+    const first = await quote(); const second = await quote(); await open(first); await open(second);
+    await advance(11);
+    for (const q of [first, second]) { const s = await settlement(q.runId, 10n, 50n); await settle(s.data, s.signature); }
+    expect((await leash()).spentDay).toBe(300n);
+    await advance(3_601);
+    expect((await leash()).spentDay).toBe(0n);
+    await open(await quote()); await open(await quote());
+    expect((await leash()).pending).toBe(300n);
     await expect(simulateOpen(await quote())).rejects.toThrow(/BudgetExceeded/);
   });
 
