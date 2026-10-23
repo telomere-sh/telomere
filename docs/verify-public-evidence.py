@@ -258,7 +258,7 @@ assert set(historical_sources) == expected_historical
 performance_document = 'docs/evidence/website-performance-20261023/frontend-source.json'
 assert performance_document in tracked
 performance_bytes = (root / performance_document).read_bytes()
-assert hashlib.sha256(performance_bytes).hexdigest() == '91c98d1dea8cd99aff56d75ec056da0d1e00629fd513e355ea84924c95591cab'
+assert hashlib.sha256(performance_bytes).hexdigest() == 'c838fdc1c35d93ca28c7bddc4b0ebd06e5d5b9e1e495b6bfaa108a60b64e0ab4'
 performance = json.loads(performance_bytes)
 assert performance['schemaVersion'] == 1 and performance['previousRecord'] == latest_document
 performance_previous = {}
