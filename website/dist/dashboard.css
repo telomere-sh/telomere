@@ -27,4 +27,4 @@
 .budget-panel,.usage-chart,.budget-number,.chart-number{min-width:0;max-width:100%;overflow-wrap:anywhere}.budget-number{flex-wrap:wrap}.budget-numbers{gap:12px;flex-wrap:wrap}.budget-numbers>span,.panel-head>*{min-width:0}.panel-head{flex-wrap:wrap}.drawer-head{gap:16px}.drawer-form .pill{white-space:normal;overflow-wrap:anywhere}.settings-grid .field{min-width:0}
 @media(max-width:700px){.drawer-form .field input,.drawer-form .field select,.drawer-form .field textarea,.settings-grid .field input,.settings-grid .field select{font-size:16px}.account-actions .pill{white-space:normal;overflow-wrap:anywhere}.console-note{min-width:0}.console-note p{min-width:0}.object-actions button{overflow-wrap:anywhere}.drawer-form{padding-bottom:calc(40px + env(safe-area-inset-bottom))}}
 
-@media(max-width:900px){.drawer-form .field input,.drawer-form .field select,.drawer-form .field textarea{font-size:16px}}
+@media(max-width:900px){.drawer-form .field input,.drawer-form .field select,.drawer-form .field textarea,.table-toolbar input,.table-toolbar select{font-size:16px}.table-toolbar input,.table-toolbar select{min-height:48px}}
