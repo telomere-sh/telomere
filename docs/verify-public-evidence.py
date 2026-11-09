@@ -303,12 +303,35 @@ for entry in mobile['files']:
     raw = (root / name).read_bytes()
     assert len(raw) == entry['bytes'] and hashlib.sha256(raw).hexdigest() == digest, 'Approved narrow wallet layout changed'
     references += 1
+wallet_style_document = 'docs/evidence/wallet-style-readiness-20261109/frontend-source.json'
+assert wallet_style_document in tracked
+wallet_style_bytes = (root / wallet_style_document).read_bytes()
+assert hashlib.sha256(wallet_style_bytes).hexdigest() == 'bbb159f8944e4c1f02e8a2348e0667f887fe2694ff8bc98beae8d998451aa0e0'
+wallet_style = json.loads(wallet_style_bytes)
+assert wallet_style['schemaVersion'] == 1 and wallet_style['previousRecord'] == mobile_document
+wallet_style_previous = {}
+for entry in wallet_style['preservedSources']:
+    name, digest = validate_source_entry(entry)
+    stored = entry['storedPath']
+    assert stored == 'docs/evidence/wallet-style-readiness-20261109/source/' + digest + '.bin' and stored in tracked
+    raw = (root / stored).read_bytes()
+    assert name not in wallet_style_previous and len(raw) == entry['bytes'] and hashlib.sha256(raw).hexdigest() == digest
+    wallet_style_previous[name] = raw
+    references += 1
+assert set(wallet_style_previous) == {'public/wallet-picker.ts'}
+assert len(wallet_style['files']) == 1
+for entry in wallet_style['files']:
+    name, digest = validate_source_entry(entry)
+    assert name == 'public/wallet-picker.ts' and name in tracked
+    raw = (root / name).read_bytes()
+    assert len(raw) == entry['bytes'] and hashlib.sha256(raw).hexdigest() == digest, 'Approved wallet stylesheet readiness changed'
+    references += 1
 latest_names = set()
 for entry in latest['files']:
     name, digest = validate_source_entry(entry)
     assert name in tracked and name.startswith(('public/', 'website/dist/')) and name not in latest_names
     latest_names.add(name)
-    raw = mobile_previous.get(name, performance_previous.get(name, (root / name).read_bytes()))
+    raw = wallet_style_previous.get(name, mobile_previous.get(name, performance_previous.get(name, (root / name).read_bytes())))
     assert len(raw) == entry['bytes'] and hashlib.sha256(raw).hexdigest() == digest, 'Approved frontend changed: ' + name
     references += 1
 assert expected_historical <= latest_names

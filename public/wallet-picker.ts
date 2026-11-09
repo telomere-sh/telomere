@@ -92,15 +92,57 @@ export function savedWallet(): WalletOption | undefined {
   return matches.length === 1 ? matches[0] : !key && options.length === 1 ? options[0] : undefined;
 }
 
+const stylesheetLoads = new WeakMap<Document, Promise<void>>();
+const failedStylesheets = new WeakSet<HTMLLinkElement>();
+const stylesheetTimeout = 10000;
+export function ensureWalletStyles(doc: Document = document, timeoutMs = stylesheetTimeout): Promise<void> {
+  const pending = stylesheetLoads.get(doc);
+  if (pending) return pending;
+  // Use the document URL rather than baseURI: a base tag must not redirect this asset.
+  const href = new URL('/wallet-picker.css', doc.URL).href;
+  const matches = [...doc.querySelectorAll<HTMLLinkElement>('link[rel~="stylesheet"]')].filter(link =>
+    link.href === href && !link.disabled && (!link.media || link.media === 'all' || doc.defaultView?.matchMedia(link.media).matches));
+  if (matches.some(link => link.sheet && !link.sheet.disabled)) return Promise.resolve();
+  const existing = matches.find(link => !failedStylesheets.has(link));
+  const link = existing ?? doc.createElement('link');
+  if (!existing) { link.rel = 'stylesheet'; link.href = href; }
+  const task = new Promise<void>((resolve, reject) => {
+    const finish = (error?: Error) => {
+      clearTimeout(timer);
+      link.removeEventListener('load', loaded);
+      link.removeEventListener('error', failed);
+      if (error) {
+        failedStylesheets.add(link);
+        if (!existing) link.remove();
+        reject(error);
+      } else resolve();
+    };
+    const loaded = () => finish();
+    const failed = () => finish(new Error('Wallet selection failed to load. Please try connecting again.'));
+    const timer = setTimeout(() => finish(new Error('Wallet selection took too long to load. Please try connecting again.')), timeoutMs);
+    link.addEventListener('load', loaded, {once:true});
+    link.addEventListener('error', failed, {once:true});
+    if (!existing) doc.head.append(link);
+  });
+  const tracked = task.finally(() => { stylesheetLoads.delete(doc); });
+  stylesheetLoads.set(doc, tracked);
+  return tracked;
+}
+
 let choosing: Promise<WalletOption | undefined> | undefined;
 export function chooseWallet(): Promise<WalletOption | undefined> {
   if (choosing) return choosing;
+  const previous = document.activeElement;
+  const task = ensureWalletStyles().then(() => showWalletPicker(previous));
+  choosing = task.finally(() => { choosing = undefined; });
+  return choosing;
+}
+function showWalletPicker(previous: Element | null): Promise<WalletOption | undefined> {
   const wallets = walletRegistry();
   const dialog = document.createElement('dialog'); dialog.className = 'wallet-picker';
   dialog.setAttribute('aria-labelledby', 'wallet-picker-title');
   dialog.setAttribute('aria-describedby', 'wallet-picker-intro');
-  const previous = document.activeElement;
-  const task = new Promise<WalletOption | undefined>(resolve => {
+  return new Promise<WalletOption | undefined>(resolve => {
     dialog.innerHTML = '<div class="wallet-picker-head"><span>TELOMERE / WALLET</span><button type="button" aria-label="Close wallet selection">×</button></div><h2 id="wallet-picker-title">Choose your wallet.</h2><p id="wallet-picker-intro">Select a wallet to sign in to your private Workspace.</p><div class="wallet-picker-list"></div><p class="wallet-picker-help" role="status">No funds move when you sign in. Your wallet will ask you to sign a message.</p><button type="button" class="wallet-picker-refresh">Refresh wallets ↗</button>';
     const list = dialog.querySelector('.wallet-picker-list')!;
     const help = dialog.querySelector('.wallet-picker-help')!;
@@ -142,8 +184,6 @@ export function chooseWallet(): Promise<WalletOption | undefined> {
     dialog.addEventListener('close', () => { window.clearInterval(discoveryTimer);window.removeEventListener('focus', refresh);unsubscribe(); dialog.remove(); if (previous instanceof HTMLElement && previous.isConnected) previous.focus(); resolve(selected); }, {once:true});
     document.body.append(dialog); render(); dialog.showModal(); closeButton.focus(); wallets.refresh();
   });
-  choosing = task.finally(() => { choosing = undefined; });
-  return choosing;
 }
 
 export function walletError(error: unknown): string {

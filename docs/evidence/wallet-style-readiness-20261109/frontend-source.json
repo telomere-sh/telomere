@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "previousRecord": "docs/evidence/mobile-loading-20261023/frontend-source.json",
+  "previousSourceCommit": "ffdd4dd5cea1293c8526271ff1f08c9a456c11ab",
+  "scope": "Load existing wallet stylesheet before presenting the existing chooser for direct entry and in-page navigation; bound load failures and permit retry without changing design or payment behavior.",
+  "preservedSources": [
+    {
+      "path": "public/wallet-picker.ts",
+      "bytes": 10580,
+      "sha256": "9e3fee9e243d48b5c88080a9fc1d42142e14e5e429104a803ce5ea7c650f3166",
+      "storedPath": "docs/evidence/wallet-style-readiness-20261109/source/9e3fee9e243d48b5c88080a9fc1d42142e14e5e429104a803ce5ea7c650f3166.bin"
+    }
+  ],
+  "files": [
+    {
+      "path": "public/wallet-picker.ts",
+      "bytes": 12686,
+      "sha256": "bf9e06bfb5b0bb8203dc27ac57723fbe29f5397b0656e077d704492236a859c7"
+    }
+  ]
+}
