@@ -8,9 +8,24 @@ from unittest.mock import patch
 
 import domain_health
 import migrate
+import route_aliases
 
 
 class MigrationTests(unittest.TestCase):
+    def test_canonical_path_config_preserves_the_rest_and_is_idempotent(self):
+        original = 'server {\n    server_name my-telomere.com;\n    root /var/www/telomere-public/release;\n    include csp;\n}\n'
+        result = route_aliases.render(original)
+        self.assertEqual(route_aliases.render(result), result)
+        block = result[result.index(route_aliases.BEGIN):result.index(route_aliases.END) + len(route_aliases.END)]
+        self.assertEqual(result.replace(block, ''), original)
+        self.assertEqual(result.count('if ($request_method !~ ^(GET|HEAD)$)'), len(route_aliases.aliases()))
+        self.assertIn('https://my-telomere.com/dashboard/$is_args$args;', result)
+        self.assertEqual(route_aliases.aliases()['/articles/the-future-of-web-design-trends-you-can-t-ignore'], '/learn/leashes/')
+
+    def test_canonical_paths_require_reviewed_primary_vhost(self):
+        with self.assertRaises(AssertionError):
+            route_aliases.render('server_name unknown.invalid;')
+
     def test_origin_change_preserves_financial_and_release_bindings(self):
         profile = b'MODE=mainnet\nPUBLIC_ORIGIN=https://telomere.sh\nCHAIN_ID=8453\nSENTINEL=preserved\n'
         digest = hashlib.sha256(profile).hexdigest()

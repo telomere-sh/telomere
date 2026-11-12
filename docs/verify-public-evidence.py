@@ -326,12 +326,35 @@ for entry in wallet_style['files']:
     raw = (root / name).read_bytes()
     assert len(raw) == entry['bytes'] and hashlib.sha256(raw).hexdigest() == digest, 'Approved wallet stylesheet readiness changed'
     references += 1
+domain_document = 'docs/evidence/domain-links-20261112/frontend-source.json'
+assert domain_document in tracked
+domain_bytes = (root / domain_document).read_bytes()
+assert hashlib.sha256(domain_bytes).hexdigest() == '5cfb3a2576b458c3c20d12e28481f4c443ad30d175c6085d276eb76adc162aff'
+domain = json.loads(domain_bytes)
+assert domain['schemaVersion'] == 1 and domain['previousRecord'] == wallet_style_document
+domain_previous = {}
+for entry in domain['preservedSources']:
+    name, digest = validate_source_entry(entry)
+    stored = entry['storedPath']
+    assert stored == 'docs/evidence/domain-links-20261112/source/' + digest + '.bin' and stored in tracked
+    raw = (root / stored).read_bytes()
+    assert name not in domain_previous and len(raw) == entry['bytes'] and hashlib.sha256(raw).hexdigest() == digest
+    domain_previous[name] = raw
+    references += 1
+assert set(domain_previous) == {'website/dist/index.html'}
+assert len(domain['files']) == 1
+for entry in domain['files']:
+    name, digest = validate_source_entry(entry)
+    assert name == 'website/dist/index.html' and name in tracked
+    raw = (root / name).read_bytes()
+    assert len(raw) == entry['bytes'] and hashlib.sha256(raw).hexdigest() == digest, 'Approved public domain changed'
+    references += 1
 latest_names = set()
 for entry in latest['files']:
     name, digest = validate_source_entry(entry)
     assert name in tracked and name.startswith(('public/', 'website/dist/')) and name not in latest_names
     latest_names.add(name)
-    raw = wallet_style_previous.get(name, mobile_previous.get(name, performance_previous.get(name, (root / name).read_bytes())))
+    raw = domain_previous.get(name, wallet_style_previous.get(name, mobile_previous.get(name, performance_previous.get(name, (root / name).read_bytes()))))
     assert len(raw) == entry['bytes'] and hashlib.sha256(raw).hexdigest() == digest, 'Approved frontend changed: ' + name
     references += 1
 assert expected_historical <= latest_names

@@ -4,6 +4,7 @@ import hashlib
 import json
 import urllib.error
 import urllib.request
+from route_aliases import aliases
 
 ORIGIN = 'https://my-telomere.com'
 
@@ -46,6 +47,11 @@ def main():
         status, headers, _ = request(start + '/dashboard/?view=hosts')
         assert status == 308 and headers['Location'] == ORIGIN + '/dashboard/?view=hosts', start
     assert request('https://telomere.sh/api/auth/challenge', 'POST', 'https://telomere.sh', {})[0] == 409
+    for source, target in aliases().items():
+        status, headers, _ = request(ORIGIN + source + '?view=hosts')
+        assert status == 308 and headers['Location'] == ORIGIN + target + '?view=hosts', source
+    for source in ['/contact/', '/projects/tektura']:
+        assert request(ORIGIN + source, 'POST', ORIGIN, {})[0] == 409
     challenge = {'address': '0x1111111111111111111111111111111111111111'}
     for untrusted in ['https://telomere.sh', 'https://attacker.invalid', ORIGIN + '.attacker.invalid']:
         assert request(ORIGIN + '/api/auth/challenge', 'POST', untrusted, challenge)[0] == 403
@@ -55,7 +61,7 @@ def main():
     assert '\nURI: ' + ORIGIN + '\n' in body['message']
     assert '\nChain ID: 8453\n' in body['message']
     result = {'passed': True, 'origin': ORIGIN, 'pages': len(paths), 'assetHashes': len(version['assets']),
-              'redirects': 4, 'oldUnsafeMethodBlocked': True, 'rejectedOrigins': 3, 'signInDomainBound': True,
+              'redirects': 4, 'canonicalPathRedirects': len(aliases()), 'oldUnsafeMethodBlocked': True, 'rejectedOrigins': 3, 'signInDomainBound': True,
               'sourceCommit': version['sourceCommit'], 'walletSignatures': 0, 'transactionsSent': 0}
     print(json.dumps(result))
 

@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "previousRecord": "docs/evidence/wallet-style-readiness-20261109/frontend-source.json",
+  "previousSourceCommit": "fd9ba708b7dd4e5f10d7f1d5b31e46f635ed65aa",
+  "scope": "Replace the stale homepage canonical URL with the approved my-telomere.com origin. Preserve all other frontend bytes, layout, runtime and payment behavior.",
+  "preservedSources": [
+    {
+      "path": "website/dist/index.html",
+      "bytes": 1364041,
+      "sha256": "ec295a7762b1e876f8ca750c9ca4bc61d38090f13218b95ae02102f5c20030d7",
+      "storedPath": "docs/evidence/domain-links-20261112/source/ec295a7762b1e876f8ca750c9ca4bc61d38090f13218b95ae02102f5c20030d7.bin"
+    }
+  ],
+  "files": [
+    {
+      "path": "website/dist/index.html",
+      "bytes": 1364016,
+      "sha256": "456d14d23561d1450816cb5879642e036439c5a884ce2a4d1414ebc5f1210898"
+    }
+  ]
+}

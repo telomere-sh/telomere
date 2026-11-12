@@ -32,6 +32,14 @@ the existing certificate renewal timer renews the new certificate too. The
 historical, credential-protected `review.telomere.sh` deployment helper remains
 separate from public Workspace and retains its existing access restrictions.
 
+After activation, run `route_aliases.py` as root to install canonical redirects
+for legacy handoff page paths, including direct `/contact/` entry to Workspace.
+It keeps the rules inline in the canonical nginx file captured by backups, saves
+the previous configuration privately, validates nginx before reloading, and
+restores the previous file if validation or reload fails. Reapplying it replaces
+its marked block rather than adding duplicate locations. No controller restart
+or transaction is needed.
+
 Browser cookies, connection preferences and local transaction journals belong to
 their original browser origin. Users sign in again on the new domain. The move
 does not copy or clear browser journals, sign wallet messages, or replay payments.
@@ -48,6 +56,7 @@ Verification:
 
 ```powershell
 python -B -m unittest discover -s ops/domain-migration -p test_migration.py
+python -B ops/domain-migration/audit_pages.py
 python -B ops/domain-migration/verify.py
 ```
 
