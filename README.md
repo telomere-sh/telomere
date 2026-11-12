@@ -1,4 +1,4 @@
-<a href="https://telomere.sh/">
+<a href="https://my-telomere.com/">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset=".github/assets/telomere-hero-dark.svg">
     <img src=".github/assets/telomere-hero-light.svg" alt="Telomere. Compute for AI agents. By the second. Under your control. USDC on Base." width="100%">
@@ -6,8 +6,8 @@
 </a>
 
 <p align="center">
-  <a href="https://telomere.sh/">Website</a> &nbsp;·&nbsp;
-  <a href="https://telomere.sh/dashboard/">Open Workspace</a> &nbsp;·&nbsp;
+  <a href="https://my-telomere.com/">Website</a> &nbsp;·&nbsp;
+  <a href="https://my-telomere.com/dashboard/">Open Workspace</a> &nbsp;·&nbsp;
   <a href="docs/DEVELOPMENT.md">Developer guide</a> &nbsp;·&nbsp;
   <a href="https://t.me/telomereonchain">Telegram</a> &nbsp;·&nbsp;
   <a href="https://x.com/telomere_base">X</a>
@@ -39,7 +39,7 @@ Approve a ceiling before a run starts. Settlement charges receipted usage and re
 
 ## Try Telomere
 
-**In your browser:** open the [Workspace](https://telomere.sh/dashboard/) and sign in with your wallet to manage Leashes, run plans, balances, receipts and encrypted checkpoints.
+**In your browser:** open the [Workspace](https://my-telomere.com/dashboard/) and sign in with your wallet to manage Leashes, run plans, balances, receipts and encrypted checkpoints.
 
 **On your machine:** start a disposable local demo with test funds. Requires Node.js 22.12+ and npm; the bundled local EVM supports Windows and Linux x64.
 
@@ -94,6 +94,6 @@ See [CONTRIBUTING](CONTRIBUTING.md) for the full verification workflow, [SECURIT
 
 **Set the ceiling. Keep control of the rest.**
 
-[Explore the protocol](https://telomere.sh/protocol/) · [Open Workspace](https://telomere.sh/dashboard/) · [Release notes](CHANGELOG.md)
+[Explore the protocol](https://my-telomere.com/protocol/) · [Open Workspace](https://my-telomere.com/dashboard/) · [Release notes](CHANGELOG.md)
 
 <sub>Original Telomere code: <a href="LICENSE">MIT</a>. Brand assets, third-party code and media retain their <a href="THIRD_PARTY_NOTICES.md">applicable terms</a>.</sub>
