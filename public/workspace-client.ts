@@ -485,6 +485,4 @@ export class WorkspaceClient {
 
 export { encryptCheckpoint, decryptCheckpoint, exportCystRecoveryKey, importCystRecoveryKey } from '../src/sdk/cysts.js';
 
-export function planningHourlySpend(rate:number,minutes:number,lane:string):number {
-  return rate*Math.min(Math.max(minutes,0)/60,1)*(lane==='Sealed'?1.12:1.09);
-}
+export {planningHourlySpend,runPlanLimits,validateRunPlan,formatPlanAmount} from './run-plan-policy.js';

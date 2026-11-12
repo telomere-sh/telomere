@@ -349,12 +349,37 @@ for entry in domain['files']:
     raw = (root / name).read_bytes()
     assert len(raw) == entry['bytes'] and hashlib.sha256(raw).hexdigest() == digest, 'Approved public domain changed'
     references += 1
+plan_document = 'docs/evidence/plan-limits-20261112/frontend-source.json'
+assert plan_document in tracked
+plan_bytes = (root / plan_document).read_bytes()
+assert hashlib.sha256(plan_bytes).hexdigest() == '466fce0f8ccaf37f4346eb29326080d1707a926262476e1f1fb98ed809930a57'
+plan_record = json.loads(plan_bytes)
+assert plan_record['schemaVersion'] == 1 and plan_record['previousRecord'] == domain_document
+plan_previous = {}
+for entry in plan_record['preservedSources']:
+    name, digest = validate_source_entry(entry)
+    stored = entry['storedPath']
+    assert stored == 'docs/evidence/plan-limits-20261112/source/' + digest + '.bin' and stored in tracked
+    raw = (root / stored).read_bytes()
+    assert name not in plan_previous and len(raw) == entry['bytes'] and hashlib.sha256(raw).hexdigest() == digest
+    plan_previous[name] = raw
+    references += 1
+assert set(plan_previous) == {'public/workspace-client.ts', 'website/dist/dashboard.js', 'website/dist/dashboard.css'}
+plan_names = set()
+for entry in plan_record['files']:
+    name, digest = validate_source_entry(entry)
+    assert name in tracked and name not in plan_names
+    plan_names.add(name)
+    raw = (root / name).read_bytes()
+    assert len(raw) == entry['bytes'] and hashlib.sha256(raw).hexdigest() == digest, 'Approved plan feedback changed: ' + name
+    references += 1
+assert plan_names == set(plan_previous) | {'public/run-plan-policy.ts'}
 latest_names = set()
 for entry in latest['files']:
     name, digest = validate_source_entry(entry)
     assert name in tracked and name.startswith(('public/', 'website/dist/')) and name not in latest_names
     latest_names.add(name)
-    raw = domain_previous.get(name, wallet_style_previous.get(name, mobile_previous.get(name, performance_previous.get(name, (root / name).read_bytes()))))
+    raw = plan_previous.get(name, domain_previous.get(name, wallet_style_previous.get(name, mobile_previous.get(name, performance_previous.get(name, (root / name).read_bytes())))))
     assert len(raw) == entry['bytes'] and hashlib.sha256(raw).hexdigest() == digest, 'Approved frontend changed: ' + name
     references += 1
 assert expected_historical <= latest_names

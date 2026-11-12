@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "previousRecord": "docs/evidence/domain-links-20261112/frontend-source.json",
+  "previousSourceCommit": "5755907a654a60ff0b2dec432fa0c9d6d9307287",
+  "scope": "Show selected Leash limits and configured CPU duration in the existing plan drawer; validate named fields with precise amounts before saving. Keep contract, quote and wallet transaction authorization unchanged.",
+  "preservedSources": [
+    {
+      "path": "public/workspace-client.ts",
+      "bytes": 34598,
+      "sha256": "3331d5c9c322dc319966e26d46d2f42d282873b99e3b430fb704546dff7025ce",
+      "storedPath": "docs/evidence/plan-limits-20261112/source/3331d5c9c322dc319966e26d46d2f42d282873b99e3b430fb704546dff7025ce.bin"
+    },
+    {
+      "path": "website/dist/dashboard.js",
+      "bytes": 70995,
+      "sha256": "b6c4d81a07c88ed6f062160d17e932959f18d5469ebb5d31ed333b8a0ef36785",
+      "storedPath": "docs/evidence/plan-limits-20261112/source/b6c4d81a07c88ed6f062160d17e932959f18d5469ebb5d31ed333b8a0ef36785.bin"
+    },
+    {
+      "path": "website/dist/dashboard.css",
+      "bytes": 24766,
+      "sha256": "9f0577983277e000075136c8a8f0c828ad2fa974c363be0cc27bb8f4bd1df9c0",
+      "storedPath": "docs/evidence/plan-limits-20261112/source/9f0577983277e000075136c8a8f0c828ad2fa974c363be0cc27bb8f4bd1df9c0.bin"
+    }
+  ],
+  "files": [
+    {
+      "path": "public/workspace-client.ts",
+      "bytes": 34538,
+      "sha256": "34ead64ad23abed075f686feb7cdb077f75fe523f9325253563c3aa66d1a28b7"
+    },
+    {
+      "path": "website/dist/dashboard.js",
+      "bytes": 74590,
+      "sha256": "b8a250b9e4ba2129821de914808260271facb30c41a5ccce3047ab17c19253fd"
+    },
+    {
+      "path": "website/dist/dashboard.css",
+      "bytes": 25492,
+      "sha256": "39ba9c761f38741613d166baf45b458b7160df8e497872458fea648f8774591d"
+    },
+    {
+      "path": "public/run-plan-policy.ts",
+      "bytes": 6810,
+      "sha256": "a86b7ca853becb658bb2be2f9d4b0e1e384904041f1c081fab117cf2ff41e267"
+    }
+  ]
+}
