@@ -15,7 +15,7 @@ export const signedReceiptSchema = z.object({
   domain: z.object({ name: z.literal('TelomereRunEscrow'), version: z.literal('1'), chainId: z.number().int(), verifyingContract: addressSchema }).strict(),
 }).strict();
 export type SignedReceipt = z.infer<typeof signedReceiptSchema>;
-const receiptBodySchema = z.object({
+export const receiptBodySchema = z.object({
   runId: bytes32Schema, payer: addressSchema, leashId: bytes32Schema, workloadHash: bytes32Schema,
   cpu: z.object({ billableSeconds: z.number().int().min(0).max(120), measuredSeconds: z.number().int().min(0).max(120), pricePerSecond: moneySchema }).passthrough(),
   near: z.object({ inferenceCharge: moneySchema }).passthrough().nullable(),

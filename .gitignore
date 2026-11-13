@@ -18,3 +18,5 @@ website/dist/workspace-client.js
 website/dist/workspace-client.js.LEGAL.txt
 website/dist/contract-address.js
 website/dist/contract-address.js.LEGAL.txt
+website/dist/receipt-verifier.js
+website/dist/receipt-verifier.js.LEGAL.txt

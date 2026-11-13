@@ -28,6 +28,8 @@ import { DeadlineService } from './scheduling/service.js';
 import { createSchedulingRoutes } from './scheduling/routes.js';
 import { createAgentRoutes } from './agents/routes.js';
 import { createReceiptRoutes } from './receipts/routes.js';
+import { createPublicReceiptRoutes } from './receipts/public-routes.js';
+import { configuredPublicReceiptVerifier } from './receipts/public-configured.js';
 import { createPlatformPresentedMeterRoutes } from './receipts/platform-presented-meter-routes.js';
 import { createPlatformV2Routes } from './receipts/platform-v2-routes.js';
 import type { ControllerPlatform } from './platform.js';
@@ -84,6 +86,7 @@ export function createApp(service: Service, auth: Auth, logger: Logger, publicRo
     if (policy) context.header('Content-Security-Policy', policy);
   });
   app.use('/api/*', (context, next) => {
+    if (context.req.path.startsWith('/api/public/receipts/')) return next();
     // Platform and registry mutations enforce their own streamed bounds and five-second deadlines.
     // Buffering first here would hide an unfinished body from that deadline.
     if (context.req.path === '/api/platform' || context.req.path.startsWith('/api/platform/')) return next();
@@ -107,7 +110,7 @@ export function createApp(service: Service, auth: Auth, logger: Logger, publicRo
         if (real && /^[0-9a-fA-F:.]{3,45}$/.test(real)) identity = real;
       }
     } catch { /* In-process tests have no Node socket. */ }
-    const publicFinancial = context.req.path.startsWith('/api/platform/public/');
+    const publicFinancial = context.req.path.startsWith('/api/platform/public/') || context.req.path.startsWith('/api/public/receipts/');
     const key = identity + (context.req.path.startsWith('/api/auth') ? ':auth' : publicFinancial ? ':public-financial' : ':api');
     const now = Date.now();
     if (rateBuckets.size > 10000) for (const [id, entry] of rateBuckets) if (entry.expires < now) rateBuckets.delete(id);
@@ -155,6 +158,7 @@ export function createApp(service: Service, auth: Auth, logger: Logger, publicRo
   });
   app.get('/health/live', context => context.json({ status: 'ok' }));
   app.get('/api/version', context => context.json(release, 200, { 'Cache-Control': 'no-store' }));
+  app.route('/api/public/receipts', createPublicReceiptRoutes(configuredPublicReceiptVerifier(service)));
   if (platformRuntime) app.route('/api/platform/public', createPlatformPublicFinancialRoutes(new PlatformPublicFinancialReader(platformRuntime.bridge, 12,
     runId => platformRuntime.cpuLaneAttribution(runId))));
   if (platformRuntime) app.route('/api/platform/public/presented-meter', createPlatformPresentedMeterRoutes(

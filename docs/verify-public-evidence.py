@@ -255,6 +255,31 @@ for entry in latest['previousSources']:
     references += 1
 expected_historical = {entry['path'] for entry in remediation['files']} | {entry['path'] for entry in integration['preserved']}
 assert set(historical_sources) == expected_historical
+verification_document = 'docs/evidence/public-verifier-20261113/frontend-source.json'
+assert verification_document in tracked
+verification_bytes = (root / verification_document).read_bytes()
+assert hashlib.sha256(verification_bytes).hexdigest() == 'f5e6acc133a8febd87db50ebcb479638d8a1df7a5c917eb20c823dc872601217'
+verification_record = json.loads(verification_bytes)
+assert verification_record['schemaVersion'] == 1 and verification_record['previousRecord'] == 'docs/evidence/contract-publish-20261113/frontend-source.json'
+verification_previous = {}
+for entry in verification_record['preservedSources']:
+    name, digest = validate_source_entry(entry)
+    stored = entry['storedPath']
+    assert stored == 'docs/evidence/public-verifier-20261113/source/' + digest + '.bin' and stored in tracked
+    raw = (root / stored).read_bytes()
+    assert name not in verification_previous and len(raw) == entry['bytes'] and hashlib.sha256(raw).hexdigest() == digest
+    verification_previous[name] = raw
+    references += 1
+assert set(verification_previous) == {'website/dist/site.js', 'website/dist/site.css', 'website/dist/dashboard.js', 'scripts/build-browser.mjs', 'src/service.ts', 'src/app.ts'}
+verification_names = set()
+for entry in verification_record['files']:
+    name, digest = validate_source_entry(entry)
+    assert name in tracked and name not in verification_names
+    verification_names.add(name)
+    raw = (root / name).read_bytes()
+    assert len(raw) == entry['bytes'] and hashlib.sha256(raw).hexdigest() == digest, 'Approved public verifier changed: ' + name
+    references += 1
+assert verification_names == set(verification_previous) | {'public/receipt-verifier.ts', 'src/receipts/public-verifier.ts', 'src/receipts/public-configured.ts', 'src/receipts/public-routes.ts', 'tests/public-receipt-verifier.test.ts', 'tests/public-receipt-chain.test.ts'}
 publish_document = 'docs/evidence/contract-publish-20261113/frontend-source.json'
 assert publish_document in tracked
 publish_bytes = (root / publish_document).read_bytes()
@@ -278,6 +303,7 @@ for entry in publish_record['files']:
     assert name in tracked and name not in publish_names
     publish_names.add(name)
     raw = (root / name).read_bytes()
+    raw = verification_previous.get(name, raw)
     assert len(raw) == entry['bytes'] and hashlib.sha256(raw).hexdigest() == digest, 'Approved contract publication changed: ' + name
     references += 1
 assert publish_names == set(publish_previous) | {'public/published-contract.ts'}
@@ -406,7 +432,7 @@ for entry in latest['files']:
     name, digest = validate_source_entry(entry)
     assert name in tracked and name.startswith(('public/', 'website/dist/')) and name not in latest_names
     latest_names.add(name)
-    raw = publish_previous.get(name, plan_previous.get(name, domain_previous.get(name, wallet_style_previous.get(name, mobile_previous.get(name, performance_previous.get(name, (root / name).read_bytes()))))))
+    raw = verification_previous.get(name, publish_previous.get(name, plan_previous.get(name, domain_previous.get(name, wallet_style_previous.get(name, mobile_previous.get(name, performance_previous.get(name, (root / name).read_bytes())))))))
     assert len(raw) == entry['bytes'] and hashlib.sha256(raw).hexdigest() == digest, 'Approved frontend changed: ' + name
     references += 1
 assert expected_historical <= latest_names
