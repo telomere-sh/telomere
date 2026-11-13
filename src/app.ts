@@ -62,6 +62,7 @@ import { createTreasuryTopUpRoutes } from './treasury/routes.js';
 import type { TreasuryTopUpService } from './treasury/service.js';
 import type { PaidCystInputService } from './platform-runtime/paid-cyst-input.js';
 import { createPaidCystInputRoutes } from './platform-runtime/paid-cyst-input-routes.js';
+import { createAccountingRoutes } from './updates/accounting.js';
 import { createRunwayRoutes } from './updates/runway.js';
 import type { Website } from './website.js';
 import { unversionedRelease, type PublicRelease } from './release.js';
@@ -170,12 +171,13 @@ export function createApp(service: Service, auth: Auth, logger: Logger, publicRo
   app.get('/health/live', context => context.json({ status: 'ok' }));
   app.get('/api/version', context => context.json(release, 200, { 'Cache-Control': 'no-store' }));
   app.get('/api/public/features', context => context.json({ enabled: publicFeatures(service.config) }, 200, { 'Cache-Control': 'no-store' }));
-  if (['refunds', 'prices', 'runway'].some(feature => featureEnabled(service.config, feature as 'refunds' | 'prices' | 'runway'))) {
+  if (['refunds', 'prices', 'runway', 'accounting'].some(feature => featureEnabled(service.config, feature as 'refunds' | 'prices' | 'runway' | 'accounting'))) {
     const source = configuredFinancialSource(service), history = new FinancialHistory(source);
     if (featureEnabled(service.config, 'refunds')) {
       app.route('/api/public/insights', createRefundInsightRoutes(history));
       app.route('/api/insights', createRefundReferenceRoutes(source, context => auth.owner(getCookie(context, cookie))));
     }
+    if (featureEnabled(service.config, 'accounting')) app.route('/api/insights', createAccountingRoutes(history, context => auth.owner(getCookie(context, cookie))));
     if (featureEnabled(service.config, 'prices')) app.route('/api/public/insights', createPriceBoardRoutes(history));
     if (featureEnabled(service.config, 'runway')) app.route('/api/insights', createRunwayRoutes(history,
       async (owner, anchor) => (await service.bridge.public.readContract({ address: service.config.ESCROW_ADDRESS, abi: escrowAbi,

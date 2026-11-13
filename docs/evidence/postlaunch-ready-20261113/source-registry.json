@@ -408,6 +408,73 @@
           "storedPath": "docs/evidence/postlaunch-ready-20261113/source/66c5c0c467c43c8f46c68a015195dec1c9b34be12e051c843d71e41ade3e9a47.bin"
         }
       ]
+    },
+    {
+      "id": 7,
+      "slug": "accounting",
+      "state": "prepared-not-deployed",
+      "files": [
+        {
+          "path": "docs/updates/07-accounting.md",
+          "bytes": 1327,
+          "sha256": "4b3ad09593a29b49d025a407a594ee4f7b337a1453bf7415e8693940c63f38a2",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/4b3ad09593a29b49d025a407a594ee4f7b337a1453bf7415e8693940c63f38a2.bin"
+        },
+        {
+          "path": "public/updates/accounting.css",
+          "bytes": 2728,
+          "sha256": "e9ef7e4643aa6cd16e1ff47716fdc5b26697e8fba21ba4cd8a5c1346c5c824f0",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/e9ef7e4643aa6cd16e1ff47716fdc5b26697e8fba21ba4cd8a5c1346c5c824f0.bin"
+        },
+        {
+          "path": "public/updates/accounting.ts",
+          "bytes": 19886,
+          "sha256": "eceb3dcaeaa256c315b801fe97e2fcfbc25e587400ba5c82aaba520fbfc9ee92",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/eceb3dcaeaa256c315b801fe97e2fcfbc25e587400ba5c82aaba520fbfc9ee92.bin"
+        },
+        {
+          "path": "public/updates/router.ts",
+          "bytes": 4545,
+          "sha256": "9e904fc7091b0bf8541a1259572f6ba400fd297cdb3d6f604decb3b57444e958",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/9e904fc7091b0bf8541a1259572f6ba400fd297cdb3d6f604decb3b57444e958.bin"
+        },
+        {
+          "path": "src/app.ts",
+          "bytes": 32000,
+          "sha256": "90d6955d78840d3369790b69532a00c0523f9b929b87f6d31b9f23f651f216b6",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/90d6955d78840d3369790b69532a00c0523f9b929b87f6d31b9f23f651f216b6.bin"
+        },
+        {
+          "path": "src/updates/accounting.ts",
+          "bytes": 10469,
+          "sha256": "622b44b144b589f431f96ac9c747f2326415930c70efe33bf39da3fbf88b9db5",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/622b44b144b589f431f96ac9c747f2326415930c70efe33bf39da3fbf88b9db5.bin"
+        },
+        {
+          "path": "src/updates/features.ts",
+          "bytes": 866,
+          "sha256": "d7c1f0b028059c90e7bf33af5b43e79d60482af65576cdf2f085b48c46199496",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/d7c1f0b028059c90e7bf33af5b43e79d60482af65576cdf2f085b48c46199496.bin"
+        },
+        {
+          "path": "tests/accounting-export.test.ts",
+          "bytes": 19489,
+          "sha256": "bf7aac198d37dc100de965f51e2bfe6781f24f43c2ed508da3a300ef5e7b48bb",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/bf7aac198d37dc100de965f51e2bfe6781f24f43c2ed508da3a300ef5e7b48bb.bin"
+        },
+        {
+          "path": "website/dist/dashboard.js",
+          "bytes": 79292,
+          "sha256": "669efb9013f9f137dfea85735fb873877d0baf01689216d15fee139b51c47c59",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/669efb9013f9f137dfea85735fb873877d0baf01689216d15fee139b51c47c59.bin"
+        },
+        {
+          "path": "website/dist/site.js",
+          "bytes": 50763,
+          "sha256": "7e82d5fb2d8bb5bb9d96a504bf255299adee9719d5d8de25be5baf8a5832bec4",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/7e82d5fb2d8bb5bb9d96a504bf255299adee9719d5d8de25be5baf8a5832bec4.bin"
+        }
+      ]
     }
   ],
   "baselineSources": [
