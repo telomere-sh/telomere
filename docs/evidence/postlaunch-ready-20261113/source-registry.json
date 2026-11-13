@@ -341,6 +341,73 @@
           "storedPath": "docs/evidence/postlaunch-ready-20261113/source/8f3be6e0dbf7bdb24fd125c72878ecb2f50c88ea5a45959ebfd73bb22ea07d49.bin"
         }
       ]
+    },
+    {
+      "id": 6,
+      "slug": "runway",
+      "state": "prepared-not-deployed",
+      "files": [
+        {
+          "path": "docs/updates/06-budget-runway.md",
+          "bytes": 1063,
+          "sha256": "319d82aa29d3f1ce5a7f97706676726557c5276697de73626a88201f791fe92d",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/319d82aa29d3f1ce5a7f97706676726557c5276697de73626a88201f791fe92d.bin"
+        },
+        {
+          "path": "public/updates/router.ts",
+          "bytes": 4158,
+          "sha256": "91a34a0494c96e22323393048372a41bfa20ba5a7c6ab8e4488f26d906d81539",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/91a34a0494c96e22323393048372a41bfa20ba5a7c6ab8e4488f26d906d81539.bin"
+        },
+        {
+          "path": "public/updates/runway.css",
+          "bytes": 2512,
+          "sha256": "bc226183b8b661b769958ee20129388570fb3a4edb9574d08937865072121d38",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/bc226183b8b661b769958ee20129388570fb3a4edb9574d08937865072121d38.bin"
+        },
+        {
+          "path": "public/updates/runway.ts",
+          "bytes": 16465,
+          "sha256": "87dd19e003c64d55f97c97d566953d58b708b2785fbb93789589fddba568cded",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/87dd19e003c64d55f97c97d566953d58b708b2785fbb93789589fddba568cded.bin"
+        },
+        {
+          "path": "src/app.ts",
+          "bytes": 31739,
+          "sha256": "fd6a3484ff2ca097ce3f6c7e16772f81e47998d913ba9058dadc276960b46127",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/fd6a3484ff2ca097ce3f6c7e16772f81e47998d913ba9058dadc276960b46127.bin"
+        },
+        {
+          "path": "src/updates/features.ts",
+          "bytes": 852,
+          "sha256": "b6a2a3ae6498dda7a2decc65af6767af888d28f5eafdefd76c445428582c0803",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/b6a2a3ae6498dda7a2decc65af6767af888d28f5eafdefd76c445428582c0803.bin"
+        },
+        {
+          "path": "src/updates/runway.ts",
+          "bytes": 5632,
+          "sha256": "56d97fcc07fa4924ab26bedf432d7dd1bcc14441e290a827c3b87ce573a28af4",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/56d97fcc07fa4924ab26bedf432d7dd1bcc14441e290a827c3b87ce573a28af4.bin"
+        },
+        {
+          "path": "tests/runway-insights.test.ts",
+          "bytes": 17555,
+          "sha256": "4a97ed1733fc4a90261af9105e14a47638f65e9cb09bd63811fe1619c4049042",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/4a97ed1733fc4a90261af9105e14a47638f65e9cb09bd63811fe1619c4049042.bin"
+        },
+        {
+          "path": "website/dist/dashboard.js",
+          "bytes": 78818,
+          "sha256": "2b6eab767ec8961df9eb006ccfb9d08d61a60672fdd2fbebdd6a9751446cdf4f",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/2b6eab767ec8961df9eb006ccfb9d08d61a60672fdd2fbebdd6a9751446cdf4f.bin"
+        },
+        {
+          "path": "website/dist/site.js",
+          "bytes": 50749,
+          "sha256": "66c5c0c467c43c8f46c68a015195dec1c9b34be12e051c843d71e41ade3e9a47",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/66c5c0c467c43c8f46c68a015195dec1c9b34be12e051c843d71e41ade3e9a47.bin"
+        }
+      ]
     }
   ],
   "baselineSources": [

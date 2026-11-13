@@ -258,7 +258,7 @@ assert set(historical_sources) == expected_historical
 postlaunch_document = 'docs/evidence/postlaunch-ready-20261113/source-registry.json'
 assert postlaunch_document in tracked
 postlaunch_bytes = (root / postlaunch_document).read_bytes()
-assert hashlib.sha256(postlaunch_bytes).hexdigest() == '8f6db1d9e46e52ebb1d4e442e0e31b4935971f77099b1cb8ac6f25e88b152331'
+assert hashlib.sha256(postlaunch_bytes).hexdigest() == '32d5e78c7a6c3c0c4a5e586833060b52e3badeb9fd1e4a5a5f63a91cd5d7af99'
 postlaunch = json.loads(postlaunch_bytes)
 assert postlaunch['schemaVersion'] == 1 and postlaunch['baselineSourceCommit'] == 'd9489ed33257e34cd985dd0359a173416de69daa'
 postlaunch_baseline, postlaunch_current = {}, {}

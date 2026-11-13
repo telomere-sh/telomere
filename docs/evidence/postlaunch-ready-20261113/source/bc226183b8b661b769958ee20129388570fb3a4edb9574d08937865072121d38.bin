@@ -1,0 +1,21 @@
+.runway-reader{--runway-space:20px;--runway-text-gap:9px;--runway-detail-space:25px;--runway-region-space:65px;--runway-body-size:15px;--runway-body-leading:1.6;--runway-rule:1px;--runway-accent-rule:2px;min-width:0}
+.runway-reader [hidden]{display:none!important}
+.runway-reader .runway-help,.runway-reader .runway-error,.runway-reader #runway-status{margin:0;font-size:var(--runway-body-size);line-height:var(--runway-body-leading);overflow-wrap:anywhere}
+.runway-reader .runway-help{color:var(--muted)}
+.runway-reader .runway-error{padding:var(--runway-space);background:var(--panel);border-left:var(--runway-accent-rule) solid var(--orange);color:var(--ink)}
+.runway-reader .pill{max-width:100%;white-space:normal;text-align:center}
+.runway-reader .pill:disabled{cursor:wait;opacity:.65;transform:none}
+.runway-reader .runway-results{margin-top:var(--runway-region-space);max-width:100%;min-width:0}
+.runway-reader .runway-results .section-top{margin-bottom:var(--runway-detail-space)}
+.runway-reader .runway-results .section-top h2{margin-top:0}
+.runway-reader .runway-results h3{font:inherit;margin:var(--runway-detail-space) 0 var(--runway-text-gap)}
+.runway-reader .runway-results>p,.runway-reader .runway-results li{font-size:var(--runway-body-size);line-height:var(--runway-body-leading);margin:0 0 var(--runway-space);overflow-wrap:anywhere}
+.runway-reader .runway-results>ul{padding-left:var(--runway-detail-space);margin:var(--runway-space) 0}
+.runway-reader .runway-details{margin:var(--runway-detail-space) 0;border-top:var(--runway-rule) solid var(--line)}
+.runway-reader .runway-details>div{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:var(--runway-space);padding:var(--runway-space) 0;border-bottom:var(--runway-rule) solid var(--line)}
+.runway-reader .runway-details dt,.runway-reader .runway-details dd{margin:0;font-size:var(--runway-body-size);line-height:var(--runway-body-leading);min-width:0;overflow-wrap:anywhere}
+.runway-reader .runway-details dt{color:var(--muted)}
+.runway-reader .runway-details dd,.runway-reader time{font-variant-numeric:tabular-nums}
+.runway-reader .runway-calculation{font-size:var(--runway-body-size);line-height:var(--runway-body-leading);margin:var(--runway-detail-space) 0;overflow-wrap:anywhere}
+.runway-reader .runway-calculation summary{cursor:pointer}
+@media(max-width:600px){.runway-reader .runway-details>div{grid-template-columns:minmax(0,1fr);gap:var(--runway-text-gap)}.runway-reader .inline-form{min-width:0;max-width:100%}}

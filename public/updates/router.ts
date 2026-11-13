@@ -7,6 +7,9 @@ import { mountPrices } from './prices.js';
 import './shared-receipt.css';
 import { mountSharedReceipt } from './shared-receipt.js';
 
+import './runway.css';
+import { mountRunway } from './runway.js';
+
 type Hero = (label: string, title: string, description: string, meta?: string) => string;
 function toolLifecycle(main: HTMLElement, mount: () => (() => void) | void): void {
   let started = false, cleanup: (() => void) | undefined;
@@ -41,6 +44,9 @@ export async function mountPostlaunchRoute(main: HTMLElement, path: string, hero
       toolLifecycle(main, () => mountSharedReceipt(main, hero('Shared receipt', 'The run.<br><span class="orange">On record.</span>',
         'A receipt summary shared by its owner. Current settlement evidence is checked before it is displayed.', 'TELOMERE / SHARED RECEIPT'), shared[1]!));
       return;
+    }
+    if (path === '/runway' && enabled.includes('runway')) {
+      toolLifecycle(main, () => mountRunway(main, hero('Budget runway', 'Your budget.<br><span class="orange">Time to run.</span>', 'An estimate from your confirmed escrow budget and trailing 24-hour spend.'))); return;
     }
     if (path === '/prices' && enabled.includes('prices')) {
       toolLifecycle(main, () => mountPrices(main, hero('Settled prices', 'Recorded prices.<br><span class="orange">Real settlements.</span>',
