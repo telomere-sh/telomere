@@ -8,6 +8,7 @@ for (const [entry, output] of [
   ['public/workspace-client.ts', 'website/dist/workspace-client.js'],
   ['public/published-contract.ts', 'website/dist/contract-address.js'],
   ['public/receipt-verifier.ts', 'website/dist/receipt-verifier.js'],
+  ['public/updates/router.ts', 'website/dist/postlaunch.js'],
 ]) {
   await esbuild.build({ entryPoints: [entry], outfile: output, bundle: true, format: 'esm',
     platform: 'browser', target: 'es2022', minifyWhitespace: true, legalComments: 'external' });

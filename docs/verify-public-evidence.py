@@ -255,6 +255,36 @@ for entry in latest['previousSources']:
     references += 1
 expected_historical = {entry['path'] for entry in remediation['files']} | {entry['path'] for entry in integration['preserved']}
 assert set(historical_sources) == expected_historical
+postlaunch_document = 'docs/evidence/postlaunch-ready-20261113/source-registry.json'
+assert postlaunch_document in tracked
+postlaunch_bytes = (root / postlaunch_document).read_bytes()
+assert hashlib.sha256(postlaunch_bytes).hexdigest() == 'fa6fd04b3e0ce32de9b9b00692ca7c2c6fce9696470a15bc5b52997273b9525a'
+postlaunch = json.loads(postlaunch_bytes)
+assert postlaunch['schemaVersion'] == 1 and postlaunch['baselineSourceCommit'] == 'd9489ed33257e34cd985dd0359a173416de69daa'
+postlaunch_baseline, postlaunch_current = {}, {}
+def postlaunch_source(entry):
+    global references
+    name, digest = validate_source_entry(entry)
+    stored = entry['storedPath']
+    assert stored == 'docs/evidence/postlaunch-ready-20261113/source/' + digest + '.bin' and stored in tracked
+    raw = (root / stored).read_bytes()
+    assert len(raw) == entry['bytes'] and hashlib.sha256(raw).hexdigest() == digest
+    references += 1
+    return name, raw
+for entry in postlaunch['baselineSources']:
+    name, raw = postlaunch_source(entry)
+    assert name not in postlaunch_baseline
+    postlaunch_baseline[name] = raw
+postlaunch_ids = []
+for feature in postlaunch['features']:
+    assert feature['state'] == 'prepared-not-deployed' and type(feature['id']) is int and 2 <= feature['id'] <= 12
+    postlaunch_ids.append(feature['id'])
+    for entry in feature['files']:
+        name, raw = postlaunch_source(entry)
+        postlaunch_current[name] = raw
+assert len(postlaunch_ids) == len(set(postlaunch_ids)) and postlaunch_ids == sorted(postlaunch_ids)
+for name, raw in postlaunch_current.items():
+    assert name in tracked and (root / name).read_bytes() == raw, 'Prepared feature source changed: ' + name
 verification_document = 'docs/evidence/public-verifier-20261113/frontend-source.json'
 assert verification_document in tracked
 verification_bytes = (root / verification_document).read_bytes()
@@ -277,6 +307,7 @@ for entry in verification_record['files']:
     assert name in tracked and name not in verification_names
     verification_names.add(name)
     raw = (root / name).read_bytes()
+    raw = postlaunch_baseline.get(name, raw)
     assert len(raw) == entry['bytes'] and hashlib.sha256(raw).hexdigest() == digest, 'Approved public verifier changed: ' + name
     references += 1
 assert verification_names == set(verification_previous) | {'public/receipt-verifier.ts', 'src/receipts/public-verifier.ts', 'src/receipts/public-configured.ts', 'src/receipts/public-routes.ts', 'tests/public-receipt-verifier.test.ts', 'tests/public-receipt-chain.test.ts'}

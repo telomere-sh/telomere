@@ -9,6 +9,10 @@ const schema = z.object({
   PORT: z.coerce.number().int().min(1).max(65535).default(3280),
   HOST: z.string().default('127.0.0.1'),
   PUBLIC_ORIGIN: z.string().url().default('http://127.0.0.1:3280'),
+  POSTLAUNCH_FEATURES: z.string().default('').transform(value => value.split(',').map(item => item.trim()).filter(Boolean))
+    .refine(values => new Set(values).size === values.length && values.every(value => ['refunds', 'prices', 'receipt-links',
+      'leash-presets', 'runway', 'accounting', 'fossils', 'agent-economics', 'copy-examples', 'host-calculator', 'status-changelog'].includes(value)),
+    'Choose unique known post-launch feature IDs'),
   DATABASE_URL: z.string().url().optional(),
   DATA_DIR: z.string().default('.local/db'),
   CYSTS_GLOBAL_BYTES: z.coerce.number().int().min(33554432).max(107374182400).default(1073741824),

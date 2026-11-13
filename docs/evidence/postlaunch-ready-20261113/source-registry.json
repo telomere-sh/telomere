@@ -1,0 +1,159 @@
+{
+  "schemaVersion": 1,
+  "baselineSourceCommit": "d9489ed33257e34cd985dd0359a173416de69daa",
+  "features": [
+    {
+      "id": 2,
+      "slug": "refunds",
+      "state": "prepared-not-deployed",
+      "files": [
+        {
+          "path": ".gitignore",
+          "bytes": 473,
+          "sha256": "d39f6975adc8742e4f384071837bcf83f1510df11cb07ac9e2878808c582c769",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/d39f6975adc8742e4f384071837bcf83f1510df11cb07ac9e2878808c582c769.bin"
+        },
+        {
+          "path": "docs/updates/02-refund-dashboard.md",
+          "bytes": 2923,
+          "sha256": "5921515e03fb7bd75e7b8d2f55f15bb79fd21a24921a400874aff2489adbba70",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/5921515e03fb7bd75e7b8d2f55f15bb79fd21a24921a400874aff2489adbba70.bin"
+        },
+        {
+          "path": "public/updates/refunds.css",
+          "bytes": 3166,
+          "sha256": "b5a89cbca84f665fb3fae4573cdba8be2cdfb9c069ec52ed1a0c5fbd46584cba",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/b5a89cbca84f665fb3fae4573cdba8be2cdfb9c069ec52ed1a0c5fbd46584cba.bin"
+        },
+        {
+          "path": "public/updates/refunds.ts",
+          "bytes": 20512,
+          "sha256": "dce2f4fdc3bdd8e3a7348f6c3db01db4dd010129290d93feb6825400ce9768b4",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/dce2f4fdc3bdd8e3a7348f6c3db01db4dd010129290d93feb6825400ce9768b4.bin"
+        },
+        {
+          "path": "public/updates/router.ts",
+          "bytes": 1733,
+          "sha256": "fe6f89dbb5e00a3f62761c75ba3baee6913e54f8cd7331e34d5eb54412fec1c9",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/fe6f89dbb5e00a3f62761c75ba3baee6913e54f8cd7331e34d5eb54412fec1c9.bin"
+        },
+        {
+          "path": "scripts/build-browser.mjs",
+          "bytes": 854,
+          "sha256": "ae89c8867410b0a24d07433e421a7ac7d13db0f1c8673110941c2d9311dfce6c",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/ae89c8867410b0a24d07433e421a7ac7d13db0f1c8673110941c2d9311dfce6c.bin"
+        },
+        {
+          "path": "src/app.ts",
+          "bytes": 29965,
+          "sha256": "911a5cfaff2d0022a539c41b5adfadcbac9ad380c4df613ac346267473c311c5",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/911a5cfaff2d0022a539c41b5adfadcbac9ad380c4df613ac346267473c311c5.bin"
+        },
+        {
+          "path": "src/config.ts",
+          "bytes": 13009,
+          "sha256": "906fa543f699d240eba139c93a01f3a9dd93504bbea6df82a6d154f1cc332578",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/906fa543f699d240eba139c93a01f3a9dd93504bbea6df82a6d154f1cc332578.bin"
+        },
+        {
+          "path": "src/store.ts",
+          "bytes": 8990,
+          "sha256": "99b804bc67d7109fd14d2f2f3a643332c2dac73092e2dfc6ef60cc8a309d201b",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/99b804bc67d7109fd14d2f2f3a643332c2dac73092e2dfc6ef60cc8a309d201b.bin"
+        },
+        {
+          "path": "src/updates/features.ts",
+          "bytes": 798,
+          "sha256": "4a7922e1235b1a043e1cd5b1ae5c894e3f490e10d3fde8dda34b940d0728c411",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/4a7922e1235b1a043e1cd5b1ae5c894e3f490e10d3fde8dda34b940d0728c411.bin"
+        },
+        {
+          "path": "src/updates/financial-history.ts",
+          "bytes": 10269,
+          "sha256": "68e34c4d16b725bea651c74d293bb31b2712e1c43624c508019cf4d93f6ad1ea",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/68e34c4d16b725bea651c74d293bb31b2712e1c43624c508019cf4d93f6ad1ea.bin"
+        },
+        {
+          "path": "src/updates/financial-schema.ts",
+          "bytes": 1349,
+          "sha256": "4690d4292e78d3e8eb2fd9edbca73fa07cc1f8cc53ffa9c71b63b226ac8c17b1",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/4690d4292e78d3e8eb2fd9edbca73fa07cc1f8cc53ffa9c71b63b226ac8c17b1.bin"
+        },
+        {
+          "path": "src/updates/financial-source.ts",
+          "bytes": 8359,
+          "sha256": "7cc0a0c2e9f7ab07cce2b7937b08fb63cc5a86e3ed27e11069c46068a54d8fcb",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/7cc0a0c2e9f7ab07cce2b7937b08fb63cc5a86e3ed27e11069c46068a54d8fcb.bin"
+        },
+        {
+          "path": "src/updates/refund-routes.ts",
+          "bytes": 1539,
+          "sha256": "10151a2f7f0c636d7300438841d596bd11c336d1c5ad8646327c152598b0250c",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/10151a2f7f0c636d7300438841d596bd11c336d1c5ad8646327c152598b0250c.bin"
+        },
+        {
+          "path": "tests/public-receipt-chain.test.ts",
+          "bytes": 9767,
+          "sha256": "3c62eb63a7ca12eb672597c805611311b92fb698a2febf60f05a753ba7039cff",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/3c62eb63a7ca12eb672597c805611311b92fb698a2febf60f05a753ba7039cff.bin"
+        },
+        {
+          "path": "tests/refund-insights.test.ts",
+          "bytes": 8322,
+          "sha256": "e56ccacccd9ddd2f9c55db309fc0d5991b3c743af80e375cab4e11df6db520dc",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/e56ccacccd9ddd2f9c55db309fc0d5991b3c743af80e375cab4e11df6db520dc.bin"
+        },
+        {
+          "path": "website/dist/site.js",
+          "bytes": 50542,
+          "sha256": "9d2c770f1c6d5f56281b93ab64392b044f8cc5f0f1cb3e6c9cece5474ed5ee3a",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/9d2c770f1c6d5f56281b93ab64392b044f8cc5f0f1cb3e6c9cece5474ed5ee3a.bin"
+        }
+      ]
+    }
+  ],
+  "baselineSources": [
+    {
+      "path": ".gitignore",
+      "bytes": 381,
+      "sha256": "f8ff925aad83925fe59d0f81ba43e4f1eecac8425da075b07d5c01eba72b63e4",
+      "storedPath": "docs/evidence/postlaunch-ready-20261113/source/f8ff925aad83925fe59d0f81ba43e4f1eecac8425da075b07d5c01eba72b63e4.bin"
+    },
+    {
+      "path": "scripts/build-browser.mjs",
+      "bytes": 792,
+      "sha256": "0ef0dadeefa02d5e366592b459d098a50dfe2851034ccc85477ee33443b6334d",
+      "storedPath": "docs/evidence/postlaunch-ready-20261113/source/0ef0dadeefa02d5e366592b459d098a50dfe2851034ccc85477ee33443b6334d.bin"
+    },
+    {
+      "path": "src/app.ts",
+      "bytes": 29162,
+      "sha256": "20ae8c8ea994e24a0e6296d91c2e648859610c4cbb57c56129144888c20eab71",
+      "storedPath": "docs/evidence/postlaunch-ready-20261113/source/20ae8c8ea994e24a0e6296d91c2e648859610c4cbb57c56129144888c20eab71.bin"
+    },
+    {
+      "path": "src/config.ts",
+      "bytes": 12557,
+      "sha256": "9d5c27042c1c6f84288f0ff3f8a816162e375b2f1bd4bf6b91395753ea739c3e",
+      "storedPath": "docs/evidence/postlaunch-ready-20261113/source/9d5c27042c1c6f84288f0ff3f8a816162e375b2f1bd4bf6b91395753ea739c3e.bin"
+    },
+    {
+      "path": "src/store.ts",
+      "bytes": 8825,
+      "sha256": "a5d42c51e037b8dabddd971e8407b0fe97eecc73dcbaf37d28c2ba29329e48e2",
+      "storedPath": "docs/evidence/postlaunch-ready-20261113/source/a5d42c51e037b8dabddd971e8407b0fe97eecc73dcbaf37d28c2ba29329e48e2.bin"
+    },
+    {
+      "path": "tests/public-receipt-chain.test.ts",
+      "bytes": 6750,
+      "sha256": "ed666d6c557b8cf07d8c639300272db52f4982d13137ebf6db7b06590f47a388",
+      "storedPath": "docs/evidence/postlaunch-ready-20261113/source/ed666d6c557b8cf07d8c639300272db52f4982d13137ebf6db7b06590f47a388.bin"
+    },
+    {
+      "path": "website/dist/site.js",
+      "bytes": 50404,
+      "sha256": "aeb372653b09c605ca890218fa95b30b4dce77dcd466f88c4f88cafea1a74d68",
+      "storedPath": "docs/evidence/postlaunch-ready-20261113/source/aeb372653b09c605ca890218fa95b30b4dce77dcd466f88c4f88cafea1a74d68.bin"
+    }
+  ]
+}

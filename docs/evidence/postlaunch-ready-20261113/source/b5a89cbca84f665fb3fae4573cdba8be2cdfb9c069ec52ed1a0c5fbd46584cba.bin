@@ -1,0 +1,24 @@
+.refund-dashboard{--refund-space:20px;--refund-text-gap:9px;--refund-detail-space:25px;--refund-region-space:65px;--refund-body-size:15px;--refund-body-leading:1.6;--refund-rule:1px;--refund-focus:2px;--refund-focus-offset:5px;min-width:0}
+.refund-dashboard [hidden]{display:none!important}
+.refund-dashboard .refund-help,.refund-dashboard .refund-error,.refund-dashboard .refund-progress{margin:0;font-size:var(--refund-body-size);line-height:var(--refund-body-leading);overflow-wrap:anywhere}
+.refund-dashboard .refund-help{color:var(--muted)}
+.refund-dashboard .refund-error{padding:var(--refund-space);background:var(--panel);border-left:var(--refund-focus) solid var(--orange);color:var(--ink)}
+.refund-dashboard .pill:disabled{cursor:wait;opacity:.65;transform:none}
+.refund-dashboard .refund-results{margin-top:var(--refund-region-space);max-width:100%;min-width:0}
+.refund-dashboard .refund-results .section-top{margin-bottom:var(--refund-detail-space)}
+.refund-dashboard .refund-results .section-top h2{margin-top:0}
+.refund-dashboard .refund-results h3{font:inherit;margin:var(--refund-detail-space) 0 var(--refund-text-gap)}
+.refund-dashboard .refund-results>p,.refund-dashboard .refund-results li{font-size:var(--refund-body-size);line-height:var(--refund-body-leading);margin:0 0 var(--refund-space);max-width:700px;overflow-wrap:anywhere}
+.refund-dashboard .refund-results>ul{padding-left:var(--refund-detail-space);margin:var(--refund-space) 0}
+.refund-dashboard .refund-details{margin:var(--refund-detail-space) 0 var(--refund-region-space);border-top:var(--refund-rule) solid var(--line)}
+.refund-dashboard .refund-details>div{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:var(--refund-space);padding:var(--refund-space) 0;border-bottom:var(--refund-rule) solid var(--line)}
+.refund-dashboard .refund-details dt,.refund-dashboard .refund-details dd{margin:0;font-size:var(--refund-body-size);line-height:var(--refund-body-leading);min-width:0;overflow-wrap:anywhere}
+.refund-dashboard .refund-details dt{color:var(--muted)}
+.refund-dashboard .refund-details dd,.refund-dashboard time,.refund-dashboard td{font-variant-numeric:tabular-nums}
+.refund-dashboard .refund-table-scroll{max-width:100%;overflow-x:auto;margin:var(--refund-space) 0;overscroll-behavior-x:contain}
+.refund-dashboard .refund-table-scroll:focus-visible{outline:var(--refund-focus) solid var(--orange);outline-offset:var(--refund-focus-offset)}
+.refund-dashboard table{border-collapse:collapse;width:100%;min-width:700px;font-size:var(--refund-body-size);line-height:var(--refund-body-leading)}
+.refund-dashboard caption{text-align:left;color:var(--muted);padding-bottom:var(--refund-space)}
+.refund-dashboard th,.refund-dashboard td{text-align:left;padding:var(--refund-space);border-bottom:var(--refund-rule) solid var(--line);overflow-wrap:anywhere;vertical-align:top}
+.refund-dashboard th{font-weight:inherit;color:var(--muted)}
+@media(max-width:600px){.refund-dashboard .refund-details>div{grid-template-columns:minmax(0,1fr);gap:var(--refund-text-gap)}.refund-dashboard .refund-controls{max-width:100%;min-width:0}.refund-dashboard .field{min-width:0}}

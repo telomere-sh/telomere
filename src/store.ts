@@ -21,6 +21,7 @@ import { platformRuntimeSchema, platformRuntimeMigrationSQL } from './platform-r
 import { platformReceiptTables, platformReceiptDdl } from './receipts/platform-schema.js';
 import { incomeEndpointSchema, incomeEndpointMigrationSQL } from './selection/income-endpoints/schema.js';
 import { journalArchiveBatches, journalMigration } from './chain/journal-schema.js';
+import { financialFacts, financialReferences, financialInsightDdl } from './updates/financial-schema.js';
 export { journalArchiveBatches } from './chain/journal-schema.js';
 
 export const nonces = pgTable('auth_nonces', {
@@ -54,7 +55,7 @@ export const leashRefs = pgTable('leash_refs', { id: text().primaryKey(), owner:
 export const controllerChainBinding = pgTable('controller_chain_binding', {
   id: integer().primaryKey(), scopeHash: text().notNull(), chainId: integer().notNull(),
 });
-export const storeSchema = { workspaceDocuments, nonces, sessions, jobs, transactions, journalArchiveBatches, leashRefs, controllerChainBinding, cysts, cystOwners, deadlineJobs, paidCpuJobs,
+export const storeSchema = { financialFacts, financialReferences, workspaceDocuments, nonces, sessions, jobs, transactions, journalArchiveBatches, leashRefs, controllerChainBinding, cysts, cystOwners, deadlineJobs, paidCpuJobs,
   agents, agentIntents, agentBilling, agentRuntimeBinding, agentVaultBindings, agentBillingProvenance, agentBillingAnchors, receiptHourBatches, receiptHourEntries, receiptHourLock, ...selectionSchema, controllerHostRuns,
   ...paymentSchema, interruptibleRuns, hostPreemptionNotices, ...platformRuntimeSchema, ...platformReceiptTables, ...incomeEndpointSchema };
 const schema = storeSchema;
@@ -79,7 +80,7 @@ ALTER TABLE transaction_journal ADD COLUMN IF NOT EXISTS nonce integer;
 ALTER TABLE jobs ADD COLUMN IF NOT EXISTS agent_address text;
 CREATE TABLE IF NOT EXISTS leash_refs (id text PRIMARY KEY, owner text NOT NULL);
 CREATE TABLE IF NOT EXISTS controller_chain_binding (id integer PRIMARY KEY CHECK (id = 1), scope_hash text NOT NULL, chain_id integer NOT NULL);
-` + workspaceMigration + cystMigrationSQL + deadlineMigrationSQL + agentMigrationSQL + receiptHourMigrationSQL + selectionMigrationSQL + controllerHostMigrationSQL
+` + financialInsightDdl + workspaceMigration + cystMigrationSQL + deadlineMigrationSQL + agentMigrationSQL + receiptHourMigrationSQL + selectionMigrationSQL + controllerHostMigrationSQL
   + paymentMigrationSQL + interruptibleMigrationSQL + platformRuntimeMigrationSQL + platformReceiptDdl + incomeEndpointMigrationSQL + paidCpuJobMigrationSQL;
 async function migrate(db: Database): Promise<void> {
   await db.transaction(async transaction => {

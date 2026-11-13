@@ -14,6 +14,8 @@ import { localChain } from '../src/chain/chains.js';
 import { RunMeter } from '../src/runtime/meter.js';
 import { hashJson } from '../src/common.js';
 import type { PublicReceiptReport } from '../src/receipts/public-verifier.js';
+import { FinancialHistory, refundSnapshot } from '../src/updates/financial-history.js';
+import { configuredFinancialSource } from '../src/updates/financial-source.js';
 
 describe('public verifier against actual disposable escrow events', () => {
   let local: Awaited<ReturnType<typeof startLocalChain>>;
@@ -21,6 +23,7 @@ describe('public verifier against actual disposable escrow events', () => {
   let store: Awaited<ReturnType<typeof openStore>>;
   let app: ReturnType<typeof createApp>, bridge: ChainBridge, receipt: SignedReceipt, settlementTxHash: Hex;
   let runId: Hex;
+  let service: Service;
   const origin = 'http://127.0.0.1:3280';
   async function verify(body: unknown, suppliedOrigin = origin) {
     return app.request('/api/public/receipts/verify', { method: 'POST',
@@ -31,7 +34,7 @@ describe('public verifier against actual disposable escrow events', () => {
     const config = loadConfig({ MODE: 'demo', RPC_URL: local.rpcUrl, SIGNER_PRIVATE_KEY: deployed.keys.signer, DEMO_PRIVATE_KEY: deployed.keys.owner,
       TOKEN_ADDRESS: deployed.tokenAddress, ESCROW_ADDRESS: deployed.escrowAddress, DATA_DIR: ':memory:', PUBLIC_ORIGIN: origin });
     store = await openStore(config); bridge = new ChainBridge(config);
-    const service = new Service(store.db, bridge, config, false);
+    service = new Service(store.db, bridge, config, false);
     app = createApp(service, new Auth(store.db, config), pino({ level: 'silent' }));
     const wallet = createWalletClient({ chain: localChain, transport: http(local.rpcUrl), account: deployed.accounts.owner });
     async function send(hash: Hex) { await local.publicClient.waitForTransactionReceipt({ hash }); }
@@ -45,7 +48,7 @@ describe('public verifier against actual disposable escrow events', () => {
     runId = quote.quote.runId;
     await send(await wallet.sendTransaction({ to: quote.transaction.to, data: quote.transaction.data }));
     const meter = new RunMeter(runId, 60); await meter.emit('completed', 2500, 'PRIVATE_RESULT_DATA');
-    const body = { version: 1, runId, payer: wallet.account.address, leashId, workloadHash: quote.quote.workloadHash,
+    const body = { version: 1, status: 'completed', runId, payer: wallet.account.address, leashId, workloadHash: quote.quote.workloadHash,
       cpu: { billableSeconds: 2, measuredSeconds: 2, pricePerSecond: '100', ticks: meter.ticks }, near: null,
       billing: { token: deployed.tokenAddress, ceiling: '6000', charged: '200', refund: '5800' } };
     const receiptHash = hashJson(body), settlement = { runId, billableSeconds: 2n, inferenceCharge: 0n, receiptHash };
@@ -83,5 +86,34 @@ describe('public verifier against actual disposable escrow events', () => {
     const responses = [];
     for (let i = 0; i < 7; ++i) responses.push(await verify({ receipt: {} }));
     expect(responses.some(response => response.status === 429)).toBe(true);
+  });
+  it('builds real refund analytics and keeps staged API OFF by default', async () => {
+    const source = configuredFinancialSource(service), chainClock = Number((await local.publicClient.getBlock()).timestamp) * 1000;
+    const history = new FinancialHistory(source, () => Math.max(Date.now(), chainClock));
+    const result = refundSnapshot(await history.settled(), source, 'all');
+    expect(result.state).toBe('ready'); expect(result.coverage).toMatchObject({ verified: 1, complete: true });
+    expect(result.totals).toMatchObject({ settledRuns: 1, successfulRuns: 1, returnedAtomic: '5800', unusedSuccessAtomic: '5800' });
+    expect((await app.request('/api/public/features')).status).toBe(200);
+    expect(await (await app.request('/api/public/features')).json()).toEqual({ enabled: [] });
+    expect((await app.request('/api/public/insights/refunds')).status).toBe(404);
+  });
+  it('verifies a timeout-refund reference, protects its owner and keeps it separate from success', async () => {
+    const source = configuredFinancialSource(service), wallet = createWalletClient({ chain: localChain, transport: http(local.rpcUrl), account: deployed.accounts.owner });
+    const quote = await service.quote(wallet.account.address, { leashId: (await bridge.run(runId)).leashId,
+      task: { kind: 'sha256', text: 'timeout refund analytics' }, maxSeconds: 60 }, 'refund-dashboard-timeout');
+    const opened = await wallet.sendTransaction({ to: quote.transaction.to, data: quote.transaction.data });
+    await local.publicClient.waitForTransactionReceipt({ hash: opened });
+    await deployed.testClient.increaseTime({ seconds: 21700 }); await deployed.testClient.mine({ blocks: 1 });
+    const hash = await wallet.writeContract({ address: deployed.escrowAddress, abi: escrowAbi, functionName: 'refundRun', args: [quote.quote.runId] });
+    await local.publicClient.waitForTransactionReceipt({ hash }); await deployed.testClient.mine({ blocks: 12 });
+    await store.db.update(jobs).set({ status: 'refunded' }).where(eq(jobs.id, quote.quote.runId));
+    await expect(source.register(deployed.accounts.outsider.address, quote.quote.runId, hash)).rejects.toThrow();
+    await source.register(wallet.account.address, quote.quote.runId, hash);
+    const headTime = Number((await local.publicClient.getBlock()).timestamp) * 1000;
+    const history = new FinancialHistory(source, () => Math.max(Date.now(), headTime));
+    const result = refundSnapshot(await history.settled(), source, 'all');
+    expect(result.state).toBe('ready'); expect(result.totals).toMatchObject({ successfulRuns: 1, timeoutRefunds: 1,
+      unusedSuccessAtomic: '5800', timeoutReturnedAtomic: '6000', failedReturnedAtomic: '0', returnedAtomic: '11800' });
+    expect(JSON.stringify(result)).not.toContain('timeout refund analytics');
   });
 });

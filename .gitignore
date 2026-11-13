@@ -20,3 +20,6 @@ website/dist/contract-address.js
 website/dist/contract-address.js.LEGAL.txt
 website/dist/receipt-verifier.js
 website/dist/receipt-verifier.js.LEGAL.txt
+website/dist/postlaunch.js
+website/dist/postlaunch.js.LEGAL.txt
+website/dist/postlaunch.css
