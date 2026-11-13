@@ -171,6 +171,115 @@
           "storedPath": "docs/evidence/postlaunch-ready-20261113/source/f5e03fc302488681460047b1cc3bcda5484974584e96500e591c58f24d47f01a.bin"
         }
       ]
+    },
+    {
+      "id": 4,
+      "slug": "receipt-links",
+      "state": "prepared-not-deployed",
+      "files": [
+        {
+          "path": "docs/updates/04-receipt-links.md",
+          "bytes": 1777,
+          "sha256": "bc6fd200ad3cef7c444c726ad07cd26adeceaf82254b8f1cd6a375aeefa56c41",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/bc6fd200ad3cef7c444c726ad07cd26adeceaf82254b8f1cd6a375aeefa56c41.bin"
+        },
+        {
+          "path": "ops/public-wallet-launch/receipt-share-location.conf",
+          "bytes": 535,
+          "sha256": "6d988ddbdebe54c868c24c770808a2931bcc8494a48ea0cf2352c00305fb4ec1",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/6d988ddbdebe54c868c24c770808a2931bcc8494a48ea0cf2352c00305fb4ec1.bin"
+        },
+        {
+          "path": "public/updates/router.ts",
+          "bytes": 3280,
+          "sha256": "44cec32808a4257344e721cfe7976163d0e0c21908e9f01204cf508bac6498b8",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/44cec32808a4257344e721cfe7976163d0e0c21908e9f01204cf508bac6498b8.bin"
+        },
+        {
+          "path": "public/updates/shared-receipt.css",
+          "bytes": 1762,
+          "sha256": "097baf1f63c5339283cd6bcd3e562bf803740419a78ff547f6a87f41da79e8c4",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/097baf1f63c5339283cd6bcd3e562bf803740419a78ff547f6a87f41da79e8c4.bin"
+        },
+        {
+          "path": "public/updates/shared-receipt.ts",
+          "bytes": 9495,
+          "sha256": "4c1ff8e1b344b9d95184751b76d062cfc63d52a4b230785603b159233f2c7000",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/4c1ff8e1b344b9d95184751b76d062cfc63d52a4b230785603b159233f2c7000.bin"
+        },
+        {
+          "path": "public/workspace-client.ts",
+          "bytes": 34775,
+          "sha256": "7b27898d71d4082c0288f2c5d7abad1c1a1f561a1e86fb17020f23391142d41f",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/7b27898d71d4082c0288f2c5d7abad1c1a1f561a1e86fb17020f23391142d41f.bin"
+        },
+        {
+          "path": "src/app.ts",
+          "bytes": 31142,
+          "sha256": "fe824dbbc7f1f70f3a5c267bd4cdc84ddd5e59da4f4da5680efe01ec585a803a",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/fe824dbbc7f1f70f3a5c267bd4cdc84ddd5e59da4f4da5680efe01ec585a803a.bin"
+        },
+        {
+          "path": "src/store.ts",
+          "bytes": 9115,
+          "sha256": "1085722214871a570020b80594a48af0235cda57cbe6487a47ff9ca4e7c7cc87",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/1085722214871a570020b80594a48af0235cda57cbe6487a47ff9ca4e7c7cc87.bin"
+        },
+        {
+          "path": "src/updates/features.ts",
+          "bytes": 825,
+          "sha256": "cd4ce5724dd19dede0c4c9edb55fab003960b7a0abe3169ff96e7881f467e503",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/cd4ce5724dd19dede0c4c9edb55fab003960b7a0abe3169ff96e7881f467e503.bin"
+        },
+        {
+          "path": "src/updates/receipt-card-png.ts",
+          "bytes": 5698,
+          "sha256": "a2aee5695cb24e86a7ac09f4be137119d1650250d6ab8fb53cb88acc9f72e779",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/a2aee5695cb24e86a7ac09f4be137119d1650250d6ab8fb53cb88acc9f72e779.bin"
+        },
+        {
+          "path": "src/updates/receipt-links.ts",
+          "bytes": 15446,
+          "sha256": "ff8a8bff81bc2b777ea5eaa3d978c5cca2aaadadbb927a3c133b748b1e413c59",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/ff8a8bff81bc2b777ea5eaa3d978c5cca2aaadadbb927a3c133b748b1e413c59.bin"
+        },
+        {
+          "path": "src/updates/sharing-schema.ts",
+          "bytes": 825,
+          "sha256": "41d7ee1d48c078643248a90425eb362f03e95f79f1f362fe1ae6de8d02148325",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/41d7ee1d48c078643248a90425eb362f03e95f79f1f362fe1ae6de8d02148325.bin"
+        },
+        {
+          "path": "tests/receipt-links.test.ts",
+          "bytes": 19229,
+          "sha256": "a14446e134ad3610db872dec269907a9879dc0d62de42698b7e26f3743001f42",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/a14446e134ad3610db872dec269907a9879dc0d62de42698b7e26f3743001f42.bin"
+        },
+        {
+          "path": "tests/workspace-client.test.ts",
+          "bytes": 42216,
+          "sha256": "94c9c93ef67474168629820890cf7f56cdca363dcb882f92026e552c396f49e9",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/94c9c93ef67474168629820890cf7f56cdca363dcb882f92026e552c396f49e9.bin"
+        },
+        {
+          "path": "tests/workspace-deposit-lifecycle.test.ts",
+          "bytes": 12975,
+          "sha256": "c6491ebd33d56c92b07cdc0b9541727793e407fda3979d95b23d2c163a29f6ab",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/c6491ebd33d56c92b07cdc0b9541727793e407fda3979d95b23d2c163a29f6ab.bin"
+        },
+        {
+          "path": "website/dist/dashboard.js",
+          "bytes": 78047,
+          "sha256": "ac731037273e09017284edf59bf4841c4b77bdae55ee7d4598cf0868eaf60e08",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/ac731037273e09017284edf59bf4841c4b77bdae55ee7d4598cf0868eaf60e08.bin"
+        },
+        {
+          "path": "website/dist/site.js",
+          "bytes": 50601,
+          "sha256": "89fb2d22a7d72a01f518f36bcb86ccd71527b443fded97e68c59a4a5bda7194e",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/89fb2d22a7d72a01f518f36bcb86ccd71527b443fded97e68c59a4a5bda7194e.bin"
+        }
+      ]
     }
   ],
   "baselineSources": [
@@ -215,6 +324,30 @@
       "bytes": 50404,
       "sha256": "aeb372653b09c605ca890218fa95b30b4dce77dcd466f88c4f88cafea1a74d68",
       "storedPath": "docs/evidence/postlaunch-ready-20261113/source/aeb372653b09c605ca890218fa95b30b4dce77dcd466f88c4f88cafea1a74d68.bin"
+    },
+    {
+      "path": "public/workspace-client.ts",
+      "bytes": 34538,
+      "sha256": "34ead64ad23abed075f686feb7cdb077f75fe523f9325253563c3aa66d1a28b7",
+      "storedPath": "docs/evidence/postlaunch-ready-20261113/source/34ead64ad23abed075f686feb7cdb077f75fe523f9325253563c3aa66d1a28b7.bin"
+    },
+    {
+      "path": "website/dist/dashboard.js",
+      "bytes": 75571,
+      "sha256": "76fdafd7b16ae82e1a99cda8e3a38ecd808129a211a5823f083497c17f46cc37",
+      "storedPath": "docs/evidence/postlaunch-ready-20261113/source/76fdafd7b16ae82e1a99cda8e3a38ecd808129a211a5823f083497c17f46cc37.bin"
+    },
+    {
+      "path": "tests/workspace-client.test.ts",
+      "bytes": 42192,
+      "sha256": "0f9973f3560369c99e26b3c9dd6bd6ecad58aa952891dcd239506d54c72640ca",
+      "storedPath": "docs/evidence/postlaunch-ready-20261113/source/0f9973f3560369c99e26b3c9dd6bd6ecad58aa952891dcd239506d54c72640ca.bin"
+    },
+    {
+      "path": "tests/workspace-deposit-lifecycle.test.ts",
+      "bytes": 12946,
+      "sha256": "582f36097306beabd7f4ace0706019a57db5a9ed7edfacc9063ba27864be62ce",
+      "storedPath": "docs/evidence/postlaunch-ready-20261113/source/582f36097306beabd7f4ace0706019a57db5a9ed7edfacc9063ba27864be62ce.bin"
     }
   ]
 }

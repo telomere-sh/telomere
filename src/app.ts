@@ -1,4 +1,6 @@
 import { createWorkspaceRoutes } from './workspace/routes.js';
+import { readFile } from 'node:fs/promises';
+import { resolve } from 'node:path';
 import { inspectCpuReservation, inspectWalletTransaction, walletFundingState, walletRecoveryState } from './chain/wallet-recovery.js';
 import { Hono, type MiddlewareHandler } from 'hono';
 import { bodyLimit } from 'hono/body-limit';
@@ -35,6 +37,7 @@ import { configuredFinancialSource } from './updates/financial-source.js';
 import { FinancialHistory } from './updates/financial-history.js';
 import { createRefundInsightRoutes, createRefundReferenceRoutes } from './updates/refund-routes.js';
 import { createPriceBoardRoutes } from './updates/price-board.js';
+import { configuredReceiptLinks, createOwnerReceiptLinkRoutes, createPublicReceiptLinkRoutes, createSharedReceiptPageRoutes } from './updates/receipt-links.js';
 import { createPlatformPresentedMeterRoutes } from './receipts/platform-presented-meter-routes.js';
 import { createPlatformV2Routes } from './receipts/platform-v2-routes.js';
 import type { ControllerPlatform } from './platform.js';
@@ -115,7 +118,8 @@ export function createApp(service: Service, auth: Auth, logger: Logger, publicRo
         if (real && /^[0-9a-fA-F:.]{3,45}$/.test(real)) identity = real;
       }
     } catch { /* In-process tests have no Node socket. */ }
-    const publicFinancial = context.req.path.startsWith('/api/platform/public/') || context.req.path.startsWith('/api/public/receipts/');
+    const publicFinancial = context.req.path.startsWith('/api/platform/public/') || context.req.path.startsWith('/api/public/receipts/')
+      || context.req.path.startsWith('/api/public/receipt-links/') || context.req.path.startsWith('/r/');
     const key = identity + (context.req.path.startsWith('/api/auth') ? ':auth' : publicFinancial ? ':public-financial' : ':api');
     const now = Date.now();
     if (rateBuckets.size > 10000) for (const [id, entry] of rateBuckets) if (entry.expires < now) rateBuckets.delete(id);
@@ -126,6 +130,7 @@ export function createApp(service: Service, auth: Auth, logger: Logger, publicRo
     await next();
   };
   app.use('/api/*', rateLimit);
+  app.use('/r/*', rateLimit);
   app.use('/x402/vault-income', rateLimit);
   app.use('/mcp', rateLimit);
   app.use('/mcp/platform', rateLimit);
@@ -173,6 +178,12 @@ export function createApp(service: Service, auth: Auth, logger: Logger, publicRo
     if (featureEnabled(service.config, 'prices')) app.route('/api/public/insights', createPriceBoardRoutes(history));
   }
   app.route('/api/public/receipts', createPublicReceiptRoutes(configuredPublicReceiptVerifier(service)));
+  if (featureEnabled(service.config, 'receipt-links')) {
+    const links = configuredReceiptLinks(service);
+    app.route('/api/receipt-links', createOwnerReceiptLinkRoutes(links, context => auth.owner(getCookie(context, cookie))));
+    app.route('/api/public/receipt-links', createPublicReceiptLinkRoutes(links));
+    app.route('/', createSharedReceiptPageRoutes(links, () => readFile(resolve(publicRoot, '../website/page.html'), 'utf8')));
+  }
   if (platformRuntime) app.route('/api/platform/public', createPlatformPublicFinancialRoutes(new PlatformPublicFinancialReader(platformRuntime.bridge, 12,
     runId => platformRuntime.cpuLaneAttribution(runId))));
   if (platformRuntime) app.route('/api/platform/public/presented-meter', createPlatformPresentedMeterRoutes(
@@ -224,6 +235,7 @@ export function createApp(service: Service, auth: Auth, logger: Logger, publicRo
     escrowAddress: service.config.ESCROW_ADDRESS, receiptSigner: service.bridge.account.address,
     prices: { cpuPerSecond: service.config.CPU_PRICE_PER_SECOND, inferenceFixed: service.config.INFERENCE_FIXED_PRICE, maxSeconds: 120, maxTokens: service.config.MAX_TOKENS },
     nearAvailable: service.nearAvailable && nearReadiness.state === 'ready', nearReadiness, cpuMode: service.config.CPU_MODE,
+    postLaunch: { enabled: publicFeatures(service.config) },
     workload: { nearModel: service.config.NEAR_MODEL ?? null }, cystsAvailable: Boolean(cysts),
     largeCystsAvailable: Boolean(largeCysts),
     largeCystsReplicated: Boolean(service.config.CYSTS_LARGE_REPLICATION_CONFIG),

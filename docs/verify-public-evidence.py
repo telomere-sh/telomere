@@ -258,7 +258,7 @@ assert set(historical_sources) == expected_historical
 postlaunch_document = 'docs/evidence/postlaunch-ready-20261113/source-registry.json'
 assert postlaunch_document in tracked
 postlaunch_bytes = (root / postlaunch_document).read_bytes()
-assert hashlib.sha256(postlaunch_bytes).hexdigest() == '4e676edfbe2bdcbd444b36077fcd076ea9ea9e098c95322e9583a53a3d2f4e79'
+assert hashlib.sha256(postlaunch_bytes).hexdigest() == '0d15e201baafd64f7476743f2b877b483b193f077b35c29b783660044fd6914d'
 postlaunch = json.loads(postlaunch_bytes)
 assert postlaunch['schemaVersion'] == 1 and postlaunch['baselineSourceCommit'] == 'd9489ed33257e34cd985dd0359a173416de69daa'
 postlaunch_baseline, postlaunch_current = {}, {}
@@ -306,7 +306,7 @@ for entry in verification_record['files']:
     name, digest = validate_source_entry(entry)
     assert name in tracked and name not in verification_names
     verification_names.add(name)
-    raw = (root / name).read_bytes()
+    raw = postlaunch_baseline.get(name, (root / name).read_bytes())
     raw = postlaunch_baseline.get(name, raw)
     assert len(raw) == entry['bytes'] and hashlib.sha256(raw).hexdigest() == digest, 'Approved public verifier changed: ' + name
     references += 1
@@ -333,7 +333,7 @@ for entry in publish_record['files']:
     name, digest = validate_source_entry(entry)
     assert name in tracked and name not in publish_names
     publish_names.add(name)
-    raw = (root / name).read_bytes()
+    raw = postlaunch_baseline.get(name, (root / name).read_bytes())
     raw = verification_previous.get(name, raw)
     assert len(raw) == entry['bytes'] and hashlib.sha256(raw).hexdigest() == digest, 'Approved contract publication changed: ' + name
     references += 1
@@ -359,7 +359,7 @@ for entry in performance['files']:
     name, digest = validate_source_entry(entry)
     assert name in tracked and name not in performance_names
     performance_names.add(name)
-    raw = (root / name).read_bytes()
+    raw = postlaunch_baseline.get(name, (root / name).read_bytes())
     raw = publish_previous.get(name, raw)
     assert len(raw) == entry['bytes'] and hashlib.sha256(raw).hexdigest() == digest, 'Approved loading fix changed: ' + name
     references += 1
@@ -384,7 +384,7 @@ assert len(mobile['files']) == 1
 for entry in mobile['files']:
     name, digest = validate_source_entry(entry)
     assert name == 'website/dist/wallet-picker.css' and name in tracked
-    raw = (root / name).read_bytes()
+    raw = postlaunch_baseline.get(name, (root / name).read_bytes())
     assert len(raw) == entry['bytes'] and hashlib.sha256(raw).hexdigest() == digest, 'Approved narrow wallet layout changed'
     references += 1
 wallet_style_document = 'docs/evidence/wallet-style-readiness-20261109/frontend-source.json'
@@ -407,7 +407,7 @@ assert len(wallet_style['files']) == 1
 for entry in wallet_style['files']:
     name, digest = validate_source_entry(entry)
     assert name == 'public/wallet-picker.ts' and name in tracked
-    raw = (root / name).read_bytes()
+    raw = postlaunch_baseline.get(name, (root / name).read_bytes())
     assert len(raw) == entry['bytes'] and hashlib.sha256(raw).hexdigest() == digest, 'Approved wallet stylesheet readiness changed'
     references += 1
 domain_document = 'docs/evidence/domain-links-20261112/frontend-source.json'
@@ -430,7 +430,7 @@ assert len(domain['files']) == 1
 for entry in domain['files']:
     name, digest = validate_source_entry(entry)
     assert name == 'website/dist/index.html' and name in tracked
-    raw = (root / name).read_bytes()
+    raw = postlaunch_baseline.get(name, (root / name).read_bytes())
     assert len(raw) == entry['bytes'] and hashlib.sha256(raw).hexdigest() == digest, 'Approved public domain changed'
     references += 1
 plan_document = 'docs/evidence/plan-limits-20261112/frontend-source.json'
@@ -454,7 +454,7 @@ for entry in plan_record['files']:
     name, digest = validate_source_entry(entry)
     assert name in tracked and name not in plan_names
     plan_names.add(name)
-    raw = (root / name).read_bytes()
+    raw = postlaunch_baseline.get(name, (root / name).read_bytes())
     raw = verification_previous.get(name, raw)
     assert len(raw) == entry['bytes'] and hashlib.sha256(raw).hexdigest() == digest, 'Approved plan feedback changed: ' + name
     references += 1
@@ -464,7 +464,7 @@ for entry in latest['files']:
     name, digest = validate_source_entry(entry)
     assert name in tracked and name.startswith(('public/', 'website/dist/')) and name not in latest_names
     latest_names.add(name)
-    raw = (root / name).read_bytes()
+    raw = postlaunch_baseline.get(name, (root / name).read_bytes())
     for sources in [verification_previous, performance_previous, mobile_previous, wallet_style_previous,
                     domain_previous, plan_previous, publish_previous]:
         raw = sources.get(name, raw)

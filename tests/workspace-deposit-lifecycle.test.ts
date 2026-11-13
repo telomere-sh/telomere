@@ -78,7 +78,7 @@ describe('deposit lifecycle against real local escrow contracts', () => {
     }) };
     const reload = () => {
       const client = new WorkspaceClient(() => {}, () => {}); client.address = account.address; client.provider = provider as never;
-      client.config = { mode: 'demo', chain: { id: 31337, name: 'Local', rpcUrl: chain.rpcUrl },
+      client.config = { postLaunch: { enabled: [] }, mode: 'demo', chain: { id: 31337, name: 'Local', rpcUrl: chain.rpcUrl },
         token: { address: token, symbol: 'USDC', decimals: 6 }, escrowAddress: escrow, cpuMode: 'docker',
         prices: { cpuPerSecond: '100', maxSeconds: 120 }, platform: { agentLifecycle: false, receiptRootAddress: null }, nearAvailable: false, cystsAvailable: false };
       vi.spyOn(client, 'request').mockImplementation(async path => {

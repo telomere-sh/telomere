@@ -51,6 +51,7 @@ const configSchema = z.object({mode:z.string(),chain:z.object({id:z.number(),nam
 
   prices:z.object({cpuPerSecond:z.string(),maxSeconds:z.number().int().min(1).max(120)}),
   receiptSigner:address.optional(),nearAvailable:z.boolean().default(false),
+  postLaunch:z.object({enabled:z.array(z.enum(['refunds','prices','receipt-links','leash-presets','runway','accounting','fossils','agent-economics','copy-examples','host-calculator','status-changelog'])).max(11)}).default({enabled:[]}),
   platform:z.object({agentLifecycle:z.boolean(),receiptRootAddress:address.nullable().default(null)}),cystsAvailable:z.boolean()});
 
 type Config = z.infer<typeof configSchema>;

@@ -2,6 +2,8 @@ import './refunds.css';
 import { mountRefundDashboard } from './refunds.js';
 import './prices.css';
 import { mountPrices } from './prices.js';
+import './shared-receipt.css';
+import { mountSharedReceipt } from './shared-receipt.js';
 
 type Hero = (label: string, title: string, description: string, meta?: string) => string;
 function toolLifecycle(main: HTMLElement, mount: () => (() => void) | void): void {
@@ -27,6 +29,12 @@ export async function mountPostlaunchRoute(main: HTMLElement, path: string, hero
     const value: unknown = await response.json();
     if (typeof value !== 'object' || value === null || !('enabled' in value) || !Array.isArray(value.enabled)) throw new Error('Feature configuration is unavailable.');
     const enabled = value.enabled;
+    const shared = /^\/r\/(0x[a-fA-F0-9]{64})$/.exec(path);
+    if (shared && enabled.includes('receipt-links')) {
+      toolLifecycle(main, () => mountSharedReceipt(main, hero('Shared receipt', 'The run.<br><span class="orange">On record.</span>',
+        'A receipt summary shared by its owner. Current settlement evidence is checked before it is displayed.', 'TELOMERE / SHARED RECEIPT'), shared[1]!));
+      return;
+    }
     if (path === '/prices' && enabled.includes('prices')) {
       toolLifecycle(main, () => mountPrices(main, hero('Settled prices', 'Recorded prices.<br><span class="orange">Real settlements.</span>',
         'Price distributions from confirmed, paid CPU runs. Empty hardware classes show no data.', 'TELOMERE / PRICE INSIGHTS')));
