@@ -1,3 +1,5 @@
+import '../leash-presets.css';
+import { mountLeashPresets, type LeashLimits } from '../leash-presets.js';
 import './refunds.css';
 import { mountRefundDashboard } from './refunds.js';
 import './prices.css';
@@ -15,6 +17,11 @@ function toolLifecycle(main: HTMLElement, mount: () => (() => void) | void): voi
   };
   new MutationObserver(update).observe(main, { attributes: true, attributeFilter: ['hidden', 'inert', 'id'] });
   update();
+}
+export function installLeashPresets(form: HTMLFormElement, caps?: LeashLimits): void { ensurePostlaunchStyles(); mountLeashPresets(form, caps); }
+function ensurePostlaunchStyles(): void {
+  if (document.querySelector('link[data-postlaunch-css]')) return;
+  const css = document.createElement('link'); css.rel = 'stylesheet'; css.href = '/postlaunch.css'; css.dataset['postlaunchCss'] = ''; document.head.append(css);
 }
 export async function mountPostlaunchRoute(main: HTMLElement, path: string, hero: Hero): Promise<void> {
   let css = document.querySelector<HTMLLinkElement>('link[data-postlaunch-css]');

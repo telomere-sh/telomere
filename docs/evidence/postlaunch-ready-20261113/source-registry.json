@@ -280,6 +280,67 @@
           "storedPath": "docs/evidence/postlaunch-ready-20261113/source/89fb2d22a7d72a01f518f36bcb86ccd71527b443fded97e68c59a4a5bda7194e.bin"
         }
       ]
+    },
+    {
+      "id": 5,
+      "slug": "leash-presets",
+      "state": "prepared-not-deployed",
+      "files": [
+        {
+          "path": "docs/updates/05-leash-presets.md",
+          "bytes": 804,
+          "sha256": "9c75ca00eb97ba95d1a047445da439137d2adfce9444416a667879ccf1cc577c",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/9c75ca00eb97ba95d1a047445da439137d2adfce9444416a667879ccf1cc577c.bin"
+        },
+        {
+          "path": "public/leash-presets.css",
+          "bytes": 462,
+          "sha256": "60e9c60460878884604eba3c9d163cc654e0a42f6de43dc4708e742f70811f07",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/60e9c60460878884604eba3c9d163cc654e0a42f6de43dc4708e742f70811f07.bin"
+        },
+        {
+          "path": "public/leash-presets.ts",
+          "bytes": 9019,
+          "sha256": "0105929aa6aa04bc22c4ccd74314f5cc150fe50ac21614f4d8f6052b24640c41",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/0105929aa6aa04bc22c4ccd74314f5cc150fe50ac21614f4d8f6052b24640c41.bin"
+        },
+        {
+          "path": "public/updates/router.ts",
+          "bytes": 3805,
+          "sha256": "70a3015c048b191bd995c42ae7758a6679fc7a0d273dafd2038cb176027814d1",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/70a3015c048b191bd995c42ae7758a6679fc7a0d273dafd2038cb176027814d1.bin"
+        },
+        {
+          "path": "public/workspace-client.ts",
+          "bytes": 34775,
+          "sha256": "7b27898d71d4082c0288f2c5d7abad1c1a1f561a1e86fb17020f23391142d41f",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/7b27898d71d4082c0288f2c5d7abad1c1a1f561a1e86fb17020f23391142d41f.bin"
+        },
+        {
+          "path": "src/app.ts",
+          "bytes": 31219,
+          "sha256": "7a68572564d8fd60747edde7562b33a4a0861f6e6d4d6a60c3cdcc6d4a3966d2",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/7a68572564d8fd60747edde7562b33a4a0861f6e6d4d6a60c3cdcc6d4a3966d2.bin"
+        },
+        {
+          "path": "src/updates/features.ts",
+          "bytes": 842,
+          "sha256": "ef85a70736d344e7028ba5eb6f6e517634b119c2c70754ff2a05ec452186bbb4",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/ef85a70736d344e7028ba5eb6f6e517634b119c2c70754ff2a05ec452186bbb4.bin"
+        },
+        {
+          "path": "tests/leash-presets.test.ts",
+          "bytes": 12268,
+          "sha256": "b4f79f15bce6cb57d61b58a98d20bb1a6cd24170fd413429a9003effb4be413d",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/b4f79f15bce6cb57d61b58a98d20bb1a6cd24170fd413429a9003effb4be413d.bin"
+        },
+        {
+          "path": "website/dist/dashboard.js",
+          "bytes": 78511,
+          "sha256": "8f3be6e0dbf7bdb24fd125c72878ecb2f50c88ea5a45959ebfd73bb22ea07d49",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/8f3be6e0dbf7bdb24fd125c72878ecb2f50c88ea5a45959ebfd73bb22ea07d49.bin"
+        }
+      ]
     }
   ],
   "baselineSources": [

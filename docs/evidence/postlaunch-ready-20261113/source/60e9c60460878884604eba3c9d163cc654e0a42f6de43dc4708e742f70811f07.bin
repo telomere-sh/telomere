@@ -1,0 +1,6 @@
+.leash-presets{min-width:0;display:grid;gap:12px}
+.leash-presets-actions{display:flex;flex-wrap:wrap;gap:12px;min-width:0}
+.drawer-form .leash-presets .pill{width:auto;max-width:100%;min-height:48px;white-space:normal;overflow-wrap:anywhere;text-align:center}
+.leash-presets .form-help,.leash-presets .form-error{margin:0;overflow-wrap:anywhere}
+.leash-presets-status:empty{display:none}
+@media(max-width:700px){.drawer-form .leash-presets .pill{flex:1 1 100%}}

@@ -235,7 +235,7 @@ export function createApp(service: Service, auth: Auth, logger: Logger, publicRo
     escrowAddress: service.config.ESCROW_ADDRESS, receiptSigner: service.bridge.account.address,
     prices: { cpuPerSecond: service.config.CPU_PRICE_PER_SECOND, inferenceFixed: service.config.INFERENCE_FIXED_PRICE, maxSeconds: 120, maxTokens: service.config.MAX_TOKENS },
     nearAvailable: service.nearAvailable && nearReadiness.state === 'ready', nearReadiness, cpuMode: service.config.CPU_MODE,
-    postLaunch: { enabled: publicFeatures(service.config) },
+    postLaunch: { enabled: publicFeatures(service.config), leashCaps: { maxPerHourAtomic: '250000000', maxPerDayAtomic: '1000000000' } },
     workload: { nearModel: service.config.NEAR_MODEL ?? null }, cystsAvailable: Boolean(cysts),
     largeCystsAvailable: Boolean(largeCysts),
     largeCystsReplicated: Boolean(service.config.CYSTS_LARGE_REPLICATION_CONFIG),
