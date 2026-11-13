@@ -1,0 +1,25 @@
+.fossil-record{--fossil-space:20px;--fossil-detail:25px;--fossil-region:65px;--fossil-small:9px;--fossil-body:15px;--fossil-leading:1.6;--fossil-rule:1px;--fossil-focus:2px;--fossil-offset:5px;--fossil-table-min:700px;min-width:0}
+.fossil-record [hidden]{display:none!important}
+.fossil-record .fossil-help,.fossil-record .fossil-error{font-size:var(--fossil-body);line-height:var(--fossil-leading);margin:0;overflow-wrap:anywhere}
+.fossil-record .fossil-help{color:var(--muted)}
+.fossil-record .fossil-error{padding:var(--fossil-space);background:var(--panel);border-left:var(--fossil-focus) solid var(--orange);color:var(--ink)}
+.fossil-record .fossil-actions{display:flex;flex-wrap:wrap;gap:var(--fossil-space)}
+.fossil-record .pill:disabled{cursor:wait;opacity:.65;transform:none}
+.fossil-record :is(input,select,a,button,.fossil-table-wrap):focus-visible{outline:var(--fossil-focus) solid var(--orange);outline-offset:var(--fossil-offset)}
+.fossil-record .fossil-results{margin-top:var(--fossil-region);min-width:0;max-width:100%}
+.fossil-record .fossil-results h3,.fossil-record .fossil-agents h4{font:inherit;margin:0 0 var(--fossil-small);overflow-wrap:anywhere}
+.fossil-record .fossil-results>p{font-size:var(--fossil-body);line-height:var(--fossil-leading);margin:0 0 var(--fossil-space)}
+.fossil-record .fossil-details{margin:var(--fossil-detail) 0 var(--fossil-region);border-top:var(--fossil-rule) solid var(--line)}
+.fossil-record .fossil-details>div{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:var(--fossil-space);padding:var(--fossil-space) 0;border-bottom:var(--fossil-rule) solid var(--line)}
+.fossil-record .fossil-details :is(dt,dd){margin:0;min-width:0;font-size:var(--fossil-body);line-height:var(--fossil-leading);overflow-wrap:anywhere}
+.fossil-record .fossil-details dt{color:var(--muted)}
+.fossil-record a{text-decoration:underline;text-underline-offset:var(--fossil-offset);overflow-wrap:anywhere}
+.fossil-record .fossil-table-wrap{width:100%;max-width:100%;overflow-x:auto;margin:var(--fossil-detail) 0 var(--fossil-region)}
+.fossil-record table{border-collapse:collapse;width:100%;min-width:var(--fossil-table-min);table-layout:fixed;font-size:var(--fossil-body);line-height:var(--fossil-leading)}
+.fossil-record :is(caption,th,td){text-align:left;padding:var(--fossil-space);vertical-align:top;overflow-wrap:anywhere}
+.fossil-record :is(th,td){border-bottom:var(--fossil-rule) solid var(--line)}
+.fossil-record td>*{display:block;margin-bottom:var(--fossil-small)}
+.fossil-record time{font-variant-numeric:tabular-nums}
+.fossil-record .fossil-agents{list-style:none;padding:0;margin:var(--fossil-detail) 0 0}
+@media(max-width:600px){.fossil-record .fossil-details>div{grid-template-columns:minmax(0,1fr);gap:var(--fossil-small)}}
+@media(max-width:809px){.fossil-record .fossil-actions{flex-direction:column;align-items:stretch}.fossil-record .field{max-width:100%;min-width:0}}

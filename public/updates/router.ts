@@ -13,6 +13,9 @@ import { mountRunway } from './runway.js';
 import './accounting.css';
 import { mountAccounting } from './accounting.js';
 
+import './fossils.css';
+import { mountFossilRecord } from './fossils.js';
+
 type Hero = (label: string, title: string, description: string, meta?: string) => string;
 function toolLifecycle(main: HTMLElement, mount: () => (() => void) | void): void {
   let started = false, cleanup: (() => void) | undefined;
@@ -47,6 +50,9 @@ export async function mountPostlaunchRoute(main: HTMLElement, path: string, hero
       toolLifecycle(main, () => mountSharedReceipt(main, hero('Shared receipt', 'The run.<br><span class="orange">On record.</span>',
         'A receipt summary shared by its owner. Current settlement evidence is checked before it is displayed.', 'TELOMERE / SHARED RECEIPT'), shared[1]!));
       return;
+    }
+    if (path === '/fossils' && enabled.includes('fossils')) {
+      toolLifecycle(main, () => mountFossilRecord(main, hero('Fossil Record', 'Every agent.<br><span class="orange">A history.</span>', 'Canonical Selection lifecycle events, with block evidence and explicit index coverage.'))); return;
     }
     if (path === '/accounting' && enabled.includes('accounting')) {
       toolLifecycle(main, () => mountAccounting(main, hero('Accounting', 'Your spend.<br><span class="orange">Every entry.</span>', 'Owner-only monthly summaries and complete CSV exports of confirmed charges and returns.'))); return;

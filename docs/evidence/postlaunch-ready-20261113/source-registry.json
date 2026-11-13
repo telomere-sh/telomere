@@ -475,6 +475,67 @@
           "storedPath": "docs/evidence/postlaunch-ready-20261113/source/7e82d5fb2d8bb5bb9d96a504bf255299adee9719d5d8de25be5baf8a5832bec4.bin"
         }
       ]
+    },
+    {
+      "id": 8,
+      "slug": "fossils",
+      "state": "prepared-not-deployed",
+      "files": [
+        {
+          "path": "docs/updates/08-fossil-record.md",
+          "bytes": 1076,
+          "sha256": "ba0b0db8e370fe457dcd92a8c6148741ac53f5a58cadb28ec70407f51dd9515f",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/ba0b0db8e370fe457dcd92a8c6148741ac53f5a58cadb28ec70407f51dd9515f.bin"
+        },
+        {
+          "path": "public/updates/fossils.css",
+          "bytes": 2931,
+          "sha256": "e9068715798bf94869c497ca34b0cab42348b6371f252a39d4126b92ce0a05ef",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/e9068715798bf94869c497ca34b0cab42348b6371f252a39d4126b92ce0a05ef.bin"
+        },
+        {
+          "path": "public/updates/fossils.ts",
+          "bytes": 20243,
+          "sha256": "bd437e5634b19b0202c8bba86863f541d523ea08e7bf8718fe4e7cabc42d7509",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/bd437e5634b19b0202c8bba86863f541d523ea08e7bf8718fe4e7cabc42d7509.bin"
+        },
+        {
+          "path": "public/updates/router.ts",
+          "bytes": 4925,
+          "sha256": "2f5b1c21275b6e4d9c8708bc1b6e6c195cea1ecf81bffec4e01c20844ec4ea23",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/2f5b1c21275b6e4d9c8708bc1b6e6c195cea1ecf81bffec4e01c20844ec4ea23.bin"
+        },
+        {
+          "path": "src/app.ts",
+          "bytes": 32366,
+          "sha256": "be5378cc81b0e2e72a34e648be8271920f0a80b898c2756d45f903d4e6f615b0",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/be5378cc81b0e2e72a34e648be8271920f0a80b898c2756d45f903d4e6f615b0.bin"
+        },
+        {
+          "path": "src/updates/features.ts",
+          "bytes": 877,
+          "sha256": "ebba132337f6ceafa1ca3ccebf50d9c1be48aa888ef65e295a9c69cccfe50ed9",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/ebba132337f6ceafa1ca3ccebf50d9c1be48aa888ef65e295a9c69cccfe50ed9.bin"
+        },
+        {
+          "path": "src/updates/selection-explorer.ts",
+          "bytes": 14145,
+          "sha256": "08c47cb1423f5d7d825c3161fa38ffd11038f10da08a98e12791af0a036b72d8",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/08c47cb1423f5d7d825c3161fa38ffd11038f10da08a98e12791af0a036b72d8.bin"
+        },
+        {
+          "path": "tests/selection-explorer.test.ts",
+          "bytes": 16175,
+          "sha256": "5ca3442435fc11f1eba032cc7fd042f5dc43d292c353ca9cdfe7c8ff74380d0f",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/5ca3442435fc11f1eba032cc7fd042f5dc43d292c353ca9cdfe7c8ff74380d0f.bin"
+        },
+        {
+          "path": "website/dist/site.js",
+          "bytes": 50774,
+          "sha256": "6689937417e46faffd1e59d410572732eb5e61859ae170644271a59f2aee178b",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/6689937417e46faffd1e59d410572732eb5e61859ae170644271a59f2aee178b.bin"
+        }
+      ]
     }
   ],
   "baselineSources": [

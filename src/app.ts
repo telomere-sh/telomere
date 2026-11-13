@@ -64,6 +64,7 @@ import type { PaidCystInputService } from './platform-runtime/paid-cyst-input.js
 import { createPaidCystInputRoutes } from './platform-runtime/paid-cyst-input-routes.js';
 import { createAccountingRoutes } from './updates/accounting.js';
 import { createRunwayRoutes } from './updates/runway.js';
+import { SelectionExplorer, createSelectionExplorerRoutes } from './updates/selection-explorer.js';
 import type { Website } from './website.js';
 import { unversionedRelease, type PublicRelease } from './release.js';
 
@@ -184,6 +185,8 @@ export function createApp(service: Service, auth: Auth, logger: Logger, publicRo
         functionName: 'availableBalance', args: [addressSchema.parse(owner)], blockNumber: BigInt(anchor.height) })).toString(),
       context => auth.owner(getCookie(context, cookie))));
   }
+  if (featureEnabled(service.config, 'fossils')) app.route('/api/public/selection', createSelectionExplorerRoutes(
+    platform?.selectionDataset && platform.selection ? new SelectionExplorer(service.db, platform.selectionDataset, platform.selection) : undefined));
   app.route('/api/public/receipts', createPublicReceiptRoutes(configuredPublicReceiptVerifier(service)));
   if (featureEnabled(service.config, 'receipt-links')) {
     const links = configuredReceiptLinks(service);
