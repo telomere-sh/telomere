@@ -110,6 +110,67 @@
           "storedPath": "docs/evidence/postlaunch-ready-20261113/source/9d2c770f1c6d5f56281b93ab64392b044f8cc5f0f1cb3e6c9cece5474ed5ee3a.bin"
         }
       ]
+    },
+    {
+      "id": 3,
+      "slug": "prices",
+      "state": "prepared-not-deployed",
+      "files": [
+        {
+          "path": "docs/updates/03-settled-prices.md",
+          "bytes": 1993,
+          "sha256": "7a5912e2e02f33dbc6c491e8fb8058d60d561c6ebb39f9c7be0b9ea0eb868347",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/7a5912e2e02f33dbc6c491e8fb8058d60d561c6ebb39f9c7be0b9ea0eb868347.bin"
+        },
+        {
+          "path": "public/updates/prices.css",
+          "bytes": 1403,
+          "sha256": "0d0f5f6edeb1ca1c168c731c52a5dc8d5f981a4cd9ae2e51d913d7ab99668c57",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/0d0f5f6edeb1ca1c168c731c52a5dc8d5f981a4cd9ae2e51d913d7ab99668c57.bin"
+        },
+        {
+          "path": "public/updates/prices.ts",
+          "bytes": 15907,
+          "sha256": "63bbda4a95360caf5455e6febac3b3879cdeeaa53ef8563cca4ca1861a7a6ba0",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/63bbda4a95360caf5455e6febac3b3879cdeeaa53ef8563cca4ca1861a7a6ba0.bin"
+        },
+        {
+          "path": "public/updates/router.ts",
+          "bytes": 2765,
+          "sha256": "947062d11d0d50fb6100a290a3856971e38d89b48e7044c1d9b0d1521446a7f5",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/947062d11d0d50fb6100a290a3856971e38d89b48e7044c1d9b0d1521446a7f5.bin"
+        },
+        {
+          "path": "src/app.ts",
+          "bytes": 30257,
+          "sha256": "cd7edf1d42f515a7839ea0f6c1f74f7df118d43a5b7bb9f83a20ca5025841c90",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/cd7edf1d42f515a7839ea0f6c1f74f7df118d43a5b7bb9f83a20ca5025841c90.bin"
+        },
+        {
+          "path": "src/updates/features.ts",
+          "bytes": 808,
+          "sha256": "6a3e3c8e56c79895b56f603405be50f30b5fe17ac28335301a0c5c8e0d6ae29a",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/6a3e3c8e56c79895b56f603405be50f30b5fe17ac28335301a0c5c8e0d6ae29a.bin"
+        },
+        {
+          "path": "src/updates/price-board.ts",
+          "bytes": 7205,
+          "sha256": "408b9c59325e6f06bdf49627bcf557c61a11378d182cc69247d7453dc92b5bec",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/408b9c59325e6f06bdf49627bcf557c61a11378d182cc69247d7453dc92b5bec.bin"
+        },
+        {
+          "path": "tests/settled-price-board.test.ts",
+          "bytes": 9727,
+          "sha256": "8377468ebc21a0a3dce94cd0b3a1561f37def1456d34d4a5c47376bba951d082",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/8377468ebc21a0a3dce94cd0b3a1561f37def1456d34d4a5c47376bba951d082.bin"
+        },
+        {
+          "path": "website/dist/site.js",
+          "bytes": 50562,
+          "sha256": "f5e03fc302488681460047b1cc3bcda5484974584e96500e591c58f24d47f01a",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/f5e03fc302488681460047b1cc3bcda5484974584e96500e591c58f24d47f01a.bin"
+        }
+      ]
     }
   ],
   "baselineSources": [

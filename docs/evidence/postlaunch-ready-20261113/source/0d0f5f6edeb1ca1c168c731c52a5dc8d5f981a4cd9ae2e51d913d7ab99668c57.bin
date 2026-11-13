@@ -1,0 +1,20 @@
+.price-board { --price-board-gap: 24px; --price-board-cell: 16px; }
+.price-board .inline-form { align-items: end; }
+.price-board .field { min-width: 0; }
+.price-board .pill:disabled { cursor: wait; opacity: .65; transform: none; }
+.price-board .price-board-results { margin-top: var(--price-board-gap); }
+.price-board .price-board-meta { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--price-board-gap); }
+.price-board .price-board-meta dt { color: var(--muted); }
+.price-board .price-board-meta dd { margin: 0; overflow-wrap: anywhere; }
+.price-board .price-board-table { width: 100%; max-width: 100%; overflow-x: auto; margin-block: var(--price-board-gap); }
+.price-board caption { text-align: left; color: var(--muted); padding-block: var(--price-board-cell); }
+.price-board th, .price-board td { vertical-align: top; }
+.price-board .spec-table { display: table; }
+.price-board td { white-space: nowrap; }
+.price-board #price-board-error { color: var(--ink); border-left: 2px solid var(--orange); padding-left: var(--price-board-cell); }
+.price-board #price-board-error, .price-board #price-board-progress { flex-basis: 100%; overflow-wrap: anywhere; }
+@media (max-width: 900px) {
+  .price-board .price-board-meta { grid-template-columns: minmax(0, 1fr); }
+  .price-board .inline-form { align-items: stretch; }
+  .price-board .field, .price-board .pill { width: 100%; }
+}

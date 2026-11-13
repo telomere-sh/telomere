@@ -34,6 +34,7 @@ import { featureEnabled, publicFeatures } from './updates/features.js';
 import { configuredFinancialSource } from './updates/financial-source.js';
 import { FinancialHistory } from './updates/financial-history.js';
 import { createRefundInsightRoutes, createRefundReferenceRoutes } from './updates/refund-routes.js';
+import { createPriceBoardRoutes } from './updates/price-board.js';
 import { createPlatformPresentedMeterRoutes } from './receipts/platform-presented-meter-routes.js';
 import { createPlatformV2Routes } from './receipts/platform-v2-routes.js';
 import type { ControllerPlatform } from './platform.js';
@@ -163,10 +164,13 @@ export function createApp(service: Service, auth: Auth, logger: Logger, publicRo
   app.get('/health/live', context => context.json({ status: 'ok' }));
   app.get('/api/version', context => context.json(release, 200, { 'Cache-Control': 'no-store' }));
   app.get('/api/public/features', context => context.json({ enabled: publicFeatures(service.config) }, 200, { 'Cache-Control': 'no-store' }));
-  if (featureEnabled(service.config, 'refunds')) {
+  if (featureEnabled(service.config, 'refunds') || featureEnabled(service.config, 'prices')) {
     const source = configuredFinancialSource(service), history = new FinancialHistory(source);
-    app.route('/api/public/insights', createRefundInsightRoutes(history));
-    app.route('/api/insights', createRefundReferenceRoutes(source, context => auth.owner(getCookie(context, cookie))));
+    if (featureEnabled(service.config, 'refunds')) {
+      app.route('/api/public/insights', createRefundInsightRoutes(history));
+      app.route('/api/insights', createRefundReferenceRoutes(source, context => auth.owner(getCookie(context, cookie))));
+    }
+    if (featureEnabled(service.config, 'prices')) app.route('/api/public/insights', createPriceBoardRoutes(history));
   }
   app.route('/api/public/receipts', createPublicReceiptRoutes(configuredPublicReceiptVerifier(service)));
   if (platformRuntime) app.route('/api/platform/public', createPlatformPublicFinancialRoutes(new PlatformPublicFinancialReader(platformRuntime.bridge, 12,
