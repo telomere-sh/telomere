@@ -424,6 +424,7 @@ for entry in plan_record['files']:
     assert name in tracked and name not in plan_names
     plan_names.add(name)
     raw = (root / name).read_bytes()
+    raw = verification_previous.get(name, raw)
     assert len(raw) == entry['bytes'] and hashlib.sha256(raw).hexdigest() == digest, 'Approved plan feedback changed: ' + name
     references += 1
 assert plan_names == set(plan_previous) | {'public/run-plan-policy.ts'}
@@ -432,7 +433,10 @@ for entry in latest['files']:
     name, digest = validate_source_entry(entry)
     assert name in tracked and name.startswith(('public/', 'website/dist/')) and name not in latest_names
     latest_names.add(name)
-    raw = verification_previous.get(name, publish_previous.get(name, plan_previous.get(name, domain_previous.get(name, wallet_style_previous.get(name, mobile_previous.get(name, performance_previous.get(name, (root / name).read_bytes())))))))
+    raw = (root / name).read_bytes()
+    for sources in [verification_previous, performance_previous, mobile_previous, wallet_style_previous,
+                    domain_previous, plan_previous, publish_previous]:
+        raw = sources.get(name, raw)
     assert len(raw) == entry['bytes'] and hashlib.sha256(raw).hexdigest() == digest, 'Approved frontend changed: ' + name
     references += 1
 assert expected_historical <= latest_names
