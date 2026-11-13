@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "previousRecord": "docs/evidence/plan-limits-20261112/frontend-source.json",
+  "previousSourceCommit": "8f826d7d30cd266e3fc0b45c52a2201d22de8974",
+  "scope": "Publish the prepared homepage-only contract identity with the exact owner-supplied address 0xb200000000000000000000896858dec29c10fc01. No escrow/token/operator/payment configuration change.",
+  "preservedSources": [
+    {
+      "path": "website/dist/site.js",
+      "bytes": 49852,
+      "sha256": "78b5ab040cad66a5d59849b34546e0becb352aa183e53380ee921878837bdb47",
+      "storedPath": "docs/evidence/contract-publish-20261113/source/78b5ab040cad66a5d59849b34546e0becb352aa183e53380ee921878837bdb47.bin"
+    },
+    {
+      "path": "website/dist/site.css",
+      "bytes": 29569,
+      "sha256": "b87d6dd4a759627307dddae33935e2148d36cfdaf8c8db1d206a604a9561fa7a",
+      "storedPath": "docs/evidence/contract-publish-20261113/source/b87d6dd4a759627307dddae33935e2148d36cfdaf8c8db1d206a604a9561fa7a.bin"
+    },
+    {
+      "path": "scripts/build-browser.mjs",
+      "bytes": 650,
+      "sha256": "26b822fbb527b39ede2f457450ba933f270a4d2401c7255d6fd7b07db0b3429b",
+      "storedPath": "docs/evidence/contract-publish-20261113/source/26b822fbb527b39ede2f457450ba933f270a4d2401c7255d6fd7b07db0b3429b.bin"
+    },
+    {
+      "path": "website/optional/contract-address/config.json",
+      "bytes": 42,
+      "sha256": "aa43a70241423ea80dddaa1fb2bc4d719b48f8e1aacff3206a18ca4831263e07",
+      "storedPath": "docs/evidence/contract-publish-20261113/source/aa43a70241423ea80dddaa1fb2bc4d719b48f8e1aacff3206a18ca4831263e07.bin"
+    },
+    {
+      "path": "website/optional/contract-address/contract-address.ts",
+      "bytes": 5344,
+      "sha256": "f67efb12f5b79c0bb344cee8803e88e56856f0c5b1ddf2016f30d6c3acccb2be",
+      "storedPath": "docs/evidence/contract-publish-20261113/source/f67efb12f5b79c0bb344cee8803e88e56856f0c5b1ddf2016f30d6c3acccb2be.bin"
+    },
+    {
+      "path": "website/optional/contract-address/contract-address.css",
+      "bytes": 3494,
+      "sha256": "c865792b0d9bfc345a8b1193ce3c4e4f3f817ad0f44318b86439d4967d4b4804",
+      "storedPath": "docs/evidence/contract-publish-20261113/source/c865792b0d9bfc345a8b1193ce3c4e4f3f817ad0f44318b86439d4967d4b4804.bin"
+    }
+  ],
+  "files": [
+    {
+      "path": "website/dist/site.js",
+      "bytes": 49987,
+      "sha256": "4c2d5dbc51c007df49356a43b74b6df783e3a6611716661f96edd181a439c206"
+    },
+    {
+      "path": "website/dist/site.css",
+      "bytes": 33547,
+      "sha256": "0134972796cf12fca855b2538c2e52c91cea47fdcb1977b9473b966965bae9b2"
+    },
+    {
+      "path": "scripts/build-browser.mjs",
+      "bytes": 722,
+      "sha256": "58fb16fbcc43a50634a0f31b8b05819c1f3ce5ede324fecc2fdf96f115b461e8"
+    },
+    {
+      "path": "website/optional/contract-address/config.json",
+      "bytes": 81,
+      "sha256": "97deb05aed471e9cd6c2d36d7dbd57567141e6eb062f6e328981487ecd93a1a9"
+    },
+    {
+      "path": "website/optional/contract-address/contract-address.ts",
+      "bytes": 5347,
+      "sha256": "be0a2cd05d46cb0406d414e1f26bbe2bb94ced0ba43fcda86a6fe4631a0b3d5d"
+    },
+    {
+      "path": "website/optional/contract-address/contract-address.css",
+      "bytes": 3643,
+      "sha256": "7d695260cd3a24e7be18062914af1d2e8cbe31c8e3692f3e8b71f5350410953b"
+    },
+    {
+      "path": "public/published-contract.ts",
+      "bytes": 1240,
+      "sha256": "49d614b46fefe1372261a714661351f74c99b683e3302e1353f540e79e3a60e5"
+    }
+  ]
+}

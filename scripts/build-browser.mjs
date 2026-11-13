@@ -6,6 +6,7 @@ if (esbuild.version !== '0.28.2') throw new Error('Install the reviewed esbuild 
 for (const [entry, output] of [
   ['public/app.ts', 'dist/public/app.js'],
   ['public/workspace-client.ts', 'website/dist/workspace-client.js'],
+  ['public/published-contract.ts', 'website/dist/contract-address.js'],
 ]) {
   await esbuild.build({ entryPoints: [entry], outfile: output, bundle: true, format: 'esm',
     platform: 'browser', target: 'es2022', minifyWhitespace: true, legalComments: 'external' });

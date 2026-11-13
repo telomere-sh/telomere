@@ -255,6 +255,32 @@ for entry in latest['previousSources']:
     references += 1
 expected_historical = {entry['path'] for entry in remediation['files']} | {entry['path'] for entry in integration['preserved']}
 assert set(historical_sources) == expected_historical
+publish_document = 'docs/evidence/contract-publish-20261113/frontend-source.json'
+assert publish_document in tracked
+publish_bytes = (root / publish_document).read_bytes()
+assert hashlib.sha256(publish_bytes).hexdigest() == 'ddd2813460cd3f99aa7eb3e1b7eab66d1a4f563578071981905b315db8db3e29'
+publish_record = json.loads(publish_bytes)
+assert publish_record['schemaVersion'] == 1 and publish_record['previousRecord'] == 'docs/evidence/plan-limits-20261112/frontend-source.json'
+publish_previous = {}
+for entry in publish_record['preservedSources']:
+    name, digest = validate_source_entry(entry)
+    stored = entry['storedPath']
+    assert stored == 'docs/evidence/contract-publish-20261113/source/' + digest + '.bin' and stored in tracked
+    raw = (root / stored).read_bytes()
+    assert name not in publish_previous and len(raw) == entry['bytes'] and hashlib.sha256(raw).hexdigest() == digest
+    publish_previous[name] = raw
+    references += 1
+assert set(publish_previous) == {'website/dist/site.js', 'website/dist/site.css', 'scripts/build-browser.mjs',
+    'website/optional/contract-address/config.json', 'website/optional/contract-address/contract-address.ts', 'website/optional/contract-address/contract-address.css'}
+publish_names = set()
+for entry in publish_record['files']:
+    name, digest = validate_source_entry(entry)
+    assert name in tracked and name not in publish_names
+    publish_names.add(name)
+    raw = (root / name).read_bytes()
+    assert len(raw) == entry['bytes'] and hashlib.sha256(raw).hexdigest() == digest, 'Approved contract publication changed: ' + name
+    references += 1
+assert publish_names == set(publish_previous) | {'public/published-contract.ts'}
 performance_document = 'docs/evidence/website-performance-20261023/frontend-source.json'
 assert performance_document in tracked
 performance_bytes = (root / performance_document).read_bytes()
@@ -277,6 +303,7 @@ for entry in performance['files']:
     assert name in tracked and name not in performance_names
     performance_names.add(name)
     raw = (root / name).read_bytes()
+    raw = publish_previous.get(name, raw)
     assert len(raw) == entry['bytes'] and hashlib.sha256(raw).hexdigest() == digest, 'Approved loading fix changed: ' + name
     references += 1
 assert performance_names == {'website/dist/site.js', 'website/dist/preload.js', 'ops/website-performance/static-compression.conf'}
@@ -379,7 +406,7 @@ for entry in latest['files']:
     name, digest = validate_source_entry(entry)
     assert name in tracked and name.startswith(('public/', 'website/dist/')) and name not in latest_names
     latest_names.add(name)
-    raw = plan_previous.get(name, domain_previous.get(name, wallet_style_previous.get(name, mobile_previous.get(name, performance_previous.get(name, (root / name).read_bytes())))))
+    raw = publish_previous.get(name, plan_previous.get(name, domain_previous.get(name, wallet_style_previous.get(name, mobile_previous.get(name, performance_previous.get(name, (root / name).read_bytes()))))))
     assert len(raw) == entry['bytes'] and hashlib.sha256(raw).hexdigest() == digest, 'Approved frontend changed: ' + name
     references += 1
 assert expected_historical <= latest_names

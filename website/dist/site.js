@@ -1,6 +1,7 @@
 import {mountMotion} from './motion.js';
 import {fixAgentPanels} from './agent-panels.js';
 import {mountGuarantees} from './proof-chain.js';
+import {syncContractAddress} from './contract-address.js';
 export const icon=name=>`<svg class="icon" viewBox="0 0 40 40" aria-hidden="true"><use href="/assets/tech/icons.svg#${name}"></use></svg>`;
 const $=(s,r=document)=>r.querySelector(s);
 let path=decodeURIComponent(location.pathname).replace(/\/$/,'')||'/';
@@ -80,13 +81,14 @@ async function populatePage(main){
 }
 async function renderRoute(){
  path=decodeURIComponent(location.pathname).replace(/\/$/,'')||'/';isHome=path==='/';
+ if(!isHome)syncContractAddress(false);
  for(const el of routeCache.values()){el.hidden=true;el.inert=true;el.removeAttribute('id')}
  const initial=$('#page-content');if(initial&&!routeCache.size){initial.remove()}
  document.body.classList.toggle('tl-page',!isHome);document.body.classList.toggle('dashboard-page',path.startsWith('/dashboard'));document.body.classList.toggle('home-route',isHome);
  const css=document.querySelector('link[href="/home.css"]');if(css)css.disabled=!isHome;
  if(isHome){await prepareHome();$('#main').dataset.pagePreparing='true';$('#main').hidden=false;document.title='Telomere | Every second proven';setTimeout(initHome,1400)}
  else{if($('#main'))$('#main').hidden=true;let page=routeCache.get(path);if(!page){page=document.createElement('main');page.id='page-content';page.dataset.pagePreparing='true';document.body.insertBefore(page,$('.tl-footer'));routeCache.set(path,page);await populatePage(page);bindPage(page)}else{page.id='page-content';page.dataset.pagePreparing='true';page.hidden=false;page.inert=false;if(path.startsWith('/dashboard')){await page.refreshWorkspace?.();if(new URLSearchParams(location.search).has('configure'))page.openConfiguration?.()}}}
- if(!isHome)document.title=(path.startsWith('/dashboard')?'Workspace':path.split('/')[1]?.replace(/^./,c=>c.toUpperCase())||'Telomere')+' | Telomere';$('.tl-footer').hidden=isHome||path.startsWith('/dashboard');if(isHome){if(!homeReady){await brandingReady;await new Promise(r=>setTimeout(r,1400));initHome();homeReady=true}homeEnhancements()}const activeRoot=isHome?$('#main'):$('#page-content');await window.TelomereAssets?.prepare(activeRoot);if(activeRoot)delete activeRoot.dataset.pagePreparing;window.TelomereAssets?.reveal();updateHeader();requestAnimationFrame(()=>dispatchEvent(new Event('resize')));
+ if(!isHome)document.title=(path.startsWith('/dashboard')?'Workspace':path.split('/')[1]?.replace(/^./,c=>c.toUpperCase())||'Telomere')+' | Telomere';$('.tl-footer').hidden=isHome||path.startsWith('/dashboard');if(isHome){if(!homeReady){await brandingReady;await new Promise(r=>setTimeout(r,1400));initHome();homeReady=true}homeEnhancements()}const activeRoot=isHome?$('#main'):$('#page-content');await window.TelomereAssets?.prepare(activeRoot);if(activeRoot)delete activeRoot.dataset.pagePreparing;window.TelomereAssets?.reveal();if(isHome)syncContractAddress(true);updateHeader();requestAnimationFrame(()=>dispatchEvent(new Event('resize')));
 }
 let navigating=false;
 async function navigate(href,replace=false){if(navigating)return;const url=new URL(href,location.href);if(url.pathname===location.pathname&&url.search===location.search&&!url.hash){closeMenu();return}navigating=true;closeMenu();if(!replace)history.pushState({},'',url);const run=async()=>{await renderRoute();window.scrollTo({top:0,behavior:'instant'});if(url.hash)setTimeout(()=>document.getElementById(url.hash.slice(1))?.scrollIntoView(),50)};try{if(document.startViewTransition&&!matchMedia('(prefers-reduced-motion: reduce)').matches){const transition=document.startViewTransition(run);await transition.updateCallbackDone}else await run()}finally{navigating=false}}

@@ -1,4 +1,4 @@
-/** Dormant homepage component. It is intentionally absent from website/dist. */
+/** Homepage contract-address component, shared with the private design preview. */
 export interface ContractAddressConfig {
   enabled: boolean;
   address: string | null;

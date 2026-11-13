@@ -2,10 +2,11 @@ import {describe, expect, it} from 'vitest';
 import {mountContractAddress, resolveContractAddress} from '../website/optional/contract-address/contract-address.js';
 import config from '../website/optional/contract-address/config.json' with {type:'json'};
 
-describe('dormant contract address configuration', () => {
-  it('ships disabled without choosing a project address', () => {
-    expect(config).toEqual({enabled:false,address:null});
-    expect(resolveContractAddress(config)).toBeNull();
+describe('published contract address configuration', () => {
+  it('publishes exactly the address explicitly approved by the owner', () => {
+    const address='0xb200000000000000000000896858dec29c10fc01';
+    expect(config).toEqual({enabled:true,address});
+    expect(resolveContractAddress(config)).toEqual({address,explorerUrl:'https://basescan.org/address/'+address});
   });
   it('does not touch the DOM when hidden or missing a valid address', () => {
     // Any DOM access on this deliberately empty target would throw.
