@@ -1,0 +1,91 @@
+import { createHash } from 'node:crypto';
+import { PGlite } from '@electric-sql/pglite';
+import { drizzle } from 'drizzle-orm/pglite';
+import { beforeEach, afterEach, it, expect, vi } from 'vitest';
+import type { Database } from '../src/store.js';
+import { selectionAgents, selectionBlocks, selectionCursors, selectionEvents, selectionMigrationSQL, selectionSchema } from '../src/selection/schema.js';
+import { selectionProjection, type SelectionDecodedEvent } from '../src/selection/events.js';
+import type { SelectionBlock, SelectionReader } from '../src/selection/rpc.js';
+import { createSelectionPublicService } from '../src/selection/public-service.js';
+import { RemoteAgentEconomics } from '../src/updates/agent-economics-remote.js';
+import { selectionPublicJson, selectionPublicOrigin } from '../src/selection/public-http.js';
+const hash = (v: string) => '0x' + createHash('sha256').update(v).digest('hex');
+const address = (n: number) => '0x' + n.toString(16).padStart(40, '0');
+const registry = address(1), owner = address(2), vault = address(3), agentId = hash('agent'), code = hash('code'), zero = '0x' + '0'.repeat(64);
+let pg: PGlite, service: ReturnType<typeof createSelectionPublicService>, features: string[], clock: number, reader: SelectionReader;
+const input = { agentId, from: '2030-01-01', to: '2030-01-03' };
+beforeEach(async () => {
+  pg = new PGlite(); await pg.exec(selectionMigrationSQL);
+  // REASON: the fixture has the exact Selection schema subset used by these services.
+  const db = drizzle(pg, { schema: selectionSchema, casing: 'snake_case' }) as unknown as Database;
+  clock = Date.parse('2030-01-03T12:00:00Z'); features = ['fossils'];
+  const start = BigInt(Date.parse('2030-01-01T00:00:00Z') / 1000), birthAt = start + 86400n;
+  const blocks = new Map<bigint, SelectionBlock>([1n, 2n, 3n].map(h => [h, { height: h, hash: hash('b' + h), parentHash: hash('b' + (h - 1n)), timestamp: h === 1n ? start : h === 2n ? birthAt : BigInt(clock / 1000) }]));
+  reader = { chainId: async () => 8453, head: async () => 6n, codeHash: async () => code,
+    block: async h => { const block = blocks.get(h); if (!block) throw Error('block absent'); return block; },
+    logs: async () => [], spendableBalance: vi.fn(async () => '1000000') };
+  service = createSelectionPublicService({ db, profile: { reviewed: true, chainId: 8453, registryAddress: registry, registryCodeHash: code, startBlock: 1n, confirmations: 3 },
+    reader, features: async () => features, now: () => clock });
+  const ledger: SelectionDecodedEvent[] = [
+    { name: 'Birth', address: registry, height: 2n, blockHash: hash('b2'), transactionHash: hash('tx'), logIndex: 0, topics: [], data: '0x',
+      args: { agentId, parent: zero, owner, vault, identityId: '1', leashId: hash('leash'), cystHash: zero, endowment: '1000000' } },
+    { name: 'Subsidy', address: registry, height: 2n, blockHash: hash('b2'), transactionHash: hash('tx'), logIndex: 1, topics: [], data: '0x',
+      args: { agentId, source: owner, amount: '1000000', paymentRef: hash('entry') } },
+  ];
+  await db.insert(selectionCursors).values({ key: service.indexer.indexKey, profileHash: createHash('sha256').update(JSON.stringify([service.indexer.indexKey, code])).digest('hex'), nextBlock: 4n, lastHash: hash('b3'), revision: 1 });
+  await db.insert(selectionBlocks).values([...blocks.values()].map(b => ({ indexKey: service.indexer.indexKey, ...b })));
+  await db.insert(selectionEvents).values(ledger.map(e => ({ indexKey: service.indexer.indexKey, id: e.transactionHash + ':' + e.logIndex, height: e.height,
+    blockHash: e.blockHash, transactionHash: e.transactionHash, logIndex: e.logIndex, address: e.address, name: e.name, args: e.args })));
+  const projection = selectionProjection(ledger, blocks, registry);
+  await db.insert(selectionAgents).values([...projection.agents.values()].map(data => ({ indexKey: service.indexer.indexKey, agentId: data.agentId, owner: data.owner, vault: data.vault, data })));
+});
+afterEach(async () => { await service.close(); await pg.close(); });
+const path = () => '/api/public/selection/agents/' + agentId + '?from=' + input.from + '&to=' + input.to;
+it('keeps economics gated independently while canonical health and Fossil Record are ready', async () => {
+  expect((await service.app.request(path())).status).toBe(404);
+  const health = await (await service.app.request('/health/selection')).json(); expect(health).toMatchObject({ state: 'ready', stale: false, indexedThrough: '3' });
+  const fossils = await (await service.app.request('/api/public/selection/explorer?from=2030-01-01&to=2030-01-03')).json();
+  expect(fossils.events).toHaveLength(2); expect(fossils.agents).toHaveLength(1);
+});
+it('reads finite Vault funding from the same persisted index through the isolated public gateway', async () => {
+  features.push('agent-economics');
+  const fetcher = vi.fn<typeof fetch>(async (url, init) => { expect(init).toMatchObject({ method: 'GET', credentials: 'omit', redirect: 'error' });
+    return service.app.request(new URL(String(url)).pathname + new URL(String(url)).search); });
+  const remote = new RemoteAgentEconomics('http://127.0.0.1:3287', 8453, { fetch: fetcher });
+  const report = await remote.get(input);
+  expect(report.agent?.status).toBe('alive'); expect(report.metrics?.spendableBalanceUnits).toBe('1000000');
+  expect(report.totals).toMatchObject({ incomeUnits: '0', burnUnits: '0', subsidyUnits: '1000000' });
+  expect(report).not.toHaveProperty('owner'); expect(report.agent).not.toHaveProperty('vault'); expect(fetcher).toHaveBeenCalledOnce();
+});
+it('rejects wrong-network and private-field upstream reports instead of echoing them', async () => {
+  features.push('agent-economics');
+  const report = await (await service.app.request(path())).json();
+  for (const changed of [{ ...report, privateKey: 'secret' }, { ...report, index: { ...report.index, chainId: 1 } }, { ...report, agent: { ...report.agent, agentId: hash('other') } }]) {
+    const remote = new RemoteAgentEconomics('http://127.0.0.1:3287', 8453, { fetch: vi.fn(async () => Response.json(changed)) });
+    await expect(remote.get(input)).rejects.toMatchObject({ status: 503, code: 'agent_economics_unavailable' });
+  }
+});
+it('reports old evidence as syncing and rejects an orphaned anchor', async () => {
+  clock += 901000; expect(await service.health()).toMatchObject({ state: 'syncing', stale: true });
+  const original = reader.block; reader.block = async h => ({ ...await original(h), hash: hash('orphan') });
+  expect(await service.health()).toMatchObject({ state: 'unavailable', stale: true });
+});
+it('fails closed after a registry mismatch and never submits non-GET work', async () => {
+  reader.codeHash = async () => hash('changed'); await service.maintain();
+  expect(await service.health()).toMatchObject({ state: 'unavailable' });
+  expect((await service.app.request('/api/public/selection/explorer?from=2030-01-01&to=2030-01-03')).status).toBe(503);
+  expect((await service.app.request(path(), { method: 'POST' })).status).toBe(405);
+});
+it('bounds catch-up RPC work and resumes the backlog on the next cycle', async () => {
+  const sync = vi.spyOn(service.indexer, 'sync').mockResolvedValue({ indexedThrough: '3', processedBlocks: 64, rollbackBlocks: 0 });
+  await Promise.all([service.maintain(), service.maintain()]);
+  expect(sync).toHaveBeenCalledTimes(3);
+  await service.maintain();
+  expect(sync).toHaveBeenCalledTimes(6);
+});
+it('restricts origins and bounds response sizes and body-read deadlines', async () => {
+  for (const url of ['https://external.example', 'http://169.254.169.254', 'http://127.0.0.1:3287/path', 'http://user:pass@127.0.0.1:3287']) expect(selectionPublicOrigin.safeParse(url).success).toBe(false);
+  await expect(selectionPublicJson('http://127.0.0.1:3287', '/health/selection', { fetch: vi.fn(async () => Response.json({ oversized: 'x'.repeat(100) })), limit: 10 })).rejects.toThrow();
+  const hanging = new ReadableStream<Uint8Array>({ start() { /* Read stays pending until cancelled by the deadline. */ } });
+  await expect(selectionPublicJson('http://127.0.0.1:3287', '/health/selection', { timeoutMs: 20, fetch: vi.fn(async () => new Response(hanging, { headers: { 'content-type': 'application/json' } })) })).rejects.toThrow('deadline');
+});

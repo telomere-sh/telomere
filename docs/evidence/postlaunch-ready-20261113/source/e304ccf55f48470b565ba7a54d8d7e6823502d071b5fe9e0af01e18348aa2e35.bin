@@ -1,0 +1,18 @@
+# Public Selection data service
+
+Release09 adds a keyless loopback process using the same persisted Selection index classes as Fossil Record. It serves only GET economics, explorer and health routes. It validates the reviewed registry code hash and canonical creation receipt before opening its independent cache. Reorg, stale-data and exact integer-amount checks remain active. No signing key or financial application database is shared.
+
+## Prepare when server staging is authorized
+
+1. Stage the exact immutable main release through the existing protected rollout. Keep its full SHA; do not use local HEAD containing later updates.
+2. Copy `manage.py` and the service template from this commit into the private operator area. Run `python3 manage.py prepare --release /opt/telomere-mainnet-pilot/releases/FULL_SHA`. It clones the existing public index only when before/copy/after file hashes agree; it never stops or modifies the legacy index. The new service remains loopback-only and feature-gated. A failed preparation restores its previous unit/environment; the cache remains reconstructible.
+3. In the main rollout's **staged** profile, add `SELECTION_PUBLIC_ORIGIN=http://127.0.0.1:3287` before calculating its expected/activation profile hashes. Keep `SELECTION_ENABLED=false` in the CPU controller. Do not edit a live profile outside the protected promotion.
+4. Check `/health/selection` on port3287: `state=ready`, `stale=false`, expected Base8453 registry and at least3 confirmations. No signing key is needed. Verify real agent economics from this service before publication.
+
+## Publish and switch
+
+At the authorized slot push only the exact09 SHA and run the already prepared protected main promotion. The economics route uses the configured loopback source; its independent flag must now be enabled. Run `python3 manage.py activate` to switch only the existing exact explorer proxy from3286 to3287. Existing `/r/`, TLS and other nginx locations are preserved. Validate the public economics and explorer routes on the real agent. The legacy owner review remains available on3286; its separate index is a temporary fallback, never the financial authority.
+
+If activation fails, nginx is restored immediately. If the entire release is rolled back, run `manage.py rollback` before the main rollback while its recorded nginx hash still matches. It does not rewrite a subsequent website release. Keep the previous CPU release/backup and index cache. Repeated preparation is intentionally rejected rather than overwriting a running process. Remove the duplicate legacy index only in a separate reviewed maintenance operation.
+
+Updates10 and11 retain the same source without changing it. Update12 uses this fixed health route for Selection status. This directory contains preparation instructions, not an automatic deployment hook; running tests or building a release does not activate it.

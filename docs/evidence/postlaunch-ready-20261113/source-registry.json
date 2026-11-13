@@ -536,6 +536,133 @@
           "storedPath": "docs/evidence/postlaunch-ready-20261113/source/6689937417e46faffd1e59d410572732eb5e61859ae170644271a59f2aee178b.bin"
         }
       ]
+    },
+    {
+      "id": 9,
+      "slug": "agent-economics",
+      "state": "prepared-not-deployed",
+      "files": [
+        {
+          "path": "docs/updates/09-agent-economics.md",
+          "bytes": 1574,
+          "sha256": "382e05de5b262c966e2a4de7dd3f6bea2a7d7a513fbdc1cf24addbd34f946ae0",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/382e05de5b262c966e2a4de7dd3f6bea2a7d7a513fbdc1cf24addbd34f946ae0.bin"
+        },
+        {
+          "path": "ops/selection-public/README.md",
+          "bytes": 3173,
+          "sha256": "e9308d373fa106a130a00b386226133bb13486b6a70a2ae0ee3818515b4f9dbe",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/e9308d373fa106a130a00b386226133bb13486b6a70a2ae0ee3818515b4f9dbe.bin"
+        },
+        {
+          "path": "ops/selection-public/manage.py",
+          "bytes": 6338,
+          "sha256": "c8b096026b52f00da9fb3ec859d1521fe7b14202346ee3db94fb2dc02816ad62",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/c8b096026b52f00da9fb3ec859d1521fe7b14202346ee3db94fb2dc02816ad62.bin"
+        },
+        {
+          "path": "ops/selection-public/telomere-selection-public.service",
+          "bytes": 1001,
+          "sha256": "b836e287e9e58b035d0513392dbd68e89ddbcb362cf65380d78cdaafe2bc1bd2",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/b836e287e9e58b035d0513392dbd68e89ddbcb362cf65380d78cdaafe2bc1bd2.bin"
+        },
+        {
+          "path": "public/updates/agent-economics.css",
+          "bytes": 3018,
+          "sha256": "e0422ad67edc39422502c443cbe9d3a3101ddbc56e8d362dea7507ef9e480717",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/e0422ad67edc39422502c443cbe9d3a3101ddbc56e8d362dea7507ef9e480717.bin"
+        },
+        {
+          "path": "public/updates/agent-economics.ts",
+          "bytes": 22842,
+          "sha256": "48b2962b75fc8875dae9abeb2a1a2755833e3d5a4e53350b901f8db258317d4a",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/48b2962b75fc8875dae9abeb2a1a2755833e3d5a4e53350b901f8db258317d4a.bin"
+        },
+        {
+          "path": "public/updates/router.ts",
+          "bytes": 5408,
+          "sha256": "96018c7ba8e2837255bf25692a490162798a8dfecb9a20cbbc85984fbc606cb1",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/96018c7ba8e2837255bf25692a490162798a8dfecb9a20cbbc85984fbc606cb1.bin"
+        },
+        {
+          "path": "scripts/selection-public-service.ts",
+          "bytes": 4478,
+          "sha256": "dfdd52a0720924949c5525b6ce4e42d76f1f7336c8b430bfcfad499077da6881",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/dfdd52a0720924949c5525b6ce4e42d76f1f7336c8b430bfcfad499077da6881.bin"
+        },
+        {
+          "path": "src/app.ts",
+          "bytes": 33047,
+          "sha256": "e11d46c388a2b647e1e24f7b61814dcc45b96e81e5f00ce96416fd3360762e03",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/e11d46c388a2b647e1e24f7b61814dcc45b96e81e5f00ce96416fd3360762e03.bin"
+        },
+        {
+          "path": "src/config.ts",
+          "bytes": 13138,
+          "sha256": "cb643252b260041eebe42144978711715363fe22816cd7925c22d23a536b8031",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/cb643252b260041eebe42144978711715363fe22816cd7925c22d23a536b8031.bin"
+        },
+        {
+          "path": "src/selection/public-http.ts",
+          "bytes": 3037,
+          "sha256": "e02be9a506f1f19541f6669330755be13d41c9b6c602b371c61bc88758d21936",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/e02be9a506f1f19541f6669330755be13d41c9b6c602b371c61bc88758d21936.bin"
+        },
+        {
+          "path": "src/selection/public-service.ts",
+          "bytes": 5264,
+          "sha256": "be6a52a9f613bc30ae15a56992fe131afd88d29e49ccf4caa84ea65b1674672b",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/be6a52a9f613bc30ae15a56992fe131afd88d29e49ccf4caa84ea65b1674672b.bin"
+        },
+        {
+          "path": "src/updates/agent-economics-remote.ts",
+          "bytes": 4828,
+          "sha256": "de7b67528a86d9eee015647131481a02d22eef4309e5a70e7d24b599c29d23f7",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/de7b67528a86d9eee015647131481a02d22eef4309e5a70e7d24b599c29d23f7.bin"
+        },
+        {
+          "path": "src/updates/agent-economics.ts",
+          "bytes": 16847,
+          "sha256": "5bb7f7f9a7b3cf9846eca08c63a5ed73ee6f0f72cbb788d17ecb3c11834eefeb",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/5bb7f7f9a7b3cf9846eca08c63a5ed73ee6f0f72cbb788d17ecb3c11834eefeb.bin"
+        },
+        {
+          "path": "src/updates/features.ts",
+          "bytes": 896,
+          "sha256": "5db66a42a20952c6dd2ef6654a9de0861e6f7d5cfc46ea0932fa669d27eb8c29",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/5db66a42a20952c6dd2ef6654a9de0861e6f7d5cfc46ea0932fa669d27eb8c29.bin"
+        },
+        {
+          "path": "tests/agent-economics-view.test.ts",
+          "bytes": 13912,
+          "sha256": "e0cc9474fc2a9b5df2acefba9c7d059470cd5ac5e6ad989430913c477ab1dcb1",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/e0cc9474fc2a9b5df2acefba9c7d059470cd5ac5e6ad989430913c477ab1dcb1.bin"
+        },
+        {
+          "path": "tests/selection-public-ops.test.ts",
+          "bytes": 407,
+          "sha256": "2ffc519bc846190dc2707015051209ea910127b070dce6e27ee7c64d989a181d",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/2ffc519bc846190dc2707015051209ea910127b070dce6e27ee7c64d989a181d.bin"
+        },
+        {
+          "path": "tests/selection-public-service.test.ts",
+          "bytes": 8297,
+          "sha256": "624d26d2276251d5a5c9b6f2ba0ce16b432f6491ead6381fda6473c17e24237a",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/624d26d2276251d5a5c9b6f2ba0ce16b432f6491ead6381fda6473c17e24237a.bin"
+        },
+        {
+          "path": "tests/selection_public_ops_test.py",
+          "bytes": 3465,
+          "sha256": "994316c7266e8a7f56cbbb35d33ae26605d99c95e4dc2555e251eb6e448bedfe",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/994316c7266e8a7f56cbbb35d33ae26605d99c95e4dc2555e251eb6e448bedfe.bin"
+        },
+        {
+          "path": "website/dist/site.js",
+          "bytes": 50785,
+          "sha256": "9b7f7b4a403d5a39cb062dbe850d1d4ee55de028864715ed9ac03fa2edc09990",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/9b7f7b4a403d5a39cb062dbe850d1d4ee55de028864715ed9ac03fa2edc09990.bin"
+        }
+      ]
     }
   ],
   "baselineSources": [

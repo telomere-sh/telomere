@@ -1,0 +1,99 @@
+"""Explicit operator preparation/activation. No keys, wallet calls or main controller writes."""
+from pathlib import Path
+import argparse,hashlib,json,os,re,shutil,subprocess,tempfile,time,urllib.request,uuid
+
+SERVICE='telomere-selection-public.service'
+BASE=Path('/opt/telomere-mainnet-pilot/selection-public')
+DATA=Path('/var/lib/telomere-selection-public')
+UNIT=Path('/etc/systemd/system')/SERVICE
+ENV=Path('/etc/telomere-selection-public.env')
+VHOST=Path('/etc/nginx/sites-available/telomere-apex-static')
+STATE=BASE/'activation.json'
+def run(*args):return subprocess.run(args,check=True,capture_output=True,timeout=120)
+def atomic(path,data,mode=0o600):
+ tmp=path.with_name(path.name+'.pending-'+uuid.uuid4().hex)
+ with tmp.open('xb') as out:out.write(data);out.flush();os.fsync(out.fileno())
+ tmp.chmod(mode);os.replace(tmp,path)
+def get(url):
+ with urllib.request.urlopen(url,timeout=10) as response:return json.load(response)
+def inventory(root):
+ return {str(p.relative_to(root)):hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(root.rglob('*')) if p.is_file() and not p.is_symlink()}
+def snapshot(source,target):
+ assert source.is_dir() and not source.is_symlink() and not target.exists()
+ assert not any(p.is_symlink() for p in source.rglob('*'))
+ for attempt in range(5):
+  temp=Path(tempfile.mkdtemp(prefix='index-copy-',dir=DATA))
+  try:
+   before=inventory(source);shutil.copytree(source,temp/'index');after=inventory(source)
+   if before!=after or inventory(temp/'index')!=after:time.sleep(1);continue
+   os.replace(temp/'index',target);return
+  finally:
+   assert temp.resolve().parent==DATA.resolve() and temp.name.startswith('index-copy-')
+   shutil.rmtree(temp)
+ raise RuntimeError('Index changed during copying; retry preparation later')
+def prepare(release):
+ import pwd
+ release=Path(release).resolve()
+ assert release.parent==Path('/opt/telomere-mainnet-pilot/releases') and re.fullmatch('[a-f0-9]{40}',release.name)
+ assert (release/'dist/scripts/selection-public-service.js').is_file() and (release/'node_modules').is_dir()
+ assert not STATE.exists(),'Existing activation must be reviewed before replacing it'
+ account=pwd.getpwnam('telomere-selection-review');BASE.mkdir(parents=True,exist_ok=True);BASE.chmod(0o700)
+ DATA.mkdir(exist_ok=True);DATA.chmod(0o700)
+ if not (DATA/'index').exists():snapshot(Path('/var/lib/telomere-selection/index'),DATA/'index')
+ profile=Path('/var/lib/telomere-selection/canonical-profile.json').read_bytes()
+ assert len(profile)<=8192 and json.loads(profile)['chainId']==8453
+ atomic(DATA/'canonical-profile.json',profile)
+ for p in [DATA,*DATA.rglob('*')]:
+  assert not p.is_symlink();os.chown(p,account.pw_uid,account.pw_gid)
+ # Runtime files remain immutable in the already verified main release.
+ BASE.chmod(0o755);link=BASE/'current';assert not link.exists() and not link.is_symlink()
+ link.symlink_to(release)
+ previous={str(p):p.read_text() if p.exists() else None for p in [UNIT,ENV]}
+ atomic(BASE/'before.json',(json.dumps(previous)+'\n').encode())
+ env=('SELECTION_PUBLIC_PROFILE='+str(DATA/'canonical-profile.json')+'\nSELECTION_PUBLIC_DATA_DIR='+str(DATA/'index')
+  +'\nSELECTION_PUBLIC_RPC_URL=https://base-rpc.publicnode.com\nSELECTION_PUBLIC_PORT=3287\nSELECTION_PUBLIC_FEATURE_ORIGIN=http://127.0.0.1:3282\n')
+ atomic(ENV,env.encode(),0o640);os.chown(ENV,0,account.pw_gid)
+ atomic(UNIT,(release/'ops/selection-public/telomere-selection-public.service').read_bytes() if (release/'ops/selection-public/telomere-selection-public.service').is_file() else (Path(__file__).parent/'telomere-selection-public.service').read_bytes(),0o644)
+ try:
+  run('systemctl','daemon-reload');run('systemctl','enable','--now',SERVICE)
+  deadline=time.monotonic()+90
+  while time.monotonic()<deadline:
+   try:
+    health=get('http://127.0.0.1:3287/health/selection')
+    if health['state']=='ready' and not health['stale']:break
+   except Exception:pass
+   time.sleep(5)
+  else:raise RuntimeError('Public index did not become ready')
+  atomic(BASE/'prepared.json',json.dumps({'release':str(release),'ready':True,'publicSwitched':False}).encode())
+ except Exception:
+  subprocess.run(['systemctl','stop',SERVICE],capture_output=True,timeout=120)
+  for name,value in previous.items():
+   p=Path(name)
+   if value is None:p.unlink(missing_ok=True)
+   else:atomic(p,value.encode(),0o644 if p==UNIT else 0o640)
+  run('systemctl','daemon-reload');link.unlink();raise
+ print(json.dumps({'prepared':True,'publicSwitched':False,'transactionsSent':0}))
+def activate():
+ assert json.loads((BASE/'prepared.json').read_text())['ready'] and not STATE.exists()
+ assert 'agent-economics' in get('http://127.0.0.1:3282/api/public/features')['enabled']
+ assert get('http://127.0.0.1:3287/health/selection')['state']=='ready'
+ old=VHOST.read_bytes();text=old.decode()
+ pattern=r'(location\s*=\s*/api/public/selection/explorer\s*\{[\s\S]*?proxy_pass\s+http://127\.0\.0\.1:)(3286)(;)'
+ changed,count=re.subn(pattern,lambda m:m[1]+'3287'+m[3],text);assert count==1,'Expected the reviewed legacy explorer location'
+ try:
+  atomic(VHOST,changed.encode(),0o644);run('nginx','-t');run('systemctl','reload','nginx')
+  atomic(STATE,json.dumps({'before':old.decode(),'afterSha256':hashlib.sha256(changed.encode()).hexdigest(),'release':str((BASE/'current').resolve())}).encode())
+ except Exception:atomic(VHOST,old,0o644);run('nginx','-t');run('systemctl','reload','nginx');raise
+ print(json.dumps({'activated':True,'transactionsSent':0}))
+def rollback():
+ if STATE.exists():
+  state=json.loads(STATE.read_text());assert hashlib.sha256(VHOST.read_bytes()).hexdigest()==state['afterSha256'],'A later website release changed nginx; review it first'
+  atomic(VHOST,state['before'].encode(),0o644);run('nginx','-t');run('systemctl','reload','nginx');STATE.rename(STATE.with_name('rolled-back-'+uuid.uuid4().hex+'.json'))
+ run('systemctl','disable','--now',SERVICE)
+ print(json.dumps({'publicIndexRolledBack':True,'mainControllerChanged':False,'indexPreserved':True}))
+if __name__=='__main__':
+ parser=argparse.ArgumentParser();parser.add_argument('action',choices=['prepare','activate','rollback']);parser.add_argument('--release');args=parser.parse_args()
+ assert os.geteuid()==0
+ if args.action=='prepare':assert args.release;prepare(args.release)
+ elif args.action=='activate':activate()
+ else:rollback()

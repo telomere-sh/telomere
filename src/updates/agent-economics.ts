@@ -1,0 +1,179 @@
+import { and, asc, eq, lt, sql } from 'drizzle-orm';
+import { Hono } from 'hono';
+import { z } from 'zod';
+import { Problem } from '../common.js';
+import type { Database } from '../store.js';
+import type { SelectionDataset, SelectionDatasetRow } from '../selection/dataset.js';
+import type { SelectionIndexer } from '../selection/indexer.js';
+import type { SelectionReader } from '../selection/rpc.js';
+import { selectionAgents, selectionBlocks, selectionCursors, selectionEvents } from '../selection/schema.js';
+
+const hash = z.string().regex(/^0x[0-9a-f]{64}$/);
+const units = z.string().regex(/^(0|[1-9][0-9]{0,77})$/);
+const date = z.string().regex(/^\d{4}-\d{2}-\d{2}$/).refine(value => {
+  const time = Date.parse(value + 'T00:00:00.000Z');
+  return Number.isFinite(time) && time >= 0 && time <= 253_402_128_000_000 && new Date(time).toISOString().slice(0, 10) === value;
+});
+const requestSchema = z.object({ agentId: hash, from: date, to: date }).strict().refine(value => {
+  const days = (Date.parse(value.to) - Date.parse(value.from)) / 86_400_000; return days >= 0 && days < 366;
+});
+type Page = Awaited<ReturnType<SelectionDataset['page']>>;
+type Index = Pick<SelectionIndexer, 'indexKey' | 'profile'>;
+export type AgentEconomicsRequest = { agentId: string; from: string; to: string };
+type Totals = { incomeUnits: string; feeUnits: string; netIncomeUnits: string; burnUnits: string; subsidyUnits: string };
+export interface AgentEconomicsResponse {
+  version: 1; state: 'ready' | 'partial' | 'stale' | 'no_data'; source: 'canonical-persisted-selection-events';
+  currency: 'registry-token-base-units'; periodTime: 'block-timestamp'; index: Page['index']; asOfSeconds: string;
+  period: { from: string; to: string; endExclusive: string };
+  coverage: { historyStartBlock: string; historyStartSeconds: string; partialStart: boolean; partialEnd: boolean;
+    deploymentHistoryVerified: false; stale: boolean; staleAfterSeconds: 900; verifiedEarnedUnits: null;
+    earningsProvenance: 'registry-classification-only'; unclassifiedTransfers: 'excluded'; lifecycleTruncated: boolean };
+  agent: null | { agentId: string; parent: string; family: string; generation: number; status: 'alive' | 'dormant' | 'dead';
+    frozen: boolean; bornAt: string; dormantAt: string | null; deathAt: string | null; diedAt: string | null;
+    deathCause: string | null; livingChildren: number; lifetimeOffspring: number; lifetime: Totals };
+  metrics: null | { spendableBalanceUnits: string; balanceAtBlock: string; trailing24hBurnUnits: string;
+    trailing24hComplete: boolean; metabolism: { numerator: string; denominator: '86400'; unit: 'base-units-per-second' } | null;
+    runway: { numerator: string; denominator: string; unit: 'seconds' } | null;
+    runwayReason: 'estimated-from-settled-burn' | 'no-observed-burn' | 'incomplete-history' | 'dead' };
+  totals: Totals; daily: (Totals & { date: string })[];
+  lifecycle: { event: 'Birth' | 'Dormant' | 'Revived' | 'Death'; timestampSeconds: string; transactionHash: string; logIndex: number }[];
+}
+const empty = (): Totals => ({ incomeUnits: '0', feeUnits: '0', netIncomeUnits: '0', burnUnits: '0', subsidyUnits: '0' });
+const invalid = () => new Problem(422, 'agent_economics_input', 'Use an agent ID and UTC dates spanning at most 366 days.');
+const unavailable = () => new Problem(503, 'agent_economics_unavailable', 'Canonical agent evidence is unavailable. Retry after indexing.');
+const changed = () => new Problem(409, 'agent_economics_snapshot_changed', 'The indexed snapshot changed. Apply the dates again.');
+export function parseAgentEconomicsRequest(input: AgentEconomicsRequest): AgentEconomicsRequest {
+  const parsed = requestSchema.safeParse(input); if (!parsed.success) throw invalid(); return parsed.data;
+}
+const toSeconds = (value: string) => BigInt(Date.parse(value + 'T00:00:00.000Z') / 1000);
+const toDate = (value: bigint) => new Date(Number(value) * 1000).toISOString().slice(0, 10);
+const sameIndex = (a: Page['index'], b: Page['index']) => a.indexKey === b.indexKey && a.revision === b.revision
+  && a.indexedThrough === b.indexedThrough && a.blockHash === b.blockHash && a.registryAddress === b.registryAddress && a.chainId === b.chainId;
+function add(total: Totals, name: string, amount: string, fee: string): void {
+  const key = name === 'Income' ? 'incomeUnits' : name === 'Burn' ? 'burnUnits' : 'subsidyUnits';
+  total[key] = (BigInt(total[key]) + BigInt(amount)).toString();
+  total.feeUnits = (BigInt(total.feeUnits) + BigInt(fee)).toString();
+  total.netIncomeUnits = (BigInt(total.incomeUnits) - BigInt(total.feeUnits)).toString();
+}
+
+/** A separate public whitelist. The authenticated indexer.get owner view is untouched.
+ * Dataset.page verifies the reviewed chain/profile and entire canonical ledger before and after this read.
+ * Income is registry classification, never an assertion of independent earned revenue.
+ */
+export class AgentEconomics {
+  constructor(private readonly db: Database, private readonly dataset: Pick<SelectionDataset, 'page'>,
+    private readonly indexer: Index, private readonly reader: Pick<SelectionReader, 'block' | 'spendableBalance'>,
+    private readonly now: () => number = Date.now) {}
+
+  async get(input: AgentEconomicsRequest): Promise<AgentEconomicsResponse> {
+    const parsed = requestSchema.safeParse(input); if (!parsed.success) throw invalid();
+    const request = parsed.data, clock = this.now();
+    if (!Number.isSafeInteger(clock) || clock < 0 || clock > 253_402_128_000_000) throw unavailable();
+    const monday = new Date(clock); monday.setUTCHours(0, 0, 0, 0); monday.setUTCDate(monday.getUTCDate() - (monday.getUTCDay() + 6) % 7);
+    const week = monday.toISOString().slice(0, 10), start = toSeconds(request.from), end = toSeconds(request.to) + 86_400n;
+    try {
+      const canonical = await this.dataset.page({ week, limit: 100 });
+      if (canonical.index.indexKey !== this.indexer.indexKey || canonical.index.registryAddress !== this.indexer.profile.registryAddress
+        || canonical.index.chainId !== this.indexer.profile.chainId || canonical.index.confirmations !== this.indexer.profile.confirmations) throw unavailable();
+      const population = new Map<string, SelectionDatasetRow>(); let part = canonical, pages = 0;
+      while (true) {
+        if (!sameIndex(canonical.index, part.index)) throw changed();
+        for (const row of part.rows) { if (population.has(row.agentId)) throw unavailable(); population.set(row.agentId, row); }
+        if (population.size > this.indexer.profile.maxVaults || ++pages > Math.ceil(this.indexer.profile.maxVaults / 100) + 1) throw unavailable();
+        if (!part.nextCursor) break;
+        part = await this.dataset.page({ week, limit: 100, cursor: part.nextCursor });
+      }
+      const snapshot = await this.db.transaction(async tx => {
+        const [saved] = await tx.select().from(selectionCursors).where(eq(selectionCursors.key, this.indexer.indexKey)).limit(1);
+        if (!saved || saved.revision !== canonical.index.revision || saved.lastHash !== canonical.index.blockHash
+          || saved.nextBlock !== BigInt(canonical.index.indexedThrough) + 1n || !/^[0-9a-f]{64}$/.test(saved.profileHash)) throw changed();
+        const [anchor] = await tx.select().from(selectionBlocks).where(and(eq(selectionBlocks.indexKey, saved.key), eq(selectionBlocks.height, saved.nextBlock - 1n))).limit(1);
+        if (!anchor || anchor.hash !== canonical.index.blockHash || anchor.timestamp < 0n || anchor.timestamp > BigInt(Math.floor(clock / 1000)) + 300n) throw unavailable();
+        const [projection] = await tx.select().from(selectionAgents).where(and(eq(selectionAgents.indexKey, saved.key), eq(selectionAgents.agentId, request.agentId))).limit(1);
+        const rows = await tx.select({ event: selectionEvents, timestamp: selectionBlocks.timestamp, headerHash: selectionBlocks.hash }).from(selectionEvents)
+          .innerJoin(selectionBlocks, and(eq(selectionBlocks.indexKey, selectionEvents.indexKey), eq(selectionBlocks.height, selectionEvents.height)))
+          .where(and(eq(selectionEvents.indexKey, saved.key), eq(selectionEvents.address, this.indexer.profile.registryAddress),
+            sql`${selectionEvents.args}->>'agentId' = ${request.agentId}`, lt(selectionEvents.height, saved.nextBlock)))
+          .orderBy(asc(selectionEvents.height), asc(selectionEvents.logIndex)).limit(this.indexer.profile.maxEvents + 1);
+        if (rows.length > this.indexer.profile.maxEvents) throw unavailable();
+        return { saved, anchor, projection, rows };
+      }, { accessMode: 'read only', isolationLevel: 'repeatable read' });
+      const asOf = snapshot.anchor.timestamp, stale = BigInt(Math.floor(clock / 1000)) - asOf > 900n;
+      const partialStart = BigInt(canonical.coverage.historyStartSeconds) >= start, partialEnd = asOf < end - 1n;
+      const daily: AgentEconomicsResponse['daily'] = [];
+      for (let time = start; time < end; time += 86_400n) daily.push({ date: toDate(time), ...empty() });
+      const totals = empty(), lifetime = empty(), lifecycle: AgentEconomicsResponse['lifecycle'] = [];
+      let dormantAt: string | null = null, deathAt: string | null = null, cause: string | null = null, trailing = 0n, periodEvents = 0;
+      const validNames = ['Birth', 'Income', 'Subsidy', 'Burn', 'Dormant', 'GraceExtended', 'Revived', 'Death', 'Frozen', 'CystCommitted'];
+      for (const { event, timestamp, headerHash } of snapshot.rows) {
+        if (event.blockHash !== headerHash || !hash.safeParse(event.transactionHash).success || event.id !== event.transactionHash + ':' + event.logIndex
+          || !Number.isSafeInteger(event.logIndex) || event.logIndex < 0 || timestamp < BigInt(canonical.coverage.historyStartSeconds)
+          || timestamp > asOf || event.height < this.indexer.profile.startBlock || !validNames.includes(event.name)) throw unavailable();
+        if (event.name === 'Dormant') { dormantAt = units.parse(event.args.dormantAt); deathAt = units.parse(event.args.deathAt); }
+        if (event.name === 'GraceExtended') deathAt = units.parse(event.args.deathAt);
+        if (event.name === 'Revived') { dormantAt = null; deathAt = null; }
+        if (event.name === 'Death') cause = hash.parse(event.args.cause);
+        const inPeriod = timestamp >= start && timestamp < end;
+        if (inPeriod) periodEvents++;
+        if (['Income', 'Burn', 'Subsidy'].includes(event.name)) {
+          const amount = units.parse(event.args.amount), fee = event.name === 'Income' ? units.parse(event.args.fee) : '0';
+          if (BigInt(fee) > BigInt(amount)) throw unavailable(); add(lifetime, event.name, amount, fee);
+          if (event.name === 'Burn') { const paidAt = BigInt(units.parse(event.args.paidAt)); if (paidAt > timestamp) throw unavailable();
+            if (paidAt > asOf - 86_400n && paidAt <= asOf) trailing += BigInt(amount); }
+          if (inPeriod) { add(totals, event.name, amount, fee); add(daily[Number((timestamp - start) / 86_400n)]!, event.name, amount, fee); }
+        }
+        if (inPeriod && ['Birth', 'Dormant', 'Revived', 'Death'].includes(event.name)) lifecycle.push({ event: event.name as AgentEconomicsResponse['lifecycle'][number]['event'],
+          timestampSeconds: timestamp.toString(), transactionHash: event.transactionHash, logIndex: event.logIndex });
+      }
+      const row = population.get(request.agentId), data = snapshot.projection?.data;
+      let agent: AgentEconomicsResponse['agent'] = null, metrics: AgentEconomicsResponse['metrics'] = null;
+      if (Boolean(row) !== Boolean(data)) throw unavailable();
+      if (row && data && snapshot.projection) {
+        const children = [...population.values()].filter(child => child.parent === row.agentId), living = children.filter(child => child.status !== 'dead').length;
+        if (!/^0x[0-9a-f]{40}$/.test(snapshot.projection.vault) || data.vault !== snapshot.projection.vault || data.agentId !== row.agentId
+          || data.status !== row.status || data.parent !== row.parent || data.family !== row.family || data.generation !== row.generation || data.frozen !== row.frozen
+          || data.bornAt !== row.bornAt || data.diedAt !== row.diedAt || data.dormantAt !== dormantAt || data.deathAt !== deathAt
+          || living > 3 || data.livingChildren !== living || data.offspring !== children.length || data.offspring !== row.offspring
+          || lifetime.incomeUnits !== row.lifetimeIncomeUnits || lifetime.feeUnits !== row.lifetimeIncomeFeeUnits || lifetime.netIncomeUnits !== row.lifetimeNetIncomeUnits
+          || lifetime.burnUnits !== row.lifetimeBurnUnits || lifetime.subsidyUnits !== row.lifetimeSubsidyUnits || cause !== row.deathCause
+          || data.income !== lifetime.incomeUnits || data.incomeFees !== lifetime.feeUnits || data.burn !== lifetime.burnUnits || data.subsidy !== lifetime.subsidyUnits) throw unavailable();
+        agent = { agentId: row.agentId, parent: row.parent, family: row.family, generation: row.generation, status: row.status,
+          frozen: row.frozen, bornAt: row.bornAt, dormantAt, deathAt, diedAt: row.diedAt, deathCause: cause,
+          livingChildren: living, lifetimeOffspring: row.offspring, lifetime };
+        const balance = units.parse(await this.reader.spendableBalance(snapshot.projection.vault, BigInt(canonical.index.indexedThrough)));
+        const complete = BigInt(canonical.coverage.historyStartSeconds) <= asOf - 86_400n || BigInt(row.bornAt) >= BigInt(canonical.coverage.historyStartSeconds);
+        const runwayReason = row.status === 'dead' ? 'dead' : !complete ? 'incomplete-history' : trailing === 0n ? 'no-observed-burn' : 'estimated-from-settled-burn';
+        metrics = { spendableBalanceUnits: balance, balanceAtBlock: canonical.index.indexedThrough, trailing24hBurnUnits: trailing.toString(),
+          trailing24hComplete: complete, metabolism: complete ? { numerator: trailing.toString(), denominator: '86400', unit: 'base-units-per-second' } : null,
+          runway: runwayReason === 'estimated-from-settled-burn' ? { numerator: (BigInt(balance) * 86_400n).toString(), denominator: trailing.toString(), unit: 'seconds' } : null, runwayReason };
+      } else if (snapshot.rows.length) throw unavailable();
+      const block = await this.reader.block(BigInt(canonical.index.indexedThrough));
+      if (block.height !== snapshot.anchor.height || block.hash !== snapshot.anchor.hash || block.timestamp !== snapshot.anchor.timestamp) throw unavailable();
+      const after = await this.dataset.page({ week, limit: 1 }); if (!sameIndex(canonical.index, after.index)) throw changed();
+      const [saved] = await this.db.select().from(selectionCursors).where(eq(selectionCursors.key, this.indexer.indexKey)).limit(1);
+      if (!saved || saved.profileHash !== snapshot.saved.profileHash || saved.revision !== snapshot.saved.revision
+        || saved.nextBlock !== snapshot.saved.nextBlock || saved.lastHash !== snapshot.saved.lastHash) throw changed();
+      return { version: 1, state: !agent ? 'no_data' : stale ? 'stale' : partialStart || partialEnd ? 'partial' : !periodEvents ? 'no_data' : 'ready',
+        source: 'canonical-persisted-selection-events', currency: 'registry-token-base-units', periodTime: 'block-timestamp', index: canonical.index,
+        asOfSeconds: asOf.toString(), period: { from: request.from, to: request.to, endExclusive: toDate(end) },
+        coverage: { historyStartBlock: canonical.coverage.historyStartBlock, historyStartSeconds: canonical.coverage.historyStartSeconds, partialStart, partialEnd,
+          deploymentHistoryVerified: false, stale, staleAfterSeconds: 900, verifiedEarnedUnits: null, earningsProvenance: 'registry-classification-only',
+          unclassifiedTransfers: 'excluded', lifecycleTruncated: lifecycle.length > 1000 }, agent, metrics, totals, daily, lifecycle: lifecycle.slice(-1000) };
+    } catch (error) { if (error instanceof Problem && error.code === 'agent_economics_snapshot_changed') throw error; throw unavailable(); }
+  }
+}
+
+/** Mount at /api/public/selection after the independent feature gate. */
+export function createAgentEconomicsRoutes(economics?: Pick<AgentEconomics, 'get'>): Hono {
+  const routes = new Hono();
+  routes.get('/agents/:id', async context => {
+    context.header('Cache-Control', 'no-store');
+    if (!economics) throw new Problem(503, 'agent_economics_not_configured', 'Selection is not configured. No indexed agent evidence is available.');
+    const query: Record<string, string> = {};
+    for (const [key, value] of new URL(context.req.url).searchParams) {
+      if (!['from', 'to'].includes(key) || Object.hasOwn(query, key)) throw invalid(); query[key] = value;
+    }
+    return context.json(await economics.get({ agentId: context.req.param('id').toLowerCase(), from: query.from ?? '', to: query.to ?? '' }));
+  });
+  return routes;
+}

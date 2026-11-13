@@ -1,0 +1,7 @@
+# 09. Agent economics
+
+Prepared locally behind `POSTLAUNCH_FEATURES=agent-economics`. `/agents/:id/` displays canonical Selection registry events and spendable Vault balance at the indexed block. Daily gross income, fees, net income, burn and owner subsidies remain separate exact base-unit amounts. Registry-classified income is labeled as such; independent earned-income provenance remains unknown, and unclassified transfers are excluded.
+
+Date filters, coverage boundaries, limited lifecycle rows and stale data are explicit. Unindexed days show no coverage rather than zero. Canonical block and dataset checks bracket the balance read; reorgs and unavailable sources withhold economics. No configured Selection means not configured, not generated agent activity. Current CPU-only production requires a separately configured Selection deployment before populated data is available.
+
+Validation: 9 persisted-index tests cover actual event projection, monetary precision, subsidies, coverage, lineage, reorg and balance failures. This change performs no on-chain action.

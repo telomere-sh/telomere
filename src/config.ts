@@ -3,6 +3,7 @@ import { isAbsolute, relative, resolve, sep } from 'node:path';
 import { addressSchema, bytes32Schema, moneySchema } from './common.js';
 import { baseUsdcForChainId } from './chain/chains.js';
 import { CYST_BACKUP_CAPACITY } from './cysts/capacity.js';
+import { selectionPublicOrigin } from './selection/public-http.js';
 
 const schema = z.object({
   MODE: z.enum(['demo', 'testnet', 'mainnet']).default('demo'),
@@ -46,6 +47,7 @@ const schema = z.object({
   PLATFORM_RUNTIME_CONFIG: z.string().min(1).optional(),
   AGENT_RUNTIME: z.enum(['legacy', 'platform', 'platform_vault']).default('legacy'),
   SELECTION_ENABLED: z.enum(['true', 'false']).default('false').transform(value => value === 'true'),
+  SELECTION_PUBLIC_ORIGIN: selectionPublicOrigin.optional(),
   SELECTION_REGISTRY_ADDRESS: addressSchema.optional(), SELECTION_CODE_HASH: bytes32Schema.optional(),
   SELECTION_START_BLOCK: z.string().regex(/^(0|[1-9][0-9]{0,18})$/).optional(),
   SELECTION_CONFIRMATIONS: z.coerce.number().int().min(0).max(10000).default(3),

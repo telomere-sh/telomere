@@ -65,6 +65,9 @@ import { createPaidCystInputRoutes } from './platform-runtime/paid-cyst-input-ro
 import { createAccountingRoutes } from './updates/accounting.js';
 import { createRunwayRoutes } from './updates/runway.js';
 import { SelectionExplorer, createSelectionExplorerRoutes } from './updates/selection-explorer.js';
+import { AgentEconomics, createAgentEconomicsRoutes } from './updates/agent-economics.js';
+import { RemoteAgentEconomics } from './updates/agent-economics-remote.js';
+import { createSelectionReader } from './selection/rpc.js';
 import type { Website } from './website.js';
 import { unversionedRelease, type PublicRelease } from './release.js';
 
@@ -187,6 +190,9 @@ export function createApp(service: Service, auth: Auth, logger: Logger, publicRo
   }
   if (featureEnabled(service.config, 'fossils')) app.route('/api/public/selection', createSelectionExplorerRoutes(
     platform?.selectionDataset && platform.selection ? new SelectionExplorer(service.db, platform.selectionDataset, platform.selection) : undefined));
+  if (featureEnabled(service.config, 'agent-economics')) app.route('/api/public/selection', createAgentEconomicsRoutes(
+    platform?.selectionDataset && platform.selection ? new AgentEconomics(service.db, platform.selectionDataset, platform.selection, createSelectionReader(service.config.RPC_URL))
+      : service.config.SELECTION_PUBLIC_ORIGIN ? new RemoteAgentEconomics(service.config.SELECTION_PUBLIC_ORIGIN, service.config.CHAIN_ID) : undefined));
   app.route('/api/public/receipts', createPublicReceiptRoutes(configuredPublicReceiptVerifier(service)));
   if (featureEnabled(service.config, 'receipt-links')) {
     const links = configuredReceiptLinks(service);

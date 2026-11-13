@@ -1,0 +1,30 @@
+[Unit]
+Description=Telomere public canonical Selection index (read-only chain access)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=telomere-selection-review
+Group=telomere-selection-review
+EnvironmentFile=/etc/telomere-selection-public.env
+# systemd resolves the protected source as root; the keyless user sees only
+# this read-only release mount, never the main controller's private directory.
+RuntimeDirectory=telomere-selection-public-runtime
+RuntimeDirectoryMode=0700
+BindReadOnlyPaths=/opt/telomere-mainnet-pilot/selection-public/current:/run/telomere-selection-public-runtime
+ExecStart=/opt/node-v22.23.3-linux-x64/bin/node /run/telomere-selection-public-runtime/dist/scripts/selection-public-service.js
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=90
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/telomere-selection-public
+MemoryMax=768M
+CPUQuota=50%
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target
