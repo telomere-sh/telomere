@@ -22,6 +22,9 @@ import { mountAgentEconomics } from './agent-economics.js';
 import './copy-examples.css';
 import { mountCopyExamples } from './copy-examples.js';
 
+import './host-calculator.css';
+import { mountHostCalculator } from './host-calculator.js';
+
 type Hero = (label: string, title: string, description: string, meta?: string) => string;
 function toolLifecycle(main: HTMLElement, mount: () => (() => void) | void): void {
   let started = false, cleanup: (() => void) | undefined;
@@ -56,6 +59,9 @@ export async function mountPostlaunchRoute(main: HTMLElement, path: string, hero
       toolLifecycle(main, () => mountSharedReceipt(main, hero('Shared receipt', 'The run.<br><span class="orange">On record.</span>',
         'A receipt summary shared by its owner. Current settlement evidence is checked before it is displayed.', 'TELOMERE / SHARED RECEIPT'), shared[1]!));
       return;
+    }
+    if (path === '/hosts/calculator' && enabled.includes('host-calculator')) {
+      toolLifecycle(main, () => mountHostCalculator(main, hero('Host revenue', 'Your hardware.<br><span class="orange">Your scenario.</span>', 'Model revenue from your chosen price and paid hours. Inputs and modeled fees stay visible.'))); return;
     }
     if (path === '/developers/examples' && enabled.includes('copy-examples')) {
       const response = await fetch('/api/config', { credentials: 'omit', cache: 'no-store', redirect: 'error', signal: AbortSignal.timeout(10000) });

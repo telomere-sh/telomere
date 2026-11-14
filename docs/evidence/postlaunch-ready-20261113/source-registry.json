@@ -718,6 +718,61 @@
           "storedPath": "docs/evidence/postlaunch-ready-20261113/source/d1061a240761da3a976760527b09350a2af594c7d449f99274a62b8e8b4757fe.bin"
         }
       ]
+    },
+    {
+      "id": 11,
+      "slug": "host-calculator",
+      "state": "prepared-not-deployed",
+      "files": [
+        {
+          "path": "docs/updates/11-host-calculator.md",
+          "bytes": 904,
+          "sha256": "7995bdae9e247f5cebe0606354311b379ba5c0644241ab10a5b49a0fea82f9aa",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/7995bdae9e247f5cebe0606354311b379ba5c0644241ab10a5b49a0fea82f9aa.bin"
+        },
+        {
+          "path": "public/updates/host-calculator.css",
+          "bytes": 3022,
+          "sha256": "1156cb589b3a3aa70c947048b0485416454df285ab1b4f8696f64a161d7f58e0",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/1156cb589b3a3aa70c947048b0485416454df285ab1b4f8696f64a161d7f58e0.bin"
+        },
+        {
+          "path": "public/updates/host-calculator.ts",
+          "bytes": 9133,
+          "sha256": "b8431530e3c7d5183db8557943557e02ebfcb0d0671c5966ca12e7b2c22148d8",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/b8431530e3c7d5183db8557943557e02ebfcb0d0671c5966ca12e7b2c22148d8.bin"
+        },
+        {
+          "path": "public/updates/router.ts",
+          "bytes": 6958,
+          "sha256": "79efb1188fa22cdc9cf5a1cd69ee48b6435e92e36c03b3776f51239ee6014aec",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/79efb1188fa22cdc9cf5a1cd69ee48b6435e92e36c03b3776f51239ee6014aec.bin"
+        },
+        {
+          "path": "src/updates/features.ts",
+          "bytes": 932,
+          "sha256": "a390898843e0c4deed91600f434cb7cf284e47878e860dd2177dbd1b6f6f0d97",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/a390898843e0c4deed91600f434cb7cf284e47878e860dd2177dbd1b6f6f0d97.bin"
+        },
+        {
+          "path": "src/updates/host-revenue.ts",
+          "bytes": 3978,
+          "sha256": "63fe7be6adf0297b0e97cdc4c70d3fe60fc19539ec1ab4ca6f97fb47fc57adcf",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/63fe7be6adf0297b0e97cdc4c70d3fe60fc19539ec1ab4ca6f97fb47fc57adcf.bin"
+        },
+        {
+          "path": "tests/host-revenue-calculator.test.ts",
+          "bytes": 4556,
+          "sha256": "e18be860f99d8fc88737fa451ae2170f950da44347f59419b3cef2f4b2df5adb",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/e18be860f99d8fc88737fa451ae2170f950da44347f59419b3cef2f4b2df5adb.bin"
+        },
+        {
+          "path": "website/dist/site.js",
+          "bytes": 50828,
+          "sha256": "3158325cde7c228c3271b712ba716d41cb0fb7af172bfb24ca31ed66d0882fd4",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/3158325cde7c228c3271b712ba716d41cb0fb7af172bfb24ca31ed66d0882fd4.bin"
+        }
+      ]
     }
   ],
   "baselineSources": [
