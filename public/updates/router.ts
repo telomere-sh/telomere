@@ -19,6 +19,9 @@ import { mountFossilRecord } from './fossils.js';
 import './agent-economics.css';
 import { mountAgentEconomics } from './agent-economics.js';
 
+import './copy-examples.css';
+import { mountCopyExamples } from './copy-examples.js';
+
 type Hero = (label: string, title: string, description: string, meta?: string) => string;
 function toolLifecycle(main: HTMLElement, mount: () => (() => void) | void): void {
   let started = false, cleanup: (() => void) | undefined;
@@ -53,6 +56,14 @@ export async function mountPostlaunchRoute(main: HTMLElement, path: string, hero
       toolLifecycle(main, () => mountSharedReceipt(main, hero('Shared receipt', 'The run.<br><span class="orange">On record.</span>',
         'A receipt summary shared by its owner. Current settlement evidence is checked before it is displayed.', 'TELOMERE / SHARED RECEIPT'), shared[1]!));
       return;
+    }
+    if (path === '/developers/examples' && enabled.includes('copy-examples')) {
+      const response = await fetch('/api/config', { credentials: 'omit', cache: 'no-store', redirect: 'error', signal: AbortSignal.timeout(10000) });
+      if (!response.ok) throw new Error('Runtime configuration unavailable');
+      const config: unknown = await response.json();
+      const maximum = typeof config === 'object' && config !== null && 'prices' in config && typeof config.prices === 'object' && config.prices !== null && 'maxSeconds' in config.prices ? config.prices.maxSeconds : undefined;
+      if (!Number.isSafeInteger(maximum) || typeof maximum !== 'number' || maximum < 1 || maximum > 120) throw new Error('Runtime limit unavailable');
+      toolLifecycle(main, () => mountCopyExamples(main, hero('Request examples', 'One request.<br><span class="orange">Your language.</span>', 'Prepare and copy an exact CPU quote request as curl, TypeScript or Python.'), {serverOrigin: location.origin, runtimeMaxSeconds: maximum})); return;
     }
     const agent = /^\/agents\/(0x[a-fA-F0-9]{64})$/.exec(path);
     if (agent && enabled.includes('agent-economics')) {

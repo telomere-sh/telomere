@@ -1,0 +1,21 @@
+.copy-examples{--copy-space:20px;--copy-small:9px;--copy-region:65px;--copy-type:15px;--copy-leading:1.6;--copy-rule:1px;--copy-focus:2px;--copy-focus-offset:5px;min-width:0}
+.copy-examples [hidden]{display:none!important}
+.copy-examples .copy-help,.copy-examples .copy-error{font-size:var(--copy-type);line-height:var(--copy-leading);margin:0 0 var(--copy-space);overflow-wrap:anywhere}
+.copy-examples .copy-help{color:var(--muted)}
+.copy-examples .copy-error{padding:var(--copy-space);background:var(--panel);border-left:var(--copy-focus) solid var(--orange);color:var(--ink)}
+.copy-examples .field,.copy-examples .field input,.copy-examples .field textarea{min-width:0;max-width:100%}
+.copy-examples textarea:focus-visible,.copy-examples pre:focus-visible{outline:var(--copy-focus) solid var(--orange);outline-offset:var(--copy-focus-offset)}
+.copy-examples [aria-invalid=true]{border-color:var(--ink)}
+.copy-examples .copy-output{margin-top:var(--copy-region);min-width:0}
+.copy-examples h3{font:inherit;margin:var(--copy-space) 0}
+.copy-examples .copy-details{margin:0 0 var(--copy-space);border-top:var(--copy-rule) solid var(--line)}
+.copy-examples .copy-details>div{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:var(--copy-space);padding:var(--copy-space) 0;border-bottom:var(--copy-rule) solid var(--line)}
+.copy-examples dt,.copy-examples dd{margin:0;min-width:0;font-size:var(--copy-type);line-height:var(--copy-leading);overflow-wrap:anywhere}
+.copy-examples dt{color:var(--muted)}
+.copy-examples .copy-code{max-width:100%;min-width:0;overflow:auto;padding:var(--copy-space);background:var(--panel);color:var(--ink);border:var(--copy-rule) solid var(--line);font-size:var(--copy-type);line-height:var(--copy-leading);white-space:pre;tab-size:2;margin:var(--copy-space) 0}
+.copy-examples .copy-actions{display:flex;flex-wrap:wrap;gap:var(--copy-small);margin-bottom:var(--copy-space);align-items:center}
+.copy-examples .copy-actions .pill{min-height:44px;max-width:100%;white-space:normal;overflow-wrap:anywhere}
+.copy-examples .pill[aria-pressed=true]{background:var(--ink);color:var(--paper)}
+.copy-examples .pill:disabled{cursor:default;opacity:.65;transform:none}
+.copy-examples #copy-status{margin-top:var(--copy-space)}
+@media(max-width:600px){.copy-examples .copy-details>div{grid-template-columns:minmax(0,1fr);gap:var(--copy-small)}}
