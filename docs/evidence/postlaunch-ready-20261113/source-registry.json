@@ -773,6 +773,115 @@
           "storedPath": "docs/evidence/postlaunch-ready-20261113/source/3158325cde7c228c3271b712ba716d41cb0fb7af172bfb24ca31ed66d0882fd4.bin"
         }
       ]
+    },
+    {
+      "id": 12,
+      "slug": "status-changelog",
+      "state": "prepared-not-deployed",
+      "files": [
+        {
+          "path": "docs/updates/12-status-changelog.md",
+          "bytes": 1691,
+          "sha256": "b128795beb1c79a076b52770df62732a259c75ff405db04337f0aba1fcdd007f",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/b128795beb1c79a076b52770df62732a259c75ff405db04337f0aba1fcdd007f.bin"
+        },
+        {
+          "path": "public/updates/changelog-catalog.json",
+          "bytes": 3452,
+          "sha256": "13f3a1138692c0ddc704275d301f99321d9ce06d41c555ec3eca729aa47f79bb",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/13f3a1138692c0ddc704275d301f99321d9ce06d41c555ec3eca729aa47f79bb.bin"
+        },
+        {
+          "path": "public/updates/changelog.css",
+          "bytes": 1319,
+          "sha256": "4d8131e7fc24113edfb7b47d77732bc9ca42b620ab90b9cabf456b3e4be814e4",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/4d8131e7fc24113edfb7b47d77732bc9ca42b620ab90b9cabf456b3e4be814e4.bin"
+        },
+        {
+          "path": "public/updates/changelog.ts",
+          "bytes": 10918,
+          "sha256": "a117ae8089f1204be6315753c72d4b20156d649efcb2122b537193d6cb2bf654",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/a117ae8089f1204be6315753c72d4b20156d649efcb2122b537193d6cb2bf654.bin"
+        },
+        {
+          "path": "public/updates/router.ts",
+          "bytes": 7746,
+          "sha256": "86e55ae486febd4f40f52fa3bc2ae5ff0d1b2cac0d834a91f5fc544ab0297327",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/86e55ae486febd4f40f52fa3bc2ae5ff0d1b2cac0d834a91f5fc544ab0297327.bin"
+        },
+        {
+          "path": "public/updates/status.css",
+          "bytes": 1426,
+          "sha256": "48adad1c0ddf55563d1e4ade0ba30b712bffc020b40c65908dc4f807e12df69d",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/48adad1c0ddf55563d1e4ade0ba30b712bffc020b40c65908dc4f807e12df69d.bin"
+        },
+        {
+          "path": "public/updates/status.ts",
+          "bytes": 15015,
+          "sha256": "0832be5613c819c4947659bc1f73e5f0b69f2cf4e15e77711f243603ee971957",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/0832be5613c819c4947659bc1f73e5f0b69f2cf4e15e77711f243603ee971957.bin"
+        },
+        {
+          "path": "src/app.ts",
+          "bytes": 35003,
+          "sha256": "f0cd04d3f970d974a15b4678cbdcf20bbfffc899d7d6840fe8bce61f72abfd25",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/f0cd04d3f970d974a15b4678cbdcf20bbfffc899d7d6840fe8bce61f72abfd25.bin"
+        },
+        {
+          "path": "src/updates/changelog.ts",
+          "bytes": 3874,
+          "sha256": "13b611bf6aa6f27f3be3ccfe73941a1785bc2e28a5c629a55528d5e7a4425f61",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/13b611bf6aa6f27f3be3ccfe73941a1785bc2e28a5c629a55528d5e7a4425f61.bin"
+        },
+        {
+          "path": "src/updates/features.ts",
+          "bytes": 952,
+          "sha256": "56aecdb9c38de1a781171f8f09e326eb35106005e1bca278d013825aa0267eb5",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/56aecdb9c38de1a781171f8f09e326eb35106005e1bca278d013825aa0267eb5.bin"
+        },
+        {
+          "path": "src/updates/selection-public-status.ts",
+          "bytes": 1166,
+          "sha256": "01eb9112a34c98a305b185cc0c45be5ec60763dd71d4a54cb9fab3ca690de2d6",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/01eb9112a34c98a305b185cc0c45be5ec60763dd71d4a54cb9fab3ca690de2d6.bin"
+        },
+        {
+          "path": "src/updates/service-status.ts",
+          "bytes": 6771,
+          "sha256": "756b09fbfb87c987d4e2932d29cf3d30369d34ae251c741c772e1edac5c97f70",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/756b09fbfb87c987d4e2932d29cf3d30369d34ae251c741c772e1edac5c97f70.bin"
+        },
+        {
+          "path": "tests/changelog-view.test.ts",
+          "bytes": 13344,
+          "sha256": "c5f8f293c6da0c240f719244b097b3a49edae3885f2ed54d1472208059116810",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/c5f8f293c6da0c240f719244b097b3a49edae3885f2ed54d1472208059116810.bin"
+        },
+        {
+          "path": "tests/postlaunch-integration.test.ts",
+          "bytes": 3496,
+          "sha256": "2a30586bc67e64875539c5a930510cf529581e391053b22c9fb5ca0c5356770a",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/2a30586bc67e64875539c5a930510cf529581e391053b22c9fb5ca0c5356770a.bin"
+        },
+        {
+          "path": "tests/selection-public-status.test.ts",
+          "bytes": 2043,
+          "sha256": "0f907a720fc1e70234b66ad002a1b485c9ee817abcdae0790d3b323118705679",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/0f907a720fc1e70234b66ad002a1b485c9ee817abcdae0790d3b323118705679.bin"
+        },
+        {
+          "path": "tests/service-status.test.ts",
+          "bytes": 13768,
+          "sha256": "73142d5deeb810bb1985799fc3ba6d4d85faea9f936d1807227658fc7f53554f",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/73142d5deeb810bb1985799fc3ba6d4d85faea9f936d1807227658fc7f53554f.bin"
+        },
+        {
+          "path": "website/dist/site.js",
+          "bytes": 50851,
+          "sha256": "2cbb601dc63a9168b48cbb84645431e20f76b3f80118fa66ea5d60d587397665",
+          "storedPath": "docs/evidence/postlaunch-ready-20261113/source/2cbb601dc63a9168b48cbb84645431e20f76b3f80118fa66ea5d60d587397665.bin"
+        }
+      ]
     }
   ],
   "baselineSources": [

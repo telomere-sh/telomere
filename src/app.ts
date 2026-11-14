@@ -1,3 +1,4 @@
+import { jobs } from './store.js';
 import { createWorkspaceRoutes } from './workspace/routes.js';
 import { readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
@@ -67,7 +68,10 @@ import { createRunwayRoutes } from './updates/runway.js';
 import { SelectionExplorer, createSelectionExplorerRoutes } from './updates/selection-explorer.js';
 import { AgentEconomics, createAgentEconomicsRoutes } from './updates/agent-economics.js';
 import { RemoteAgentEconomics } from './updates/agent-economics-remote.js';
+import { selectionPublicStatusProbe } from './updates/selection-public-status.js';
 import { createSelectionReader } from './selection/rpc.js';
+import { ServiceStatusService, createServiceStatusRoutes } from './updates/service-status.js';
+import { createChangelogRoutes } from './updates/changelog.js';
 import type { Website } from './website.js';
 import { unversionedRelease, type PublicRelease } from './release.js';
 
@@ -175,8 +179,9 @@ export function createApp(service: Service, auth: Auth, logger: Logger, publicRo
   app.get('/health/live', context => context.json({ status: 'ok' }));
   app.get('/api/version', context => context.json(release, 200, { 'Cache-Control': 'no-store' }));
   app.get('/api/public/features', context => context.json({ enabled: publicFeatures(service.config) }, 200, { 'Cache-Control': 'no-store' }));
+  let financialHistory: FinancialHistory | undefined;
   if (['refunds', 'prices', 'runway', 'accounting'].some(feature => featureEnabled(service.config, feature as 'refunds' | 'prices' | 'runway' | 'accounting'))) {
-    const source = configuredFinancialSource(service), history = new FinancialHistory(source);
+    const source = configuredFinancialSource(service), history = new FinancialHistory(source); financialHistory = history;
     if (featureEnabled(service.config, 'refunds')) {
       app.route('/api/public/insights', createRefundInsightRoutes(history));
       app.route('/api/insights', createRefundReferenceRoutes(source, context => auth.owner(getCookie(context, cookie))));
@@ -193,6 +198,19 @@ export function createApp(service: Service, auth: Auth, logger: Logger, publicRo
   if (featureEnabled(service.config, 'agent-economics')) app.route('/api/public/selection', createAgentEconomicsRoutes(
     platform?.selectionDataset && platform.selection ? new AgentEconomics(service.db, platform.selectionDataset, platform.selection, createSelectionReader(service.config.RPC_URL))
       : service.config.SELECTION_PUBLIC_ORIGIN ? new RemoteAgentEconomics(service.config.SELECTION_PUBLIC_ORIGIN, service.config.CHAIN_ID) : undefined));
+  if (featureEnabled(service.config, 'status-changelog')) {
+    const status = new ServiceStatusService({
+      website: website ? async () => ({ state: (await website.handle(new Request(service.config.PUBLIC_ORIGIN + '/page.html', {method:'HEAD'})))?.ok ? 'ready' : 'unavailable' }) : null,
+      chain: async () => { await service.bridge.check(); return {state:'ready'}; },
+      controller: operations ? async () => { const state=(await operations()).worker.state; return {state:state==='idle'||state==='running'?'ready':'degraded'}; } : null,
+      receipts: async () => { await service.db.select({id:jobs.id}).from(jobs).limit(1); await service.bridge.check(); return {state:'ready'}; },
+      explorer: service.config.SELECTION_PUBLIC_ORIGIN ? selectionPublicStatusProbe(service.config.SELECTION_PUBLIC_ORIGIN, service.config.CHAIN_ID)
+        : platform?.selectionDataset ? async () => { const now=new Date();now.setUTCDate(now.getUTCDate()-(now.getUTCDay()+6)%7);const page=await platform.selectionDataset!.page({week:now.toISOString().slice(0,10),limit:1});return {state:Number(page.coverage.asOfSeconds)*1000<Date.now()-900000?'degraded':'ready'}; } : null,
+      pricing: featureEnabled(service.config,'prices') && financialHistory ? async () => {const scan=await financialHistory!.snapshot();return {state:scan.complete?'ready':scan.state==='unavailable'?'unavailable':'degraded'};} : null,
+    });
+    app.route('/api/public/status', createServiceStatusRoutes(status));
+    app.route('/api/public/changelog', createChangelogRoutes(() => publicFeatures(service.config), release));
+  }
   app.route('/api/public/receipts', createPublicReceiptRoutes(configuredPublicReceiptVerifier(service)));
   if (featureEnabled(service.config, 'receipt-links')) {
     const links = configuredReceiptLinks(service);

@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "entries": [
+    {
+      "id": 1,
+      "feature": null,
+      "title": "Public receipt verifier",
+      "description": "Check operator signatures, metering records and on-chain settlement evidence without connecting a wallet.",
+      "introducedOn": "2026-11-13",
+      "href": "/verify/"
+    },
+    {
+      "id": 2,
+      "feature": "refunds",
+      "title": "Refund insights",
+      "description": "Review confirmed escrow returns with source coverage and separate refund categories.",
+      "introducedOn": "2026-11-13",
+      "href": "/refunds/"
+    },
+    {
+      "id": 3,
+      "feature": "prices",
+      "title": "Settled price board",
+      "description": "Inspect recorded CPU settlement price distributions for a selected period, with visible sample counts and coverage.",
+      "introducedOn": "2026-11-13",
+      "href": "/prices/"
+    },
+    {
+      "id": 4,
+      "feature": "receipt-links",
+      "title": "Public receipt links",
+      "description": "Learn how published receipt links support read-only verification; create a link from a settled run in Workspace.",
+      "introducedOn": "2026-11-13",
+      "href": "/verify/"
+    },
+    {
+      "id": 5,
+      "feature": "leash-presets",
+      "title": "Leash presets",
+      "description": "Prepare bounded run settings in the dashboard and review the resulting limits before submitting.",
+      "introducedOn": "2026-11-13",
+      "href": "/dashboard/"
+    },
+    {
+      "id": 6,
+      "feature": "runway",
+      "title": "Runway estimate",
+      "description": "Estimate remaining compute time from your confirmed available escrow balance and trailing 24-hour settled spend.",
+      "introducedOn": "2026-11-13",
+      "href": "/runway/"
+    },
+    {
+      "id": 7,
+      "feature": "accounting",
+      "title": "Accounting export",
+      "description": "Review available financial records and export exact amounts with source and period information.",
+      "introducedOn": "2026-11-13",
+      "href": "/accounting/"
+    },
+    {
+      "id": 8,
+      "feature": "fossils",
+      "title": "Fossil explorer",
+      "description": "Browse available public records and follow the evidence supplied for each record.",
+      "introducedOn": "2026-11-13",
+      "href": "/fossils/"
+    },
+    {
+      "id": 9,
+      "feature": "agent-economics",
+      "title": "Agent economics",
+      "description": "Explore agents from public records and inspect available per-agent economic evidence and coverage.",
+      "introducedOn": "2026-11-13",
+      "href": "/fossils/"
+    },
+    {
+      "id": 10,
+      "feature": "copy-examples",
+      "title": "Developer examples",
+      "description": "Prepare copyable integration examples with explicit inputs and visible configuration requirements.",
+      "introducedOn": "2026-11-13",
+      "href": "/developers/examples/"
+    },
+    {
+      "id": 11,
+      "feature": "host-calculator",
+      "title": "Host calculator",
+      "description": "Compare host cost assumptions in a local estimate; results are scenarios rather than promised income.",
+      "introducedOn": "2026-11-13",
+      "href": "/hosts/calculator/"
+    },
+    {
+      "id": 12,
+      "feature": "status-changelog",
+      "title": "Service status and changelog",
+      "description": "Read fixed local service checks and the curated list of updates enabled in this deployment.",
+      "introducedOn": "2026-11-13",
+      "href": "/status/"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+.service-status { --status-gap: 24px; --status-cell: 16px; }
+.service-status .inline-form { align-items: end; }
+.service-status .pill:disabled { cursor: wait; opacity: .65; transform: none; }
+.service-status .service-status-results { margin-top: var(--status-gap); }
+.service-status .service-status-meta { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--status-gap); }
+.service-status dt, .service-status caption { color: var(--muted); }
+.service-status dd { margin: 0; overflow-wrap: anywhere; }
+.service-status .service-status-table { width: 100%; max-width: 100%; overflow-x: auto; margin-block: var(--status-gap); }
+.service-status .spec-table { display: table; }
+.service-status caption { text-align: left; padding-block: var(--status-cell); }
+.service-status th, .service-status td { vertical-align: top; }
+.service-status td { overflow-wrap: anywhere; }
+.service-status time { white-space: nowrap; }
+.service-status #service-status-error { color: var(--ink); border-left: 2px solid var(--orange); padding-left: var(--status-cell); }
+.service-status #service-status-error, .service-status #service-status-progress { flex-basis: 100%; overflow-wrap: anywhere; }
+@media (max-width: 900px) {
+  .service-status .service-status-meta { grid-template-columns: minmax(0, 1fr); }
+  .service-status .inline-form { align-items: stretch; }
+  .service-status .pill { width: 100%; white-space: normal; }
+}

@@ -1,0 +1,17 @@
+.public-changelog { --changelog-gap: 24px; --changelog-inset: 16px; }
+.public-changelog .changelog-results { margin-top: var(--changelog-gap); }
+.public-changelog .changelog-meta { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--changelog-gap); }
+.public-changelog dt { color: var(--muted); }
+.public-changelog dd { margin: 0; overflow-wrap: anywhere; }
+.public-changelog .changelog-entries { padding-left: var(--changelog-gap); }
+.public-changelog .changelog-entries li { border-top: 1px solid var(--line); padding-block: var(--changelog-gap); overflow-wrap: anywhere; }
+.public-changelog .changelog-entries li > p:first-child { color: var(--muted); }
+.public-changelog .pill { max-width: 100%; white-space: normal; overflow-wrap: anywhere; }
+.public-changelog .pill:disabled { opacity: .65; transform: none; }
+.public-changelog #changelog-error { color: var(--ink); border-left: 2px solid var(--orange); padding-left: var(--changelog-inset); }
+.public-changelog #changelog-error, .public-changelog #changelog-progress { flex-basis: 100%; overflow-wrap: anywhere; }
+@media (max-width: 900px) {
+  .public-changelog .changelog-meta { grid-template-columns: minmax(0, 1fr); }
+  .public-changelog .inline-form { align-items: stretch; }
+  .public-changelog .inline-form .pill { width: 100%; }
+}

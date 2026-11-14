@@ -1,0 +1,7 @@
+# 12. Service status and changelog
+
+Prepared locally behind the single `POSTLAUNCH_FEATURES=status-changelog` flag. `/status/` shows fixed website-entry, configured chain, controller-worker, receipt-service, Selection dataset and price-source probes. Omitted components are not configured; errors/timeouts remain unavailable or unknown. Probe concurrency is bounded, timed-out work retains its slot, cached readiness expires at the earliest evidence deadline. These are server-local checks, not external/global uptime measurements or historical uptime claims. Private operations details, addresses and exceptions are not exposed.
+
+`/changelog/` uses a curated, strictly validated catalog filtered by enabled flags. The source commit comes from actual build metadata; a dirty/unbuilt checkout is partial. Introduced dates mean implementation dates, not claimed production deployment times. No raw Git history, operator logs or private paths are published. Explicit refresh recovers from an earlier disabled deployment without automatic background retries.
+
+Validation: 11 status tests and 24 changelog tests include deadlines, stale evidence, privacy allowlists, actual build identity and manual retry. Both pages belong to this one update and one commit.
